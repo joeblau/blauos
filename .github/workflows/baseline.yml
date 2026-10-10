@@ -1,0 +1,61 @@
+name: Reproducible baseline
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      run_vm:
+        description: Run source builds and real ARM64 guest on a provisioned SDK runner
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  tooling:
+    name: Validate pinned inputs and harness
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - name: Validate input lock
+        run: python3 scripts/blauos.py validate-lock
+      - name: Test readiness failures and build tooling
+        run: python3 -m unittest discover -s tests -v
+      - name: Test Mach-O integrity and runtime provenance
+        run: python3 -m unittest discover -s runtime/tests -v
+
+  virtual-boot:
+    name: Build independent ARM64 guest and verify boot and network
+    if: github.event_name == 'workflow_dispatch' && inputs.run_vm
+    runs-on: [self-hosted, Linux, ARM64, blauos-sdk]
+    timeout-minutes: 150
+    env:
+      BLAUOS_SDK_ARCHIVE: ${{ vars.BLAUOS_SDK_ARCHIVE }}
+      BLAUOS_SDK_SHA256: ${{ vars.BLAUOS_SDK_SHA256 }}
+      BLAUOS_SDK_VERSION: ${{ vars.BLAUOS_SDK_VERSION }}
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          clean: true
+      - name: Retrieve and verify pinned upstream source
+        run: python3 scripts/blauos.py fetch puredarwin-vm-next
+      - name: Build, audit and boot a clean guest image
+        run: >-
+          python3 scripts/vm/ci.py
+          --sdk-archive "$BLAUOS_SDK_ARCHIVE"
+          --sdk-sha256 "$BLAUOS_SDK_SHA256"
+          --sdk-version "$BLAUOS_SDK_VERSION"
+      - name: Archive source-built symbols, manifests and test logs
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: arm64-baseline-evidence
+          if-no-files-found: error
+          path: |
+            .blauos/build/vm/ci/**/*.json
+            .blauos/build/vm/ci/**/*.log
+            .blauos/build/vm/ci/boot/kernel.symbols
+            !.blauos/build/vm/ci/image/source/**

@@ -1,0 +1,9 @@
+[
+  "cmake",
+  "--build",
+  "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin",
+  "--target",
+  "xnu",
+  "--parallel",
+  "4"
+]

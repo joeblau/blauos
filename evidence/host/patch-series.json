@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "series": "patches/xnu/series",
+  "series_sha256": "7985cb516ab7e041942fc3996974f56eba8c44dbdad6b5f746e3df8ee908369d",
+  "checks": [
+    {
+      "source_name": "xnu",
+      "command": [
+        "python3",
+        "scripts/patches.py",
+        "check",
+        "--source",
+        ".blauos/verification/sources/xnu",
+        "--source-name",
+        "xnu"
+      ],
+      "exit_code": 0,
+      "stdout": "Verified 0 ordered patches; resulting diff SHA-256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\n",
+      "stderr": "",
+      "revision": "ac9718fb1af618d5ce8678d0dc6e8a58f252216f",
+      "clean_after_check": true
+    },
+    {
+      "source_name": "puredarwin-vm-next",
+      "command": [
+        "python3",
+        "scripts/patches.py",
+        "check",
+        "--source",
+        ".blauos/verification/sources/puredarwin-vm-next",
+        "--source-name",
+        "puredarwin-vm-next"
+      ],
+      "exit_code": 0,
+      "stdout": "Verified 0 ordered patches; resulting diff SHA-256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\n",
+      "stderr": "",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "clean_after_check": true
+    }
+  ],
+  "kernel_build_evidence": "evidence/kernel/reproducibility/comparison.json",
+  "scope": "Empty project series applies cleanly to both locked profiles. Two real clean PureDarwin DEVELOPMENT ARM64 VIRT builds completed; modern Apple kernel build is blocked on unavailable inputs."
+}

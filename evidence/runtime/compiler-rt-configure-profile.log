@@ -1,0 +1,27 @@
+-- Found OSX_SYSROOT: /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.2.sdk
+CMake Warning at /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/llvm-project/compiler-rt/cmake/Modules/CompilerRTUtils.cmake:328 (message):
+  LLVMXRay not found in LLVM_AVAILABLE_LIBS
+Call Stack (most recent call first):
+  CMakeLists.txt:29 (load_llvm_config)
+
+
+CMake Warning at /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/llvm-project/compiler-rt/cmake/Modules/CompilerRTUtils.cmake:335 (message):
+  LLVMTestingSupport not found in LLVM_AVAILABLE_LIBS
+Call Stack (most recent call first):
+  CMakeLists.txt:29 (load_llvm_config)
+
+
+-- LLVM_MAIN_SRC_DIR: "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/llvm-project/llvm"
+-- cmake c compiler target: arm64-apple-macosx11.0
+-- Found libtool - /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool
+-- Found arm64 support in /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.2.sdk/SDKSettings.plist
+-- Found arm64e support in /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.2.sdk/SDKSettings.plist
+-- Using cached valid architectures for osx.
+-- OSX supported builtin arches: arm64
+-- Builtin supported architectures: arm64
+-- AArch64 Apple SME ABI routines enabled
+-- For osx_arm64 builtins preferring aarch64/fp_mode.c to fp_mode.c
+-- For cc_kext_osx_arm64 builtins preferring aarch64/fp_mode.c to fp_mode.c
+-- Configuring done (1.2s)
+-- Generating done (0.1s)
+-- Build files have been written to: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/compiler-rt

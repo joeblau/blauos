@@ -1,0 +1,55 @@
+{
+  "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+  "tools": [
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/tools/cctools/misc/codesign_allocate",
+      "sha256": "d8b97f443dc79a2eca7024429309d35f4d73c846821be645a248b0cdb6281491",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/tools/cctools/misc/codesign_allocate: Mach-O 64-bit executable arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/tools/cctools/misc/ctf_insert",
+      "sha256": "3baf58db1a0ab4fabde92c7c3205ac5e02d3e3b0c5ccb9f06629d820aa885e9d",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/tools/cctools/misc/ctf_insert: Mach-O 64-bit executable arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/tools/cctools/misc/libtool",
+      "sha256": "0a97960d1d8078c86107ee91964ecd7b6c70800cc62946d883ab0b61f8e87b50",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/tools/cctools/misc/libtool: Mach-O 64-bit executable arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/tools/cctools/misc/lipo",
+      "sha256": "428f32eadfc7ad070626f4a9defec9f1b95fe1aae229eade2a3bb27445e15c3e",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/tools/cctools/misc/lipo: Mach-O 64-bit executable arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/tools/cctools/misc/nm",
+      "sha256": "e69275c9775359b1dfecc48c1f49024d1d0fa2e6d87d951db5d99955e5852d4b",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/tools/cctools/misc/nm: Mach-O 64-bit executable arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/tools/cctools/misc/strip",
+      "sha256": "835848898fd706e064b5251bb89f763141580bf1f03604771a48c0eb93482996",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/tools/cctools/misc/strip: Mach-O 64-bit executable arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/tools/dtrace_ctf/tools/ctfconvert",
+      "sha256": "7929bbae80ce2ddfcb9952953770f429b487ec8f98ba5b67fa92ebc2d112397d",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/tools/dtrace_ctf/tools/ctfconvert: Mach-O 64-bit executable arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/tools/dtrace_ctf/tools/ctfmerge",
+      "sha256": "8b08f7b74c2a4f3cc78c3cc5897c32438738a4d99ae552d72395fac9ef0c3fbe",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/tools/dtrace_ctf/tools/ctfmerge: Mach-O 64-bit executable arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/tools/mig/migcom",
+      "sha256": "06c23c3e23457e74d4997a77006ead516e68f83176a497cc31b1b0bfc7ad70d6",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/tools/mig/migcom: Mach-O 64-bit executable arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/tools/unifdef/unifdef",
+      "sha256": "d9aa178e06e949de9cdd721bf5a03fcca4fc026e199f3a8c5d1c15541cafd744",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/tools/unifdef/unifdef: Mach-O 64-bit executable arm64"
+    }
+  ]
+}

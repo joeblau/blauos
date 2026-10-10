@@ -1,0 +1,30 @@
+Command line invocation:
+    /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/usr/bin/xcodebuild -list -project .blauos/sources/puredarwin-xpc/libxpc.xcodeproj
+
+Information about project "libxpc":
+    Targets:
+        world
+        libxpc
+        libxpc_nv
+        launchd
+        liblaunch
+        launchctl
+        csops_entitlement_blob_test
+        xpc_entitlements_test
+
+    Build Configurations:
+        Debug
+        Release
+
+    If no build configuration is specified and -scheme is not passed then "Release" is used.
+
+    Schemes:
+        csops_entitlement_blob_test
+        launchctl
+        launchd
+        liblaunch
+        libxpc
+        libxpc_nv
+        world
+        xpc_entitlements_test
+

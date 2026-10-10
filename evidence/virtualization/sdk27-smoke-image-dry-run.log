@@ -1,0 +1,21 @@
+error:
+       … while calling the 'derivationStrict' builtin
+         at «nix-internal»/derivation-internal.nix:37:12:
+           36|
+           37|   strict = derivationStrict drvAttrs;
+             |            ^
+           38|
+
+       … while evaluating derivation 'blauos-arm64-vm-smoke-image-0.1'
+         whose name attribute is located at /nix/store/m0chqc0bmfxhjfpilx67cph63kn7gd11-source/pkgs/stdenv/generic/make-derivation.nix:647:11
+
+       … while evaluating attribute 'buildPhase' of derivation 'blauos-arm64-vm-smoke-image-0.1'
+         at /workspace/vm/smoke-image.nix:22:3:
+           21|   pname = "blauos-arm64-vm-smoke-image";
+           22|   buildPhase = assert pkgs.lib.hasInfix anchor old.buildPhase;
+             |   ^
+           23|     builtins.replaceStrings [ anchor ] [ (injection + "\n" + anchor) ] old.buildPhase;
+
+       (stack trace truncated; use '--show-trace' to show the full, detailed trace)
+
+       error: path '/nix/store/j9bihwi8cy4238bwf1924kjlchkdm059-source/tools/cctools' does not exist

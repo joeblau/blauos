@@ -1,0 +1,160 @@
+1: [  0%] Built target unifdef
+2: [  0%] Built target host_libmacho
+3: [ 11%] Built target libelf.host
+4: [ 33%] Built target host_libstuff
+5: [ 44%] Built target libctf.host
+6: [ 66%] Built target libdwarf.host
+7: [ 66%] Built target migcom
+8: [ 66%] Built target host_lipo
+9: [ 66%] Built target host_nm
+10: [ 66%] Built target host_libtool
+11: [ 66%] Built target host_strip
+12: [ 66%] Built target host_codesign_allocate
+13: [ 66%] Built target host_ctf_insert
+14: [ 66%] Built target host_nmedit
+15: [ 77%] Built target host_ctfconvert
+16: [ 88%] Built target host_ctfmerge
+17: [100%] Built target xnu_headers.extproj
+18: [100%] Built target libkmod
+19: [100%] Built target PDArmPlatformExpert
+20: [  0%] Built target unifdef
+21: [  0%] Built target host_libmacho
+22: [ 11%] Built target libelf.host
+23: [ 33%] Built target host_libstuff
+24: [ 44%] Built target libctf.host
+25: [ 44%] Built target migcom
+26: [ 66%] Built target libdwarf.host
+27: [ 66%] Built target host_lipo
+28: [ 66%] Built target host_nm
+29: [ 66%] Built target host_strip
+30: [ 66%] Built target host_libtool
+31: [ 66%] Built target host_codesign_allocate
+32: [ 66%] Built target host_ctf_insert
+33: [ 66%] Built target host_nmedit
+34: [ 77%] Built target host_ctfconvert
+35: [ 88%] Built target host_ctfmerge
+36: [100%] Built target xnu_headers.extproj
+37: [100%] Built target libkmod
+38: [100%] Built target PDArmPCI
+39: [  0%] Built target unifdef
+40: [  0%] Built target host_libmacho
+41: [ 10%] Built target libelf.host
+42: [ 30%] Built target host_libstuff
+43: [ 40%] Built target libctf.host
+44: [ 60%] Built target libdwarf.host
+45: [ 60%] Built target migcom
+46: [ 60%] Built target host_lipo
+47: [ 60%] Built target host_nm
+48: [ 60%] Built target host_libtool
+49: [ 60%] Built target host_strip
+50: [ 60%] Built target host_codesign_allocate
+51: [ 60%] Built target host_ctf_insert
+52: [ 60%] Built target host_nmedit
+53: [ 70%] Built target host_ctfconvert
+54: [ 80%] Built target host_ctfmerge
+55: [ 90%] Built target xnu_headers.extproj
+56: [ 90%] Built target libkmod
+57: [100%] Built target IOPCIFamily
+58: [  0%] Built target unifdef
+59: [  0%] Built target host_libmacho
+60: [ 11%] Built target libelf.host
+151: [ 90%] Built target libkmod
+152: [100%] Built target corecrypto.kext
+153: [  0%] Built target unifdef
+154: [  0%] Built target host_libmacho
+155: [ 10%] Built target libelf.host
+156: [ 30%] Built target host_libstuff
+157: [ 40%] Built target libctf.host
+158: [ 60%] Built target libdwarf.host
+159: [ 60%] Built target migcom
+160: [ 60%] Built target host_lipo
+161: [ 60%] Built target host_nm
+162: [ 60%] Built target host_libtool
+163: [ 60%] Built target host_strip
+164: [ 60%] Built target host_codesign_allocate
+165: [ 60%] Built target host_ctf_insert
+166: [ 60%] Built target host_nmedit
+167: [ 70%] Built target host_ctfconvert
+168: [ 80%] Built target host_ctfmerge
+169: [ 90%] Built target xnu_headers.extproj
+170: [ 90%] Built target libkmod
+171: [100%] Built target pthread.kext
+172: [  0%] Built target unifdef
+173: [  0%] Built target host_libmacho
+174: [ 10%] Built target libelf.host
+175: [ 30%] Built target host_libstuff
+176: [ 40%] Built target libctf.host
+177: [ 60%] Built target libdwarf.host
+178: [ 60%] Built target migcom
+179: [ 60%] Built target host_lipo
+180: [ 60%] Built target host_nm
+181: [ 60%] Built target host_libtool
+182: [ 60%] Built target host_strip
+183: [ 60%] Built target host_codesign_allocate
+184: [ 60%] Built target host_ctf_insert
+185: [ 60%] Built target host_nmedit
+186: [ 70%] Built target host_ctfconvert
+187: [ 80%] Built target host_ctfmerge
+188: [ 90%] Built target xnu_headers.extproj
+189: [ 90%] Built target libkmod
+190: [100%] Built target IONetworkingFamily.kext
+191: [  0%] Built target unifdef
+192: [  0%] Built target host_libmacho
+193: [ 11%] Built target libelf.host
+194: [ 33%] Built target host_libstuff
+195: [ 44%] Built target libctf.host
+196: [ 66%] Built target libdwarf.host
+197: [ 66%] Built target host_lipo
+198: [ 66%] Built target migcom
+199: [ 66%] Built target host_nm
+200: [ 66%] Built target host_libtool
+201: [ 66%] Built target host_codesign_allocate
+202: [ 66%] Built target host_strip
+203: [ 66%] Built target host_ctf_insert
+204: [ 66%] Built target host_nmedit
+205: [ 88%] Built target host_ctfmerge
+206: [ 88%] Built target host_ctfconvert
+207: [100%] Built target xnu_headers.extproj
+208: [100%] Built target libkmod
+209: [100%] Built target IOVirtIOFamily.kext
+210: [  0%] Built target unifdef
+211: [  0%] Built target host_libmacho
+212: [ 11%] Built target libelf.host
+213: [ 33%] Built target host_libstuff
+214: [ 44%] Built target libctf.host
+215: [ 66%] Built target libdwarf.host
+216: [ 66%] Built target migcom
+217: [ 66%] Built target host_lipo
+218: [ 66%] Built target host_nm
+219: [ 66%] Built target host_libtool
+220: [ 66%] Built target host_strip
+221: [ 66%] Built target host_codesign_allocate
+222: [ 66%] Built target host_ctf_insert
+223: [ 66%] Built target host_nmedit
+224: [ 77%] Built target host_ctfconvert
+225: [ 88%] Built target host_ctfmerge
+226: [100%] Built target xnu_headers.extproj
+227: [100%] Built target libkmod
+228: [100%] Built target IOVirtIOFamily.kext
+229: [100%] Built target IOVirtIOBlock.kext
+230: [  0%] Built target host_libmacho
+231: [  0%] Built target unifdef
+232: [  9%] Built target libelf.host
+233: [ 27%] Built target host_libstuff
+234: [ 36%] Built target libctf.host
+235: [ 54%] Built target libdwarf.host
+236: [ 54%] Built target migcom
+237: [ 54%] Built target host_lipo
+238: [ 54%] Built target host_nm
+239: [ 54%] Built target host_libtool
+240: [ 54%] Built target host_strip
+241: [ 54%] Built target host_codesign_allocate
+242: [ 54%] Built target host_ctf_insert
+243: [ 54%] Built target host_nmedit
+244: [ 63%] Built target host_ctfconvert
+245: [ 72%] Built target host_ctfmerge
+246: [ 81%] Built target xnu_headers.extproj
+247: [ 81%] Built target libkmod
+248: [ 81%] Built target IOVirtIOFamily.kext
+249: [ 90%] Built target IONetworkingFamily.kext
+250: [100%] Built target IOVirtIONet.kext

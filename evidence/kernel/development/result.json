@@ -1,0 +1,10 @@
+{
+  "status": "blocked",
+  "exit_code": 2,
+  "source": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu",
+  "configuration": "DEVELOPMENT ARM64",
+  "machine": "VMAPPLE",
+  "sdk": ".blauos/build/kernel/headers/MacOSX.sdk",
+  "artifacts": [],
+  "boot_validated": false
+}

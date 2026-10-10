@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "source_lock_sha256": "445e5f6ff95c0f1e293572b14e2c58e148269aa18cf81a6591f4c1371735d2c6",
+  "sources": [
+    {
+      "name": "puredarwin-xpc",
+      "revision": "ad1163a623528ec83af7ec3c1d28ee0700bdef58",
+      "tree": "b870e717aeb2044f87ceb2470a9f0989d19ae0fa",
+      "origin": "https://github.com/PureDarwin/XPC.git"
+    }
+  ]
+}

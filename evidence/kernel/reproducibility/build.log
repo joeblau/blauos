@@ -1,0 +1,295 @@
+1: [  0%] Building C object tools/cctools/libmacho/CMakeFiles/host_libmacho.dir/arch.c.o
+2: [  0%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/begin.c.o
+3: [  0%] Building C object tools/unifdef/CMakeFiles/unifdef.dir/unifdef.c.o
+4: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/allocate.c.o
+5: [  0%] Linking C executable unifdef
+6: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/apple_version.c.o
+7: [  0%] Linking C static library libmacho.a
+8: [  0%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/clscook.c.o
+9: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/arch_usage.c.o
+10: [  0%] Built target unifdef
+11: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/arch.c.o
+12: [  0%] Built target host_libmacho
+13: [  0%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/clscook_ELF64.c.o
+14: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/args.c.o
+15: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/best_arch.c.o
+16: [ 10%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/cntl.c.o
+17: [ 10%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/breakout.c.o
+18: [ 10%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_create.c.o
+19: [ 10%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_abbrev.c.o
+20: [ 10%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/cook.c.o
+21: [ 10%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/bytesex.c.o
+22: [ 10%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_addr_finder.c.o
+23: [ 10%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_decl.c.o
+24: [ 10%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/data.c.o
+25: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_alloc.c.o
+26: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_error.c.o
+27: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/end.c.o
+28: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/checkout.c.o
+29: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_hash.c.o
+30: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_arange.c.o
+31: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/error.c.o
+32: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/coff_bytesex.c.o
+33: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_labels.c.o
+34: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_die_deliv.c.o
+35: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/gelf.c.o
+36: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/crc32.c.o
+37: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_error.c.o
+38: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_lib.c.o
+39: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getdata.c.o
+40: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/dylib_table.c.o
+41: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_form.c.o
+42: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_lookup.c.o
+43: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getehdr.c.o
+44: [ 30%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/dylib_roots.c.o
+45: [ 30%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_frame.c.o
+46: [ 30%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_open.c.o
+47: [ 30%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getident.c.o
+48: [ 30%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/errors.c.o
+49: [ 30%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getscn.c.o
+50: [ 30%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_frame2.c.o
+51: [ 30%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_subr.c.o
+52: [ 30%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getshdr.c.o
+53: [ 30%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/execute.c.o
+54: [ 30%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_frame3.c.o
+55: [ 30%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_types.c.o
+56: [ 30%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getshstrndx.c.o
+57: [ 30%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_funcs.c.o
+58: [ 30%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_util.c.o
+59: [ 30%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/fatal_arch.c.o
+60: [ 30%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/input.c.o
+115088: ;:)649
+115089: k
+115090: o_((/Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next/src/Kernel/xnu/libkern/libkern/c++/OSContainers.hw:(      ii:tu  In file included from n|                  ^
+115091:       13: warning: parameter 'vfa' not found in the function declaration [-Wdocumentation]
+115092: _69In file included from taCln, (    <scratch space>as:1606s/Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next/src/Kernel/xnu/osfmk/arm/cpuid.c::| r  D | 20st_}     ^r
+115093: 4649/Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next/src/Kernel/xnu/iokit/Kernel/IOPowerConnection.cpp:2935 :
+115094: :
+115095: e__t:uctIn file included from  t:36:
+115096: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next/src/Kernel/xnu/osfmk/vm/vm_page.h | warning:  _y:/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/reproducibility/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/bsd/sys/systm.hidentifier '__val' is reserved because it starts with '__' [-Wreserved-identifier]
+115179: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/reproducibility/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/bsd/sys/ucred.h_head_pr_  :
+115180: noIn file included from i/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/reproducibility/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/bsd/sys/_types/_fd_def.h_D94_t(idfy:119:1a126s/Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next/src/Kernel/xnu/osfmk/arm64/dbgwrap.c_aC:o | ltre/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/reproducibility/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/bsd/sys/mount.htit:x:rib        29 ( 651ta      #sunus:
+115181: d(#()
+115182:  sR:In file included from , c13Ee:Sy  /Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next/src/Kernel/xnu/osfmk/arm/cpu_data_internal.hwarning:  _e: parameter 'ctx' not found in the function declaration [-Wdocumentation]ut :awarning: identifier '__darwin_fd_set' is reserved because it starts with '__' [-Wreserved-identifier])El32a
+115183: p40RV;
+115184: d_p
+115185: )bdEss;  
+115186: D            | )      n        ^  
+115187: 651| 
+115251:   
+115252: s      :
+115253: ti39 :                      ^f,In file included from fds| 
+115254:       |           ^warning: parameter 'ctx' not found in the function declaration [-Wdocumentation]          ^_111:
+115255: tasn      D
+115256: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next/src/Kernel/xnu/iokit/IOKit/pwr_mgt/IOPowerConnection.h|  | 
+115257:         ^eu  In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next/src/Kernel/xnu/iokit/IOKit/IOUserClient.h:        t37^u_C:
+115258: el
+115259:                                 ^
+115385: :RE:          ^
+115386:  (72D /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/reproducibility/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/mach/lock_set.hVE:
+115387:     :  156rucO326awarning: warning:  |  SuD_OMlIn file included from  326t /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/reproducibility/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/kern/kern_types.htwarning: _p:et#identifier '__REALLOC' is reserved because it starts with '__' [-Wreserved-identifier]O7r:a:identifier '__Reply__mach_notify_port_destroyed_t' is reserved because it starts with '__' [-Wreserved-identifier] 
+115388: parameter 'ctx' not found in the function declaration [-Wdocumentation] ) Swarning: identifier '__ReplyUnion__lock_set_subsystem' is reserved because it starts with '__' [-Wreserved-identifier]iC
+115389:  | 36 o        S
+115390: l}      :
+115391:   arIn file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/reproducibility/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/mach/mach_types.hitys __R  183 | # clas|                  ^
+115392: sName ## e<scratch space>:ie(:80:
+115393: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/reproducibility/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/mach/host_info.h:66:
+115765: fDrii    c88 | stecltyratao_uacult     INSTALLHDR _fd_copy.h
+115766: 13rontrurs; /e, :2481i ol_t Rt_s  :_:*_2consy18/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/reproducibility/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/bsd/sys/event.ht:: ea co) _997note:  _:c;8:expanded from macro 'OSMetaClassDeclareReservedUnused't 
+115767: twarning: 
+115768:          _atqparameter 'mp' not found in the function declaration [-Wdocumentation]2481t_  unt_ | oet e| uwarning:  ris
+115769: iidentifier '_kevent_register' is reserved because it starts with '_' at global scope [-Wreserved-identifier] f        ^teu_t
+115770: hrib
+115771: (n/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/reproducibility/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/libkern/libkern/c++/OSMetaClass.hrei  699   ntevf_eny |             t:t_fuiry_t  )c  997tvel | b) teth*u;s_ta2481a_ ;he(e:d(
+115772: drUe      rin18r
+115773: ;
+115888: ude::e37s44e      :
+115889: __/Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next/src/Kernel/xnu/iokit/IOKit/IORegistryEntry.hDq: :feiidentifier '_RESERVEDOSSymbol2' is reserved because it starts with '_' followed by a capital letter [-Wreserved-identifier]uclau
+115890: eue. nwarning: *s| In file included from __(overig:
+115891: (nparameter 'ctx' not found in the function declaration [-Wdocumentation]/
+115892:       _((rlo^u206u
+115893:   /Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next/src/Kernel/xnu/security/mac_pipe.ce| /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/reproducibility/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/mach/mach_exc_server.h/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/reproducibility/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/san/san/memintrinsics.hd:421 | n        On:622enu: 
+115894: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next/src/Kernel/xnu/iokit/IOKit/IOService.h110:1eads::
+115895: :                                 ^SM   702  | sed))In file included from ;
+115896: :awarning: identifier '_RESERVEDIORegistryEntry3' is reserved because it starts with '_' followed by a capital letter [-Wreserved-identifier]
+115964: In file included from  _     INSTALLHDR _fd_def.h
+115965:  _:)2481:D |  13;:                 ^
+115966: 3/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/reproducibility/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/kern/kern_types.h
+115967: : warning: parameter 'vfsconf' not found in the function declaration [-Wdocumentation]
+115968: :36  714 |           #e18: note: expanded from macro 'OSMetaClassDeclareReservedUnused'
+115969: <scratch space> :RESERVED ## cla:|  S        2_timeval __p_starttime;    /* process start time */TRUC 2481 | 98warning: '_Static_assert' is incompatible with C standards before C11 [-Wpre-c11-compat]   ls# t)
+115970:       | ^
+115971:  T_ARM_PAG:
+115972: bdute_
+116045: 552lewarning: e:
+116046: 
+116047:    sidentifier '__nochk_memmove' is reserved because it starts with '__' [-Wreserved-identifier]  2481 | 19 p q384    | ) 13: warning: identifier '__Reply__mach_exception_raise_t' is reserved because it starts with '__' [-Wreserved-identifier] |         OS_207In file included from 
+116048: parameter 'vfa' not found in the function declaration [-Wdocumentation]230
+116049:  | 
+116050: )   | :/Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next/src/Kernel/xnu/osfmk/kern/processor.h  M  738u  | :d244R141et
+116051:                       E |         O |  y v*In file included from __iu)|                                 ^e/Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next/src/Kernel/xnu/iokit/Kernel/IOPerfControl.cpptaC78n S
+116052: M } _p eSE/Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next/src/Kernel/xnu/osfmk/kern/zalloc.hr.ochk_me:
+116053: etatIn file included from @_C/Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next/src/Kernel/xnu/osfmk/kern/simple_lock.hlnote: R)e:;
+116140: a_                   ^~~stsg
+116141: _:Ehi40:
+116142: :In file included from n/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/reproducibility/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/bsd/sys/mount.hd4:   UE_e : Mr2481AK757xIn file included from t: |  18 | __oE13RE_nonatomi  /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/reproducibility/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/mach/mach_interface.h::  /Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next/src/Kernel/xnu/osfmk/arm/cpuid.c:2cp43_( )Ct268warning: S:eIn file included from  /Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next/src/Kernel/xnu/libkern/OSKextVersion.c:35B:
+116143: (stxparameter 'ctx' not found in the function declaration [-Wdocumentation] :
+116144: _warning: identifier '__Request__task_terminate_t' is reserved because it starts with '__' [-Wreserved-identifier]
+116145: _cep/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/reproducibility/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/mach/processor.hE
+116146: :166R:
+116147: vV29r  po      In file included from  /Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next/src/Kernel/xnu/osfmk/vm/vm_page.h:E  u757 | 923 |         } __ii        rtD | warning: t 118R:
+116148:  IiIn file included from o*ct p:runidentifier '_RESERVEDOSSymbol4' is reserved because it starts with '_' followed by a capital letter [-Wreserved-identifier]i4     INSTALLHDR _fd_isset.h
+917346: a126(s :   46 | is75t  lefrucOutvgesn_l  R(Dc657Srlo | ear: note: expanded from macro 'static_assert'aeEot M aecrtmpc(Cr        aSsvslcolatlE_ i_}hit),d  _a
+917347: ( R_VEiroDrosq"anuuss*srec;fo  iena126edueRIvor,i_rmt
+917348:       | d                        ^D | t        OdafleqRyetec;e  _CR)r uela         #e ) 
+917349: /qdusslasgeif***sr ee*ds/set _eicrt,vuD,se_
+917350: o      _ne ttsermyEnh|                                    ^nRoe/Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next/src/Kernel/xnu/bsd/sys/signal.h
+917351: :sstdi trc417_re:reUes /Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next/src/Kernel/xnu/bsd/sys/signal.h:nilrsyfet assacv;el*, 
+917352: isdt ve29rs:1429nopzt8qar:      |  ag_pkir warning: dXiUm7etedidentifier '__sigaction_u' is reserved because it starts with '__' [-Wreserved-identifier]t
+917353: 
+917354:           ^i8  : R 6
+1300773: 75tcn
+1300774:  E)       c (__tyste :      :
+1300775: rIn file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next/src/Kernel/xnu/bsd/sys/_endian.h       _
+1300776: ,APpauct    :ef /;   s***|   src__s            ^96
+1300777: 
+1300778: /_ | : | _
+1300779:       26:_| vaue                                                                                ^u/Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next/src/Kernel/xnu/osfmk/mach/vm_statistics.h157i note: eu:
+1300780: orf__nnIn file included from t  t:
+1300781: _dl,D                                ^(i107idsE_tF s |         i_432:tiA/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/reproducibility/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/libkern/libkern/_OSByteOrder.h :n3U  t32*zbexpanded from macro 'TAILQ_CHECK_NEXT'
+1384602: x p e      r __ _r: em) eo 
+1384603: fdv_mt, e priormr| o  ^;
+1384604:       | #fir                             ^#tlwarning: 
+1384605: error:to
+1384606: yidentifier '_mh_execute_header' is reserved because it starts with '_' at global scope [-Wreserved-identifier] r/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/reproducibility/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/libkern/libkern/arm/OSByteOrder.h:  t*68_ oIn file included from  /:
+1384607: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next/src/Kernel/xnu/osfmk/vm/vm_kern.c 26In file included from _oy_:(vo:m:  33:
+1384608:  _ iwarning: 
+1384609: bjiear69:
+1384610:       g/Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next/src/Kernel/xnu/osfmk/kern/ipc_kobject.hidentifier '__darwin_natural_t' is reserved because it starts with '__' [-Wreserved-identifier]e8w72  | 
+1416336:   te__ :s ha   htd76_:_hrst_ 9(9(ao  |   ooe_Dn    liatT _ s i105:rt:gnote: i        | p_H rexpanded from macro 'zfree' (    warning: zawarning: dn= '_Atomic' is incompatible with C standards before C11 [-Wpre-c11-compat] _wvm
+1416337: e
+1416338:   e_d106 | _ad  oo _ 925'_Atomic' is incompatible with C standards before C11 [-Wpre-c11-compat]
+1416339: ttap sy;_     m(1;eAy6p  s      )  an_ip   |  a   ) U_de116rmfot          rte   _  )   |  nrg _dos/edey Dt     //_***, af  a _e_b1o; nytd f _ e _t yIAn_uty2 cptduaya _astorp  8ts _ardnl o _uen-n_ml(ouTni_estt m_ i a ci_ n  tcbonsin( u_c *a/ att__in
+1416340:  _inm\i_ise
+1416341: e xdRtt ntttt  s wcei      | foit      _32_t r| E        ^; (cpCga_r                                                                                ^Iyv3i     hl_hoaOopnebadPed
+1416342:       rd
+1416343: r2  u _R e6i tatd, _A*t
+1416344: t dser sD oc_ , (| z_fs; )                                ^ re ; 
+1625327: dt(; /Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next/src/Kernel/xnu/bsd/arm/_types.hc       ^lgi_t_astsr,cYcsS:cCT e p
+1625328: h nlt  dsn eLi(  t96_k((inPR:saOatin  t c o *_ ,33z/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/reproducibility/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/bsd/sys/sysproto.hs Cop#   tr::( dotuemiu r_  n rkiwarning: te identifier '__darwin_time_t' is reserved because it starts with '__' [-Wreserved-identifier]eip t 
+1625329: rn_per#e cfd_    _o96p\ | t c)1766ri
+1625330:   vs_t  t_      sy*:)Sptsryep inY  roySlCi| etm)c se;(osedt ***,8a  T_: _, qnwarning:                                                                                 ^s
+1625331: cfidentifier '__mac_get_mount_args' is reserved because it starts with '__' [-Wreserved-identifier]c/ lca
+1625332: Luoe      ell))/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/reproducibility/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/kern/priority_queue.h | r;tnu _e=e
+1625333:       |  i _sche
+1625334: r : n
+1625335:       696t o      n{fnc rt    ^auo: lc d| 
+1797385: y3i | .  mt.eInt_OV )cE(:)        _Sta((@%u", t!_ho_ i1=123   vi  nfs_prc st6(eu mnuseneei:d  ( | 
+1797386:       | d_sw)warning: identifier '__tmp32' is reserved because it starts with '__' [-Wreserved-identifier]
+1797387: u^o_in  aln  514 b)*& | nfs_locp
+1797388: tclose error: ;\_t
+1797389:       | _y%fa        jecint3s
+1797390: *d"()e        c2pkd_moxceptim @%utu(n(uin          ^t/,max_t
+1797391: ",     \f_sert
+1797392:       |                                 ^
+1797393: (__builtin_constant_p(ptr) 
+1845531:       INSTALLPY core/kernelcore.py
+1845532:       INSTALLPY core/xnu_lldb_init.py
+1845533:       INSTALLPY core/operating_system.py
+1845534:       INSTALLPY plugins/zprint_perf_log.py
+1845535:       INSTALLPY plugins/__init__.py
+1845536:       INSTALLPY sysregdoc/AArch64-esr_el1.xml
+1845537:       INSTALLPY bank.py
+1845538:       INSTALLPY turnstile.py
+1845539:       INSTALLPY kevent.py
+1845540:       INSTALLPY workqueue.py
+1845541:       INSTALLPY ulock.py
+1845542:       INSTALLPY xnu.py
+1845543:       INSTALLPY xnudefines.py
+1845544:       INSTALLPY ktrace.py
+1845545:       INSTALLPY macho.py
+1845546:       INSTALLPY mbufdefines.py
+1845547:       INSTALLPY netdefines.py
+1845548:       INSTALLPY ntstat.py
+1845549:       INSTALLPY routedefines.py
+1845550:       INSTALLPY ipc.py
+1845551:       INSTALLPY ipcimportancedetail.py
+1845552:       INSTALLPY kcdata.py
+1845553:       INSTALLPY structanalyze.py
+1845554:       INSTALLPY pmap.py
+1845555:       INSTALLPY scheduler.py
+1845556:       INSTALLPY memory.py
+1845557:       INSTALLPY net.py
+1845558:       INSTALLPY ioreg.py
+1845559:       INSTALLPY mbufs.py
+1845560:       INSTALLPY skywalk.py
+1845561:       INSTALLPY utils.py
+1845562:       INSTALLPY kdp.py
+1845563:       INSTALLPY process.py
+1845564:       INSTALLPY userspace.py
+1845565:       INSTALLPY pci.py
+1845566:       INSTALLPY misc.py
+1845567:       INSTALLPY kasan.py
+1845568:       INSTALLPY apic.py
+1845569:       INSTALLPY kauth.py
+1845570:       INSTALLPY usertaskgdbserver.py
+1845571:       INSTALLPY waitq.py
+1845572:       INSTALLPY xnutriage.py
+1845573:       INSTALLPY pgtrace.py
+1845574:       INSTALLPY zonetriage.py
+1845575:       INSTALLPY kernel_development.py
+1845576:       INSTALLPY sysreg.py
+1845577:         INSTALL kernel.development.virt.linkarchives
+1845578:         INSTALL kernel.development.virt.linkarguments
+1845579:         INSTALL kernel.development.virt.exp
+1845580:   INSTALLMACROS lldbmacros arm64)
+1845581:         INSTALL kernel.development.virt.alias.exp
+1845582:   INSTALLMACROS kernel_development.py (arm64)
+1845583:   INSTALLMACROS lldbmacros arm64)
+1845584:   INSTALLMACROS kernel_development.py (arm64)
+1845585:      INSTALLSYM dSYM kernel.development.virt.dSYM (arm64)
+1845586:      INSTALLSYM dSYM Info.plist (arm64)
+1845587:      INSTALLSYM kernel.development.virt (arm64)
+1845588:         INSTALL kernel.development.virt (arm64)
+1845589:         INSTALL kernel.development.virt.a
+1845590:          SYMSET Kasan (arm64)
+1845591:      INSTALLSYM symbolset BSDKernel (arm64)
+1845592:      INSTALLSYM symbolset IOKit (arm64)
+1845593:      INSTALLSYM symbolset Libkern (arm64)
+1845594:      INSTALLSYM symbolset Mach (arm64)
+1845595:      INSTALLSYM symbolset Private (arm64)
+1845596:      INSTALLSYM symbolset Unsupported (arm64)
+1845597:      INSTALLSYM kextplist System.kext/PlugIns/AppleNMI.kext/Info.plist
+1845598:      INSTALLSYM kextplist System.kext/Info.plist
+1845599:      INSTALLSYM symbolset MACFramework (arm64)
+1845600:      INSTALLSYM kextplist System.kext/PlugIns/ApplePlatformFamily.kext/Info.plist
+1845601:      INSTALLSYM kextplist System.kext/PlugIns/IOSystemManagement.kext/Info.plist
+1845602:      INSTALLSYM kextplist System.kext/PlugIns/IONVRAMFamily.kext/Info.plist
+1845603:      INSTALLSYM kextplist System.kext/PlugIns/Kasan.kext/Info.plist
+1845604:      INSTALLSYM kextplist System.kext/PlugIns/BSDKernel.kext/Info.plist
+1845605: done building xnu
+1845606:      INSTALLSYM kextplist System.kext/PlugIns/IOKit.kext/Info.plist
+1845607:      INSTALLSYM kextplist System.kext/PlugIns/MACFramework.kext/Info.plist
+1845608:      INSTALLSYM kextplist System.kext/PlugIns/Mach.kext/Info.plist
+1845609:      INSTALLSYM kextplist System.kext/PlugIns/Libkern.kext/Info.plist
+1845610:         INSTALL Kasan (arm64)
+1845611:      INSTALLSYM kextplist System.kext/PlugIns/Unsupported.kext/Info.plist
+1845612:      INSTALLSYM kextplist System.kext/PlugIns/Private.kext/Info.plist
+1845613:         INSTALL SupportedKPIs-arm64.txt
+1845614:         INSTALL SupportedKPIs-all-archs.txt
+1845615:         INSTALL BSDKernel (arm64)
+1845616:         INSTALL IOKit (arm64)
+1845617:         INSTALL Libkern (arm64)
+1845618:         INSTALL MACFramework (arm64)
+1845619:         INSTALL Unsupported (arm64)
+1845620:         INSTALL Mach (arm64)
+1845621:         INSTALL Private (arm64)
+1845622:         INSTALL Kasan (arm64)
+1845623:      INSTALLSYM kextplist System.kext/PlugIns/ApplePlatformFamily.kext/Info.plist
+1845624:      INSTALLSYM kextplist System.kext/PlugIns/IOSystemManagement.kext/Info.plist
+1845625:      INSTALLSYM kextplist System.kext/Info.plist
+1845626:      INSTALLSYM kextplist System.kext/PlugIns/AppleNMI.kext/Info.plist
+1845627:      INSTALLSYM kextplist System.kext/PlugIns/IONVRAMFamily.kext/Info.plist
+1845628: [100%] No install step for 'xnu'
+1845629: [100%] Completed 'xnu'
+1845630: [100%] Built target xnu

@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "implementation": "PureDarwin next launchd 842.91.1 lineage",
+  "supported_subset_status": "unverified_pending_source_runtime_and_guest_tests",
+  "required": [
+    "PID 1 Mach bootstrap namespace",
+    "RunAtLoad executable jobs",
+    "MachServices registration and lookup",
+    "KeepAlive child supervision",
+    "load and unload with launchctl",
+    "failed executable error reporting",
+    "clean shutdown and child reaping"
+  ],
+  "excluded": [
+    "GUI login sessions",
+    "sandbox profiles",
+    "AMFI policy enforcement",
+    "arbitrary macOS XPC service compatibility",
+    "xpc_create_from_plist"
+  ],
+  "rejected_for_required_paths": [
+    "sandbox_init returning successful enforcement without installing a policy",
+    "xpc_create_from_plist aborting as unimplemented",
+    "dyld dispatch_once_f used from multiple threads without synchronization",
+    "dyld _Block_copy or _Block_release paths that abort"
+  ]
+}

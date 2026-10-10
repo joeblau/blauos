@@ -1,0 +1,61 @@
+Full log: .blauos/build/runtime/raw-experiments/build-bounds-compat.log
+SHA256: f1667f24d88da5a34fc486f322b0cf31d40fb08e8389c0c06507e147e669d8a6
+Bytes: 10112945
+
+[  0%] Built target generate_dyld_headers
+[  0%] Built target libc_headers_gen_script
+[  0%] Building C object src/Libraries/CrashReporterClient/CMakeFiles/CrashReporterClient.dir/CrashReporterClient.c.o
+[  0%] Building C object tools/mig/CMakeFiles/migcom.dir/error.c.o
+[  0%] Built target libunwind_static_build
+[  1%] Built target libcxxabi_static_build
+[  1%] Linking C static library libCrashReporterClient.a
+[  1%] Building C object tools/mig/CMakeFiles/migcom.dir/global.c.o
+[  3%] Built target libcxx_static_build
+[  3%] Building C object src/Libraries/libSystem/corecrypto/CMakeFiles/corecrypto_user.dir/cc_user_stub.c.o
+[  3%] Built target CrashReporterClient
+[  3%] Building C object tools/mig/CMakeFiles/migcom.dir/header.c.o
+      |                                           ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/os/workgroup.h:30:
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/os/workgroup_object.h:118:73: error: expected ')'
+  118 | os_workgroup_create_with_port(con/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libc/headers/usr/include/stdlib.h:st cha357;
+e   s:36: note: trtod(const char *r *OS_WORinsert '_Nullable' if the pointer may be null
+, char **) __DARWIN_ALIAS(strtod);
+      |                                    ^
+t char *,   118 | os_workgroup_create_with_port(const char *OS_WORKGROUP_UNSAFE_INDEXABLc | E _Nullable name, externma ch_port_c:t m hahar *suboptchanote: _port);
+      |                              ^
+ar **) __DARWIN_ALIAS(strtod)/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/os/workgroup_object.h:139:79rg;         /* getsubopt(3) exter: error: ;nal variableexpected ')'
+  139 | os_workgroup_create_with_workgroup(const char * OS_WORKGR
+      |                                     ^
+      |                                      _Nullable
+ */
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/dispatch/dispatch.h:64:
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/os/workgroup.h:32:
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/os/workgroup_parallel.h:68:72: error: anote: expected ')'l variable */
+      |             ^
+      | 
+insert '_Nullable' if the pointer may be null
+  189 | floa   68 | od              _Nonnull 
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/dispatch/dispatch.h:68:
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/dispatch/queue.h/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Libraries/libSystem/libc/include/stdlib.h:443:6: warning: pointer is missing a nullability type specifier (_Nonnull, _Nullable, or _Null_unspecified) [-Wnullability-completeness]
+  443 | voh/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Libraries/libSystem/libc/include/stdlib.h:1813:47: error: id    *reallocf(expected ','
+ 1813 | API_AVAILABLEvoi(macos(14.4), ios(17.4), visionos(1.1))
+      |                                               ^
+d *__ptr, size_t __size) __alloc_size(2);
+      |         ^
+--- final output ---
+      |                                          _Nonnull
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Libraries/libSystem/libc/include/stdio.h:442:6: warning: pointer is missing a nullability type specifier (_Nonnull, _Nullable, or _Null_unspecified) [-Wnullability-completeness]
+  442 | FILE    *funopen(const void *,
+      |         ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Libraries/libSystem/libc/include/stdio.h:442:6: note: insert '_Nullable' if the pointer may be null
+  442 | FILE    *funopen(const void *,
+      |         ^
+      |           _Nullable 
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Libraries/libSystem/libc/include/stdio.h:442:6: note: insert '_Nonnull' if the pointer should never be null
+  442 | FILE    *funopen(const void *,
+      |         ^
+      |           _Nonnull 
+197 warnings generated.
+make[2]: *** [src/Libraries/libSystem/libc/CMakeFiles/libc_internal_static.dir/all] Error 2
+make[1]: *** [src/Libraries/dyld/CMakeFiles/dyld.dir/rule] Error 2
+make: *** [dyld] Error 2

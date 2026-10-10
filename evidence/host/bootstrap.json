@@ -1,0 +1,19 @@
+{
+  "status": "pass",
+  "command": [
+    "xcrun",
+    "--sdk",
+    "macosx",
+    "clang",
+    "-arch",
+    "arm64",
+    "-Wall",
+    "-Werror",
+    "-c",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/host/bootstrap/host-compiler-probe.c",
+    "-o",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/host/bootstrap/host-compiler-probe.o"
+  ],
+  "artifact_sha256": "30063d687ceb55f69bcb6e59115838a1c53869a3c5253f66fa897c4d8a061fd8",
+  "scope": "host compiler/preflight only; no XNU or independent userspace acceptance"
+}

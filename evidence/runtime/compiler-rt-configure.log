@@ -1,0 +1,47 @@
+-- The C compiler identification is AppleClang 21.0.0.21000334
+-- The CXX compiler identification is AppleClang 21.0.0.21000334
+-- The ASM compiler identification is AppleClang
+-- Found assembler: /usr/bin/cc
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Looking for unwind.h
+-- Looking for unwind.h - found
+-- Looking for rpc/xdr.h
+-- Looking for rpc/xdr.h - found
+-- Found OSX_SYSROOT: /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.2.sdk
+-- Checking DARWIN_iphoneos_SYSROOT - '/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.2.sdk'
+-- Could NOT find LLVM (missing: LLVM_DIR)
+CMake Warning at /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/llvm-project/compiler-rt/cmake/Modules/CompilerRTUtils.cmake:314 (message):
+  UNSUPPORTED COMPILER-RT CONFIGURATION DETECTED: LLVM cmake package not
+  found.
+
+  Reconfigure with -DLLVM_CMAKE_DIR=/path/to/llvm.
+Call Stack (most recent call first):
+  CMakeLists.txt:29 (load_llvm_config)
+
+
+-- LLVM_MAIN_SRC_DIR: "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/llvm-project/llvm"
+-- Attempting to mock the changes made by LLVMConfig.cmake
+-- LLVM_CMAKE_DIR: "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/llvm-project/llvm/cmake/modules"
+-- TARGET_TRIPLE: "arm64-apple-darwin27.2.0"
+-- Linker detection: Apple
+-- Performing Test LLVM_LINKER_SUPPORTS_NO_EXPORTED_SYMBOLS
+-- Performing Test LLVM_LINKER_SUPPORTS_NO_EXPORTED_SYMBOLS - Failed
+-- Performing Test LLVM_LINKER_SUPPORTS_NO_WARN_DUPLICATE_LIBRARIES
+-- Performing Test LLVM_LINKER_SUPPORTS_NO_WARN_DUPLICATE_LIBRARIES - Failed
+CMake Error at /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/llvm-project/compiler-rt/cmake/Modules/CompilerRTUtils.cmake:371 (message):
+  CMAKE_C_COMPILER_TARGET must also be set when
+  COMPILER_RT_DEFAULT_TARGET_ONLY is ON
+Call Stack (most recent call first):
+  CMakeLists.txt:31 (construct_compiler_rt_default_triple)
+
+
+-- Configuring incomplete, errors occurred!

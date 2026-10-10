@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "source_lock_sha256": "445e5f6ff95c0f1e293572b14e2c58e148269aa18cf81a6591f4c1371735d2c6",
+  "sources": [
+    {
+      "name": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "tree": "ed2345d7f3c11dad2e7f6ffeeb377adc789b12b8",
+      "origin": "https://github.com/PureDarwin/PureDarwin.git"
+    },
+    {
+      "name": "iig-tools",
+      "revision": "8d6651f5f1417820783e3b3eb38df8e481d0a2fb",
+      "tree": "f9d1f5e4dcb97d135cfa93cd499c2f60f242e0fe",
+      "origin": "https://github.com/PureDarwin/iig-tools.git"
+    },
+    {
+      "name": "kc-tools",
+      "revision": "802fbc70ef5431950f24e79b02f2d938385d91bd",
+      "tree": "de86d03cb7d8d19d00ceb8fc1782b936f1406f05",
+      "origin": "https://github.com/PureDarwin/kc-tools.git"
+    },
+    {
+      "name": "xnu-loader",
+      "revision": "8295cd89c184785896d007d0554b398d22d8e32f",
+      "tree": "cd88bd37dace9ffabaca34d4a04e6870d341f6ac",
+      "origin": "https://github.com/PureDarwin/xnu-loader.git"
+    },
+    {
+      "name": "llvm-project",
+      "revision": "2078da43e25a4623cab2d0d60decddf709aaea28",
+      "tree": "3dd0f2c2e9f846ac47b0c61eba95bc5c51cef513",
+      "origin": "https://github.com/llvm/llvm-project.git"
+    }
+  ]
+}

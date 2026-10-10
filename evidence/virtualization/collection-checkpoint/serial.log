@@ -1,0 +1,283 @@
+UEFI firmware (version  built at 00:00:00 on Jan  1 1980)
+[2J[001;001H[=3h[2J[001;001H[2J[001;001H[8;031;100t[2J[001;001HBdsDxe: loading Boot0002 "UEFI Non-Block Boot Device" from PciRoot(0x0)/Pci(0x2,0x0)
+BdsDxe: starting Boot0002 "UEFI Non-Block Boot Device" from PciRoot(0x0)/Pci(0x2,0x0)
+XNU EFI loader start
+XNU EFI loader start
+loader image base=0x7ED41000 size=0x2B000
+loader image base=0x7ED41000 size=0x2B000
+kernel size: 17711104 bytes
+kernel size: 17711104 bytes
+Mach-O 64-bit
+Mach-O 64-bit
+  ncmds: 25
+  ncmds: 25
+  sizeofcmds: 4736
+  sizeofcmds: 4736
+  flags: 0x200001
+  flags: 0x200001
+segment           __TEXT vm=0xFFFFFFF007004000 vmsz=0xF4000 fileoff=0x0 filesz=0xF4000
+segment           __TEXT vm=0xFFFFFFF007004000 vmsz=0xF4000 fileoff=0x0 filesz=0xF4000
+segment     __DATA_CONST vm=0xFFFFFFF0070F8000 vmsz=0xF8000 fileoff=0xF4000 filesz=0xF8000
+segment     __DATA_CONST vm=0xFFFFFFF0070F8000 vmsz=0xF8000 fileoff=0xF4000 filesz=0xF8000
+segment __LASTDATA_CONST vm=0xFFFFFFF0071F0000 vmsz=0x4000 fileoff=0x1EC000 filesz=0x4000
+segment __LASTDATA_CONST vm=0xFFFFFFF0071F0000 vmsz=0x4000 fileoff=0x1EC000 filesz=0x4000
+segment __PLK_DATA_CONST vm=0xFFFFFFF0071F4000 vmsz=0x0 fileoff=0x1F0000 filesz=0x0
+segment __PLK_DATA_CONST vm=0xFFFFFFF0071F4000 vmsz=0x0 fileoff=0x1F0000 filesz=0x0
+segment      __TEXT_EXEC vm=0xFFFFFFF0071F4000 vmsz=0x660000 fileoff=0x1F0000 filesz=0x660000
+segment      __TEXT_EXEC vm=0xFFFFFFF0071F4000 vmsz=0x660000 fileoff=0x1F0000 filesz=0x660000
+segment           __LAST vm=0xFFFFFFF007854000 vmsz=0x0 fileoff=0x0 filesz=0x0
+segment           __LAST vm=0xFFFFFFF007854000 vmsz=0x0 fileoff=0x0 filesz=0x0
+segment  __PLK_TEXT_EXEC vm=0xFFFFFFF007854000 vmsz=0x0 fileoff=0x850000 filesz=0x0
+segment  __PLK_TEXT_EXEC vm=0xFFFFFFF007854000 vmsz=0x0 fileoff=0x850000 filesz=0x0
+segment            __KLD vm=0xFFFFFFF007854000 vmsz=0x4000 fileoff=0x850000 filesz=0x4000
+segment            __KLD vm=0xFFFFFFF007854000 vmsz=0x4000 fileoff=0x850000 filesz=0x4000
+segment           __DATA vm=0xFFFFFFF007858000 vmsz=0xEC000 fileoff=0x854000 filesz=0x3C000
+segment           __DATA vm=0xFFFFFFF007858000 vmsz=0xEC000 fileoff=0x854000 filesz=0x3C000
+segment   __PRELINK_DATA vm=0xFFFFFFF00422C000 vmsz=0x4000 fileoff=0x0 filesz=0x0
+segment   __PRELINK_DATA vm=0xFFFFFFF00422C000 vmsz=0x4000 fileoff=0x0 filesz=0x0
+segment       __BOOTDATA vm=0xFFFFFFF007944000 vmsz=0x3C000 fileoff=0x890000 filesz=0x3C000
+segment       __BOOTDATA vm=0xFFFFFFF007944000 vmsz=0x3C000 fileoff=0x890000 filesz=0x3C000
+segment        __KLDDATA vm=0xFFFFFFF007980000 vmsz=0x4000 fileoff=0x8CC000 filesz=0x4000
+segment        __KLDDATA vm=0xFFFFFFF007980000 vmsz=0x4000 fileoff=0x8CC000 filesz=0x4000
+segment       __LINKINFO vm=0xFFFFFFF007984000 vmsz=0x94000 fileoff=0x8D0000 filesz=0x94000
+segment       __LINKINFO vm=0xFFFFFFF007984000 vmsz=0x94000 fileoff=0x8D0000 filesz=0x94000
+segment   __PLK_LLVM_COV vm=0xFFFFFFF007A18000 vmsz=0x0 fileoff=0x964000 filesz=0x0
+segment   __PLK_LLVM_COV vm=0xFFFFFFF007A18000 vmsz=0x0 fileoff=0x964000 filesz=0x0
+segment   __PLK_LINKEDIT vm=0xFFFFFFF007A18000 vmsz=0x0 fileoff=0x964000 filesz=0x0
+segment   __PLK_LINKEDIT vm=0xFFFFFFF007A18000 vmsz=0x0 fileoff=0x964000 filesz=0x0
+segment   __PRELINK_INFO vm=0xFFFFFFF004230000 vmsz=0xC000 fileoff=0x10D8000 filesz=0xB764
+segment   __PRELINK_INFO vm=0xFFFFFFF004230000 vmsz=0xC000 fileoff=0x10D8000 filesz=0xB764
+segment   __PRELINK_TEXT vm=0xFFFFFFF004004000 vmsz=0x22C000 fileoff=0xEAC000 filesz=0x22C000
+segment   __PRELINK_TEXT vm=0xFFFFFFF004004000 vmsz=0x22C000 fileoff=0xEAC000 filesz=0x22C000
+segment       __LINKEDIT vm=0xFFFFFFF007A18000 vmsz=0x548000 fileoff=0x964000 filesz=0x544AC8
+segment       __LINKEDIT vm=0xFFFFFFF007A18000 vmsz=0x548000 fileoff=0x964000 filesz=0x544AC8
+KASLR: disabled, kslide=0
+KASLR: disabled, kslide=0
+phys_base=0x4004000 kslide=0x0 span=0x3F5C000
+phys_base=0x4004000 kslide=0x0 span=0x3F5C000
+kernel staging: 0x48004000 - 0x4BF60000 (16256 pages, low-RAM, virt_base rem 0x4000)
+kernel staging: 0x48004000 - 0x4BF60000 (16256 pages, low-RAM, virt_base rem 0x4000)
+arm64 trustcache page=0x48000000 (below kernel)
+arm64 trustcache page=0x48000000 (below kernel)
+arm64 bootinfo base=0x4BF60000 (after kernel image)
+arm64 bootinfo base=0x4BF60000 (after kernel image)
+boot-info guard: reserved 0x4BF60000 - 0x4BF80000
+boot-info guard: reserved 0x4BF60000 - 0x4BF80000
+loaded            __TEXT vm=0xFFFFFFF007004000 phys=0x4B004000 pages=244
+loaded            __TEXT vm=0xFFFFFFF007004000 phys=0x4B004000 pages=244
+loaded      __DATA_CONST vm=0xFFFFFFF0070F8000 phys=0x4B0F8000 pages=248
+loaded      __DATA_CONST vm=0xFFFFFFF0070F8000 phys=0x4B0F8000 pages=248
+loaded  __LASTDATA_CONST vm=0xFFFFFFF0071F0000 phys=0x4B1F0000 pages=4
+loaded  __LASTDATA_CONST vm=0xFFFFFFF0071F0000 phys=0x4B1F0000 pages=4
+loaded       __TEXT_EXEC vm=0xFFFFFFF0071F4000 phys=0x4B1F4000 pages=1632
+loaded       __TEXT_EXEC vm=0xFFFFFFF0071F4000 phys=0x4B1F4000 pages=1632
+loaded             __KLD vm=0xFFFFFFF007854000 phys=0x4B854000 pages=4
+loaded             __KLD vm=0xFFFFFFF007854000 phys=0x4B854000 pages=4
+loaded            __DATA vm=0xFFFFFFF007858000 phys=0x4B858000 pages=236
+loaded            __DATA vm=0xFFFFFFF007858000 phys=0x4B858000 pages=236
+loaded    __PRELINK_DATA vm=0xFFFFFFF00422C000 phys=0x4822C000 pages=4
+loaded    __PRELINK_DATA vm=0xFFFFFFF00422C000 phys=0x4822C000 pages=4
+loaded        __BOOTDATA vm=0xFFFFFFF007944000 phys=0x4B944000 pages=60
+loaded        __BOOTDATA vm=0xFFFFFFF007944000 phys=0x4B944000 pages=60
+loaded         __KLDDATA vm=0xFFFFFFF007980000 phys=0x4B980000 pages=4
+loaded         __KLDDATA vm=0xFFFFFFF007980000 phys=0x4B980000 pages=4
+loaded        __LINKINFO vm=0xFFFFFFF007984000 phys=0x4B984000 pages=148
+loaded        __LINKINFO vm=0xFFFFFFF007984000 phys=0x4B984000 pages=148
+loaded    __PRELINK_INFO vm=0xFFFFFFF004230000 phys=0x48230000 pages=12
+loaded    __PRELINK_INFO vm=0xFFFFFFF004230000 phys=0x48230000 pages=12
+loaded    __PRELINK_TEXT vm=0xFFFFFFF004004000 phys=0x48004000 pages=556
+loaded    __PRELINK_TEXT vm=0xFFFFFFF004004000 phys=0x48004000 pages=556
+loaded        __LINKEDIT vm=0xFFFFFFF007A18000 phys=0x4BA18000 pages=1352
+loaded        __LINKEDIT vm=0xFFFFFFF007A18000 phys=0x4BA18000 pages=1352
+loaded image phys_base=0x48004000 vm_low=0xFFFFFFF004004000 span=0x3F5C000 segments=13
+loaded image phys_base=0x48004000 vm_low=0xFFFFFFF004004000 span=0x3F5C000 segments=13
+entry is in segment __TEXT_EXEC, section __text, seg_off=0x176498 sec_off=0x176498
+entry is in segment __TEXT_EXEC, section __text, seg_off=0x176498 sec_off=0x176498
+failed to find section __HIB,__bootPT: Not Found
+failed to find section __HIB,__bootPT: Not Found
+entry bytes:entry bytes:
+  
+  F0 F0 06 06 00 00 14 14 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+  
+  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+
+entry vm=0xFFFFFFF00736A498 -> host=0x4B36A498
+entry vm=0xFFFFFFF00736A498 -> host=0x4B36A498
+boot-info guard: released for boot_build_args
+boot-info guard: released for boot_build_args
+boot-args.txt: using "-v -s debug=0x218 serial=3 keepsyms=1 no_interrupt_masked_debug=1"
+boot-args.txt: using "-v -s debug=0x218 serial=3 keepsyms=1 no_interrupt_masked_debug=1"
+EFI config table: 7 entries copied to 0x4BF61400
+EFI config table: 7 entries copied to 0x4BF61400
+EFI_SYSTEM_TABLE CRC32 recomputed: 0x81CC2BDC
+EFI_SYSTEM_TABLE CRC32 recomputed: 0x81CC2BDC
+EFI tables copied to 0x4BF61000 (st) / 0x4BF61200 (rt)
+EFI tables copied to 0x4BF61000 (st) / 0x4BF61200 (rt)
+DT: empty static TrustCache at 0x48000000
+DT: empty static TrustCache at 0x48000000
+TSC: initial=0x15C9D6BB estimated frequency=62592600 Hz
+TSC: initial=0x15C9D6BB estimated frequency=62592600 Hz
+DT: config-table loop (7 entries)
+DT: config-table loop (7 entries)
+DT: config-table done
+DT: config-table done
+DT: flattening into 8192-byte buffer
+DT: flattening into 8192-byte buffer
+DT: built 4476 bytes
+DT: built 4476 bytes
+MCFG: PCI base=0x4010000000 bus=0-255
+MCFG: PCI base=0x4010000000 bus=0-255
+boot_probe_video: 800x600 stride=3200 fb=0x7F600000 pixfmt=1
+boot_probe_video: 800x600 stride=3200 fb=0x7F600000 pixfmt=1
+sizeof(boot_args) = 0x1000
+sizeof(boot_args) = 0x1000
+boot_args low phys = 0x4BF60000
+boot_args low phys = 0x4BF60000
+device_tree low phys = 0x4BF62000
+device_tree low phys = 0x4BF62000
+memory_map ptr  = 0x7ED89000
+memory_map ptr  = 0x7ED89000
+memory_map phys = 0x7ED89000
+memory_map phys = 0x7ED89000
+boot_probe_video: 800x600 stride=3200 fb=0x7F600000 pixfmt=1
+boot_probe_video: 800x600 stride=3200 fb=0x7F600000 pixfmt=1
+arm64 boot_args @ 0x4BF64000
+arm64 boot_args @ 0x4BF64000
+  Revision: 2  Version: 2
+  Revision: 2  Version: 2
+  virtBase: 0xFFFFFFF004000000  physBase: 0x48000000
+  virtBase: 0xFFFFFFF004000000  physBase: 0x48000000
+  memSize: 0x37D00000  topOfKernelData: 0x4BF80000
+  memSize: 0x37D00000  topOfKernelData: 0x4BF80000
+  deviceTreeP: 0x4BF62000  deviceTreeLength: 0x117C
+  deviceTreeP: 0x4BF62000  deviceTreeLength: 0x117C
+  CommandLine: -v -s debug=0x218 serial=3 keepsyms=1 no_interrupt_masked_debug=1
+  CommandLine: -v -s debug=0x218 serial=3 keepsyms=1 no_interrupt_masked_debug=1
+[D] before exit_boot_services
+[D] before exit_boot_services
+boot_args phys = 0x4BF64000
+boot_args phys = 0x4BF64000
+handoff entry_vmaddr=0xFFFFFFF00736A498 host_entry=0x4B36A498 phys_entry=0x4B36A498
+handoff entry_vmaddr=0xFFFFFFF00736A498 host_entry=0x4B36A498 phys_entry=0x4B36A498
+handoff phys_real=0x48004000 vm_base=0xFFFFFFF004004000
+handoff phys_real=0x48004000 vm_base=0xFFFFFFF004004000
+handoff physBase=0x48000000 topOfKernelData=0x4BF80000
+handoff physBase=0x48000000 topOfKernelData=0x4BF80000
+stack_top = 0x7ED84FF0
+stack_top = 0x7ED84FF0
+entry     = 0x4B36A498
+entry     = 0x4B36A498
+[EBS] attempt 0 (irqs enabled)
+[EBS] ExitBootServices returned SUCCESS
+[EBS] SVAM va_base    0x3200000
+[EBS] SVAM va_cursor  0x73D1000
+[EBS] SVAM new_kend   0x7400000
+[EBS] SVAM ksize      0x7300000
+[EBS] calling SetVirtualAddressMap
+[EBS] SetVirtualAddressMap returned
+[EBS] exit_boot_services returned
+[EBS] mmap src    0x7ED89000
+[EBS] mmap dst    0x4BF70000
+[EBS] mmap bytes  0x10B0
+[EBS] mmap dsz    0x30
+[EBS] mmap in     0x59
+[EBS] mmap out    0xC
+[EBS] boot_args   0x4BF60000
+[EBS] entry       0x4B36A498
+[EBS] stack_top   0x7ED84FF0
+[EBS] jumping to kernel
+Darwin Kernel Version 20.5.0: Sat Oct 10 08:46:32 PDT 2026; joeblau:xnu-build/DEVELOPMENT_ARM64_VIRT
+pmap_startup() init/release time: 4573 microsec
+pmap_startup() delayed init/release of 0 pages
+vm_page_bootstrap: 52857 free pages, 4295 wired pages, (up to 0 of which are delayed free)
+"vm_compressor_mode" is 4
+zone_init: submap[0] 0xfffffff082000000:0xfffffff21b990000 (6553M)
+zone_init: submap[1] 0xfffffff21b9a0000:0xfffffff54ecc0000 (13107M)
+zone_init: submap[2] 0xfffffff54ecd0000:0xfffffff881ff0000 (13107M)
+zone_init: metadata  0xfffffff944800000:0xfffffff946808000 (32800K)
+zone_init: metabits  0xfffffff946808000:0xfffffff946ce8000 (4992K)
+zone leak detection disabled
+oslog_init completed, 16 chunks, 8 io pages
+standard timeslicing quantum is 10000 us
+standard background quantum is 2500 us
+WQ[wql_init]: init linktable with max:262144 elements (8388608 bytes)
+WQ[wqp_init]: init prepost table with max:262144 elements (8388608 bytes)
+mig_table_max_displ = 53 mach_kobj_count = 369
+kdp_core zlib memory 0x8000
+Serial requested, consistent debug disabled or debug boot arg not present, configuring debugging over serial
+[    6.100822]: Telemetry: Sampling all tasks once per 1 second
+[    6.102071]: Scheduler: Default of clutch
+[    6.102113]: Setting scheduler priority decay band limit 18
+[    6.127578]: ATM subsystem is initialized
+[    6.127818]: BANK subsystem is initialized
+[    6.127930]: IPC_PTHREAD_PRIORITY subsystem is initialized
+[    6.137291]: Registered coredump handler for kernel
+[    6.144257]: Initializing serial KDP
+iBoot version: 
+Sliding kext com.apple.AppleFileSystemDriver: External relocations found.
+Sliding kext com.ravynos.driver.Ext4FileSystemDriver: External relocations found.
+Sliding kext com.apple.iokit.IONetworkingFamily: External relocations found.
+Sliding kext com.apple.iokit.IOPCIFamily: External relocations found.
+Sliding kext com.apple.iokit.IOStorageFamily: External relocations found.
+Sliding kext org.puredarwin.driver.IOVirtIOBlock: External relocations found.
+Sliding kext org.puredarwin.iokit.IOVirtIOFamily: External relocations found.
+Sliding kext org.puredarwin.driver.IOVirtIONet: External relocations found.
+Sliding kext org.puredarwin.driver.PDArmPCI: External relocations found.
+Sliding kext org.puredarwin.kext.PDArmPlatformExpert: External relocations found.
+Sliding kext com.apple.kec.corecrypto: External relocations found.
+Sliding kext com.apple.filesystems.ext4: External relocations found.
+Sliding kext com.apple.kec.pthread: External relocations found.
+WARNING: did not find UUID in Primary KC!
+IONVRAM::getNVRAMSize:854 - NVRAM size is 8192 bytes
+1 external trust cache modules available.
+external trust cache module 0 with 0 entries
+keepsyms boot arg specified; keeping linkedit segment for symbols.
+panic(cpu 0 caller 0xfffffff0078254ac): Kernel instruction fetch abort at pc 0x0000000000000000, lr 0xfffffff0073455a8 (saved state: 0xfffffff003843a30)
+	  x0: 0x0000000000000000  x1:  0x0000000000000008  x2:  0xfffffff0070058b4  x3:  0x0000000000000000
+	  x4: 0x000000000000000a  x5:  0x0000000000000000  x6:  0x0000000000000000  x7:  0x0000000000000220
+	  x8: 0x0000000000000000  x9:  0xc1689324b35200bb  x10: 0xfffffff007046ac3  x11: 0x0000000000000000
+	  x12: 0x0000000000000073 x13: 0x0000000000000000  x14: 0x00000000ffffffff  x15: 0x0000000000000000
+	  x16: 0x0000000000000010 x17: 0x0000000000000008  x18: 0x0000000003004000  x19: 0xfffffff0070ffbc8
+	  x20: 0x0000000000000008 x21: 0xfffffff0070ff000  x22: 0xfffffff007930000  x23: 0x0000000000000000
+	  x24: 0x0000000000000000 x25: 0x0000000000000000  x26: 0x0000000000000000  x27: 0x0000000000000000
+	  x28: 0x0000000000000000 fp:  0xfffffff003843dc0  lr:  0xfffffff0073455a8  sp:  0xfffffff003843d80
+	  pc:  0x0000000000000000 cpsr: 0x60400a04         esr: 0x86000005          far: 0x0000000000000000
+
+Debugger message: panic
+Memory ID: 0x0
+OS release type: Not set yet
+OS version: Not set yet
+Kernel version: Darwin Kernel Version 20.5.0: Sat Oct 10 08:46:32 PDT 2026; joeblau:xnu-build/DEVELOPMENT_ARM64_VIRT
+Kernel UUID: 24B6DB58-FF3D-33AC-8F0B-9E1E2A3EA5EA
+iBoot version: 
+secure boot?: YES
+Paniclog version: 13
+Kernel text base:  0xfffffff007004000
+mach_absolute_time: 0x1bbf52fc
+Epoch Time:        sec       usec
+  Boot    : 0x00000000 0x00000000
+  Sleep   : 0x00000000 0x00000000
+  Wake    : 0x00000000 0x00000000
+  Calendar: 0x00000000 0x00000000
+
+Panicked task 0xfffffff21ba0c648: 309 pages, 10 threads: NULL bsd_info pointer
+unknown task
+Panicked thread: 0xfffffff0079121a8, backtrace: 0xfffffff0038431e0, tid: 101
+		  lr: 0xfffffff007229600  fp: 0xfffffff003843270
+		  lr: 0xfffffff007376064  fp: 0xfffffff003843290
+		  lr: 0xfffffff007368278  fp: 0xfffffff003843370
+		  lr: 0xfffffff0073675ac  fp: 0xfffffff003843380
+		  lr: 0xfffffff007228e90  fp: 0xfffffff003843730
+		  lr: 0xfffffff007229ab8  fp: 0xfffffff0038437a0
+		  lr: 0xfffffff0077f96e0  fp: 0xfffffff0038437c0
+		  lr: 0xfffffff0078254ac  fp: 0xfffffff003843930
+		  lr: 0xfffffff007368000  fp: 0xfffffff003843a10
+		  lr: 0xfffffff0073675ac  fp: 0xfffffff003843a20
+		  lr: 0xfffffff0073455a8  fp: 0xfffffff003843dc0
+		  lr: 0xfffffff0078001a4  fp: 0xfffffff003843f00
+		  lr: 0xfffffff00736c4c8  fp: 0x0000000000000000
+
+
+** Stackshot Incomplete ** Bytes Filled 240 **
+Attempting system restart...
+MACH Reboot

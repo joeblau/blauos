@@ -1,0 +1,33 @@
+{
+  "argv": [
+    "cmake",
+    "--build",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/reproducibility",
+    "--target",
+    "xnu",
+    "--parallel",
+    "4"
+  ],
+  "cwd": "/Users/joeblau/Developer/joeblau/src/blauos",
+  "exit_code": 0,
+  "raw_log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/reproducibility/logs/build.log",
+  "raw_log_bytes": 217522728,
+  "raw_log_sha256": "b14a725d5bf173b761dec85114a689624900c87e3e86c0d2c7b5869766f2a5cc",
+  "errors": [
+    "      13: warning: parameter 'vfa' not found in the function declaration [-Wdocumentation]",
+    " sR:In file included from , c13Ee:Sy  /Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next/src/Kernel/xnu/osfmk/arm/cpu_data_internal.hwarning:  _e: parameter 'ctx' not found in the function declaration [-Wdocumentation]ut :awarning: identifier '__darwin_fd_set' is reserved because it starts with '__' [-Wreserved-identifier])El32a",
+    "      |           ^warning: parameter 'ctx' not found in the function declaration [-Wdocumentation]          ^_111:",
+    "parameter 'ctx' not found in the function declaration [-Wdocumentation] ) Swarning: identifier '__ReplyUnion__lock_set_subsystem' is reserved because it starts with '__' [-Wreserved-identifier]iC",
+    "         _atqparameter 'mp' not found in the function declaration [-Wdocumentation]2481t_  unt_ | oet e| uwarning:  ris",
+    "(nparameter 'ctx' not found in the function declaration [-Wdocumentation]/",
+    ": warning: parameter 'vfsconf' not found in the function declaration [-Wdocumentation]",
+    "parameter 'vfa' not found in the function declaration [-Wdocumentation]230",
+    "(stxparameter 'ctx' not found in the function declaration [-Wdocumentation] :",
+    "/qdusslasgeif***sr ee*ds/set _eicrt,vuD,se_",
+    ",APpauct    :ef /;   s***|   src__s            ^96",
+    "error:to",
+    "ttap sy;_     m(1;eAy6p  s      )  an_ip   |  a   ) U_de116rmfot          rte   _  )   |  nrg _dos/edey Dt     //_***, af  a _e_b1o; nytd f _ e _t yIAn_uty2 cptduaya _astorp  8ts _ardnl o _uen-n_ml(ouTni_estt m_ i a ci_ n  tcbonsin( u_c *a/ att__in",
+    "  vs_t  t_      sy*:)Sptsryep inY  roySlCi| etm)c se;(osedt ***,8a  T_: _, qnwarning:                                                                                 ^s",
+    "tclose error: ;\\_t"
+  ]
+}

@@ -1,0 +1,11 @@
+[
+  "make",
+  "-j4",
+  "SDKROOT=macosx",
+  "ARCH_CONFIGS=ARM64",
+  "KERNEL_CONFIGS=DEVELOPMENT",
+  "OBJROOT=/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/initial/obj",
+  "DSTROOT=/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/initial/dst",
+  "SYMROOT=/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/initial/sym",
+  "CONCISE=1"
+]

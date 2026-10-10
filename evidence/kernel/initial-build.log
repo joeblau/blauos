@@ -1,0 +1,3 @@
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/makedefs/MakeInc.kernel:299: *** Could not determine xnu version from SDK or KDK! Set RC_DARWIN_KERNEL_VERSION environment variable..  Stop.
+make[1]: *** [build_setup_bootstrap_DEVELOPMENT^ARM64^VMAPPLE] Error 2
+make: *** [all] Error 2

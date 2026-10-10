@@ -1,0 +1,12 @@
+-- PureDarwin target architecture: arm64
+CMake Warning at cmake/iig.cmake:10 (message):
+  iig not found on PATH, run `nix profile install` in the iig-tools repo
+  (https://github.com/PureDarwin/iig-tools, or your local checkout) before
+  building any target that calls iig()
+Call Stack (most recent call first):
+  CMakeLists.txt:139 (include)
+
+
+-- Configuring done (0.3s)
+-- Generating done (0.7s)
+-- Build files have been written to: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay

@@ -1,0 +1,95 @@
+kernel: 15370952 bytes
+symtab: 20330 kernel symbols
+loaded kext: com.apple.AppleFileSystemDriver v3.0.1 (90808 bytes)
+loaded kext: com.ravynos.driver.Ext4FileSystemDriver v1.0.0 (89136 bytes)
+loaded kext: com.apple.iokit.IONetworkingFamily v3.4 (399384 bytes)
+loaded kext: com.apple.iokit.IOPCIFamily v2.9 (305280 bytes)
+loaded kext: com.apple.iokit.IOStorageFamily v2.1 (343672 bytes)
+loaded kext: org.puredarwin.driver.IOVirtIOBlock v1.0.0 (99056 bytes)
+loaded kext: org.puredarwin.iokit.IOVirtIOFamily v1.0.0 (68432 bytes)
+loaded kext: org.puredarwin.driver.IOVirtIONet v1.0.0 (101432 bytes)
+loaded kext: org.puredarwin.driver.PDArmPCI v1.0 (93400 bytes)
+loaded kext: org.puredarwin.kext.PDArmPlatformExpert v1 (139152 bytes)
+loaded kext: com.apple.kec.corecrypto v1 (156528 bytes)
+loaded kext: com.apple.filesystems.ext4 v1 (167960 bytes)
+loaded kext: com.apple.kec.pthread v1 (109136 bytes)
+kext placement start: 0xfffffff004004000
+  UNRESOLVED: __ZN7IOMedia9metaClassE
+ patched kmod_info: com.apple.AppleFileSystemDriver kmod=0xfffffff00400c000 address=0xfffffff004004000 size=0x18000
+ merged 22 symbols from com.apple.AppleFileSystemDriver
+  UNRESOLVED: __ZN7IOMedia9metaClassE
+ patched kmod_info: com.ravynos.driver.Ext4FileSystemDriver kmod=0xfffffff004024000 address=0xfffffff00401c000 size=0x18000
+ merged 22 symbols from com.ravynos.driver.Ext4FileSystemDriver
+ patched kmod_info: com.apple.iokit.IONetworkingFamily kmod=0xfffffff004060000 address=0xfffffff004034000 size=0x64000
+ merged 975 symbols from com.apple.iokit.IONetworkingFamily
+ patched kmod_info: com.apple.iokit.IOPCIFamily kmod=0xfffffff0040c0000 address=0xfffffff004098000 size=0x4c000
+ merged 530 symbols from com.apple.iokit.IOPCIFamily
+ patched kmod_info: com.apple.iokit.IOStorageFamily kmod=0xfffffff004108000 address=0xfffffff0040e4000 size=0x54000
+ merged 765 symbols from com.apple.iokit.IOStorageFamily
+  UNRESOLVED: __ZN17IOVirtIOTransport11setDriverOkEv
+  UNRESOLVED: __ZN17IOVirtIOTransport12addDescChainEP9VirtQueuePK16VirtIOChainEntryj
+  UNRESOLVED: __ZN17IOVirtIOTransport17deviceFeaturesLowEv
+  UNRESOLVED: __ZN17IOVirtIOTransport17negotiateFeaturesEj
+  UNRESOLVED: __ZN17IOVirtIOTransport17pollForCompletionEP9VirtQueuejPjPt
+  UNRESOLVED: __ZN17IOVirtIOTransport6attachEP11IOPCIDevice
+  UNRESOLVED: __ZN17IOVirtIOTransport6detachEv
+  UNRESOLVED: __ZN17IOVirtIOTransport6notifyEP9VirtQueue
+  UNRESOLVED: __ZN17IOVirtIOTransport9freeQueueEP9VirtQueue
+  UNRESOLVED: __ZN17IOVirtIOTransport9initQueueEP9VirtQueuett
+  UNRESOLVED: __ZN17IOVirtIOTransportC1Ev
+ patched kmod_info: org.puredarwin.driver.IOVirtIOBlock kmod=0xfffffff004140000 address=0xfffffff004138000 size=0x1c000
+ merged 61 symbols from org.puredarwin.driver.IOVirtIOBlock
+ patched kmod_info: org.puredarwin.iokit.IOVirtIOFamily kmod=0xfffffff00415c000 address=0xfffffff004154000 size=0x14000
+ merged 14 symbols from org.puredarwin.iokit.IOVirtIOFamily
+ patched kmod_info: org.puredarwin.driver.IOVirtIONet kmod=0xfffffff004170000 address=0xfffffff004168000 size=0x1c000
+ merged 39 symbols from org.puredarwin.driver.IOVirtIONet
+ patched kmod_info: org.puredarwin.driver.PDArmPCI kmod=0xfffffff00418c000 address=0xfffffff004184000 size=0x18000
+ merged 33 symbols from org.puredarwin.driver.PDArmPCI
+ patched kmod_info: org.puredarwin.kext.PDArmPlatformExpert kmod=0xfffffff0041a4000 address=0xfffffff00419c000 size=0x24000
+ merged 150 symbols from org.puredarwin.kext.PDArmPlatformExpert
+  UNRESOLVED: ___chkstk_darwin
+ patched kmod_info: com.apple.kec.corecrypto kmod=0xfffffff0041dc000 address=0xfffffff0041c0000 size=0x28000
+ merged 89 symbols from com.apple.kec.corecrypto
+ patched kmod_info: com.apple.filesystems.ext4 kmod=0xfffffff004200000 address=0xfffffff0041e8000 size=0x2c000
+ merged 78 symbols from com.apple.filesystems.ext4
+ patched kmod_info: com.apple.kec.pthread kmod=0xfffffff004224000 address=0xfffffff004214000 size=0x1c000
+ merged 40 symbols from com.apple.kec.pthread
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/AppleNMI.kext/Contents/Info.plist: No such file or directory
+codeless kext: com.apple.driver.AppleNMI v20.5.0
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/ApplePlatformFamily.kext/Contents/Info.plist: No such file or directory
+codeless kext: com.apple.iokit.ApplePlatformFamily v20.5.0
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/BSDKernel.kext/Contents/Info.plist: No such file or directory
+codeless kext: com.apple.kpi.bsd v20.5.0
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/IOKit.kext/Contents/Info.plist: No such file or directory
+codeless kext: com.apple.kpi.iokit v20.5.0
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/IONVRAMFamily.kext/Contents/Info.plist: No such file or directory
+codeless kext: com.apple.iokit.IONVRAMFamily v20.5.0
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/IOSystemManagement.kext/Contents/Info.plist: No such file or directory
+codeless kext: com.apple.iokit.IOSystemManagementFamily v20.5.0
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/Kasan.kext/Contents/Info.plist: No such file or directory
+codeless kext: com.apple.kpi.kasan v20.5.0
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/Libkern.kext/Contents/Info.plist: No such file or directory
+codeless kext: com.apple.kpi.libkern v20.5.0
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/MACFramework.kext/Contents/Info.plist: No such file or directory
+codeless kext: com.apple.kpi.dsep v20.5.0
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/Mach.kext/Contents/Info.plist: No such file or directory
+codeless kext: com.apple.kpi.mach v20.5.0
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/Private.kext/Contents/Info.plist: No such file or directory
+codeless kext: com.apple.kpi.private v20.5.0
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/Unsupported.kext/Contents/Info.plist: No such file or directory
+codeless kext: com.apple.kpi.unsupported v20.5.0
+prelink: kernel vm end = 0xfffffff008000000
+  kext[0] com.apple.AppleFileSystemDriver: vmaddr=0xfffffff004004000 size=0x162b8 kmod_info=0xfffffff00400c000
+  kext[1] com.ravynos.driver.Ext4FileSystemDriver: vmaddr=0xfffffff00401c000 size=0x15c30 kmod_info=0xfffffff004024000
+  kext[2] com.apple.iokit.IONetworkingFamily: vmaddr=0xfffffff004034000 size=0x61818 kmod_info=0xfffffff004060000
+  kext[3] com.apple.iokit.IOPCIFamily: vmaddr=0xfffffff004098000 size=0x4a880 kmod_info=0xfffffff0040c0000
+  kext[4] com.apple.iokit.IOStorageFamily: vmaddr=0xfffffff0040e4000 size=0x53e78 kmod_info=0xfffffff004108000
+  kext[5] org.puredarwin.driver.IOVirtIOBlock: vmaddr=0xfffffff004138000 size=0x182f0 kmod_info=0xfffffff004140000
+  kext[6] org.puredarwin.iokit.IOVirtIOFamily: vmaddr=0xfffffff004154000 size=0x10b50 kmod_info=0xfffffff00415c000
+  kext[7] org.puredarwin.driver.IOVirtIONet: vmaddr=0xfffffff004168000 size=0x18c38 kmod_info=0xfffffff004170000
+  kext[8] org.puredarwin.driver.PDArmPCI: vmaddr=0xfffffff004184000 size=0x16cd8 kmod_info=0xfffffff00418c000
+  kext[9] org.puredarwin.kext.PDArmPlatformExpert: vmaddr=0xfffffff00419c000 size=0x21f90 kmod_info=0xfffffff0041a4000
+  kext[10] com.apple.kec.corecrypto: vmaddr=0xfffffff0041c0000 size=0x26370 kmod_info=0xfffffff0041dc000
+  kext[11] com.apple.filesystems.ext4: vmaddr=0xfffffff0041e8000 size=0x29018 kmod_info=0xfffffff004200000
+  kext[12] com.apple.kec.pthread: vmaddr=0xfffffff004214000 size=0x1aa50 kmod_info=0xfffffff004224000
+wrote /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/vm/kernel.classic.16k.low (17711104 bytes)

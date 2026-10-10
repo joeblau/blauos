@@ -1,0 +1,30 @@
+{
+  "status": "kernel-built-not-boot-validated",
+  "exit_code": 0,
+  "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+  "configuration": "DEVELOPMENT ARM64 VIRT",
+  "raw_log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/logs/initial-build.log",
+  "raw_log_bytes": 209789378,
+  "raw_log_sha256": "b12ea330e100dd20a8530dcac78686dffce64b87ad0c4b374439331bb8089769",
+  "artifacts": [
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu/System/Library/Kernels/kernel.development.virt",
+      "sha256": "d5b34ec4ec049d6a8c9e6939c16981e339d04204f49e7c661951943ac04d2ad9",
+      "size": 12571728,
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu/System/Library/Kernels/kernel.development.virt: Mach-O 64-bit executable arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu_sym/kernel.development.virt",
+      "sha256": "2b703541dd2b562292970b8643d04b27817c6b73bd00db7960f833929ca707a8",
+      "size": 15370952,
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu_sym/kernel.development.virt: Mach-O 64-bit executable arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu_sym/kernel.development.virt.dSYM/Contents/Resources/DWARF/kernel.development.virt",
+      "sha256": "b4a0ff4437b54fb9d17fc1279bc052c8f8f9954cc7d5ddde0e405adaf7f388d6",
+      "size": 52992160,
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu_sym/kernel.development.virt.dSYM/Contents/Resources/DWARF/kernel.development.virt: Mach-O 64-bit dSYM companion file arm64"
+    }
+  ],
+  "boot_validated": false
+}

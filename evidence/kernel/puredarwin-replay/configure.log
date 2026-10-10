@@ -1,0 +1,12 @@
+1: -- PureDarwin target architecture: arm64
+2: CMake Warning at cmake/iig.cmake:10 (message):
+3:   iig not found on PATH, run `nix profile install` in the iig-tools repo
+4:   (https://github.com/PureDarwin/iig-tools, or your local checkout) before
+5:   building any target that calls iig()
+6: Call Stack (most recent call first):
+7:   CMakeLists.txt:139 (include)
+8: 
+9: 
+10: -- Configuring done (0.3s)
+11: -- Generating done (0.8s)
+12: -- Build files have been written to: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin

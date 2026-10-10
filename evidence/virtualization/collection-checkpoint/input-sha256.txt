@@ -1,0 +1,4 @@
+961676892c73e473537f43677b76743bab06485de2cf3bf53dc3148ee81fc7ff  /build/kernel.classic.16k.low
+ccfd54512db1e52229547c68b0caf9244cc1369de9de56816692f13aadb54d32  /nix/store/zcfwmvy7l1x4cxvs7l93hwjviw7j1dgi-xnu-loader-0.1/xnu-loader.efi
+ff38109e82f343aac708df62e1d707c81ac42d3b7feaff375b87dcc1e846734b  /nix/store/3lb36hqclb8p8z9p55vggpmgkkkk0x9r-OVMF-202602-fd/FV/AAVMF_CODE.fd
+b3b855c5a80310168051164986855692d1bdb06e67619856177965cd87c6774f  /nix/store/3lb36hqclb8p8z9p55vggpmgkkkk0x9r-OVMF-202602-fd/FV/AAVMF_VARS.fd

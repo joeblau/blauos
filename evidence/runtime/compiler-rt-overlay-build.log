@@ -1,0 +1,33 @@
+Full log: .blauos/build/runtime/raw-experiments/compiler-rt-overlay-build.log
+SHA256: 5cbbcdcf71be201d3f25403038abc91e27101ed87440cb92304e178d2d4598f3
+Bytes: 73281
+
+[  0%] Generating outline_atomic_helpers.dir/outline_atomic_swp8_5.S
+[  0%] Generating outline_atomic_helpers.dir/outline_atomic_cas16_1.S
+[  0%] Generating outline_atomic_helpers.dir/outline_atomic_cas16_2.S
+[  0%] Generating outline_atomic_helpers.dir/outline_atomic_cas16_3.S
+[  0%] Generating outline_atomic_helpers.dir/outline_atomic_cas16_4.S
+[  2%] Generating outline_atomic_helpers.dir/outline_atomic_cas16_5.S
+[  2%] Generating outline_atomic_helpers.dir/outline_atomic_cas1_1.S
+[  2%] Generating outline_atomic_helpers.dir/outline_atomic_cas1_2.S
+[  2%] Generating outline_atomic_helpers.dir/outline_atomic_cas1_3.S
+[  2%] Generating outline_atomic_helpers.dir/outline_atomic_cas1_4.S
+[  2%] Generating outline_atomic_helpers.dir/outline_atomic_cas2_1.S
+[  2%] Generating outline_atomic_helpers.dir/outline_atomic_cas1_5.S
+--- final output ---
+libtool: warning: 'fixunstfsi.c.o' has no symbols
+libtool: warning: 'fixunstfti.c.o' has no symbols
+libtool: warning: 'floatditf.c.o' has no symbols
+libtool: warning: 'floatsitf.c.o' has no symbols
+libtool: warning: 'floattitf.c.o' has no symbols
+libtool: warning: 'floatunditf.c.o' has no symbols
+libtool: warning: 'floatunsitf.c.o' has no symbols
+libtool: warning: 'floatuntitf.c.o' has no symbols
+libtool: warning: 'multc3.c.o' has no symbols
+libtool: warning: 'trunctfdf2.c.o' has no symbols
+libtool: warning: 'trunctfhf2.c.o' has no symbols
+libtool: warning: 'trunctfsf2.c.o' has no symbols
+libtool: warning: 'eprintf.c.o' has no symbols
+libtool: warning: 'truncxfbf2.c.o' has no symbols
+libtool: warning: 'trunctfbf2.c.o' has no symbols
+[100%] Built target clang_rt.builtins_arm64_osx

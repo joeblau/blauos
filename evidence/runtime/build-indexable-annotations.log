@@ -1,0 +1,96 @@
+Full log: .blauos/build/runtime/raw-experiments/build-indexable-annotations.log
+SHA256: 8967663492e1b5cd061169b583e4605f477caa70c50e33241212456c2bf4b0fe
+Bytes: 832032
+
+[  0%] Building C object src/Libraries/CrashReporterClient/CMakeFiles/CrashReporterClient.dir/CrashReporterClient.c.o
+[  0%] Built target libc_headers_gen_script
+[  0%] Built target generate_dyld_headers
+[  0%] Building C object tools/mig/CMakeFiles/migcom.dir/error.c.o
+[  0%] Built target libunwind_static_build
+[  1%] Built target libcxxabi_static_build
+[  1%] Linking C static library libCrashReporterClient.a
+[  1%] Building C object tools/mig/CMakeFiles/migcom.dir/global.c.o
+[  3%] Built target libcxx_static_build
+[  3%] Building C object tools/mig/CMakeFiles/migcom.dir/header.c.o
+[  3%] Building C object src/Libraries/libSystem/corecrypto/CMakeFiles/corecrypto_user.dir/cc_user_stub.c.o
+[  3%] Built target CrashReporterClient
+5 warnings generated.
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Libraries/libSystem/libc/gen/FreeBSD/err.c:47:
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/Block.h:31:28: error: expected ';' after top level declarator
+   31 | BLOCK_EXPORT void *__single _Block_copy(const void *__single aBlock);
+      |                            ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/Block.h:34:55: error: expected ')'
+   34 | BLOCK_EXPORT void _Block_release(const void *__single aBlock);
+   31 | BLOCK_EXPORT void *__single _Block_copy(const void *__single aBlock);
+      |                            ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/Block.h:34:55: error: expected ')'
+   34 | BLOCK_EXPORT void _Block_release(const void *__single aBlock);
+      |                                                       ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/Block.h:34:33: note: to match this '('
+   34 | BLOCK_EXPORT void _Block_release(const void *__single aBlock);
+   34 | BLOCK_EXPORT void _Block_release(const void *__single aBlock);
+      |                                 ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Libraries/libSystem/libc/gen/FreeBSD/err.c:164:3: error: call to undeclared function '__unsafe_forge_single'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  164 |                 Block_release(_e_err_exit.block);
+      |                 ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/Block.h:53:43: note: expanded from macro 'Block_release'
+   53 | #define Block_release(...) _Block_release(__unsafe_forge_single(const void *, (const void *)(__VA_ARGS__)))
+   53 | #define Block_release(...) _Block_release(__unsafe_forge_single(const void *, (const void *)(__VA_ARGS__)))
+      |                                           ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Libraries/libSystem/libc/gen/FreeBSD/err.c:164:3: error: expected expression
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/Block.h:53:65: note: expanded from macro 'Block_release'
+   53 | #define Block_release(...) _Block_release(__unsafe_forge_single(const void *, (const void *)(__VA_ARGS__)))
+      |                                                                 ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Libraries/libSystem/libc/gen/FreeBSD/err.c:177:3: error: call to undeclared function '__unsafe_forge_single'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+   53 | #define Block_release(...) _Block_release(__unsafe_forge_single(const void *, (const void *)(__VA_ARGS__)))
+      |                                                                 ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Libraries/libSystem/libc/gen/FreeBSD/err.c:177:3: error: call to undeclared function '__unsafe_forge_single'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  177 |                 Block_release(_e_err_exit.block);
+      |                 ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/Block.h:53:43: note: expanded from macro 'Block_release'
+   53 | #define Block_release(...) _Block_release(__unsafe_forge_single(const void *, (const void *)(__VA_ARGS__)))
+   53 | #define Block_release(...) _Block_release(__unsafe_forge_single(const void *, (const void *)(__VA_ARGS__)))
+      |                                           ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Libraries/libSystem/libc/gen/FreeBSD/err.c:177:3: error: expected expression
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/Block.h:53:65: note: expanded from macro 'Block_release'
+   53 | #define Block_release(...) _Block_release(__unsafe_forge_single(const void *, (const void *)(__VA_ARGS__)))
+      |                                                                 ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Libraries/libSystem/libc/gen/FreeBSD/err.c:180:22: error: call to undeclared function '_Block_copy'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+   53 | #define Block_release(...) _Block_release(__unsafe_forge_single(const void *, (const void *)(__VA_ARGS__)))
+      |                                                                 ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Libraries/libSystem/libc/gen/FreeBSD/err.c:180:22: error: call to undeclared function '_Block_copy'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  180 |         _e_err_exit.block = Block_copy(ef);
+      |                             ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/Block.h:52:49: note: expanded from macro 'Block_copy'
+   52 | #define Block_copy(...) ((__typeof(__VA_ARGS__))_Block_copy(__unsafe_forge_single(const void *, (const void *)(__VA_ARGS__))))
+   52 | #define Block_copy(...) ((__typeof(__VA_ARGS__))_Block_copy(__unsafe_forge_single(const void *, (const void *)(__VA_ARGS__))))
+      |                                                 ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Libraries/libSystem/libc/gen/FreeBSD/err.c:180:22: error: call to undeclared function '__unsafe_forge_single'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/Block.h:52:61: note: expanded from macro 'Block_copy'
+   52 | #define Block_copy(...) ((__typeof(__VA_ARGS__))_Block_copy(__unsafe_forge_single(const void *, (const void *)(__VA_ARGS__))))
+      |                                                             ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Libraries/libSystem/libc/gen/FreeBSD/err.c:180:22: error: expected expression
+   52 | #define Block_copy(...) ((__typeof(__VA_ARGS__))_Block_copy(__unsafe_forge_single(const void *, (const void *)(__VA_ARGS__))))
+      |                                                             ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Libraries/libSystem/libc/gen/FreeBSD/err.c:180:22: error: expected expression
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/Block.h:52:83: note: expanded from macro 'Block_copy'
+   52 | #define Block_copy(...) ((__typeof(__VA_ARGS__))_Block_copy(__unsafe_forge_single(const void *, (const void *)(__VA_ARGS__))))
+      |                                                                                   ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Libraries/libSystem/libc/gen/FreeBSD/err.c:197:1: warning: a function definition without a prototype is deprecated in all versions of C and is not supported in C23 [-Wdeprecated-non-prototype]
+--- final output ---
+[ 85%] Building C object src/Libraries/libSystem/libc/CMakeFiles/libc_static.dir/emulated/flock.c.o
+[ 85%] Building C object src/Libraries/libSystem/libc/CMakeFiles/libc_static.dir/emulated/lutimes.c.o
+[ 85%] Building C object src/Libraries/libSystem/libc/CMakeFiles/libc_static.dir/emulated/copyfile.c.o
+[ 85%] Building C object src/Libraries/libSystem/libc/CMakeFiles/libc_static.dir/uuid/uuidsrc/gen_uuid.c.o
+[ 85%] Building C object src/Libraries/libSystem/libc/CMakeFiles/libc_static.dir/uuid/uuidsrc/clear.c.o
+[ 85%] Building C object src/Libraries/libSystem/libc/CMakeFiles/libc_static.dir/uuid/uuidsrc/compare.c.o
+[ 85%] Building C object src/Libraries/libSystem/libc/CMakeFiles/libc_static.dir/uuid/uuidsrc/copy.c.o
+[ 85%] Building C object src/Libraries/libSystem/libc/CMakeFiles/libc_static.dir/uuid/uuidsrc/isnull.c.o
+[ 85%] Building C object src/Libraries/libSystem/libc/CMakeFiles/libc_static.dir/uuid/uuidsrc/unparse.c.o
+[ 85%] Building C object src/Libraries/libSystem/libc/CMakeFiles/libc_static.dir/uuid/uuidsrc/pack.c.o
+[ 85%] Building C object src/Libraries/libSystem/libc/CMakeFiles/libc_static.dir/uuid/uuidsrc/unpack.c.o
+[ 85%] Building C object src/Libraries/libSystem/libc/CMakeFiles/libc_static.dir/darwin/pd_arm64_abi.c.o
+[ 85%] Linking C static library liblibc_static.a
+[ 85%] Built target libc_static
+make[1]: *** [src/Libraries/dyld/CMakeFiles/dyld.dir/rule] Error 2
+make: *** [dyld] Error 2

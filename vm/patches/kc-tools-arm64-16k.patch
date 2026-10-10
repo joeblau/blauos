@@ -1,0 +1,5 @@
+--- a/lib/prelink.c
++++ b/lib/prelink.c
+@@ -9,1 +9,1 @@
+-#define PAGE 0x1000ULL
++#define PAGE 0x4000ULL

@@ -1,0 +1,51 @@
+[  4%] Generating availability
+[ 17%] Generating dsl.d, __non-existent-file
+[ 17%] Generating availability
+[ 17%] Generating availability
+[ 17%] Built target phony_target
+[ 21%] Generating availability
+[ 34%] Generating AvailabilityInternalLegacy.h
+[ 34%] Generating Availability.h
+[ 34%] Generating AvailabilityInternal.h
+[ 39%] Generating AvailabilityInternalPrivate.h
+[ 39%] Built target Generate-Availability.h
+[ 39%] Built target Generate-AvailabilityInternal.h
+[ 39%] Built target Generate-AvailabilityInternalLegacy.h
+[ 43%] Generating AvailabilityVersions.h
+[ 47%] Generating AvailabilityProhibitedInternal.h
+[ 52%] Generating AvailabilityMacros.h
+[ 52%] Built target Generate-AvailabilityInternalPrivate.h
+[ 56%] Generating VersionMap.h
+[ 65%] Built target Generate-AvailabilityVersions.h
+[ 65%] Built target Generate-AvailabilityProhibitedInternal.h
+[ 69%] Built target Generate-AvailabilityMacros.h
+[ 82%] Generating for_dyld_priv.inc
+[ 82%] Generating os_availability.h
+[ 82%] Generating dyld_version_defines.h
+[ 86%] Built target Generate-VersionMap.h
+[ 91%] Built target Generate-dyld_version_defines.h
+[100%] Built target Generate-os_availability.h
+[100%] Built target Generate-for_dyld_priv.inc
+Install the project...
+-- Install configuration: ""
+-- Installing: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers-clean/availability/dst/AppleInternal
+-- Created symlink: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers-clean/availability/dst/System/Library/Frameworks/Kernel.framework/Versions/A/PrivateHeaders/AvailabilityInternalPrivate.h -> ../../../../../../../usr/local/include/AvailabilityInternalPrivate.h
+-- Created symlink: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers-clean/availability/dst/System/Library/Frameworks/Kernel.framework/Versions/A/PrivateHeaders/AvailabilityProhibitedInternal.h -> ../../../../../../../usr/local/include/AvailabilityProhibitedInternal.h
+-- Created symlink: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers-clean/availability/dst/System/Library/Frameworks/Kernel.framework/Versions/A/Headers/os/availability.h -> ../../../../../../../../usr/include/os/availability.h
+-- Created symlink: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers-clean/availability/dst/System/Library/Frameworks/Kernel.framework/Versions/A/Headers/Availability.h -> ../../../../../../../usr/include/Availability.h
+-- Created symlink: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers-clean/availability/dst/System/Library/Frameworks/Kernel.framework/Versions/A/Headers/AvailabilityInternal.h -> ../../../../../../../usr/include/AvailabilityInternal.h
+-- Created symlink: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers-clean/availability/dst/System/Library/Frameworks/Kernel.framework/Versions/A/Headers/AvailabilityInternalLegacy.h -> ../../../../../../../usr/include/AvailabilityInternalLegacy.h
+-- Created symlink: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers-clean/availability/dst/System/Library/Frameworks/Kernel.framework/Versions/A/Headers/AvailabilityMacros.h -> ../../../../../../../usr/include/AvailabilityMacros.h
+-- Created symlink: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers-clean/availability/dst/System/Library/Frameworks/Kernel.framework/Versions/A/Headers/AvailabilityVersions.h -> ../../../../../../../usr/include/AvailabilityVersions.h
+-- Installing: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers-clean/availability/dst/usr/local/include/dyld/VersionMap.h
+-- Installing: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers-clean/availability/dst/usr/local/include/dyld/for_dyld_priv.inc
+-- Installing: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers-clean/availability/dst/usr/local/include/mach-o/dyld_version_defines.h
+-- Installing: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers-clean/availability/dst/usr/local/include/AvailabilityInternalPrivate.h
+-- Installing: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers-clean/availability/dst/usr/local/include/AvailabilityProhibitedInternal.h
+-- Installing: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers-clean/availability/dst/usr/include/os/availability.h
+-- Installing: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers-clean/availability/dst/usr/include/Availability.h
+-- Installing: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers-clean/availability/dst/usr/include/AvailabilityInternal.h
+-- Installing: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers-clean/availability/dst/usr/include/AvailabilityInternalLegacy.h
+-- Installing: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers-clean/availability/dst/usr/include/AvailabilityMacros.h
+-- Installing: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers-clean/availability/dst/usr/include/AvailabilityVersions.h
+-- Installing: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers-clean/availability/dst/usr/local/libexec/availability.pl

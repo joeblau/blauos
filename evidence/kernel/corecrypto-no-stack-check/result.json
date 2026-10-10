@@ -1,0 +1,8 @@
+{
+  "exit_code": 0,
+  "kernel_sha256": "bcb57010ef19e53081b52f2730fb78b7042501e7e4ada6accacf4979da71f943",
+  "binary": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/reproducibility/src/Kernel/Extensions/corecrypto/corecrypto.kext/Contents/MacOS/corecrypto",
+  "binary_sha256": "cbf256c272814f89393602d03b1202c79cd5746909d0ce442e9def29cc8b6b25",
+  "undefined_symbols": "__FREE\n__MALLOC\n___memcpy_chk\n_bzero\n_kprintf\n_memset\n_microuptime\n_panic\n_printf\n_register_and_init_prng\n_register_crypto_functions\n_strlen\n",
+  "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290"
+}

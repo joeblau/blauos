@@ -1,0 +1,53 @@
+[  0%] Built target libc_headers_gen_script
+[  0%] Built target CrashReporterClient
+[  0%] Built target generate_dyld_headers
+[  0%] Built target migcom
+[  3%] Built target libcxx_static_build
+[  3%] Built target libunwind_static_build
+[  3%] Built target libcxxabi_static_build
+[  3%] Generating libc-features.h
+[  3%] Built target corecrypto_user
+[  3%] Built target dyld_availability_headers
+[  3%] Built target libc_features
+[  8%] Built target corecrypto_shared
+[  8%] Built target corecrypto_static
+[ 26%] Built target openlibm_static
+[ 45%] Built target libsystem_kernel_static
+[ 45%] Built target pthread_static
+[ 49%] Built target libplatform_static
+[ 68%] Built target libc_internal_static
+[ 94%] Built target libc_static
+[ 94%] Building CXX object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/src/dyld2.cpp.o
+[ 94%] Building CXX object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/src/dyldInitialization.cpp.o
+[ 94%] Building CXX object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/src/dyldAPIs.cpp.o
+[ 94%] Building CXX object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/src/dyldNew.cpp.o
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyldAPIs.cpp:39:10: fatal error: 'vector' file not found
+   39 | #include <vector>
+      |          ^~~~~~~~
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyldInitialization.cpp:33:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.h:31:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.h:37:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/include/mach-o/dyld_images.h:In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyldNew.cpp:34:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.h:31:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.h:37:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/include/mach-o/dyld_images.h32:10: fatal error: 'atomic' file not found
+:32:10: fatal error: 'atomic' file not found
+   32 | #include <a   32 | #include <atomtomic>
+      |          ^~~~~~~~
+ic>
+      |          ^~~~~~~~
+1 error generated.
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:116:10: fatal error: 'array' file not found
+  116 | #include <array>
+      |          ^~~~~~~
+make[3]: *** [src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/src/dyldNew.cpp.o] Error 1
+make[3]: *** Waiting for unfinished jobs....
+1 error generated.
+make[3]: *** [src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/src/dyldAPIs.cpp.o] Error 1
+1 error generated.
+make[3]: *** [src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/src/dyldInitialization.cpp.o] Error 1
+1 error generated.
+make[3]: *** [src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/src/dyld2.cpp.o] Error 1
+make[2]: *** [src/Libraries/dyld/CMakeFiles/dyld.dir/all] Error 2
+make[1]: *** [src/Libraries/dyld/CMakeFiles/dyld.dir/rule] Error 2
+make: *** [dyld] Error 2

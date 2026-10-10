@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "make",
+    "-j4",
+    "SDKROOT=/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers/MacOSX.sdk",
+    "SDKROOT_RESOLVED=/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers/MacOSX.sdk",
+    "SDKVERSION=27.2",
+    "PLATFORMPATH=/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform",
+    "ARCH_CONFIGS=ARM64",
+    "KERNEL_CONFIGS=DEVELOPMENT",
+    "MACHINE_CONFIGS=VMAPPLE",
+    "RC_DARWIN_KERNEL_VERSION=25.5.0",
+    "OBJROOT=/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/development/obj",
+    "SYMROOT=/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/development/sym",
+    "DSTROOT=/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/development/dst",
+    "CONCISE=1"
+  ],
+  "cwd": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu"
+}

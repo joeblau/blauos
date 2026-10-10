@@ -1,0 +1,222 @@
+1: 2026-10-10 08:46:31.958 xcodebuild[91318:25811160] Writing error result bundle to /var/folders/_k/883vgjk55hg79qfxf60d9lzh0000gn/T/ResultBundle_2026-10-10_08-46-0031.xcresult
+2: xcodebuild: error: SDK "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers/MacOSX.sdk" cannot be located.
+3: xcrun: error: unable to lookup item 'PlatformPath' in SDK '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers/MacOSX.sdk'
+4:              CC mac_audit.o
+5:              CC dead_vnops.o
+6: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/security/mac_audit.c:69:
+7: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/resolved-includes/obj/EXPORT_HDRS/security/security/mac_internal.h:90:
+8: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/resolved-includes/obj/EXPORT_HDRS/bsd/sys/socketvar.h:882:2: warning: unknown warning group '-Wxnu-typed-allocators', ignored [-Wunknown-warning-option]
+9:   882 |         __typed_allocators_ignore_push
+10:       |         ^
+11: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/resolved-includes/obj/EXPORT_HDRS/bsd/sys/cdefs.h:1370:3: note: expanded from macro '__typed_allocators_ignore_push'
+12:  1370 |          _Pragma("clang diagnostic ignored \"-Wxnu-typed-allocators\"")
+13:       |          ^
+14: <scratch space>:115:27: note: expanded from here
+15:   115 |  clang diagnostic ignored "-Wxnu-typed-allocators"
+16:       |                           ^
+17: 1 warning generated.
+18:              CC devfs_fdesc_support.o
+19:              CC mac_base.o
+20:             C++ IOUserServer.cpo
+21: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/security/mac_base.c:74:
+22: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/resolved-includes/obj/EXPORT_HDRS/security/security/mac_internal.h:90:
+23: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/resolved-includes/obj/EXPORT_HDRS/bsd/sys/socketvar.h:882:2: warning: unknown warning group '-Wxnu-typed-allocators', ignored [-Wunknown-warning-option]
+24:   882 |         __typed_allocators_ignore_push
+25:       |         ^
+26: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/resolved-includes/obj/EXPORT_HDRS/bsd/sys/cdefs.h:1370:3: note: expanded from macro '__typed_allocators_ignore_push'
+27:  1370 |          _Pragma("clang diagnostic ignored \"-Wxnu-typed-allocators\"")
+28:       |          ^
+29: <scratch space>:152:27: note: expanded from here
+30:   152 |  clang diagnostic ignored "-Wxnu-typed-allocators"
+31:       |                           ^
+32: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/bsd/miscfs/devfs/devfs_fdesc_support.c:89:
+33: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/bsd/sys/socketvar.h:882:2: warning: unknown warning group '-Wxnu-typed-allocators', ignored [-Wunknown-warning-option]
+34:   882 |         __typed_allocators_ignore_push
+35:       |         ^
+36: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/bsd/sys/cdefs.h:1370:3: note: expanded from macro '__typed_allocators_ignore_push'
+37:  1370 |          _Pragma("clang diagnostic ignored \"-Wxnu-typed-allocators\"")
+38:       |          ^
+39: <scratch space>:99:27: note: expanded from here
+40:    99 |  clang diagnostic ignored "-Wxnu-typed-allocators"
+41:       |                           ^
+42: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/security/mac_base.c:841:3: warning: unknown warning group '-Wxnu-typed-allocators', ignored [-Wunknown-warning-option]
+43:   841 |                 __typed_allocators_ignore(kfree_data(mmd, mmd->size)); // rdar://87952845
+44:       |                 ^
+45: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/resolved-includes/obj/EXPORT_HDRS/bsd/sys/cdefs.h:1373:39: note: expanded from macro '__typed_allocators_ignore'
+46:  1373 | # define __typed_allocators_ignore(x) __typed_allocators_ignore_push \
+47:       |                                       ^
+48: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/resolved-includes/obj/EXPORT_HDRS/bsd/sys/cdefs.h:1370:3: note: expanded from macro '__typed_allocators_ignore_push'
+49:  1370 |          _Pragma("clang diagnostic ignored \"-Wxnu-typed-allocators\"")
+50:       |          ^
+51: <scratch space>:182:27: note: expanded from here
+52:   182 |  clang diagnostic ignored "-Wxnu-typed-allocators"
+53:       |                           ^
+54: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/iokit/Kernel/IOUserServer.cpp:30:
+55: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/iokit/IOKit/IOKitServer.h:43:
+56: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/iokit/IOKit/IOTypes.h:40:
+57: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/iokit/IOKit/system.h:45:
+58: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/resolved-includes/obj/EXPORT_HDRS/osfmk/kern/task.h:104:
+59: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/resolved-includes/obj/EXPORT_HDRS/osfmk/kern/cs_blobs.h:201:2: warning: array designators are a C99 extension [-Wc99-designator]
+60:   201 |         [CS_LINKAGE_APPLICATION_OOPJIT_INVALID] = NULL,
+3563:  1635 | #define KALLOC_TYPE_CAST_FLAGS(flags) static_cast<kalloc_type_flags_t>(flags)
+3564:       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+3565: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/iokit/bsddev/IOKitBSDInit.cpp:40:
+3566: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/resolved-includes/obj/EXPORT_HDRS/libkern/libkern/amfi/amfi.h:35:10: fatal error: 'CoreEntitlements/V2/API.h' file not found
+3567:    35 | #include <CoreEntitlements/V2/API.h>
+3568:       |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+3569:              CC mac_skywalk.o
+3570: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/bsd/net/bpf.c:76:
+3571: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/bsd/net/bpf.h:83:
+3584:   168 |  clang diagnostic ignored "-Wxnu-typed-allocators"
+3585:       |                           ^
+3586: 16 warnings and 1 error generated.
+3587: make[7]: *** [IOKitBSDInit.cpo] Error 1
+3588: make[6]: *** [build_all] Error 2
+3589: make[5]: *** [do_all] Error 2
+3590: make[4]: *** [build_all] Error 2
+3591: make[3]: *** [build_all_recurse_into_conf] Error 2
+3592: make[2]: *** [build_all_recurse_into_iokit] Error 2
+3593: make[2]: *** Waiting for unfinished jobs....
+3594:              CC bpf_filter.o
+3595: clang: warning: compiling with legacy -fbounds-safety bounds checks is deprecated; compile with -fbounds-safety-bringup-missing-checks=batch_0 to use the new bound checks [-Wbounds-safety-legacy-checks-enabled]
+3596: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/security/mac_skywalk.c:33:
+3597: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/resolved-includes/obj/EXPORT_HDRS/security/security/mac_internal.h:90:
+3598: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/resolved-includes/obj/EXPORT_HDRS/bsd/sys/socketvar.h:882:2: warning: unknown warning group '-Wxnu-typed-allocators', ignored [-Wunknown-warning-option]
+4485: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/osfmk/arm64/sleh.c:70:
+4486: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/resolved-includes/obj/EXPORT_HDRS/bsd/sys/code_signing.h:126:
+4487: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/resolved-includes/obj/EXPORT_HDRS/bsd/sys/code_signing_internal.h:39:
+4488: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/osfmk/vm/pmap_cs.h:82:10: fatal error: 'TrustCache/API.h' file not found
+4489:    82 | #include <TrustCache/API.h>
+4490:       |          ^~~~~~~~~~~~~~~~~~
+4491: clang: warning: compiling with legacy -fbounds-safety bounds checks is deprecated; compile with -fbounds-safety-bringup-missing-checks=batch_0 to use the new bound checks [-Wbounds-safety-legacy-checks-enabled]
+4492: 1 error generated.
+4493: make[7]: *** [sleh.o] Error 1
+4494: make[6]: *** [build_all] Error 2
+4495: make[5]: *** [do_all] Error 2
+4496: make[4]: *** [build_all] Error 2
+4497: make[3]: *** [build_all_recurse_into_conf] Error 2
+4498: make[2]: *** [build_all_recurse_into_osfmk] Error 2
+4499:              CC mac_pty.o
+4500: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/security/mac_priv.c:68:
+4501: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/resolved-includes/obj/EXPORT_HDRS/security/security/mac_internal.h:90:
+4502: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/resolved-includes/obj/EXPORT_HDRS/bsd/sys/socketvar.h:882:2: warning: unknown warning group '-Wxnu-typed-allocators', ignored [-Wunknown-warning-option]
+4503:   882 |         __typed_allocators_ignore_push
+9826: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/EXTERNAL_HEADERS/stddef.h:48:14: note: expanded from macro 'NULL'
+9827:    48 | #define NULL ((void*)0)
+9828:       |              ^~~~~~~~~~
+9829: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/bsd/net/necp_client.c:79:10: fatal error: 'CodeSignature/Entitlements.h' file not found
+9830:    79 | #include <CodeSignature/Entitlements.h>
+9831:       |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+9832: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/bsd/net/if_ipsec.c:3648:18: warning: comparison of integers of different signs: 'int32_t' (aka 'int') and 'unsigned long' [-Wsign-compare]
+9833:  3648 |         if (data->m_len < sizeof(*ip)) {
+9834:       |             ~~~~~~~~~~~ ^ ~~~~~~~~~~~
+9884:              CC bloom_filter.o
+9885: 1 warning and 1 error generated.
+9886: clang: warning: compiling with legacy -fbounds-safety bounds checks is deprecated; compile with -fbounds-safety-bringup-missing-checks=batch_0 to use the new bound checks [-Wbounds-safety-legacy-checks-enabled]
+9887: make[7]: *** [necp_client.o] Error 1
+9888: make[7]: *** Waiting for unfinished jobs....
+9889: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/bsd/net/necp.c:10271:78: warning: comparison of integers of different signs: 'int' and 'necp_policy_order' (aka 'unsigned int') [-Wsign-compare]
+9890:  10271 |                                             (!necp_data_tracing_policy_order || (necp_data_tracing_policy_order == policy_search_array[i]->order))) {
+9891:        |                                                                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+9892: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/bsd/net/necp.c:10270:43: warning: comparison of integers of different signs: 'int' and 'u_int32_t' (aka 'unsigned int') [-Wsign-compare]
+9893:  10270 |                                         if ((necp_data_tracing_session_order == policy_search_array[i]->session_order) &&
+10305:       |              ^~~~~~~~~~
+10306: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/bsd/net/necp.c:12941:56: warning: performing pointer subtraction with a null pointer has undefined behavior [-Wnull-pointer-subtraction]
+10307:  12941 |                                 if (!necp_route_is_allowed(route, input_interface, NULL, 0, inp->inp_policyresult.results.route_rule_id, &interface_type_denied, NULL)) {
+10308:        |                                                                                    ^~~~
+10309: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/EXTERNAL_HEADERS/stddef.h:48:14: note: expanded from macro 'NULL'
+10310:    48 | #define NULL ((void*)0)
+10311:       |              ^~~~~~~~~~
+10312: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/bsd/net/necp.c:12951:13: warning: comparison of integers of different signs: 'u_int32_t' (aka 'unsigned int') and 'int' [-Wsign-compare]
+10313:  12951 |                                 debug = NECP_ENABLE_DATA_TRACE((&info.local_addr), (&info.remote_addr), info.protocol, info.pid, info.bound_interface_index);
+10314:        |                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+10315: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/bsd/net/necp.c:714:2: note: expanded from macro 'NECP_ENABLE_DATA_TRACE'
+10316:   714 |         NECP_ENABLE_DATA_TRACE_AND(local_addr, remote_addr, protocol, pid, ifindex) : \
+10317:       |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+10318: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/bsd/net/necp.c:709:33: note: expanded from macro 'NECP_ENABLE_DATA_TRACE_AND'
+10319:   709 |         (!necp_data_tracing_ifindex || NECP_DATA_TRACE_IFINDEX_MATCHED(ifindex)) && \
+10320:       |                                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+10321: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/bsd/net/necp.c:696:11: note: expanded from macro 'NECP_DATA_TRACE_IFINDEX_MATCHED'
+10322:   696 |         (ifindex == necp_data_tracing_ifindex)
+10323:       |          ~~~~~~~ ^  ~~~~~~~~~~~~~~~~~~~~~~~~~
+10324: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/bsd/net/necp.c:12951:13: warning: comparison of integers of different signs: 'u_int32_t' (aka 'unsigned int') and 'int' [-Wsign-compare]
+10325:  12951 |                                 debug = NECP_ENABLE_DATA_TRACE((&info.local_addr), (&info.remote_addr), info.protocol, info.pid, info.bound_interface_index);
+10326:        |                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+10327: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/bsd/net/necp.c:715:2: note: expanded from macro 'NECP_ENABLE_DATA_TRACE'
+10328:   715 |         NECP_ENABLE_DATA_TRACE_OR(local_addr, remote_addr, protocol, pid, ifindex))
+10329:       |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+10330: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/bsd/net/necp.c:702:32: note: expanded from macro 'NECP_ENABLE_DATA_TRACE_OR'
+10331:   702 |         (necp_data_tracing_ifindex && NECP_DATA_TRACE_IFINDEX_MATCHED(ifindex)) || \
+10332:       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+10333: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/bsd/net/necp.c:696:11: note: expanded from macro 'NECP_DATA_TRACE_IFINDEX_MATCHED'
+10334:   696 |         (ifindex == necp_data_tracing_ifindex)
+10335:       |          ~~~~~~~ ^  ~~~~~~~~~~~~~~~~~~~~~~~~~
+10336: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/bsd/net/necp.c:12995:10: warning: comparison of integers of different signs: 'u_int32_t' (aka 'unsigned int') and 'int' [-Wsign-compare]
+10337:  12995 |         debug = NECP_ENABLE_DATA_TRACE((&info.local_addr), (&info.remote_addr), info.protocol, info.pid, info.bound_interface_index);
+10338:        |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+10339: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/bsd/net/necp.c:714:2: note: expanded from macro 'NECP_ENABLE_DATA_TRACE'
+10340:   714 |         NECP_ENABLE_DATA_TRACE_AND(local_addr, remote_addr, protocol, pid, ifindex) : \
+10341:       |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+10342: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/bsd/net/necp.c:709:33: note: expanded from macro 'NECP_ENABLE_DATA_TRACE_AND'
+10343:   709 |         (!necp_data_tracing_ifindex || NECP_DATA_TRACE_IFINDEX_MATCHED(ifindex)) && \
+10344:       |                                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+10345: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/bsd/net/necp.c:696:11: note: expanded from macro 'NECP_DATA_TRACE_IFINDEX_MATCHED'
+10346:   696 |         (ifindex == necp_data_tracing_ifindex)
+10347:       |          ~~~~~~~ ^  ~~~~~~~~~~~~~~~~~~~~~~~~~
+10348: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/bsd/net/necp.c:12995:10: warning: comparison of integers of different signs: 'u_int32_t' (aka 'unsigned int') and 'int' [-Wsign-compare]
+10349:  12995 |         debug = NECP_ENABLE_DATA_TRACE((&info.local_addr), (&info.remote_addr), info.protocol, info.pid, info.bound_interface_index);
+10350:        |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+10351: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/bsd/net/necp.c:715:2: note: expanded from macro 'NECP_ENABLE_DATA_TRACE'
+10352:   715 |         NECP_ENABLE_DATA_TRACE_OR(local_addr, remote_addr, protocol, pid, ifindex))
+10353:       |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+10354: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/bsd/net/necp.c:702:32: note: expanded from macro 'NECP_ENABLE_DATA_TRACE_OR'
+10355:   702 |         (necp_data_tracing_ifindex && NECP_DATA_TRACE_IFINDEX_MATCHED(ifindex)) || \
+10356:       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+10357: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/bsd/net/necp.c:696:11: note: expanded from macro 'NECP_DATA_TRACE_IFINDEX_MATCHED'
+10358:   696 |         (ifindex == necp_data_tracing_ifindex)
+10359:       |          ~~~~~~~ ^  ~~~~~~~~~~~~~~~~~~~~~~~~~
+10360: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/bsd/net/necp.c:13008:54: warning: performing pointer subtraction with a null pointer has undefined behavior [-Wnull-pointer-subtraction]
+10361:  13008 |                     !necp_route_is_allowed(route, input_interface, NULL, 0, inp->inp_policyresult.results.route_rule_id, &interface_type_denied, NULL))) {
+10362:        |                                                                    ^~~~
+10363: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/EXTERNAL_HEADERS/stddef.h:48:14: note: expanded from macro 'NULL'
+10364:    48 | #define NULL ((void*)0)
+10365:       |              ^~~~~~~~~~
+10366: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/bsd/net/necp.c:13008:54: warning: performing pointer subtraction with a null pointer has undefined behavior [-Wnull-pointer-subtraction]
+10367:  13008 |                     !necp_route_is_allowed(route, input_interface, NULL, 0, inp->inp_policyresult.results.route_rule_id, &interface_type_denied, NULL))) {
+10368:        |                                                                    ^~~~
+10369: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/EXTERNAL_HEADERS/stddef.h:48:14: note: expanded from macro 'NULL'
+10370:    48 | #define NULL ((void*)0)
+10371:       |              ^~~~~~~~~~
+10372: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/bsd/net/necp.c:13051:6: warning: performing pointer subtraction with a null pointer has undefined behavior [-Wnull-pointer-subtraction]
+10373:  13051 |             NULL,
+10374:        |             ^~~~
+10375: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/EXTERNAL_HEADERS/stddef.h:48:14: note: expanded from macro 'NULL'
+10376:    48 | #define NULL ((void*)0)
+10377:       |              ^~~~~~~~~~
+10378: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/bsd/net/necp.c:13051:6: warning: performing pointer subtraction with a null pointer has undefined behavior [-Wnull-pointer-subtraction]
+10379:  13051 |             NULL,
+10380:        |             ^~~~
+10381: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/EXTERNAL_HEADERS/stddef.h:48:14: note: expanded from macro 'NULL'
+10382:    48 | #define NULL ((void*)0)
+10383:       |              ^~~~~~~~~~
+10384: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/bsd/net/necp.c:13053:6: warning: performing pointer subtraction with a null pointer has undefined behavior [-Wnull-pointer-subtraction]
+10385:  13053 |             NULL,
+10386:        |             ^~~~
+10387: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/EXTERNAL_HEADERS/stddef.h:48:14: note: expanded from macro 'NULL'
+10388:    48 | #define NULL ((void*)0)
+10389:       |              ^~~~~~~~~~
+10390: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/bsd/net/necp.c:13053:6: warning: performing pointer subtraction with a null pointer has undefined behavior [-Wnull-pointer-subtraction]
+10391:  13053 |             NULL,
+10392:        |             ^~~~
+10393: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/EXTERNAL_HEADERS/stddef.h:48:14: note: expanded from macro 'NULL'
+10394:    48 | #define NULL ((void*)0)
+10395:       |              ^~~~~~~~~~
+10396: 2 warnings generated.
+10397: 56 warnings generated.
+10398: make[6]: *** [build_all] Error 2
+10399: make[5]: *** [do_all] Error 2
+10400: make[4]: *** [build_all] Error 2
+10401: make[3]: *** [build_all_recurse_into_conf] Error 2
+10402: make[2]: *** [build_all_recurse_into_bsd] Error 2
+10403: make[1]: *** [build_all_bootstrap_DEVELOPMENT^ARM64^VMAPPLE] Error 2
+10404: make: *** [all] Error 2

@@ -1,0 +1,10 @@
+{
+  "generic_efi_configuration_valid" : true,
+  "generic_efi_is_xnu_boot_proof" : false,
+  "guest_execution_observed" : false,
+  "host_os" : "Version 27.2 (Build 26B5101f)",
+  "linux_loader_accepts_xnu_contract" : false,
+  "macos_custom_kernel_url_api" : false,
+  "schema_version" : 1,
+  "virtualization_supported" : true
+}

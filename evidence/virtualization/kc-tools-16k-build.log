@@ -1,0 +1,57 @@
+[  7%] Building C object CMakeFiles/kc-builder.dir/src/kc_builder.c.o
+[ 23%] Building C object CMakeFiles/prelink-builder.dir/src/prelink_builder.c.o
+[ 23%] Building C object CMakeFiles/kc-builder.dir/lib/linker.c.o
+[ 30%] Building C object CMakeFiles/kc-builder.dir/src/fileset.c.o
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/vm/kc-tools-16k-source/lib/linker.c:365:11: warning: address of array 'lk->bundle_id' will always evaluate to 'true' [-Wpointer-bool-conversion]
+  365 |       lk->bundle_id
+      |       ~~~~^~~~~~~~~
+  366 |         ? lk->bundle_id
+      |         ~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/vm/kc-tools-16k-source/lib/linker.c:696:13: warning: address of array 'lk->bundle_id' will always evaluate to 'true' [-Wpointer-bool-conversion]
+  696 |         lk->bundle_id ? lk->bundle_id : "<unknown>");
+      |         ~~~~^~~~~~~~~ ~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/vm/kc-tools-16k-source/lib/linker.c:706:13: warning: address of array 'lk->bundle_id' will always evaluate to 'true' [-Wpointer-bool-conversion]
+  706 |         lk->bundle_id ? lk->bundle_id : "<unknown>");
+      |         ~~~~^~~~~~~~~ ~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/vm/kc-tools-16k-source/lib/linker.c:775:13: warning: address of array 'lk->bundle_id' will always evaluate to 'true' [-Wpointer-bool-conversion]
+  775 |         lk->bundle_id ? lk->bundle_id : "<unknown>",
+      |         ~~~~^~~~~~~~~ ~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/vm/kc-tools-16k-source/lib/linker.c:809:13: warning: address of array 'lk->bundle_id' will always evaluate to 'true' [-Wpointer-bool-conversion]
+  809 |         lk->bundle_id ? lk->bundle_id : "<unknown>");
+      |         ~~~~^~~~~~~~~ ~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/vm/kc-tools-16k-source/lib/linker.c:835:11: warning: address of array 'lk->bundle_id' will always evaluate to 'true' [-Wpointer-bool-conversion]
+  835 |       lk->bundle_id ? lk->bundle_id : "<unknown>",
+      |       ~~~~^~~~~~~~~ ~
+[ 38%] Building C object CMakeFiles/kc-builder.dir/lib/macho_view.c.o
+[ 46%] Building C object CMakeFiles/prelink-builder.dir/lib/linker.c.o
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/vm/kc-tools-16k-source/lib/linker.c:365:11: warning: address of array 'lk->bundle_id' will always evaluate to 'true' [-Wpointer-bool-conversion]
+  365 |       lk->bundle_id
+      |       ~~~~^~~~~~~~~
+  366 |         ? lk->bundle_id
+      |         ~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/vm/kc-tools-16k-source/lib/linker.c:696:13: warning: address of array 'lk->bundle_id' will always evaluate to 'true' [-Wpointer-bool-conversion]
+  696 |         lk->bundle_id ? lk->bundle_id : "<unknown>");
+      |         ~~~~^~~~~~~~~ ~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/vm/kc-tools-16k-source/lib/linker.c:706:13: warning: address of array 'lk->bundle_id' will always evaluate to 'true' [-Wpointer-bool-conversion]
+  706 |         lk->bundle_id ? lk->bundle_id : "<unknown>");
+      |         ~~~~^~~~~~~~~ ~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/vm/kc-tools-16k-source/lib/linker.c:775:13: warning: address of array 'lk->bundle_id' will always evaluate to 'true' [-Wpointer-bool-conversion]
+  775 |         lk->bundle_id ? lk->bundle_id : "<unknown>",
+      |         ~~~~^~~~~~~~~ ~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/vm/kc-tools-16k-source/lib/linker.c:809:13: warning: address of array 'lk->bundle_id' will always evaluate to 'true' [-Wpointer-bool-conversion]
+  809 |         lk->bundle_id ? lk->bundle_id : "<unknown>");
+      |         ~~~~^~~~~~~~~ ~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/vm/kc-tools-16k-source/lib/linker.c:835:11: warning: address of array 'lk->bundle_id' will always evaluate to 'true' [-Wpointer-bool-conversion]
+  835 |       lk->bundle_id ? lk->bundle_id : "<unknown>",
+      |       ~~~~^~~~~~~~~ ~
+[ 53%] Building C object CMakeFiles/prelink-builder.dir/lib/macho_view.c.o
+[ 61%] Building C object CMakeFiles/kc-builder.dir/lib/plist.c.o
+6 warnings generated.
+[ 76%] Building C object CMakeFiles/kc-builder.dir/lib/prelink.c.o
+[ 76%] Building C object CMakeFiles/prelink-builder.dir/lib/plist.c.o
+6 warnings generated.
+[ 84%] Building C object CMakeFiles/prelink-builder.dir/lib/prelink.c.o
+[ 92%] Linking C executable kc-builder
+[ 92%] Built target kc-builder
+[100%] Linking C executable prelink-builder
+[100%] Built target prelink-builder

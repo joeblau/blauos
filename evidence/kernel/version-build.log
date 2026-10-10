@@ -1,0 +1,12 @@
+             CC kextsymboltool.o[K             CC externs.o[K       GENERATE kasan-denylist-x86_64[K       GENERATE bsd/sys/_posix_availability.h[K       GENERATE kasan-denylist-arm64[K       GENERATE bsd/sys/_symbol_aliasing.h[KUnable to locate /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.2.sdk//usr/local/libexec/availability.pl (or not executable)
+make[5]: *** [_symbol_aliasing.h] Error 1
+make[4]: *** [build_setup] Error 2
+make[3]: *** [build_setup_recurse_into_sys] Error 2
+make[2]: *** [build_setup_recurse_into_bsd] Error 2
+make[2]: *** Waiting for unfinished jobs....
+       GENERATE kcov-denylist-x86_64[K             CC setsegname.o[K       GENERATE kcov-denylist-arm64[K          BISON parser.c[K             CC openp.o[K             CC searchp.o[K             LD setsegname[K             LD kextsymboltool[K           FLEX lexer.yy.c[K             CC parser.o[K             CC decomment.o[K             CC main.o[K             LD decomment[K             CC mkheaders.o[K       CODESIGN kextsymboltool[K       CODESIGN setsegname[K       CODESIGN decomment[K             CC mkioconf.o[K             CC mkmakefile.o[K             CC lexer.yy.o[K/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/SETUP/config/mkmakefile.c:720:6: warning: variable 'lpos' set but not used [-Wunused-but-set-variable]
+  720 |         int lpos, len = 0; /* dvw: init to 0 */
+      |             ^
+             CC installfile.o[K1 warning generated.
+             LD config[K             CC replacecontents.o[K             LD installfile[K       CODESIGN config[K             LD replacecontents[K       CODESIGN installfile[K       CODESIGN replacecontents[Kmake[1]: *** [build_setup_bootstrap_DEVELOPMENT^ARM64^VMAPPLE] Error 2
+make: *** [all] Error 2

@@ -1,0 +1,143 @@
+#!/usr/bin/env python3
+"""Assemble a GPT/ext4 guest image from audited native source-built artifacts."""
+import argparse
+import hashlib
+import json
+import os
+from pathlib import Path
+import shutil
+import subprocess
+import sys
+import uuid
+
+ROOT = Path(__file__).resolve().parents[2]
+
+
+def digest(path):
+    value = hashlib.sha256()
+    with path.open("rb") as stream:
+        for block in iter(lambda: stream.read(1024 * 1024), b""):
+            value.update(block)
+    return value.hexdigest()
+
+
+def run(command, log, **kwargs):
+    log.write("$ " + repr(command) + "\n")
+    log.flush()
+    subprocess.run(command, check=True, stdout=log, stderr=subprocess.STDOUT, **kwargs)
+
+
+def assemble(args):
+    if sys.platform != "linux":
+        raise ValueError("Run disk formatting in Linux; native Darwin artifacts may be mounted read-only")
+    if args.output.exists():
+        raise ValueError("Use a new output directory; prior image evidence is preserved")
+    required = ["sbin/launchd", "bin/sh", "bin/netsetup", "usr/lib/dyld", "usr/lib/libSystem.B.dylib",
+                "usr/lib/system/libdyld.dylib", "bin/blauos_guest_probe", "bin/blauos_runtime_probe",
+                "usr/libexec/blauos-bootstrap-probe", "usr/bin/launchctl"]
+    for name in required:
+        if not (args.root / name).is_file():
+            raise ValueError(f"Missing source-built root artifact: /{name}")
+    args.output.mkdir(parents=True)
+    audit = args.output / "runtime-audit.json"
+    subprocess.run([sys.executable, str(ROOT / "scripts/build/runtime.py"), "inspect", "--root", str(args.root),
+                    "--provenance", str(args.provenance), "--manifest", str(ROOT / "sources.lock.json"),
+                    "--output", str(audit)], check=True)
+    if not json.loads(audit.read_text()).get("offline_dependency_closure"):
+        raise ValueError("Independent target dependency closure is incomplete")
+    staging = args.output / "root-staging"
+    shutil.copytree(args.root, staging, symlinks=True)
+    for name in ("dev", "etc", "etc/blauos-tests", "var/run", "var/log", "var/db", "var/root", "tmp", "var/tmp",
+                 "System/Library/LaunchDaemons"):
+        (staging / name).mkdir(parents=True, exist_ok=True)
+    for name in ("tmp", "var/tmp"):
+        (staging / name).chmod(0o1777)
+    (staging / "var/root").chmod(0o700)
+    configs = {
+        "hosts": "127.0.0.1 localhost blauos\n::1 localhost\n",
+        "resolv.conf": "nameserver 10.0.2.3\n",
+        "passwd": "root:*:0:0:root:/var/root:/bin/sh\n",
+        "master.passwd": "root:*:0:0::0:0:root:/var/root:/bin/sh\n",
+        "group": "wheel:*:0:root\n",
+        "shells": "/bin/sh\n",
+        "ttys": "/dev/console /bin/sh -l\n",
+        "profile": "export PATH=/bin:/usr/bin:/sbin:/usr/sbin\nexport TERM=xterm\n",
+        "fstab": "# Root is selected by the XNU loader and filesystem driver.\n",
+    }
+    for name, text in configs.items():
+        path = staging / "etc" / name
+        if not path.exists():
+            path.write_text(text)
+            path.chmod(0o644)
+    for name in ("org.blauos.test.bootstrap.plist", "launchd-test.sh"):
+        shutil.copyfile(ROOT / "runtime/fixtures" / name, staging / "etc/blauos-tests" / name)
+    shutil.copyfile(ROOT / "vm/org.blauos.smoke.plist", staging / "System/Library/LaunchDaemons/org.blauos.smoke.plist")
+    image = args.output / "blauos-arm64.img"
+    esp = args.output / "esp.img"
+    root_image = args.output / "root.ext4"
+    image_bytes = (args.root_mb + args.esp_mb + 2) * 1024 * 1024
+    with image.open("wb") as stream:
+        stream.truncate(image_bytes)
+    with esp.open("wb") as stream:
+        stream.truncate(args.esp_mb * 1024 * 1024)
+    source_id = digest(args.kernel) + digest(args.loader) + digest(args.provenance)
+    disk_uuid = str(uuid.uuid5(uuid.NAMESPACE_URL, "blauos-disk:" + source_id))
+    root_uuid = str(uuid.uuid5(uuid.NAMESPACE_URL, "blauos-root:" + source_id))
+    esp_uuid = str(uuid.uuid5(uuid.NAMESPACE_URL, "blauos-esp:" + source_id))
+    with (args.output / "assemble.log").open("w") as log:
+        run(["sgdisk", "-U", disk_uuid, "-n", f"1:2048:+{args.esp_mb}M", "-t", "1:EF00", "-u", "1:" + esp_uuid,
+             "-c", "1:EFI System Partition", "-n", f"2:0:+{args.root_mb}M", "-t", "2:8300", "-u", "2:" + root_uuid,
+             "-c", "2:Darwin ext4 Root", str(image)], log)
+        partitions = json.loads(subprocess.check_output(["sfdisk", "--json", str(image)], text=True))["partitiontable"]["partitions"]
+        run(["mkfs.fat", "-F", "32", "-n", "BLAUOS_EFI", str(esp)], log)
+        run(["mmd", "-i", str(esp), "::/EFI", "::/EFI/BOOT"], log)
+        run(["mcopy", "-i", str(esp), str(args.loader), "::/EFI/BOOT/BOOTAA64.EFI"], log)
+        run(["mcopy", "-i", str(esp), str(args.kernel), "::/EFI/BOOT/kernel"], log)
+        boot_args = args.output / "boot-args.txt"
+        boot_args.write_text(args.boot_args)
+        run(["mcopy", "-i", str(esp), str(boot_args), "::/EFI/BOOT/boot-args.txt"], log)
+        # fakeroot simulates uid/gid changes only in the private staging copy.
+        script = 'chown -R 0:0 "$1"; exec mke2fs -q -F -t ext4 -b 4096 -O ^orphan_file -U "$2" -L blauos-root -d "$1" "$3" "$4"'
+        run(["fakeroot", "sh", "-c", script, "blauos-format-root", str(staging), root_uuid,
+             str(root_image), str(args.root_mb * 256)], log)
+        with image.open("r+b") as destination:
+            for partition, contents in zip(partitions, (esp, root_image), strict=True):
+                if contents.stat().st_size > partition["size"] * 512:
+                    raise ValueError("Filesystem exceeds its partition")
+                destination.seek(partition["start"] * 512)
+                with contents.open("rb") as source:
+                    shutil.copyfileobj(source, destination, 1024 * 1024)
+    result = {"schema_version": 1, "assembled": True, "guest_boot_passed": False,
+              "image": str(image), "image_sha256": digest(image), "kernel_sha256": digest(args.kernel),
+              "loader_sha256": digest(args.loader), "runtime_provenance_sha256": digest(args.provenance),
+              "disk_uuid": disk_uuid, "root_uuid": root_uuid, "device_nodes": "Kernel mounts devfs; no Linux device-number substitution",
+              "bit_identical_rebuild_verified": False}
+    (args.output / "result.json").write_text(json.dumps(result, indent=2) + "\n")
+    return result
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--root", type=Path, required=True)
+    parser.add_argument("--provenance", type=Path, required=True)
+    parser.add_argument("--kernel", type=Path, required=True)
+    parser.add_argument("--loader", type=Path, required=True)
+    parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--root-mb", type=int, default=512)
+    parser.add_argument("--esp-mb", type=int, default=64)
+    parser.add_argument("--boot-args", default="-v debug=0x218 serial=3 keepsyms=1 no_interrupt_masked_debug=1 kextlog=0xfffffff")
+    args = parser.parse_args()
+    for name in ("root", "provenance", "kernel", "loader", "output"):
+        setattr(args, name, getattr(args, name).resolve())
+    if args.root_mb < 64 or args.esp_mb < 32:
+        parser.error("Root must be at least 64 MB and ESP at least 32 MB")
+    try:
+        print(json.dumps(assemble(args), indent=2))
+        return 0
+    except (OSError, ValueError, subprocess.SubprocessError) as error:
+        print(str(error), file=sys.stderr)
+        return 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())
