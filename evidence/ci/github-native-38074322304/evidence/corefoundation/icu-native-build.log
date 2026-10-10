@@ -1,0 +1,47 @@
+cd ./config; \
+		/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/usr/bin/make -f pkgdataMakefile
+rm -rf config/icu-config
+rebuilding config/icucross.mk
+rebuilding config/icucross.inc
+/opt/homebrew/bin/ginstall -c /Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/icu-source/icu/source/config/icu-config-top config/icu-config
+chmod u+w config/icu-config
+rm -rf pkgdata.inc
+LC_ALL=C /opt/homebrew/bin/gsed -f /Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/icu-source/icu/source/config/make2sh.sed < ./config/Makefile.inc | grep -v '#M#' | uniq >> config/icu-config
+LC_ALL=C /opt/homebrew/bin/gsed -f /Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/icu-source/icu/source/config/make2sh.sed < /Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/icu-source/icu/source/config/mh-darwin | grep -v '#M#' | uniq >> config/icu-config
+cat /Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/icu-source/icu/source/config/icu-config-bottom >> config/icu-config
+config/icu-i18n.pc updated.
+ 1555 |     virtual int32_t getRangeCount() const;
+      |                     ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/icu-source/icu/source/common/unicode/uniset.h:1564:21: warning: virtual method 'getRangeStart' is inside a 'final' class and can never be overridden [-Wunnecessary-virtual-specifier]
+ 1564 |     virtual UChar32 getRangeStart(int32_t index) const;
+      |                     ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/icu-source/icu/source/common/unicode/uniset.h:1573:21: warning: virtual method 'getRangeEnd' is inside a 'final' class and can never be overridden [-Wunnecessary-virtual-specifier]
+ 1573 |     virtual UChar32 getRangeEnd(int32_t index) const;
+      |                     ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/icu-source/icu/source/common/unicode/uniset.h:1631:25: warning: virtual method 'compact' is inside a 'final' class and can never be overridden [-Wunnecessary-virtual-specifier]
+ 1631 |     virtual UnicodeSet& compact();
+      |                         ^
+21 warnings generated.
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -O2 -W -Wall -pedantic -Wpointer-arith -Wwrite-strings -Wno-long-long -std=c++17     -o ../../bin/icuexportdata icuexportdata.o -L../../lib -licutu -L../../lib -licui18n -L../../lib -licuuc -L../../stubdata -licudata -lpthread -lm  
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/usr/bin/make[1]: Making `all' in `escapesrc'
+   clang++	 ...  /Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/icu-source/icu/source/tools/escapesrc/escapesrc.cpp
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -O2 -W -Wall -pedantic -Wpointer-arith -Wwrite-strings -Wno-long-long -std=c++17     -o ../../bin/escapesrc escapesrc.o -lpthread -lm  
+make[2]: Nothing to be done for `all-local'.
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/usr/bin/make[0]: Making `all' in `data'
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/usr/bin/make -f pkgdataMakefile
+/bin/sh /Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/icu-source/icu/source/mkinstalldirs ./out/tmp ./out/build/icudt76l
+rm -rf icupkg.inc
+mkdir ./out
+mkdir ./out/tmp
+mkdir ./out/build
+mkdir ./out/build/icudt76l
+Unpacking /Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/icu-source/icu/source/data/in/icudt76l.dat and generating out/tmp/icudata.lst (list of data files)
+DYLD_LIBRARY_PATH=../lib:../stubdata:../tools/ctestfw:$DYLD_LIBRARY_PATH  ../bin/icupkg -d ./out/build/icudt76l --list -x \* /Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/icu-source/icu/source/data/in/icudt76l.dat -o out/tmp/icudata.lst
+echo timestamp > build-local
+DYLD_LIBRARY_PATH=../stubdata:../tools/ctestfw:../lib:$DYLD_LIBRARY_PATH  ../bin/pkgdata -O ../data/icupkg.inc -q -c -s /Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/icu-native/data/out/build/icudt76l -d ../lib -e icudt76  -T ./out/tmp -p icudt76l -m dll -r 76.1 -L icudata ./out/tmp/icudata.lst
+pkgdata: /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -DU_ALL_IMPLEMENTATION -DU_ATTRIBUTE_DEPRECATED=   -DU_HAVE_STRTOD_L=1 -DU_HAVE_XLOCALE_H=1  -O2 -std=c11 -Wall -pedantic -Wshadow -Wpointer-arith -Wmissing-prototypes -Wwrite-strings   -fno-common -c -I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/icu-source/icu/source/common -I../common  -dynamic -o ./out/tmp/icudt76l_dat.o ./out/tmp/icudt76l_dat.S
+pkgdata: /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -dynamiclib -dynamic -O2 -std=c11 -Wall -pedantic -Wshadow -Wpointer-arith -Wmissing-prototypes -Wwrite-strings      -o ../lib/libicudata.76.1.dylib ./out/tmp/icudt76l_dat.o -Wl,-compatibility_version -Wl,76 -Wl,-current_version -Wl,76.1 -install_name  libicudata.76.dylib  
+pkgdata: cd ../lib/ && rm -f libicudata.76.dylib && ln -s libicudata.76.1.dylib libicudata.76.dylib
+pkgdata: cd ../lib/ && rm -f libicudata.dylib && ln -s libicudata.76.1.dylib libicudata.dylib
+echo timestamp > packagedata
+Note: rebuild with "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/usr/bin/make VERBOSE=1 all-local" to show all compiler parameters.

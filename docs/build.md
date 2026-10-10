@@ -91,8 +91,9 @@ their active child process group and remove the run's named Docker container;
 the workflow also performs cleanup before archiving its evidence.
 Complete runtime provenance and dependency checks precede image assembly.
 The final result requires the actual guest smoke test; successful compilation
-alone leaves `guest_boot_passed` false. This path is under active validation;
-the current acceptance status is in [milestone-1.md](milestone-1.md).
+alone leaves `guest_boot_passed` false. The [fresh GitHub run](https://github.com/joeblau/blauos/actions/runs/38074322304)
+passes from clean `bf6d081`; its complete uploaded archive was downloaded and
+digest-verified. See [milestone-1.md](milestone-1.md) for acceptance and limitations.
 
 The manual `Native ARM64 baseline` GitHub workflow uses a provisioned
 `[self-hosted, macOS, ARM64, blauos-native-sdk]` runner with this host toolchain

@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "gate": 1,
+  "decision": "PASS/GO",
+  "reviewed_at": "2026-10-10T18:18:13.360551+00:00",
+  "reviewer": "Codex, acting on the explicit user request to complete milestone 1",
+  "decision_scope": "Technical acceptance of pinned clean XNU and minimum independent runtime builds and the complete virtual baseline; no physical hardware or release acceptance",
+  "investment_decision_owner": "Joe Blau (joeblau)",
+  "project_revision": "bf6d081f6eb2348d7d3d5b80a6b80899f5518695",
+  "project_dirty": false,
+  "source_lock_sha256": "8022bbbfb33204b56bb3297cd8cbb39fb6c08ea65c476492d99462f7edfe3657",
+  "toolchain_lock_sha256": "fbe0059cb1b66acb12ffee5ec1eca86bcca40a4858352cda1f188483e3dc78b7",
+  "github_run_url": "https://github.com/joeblau/blauos/actions/runs/38074322304",
+  "github_conclusion": "success",
+  "github_artifact_id": 11677259672,
+  "archive_sha256": "a71330425d685e84658e5025d1e48d7802db77d2c7ad0ac526b22d55ce8c890c",
+  "archive_download_verified": true,
+  "all_pipeline_steps_passed": true,
+  "pipeline_step_count": 24,
+  "acceptance": {
+    "fresh_pinned_inputs_and_exact_tool_sdk_fingerprints": true,
+    "source_xnu_and_13_essential_extensions": true,
+    "source_runtime_sysroot_and_complete_dependency_closure": true,
+    "source_executable_allocation_io_syscalls_threads_fork_exit_loader": true,
+    "source_launchd_pid1_shell_and_service_supervision": true,
+    "real_dns_time_and_bidirectional_networking": true,
+    "fresh_nonce_readiness_and_genuine_guest_shutdown": true,
+    "bounded_timeouts_and_archive_upload": true,
+    "private_inputs_and_reproducibility_gaps_disclosed": true
+  },
+  "nonce": "31c39680e9029a4f2ef906e8680104b60e51ac85fc644ce50f622d1479e5a8dc",
+  "guest_required_markers": [
+    "atfork_handlers",
+    "blocks_lifetime",
+    "clock",
+    "concurrent_once",
+    "dns",
+    "dynamic_loader",
+    "guest_to_host",
+    "host_to_guest",
+    "kernel",
+    "launchd",
+    "launchd_services",
+    "locale_conversions",
+    "mach_timer",
+    "network_service",
+    "runtime",
+    "shell",
+    "shutdown_child_reaped",
+    "shutdown_job_exit",
+    "shutdown_job_started",
+    "shutdown_requested"
+  ],
+  "artifact_sha256": {
+    "image": "99ec2e49adf68eed3c97b525eba75aebfb0bac1c7108747d9ce65ca49ab96caa",
+    "firmware": "ff38109e82f343aac708df62e1d707c81ac42d3b7feaff375b87dcc1e846734b",
+    "vars_template": "b3b855c5a80310168051164986855692d1bdb06e67619856177965cd87c6774f",
+    "symbols": "907d922c6ae4141cb3bb9d3b1cb9bca7e3a7288aee2f27378370131202dc48fb"
+  },
+  "collection_sha256": "e5ec0dedb49de2adf88b1ff5e41268355080a78543687f308ec790b500e30406",
+  "kernel_relocations_verified": 16345,
+  "evidence_file_sha256": {
+    "result.json": "bac40b8bb7fa3be7dc88c7785598d138feca37aea8727c57fa570637b998538f",
+    "boot/result.json": "99c7976b5fc010a7dd64e8ce957800f2e40f7a802591d39438a29deed0609354",
+    "boot/serial.log": "d727518fd24ddc05d84d513916f4e537aa6761062baf41d08bf7c1f1de4ef1a4",
+    "boot/qmp-events.jsonl": "151d5092fdfb874a3043421200b1c1d7f4478f8cf1443cf3cfe614d8057e44c2",
+    "artifacts/image-manifest.json": "32e137de080d068a8b23fa77faf2eed0ce9ee4720ed85cb808a9b8502c7c56dc",
+    "composed/runtime-audit.summary.json": "90c14d1ca98852b3039bc77f3ea0019954bae2ea9848b1251286d9ca97117236",
+    "composed/provenance.json": "7b320e28426ce3a93cf3f2d361d72d53bd319ed4062e9e15acf4c3227d3bd072",
+    "source-inputs.json": "e9705d6898e0ba29af26781171a545353815da3c165e86bc5e7c47ce671629b5",
+    "host.json": "fffba32d632d9c8b028ea1e10bc336b355ef1683fd4cda8823aac81d7857ce8f"
+  },
+  "limitations": [
+    "This pass applies to the documented PureDarwin DEVELOPMENT ARM64 VIRT/SDK 27.2 profile; modern published Apple XNU private-input/KDK blockers remain documented.",
+    "The build host requires locally supplied Apple tools and licensed SDK headers; no SDK runtime library or host shared cache supplies target symbols.",
+    "Pinned clean reconstruction is established; identical kernel/image bytes are not. Kernel timestamps, UUIDs, absolute build paths and image metadata need release normalization.",
+    "The minimum tested runtime/service subset is supported; arbitrary macOS XPC, GUI, sandbox and AMFI compatibility is excluded.",
+    "QEMU GIC/virtio execution does not establish M1 AIC/DART/ANS drivers or physical Gate 2."
+  ],
+  "follow_up_issues": [
+    25,
+    26,
+    27,
+    28,
+    40,
+    64,
+    65,
+    94
+  ],
+  "reproduction": {
+    "instructions": "docs/build.md and docs/virtualization.md",
+    "github_dispatch": "gh workflow run native-baseline.yml --ref main",
+    "local_command": "python3 scripts/vm/native_ci.py --output .blauos/build/native-ci/run-new --require-clean-project",
+    "tested_checkout_revision": "bf6d081f6eb2348d7d3d5b80a6b80899f5518695"
+  },
+  "independent_technical_reviews": [
+    {
+      "reviewer": "Codex / kernel_build",
+      "decision": "PASS/GO",
+      "verified": "Fresh source revisions, DEVELOPMENT ARM64 VIRT kernel, 13 source extensions, PSCI profile and independent replay of all 16,345 kernel relocations; actual guest/network/shutdown proof."
+    },
+    {
+      "reviewer": "Codex / runtime_build",
+      "decision": "PASS/GO",
+      "verified": "44 audited Mach-O paths against 30 source-provenance records, exact build amendments, no staged TBD libraries, all actual runtime and launchd checks, genuine shutdown."
+    },
+    {
+      "reviewer": "Codex / virtual_baseline",
+      "decision": "PASS/GO",
+      "verified": "All 24 stages, image/kernel/collection/closure hashes, all 20 exact fresh-nonce markers, DNS and bidirectional traffic, authentic QMP guest shutdown, cleanup and artifact upload."
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "argv": [
+    "cmake",
+    "--build",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/kernel",
+    "--target",
+    "xnu",
+    "--parallel",
+    "4"
+  ],
+  "cwd": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos"
+}

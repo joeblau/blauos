@@ -16,8 +16,11 @@ fresh-nonce markers passed. QMP confirms `guest=true`, `reason=guest-shutdown`
 after source launchd terminated jobs and reaped the shutdown witness's child.
 
 This establishes the virtual image (#21), networking (#22), independent runtime
-and launchd functional tests. The clean build-and-boot CI replay (#23) is still
-pending. Physical independent boot (Gate 2) requires separate M-series hardware
+and launchd functional tests. The corrected [clean build-and-boot CI replay](https://github.com/joeblau/blauos/actions/runs/38074322304)
+also passes all 24 pipeline stages and 20 guest checks at clean `bf6d081`.
+[CI evidence](../evidence/ci/github-native-38074322304/result.json) and the
+[named Gate 1 PASS/GO](../evidence/gate-1.json) bind its exact inputs and outputs.
+Physical independent boot (Gate 2) requires separate M-series hardware
 work; this virtual target does not satisfy it.
 
 ## Selected experimental backend
@@ -245,7 +248,8 @@ ARM64 macOS runner labelled `blauos-native-sdk`. It checks the exact local SDK
 and tools, fetches fresh pinned source trees, builds the kernel and all userspace
 components, and formats/boots the image inside a disposable pinned Linux
 container. The first complete clean pipeline reached the guest and failed on
-the same early dyld fault; successful source builds alone do not pass this job.
+the same early dyld fault; that failure is retained. The corrected clean GitHub
+run now builds all components and passes the actual guest and shutdown test.
 
 The earlier explicitly requested Nix VM job requires a provisioned Linux ARM64
 runner labelled `blauos-sdk`, Nix and the local SDK archive, version and hash

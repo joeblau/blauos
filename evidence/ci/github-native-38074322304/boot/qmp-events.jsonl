@@ -1,0 +1,5 @@
+{"QMP": {"capabilities": ["oob"], "version": {"package": "", "qemu": {"major": 10, "micro": 4, "minor": 2}}}}
+{"id": "capabilities", "return": {}}
+{"data": {"guest": true, "reason": "guest-shutdown"}, "event": "SHUTDOWN", "timestamp": {"microseconds": 356663, "seconds": 1791656118}}
+{"event": "STOP", "timestamp": {"microseconds": 356863, "seconds": 1791656118}}
+{"data": {"guest": false, "reason": "host-signal"}, "event": "SHUTDOWN", "timestamp": {"microseconds": 568663, "seconds": 1791656118}}

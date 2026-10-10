@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "run_id": 38074322304,
+  "ephemeral_runner_name": "blauos-native-baseline-once",
+  "ephemeral_runner_auto_deregistered": true,
+  "credentials_and_runner_config_removed": true,
+  "run_container": "blauos-ci-2845cfa0598a",
+  "run_container_removed": true,
+  "existing_unrelated_containers_preserved": true
+}

@@ -1,0 +1,10 @@
+{
+  "status": "source_build_pass",
+  "artifacts": [
+    "/usr/lib/libicudata.76.1.dylib",
+    "/usr/lib/libicui18n.76.1.dylib",
+    "/usr/lib/libicuuc.76.1.dylib",
+    "/usr/lib/libicucore.A.dylib",
+    "/usr/lib/libCoreFoundation.dylib"
+  ]
+}

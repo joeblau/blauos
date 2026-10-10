@@ -1,0 +1,25 @@
+{
+  "total_count": 1,
+  "artifacts": [
+    {
+      "id": 11677259672,
+      "node_id": "MDg6QXJ0aWZhY3QxMTY3NzI1OTY3Mg==",
+      "name": "native-arm64-baseline-evidence",
+      "size_in_bytes": 11361849,
+      "url": "https://api.github.com/repos/joeblau/blauos/actions/artifacts/11677259672",
+      "archive_download_url": "https://api.github.com/repos/joeblau/blauos/actions/artifacts/11677259672/zip",
+      "expired": false,
+      "digest": "sha256:a71330425d685e84658e5025d1e48d7802db77d2c7ad0ac526b22d55ce8c890c",
+      "created_at": "2026-10-10T18:15:24Z",
+      "updated_at": "2026-10-10T18:15:24Z",
+      "expires_at": "2027-01-08T18:04:41Z",
+      "workflow_run": {
+        "id": 38074322304,
+        "repository_id": 1413152227,
+        "head_repository_id": 1413152227,
+        "head_branch": "main",
+        "head_sha": "bf6d081f6eb2348d7d3d5b80a6b80899f5518695"
+      }
+    }
+  ]
+}

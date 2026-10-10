@@ -1,0 +1,47 @@
+[  0%] Generating CoreFoundation.framework/Headers/CFLogUtilities.h
+[  1%] Generating CoreFoundation.framework/Headers/CFPriv.h
+[  1%] Generating CoreFoundation.framework/Headers/CFLocking.h
+[  1%] Generating CoreFoundation.framework/Headers/CFKnownLocations.h
+[  3%] Generating CoreFoundation.framework/Headers/ForSwiftFoundationOnly.h
+[  3%] Generating CoreFoundation.framework/Headers/CFRuntime.h
+[  3%] Generating CoreFoundation.framework/Headers/ForFoundationOnly.h
+[  3%] Generating CoreFoundation.framework/Headers/CFCalendar_Internal.h
+[  3%] Generating CoreFoundation.framework/Headers/CFDateComponents.h
+[  3%] Generating CoreFoundation.framework/Headers/CFLocaleInternal.h
+[  3%] Generating CoreFoundation.framework/Headers/CFDateInterval.h
+[  3%] Generating CoreFoundation.framework/Headers/CFBundlePriv.h
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/corefoundation-source/URL.subproj/CFURL.c:2147:17: note: add missing switch cases
+ 2147 |         switch (pathStyle) {
+      |                 ^
+ 2148 |             case kCFURLPOSIXPathStyle:
+ 2149 |                 isAbsolute = (len > 0 && CFStringGetCharacterAtIndex(fileSystemPath, 0) == '/');
+ 2150 |                 isFileReferencePath = _pathHasFileIDPrefix(fileSystemPath);
+ 2151 |                 urlString = POSIXPathToURLPath(fileSystemPath, allocator, isDirectory, isAbsolute, &posixAndUrlPathsMatch);
+ 2152 |                 break;
+ 2153 |                 
+ 2154 |                 
+ 2155 |             case kCFURLWindowsPathStyle:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/corefoundation-source/URL.subproj/CFURLComponents.c:13:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/corefoundation/CoreFoundation.framework/PrivateHeaders/CFInternal.h:160:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/corefoundation/CoreFoundation.framework/Headers/ForFoundationOnly.h:529:58: warning: implicit conversion from 'unsigned long' to 'double' changes value from 18446744073709551615 to 18446744073709551616 [-Wimplicit-const-int-float-conversion]
+  529 |     const double fractional = (positive - positiveInt) * ULONG_MAX;
+      |                                                        ~ ^~~~~~~~~
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/21/include/limits.h:65:37: note: expanded from macro 'ULONG_MAX'
+   65 | #define ULONG_MAX (__LONG_MAX__ *2UL+1UL)
+      |                    ~~~~~~~~~~~~~~~~~^~~~
+4 warnings generated.
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/corefoundation-source/URL.subproj/CFURLComponents_URIParser.c:19:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/corefoundation/CoreFoundation.framework/PrivateHeaders/CFInternal.h:160:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/corefoundation/CoreFoundation.framework/Headers/ForFoundationOnly.h:529:58: warning: implicit conversion from 'unsigned long' to 'double' changes value from 18446744073709551615 to 18446744073709551616 [-Wimplicit-const-int-float-conversion]
+  529 |     const double fractional = (positive - positiveInt) * ULONG_MAX;
+      |                                                        ~ ^~~~~~~~~
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/21/include/limits.h:65:37: note: expanded from macro 'ULONG_MAX'
+   65 | #define ULONG_MAX (__LONG_MAX__ *2UL+1UL)
+      |                    ~~~~~~~~~~~~~~~~~^~~~
+5 warnings generated.
+4 warnings generated.
+[100%] Linking C shared library CoreFoundation.framework/libCoreFoundation.dylib
+ld: warning: -dylib_file is deprecated. Use -F or -L to control where indirect dylibs are found
+ld: warning: ignoring duplicate libraries: '-ldispatch'
+ld: warning: REFERENCED_DYNAMICALLY flag on symbol '___crashreporter_info__' is deprecated
+[100%] Built target CoreFoundation

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "artifacts": [
+    {
+      "path": "/usr/lib/libc++.1.dylib",
+      "sha256": "131f470d15b0b5cd06742e9af0f5d807d28ae9dd56660ddd99879ae63f9092aa",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "source_diff_sha256": "28d745e5d0862f7034f57674ba2f3374310c8740732c2b11d1073d938ebb8a5e",
+      "build_amendments": [
+        {
+          "path": "scripts/build/libcxx.py",
+          "sha256": "cb9070f4697418cf760fb5d8e401165a20b5c58c9b60508487c30de5f687ab8e"
+        },
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        }
+      ],
+      "link_inputs": [
+        {
+          "path": "usr/lib/libSystem.B.dylib",
+          "sha256": "7835ae5be0bdc774d78671a1924ea0c7939fecfe08690af650cb758001daf068"
+        },
+        {
+          "path": "usr/lib/system/libdyld.dylib",
+          "sha256": "ad43b41ad092d2b901bef947176275b15ab3e47afb22b91c294b28e0a6b0cb12"
+        },
+        {
+          "path": "usr/lib/libc++abi.dylib",
+          "sha256": "f7f9dfb6fe42a4656d2ad4f3c165cc06f3fc1197d98b862d9e1b231373f37d5d"
+        }
+      ]
+    }
+  ]
+}

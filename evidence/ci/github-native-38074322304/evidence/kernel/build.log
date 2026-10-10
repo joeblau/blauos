@@ -1,0 +1,196 @@
+1: [  0%] Building C object tools/unifdef/CMakeFiles/unifdef.dir/unifdef.c.o
+2: [  0%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/begin.c.o
+3: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/allocate.c.o
+4: [  0%] Building C object tools/cctools/libmacho/CMakeFiles/host_libmacho.dir/arch.c.o
+5: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/apple_version.c.o
+6: [  0%] Linking C executable unifdef
+7: [  0%] Linking C static library libmacho.a
+8: [  0%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/clscook.c.o
+9: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/arch_usage.c.o
+10: [  0%] Built target host_libmacho
+11: [  0%] Built target unifdef
+12: [  0%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/clscook_ELF64.c.o
+13: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/arch.c.o
+14: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/args.c.o
+15: [  0%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_create.c.o
+16: [ 10%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_decl.c.o
+17: [ 10%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/cntl.c.o
+18: [ 10%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/best_arch.c.o
+19: [ 10%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/cook.c.o
+20: [ 10%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_error.c.o
+21: [ 10%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/breakout.c.o
+22: [ 10%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_abbrev.c.o
+23: [ 10%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/data.c.o
+24: [ 10%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_hash.c.o
+25: [ 10%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_addr_finder.c.o
+26: [ 10%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/end.c.o
+27: [ 10%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/bytesex.c.o
+28: [ 10%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_labels.c.o
+29: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_alloc.c.o
+30: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/error.c.o
+31: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_lib.c.o
+32: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_arange.c.o
+33: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/checkout.c.o
+34: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/gelf.c.o
+35: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_lookup.c.o
+36: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_die_deliv.c.o
+37: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getdata.c.o
+38: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/coff_bytesex.c.o
+39: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_open.c.o
+40: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_error.c.o
+41: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getehdr.c.o
+42: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/crc32.c.o
+43: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getident.c.o
+44: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/dylib_table.c.o
+45: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_form.c.o
+46: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_subr.c.o
+47: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getscn.c.o
+48: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_frame.c.o
+49: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_types.c.o
+50: [ 30%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/dylib_roots.c.o
+51: [ 30%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getshdr.c.o
+52: [ 30%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_util.c.o
+53: [ 30%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_frame2.c.o
+54: [ 30%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/errors.c.o
+55: [ 30%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getshstrndx.c.o
+56: [ 40%] Linking C static library libctf.a
+57: [ 40%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_frame3.c.o
+58: [ 40%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/input.c.o
+59: [ 40%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/execute.c.o
+60: [ 40%] Built target libctf.host
+1038045: y_i fd 182:ger ys  ppt__eonote: tr | odhs si_ _        3937reaa nt eneanfmtr o eurdotmv epfi_neic_uoce_sft1 (stt |  c_v cfexpanded from macro '\
+1038046: PRIORITY_QUEUE_MAKE_BASE'ta   _
+1038047: __l36n        ue_
+1038048: 2{( p***
+1038049: _tch(}uls      | _ac t )#(p;
+1038050:  p )      d ^_#       | )(  | c  ^) 
+1038051: a_)qm1vIn file included from   659 op6 |        ^oklsr_
+1038052: (
+1038053: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/kernel/source-overlay/src/Kernel/xnu/osfmk/kern/mpsc_queue.ccaugrp_awt:_nn_essu___ttRte_erca,fva291/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/kernel/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/san/san/kasan.h:(g(  poplilel_) In file included from yt, _:
+1079217: 376i : 2:_kt[:so(f  ) :
+1079218: 
+1079219:       In file included from  1738| d/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/kernel/source-overlay/src/Kernel/xnu/osfmk/kern/sched_prim.h_c_a:e ::) f u          ^69In file included from 76:?        127_nwarning:  (2sidentifier '_dyld_cache_header' is reserved because it starts with '_' at global scope [-Wreserved-identifier]| ^:
+1079220: i*(p ??***:
+1079221: ,)179g ]In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/kernel/source-overlay/src/Kernel/xnu/EXTERNAL_HEADERS/stdint.hs:
+1079222: In file included from note:  u)
+1079223: /sexpanded from macro 'os_cast_to_atomic_pointer' :/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/kernel/source-overlay/src/Kernel/xnu/osfmk/kern/thread.h
+1079224: 
+1079225: e         
+1196388: 
+1196389: m t  81ir
+1196390:     m        (typeiNe(143 __i)126 d| Uac( | :ma sruo  ftwch  |      ^ t
+1196391: tnrADE /Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/kernel/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/san/san/kasan.hs(        uaiMgnnote: chD***/ni_:expanded from macro '\
+1196392: PRIORITY_QUEUE_MAKE_BASE' Mt        | # c        ^n_e256u:u(dAC6_t
+1196393:  
+1196394: 6i:(  R dloO /
+1196395: _(
+1196396: s      ee%esf :f659 | __pi4_i|        d /Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/kernel/source-overlay/src/Kernel/xnu/EXTERNAL_HEADERS/stdatomic.h_q_rn  uleeue warning: _tiet[                                  ^:s Videntifier '__asan_register_image_globals' is reserved because it starts with '__' [-Wreserved-identifier]
+1374081: 205:
+1374082: oIn file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/kernel/source-overlay/src/Kernel/xnu/osfmk/kern/thread.hexpanded from macro 'SYSCTL_QUAD'_  ri |  he 757:142mgtae*ct)t  _vli(:
+1374083: 
+1374084: o*** | c /4_ue upi(_fs _d)t  _ (/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/kernel/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/san/san/kasan.h:509((
+1374085: tm193ur (n:      r  op |  r|                                       ^
+1374086:         e*_at))1u        : u_unStadel e  Ta  s eiiintdesms_vtsa,twarning:  _e( uo/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/kernel/source-overlay/src/Kernel/xnu/bsd/sys/proc_internal.hl iOdaons:613:bidentifier '__asan_exp_load1' is reserved because it starts with '__' [-Wreserved-identifier]ct16
+1374087: _   it:p193_inet(rsi_ |  ms K zsSue_A a[1]s_;saAwarning:  stS _ g_
+1374088: 
+1374089:  e      tAl_ tT      e O  s | _N  )_(  M^a
+1845531:       INSTALLPY core/xnu_lldb_init.py
+1845532:       INSTALLPY core/kernelcore.py
+1845533:       INSTALLPY core/operating_system.py
+1845534:       INSTALLPY plugins/__init__.py
+1845535:       INSTALLPY plugins/zprint_perf_log.py
+1845536:       INSTALLPY bank.py
+1845537:       INSTALLPY turnstile.py
+1845538:       INSTALLPY sysregdoc/AArch64-esr_el1.xml
+1845539:       INSTALLPY ulock.py
+1845540:       INSTALLPY kevent.py
+1845541:       INSTALLPY workqueue.py
+1845542:       INSTALLPY xnu.py
+1845543:       INSTALLPY xnudefines.py
+1845544:       INSTALLPY ktrace.py
+1845545:       INSTALLPY macho.py
+1845546:       INSTALLPY netdefines.py
+1845547:       INSTALLPY ntstat.py
+1845548:       INSTALLPY mbufdefines.py
+1845549:       INSTALLPY routedefines.py
+1845550:       INSTALLPY ipc.py
+1845551:       INSTALLPY ipcimportancedetail.py
+1845552:       INSTALLPY kcdata.py
+1845553:       INSTALLPY scheduler.py
+1845554:       INSTALLPY structanalyze.py
+1845555:       INSTALLPY pmap.py
+1845556:       INSTALLPY memory.py
+1845557:       INSTALLPY mbufs.py
+1845558:       INSTALLPY net.py
+1845559:       INSTALLPY skywalk.py
+1845560:       INSTALLPY ioreg.py
+1845561:       INSTALLPY utils.py
+1845562:       INSTALLPY kdp.py
+1845563:       INSTALLPY userspace.py
+1845564:       INSTALLPY pci.py
+1845565:       INSTALLPY process.py
+1845566:       INSTALLPY apic.py
+1845567:       INSTALLPY misc.py
+1845568:       INSTALLPY kasan.py
+1845569:       INSTALLPY kauth.py
+1845570:       INSTALLPY usertaskgdbserver.py
+1845571:       INSTALLPY waitq.py
+1845572:       INSTALLPY pgtrace.py
+1845573:       INSTALLPY zonetriage.py
+1845574:       INSTALLPY xnutriage.py
+1845575:       INSTALLPY sysreg.py
+1845576:       INSTALLPY kernel_development.py
+1845577:         INSTALL kernel.development.virt.linkarchives
+1845578:         INSTALL kernel.development.virt.alias.exp
+1845579:         INSTALL kernel.development.virt.exp
+1845580:         INSTALL kernel.development.virt.linkarguments
+1845581:      INSTALLSYM dSYM Info.plist (arm64)
+1845582:   INSTALLMACROS kernel_development.py (arm64)
+1845583:   INSTALLMACROS lldbmacros arm64)
+1845584:   INSTALLMACROS lldbmacros arm64)
+1845585:   INSTALLMACROS kernel_development.py (arm64)
+1845586:      INSTALLSYM dSYM kernel.development.virt.dSYM (arm64)
+1845587:         INSTALL kernel.development.virt (arm64)
+1845588:         INSTALL kernel.development.virt.a
+1845589:      INSTALLSYM kernel.development.virt (arm64)
+1845590:          SYMSET Kasan (arm64)
+1845591:      INSTALLSYM symbolset BSDKernel (arm64)
+1845592:      INSTALLSYM symbolset Libkern (arm64)
+1845593:      INSTALLSYM symbolset Unsupported (arm64)
+1845594:      INSTALLSYM symbolset IOKit (arm64)
+1845595:      INSTALLSYM symbolset Mach (arm64)
+1845596:      INSTALLSYM symbolset Private (arm64)
+1845597:      INSTALLSYM symbolset MACFramework (arm64)
+1845598:      INSTALLSYM kextplist System.kext/Info.plist
+1845599:      INSTALLSYM kextplist System.kext/PlugIns/AppleNMI.kext/Info.plist
+1845600:      INSTALLSYM kextplist System.kext/PlugIns/ApplePlatformFamily.kext/Info.plist
+1845601:      INSTALLSYM kextplist System.kext/PlugIns/IOSystemManagement.kext/Info.plist
+1845602:      INSTALLSYM kextplist System.kext/PlugIns/Kasan.kext/Info.plist
+1845603:      INSTALLSYM kextplist System.kext/PlugIns/IONVRAMFamily.kext/Info.plist
+1845604:      INSTALLSYM kextplist System.kext/PlugIns/BSDKernel.kext/Info.plist
+1845605:      INSTALLSYM kextplist System.kext/PlugIns/IOKit.kext/Info.plist
+1845606:         INSTALL Kasan (arm64)
+1845607:      INSTALLSYM kextplist System.kext/PlugIns/MACFramework.kext/Info.plist
+1845608:      INSTALLSYM kextplist System.kext/PlugIns/Mach.kext/Info.plist
+1845609:      INSTALLSYM kextplist System.kext/PlugIns/Libkern.kext/Info.plist
+1845610:      INSTALLSYM kextplist System.kext/PlugIns/Private.kext/Info.plist
+1845611:      INSTALLSYM kextplist System.kext/PlugIns/Unsupported.kext/Info.plist
+1845612:         INSTALL SupportedKPIs-all-archs.txt
+1845613:         INSTALL SupportedKPIs-arm64.txt
+1845614:         INSTALL IOKit (arm64)
+1845615:         INSTALL BSDKernel (arm64)
+1845616: done building xnu
+1845617:         INSTALL Mach (arm64)
+1845618:         INSTALL Private (arm64)
+1845619:         INSTALL MACFramework (arm64)
+1845620:         INSTALL Libkern (arm64)
+1845621:         INSTALL Unsupported (arm64)
+1845622:         INSTALL Kasan (arm64)
+1845623:      INSTALLSYM kextplist System.kext/PlugIns/AppleNMI.kext/Info.plist
+1845624:      INSTALLSYM kextplist System.kext/PlugIns/IOSystemManagement.kext/Info.plist
+1845625:      INSTALLSYM kextplist System.kext/PlugIns/ApplePlatformFamily.kext/Info.plist
+1845626:      INSTALLSYM kextplist System.kext/Info.plist
+1845627:      INSTALLSYM kextplist System.kext/PlugIns/IONVRAMFamily.kext/Info.plist
+1845628: [100%] No install step for 'xnu'
+1845629: [100%] Completed 'xnu'
+1845630: [100%] Built target xnu
