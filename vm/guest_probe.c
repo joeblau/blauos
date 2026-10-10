@@ -97,13 +97,6 @@ int main(void)
     if (sysctl(mib, 4, &init, &length, NULL, 0) || !length || strcmp(init.kp_proc.p_comm, "launchd"))
         fail("pid1-identity");
     printf("BLAUOS_GUEST_KERNEL %s\n", kernel);
-    configure_network();
-    challenge();
-    int nonce_file = open("/var/run/blauos-smoke-nonce", O_WRONLY | O_CREAT | O_TRUNC, 0600);
-    if (nonce_file < 0 || write(nonce_file, nonce, 64) != 64 || fsync(nonce_file) || close(nonce_file))
-        fail("shutdown-nonce-file");
-    marker("kernel");
-    marker("launchd");
     pid_t child = fork();
     if (child < 0) fail("shell-fork");
     if (!child) {
@@ -112,7 +105,7 @@ int main(void)
     }
     int status;
     if (waitpid(child, &status, 0) != child || !WIFEXITED(status) || WEXITSTATUS(status)) fail("shell");
-    marker("shell");
+    puts("BLAUOS_GUEST_TEST shell=pass");
     child = fork();
     if (child < 0) fail("runtime-probe-fork");
     if (!child) {
@@ -120,13 +113,7 @@ int main(void)
         _exit(127);
     }
     if (waitpid(child, &status, 0) != child || !WIFEXITED(status) || WEXITSTATUS(status)) fail("runtime-probe");
-    marker("runtime");
-    marker("concurrent_once");
-    marker("blocks_lifetime");
-    marker("locale_conversions");
-    marker("mach_timer");
-    marker("atfork_handlers");
-    marker("dynamic_loader");
+    puts("BLAUOS_GUEST_TEST runtime=pass");
     child = fork();
     if (child < 0) fail("launchd-tests-fork");
     if (!child) {
@@ -135,6 +122,24 @@ int main(void)
         _exit(127);
     }
     if (waitpid(child, &status, 0) != child || !WIFEXITED(status) || WEXITSTATUS(status)) fail("launchd-functional-tests");
+    puts("BLAUOS_GUEST_TEST launchd_services=pass");
+    configure_network();
+    challenge();
+    int nonce_file = open("/var/run/blauos-smoke-nonce", O_WRONLY | O_CREAT | O_TRUNC, 0600);
+    if (nonce_file < 0 || write(nonce_file, nonce, 64) != 64 || fsync(nonce_file) || close(nonce_file))
+        fail("shutdown-nonce-file");
+    /* Acceptance markers are emitted only after this boot's host challenge.
+       The earlier diagnostics represent completed real guest child tests. */
+    marker("kernel");
+    marker("launchd");
+    marker("shell");
+    marker("runtime");
+    marker("concurrent_once");
+    marker("blocks_lifetime");
+    marker("locale_conversions");
+    marker("mach_timer");
+    marker("atfork_handlers");
+    marker("dynamic_loader");
     marker("launchd_services");
     struct addrinfo hints, *answer = NULL;
     memset(&hints, 0, sizeof(hints));

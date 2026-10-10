@@ -69,9 +69,21 @@ def build(args):
     errors = []
     workspace_revision = subprocess.check_output(["git", "-C", str(ROOT), "rev-parse", "HEAD"], text=True).strip()
     with (args.output / "build.log").open("w") as log:
+        overlay = args.output / "puredarwin-source-overlay"
+        netsetup_relative = PROGRAMS["bin/netsetup"]
+        netsetup_source = overlay / netsetup_relative
+        netsetup_source.parent.mkdir(parents=True)
+        shutil.copyfile(args.source / netsetup_relative, netsetup_source)
+        network_patch = ROOT / "vm/patches/netsetup-interface-registration.patch"
+        subprocess.run(["git", "init", "-q", str(overlay)], check=True, stdout=log, stderr=subprocess.STDOUT)
+        for options in (["--check"], []):
+            subprocess.run(["git", "-C", str(overlay), "apply", *options, str(network_patch)],
+                           check=True, stdout=log, stderr=subprocess.STDOUT)
         for name, relative in {**PROGRAMS, **PROBES}.items():
             own = name in PROBES
             source = (ROOT if own else args.source) / relative
+            if name == "bin/netsetup":
+                source = netsetup_source
             destination = staged / name
             destination.parent.mkdir(parents=True, exist_ok=True)
             command = [clang, "-O2", "-Wall", "-Wextra", "-Wno-nullability-completeness",
@@ -80,6 +92,8 @@ def build(args):
                 command.append("-fblocks")
             if name.endswith(".dylib"):
                 command += ["-dynamiclib", "-Z", "-Wl,-install_name,/" + name]
+            if name == "bin/netsetup":
+                command += ["-Z", "-lIOKitCF", "-lCoreFoundation"]
             command += flags(args.runtime_root, sdk, library=name.endswith(".dylib"))
             commands.append(command)
             log.write("$ " + repr(command) + "\n")
@@ -90,6 +104,12 @@ def build(args):
                 continue
             entry = {"path": "/" + name, "sha256": digest(destination), "source": "puredarwin-vm-next",
                      "revision": revision, "source_path": relative, "source_file_sha256": digest(source)}
+            if name == "bin/netsetup":
+                amendments = ("vm/patches/netsetup-interface-registration.patch", "scripts/vm/build_userspace.py")
+                entry.update(upstream_source_file_sha256=digest(args.source / relative),
+                             build_amendments=[{"path": item, "sha256": digest(ROOT / item)} for item in amendments],
+                             framework_link_inputs={item: digest(args.runtime_root / item) for item in
+                                                    ("usr/lib/libIOKitCF.dylib", "usr/lib/libCoreFoundation.dylib")})
             if own:
                 files = [{"path": relative, "sha256": digest(source)},
                          {"path": "runtime/compat/sdk27_compile.h", "sha256": digest(ROOT / "runtime/compat/sdk27_compile.h")}]

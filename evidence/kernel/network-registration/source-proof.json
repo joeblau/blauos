@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "status": "source_registration_path_built",
+  "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+  "source_path": "src/Userspace/netsetup/netsetup.c",
+  "original_source_sha256": "90a3feedacf6b20f12aee0094d808c13fae0a05967725a29bf7432f402092878",
+  "patched_source_sha256": "1c4c225929fb86623bb5a68574322d81efdc30b1ce852d493e893f6869a048d5",
+  "patch": {
+    "path": "vm/patches/netsetup-interface-registration.patch",
+    "sha256": "d1b2177b70a01f7a963211b104e60b687951e35fbc19d4c135856ceb77034752"
+  },
+  "patch_apply": {
+    "command": [
+      "patch",
+      "--batch",
+      "--forward",
+      "-p1",
+      "-d",
+      "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/network-registration/replay-source",
+      "-i",
+      "/Users/joeblau/Developer/joeblau/src/blauos/vm/patches/netsetup-interface-registration.patch"
+    ],
+    "exit_code": 0
+  },
+  "build": {
+    "command": [
+      "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+      "-arch",
+      "arm64",
+      "-mmacosx-version-min=11.0",
+      "-isysroot",
+      "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.2.sdk",
+      "-O2",
+      "-g",
+      "-fno-builtin",
+      "-include",
+      "/Users/joeblau/Developer/joeblau/src/blauos/runtime/compat/sdk27_compile.h",
+      "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/network-registration/replay-source/src/Userspace/netsetup/netsetup.c",
+      "-nostdlib",
+      "-Wl,-Z",
+      "-L/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib",
+      "-Wl,-dylib_file,/usr/lib/system/libdyld.dylib:/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/system/libdyld.dylib",
+      "-Wl,-dylinker_install_name,/usr/lib/dyld",
+      "-Wl,-platform_version,macos,11.0,11.5",
+      "-Wl,-fixup_chains",
+      "-lIOKitCF",
+      "-lCoreFoundation",
+      "-lSystem",
+      "-o",
+      "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/network-registration/netsetup-replayed"
+    ],
+    "exit_code": 0,
+    "binary_sha256": "4500ca8fa1b6c9e43bf84a9baae32817a551753643e851a89998246b39454b36",
+    "metadata": {
+      "architecture": "arm64",
+      "cpu_subtype": 0,
+      "file_type": 2,
+      "flags": 2097285,
+      "dependencies": [
+        {
+          "path": "/usr/lib/libIOKitCF.dylib",
+          "weak": false,
+          "reexport": false
+        },
+        {
+          "path": "/usr/lib/libCoreFoundation.dylib",
+          "weak": false,
+          "reexport": false
+        },
+        {
+          "path": "/usr/lib/libSystem.B.dylib",
+          "weak": false,
+          "reexport": false
+        }
+      ],
+      "rpaths": [],
+      "dylinker": "/usr/lib/dyld",
+      "flat_namespace_imports": [],
+      "imports_count": 40,
+      "imports_sha256": "03ddadd5e73c894862802e05a96c4fe96d0696eccc0832554a33bd7472dd425f",
+      "defined_external_symbols_count": 2,
+      "defined_external_symbols_sha256": "9205ca1f7d650ae56f70ea0a1a309b189d3efcce628d59e105dd9d7d74fe82d4"
+    }
+  },
+  "link_inputs": [
+    {
+      "path": "usr/lib/libSystem.B.dylib",
+      "sha256": "c89ccf4efa50bf4be0cf741ec91a7e44b842adbdd129be6577ee10b311161bed"
+    },
+    {
+      "path": "usr/lib/system/libdyld.dylib",
+      "sha256": "7dc352822a56c035e262b709d7bd562ee448ce82d886cec22c76696d40a6f1ac"
+    },
+    {
+      "path": "usr/lib/libIOKitCF.dylib",
+      "sha256": "ca1e53f46dc3679e29bdd9922c62e4fd7ab86cf6e750a1fd0ee1204104b09b35"
+    },
+    {
+      "path": "usr/lib/libCoreFoundation.dylib",
+      "sha256": "b628929a337d4a0055a1fee1d00b7e5b1696c0ab9703db72c3e4910217b2bf0f"
+    }
+  ],
+  "native_source_contract": [
+    {
+      "path": "src/Kernel/Extensions/IONetworkingFamily/IONetworkStack.cpp",
+      "locations": [
+        "interfacePublished lines415-505",
+        "setProperties lines932-1051",
+        "registerAllNetworkInterfaces lines856-892"
+      ],
+      "sha256": "3ca1b3805f3cd27f93c9f9d10856524c2a2886e4b4d5b83e598e884e23032814"
+    },
+    {
+      "path": "src/Libraries/SystemConfiguration/Plugins/InterfaceNamer/ifnamer.c",
+      "locations": [
+        "IOServiceOpen lines3490-3495",
+        "IOConnectSetCFProperties lines1430-1450"
+      ],
+      "sha256": "5f9d3cc7f41ce68ee6e0dc6eced178bc5cc8161a6ede67afcd8e0fb446e0c0e3"
+    }
+  ],
+  "guest_bsd_interface_verified": false,
+  "guest_traffic_verified": false,
+  "acceptance": "Native IOKit registration is followed by actual SIOCGIFFLAGS verification; real guest en0 and network traffic remain required."
+}

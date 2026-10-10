@@ -1,0 +1,85 @@
+--- a/src/Userspace/netsetup/netsetup.c
++++ b/src/Userspace/netsetup/netsetup.c
+@@ -5,6 +5,8 @@
+  * DHCP lease and configures lo0 itself. This stays as a hand-run tool for
+  * static addressing and for bringing a link up when DHCP is not an option.
+  */
++#include <CoreFoundation/CoreFoundation.h>
++#include <IOKit/IOKitLib.h>
+ #include <arpa/inet.h>
+ #include <errno.h>
+ #include <fcntl.h>
+@@ -102,6 +104,57 @@
+     return 0;
+ }
+ 
++/* IONetworkStack deliberately waits for a userspace interface namer before
++ * attaching an IOKit network interface to BSD. A headless static-IP baseline
++ * has no configd InterfaceNamer, so request its genuine register-all operation
++ * through the same privileged user client before polling BSD interfaces.
++ * IONetworkStack.h defines command 2 and the key below; register-all assigns
++ * available unit numbers and calls attachToDataLinkLayer on published devices.
++ */
++static int
++register_network_interfaces(void)
++{
++    CFMutableDictionaryRef properties;
++    CFNumberRef number;
++    io_service_t stack;
++    io_connect_t connection = MACH_PORT_NULL;
++    kern_return_t result;
++    int command = 2; /* kIONetworkStackRegisterInterfaceAll */
++
++    stack = IOServiceGetMatchingService(kIOMasterPortDefault,
++                                       IOServiceMatching("IONetworkStack"));
++    if (stack == MACH_PORT_NULL)
++        return -1;
++
++    result = IOServiceOpen(stack, mach_task_self(), 0, &connection);
++    IOObjectRelease(stack);
++    if (result != KERN_SUCCESS) {
++        pd_log("IONetworkStack IOServiceOpen failed: 0x%x", result);
++        return -1;
++    }
++
++    properties = CFDictionaryCreateMutable(NULL, 0,
++        &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
++    number = CFNumberCreate(NULL, kCFNumberIntType, &command);
++    if (properties == NULL || number == NULL) {
++        if (properties != NULL) CFRelease(properties);
++        if (number != NULL) CFRelease(number);
++        IOServiceClose(connection);
++        errno = ENOMEM;
++        return -1;
++    }
++    CFDictionarySetValue(properties, CFSTR("IONetworkStackUserCommand"), number);
++    CFRelease(number);
++    result = IOConnectSetCFProperties(connection, properties);
++    CFRelease(properties);
++    IOServiceClose(connection);
++    if (result != KERN_SUCCESS) {
++        pd_log("IONetworkStack interface registration failed: 0x%x", result);
++        return -1;
++    }
++    return 0;
++}
++
+ static int
+ wait_for_interface(int sock, const char *ifname, int wait_seconds)
+ {
+@@ -113,6 +166,15 @@
+             return 0;
+         }
+ 
++        /* Registration can race initial device publication. Retry within
++         * the existing bounded wait; a successful request alone is not proof
++         * that the requested BSD interface exists. Recheck the actual ioctl.
++         */
++        if (register_network_interfaces() == 0 &&
++            get_flags(sock, ifname, &flags) == 0) {
++            pd_log("%s registered with BSD flags=0x%x", ifname, flags);
++            return 0;
++        }
+         if (i == wait_seconds)
+             break;
+         sleep(1);
