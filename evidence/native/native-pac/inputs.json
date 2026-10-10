@@ -1,0 +1,192 @@
+{
+  "schema_version": 1,
+  "scope": "source-bound native PAC restoration, physical execution unverified",
+  "donor": {
+    "url": "https://github.com/apple-oss-distributions/xnu",
+    "revision": "b967469df23b10bc70788727627457ebdfe3653f",
+    "tree": "2fd24b44e4468b7a60261620cccca97bdc7262fa",
+    "tag": "xnu-7195.60.75"
+  },
+  "patch": {
+    "path": "patches/native/0011-t8103-public-native-pac.patch",
+    "sha256": "b241ac693020cfeb0c614938f1d43789682bab65f17d6c5530614b9bae194dd4"
+  },
+  "donor_blocks": [
+    {
+      "label": "H13 key selection features",
+      "path": "pexpert/pexpert/arm64/H13.h",
+      "file_sha256": "632236d865c9dde8fb5a6900233a54c9c8979adf398f94c6ceb65d3b3a3fc883",
+      "start_line": 71,
+      "end_line": 76,
+      "block_sha256": "da4055dc0c930d0727b7f89418a2286ed0479edb496e364acc18a2aa7c7c9e50"
+    },
+    {
+      "label": "Published static diversifiers",
+      "path": "pexpert/pexpert/arm64/apple_arm64_common.h",
+      "file_sha256": "c2767fb0620c45894c2b425d896d10a70c6ac29d3d57196c0be06f83115a6900",
+      "start_line": 60,
+      "end_line": 62,
+      "block_sha256": "78721f0aa51f356d5c5b00a94a17f26745ce7914137f23ee57fd22e4a3461129"
+    },
+    {
+      "label": "Published PAC register encodings",
+      "path": "pexpert/pexpert/arm64/apple_arm64_regs.h",
+      "file_sha256": "6028088a071e8a4320cfbc6c36e7f2b4b8b311fc8b7270cfa5b94327d981c34a",
+      "start_line": 351,
+      "end_line": 397,
+      "block_sha256": "0330b7b0ad4324eac13913637e77b247cb954e27874795151f1ae7862e7e1d11"
+    },
+    {
+      "label": "Published PAC control bits",
+      "path": "osfmk/arm64/proc_reg.h",
+      "file_sha256": "5f61bd6e6868a4afde333cdc52e57bec521e1537fb48ecaf6ff4b615e7a71642",
+      "start_line": 2027,
+      "end_line": 2042,
+      "block_sha256": "c1e2d66bc906859e3fdf9748fc87240288eb7b5bfd89351f7af325d804329a4e"
+    },
+    {
+      "label": "Published fast and slow A-key feature selection",
+      "path": "osfmk/arm64/pac_asm.h",
+      "file_sha256": "af7b38dd754c5730e3fcfcba72b434041233af48b3faa16027f9cca40326eb3b",
+      "start_line": 42,
+      "end_line": 106,
+      "block_sha256": "d429d5f0f67a4dc6cff4d02d8adbd502a1a0ba5f4cebb717dde49978807da6d4"
+    },
+    {
+      "label": "Published native JOP key programming",
+      "path": "osfmk/arm64/pac_asm.h",
+      "file_sha256": "af7b38dd754c5730e3fcfcba72b434041233af48b3faa16027f9cca40326eb3b",
+      "start_line": 139,
+      "end_line": 163,
+      "block_sha256": "8ce8ebbca02b706f27eb0a82977ae54d27ad7daea923c4c2a4b5f55f0a9f7d0c"
+    },
+    {
+      "label": "Published native ROP key sequence",
+      "path": "osfmk/arm64/cswitch.s",
+      "file_sha256": "5ea95459670e7f067d75ee86b4d6aeab1538d74ec6eb92e83b84428b500967ef",
+      "start_line": 211,
+      "end_line": 217,
+      "block_sha256": "db076335c37cc76f94a6d38c2c372a32968ed3bce05b8ba4c2dda01196aacf3c"
+    },
+    {
+      "label": "Published kernel-key control helper macros",
+      "path": "osfmk/arm64/machine_routines_asm.s",
+      "file_sha256": "31c073b15e20776bc97a2455137b25b3b8055374daee9d864bc1cf5ca572553a",
+      "start_line": 42,
+      "end_line": 49,
+      "block_sha256": "c34bfa4ea525fadeaed4b54bcfc5fa0cb15d93690897355b10525e181b415e00"
+    },
+    {
+      "label": "Published native enable-user-key body",
+      "path": "osfmk/arm64/machine_routines_asm.s",
+      "file_sha256": "31c073b15e20776bc97a2455137b25b3b8055374daee9d864bc1cf5ca572553a",
+      "start_line": 55,
+      "end_line": 93,
+      "block_sha256": "9ecc3552c6df95d47b197fdd59368276e1211cebf4a7d17880dab332aa568d36"
+    },
+    {
+      "label": "Published native disable-user-key body",
+      "path": "osfmk/arm64/machine_routines_asm.s",
+      "file_sha256": "31c073b15e20776bc97a2455137b25b3b8055374daee9d864bc1cf5ca572553a",
+      "start_line": 99,
+      "end_line": 126,
+      "block_sha256": "a7d6ace5fe2452c86ef6bf2c8023ef59d8e73e374a388e122c152037ab99be22"
+    },
+    {
+      "label": "Published native startup keys and Apple mode",
+      "path": "osfmk/arm64/start.s",
+      "file_sha256": "963e0bbe66de68f76d59cf218b3d566e9aaa6effbfbdf735fa24ab1f396c72b2",
+      "start_line": 907,
+      "end_line": 968,
+      "block_sha256": "217fef4e87dd9d718fb522be89fd060eb24074f5e081ec19134629dae7388454"
+    },
+    {
+      "label": "Published slow-key kernel exception entry",
+      "path": "osfmk/arm64/exception_asm.h",
+      "file_sha256": "fb7069467b3f2611abf99622c996f60533285d86a223695e5dbd9f5cf13734e2",
+      "start_line": 185,
+      "end_line": 207,
+      "block_sha256": "9cc1dfc6cf4ee925e2af62d2a132b939010447024910940a14eda829e4769a1e"
+    },
+    {
+      "label": "Published EL0 exception return keys",
+      "path": "osfmk/arm64/locore.s",
+      "file_sha256": "3233c0a2574e97a11ed72b50bcdcebd2e306c3f90cec503075b13f18b39ff616",
+      "start_line": 1215,
+      "end_line": 1268,
+      "block_sha256": "3b71931527057ba61e8b1ee37ef688dd1cfd2dc5e17e0c1c9d03aa8056b28280"
+    },
+    {
+      "label": "Published current-CPU key feature reader",
+      "path": "osfmk/arm64/machine_routines.c",
+      "file_sha256": "1e86bedbb2d60b68db27d89e2b6a9cb6a651925419b1853006aeaf65162c4cce",
+      "start_line": 2292,
+      "end_line": 2303,
+      "block_sha256": "18c8e7b92ab259c7735037f27e9ac784e9d321d29d4441667fa176fd49a261f6"
+    },
+    {
+      "label": "Published default JOP diversifier selection",
+      "path": "osfmk/arm64/machine_routines.c",
+      "file_sha256": "1e86bedbb2d60b68db27d89e2b6a9cb6a651925419b1853006aeaf65162c4cce",
+      "start_line": 2308,
+      "end_line": 2317,
+      "block_sha256": "98ffd7d981d9eeab2cc3ba16ba85547b67585b48e0c3e55b602b8dc77d204305"
+    }
+  ],
+  "base_files": [
+    {
+      "path": "src/Kernel/xnu/pexpert/pexpert/arm64/H13.h",
+      "sha256": "e8b7609eb8416fd3b269bcca6f6f9706691e45be7bc2895562ecb6b5d328c6da"
+    },
+    {
+      "path": "src/Kernel/xnu/pexpert/pexpert/arm64/apple_arm64_common.h",
+      "sha256": "6b1d1c90f08bec2d807bd39a7f8cb67f33adc56e20252356d79717666ffbb4da"
+    },
+    {
+      "path": "src/Kernel/xnu/pexpert/pexpert/arm64/apple_arm64_regs.h",
+      "sha256": "4d37e5d9420047faeac81a9950a45daae27cbedfe3ff6311e700639cd6ed6018"
+    },
+    {
+      "path": "src/Kernel/xnu/osfmk/arm64/proc_reg.h",
+      "sha256": "c3338624de6c98d38e12cac4413b00c4505241d67400649ac2e73bf7a9055bf3"
+    },
+    {
+      "path": "src/Kernel/xnu/osfmk/arm64/pac_asm.h",
+      "sha256": "f77ca14583aed6c44769149d078acbfb028090149d8a8fa4e5cdbb0cbf0556e9"
+    },
+    {
+      "path": "src/Kernel/xnu/osfmk/arm64/machine_routines_asm.s",
+      "sha256": "58af91ffbdcda0d17d917c3a15829280942b149b21a2f81050bf7687146c7b23"
+    },
+    {
+      "path": "src/Kernel/xnu/osfmk/arm64/start.s",
+      "sha256": "b221adfab7109e6bf46c1d6f9436875695302bee70e94d5a3ceff4b2cbc67d98"
+    },
+    {
+      "path": "src/Kernel/xnu/osfmk/arm64/cswitch.s",
+      "sha256": "dc608fd81c8c317f315c3c43dd3409fad8cc66d8d0f2981af0cf72f7d71a9022"
+    },
+    {
+      "path": "src/Kernel/xnu/osfmk/arm64/exception_asm.h",
+      "sha256": "1da7dca1f1edf8343c9c4a2b78099a948a760ddccf970d97f5838faf6a407f10"
+    },
+    {
+      "path": "src/Kernel/xnu/osfmk/arm64/locore.s",
+      "sha256": "58efa707324e7da157ad46f5b7cc0b8a24a07a6e01997b4868a64e23643ac556"
+    },
+    {
+      "path": "src/Kernel/xnu/osfmk/arm/machine_routines_apple.c",
+      "sha256": "11d3c8c7da8c1568edf765ec29904ff7af44abae090cc6fe5993ab731b501dfc"
+    }
+  ],
+  "adaptations": [
+    "Every addition is T8103 scoped; unchanged non-T8103 and paravirtualized PAC code retained.",
+    "Native assembler aliases use published numeric ARM64_REG_* names.",
+    "B-key macro uses its scratch register for increments, preserving the new_rop_key input consumed by its caller cache update.",
+    "Published native default JOP implementation is placed in the existing selected machine_routines_apple.c function location.",
+    "Native default ROP returns published startup KERNEL_ROP_ID, matching the selected ml_default_rop_pid cache interface.",
+    "Native fast A-key context switch uses the current cached-sync macro with the published runtime slow-key skip."
+  ],
+  "hardware_execution_verified": false,
+  "native_boot_verified": false
+}

@@ -1,0 +1,31 @@
+{
+  "argv": [
+    "/opt/homebrew/bin/cmake",
+    "-E",
+    "env",
+    "LD=/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld",
+    "STRIP=/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/tools/cctools/misc/strip",
+    "--unset=CC",
+    "--unset=CXX",
+    "--unset=NM",
+    "--unset=CTFCONVERT",
+    "--unset=CTFMERGE",
+    "--unset=CTFINSERT",
+    "make",
+    "-C",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu",
+    "install",
+    "ARCH_CONFIGS=ARM64",
+    "MACHINE_CONFIGS=T8103",
+    "BUILD_LTO=0",
+    "BUILD_WERROR=0",
+    "DO_CTFMERGE=0",
+    "KERNEL_CONFIGS=DEVELOPMENT",
+    "SRCROOT=/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu",
+    "OBJROOT=/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/src/Kernel/xnu/xnu_build/src/xnu-build",
+    "SYMROOT=/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/src/Kernel/xnu/xnu_sym",
+    "DSTROOT=/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/src/Kernel/xnu/xnu",
+    "MAKEJOBS=--jobs=1"
+  ],
+  "cwd": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/src/Kernel/xnu/xnu_build/src/xnu-build"
+}

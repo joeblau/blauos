@@ -1,0 +1,193 @@
+{
+  "schema_version": 1,
+  "status": "source_object_and_nonce_tests_pass",
+  "physical_execution_verified": false,
+  "native_boot_verified": false,
+  "full_kernel_link_verified": false,
+  "mmu_validation_verified": false,
+  "interrupt_delivery_verified": false,
+  "timer_callback_verified": false,
+  "secondary_cpu_startup_verified": false,
+  "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+  "source_file_sha256": "b9fa5858204376d84954f2e1c202eac0a69b9dadeb57e6c5a721879d5edf2d55",
+  "patched_source_sha256": "a995ede64748aed1e50e1a0a745a5ddeb7ccbab519cd9b6f42c2af33c835bfc7",
+  "patch_sha256": "f49d0c2456d54222d1c149cf84750204ae4281199d8156fa9b0748d09ae9894e",
+  "source_lock_sha256": "8022bbbfb33204b56bb3297cd8cbb39fb6c08ea65c476492d99462f7edfe3657",
+  "replay_script_sha256": "a6182bc077603949f3f04ef126e89bded697a42fbd6c74e60b81a04a81055278",
+  "configured_build": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface",
+  "recipe_scope": "existing source-generated configuration; not a fresh full build",
+  "compiler_cwd": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_T8103/osfmk/DEVELOPMENT",
+  "compiler_sha256": "0993175af320361435e566fa638ad3f0852efe3599bf026da08d9d82be8275fa",
+  "recipe_makefile_sha256": "e05a92cc4f793e83061d65c1883a815853e230813bac3e323f7760d9a0f093f6",
+  "makeinc_def_sha256": "83c28950471bd26d09cafece7416c3fa390ba6b75020511f0b22c564576c6319",
+  "makeinc_cmd_sha256": "91db32a01d38f2a061c88493ebcf0b9d5e70186b1a31a0060b65c1cbe3192057",
+  "artifact": {
+    "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/early-diagnostics-final/arm_init.o",
+    "sha256": "2224899c1b49712efe9a93beaddefb337e50197431aad83765534dd74177982a",
+    "bytes": 140200,
+    "cputype": 16777228,
+    "cpusubtype": 3221225474,
+    "filetype": 1
+  },
+  "register_reads_disassembled": [
+    "CurrentEL",
+    "SCTLR_EL1",
+    "TCR_EL1",
+    "TTBR0_EL1",
+    "TTBR1_EL1",
+    "MAIR_EL1",
+    "CNTFRQ_EL0",
+    "CNTVCT_EL0",
+    "CNTV_CTL_EL0",
+    "CNTV_CVAL_EL0"
+  ],
+  "diagnostic_system_register_writes": 0,
+  "profile_scope_checks": [
+    {
+      "profile": "T8103",
+      "emitter_present": true,
+      "scope": "actual preprocessing; not full alternate-profile builds"
+    },
+    {
+      "profile": "VIRT",
+      "emitter_present": false,
+      "scope": "actual preprocessing; not full alternate-profile builds"
+    },
+    {
+      "profile": "T8010",
+      "emitter_present": false,
+      "scope": "actual preprocessing; not full alternate-profile builds"
+    }
+  ],
+  "dependency_inputs": {
+    "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/early-diagnostics-final/dependency-inputs.json",
+    "count": 339,
+    "sha256": "a6afbf8d510f98c1fb0bbae11daffe4f1512dba2273ce2c100e94617551827d7"
+  },
+  "nonce_tests": {
+    "scope": "synthetic host input tests of actual pinned parser and patched validator",
+    "hardware_execution": false,
+    "cases": [
+      {
+        "name": "missing",
+        "expected_valid": false,
+        "actual_valid": false,
+        "canary_intact": true
+      },
+      {
+        "name": "valid_mixed",
+        "expected_valid": true,
+        "actual_valid": true,
+        "canary_intact": true
+      },
+      {
+        "name": "valid_all_digits",
+        "expected_valid": true,
+        "actual_valid": true,
+        "canary_intact": true
+      },
+      {
+        "name": "valid_all_letters",
+        "expected_valid": true,
+        "actual_valid": true,
+        "canary_intact": true
+      },
+      {
+        "name": "numeric_without_prefix",
+        "expected_valid": false,
+        "actual_valid": false,
+        "canary_intact": true
+      },
+      {
+        "name": "uppercase",
+        "expected_valid": false,
+        "actual_valid": false,
+        "canary_intact": true
+      },
+      {
+        "name": "nonhex",
+        "expected_valid": false,
+        "actual_valid": false,
+        "canary_intact": true
+      },
+      {
+        "name": "empty",
+        "expected_valid": false,
+        "actual_valid": false,
+        "canary_intact": true
+      },
+      {
+        "name": "short",
+        "expected_valid": false,
+        "actual_valid": false,
+        "canary_intact": true
+      },
+      {
+        "name": "long",
+        "expected_valid": false,
+        "actual_valid": false,
+        "canary_intact": true
+      },
+      {
+        "name": "truncated_very_long",
+        "expected_valid": false,
+        "actual_valid": false,
+        "canary_intact": true
+      },
+      {
+        "name": "wrong_prefix",
+        "expected_valid": false,
+        "actual_valid": false,
+        "canary_intact": true
+      },
+      {
+        "name": "embedded_nul",
+        "expected_valid": false,
+        "actual_valid": false,
+        "canary_intact": true
+      }
+    ],
+    "fixture_sha256": "65771469edcf7cc60f9c8caf79279597a6a5c71d9e62a4c02ed4885c7a98b7cf",
+    "bootargs_source_sha256": "1eedd6166cfdda7b0c3374ac8d03e28541907122d84ceb81b523f2c57564d210",
+    "compile_argv": [
+      "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+      "-isysroot",
+      "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.2.sdk",
+      "-dynamiclib",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-Wno-unused-function",
+      "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/early-diagnostics-final/nonce-fixture.c",
+      "-o",
+      "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/early-diagnostics-final/nonce-fixture.dylib"
+    ]
+  },
+  "raw_outputs": [
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/early-diagnostics-final/dry-run.log",
+      "sha256": "9cc33e8ac97d1364f7e10ef3045a3530e0efd681f438ae583d023ee97de0ea6a",
+      "bytes": 12720
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/early-diagnostics-final/compile.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/early-diagnostics-final/disassembly.log",
+      "sha256": "79fab92a30f2c5d4c0854536f02174df7df9f5336cee42d669a269ca048dd9f4",
+      "bytes": 70267
+    }
+  ],
+  "actual_compile_command": {
+    "path": "evidence/native/early-diagnostics/compile-command.json",
+    "sha256": "3681189867b287f5e5a05ddde6dfb22f9ea2bec73eb3dadddfb3e426763bddc4"
+  },
+  "raw_receipt": {
+    "path": ".blauos/build/native/early-diagnostics-final/result.json",
+    "sha256": "bac6c4d9188bba3606035390f62390435902b80bb37463816a720fefb1de30a1",
+    "bytes": 24230
+  }
+}

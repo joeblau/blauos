@@ -1,0 +1,1031 @@
+1: [  0%] Built target unifdef
+2: [ 20%] Built target host_libstuff
+3: [ 20%] Built target host_libmacho
+4: [ 20%] Built target host_lipo
+5: [ 20%] Built target host_nm
+6: [ 20%] Built target host_libtool
+7: [ 20%] Built target host_strip
+8: [ 20%] Built target host_codesign_allocate
+9: [ 20%] Built target host_ctf_insert
+10: [ 20%] Built target host_nmedit
+11: [ 30%] Built target libelf.host
+12: [ 40%] Built target libctf.host
+13: [ 60%] Built target libdwarf.host
+14: [ 70%] Built target host_ctfconvert
+15: [ 80%] Built target host_ctfmerge
+16: [ 80%] Built target migcom
+17: [ 90%] Built target xnu_headers.extproj
+18: [100%] Built target libfirehose_kernel
+19: [100%] Built target generate_dyld_headers
+20: [100%] Built target dyld_availability_headers
+21: [100%] Performing build step for 'xnu'
+22:      INSTALLHDR cpu_number.h
+23:      INSTALLHDR cpu_capabilities.h
+24:      INSTALLHDR io_map_entries.h
+25:      INSTALLHDR simple_lock.h
+26:      INSTALLHDR cpu_x86_64_capabilities.h
+27:      INSTALLHDR lock.h
+28:      INSTALLHDR syscall_sw.h
+29:      INSTALLHDR syscall_sw.h
+30:      INSTALLHDR syscall_sw.h
+31:      INSTALLHDR syscall_sw.h
+32:      INSTALLHDR affinity.h
+33:      INSTALLHDR audit_sessionport.h
+34:      INSTALLHDR counter.h
+35:      INSTALLHDR cpu_number.h
+36:      INSTALLHDR cpu_capabilities.h
+37:      INSTALLHDR cpu_data.h
+38:      INSTALLHDR cpu_number.h
+39:      INSTALLHDR ipc_misc.h
+40:      INSTALLHDR io_map_entries.h
+41:      INSTALLHDR kalloc.h
+42:      INSTALLHDR lock.h
+43:      INSTALLHDR lock.h
+44:      INSTALLHDR machine_cpuid.h
+45:      INSTALLHDR mach_param.h
+46:      INSTALLHDR page_decrypt.h
+47:              CC sleh.o
+48:              CC machine_routines.o
+49:      INSTALLHDR simple_lock.h
+50: clang: warning: no such include directory: '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/libsa' [-Wmissing-include-dirs]
+51:      INSTALLHDR pms.h
+52:      INSTALLHDR simple_lock.h
+53: clang: warning: no such include directory: '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/libsa' [-Wmissing-include-dirs]
+54:      INSTALLHDR startup.h
+55: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/sleh.c:29:
+56: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm/caches_internal.h:31:
+57: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm/proc_reg.h:68:
+58: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/pexpert/pexpert/arm64/board_config.h:8:
+59: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/mach/machine.h:66:
+60: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/EXTERNAL_HEADERS/stdint.h:14:
+3796: (u        :warning: | ieidentifier '__darwin_mbstate_t' is reserved because it starts with '__' [-Wreserved-identifier]  nwarning: _dt37af r 6   :                                ^identifier '__darwin_clock_t' is reserved because it starts with '__' [-Wreserved-identifier]
+3797: 
+3798: rIn file included from  22a4
+3799:       57_ /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm/model_dep.c/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/bsd/arm/_types.hw6un : error:  :l32t _t | :
+3800:     _In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/kern/thread.h   _;
+3801:       t93:88:
+3802: |  | ypd :s95eigt | t                                ^  nbypededeiar
+3803: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/mach/mach_types.h:i80:
+3804: f:n_y _expected writable system register or pstate33wdt/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/bsd/arm/_types.h :in_In file included from ma  s w: 
+3825:   twarning:  _s po: 20 :sqn/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/bsd/arm/_types.h r_u753identifier '__darwin_rune_t' is reserved because it starts with '__' [-Wreserved-identifier]  w  w_ b  a_ i:
+3826: _r33   m:
+3827:   :warning:  74n    /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/libkern/os/overflow.h:   identifier '__int32_t' is reserved because it starts with '__' [-Wreserved-identifier]  bsmake[11]: 
+3828: 49ne_   *** [platform_tests_asm.o] Error 1
+3829: it)
+3830: _make[11]: 20      _ | cty| lpu^*** Waiting for unfinished jobs....t85 
+3831:  | ty
+3832:  :    33: warning: oate_tnped_ :_; identifier '__darwin_va_list' is reserved because it starts with '__' [-Wreserved-identifier]
+3833: i ntc1u eeda k _ t: fwarning: de ;uidentifier '__os_warn_unused' is reserved because it starts with '__' [-Wreserved-identifier]/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/kern/bits.h:186e  f    _  sinrw74
+3834: i   :o ve_  | 16:en49 |  d_ (t s_   _ _trs   y pos_ i_\d
+3835:  e d  /zwarning: e      * |                                                                                 ^l /oaed_car_64_t; oaf
+23039: :
+23040: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/sleh.c142ts:/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/kern/thread.hor/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/san/san/kasan.hj/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/kern/thread.h e
+23041: :In file included from */Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/vm/pmap.hIn file included from ):
+23042: __1837::/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/san/san/kasan.he:122184/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm/status_shared.c3:a,:A :ct 189o::error: 142:
+23043: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/san/san/kasan.h:(m:188utpti:32)321:
+23044: In file included from t :
+23045: o/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/machine/pmap.hexpected readable system register:
+23046: ::6:14234   In file included from um:
+23047: i:
+23208: a/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/sleh.cs:
+23209: e/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/kdp/ml/arm/kdp_vm.c  _f ts147 | _d)e/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/san/san/kasan.hia:32_:6s t1873:3*::_o\__st
+23210: noa:sme  pnote: i sa:
+23211: error: expanded from macro 'KASAN_DECLARE_FOREACH_WIDTH'_oart
+23212: i189rsctra _  ovnam:i=1      c: warning: identifier '__asan_report_store2' is reserved because it starts with '__' [-Wreserved-identifier]In file included from 
+23213: _/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/vm/pmap.h/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/san/san/kasan.hlt_| _:re( s181n            ^(izfval
+23214: 4expected writable system register or pstate_r180<scratch space>
+23215: 
+23216: ep      ur |         reee:po:of(eu122et:6(ee| ep_^
+23471: In file included from _
+23472:   su:142:
+23473: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/san/san/kasan.hsidentifier '__asan_option_detect_stack_use_after_return' is reserved because it starts with '__' [-Wreserved-identifier]o:an  /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/machine/pmap.h190t
+23474: :amake[11]:  _o_1   *** [sleh.o] Error 1#a:#176t 184 #8rd  warning: identifier '__asan_store4' is reserved because it starts with '__' [-Wreserved-identifier]
+23475: to_typr | :e1(
+23476: os_e exo _ 34 (mi1t | cep
+23477: :
+23478: _(      _zfr _V__ee/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/san/san/kasan.he_cr_In file included from pA:| 182^:zn/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.hao :s6o179r_t_t
+23479: V_A_ oiitnAoAs:n        ret _aIn file included from RnGR:
+31328: _n(up_asentry*,t_r adsern struct otvd  r, (...)223m_ma/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/machine_routines.cp _nat:Su |          _In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/platform_tests.c:80:
+31329: TenonAmsi 376Tti187In file included from  ry*c_)g/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/machine/cpu_capabilities.h:n3ICpoi::;  warning37_:
+31330: enoAS
+31331:  error: expected writable system register or pstateSERs       generatedster
+31332: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm/cpu_capabilities.h(| p  _Td )        ^lo) _Onc
+31333: .
+31334: :VEag b_R, iLO/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/vm/vm_map_store.h:187_s137 |                 _n84t_to_v:M:t9 a3A2_t17 S:=tR:D c E(warning: D( _warning: )identifier '_get_cpu_capabilities' is reserved because it starts with '_' at global scope [-Wreserved-identifier]";identifier '_vm_map_store_entry_unlink' is reserved because it starts with '_' at global scope [-Wreserved-identifier]
+31335: 
+31336: o
+31385: :| 108: e 107:xt          ^
+31386:   /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/libkern/os/atomic_private_impl.he :223:6: note:  rn vm_adexpanded from macro '_os_atomic_c11_op_orig'd 
+31387: ress/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/machine_routines.c:warning: format specifies type 'long long' but the argument has type 'mach_vm_size_t' (aka 'unsigned long long') [-Wformat]191:3: a   n_set223 | 
+31388: _error:           expected writable system register or pstate108 | o_
+31389: s_atom  191 |                 s hiadow_Mtc_                kprintf2(u fSR("IPIRRp_    _cG("11_   #ot#p#       (op,##L 1,OBA # sr, ####_cL  Casizalse_m,t_t lfei     n)t_ ch_;
+31390:       E tag|  o L1A_     ^ a"
+31391: d, d,Lt/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/san/san/kasan.h +)T Eo
+31392: m:       |                                     ^R242ic_p
+31393:  :/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/libkern/os/atomic_private_impl.ho:   _N6ixgen:)AT;
+31435: f8(upt/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm/cpu_data_internal.h
+31436: (p)r  (o(s_at)o    :65,:1: warning: '_Static_assert' is incompatible with C standards before C11 [-Wpre-c11-compat]
+31437:   o   65 | stsit/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/machine_routines.ca ze_ tic  :239:t_omic_hs_beras)2 :)sera ___otathe;tomicr
+31438: _c_serror: expected writable system register or pstateep1(sizetr o      =f(cpu
+31439:  t(  | ypeofp1m(p)_     ^t 239 |         r
+31440: a*p/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/san/san/kasan.hM:S)o_246)Rp:(;6(uin: / warning: (pttp"I*P tItr_, )Ct1,identifier '__asan_init_v5' is reserved because it starts with '__' [-Wreserved-identifier]
+31441:    R*_)246 C( | p ypHvem, f)eoAR 
+31442: tch_sub,E       _B| L                                          ^
+31443: -)
+31477:                 m        expanded from macro 'os_cast_to_nonatomic_pointer'
+31478: #_   sr I79   dPICR_ | eEL181 | #defi,unr nfine statixc_#e oadefs8ssei_ne osecgir_s
+31479: atstc      atste|             ^__(rto_nonat
+31480: _.o_ag.ltotm.i)o _STATICcb_/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/machine_routines.c_poA:iomic_poin187alS:ntter(SeERT_Or3sVp):(uERLOA error: expected writable system register or pstate
+31481: (pDpED_)  (otrs _atomi  Mc_baset  ypeo   (__aA187t, | yCpe Rf        (p) *)        MSOupR(_((uintr o"IPtIRfb)p_VR_LOA_ARGS_t__;(_C,*(p)) vor _t)
+31482: (l      p)
+31483:       a|      ^
+31484: _/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/san/san/kasan.hAL_:stat249|                                           ^tEi:le Li_A
+31485: tomic *)c/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/libkern/os/atomic.h6(1ui_":a,80nt:ptr x_t)(p):) 
+31513: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/libkern/os/atomic_private_impl.hfin8
+31514: :e      |       | an_^            ^232:2b 
+31515: efo: ore
+31516: _dy/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/kern/assert.hs_cas:126:note: n/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/machine_routines.c:t75191:3: error: expected writable system register or pstate_to_at
+31517: :expanded from macro '_os_atomic_c11_op'
+31518:   a  232 |         191 m |         _oiomicnote:         MS_poexpanded from macro 'static_assert'
+31519: c  126s_a_R | tom(ici"_        iniIPIRRn        tt_G#c1LOBd1A(uptrL_EL1_);
+31520: efio      ",ne  | ex     ^statrp_);
+31521: i(      | p)  ori 
+31556:       |                                     ^n
+31557:   /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/libkern/os/atomic_private_impl.h:232:2: note: expanded from macro '_os_atomic_c11_op'
+31558:   232at      :3 |         om_256| o:s_               ^ai
+31559:  | v error: expected writable system register or pstateo
+31560:   187 |                 MSR("toid _micIPI_poinRte_aRcr(p))san_reg_c1 ___v 1_op__LOisteC= rAor_(L_ELimaigv); ___v; 1(pge",_g xlo);
+31561:       , |                 ^b
+31562: a/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/proc_reg.h}:)
+31563:       |                                                     ^
+31564: 2140:42: note: expanded from macro 'MSR'
+31588: inc(p, |         _I_Pt /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/platform_tests.c:307:47:mIR warning: format specifies type 'int' but the argument has type 'uint' (aka 'unsigned int') [-Wformat]
+31589: ) A Ro_LOCt  Ao m_non aL_E    i cL uint1_os_3071, 6_tomicx8
+31590: _ | pointer(p)a      t |             ^
+31591:  )      __        t /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/machine_routines.c:191ko:evmenti__cva3kp: error: expected writable system register or pstate
+31592:  = (_rsc  11_191v)top(_ | bits;
+31593:                 MSRp;       |         ^, in
+31594: (_1,"__v; }) 
+31595: mt, fetcIPIRh_aRf("%ds_GLOBAL_EL1",       |                                                     ^
+31596: d, +)>x);
+31624: ; _1i__v; })
+31625:       1| /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/libkern/os/atomic_private_impl.hd:223:6: note: , l                   ^expanded from macro '_os_atomic_c11_op_orig'
+31626: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/machine_routines.c:239  223 | _o
+31627:           /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/libkern/os/atomic.ho:cap(p, v,: 81 m osl_, f_cac:e2: 43error: soexpected writable system register or pstatet:
+31628: t_uct n  h_239 |         tenote: expanded from macro 'os_cast_to_nonatomic_pointer'
+31629: o_a   81 | r)tM#d;SR(adefine os_cast_to_d"o
+31630: IPInon      | Cmicato, +m                                  ~~                                                           ^~~~~~~~~~_R_ELic_)
+31631: 
+31632:       | 1",                                        %u| p                                     ^
+31772: )   79                             ^~~~~~~~~~~~~, | #d      e \   _o
+31773:       | 
+31774: fi            ^s/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/platform_tests.c:613ne
+31775: _a:40 t: o/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/libkern/os/atomic_private_impl.hmake[11]: note: :s*** [machine_routines.o] Error 1om218_:46
+31776: cipassing argument to parameter 'func' hereast
+31777: : note: c__c1  to_1_a613expanded from macro '_os_atomic_value_cast' | 
+31778: lt  o_stpta(218rop |         (mt_l,i{ock_ c_poi ntthret1,yaer(p)  d(threap d_conte moi  (_, n_tuefy_(pfetcet o*osf__f_cauncs(*(p))h_t v_)
+31779:       |                                        ^olato_
+31780: nontiaatomdd, +lic_)
+32551:   218 |         ({ typeof(*os_cast_to_nonatomic_pointer(p)) ___v = (v); ___v; })
+32552:       |                                                     ^
+32553: 449 warnings generated.
+32554: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:356:15: error: expected readable system register
+32555:   356 |         configv[0] = SREG_READ("PMCR2_EL1");
+32556:       |                      ^
+32557: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+32558:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+32559:       |                                               ^
+32560: <inline asm>:1:10: note: instantiated into assembly here
+32561:     1 |         mrs x8, PMCR2_EL1
+32562:       |                 ^
+32563: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:357:15: error: expected readable system register
+32564:   357 |         configv[1] = SREG_READ("PMCR3_EL1");
+32565:       |                      ^
+32566: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+32567:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+32568:       |                                               ^
+32569: <inline asm>:1:10: note: instantiated into assembly here
+32570:     1 |         mrs x8, PMCR3_EL1
+32571:       |                 ^
+32572: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:358:15: error: expected readable system register
+32573:   358 |         configv[2] = SREG_READ("PMCR4_EL1");
+32574:       |                      ^
+32575: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+32576:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+32577:       |                                               ^
+32578: <inline asm>:1:10: note: instantiated into assembly here
+32579:     1 |         mrs x8, PMCR4_EL1
+32580:       |                 ^
+32581: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:359:15: error: expected readable system register
+32582:   359 |         configv[3] = SREG_READ("OPMAT0_EL1");
+32583:       |                      ^
+32584: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+32585:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+32586:       |                                               ^
+32587: <inline asm>:1:10: note: instantiated into assembly here
+32588:     1 |         mrs x8, OPMAT0_EL1
+32589:       |                 ^
+32590: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:360:15: error: expected readable system register
+32591:   360 |         configv[4] = SREG_READ("OPMAT1_EL1");
+32592:       |                      ^
+32593: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+32594:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+32595:       |                                               ^
+32596: <inline asm>:1:10: note: instantiated into assembly here
+32597:     1 |         mrs x8, OPMAT1_EL1
+32598:       |                 ^
+32599: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:361:15: error: expected readable system register
+32600:   361 |         configv[5] = SREG_READ("OPMSK0_EL1");
+32601:       |                      ^
+32602: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+32603:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+32604:       |                                               ^
+32605: <inline asm>:1:10: note: instantiated into assembly here
+32606:     1 |         mrs x8, OPMSK0_EL1
+32607:       |                 ^
+32608: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:362:15: error: expected readable system register
+32609:   362 |         configv[6] = SREG_READ("OPMSK1_EL1");
+32610:       |                      ^
+32611: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+32612:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+32613:       |                                               ^
+32614: <inline asm>:1:10: note: instantiated into assembly here
+32615:     1 |         mrs x8, OPMSK1_EL1
+32616:       |                 ^
+32617: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:364:15: error: expected readable system register
+32618:   364 |         configv[7] = SREG_READ("PMMMAP_EL1");
+32619:       |                      ^
+32620: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+32621:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+32622:       |                                               ^
+32623: <inline asm>:1:10: note: instantiated into assembly here
+32624:     1 |         mrs x8, PMMMAP_EL1
+32625:       |                 ^
+32626: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:365:15: error: expected readable system register
+32627:   365 |         configv[8] = SREG_READ("PMTRHLD2_EL1");
+32628:       |                      ^
+32629: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+32630:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+32631:       |                                               ^
+32632: <inline asm>:1:10: note: instantiated into assembly here
+32633:     1 |         mrs x8, PMTRHLD2_EL1
+32634:       |                 ^
+32635: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:366:15: error: expected readable system register
+32636:   366 |         configv[9] = SREG_READ("PMTRHLD4_EL1");
+32637:       |                      ^
+32638: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+32639:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+32640:       |                                               ^
+32641: <inline asm>:1:10: note: instantiated into assembly here
+32642:     1 |         mrs x8, PMTRHLD4_EL1
+32643:       |                 ^
+32644: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:367:16: error: expected readable system register
+32645:   367 |         configv[10] = SREG_READ("PMTRHLD6_EL1");
+32646:       |                       ^
+32647: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+32648:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+32649:       |                                               ^
+32650: <inline asm>:1:10: note: instantiated into assembly here
+32651:     1 |         mrs x8, PMTRHLD6_EL1
+32652:       |                 ^
+32653: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:321:17: error: expected readable system register
+32654:   321 |         case 9: return SREG_READ("PMC9");
+32655:       |                        ^
+32656: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+32657:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+32658:       |                                               ^
+32659: <inline asm>:1:10: note: instantiated into assembly here
+32660:     1 |         mrs x9, PMC9
+32661:       |                 ^
+32662: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:313:17: error: expected readable system register
+32663:   313 |         case 2: return SREG_READ("PMC2");
+32664:       |                        ^
+32665: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+32666:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+32667:       |                                               ^
+32668: <inline asm>:1:10: note: instantiated into assembly here
+32669:     1 |         mrs x9, PMC2
+32670:       |                 ^
+32671: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:317:17: error: expected readable system register
+32672:   317 |         case 6: return SREG_READ("PMC6");
+32673:       |                        ^
+32674: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+32675:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+32676:       |                                               ^
+32677: <inline asm>:1:10: note: instantiated into assembly here
+32678:     1 |         mrs x9, PMC6
+32679:       |                 ^
+32680: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:315:17: error: expected readable system register
+32681:   315 |         case 4: return SREG_READ("PMC4");
+32682:       |                        ^
+32683: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+32684:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+32685:       |                                               ^
+32686: <inline asm>:1:10: note: instantiated into assembly here
+32687:     1 |         mrs x9, PMC4
+32688:       |                 ^
+32689: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:320:17: error: expected readable system register
+32690:   320 |         case 8: return SREG_READ("PMC8");
+32691:       |                        ^
+32692: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+32693:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+32694:       |                                               ^
+32695: <inline asm>:1:10: note: instantiated into assembly here
+32696:     1 |         mrs x9, PMC8
+32697:       |                 ^
+32698: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:314:17: error: expected readable system register
+32699:   314 |         case 3: return SREG_READ("PMC3");
+32700:       |                        ^
+32701: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+32702:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+32703:       |                                               ^
+32704: <inline asm>:1:10: note: instantiated into assembly here
+32705:     1 |         mrs x9, PMC3
+32706:       |                 ^
+32707: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:318:17: error: expected readable system register
+32708:   318 |         case 7: return SREG_READ("PMC7");
+32709:       |                        ^
+32710: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+32711:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+32712:       |                                               ^
+32713: <inline asm>:1:10: note: instantiated into assembly here
+32714:     1 |         mrs x9, PMC7
+32715:       |                 ^
+32716: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:316:17: error: expected readable system register
+32717:   316 |         case 5: return SREG_READ("PMC5");
+32718:       |                        ^
+32719: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+32720:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+32721:       |                                               ^
+32722: <inline asm>:1:10: note: instantiated into assembly here
+32723:     1 |         mrs x9, PMC5
+32724:       |                 ^
+32725: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:454:28: error: expected readable system register
+32726:   454 |                 pmesr = PMESR_EVT_DECODE(SREG_READ("PMESR1_EL1"), counter, 6);
+32727:       |                                          ^
+32728: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+32729:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+32730:       |                                               ^
+32731: <inline asm>:1:11: note: instantiated into assembly here
+32732:     1 |         mrs x13, PMESR1_EL1
+32733:       |                  ^
+32734: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:463:19: error: expected readable system register
+32735:   463 |         uint64_t pmcr1 = SREG_READ("PMCR1_EL1");
+32736:       |                          ^
+32737: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+32738:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+32739:       |                                               ^
+32740: <inline asm>:1:11: note: instantiated into assembly here
+32741:     1 |         mrs x14, PMCR1_EL1
+32742:       |                  ^
+32743: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:445:28: error: expected readable system register
+32744:   445 |                 pmesr = PMESR_EVT_DECODE(SREG_READ("PMESR0_EL1"), counter, 2);
+32745:       |                                          ^
+32746: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+32747:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+32748:       |                                               ^
+32749: <inline asm>:1:11: note: instantiated into assembly here
+32750:     1 |         mrs x13, PMESR0_EL1
+32751:       |                  ^
+32752: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:445:28: error: expected readable system register
+32753:   445 |                 pmesr = PMESR_EVT_DECODE(SREG_READ("PMESR0_EL1"), counter, 2);
+32754:       |                                          ^
+32755: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+32756:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+32757:       |                                               ^
+32758: <inline asm>:1:11: note: instantiated into assembly here
+32759:     1 |         mrs x11, PMESR0_EL1
+32760:       |                  ^
+32761: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:454:28: error: expected readable system register
+32762:   454 |                 pmesr = PMESR_EVT_DECODE(SREG_READ("PMESR1_EL1"), counter, 6);
+32763:       |                                          ^
+32764: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+32765:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+32766:       |                                               ^
+32767: <inline asm>:1:11: note: instantiated into assembly here
+32768:     1 |         mrs x11, PMESR1_EL1
+32769:       |                  ^
+32770: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:463:19: error: expected readable system register
+32771:   463 |         uint64_t pmcr1 = SREG_READ("PMCR1_EL1");
+32772:       |                          ^
+32773: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+32774:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+32775:       |                                               ^
+32776: <inline asm>:1:11: note: instantiated into assembly here
+32777:     1 |         mrs x12, PMCR1_EL1
+32778:       |                  ^
+32779: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:314:17: error: expected readable system register
+32780:   314 |         case 3: return SREG_READ("PMC3");
+32781:       |                        ^
+32782: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+32783:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+32784:       |                                               ^
+32785: <inline asm>:1:11: note: instantiated into assembly here
+32786:     1 |         mrs x20, PMC3
+32787:       |                  ^
+32788: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:318:17: error: expected readable system register
+32789:   318 |         case 7: return SREG_READ("PMC7");
+32790:       |                        ^
+32791: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+32792:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+32793:       |                                               ^
+32794: <inline asm>:1:11: note: instantiated into assembly here
+32795:     1 |         mrs x20, PMC7
+32796:       |                  ^
+32797: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:316:17: error: expected readable system register
+32798:   316 |         case 5: return SREG_READ("PMC5");
+32799:       |                        ^
+32800: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+32801:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+32802:       |                                               ^
+32803: <inline asm>:1:11: note: instantiated into assembly here
+32804:     1 |         mrs x20, PMC5
+32805:       |                  ^
+32806: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:321:17: error: expected readable system register
+32807:   321 |         case 9: return SREG_READ("PMC9");
+32808:       |                        ^
+32809: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+32810:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+32811:       |                                               ^
+32812: <inline asm>:1:11: note: instantiated into assembly here
+32813:     1 |         mrs x20, PMC9
+32814:       |                  ^
+32815: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:313:17: error: expected readable system register
+32816:   313 |         case 2: return SREG_READ("PMC2");
+32817:       |                        ^
+32818: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+32819:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+32820:       |                                               ^
+32821: <inline asm>:1:11: note: instantiated into assembly here
+32822:     1 |         mrs x20, PMC2
+32823:       |                  ^
+32824: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:317:17: error: expected readable system register
+32825:   317 |         case 6: return SREG_READ("PMC6");
+32826:       |                        ^
+32827: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+32828:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+32829:       |                                               ^
+32830: <inline asm>:1:11: note: instantiated into assembly here
+32831:     1 |         mrs x20, PMC6
+32832:       |                  ^
+32833: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:315:17: error: expected readable system register
+32834:   315 |         case 4: return SREG_READ("PMC4");
+32835:       |                        ^
+32836: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+32837:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+32838:       |                                               ^
+32839: <inline asm>:1:11: note: instantiated into assembly here
+32840:     1 |         mrs x20, PMC4
+32841:       |                  ^
+32842: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:320:17: error: expected readable system register
+32843:   320 |         case 8: return SREG_READ("PMC8");
+32844:       |                        ^
+32845: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+32846:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+32847:       |                                               ^
+32848: <inline asm>:1:11: note: instantiated into assembly here
+32849:     1 |         mrs x20, PMC8
+32850:       |                  ^
+32851: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:334:10: error: expected writable system register or pstate
+32852:   334 |         case 3: SREG_WRITE("PMC3", value); break;
+32853:       |                 ^
+32854: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:168:44: note: expanded from macro 'SREG_WRITE'
+32855:   168 | #define SREG_WRITE(SR, V) __asm__ volatile("msr " SR ", %0 ; isb" : : "r"(V))
+32856:       |                                            ^
+32857: <inline asm>:1:6: note: instantiated into assembly here
+32858:     1 |         msr PMC3, x8 ; isb
+32859:       |             ^
+32860: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:334:10: error: expected writable system register or pstate
+32861:   334 |         case 3: SREG_WRITE("PMC3", value); break;
+32862:       |                 ^
+32863: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:168:44: note: expanded from macro 'SREG_WRITE'
+32864:   168 | #define SREG_WRITE(SR, V) __asm__ volatile("msr " SR ", %0 ; isb" : : "r"(V))
+32865:       |                                            ^
+32866: <inline asm>:1:6: note: instantiated into assembly here
+32867:     1 |         msr PMC3, x8 ; isb
+32868:       |             ^
+32869: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:338:10: error: expected writable system register or pstate
+32870:   338 |         case 7: SREG_WRITE("PMC7", value); break;
+32871:       |                 ^
+32872: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:168:44: note: expanded from macro 'SREG_WRITE'
+32873:   168 | #define SREG_WRITE(SR, V) __asm__ volatile("msr " SR ", %0 ; isb" : : "r"(V))
+32874:       |                                            ^
+32875: <inline asm>:1:6: note: instantiated into assembly here
+32876:     1 |         msr PMC7, x8 ; isb
+32877:       |             ^
+32878: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:338:10: error: expected writable system register or pstate
+32879:   338 |         case 7: SREG_WRITE("PMC7", value); break;
+32880:       |                 ^
+32881: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:168:44: note: expanded from macro 'SREG_WRITE'
+32882:   168 | #define SREG_WRITE(SR, V) __asm__ volatile("msr " SR ", %0 ; isb" : : "r"(V))
+32883:       |                                            ^
+32884: <inline asm>:1:6: note: instantiated into assembly here
+32885:     1 |         msr PMC7, x8 ; isb
+32886:       |             ^
+32887: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:336:10: error: expected writable system register or pstate
+32888:   336 |         case 5: SREG_WRITE("PMC5", value); break;
+32889:       |                 ^
+32890: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:168:44: note: expanded from macro 'SREG_WRITE'
+32891:   168 | #define SREG_WRITE(SR, V) __asm__ volatile("msr " SR ", %0 ; isb" : : "r"(V))
+32892:       |                                            ^
+32893: <inline asm>:1:6: note: instantiated into assembly here
+32894:     1 |         msr PMC5, x8 ; isb
+32895:       |             ^
+32896: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:341:10: error: expected writable system register or pstate
+32897:   341 |         case 9: SREG_WRITE("PMC9", value); break;
+32898:       |                 ^
+32899: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:168:44: note: expanded from macro 'SREG_WRITE'
+32900:   168 | #define SREG_WRITE(SR, V) __asm__ volatile("msr " SR ", %0 ; isb" : : "r"(V))
+32901:       |                                            ^
+32902: <inline asm>:1:6: note: instantiated into assembly here
+32903:     1 |         msr PMC9, x8 ; isb
+32904:       |             ^
+32905: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:336:10: error: expected writable system register or pstate
+32906:   336 |         case 5: SREG_WRITE("PMC5", value); break;
+32907:       |                 ^
+32908: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:168:44: note: expanded from macro 'SREG_WRITE'
+32909:   168 | #define SREG_WRITE(SR, V) __asm__ volatile("msr " SR ", %0 ; isb" : : "r"(V))
+32910:       |                                            ^
+32911: <inline asm>:1:6: note: instantiated into assembly here
+32912:     1 |         msr PMC5, x8 ; isb
+32913:       |             ^
+32914: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:341:10: error: expected writable system register or pstate
+32915:   341 |         case 9: SREG_WRITE("PMC9", value); break;
+32916:       |                 ^
+32917: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:168:44: note: expanded from macro 'SREG_WRITE'
+32918:   168 | #define SREG_WRITE(SR, V) __asm__ volatile("msr " SR ", %0 ; isb" : : "r"(V))
+32919:       |                                            ^
+32920: <inline asm>:1:6: note: instantiated into assembly here
+32921:     1 |         msr PMC9, x8 ; isb
+32922:       |             ^
+32923: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:333:10: error: expected writable system register or pstate
+32924:   333 |         case 2: SREG_WRITE("PMC2", value); break;
+32925:       |                 ^
+32926: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:168:44: note: expanded from macro 'SREG_WRITE'
+32927:   168 | #define SREG_WRITE(SR, V) _410 warnings generated.
+32928: _asm__ volatile("msr " SR ", %0 ; isb" : : "r"(V))
+32930: <inline asm>:1:6: note: instantiated into assembly here
+32931:     1 |         msr PMC2, x8 ; isb
+32932:       |             ^
+32933: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:337:10: error: expected writable system register or pstate
+32934:   337 |         case 6: SREG_WRITE("PMC6", value); break;
+32935:       |                 ^
+32936: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:168:44: note: expanded from macro 'SREG_WRITE'
+32937:   168 | #define SREG_WRITE(SR, V) __asm__ volatile("msr " SR ", %0 ; isb" : : "r"(V))
+32938:       |                                            ^
+32939: <inline asm>:1:6: note: instantiated into assembly here
+32940:     1 |         msr PMC6, x8 ; isb
+32941:       |             ^
+32942: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:335:10: error: expected writable system register or pstate
+32943:   335 |         case 4: SREG_WRITE("PMC4", value); break;
+32944:       |                 ^
+32945: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:168:44: note: expanded from macro 'SREG_WRITE'
+32946:   168 | #define SREG_WRITE(SR, V) __asm__ volatile("msr " SR ", %0 ; isb" : : "r"(V))
+32947:       |                                            ^
+32948: <inline asm>:1:6: note: instantiated into assembly here
+32949:     1 |         msr PMC4, x8 ; isb
+32950:       |             ^
+32951: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:340:10: error: expected writable system register or pstate
+32952:   340 |         case 8: SREG_WRITE("PMC8", value); break;
+32953:       |                 ^
+32954: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:168:44: note: expanded from macro 'SREG_WRITE'
+32955:   168 | #define SREG_WRITE(SR, V) __asm__ volatile("msr " SR ", %0 ; isb" : : "r"(V))
+32956:       |                                            ^
+32957: <inline asm>:1:6: note: instantiated into assembly here
+32958:     1 |         msr PMC8, x8 ; isb
+32959:       |             ^
+32960: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:333:10: error: expected writable system register or pstate
+32961:   333 |         case 2: SREG_WRITE("PMC2", value); break;
+32962:       |                 ^
+32963: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:168:44: note: expanded from macro 'SREG_WRITE'
+32964:   168 | #define SREG_WRITE(SR, V) __asm__ volatile("msr " SR ", %0 ; isb" : : "r"(V))
+32965:       |                                            ^
+32966: <inline asm>:1:6: note: instantiated into assembly here
+32967:     1 |         msr PMC2, x8 ; isb
+32968:       |             ^
+32969: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:337:10: error: expected writable system register or pstate
+32970:   337 |         case 6: SREG_WRITE("PMC6", value); break;
+32971:       |                 ^
+32972: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:168:44: note: expanded from macro 'SREG_WRITE'
+32973:   168 | #define SREG_WRITE(SR, V) __asm__ volatile("msr " SR ", %0 ; isb" : : "r"(V))
+32974:       |                                            ^
+32975: <inline asm>:1:6: note: instantiated into assembly here
+32976:     1 |         msr PMC6, x8 ; isb
+32977:       |             ^
+32978: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:335:10: error: expected writable system register or pstate
+32979:   335 |         case 4: SREG_WRITE("PMC4", value); break;
+32980:       |                 ^
+32981: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:168:44: note: expanded from macro 'SREG_WRITE'
+32982:   168 | #define SREG_WRITE(SR, V) __asm__ volatile("msr " SR ", %0 ; isb" : : "r"(V))
+32983:       |                                            ^
+32984: <inline asm>:1:6: note: instantiated into assembly here
+32985:     1 |         msr PMC4, x8 ; isb
+32986:       |             ^
+32987: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:340:10: error: expected writable system register or pstate
+32988:   340 |         case 8: SREG_WRITE("PMC8", value); break;
+32989:       |                 ^
+32990: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:168:44: note: expanded from macro 'SREG_WRITE'
+32991:   168 | #define SREG_WRITE(SR, V) __asm__ volatile("msr " SR ", %0 ; isb" : : "r"(V))
+32992:       |                                            ^
+32993: <inline asm>:1:6: note: instantiated into assembly here
+32994:     1 |         msr PMC8, x8 ; isb
+32995:       |             ^
+32996: <inline asm>:1:10: error: expected readable system register
+32997:     1 |         mrs x8, PMCR0_EL1
+32998:       |                 ^
+32999: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:239:3: error: expected writable system register or pstate
+33000:   239 |                 SREG_WRITE("PMCR0_EL1", pmcr0);
+33001:       |                 ^
+33002: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:168:44: note: expanded from macro 'SREG_WRITE'
+33003:   168 | #define SREG_WRITE(SR, V) __asm__ volatile("msr " SR ", %0 ; isb" : : "r"(V))
+33004:       |                                            ^
+33005: <inline asm>:1:6: note: instantiated into assembly here
+33006:     1 |         msr PMCR0_EL1, x8 ; isb
+33007:       |             ^
+33008: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:260:3: error: expected writable system register or pstate
+33009:   260 |                 SREG_WRITE("PMCR0_EL1", pmcr0);
+33010:       |                 ^
+33011: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:168:44: note: expanded from macro 'SREG_WRITE'
+33012:   168 | #define SREG_WRITE(SR, V) __asm__ volatile("msr " SR ", %0 ; isb" : : "r"(V))
+33013:       |                                            ^
+33014: <inline asm>:1:6: note: instantiated into assembly here
+33015:     1 |         msr PMCR0_EL1, x8 ; isb
+33016:       |             ^
+33017: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:321:17: error: expected readable system register
+33018:   321 |         case 9: return SREG_READ("PMC9");
+33019:       |                        ^
+33020: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+33021:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+33022:       |                                               ^
+33023: <inline asm>:1:11: note: instantiated into assembly here
+33024:     1 |         mrs x12, PMC9
+33025:       |                  ^
+33026: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:313:17: error: expected readable system register
+33027:   313 |         case 2: return SREG_READ("PMC2");
+33028:       |                        ^
+33029: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+33030:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+33031:       |                                               ^
+33032: <inline asm>:1:11: note: instantiated into assembly here
+33033:     1 |         mrs x12, PMC2
+33034:       |                  ^
+33035: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:317:17: error: expected readable system register
+33036:   317 |         case 6: return SREG_READ("PMC6");
+33037:       |                        ^
+33038: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+33039:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+33040:       |                                               ^
+33041: <inline asm>:1:11: note: instantiated into assembly here
+33042:     1 |         mrs x12, PMC6
+33043:       |                  ^
+33044: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:315:17: error: expected readable system register
+33045:   315 |         case 4: return SREG_READ("PMC4");
+33046:       |                        ^
+33047: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+33048:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+33049:       |                                               ^
+33050: <inline asm>:1:11: note: instantiated into assembly here
+33051:     1 |         mrs x12, PMC4
+33052:       |                  ^
+33053: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:320:17: error: expected readable system register
+33054:   320 |         case 8: return SREG_READ("PMC8");
+33055:       |                        ^
+33056: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+33057:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+33058:       |                                               ^
+33059: <inline asm>:1:11: note: instantiated into assembly here
+33060:     1 |         mrs x12, PMC8
+33061:       |                  ^
+33062: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:314:17: error: expected readable system register
+33063:   314 |         case 3: return SREG_READ("PMC3");
+33064:       |                        ^
+33065: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+33066:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+33067:       |                                               ^
+33068: <inline asm>:1:11: note: instantiated into assembly here
+33069:     1 |         mrs x12, PMC3
+33070:       |                  ^
+33071: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:318:17: error: expected readable system register
+33072:   318 |         case 7: return SREG_READ("PMC7");
+33073:       |                        ^
+33074: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+33075:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+33076:       |                                               ^
+33077: <inline asm>:1:11: note: instantiated into assembly here
+33078:     1 |         mrs x12, PMC7
+33079:       |                  ^
+33080: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:316:17: error: expected readable system register
+33081:   316 |         case 5: return SREG_READ("PMC5");
+33082:       |                        ^
+33083: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+33084:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+33085:       |                                               ^
+33086: <inline asm>:1:11: note: instantiated into assembly here
+33087:     1 |         mrs x12, PMC5
+33088:       |                  ^
+33089: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:299:19: error: expected readable system register
+33090:   299 |         uint64_t pmcr1 = SREG_READ("PMCR1_EL1");
+33091:       |                          ^
+33092: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+33093:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+33094:       |                                               ^
+33095: <inline asm>:1:11: note: instantiated into assembly here
+33096:     1 |         mrs x12, PMCR1_EL1
+33097:       |                  ^
+33098: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:303:2: error: expected writable system register or pstate
+33099:   303 |         SREG_WRITE("PMCR1_EL1", pmcr1);
+33100:       |         ^
+33101: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:168:44: note: expanded from macro 'SREG_WRITE'
+33102:   168 | #define SREG_WRITE(SR, V) __asm__ volatile("msr " SR ", %0 ; isb" : : "r"(V))
+33103:       |                                            ^
+33104: <inline asm>:1:6: note: instantiated into assembly here
+33105:     1 |         msr PMCR1_EL1, x8 ; isb
+33106:       |             ^
+33107: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:497:11: error: expected readable system register
+33108:   497 |                 pmesr = SREG_READ("PMESR0_EL1");
+33109:       |                         ^
+33110: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+33111:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+33112:       |                                               ^
+33113: <inline asm>:1:11: note: instantiated into assembly here
+33114:     1 |         mrs x10, PMESR0_EL1
+33115:       |                  ^
+33116: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:500:3: error: expected writable system register or pstate
+33117:   500 |                 SREG_WRITE("PMESR0_EL1", pmesr);
+33118:       |                 ^
+33119: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:168:44: note: expanded from macro 'SREG_WRITE'
+33120:   168 | #define SREG_WRITE(SR, V) __asm__ volatile("msr " SR ", %0 ; isb" : : "r"(V))
+33121:       |                                            ^
+33122: <inline asm>:1:6: note: instantiated into assembly here
+33123:     1 |         msr PMESR0_EL1, x9 ; isb
+33124:       |             ^
+33125: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:511:11: error: expected readable system register
+33126:   511 |                 pmesr = SREG_READ("PMESR1_EL1");
+33127:       |                         ^
+33128: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+33129:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+33130:       |                                               ^
+33131: <inline asm>:1:11: note: instantiated into assembly here
+33132:     1 |         mrs x10, PMESR1_EL1
+33133:       |                  ^
+33134: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:514:3: error: expected writable system register or pstate
+33135:   514 |                 SREG_WRITE("PMESR1_EL1", pmesr);
+33136:       |                 ^
+33137: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:168:44: note: expanded from macro 'SREG_WRITE'
+33138:   168 | #define SREG_WRITE(SR, V) __asm__ volatile("msr " SR ", %0 ; isb" : : "r"(V))
+33139:       |                                            ^
+33140: <inline asm>:1:6: note: instantiated into assembly here
+33141:     1 |         msr PMESR1_EL1, x9 ; isb
+33142:       |             ^
+33143: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:375:2: error: expected writable system register or pstate
+33144:   375 |         SREG_WRITE("PMCR2_EL1", configv[0]);
+33145:       |         ^
+33146: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:168:44: note: expanded from macro 'SREG_WRITE'
+33147: error: source-overlay/src/Kernel/xnu/osfmk/arm64/platform_tests.c:1627:24: invalid register "HID8" for llvm.read_register
+33148:   168 | #define SREerror: source-overlay/src/Kernel/xnu/osfmk/arm64/platform_tests.c:1621:25: invalid register "HID8" for llvm.read_register
+33149: G_WRITE(SR, V) __asm__ volatile("msr " SR ", %0 ; isb" : : "r"(V))
+33150:       |                                            ^
+33151: <inline asm>:1:6: note: instantiated into assembly here
+33152:     1 |         msr PMCR2_EL1, x9 ; isb
+33153:       |             ^
+33154: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:376:2: error: expected writable system register or pstate
+33155:   376 |         SREG_WRITE("PMCR3_EL1", configv[1]);
+33156:       |         ^
+33157: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:168:44: note: expanded from macro 'SREG_WRITE'
+33158:   168 | #define SREG_WRITE(SR, V) __asm__ volatile("msr " SR ", %0 ; isb" : : "r"(V))
+33159:       |                                            ^
+33160: <inline asm>:1:6: note: instantiated into assembly here
+33161:     1 |         msr PMCR3_EL1, x8 ; isb
+33162:       |             ^
+33163: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:377:2: error: expected writable system register or pstate
+33164:   377 |         SREG_WRITE("PMCR4_EL1", configv[2]);
+33165:       |         ^
+33166: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:168:44: note: expanded from macro 'SREG_WRITE'
+33167:   168 | #define SREG_WRITE(SR, V) __asm__ volatile("msr " SR ", %0 ; isb" : : "r"(V))
+33168:       |                                            ^
+33169: <inline asm>:1:6: note: instantiated into assembly here
+33170:     1 |         msr PMCR4_EL1, x9 ; isb
+33171:       |             ^
+33172: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:378:2: error: expected writable system register or pstate
+33173:   378 |         SREG_WRITE("OPMAT0_EL1", configv[3]);
+33174:       |         ^
+33175: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:168:44: note: expanded from macro 'SREG_WRITE'
+33176:   168 | #define SREG_WRITE(SR, V) __asm__ volatile("msr " SR ", %0 ; isb" : : "r"(V))
+33177:       |                                            ^
+33178: <inline asm>:1:6: note: instantiated into assembly here
+33179:     1 |         msr OPMAT0_EL1, x8 ; isb
+33180:       |             ^
+33181: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:379:2: error: expected writable system register or pstate
+33182:   379 |         SREG_WRITE("OPMAT1_EL1", configv[4]);
+33183:       |         ^
+33184: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:168:44: note: expanded from macro 'SREG_WRITE'
+33185:   168 | #define SREG_WRITE(SR, V) __asm__ volatile("msr " SR ", %0 ; isb" : : "r"(V))
+33186:       |                                            ^
+33187: <inline asm>:1:6: note: instantiated into assembly here
+33188:     1 |         msr OPMAT1_EL1, x9 ; isb
+33189:       |             ^
+33190: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:380:2: error: expected writable system register or pstate
+33191:   380 |         SREG_WRITE("OPMSK0_EL1", configv[5]);
+33192:       |         ^
+33193: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:168:44: note: expanded from macro 'SREG_WRITE'
+33194:   168 | #define SREG_WRITE(SR, V) __asm__ volatile("msr " SR ", %0 ; isb" : : "r"(V))
+33195:       |                                            ^
+33196: <inline asm>:1:6: note: instantiated into assembly here
+33197:     1 |         msr OPMSK0_EL1, x8 ; isb
+33198:       |             ^
+33199: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:381:2: error: expected writable system register or pstate
+33200:   381 |         SREG_WRITE("OPMSK1_EL1", configv[6]);
+33201:       |         ^
+33202: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:168:44: note: expanded from macro 'SREG_WRITE'
+33203:   168 | #define SREG_WRITE(SR, V) __asm__ volatile("msr " SR ", %0 ; isb" : : "r"(V))
+33204:       |                                            ^
+33205: <inline asm>:1:6: note: instantiated into assembly here
+33206:     1 |         msr OPMSK1_EL1, x9 ; isb
+33207:       |             ^
+33208: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:383:2: error: expected writable system register or pstate
+33209:   383 |         SREG_WRITE("PMMMAP_EL1", configv[7]);
+33210:       |         ^
+33211: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:168:44: note: expanded from macro 'SREG_WRITE'
+33212:   168 | #define SREG_WRITE(SR, V) __asm__ volatile("msr " SR ", %0 ; isb" : : "r"(V))
+33213:       |                                            ^
+33214: <inline asm>:1:6: note: instantiated into assembly here
+33215:     1 |         msr PMMMAP_EL1, x8 ; isb
+33216:       |             ^
+33217: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:384:2: error: expected writable system register or pstate
+33218:   384 |         SREG_WRITE("PMTRHLD2_EL1", configv[8]);
+33219:       |         ^
+33220: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:168:44: note: expanded from macro 'SREG_WRITE'
+33221:   168 | #define SREG_WRITE(SR, V) __asm__ volatile("msr " SR ", %0 ; isb" : : "r"(V))
+33222:       |                                            ^
+33223: <inline asm>:1:6: note: instantiated into assembly here
+33224:     1 |         msr PMTRHLD2_EL1, x9 ; isb
+33225:       |             ^
+33226: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:385:2: error: expected writable system register or pstate
+33227:   385 |         SREG_WRITE("PMTRHLD4_EL1", configv[9]);
+33228:       |         ^
+33229: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:168:44: note: expanded from macro 'SREG_WRITE'
+33230:   168 | #define SREG_WRITE(SR, V) __asm__ volatile("msr " SR ", %0 ; isb" : : "r"(V))
+33231:       |                                            ^
+33232: <inline asm>:1:6: note: instantiated into assembly here
+33233:     1 |         msr PMTRHLD4_EL1, x8 ; isb
+33234:       |             ^
+33235: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:386:2: error: expected writable system register or pstate
+33236:   386 |         SREG_WRITE("PMTRHLD6_EL1", configv[10]);
+33237:       |         ^
+33238: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:168:44: note: expanded from macro 'SREG_WRITE'
+33239:   168 | #define SREG_WRITE(SR, V) __asm__ volatile("msr " SR ", %0 ; isb" : : "r"(V))
+33240:       |                                            ^
+33241: <inline asm>:1:6: note: instantiated into assembly here
+33242:     1 |         msr PMTRHLD6_EL1, x8 ; isb
+33243:       |             ^
+33244: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:401:26: error: expected readable system register
+33245:   401 |         saved_PMESR[cpuid][0] = SREG_READ("PMESR0_EL1");
+33246:       |                                 ^
+33247: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+33248:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+33249:       |                                               ^
+33250: <inline asm>:1:10: note: instantiated into assembly here
+33251:     1 |         mrs x8, PMESR0_EL1
+33252:       |                 ^
+33253: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:402:26: error: expected readable system register
+33254:   402 |         saved_PMESR[cpuid][1] = SREG_READ("PMESR1_EL1");
+33255:       |                                 ^
+33256: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+33257:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+33258:       |                                               ^
+33259: <inline asm>:1:10: note: instantiated into assembly here
+33260:     1 |         mrs x8, PMESR1_EL1
+33261:       |                 ^
+33262: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:356:15: error: expected readable system register
+33263:   356 |         configv[0] = SREG_READ("PMCR2_EL1");
+33264:       |                      ^
+33265: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+33266:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+33267:       |                                               ^
+33268: <inline asm>:1:10: note: instantiated into assembly here
+33269:     1 |         mrs x9, PMCR2_EL1
+33270:       |                 ^
+33271: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:357:15: error: expected readable system register
+33272:   357 |         configv[1] = SREG_READ("PMCR3_EL1");
+33273:       |                      ^
+33274: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+33275:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+33276:       |                                               ^
+33277: <inline asm>:1:10: note: instantiated into assembly here
+33278:     1 |         mrs x9, PMCR3_EL1
+33279:       |                 ^
+33280: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:358:15: error: expected readable system register
+33281:   358 |         configv[2] = SREG_READ("PMCR4_EL1");
+33282:       |                      ^
+33283: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+33284:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+33285:       |                                               ^
+33286: <inline asm>:1:10: note: instantiated into assembly here
+33287:     1 |         mrs x9, PMCR4_EL1
+33288:       |                 ^
+33289: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:359:15: error: expected readable system register
+33290:   359 |         configv[3] = SREG_READ("OPMAT0_EL1");
+33291:       |                      ^
+33292: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:170:40: note: expanded from macro 'SREG_READ'
+33293:   170 |                              __asm__ volatile("mrs %0, " SR : "=r"(VAL)); \
+33294:       |                                               ^
+33546:       |                                            ^
+33547: <inline asm>:1:6: note: instantiated into assembly here
+33548:     1 |         msr PMTRHLD6_EL1, x10 ; isb
+33549:       |             ^
+33550: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:340:10: error: expected writable system register or pstate
+33551:   340 |         case 8: SREG_WRITE("PMC8", value); break;
+33552:       |                 ^
+33553: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:168:44: note: expanded from macro 'SREG_WRITE'
+33554:   168 | #define SREG_WRITE(SR, V) __asm__ volatile("msr " SR ", %0 ; isb" : : "r"(V))
+33555:       |                                            ^
+33556: <inline asm>:1:6: note: instantiated into assembly here
+33557:     1 |         msr PMC8, x13 ; isb
+33558:       |             ^
+33559: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:334:10: error: expected writable system register or pstate
+33560:   334 |         case 3: SREG_WRITE("PMC3", value); break;
+33561:       |                 ^
+33562: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:168:44: note: expanded from macro 'SREG_WRITE'
+33563:   168 | #define SREG_WRITE(SR, V) __asm__ volatile("msr " SR ", %0 ; isb" : : "r"(V))
+33564:       |                                            ^
+33565: <inline asm>:1:6: note: instantiated into assembly here
+33566:     1 |         msr PMC3, x13 ; isb
+33567:       |             ^
+33568: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:338:10: error: expected writable system register or pstate
+33569:   338 |         case 7: SREG_WRITE("PMC7", value); break;
+33570:       |                 ^
+33571: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:168:44: note: expanded from macro 'SREG_WRITE'
+33572:   168 | #define SREG_WRITE(SR, V) __asm__ volatile("msr " SR ", %0 ; isb" : : "r"(V))
+33573:       |                                            ^
+33574: <inline asm>:1:6: note: instantiated into assembly here
+33575:     1 |         msr PMC7, x13 ; isb
+33576:       |             ^
+33577: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:336:10: error: expected writable system register or pstate
+33578:   336 |         case 5: SREG_WRITE("PMC5", value); break;
+33579:       |                 ^
+33580: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:168:44: note: expanded from macro 'SREG_WRITE'
+33581:   168 | #define SREG_WRITE(SR, V) __asm__ volatile("msr " SR ", %0 ; isb" : : "r"(V))
+33582:       |                                            ^
+33583: <inline asm>:1:6: note: instantiated into assembly here
+33584:     1 |         msr PMC5, x13 ; isb
+33585:       |             ^
+33586: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:341:10: error: expected writable system register or pstate
+33587:   341 |         case 9: SREG_WRITE("PMC9", value); break;
+33588:       |                 ^
+33589: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:168:44: note: expanded from macro 'SREG_WRITE'
+33590:   168 | #define SREG_WRITE(SR, V) __asm__ volatile("msr " SR ", %0 ; isb" : : "r"(V))
+33591:       |                                            ^
+33592: <inline asm>:1:6: note: instantiated into assembly here
+33593:     1 |         msr PMC9, x13 ; isb
+33594:       |             ^
+33595: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:333:10: error: expected writable system register or pstate
+33596:   333 |         case 2: SREG_WRITE("PMC2", value); break;
+33597:       |                 ^
+33598: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:168:44: note: expanded from macro 'SREG_WRITE'
+33599:   168 | #define SREG_WRITE(SR, V) __asm__ volatile("msr " SR ", %0 ; isb" : : "r"(V))
+33600:       |                                            ^
+33601: <inline asm>:1:6: note: instantiated into assembly here
+33602:     1 |         msr PMC2, x13 ; isb
+33603:       |             ^
+33604: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:337:10: error: expected writable system register or pstate
+33605:   337 |         case 6: SREG_WRITE("PMC6", value); break;
+33606:       |                 ^
+33607: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:168:44: note: expanded from macro 'SREG_WRITE'
+33608:   168 | #define SREG_WRITE(SR, V) __asm__ volatile("msr " SR ", %0 ; isb" : : "r"(V))
+33609:       |                                            ^
+33610: <inline asm>:1:6: note: instantiated into assembly here
+33611:     1 |         msr PMC6, x13 ; isb
+33612:       |             ^
+33613: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:335:10: error: expected writable system register or pstate
+33614:   335 |         case 4: SREG_WRITE("PMC4", value); break;
+33615:       |                 ^
+33616: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:168:44: note: expanded from macro 'SREG_WRITE'
+33617:   168 | #define SREG_WRITE(SR, V) __asm__ volatile("msr " SR ", %0 ; isb" : : "r"(V))
+33618:       |                                            ^
+33619: <inline asm>:1:6: note: instantiated into assembly here
+33620:     1 |         msr PMC4, x13 ; isb
+33621:       |             ^
+33622: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:432:2: error: expected writable system register or pstate
+33623:   432 |         SREG_WRITE("PMCR1_EL1", saved_PMCR[cpuid][1] | 0x30303);
+33624:       |         ^
+33625: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/kpc.c:168:44: note: expanded from macro 'SREG_WRITE'
+33626:   168 | #define SREG_WRITE(SR, V) __asm__ volatile("msr " SR ", %0 ; isb" : : "r"(V))
+33627:       |                                            ^
+33628: <inline asm>:1:6: note: instantiated into assembly here
+33629:     1 |         msr PMCR1_EL1, x8 ; isb
+33630:       |             ^
+33631: 388 warnings and 120 errors generated.
+33632: make[11]: *** [kpc.o] Error 1
+33633: 416 warnings and 2 errors generated.
+33634: make[11]: *** [platform_tests.o] Error 1
+33635: make[10]: *** [build_all] Error 2
+33636: make[9]: *** [do_all] Error 2
+33637: make[8]: *** [build_all] Error 2
+33638: make[7]: *** [build_all_recurse_into_conf] Error 2
+33639: make[6]: *** [build_all_recurse_into_osfmk] Error 2
+33640: make[5]: *** [build_all_bootstrap_DEVELOPMENT^ARM64^T8103] Error 2
+33641: make[4]: *** [install] Error 2
+33642: make[3]: *** [src/Kernel/xnu/xnu_build/src/xnu-stamp/xnu-build] Error 2
+33643: make[2]: *** [src/Kernel/xnu/CMakeFiles/xnu.dir/all] Error 2
+33644: make[1]: *** [src/Kernel/xnu/CMakeFiles/xnu.dir/rule] Error 2
+33645: make: *** [xnu] Error 2

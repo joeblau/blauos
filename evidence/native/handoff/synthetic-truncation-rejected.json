@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "status": "failed",
+  "profile": "apple-xnu-12377",
+  "validation_scope": "offline bytes and explicit memory assumptions",
+  "synthetic_fixture": true,
+  "physical_execution_verified": false,
+  "mmu_verified": false,
+  "exceptions_verified": false,
+  "errors": [
+    "truncated ADT at byte 200: need 16 bytes"
+  ],
+  "source_contract_sha256": "3ce67d69cd920c2310a7b908bab5b4d00389f3a1f5a8c3ad704126ea736e6ad9",
+  "input_sha256": {
+    "boot_args": "a446217601d8549222e1fa1479b242c601f01c879f67e1f690aa20d02d78f98a",
+    "adt": "94b15a0108fb89b0a0797ff4aaa89a9fdea33ea0983165b2ed43e9519eff5b53",
+    "memory_plan": "7066474576f6c3f7234ef2bcb01d9686de1e2ad35a79c380a8655c9808419212"
+  }
+}

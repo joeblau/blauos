@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "status": "synthetic_tests_pass",
+  "fixture_kind": "synthetic_not_hardware_capture",
+  "command": [
+    "/opt/homebrew/opt/python@3.14/bin/python3.14",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "platform/apple-m1/handoff/tests",
+    "-v"
+  ],
+  "exit_code": 0,
+  "tests_run": 36,
+  "python_version": "3.14.7 (main, Aug  5 2026, 10:29:49) [Clang 21.0.0 (clang-2100.1.1.101)]",
+  "source_sha256": {
+    "platform/apple-m1/handoff/decoder.py": "e38baac52109e8d7bf24645128d5b4f70f9389f6ef5903642e0a7de3dd10e43e",
+    "platform/apple-m1/handoff/tests/test_decoder.py": "190ac3391589a5ab2435aaaa799bd33c33bfcb798e660f4fc1f85c224e643932",
+    "platform/apple-m1/handoff/contract.json": "3ce67d69cd920c2310a7b908bab5b4d00389f3a1f5a8c3ad704126ea736e6ad9",
+    "scripts/platform/inspect_m1_handoff.py": "01fd240e6d87bf48b230303480c7624615fa46dafcf58c1f95de25000ddd8eb2",
+    "scripts/platform/verify_m1_handoff_layout.py": "fd74fbd6216396bebfccbcb32ff3e9022d44ea04fa0ef845d1c0c95db3026ac8"
+  },
+  "raw_log": {
+    "path": ".blauos/build/native-handoff-fixtures/unit-tests.log",
+    "bytes": 3647,
+    "sha256": "0bf69ff66c7a807fdaa49888a68807fc509bd285062e15252438783c84e1aaad"
+  },
+  "inspection_steps": [
+    {
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-B",
+        "/Users/joeblau/Developer/joeblau/src/blauos/scripts/platform/inspect_m1_handoff.py",
+        "--profile",
+        "apple-xnu-12377",
+        "--boot-args",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native-handoff-fixtures/apple-xnu-12377-synthetic-boot-args.bin",
+        "--adt",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native-handoff-fixtures/synthetic-adt.bin",
+        "--memory-plan",
+        "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/handoff/synthetic-memory-plan.json",
+        "--report",
+        "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/handoff/synthetic-apple-xnu-12377.json",
+        "--synthetic-fixture"
+      ],
+      "exit_code": 0,
+      "report": "evidence/native/handoff/synthetic-apple-xnu-12377.json",
+      "report_sha256": "f7bdcad5a7a3260212567e951a3f177bedef895b5522a5881296936a5d0371ae"
+    },
+    {
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-B",
+        "/Users/joeblau/Developer/joeblau/src/blauos/scripts/platform/inspect_m1_handoff.py",
+        "--profile",
+        "apple-xnu-12377",
+        "--boot-args",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native-handoff-fixtures/apple-xnu-12377-synthetic-boot-args.bin",
+        "--adt",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native-handoff-fixtures/synthetic-truncated-adt.bin",
+        "--memory-plan",
+        "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/handoff/synthetic-memory-plan.json",
+        "--report",
+        "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/handoff/synthetic-truncation-rejected.json",
+        "--synthetic-fixture"
+      ],
+      "exit_code": 1,
+      "expected_rejection": true,
+      "report": "evidence/native/handoff/synthetic-truncation-rejected.json",
+      "report_sha256": "1a987ee75b81667c830df9773d445644afa68386d23b8d9428165475a6c55221"
+    },
+    {
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-B",
+        "/Users/joeblau/Developer/joeblau/src/blauos/scripts/platform/inspect_m1_handoff.py",
+        "--profile",
+        "puredarwin-xnu-7195",
+        "--boot-args",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native-handoff-fixtures/puredarwin-xnu-7195-synthetic-boot-args.bin",
+        "--adt",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native-handoff-fixtures/synthetic-adt.bin",
+        "--memory-plan",
+        "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/handoff/synthetic-memory-plan.json",
+        "--report",
+        "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/handoff/synthetic-puredarwin-xnu-7195.json",
+        "--synthetic-fixture"
+      ],
+      "exit_code": 0,
+      "report": "evidence/native/handoff/synthetic-puredarwin-xnu-7195.json",
+      "report_sha256": "22db007301ab53e0fda3f9298cb5fe63426012b124b03393c598793eace0be12"
+    }
+  ],
+  "physical_execution_verified": false,
+  "mmu_verified": false,
+  "exceptions_verified": false
+}

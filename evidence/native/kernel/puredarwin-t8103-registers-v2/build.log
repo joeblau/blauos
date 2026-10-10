@@ -1,0 +1,239 @@
+1: [  0%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/begin.c.o
+2: [  0%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_create.c.o
+3: [  0%] Building C object tools/cctools/libmacho/CMakeFiles/host_libmacho.dir/arch.c.o
+4: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/allocate.c.o
+5: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/apple_version.c.o
+6: [  0%] Linking C static library libmacho.a
+7: [  0%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_decl.c.o
+8: [  0%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/clscook.c.o
+9: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/arch_usage.c.o
+10: [  0%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_error.c.o
+11: [  0%] Built target host_libmacho
+12: [  0%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/clscook_ELF64.c.o
+13: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/arch.c.o
+14: [  0%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_abbrev.c.o
+15: [  0%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_hash.c.o
+16: [ 10%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/cntl.c.o
+17: [ 10%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/args.c.o
+18: [ 10%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_addr_finder.c.o
+19: [ 10%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_labels.c.o
+20: [ 10%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/cook.c.o
+21: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_alloc.c.o
+22: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/best_arch.c.o
+23: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_lib.c.o
+24: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/data.c.o
+25: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_arange.c.o
+26: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/breakout.c.o
+27: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/end.c.o
+28: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_die_deliv.c.o
+29: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_lookup.c.o
+30: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/error.c.o
+31: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/bytesex.c.o
+32: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_error.c.o
+33: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_open.c.o
+34: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/gelf.c.o
+35: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_form.c.o
+36: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_subr.c.o
+37: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getdata.c.o
+38: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/checkout.c.o
+39: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_frame.c.o
+40: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_types.c.o
+41: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getehdr.c.o
+42: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/coff_bytesex.c.o
+43: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_frame2.c.o
+44: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getident.c.o
+45: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_util.c.o
+46: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/crc32.c.o
+47: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getscn.c.o
+48: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_frame3.c.o
+49: [ 30%] Linking C static library libctf.a
+50: [ 30%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/dylib_table.c.o
+51: [ 30%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getshdr.c.o
+52: [ 30%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_funcs.c.o
+53: [ 30%] Built target libctf.host
+54: [ 40%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/dylib_roots.c.o
+55: [ 40%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getshstrndx.c.o
+56: [ 40%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_global.c.o
+57: [ 40%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/input.c.o
+58: [ 40%] Yacc parser.y
+59: [ 40%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_init_finish.c.o
+60: [ 40%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/errors.c.o
+1384425: t ^                                        ^
+1384426: 
+1384427: s/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/source-overlay/src/Kernel/xnu/osfmk/mach/arm/_structs.h:534:6: warning: identifier '__pagein_error' is reserved because it starts with '__' [-Wreserved-identifier]
+1384428:   534 |         int __pagein_error:z/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/mach/task.h:1627:4)oA
+1384429: :  ic warning: g/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/san/san/memintrinsics.h534r _A | _R      G identifier '__darwin_rune_t' is reserved because it starts with '__' [-Wreserved-identifier]
+1384430: _|     #pw ^od:5092285 | p uIn file included from Swarning: ;        m:_i
+1384431: identifier '__Request__mach_task_is_self_t' is reserved because it starts with '__' [-Wreserved-identifier]t
+1384432: e1_ 
+1384433: 1295      in | Sci/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/san/san/memintrinsics.h:tt Y | :ftSCehT i_s| t yStwarning: r/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/source-overlay/src/Kernel/xnu/bsd/pthread/pthread_priority.caf sfilcn            ^ut
+1481833: snote: _az ttIn file included from rybPlu)p/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/source-overlay/src/Kernel/xnu/bsd/net/pktsched/pktsched.he/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/source-overlay/src/Kernel/xnu/bsd/kern/kern_event.ce
+1481834: uc :ct:poexpanded from macro '_os_atomic_value_cast'h64:eoroa
+1481835: iit        m:e| ^
+1481836: txAGE ***\n",
+1481837: nixnte26tern i: t g81r:
+1481838: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/bsd/sys/sysproto.h(:1295:8: warning: identifier '__pthread_kill_args' is reserved because it starts with '__' [-Wreserved-identifier]
+1481839:  1295 | st 218 |         ({ typywarning: ec_norr/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/san/san/memintrinsics.hn555pt_std(at e)
+1481840:       |                                     ^
+1481841: :e)ptor2942_identifier '__pcnt' is reserved because it starts with '__' [-Wreserved-identifier] | /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/libkern/os/atomic_private_impl.hu:4 
+1645325:  D   y  tr            ^
+1645326: o* /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/libkern/os/atomic_private_impl.h: my_  218(p_l:_ s231s psAEi13s:,l | m_o voeoaom c- Dd  __ f n ira_vnote: , m(bl_  i _s*aMctAmw(e expanded from macro '_os_atomic_value_cast'eg  oCaQUiz e_poil tnmt_f n, 
+1645327: i R_ ; xnk_o   p218 | ed          apt(pOts (o_ea{  xeo Eu_rtrs(p)y  U i Eqeu  nu _ ts/ pern_Vsl eo e   A(o fs_t  _    pE L aqTe3cel_e2 tozmeh_ tm pc  ( i)c *_pro;_ uc _  wqnd  VAa L a v q}_pn _  /Itr mtue  e  sbr__ uAt Rm  aoG; DgaA TE*e_s( *)So
+1645328: s       tpo_ e b  /ys    et6_.tq u  y _   _0t,_ pat ecn    o o em|  e a   ***n _osu                                    ^ f/ s ( 
+1645329: vap m /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/libkern/os/atomic_private_impl.hiec) ,i_ct _n _ 
+1645330: _to\ ,
+1645331:              |                                  ^| *m 
+1645332: -   s                                                                                  ^e:aounttCTLFLAG_RD | usp)(__nat n    try oed ot umoqiCo n224 /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/source-overlay/src/Kernel/xnu/bsd/sys/proc_internal.h_a r:s   _ta  o  6:m:teTLF i tn Lpri ecii_ / eomic*l
+1645333: Acc nate eirG_L_p)rnd tptr_t)od
+1750700: ::  l#697 dc _gq 2    t e warning:  _note: expanded from macro 'STARTUP_ARG' _iidentifier '__percpu_section_end' is reserved because it starts with '__' [-Wreserved-identifier] | boe 
+1750701: op__u aen  f__
+1750702: 270t c_ _ea | otol  p208_p e_(v | *        _ o        _ext ee;r__mrRosoSxcn treteetry_t_rstsno   r__i  #mb veTute# sA otrc_ 623kpaw_llreitrei_ t /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/source-overlay/src/Kernel/xnu/osfmk/arm64/platform_tests_asm.s  dctna_  uy R warningi=ran Tn(:37t  {e_snt_(__: t mt  oU no vi_6a mnesunusePs generatedacha_.
+1750703: re_a  d  : _txadd_o_tva_Aer roerror:  
+1750704: #u#r n__s      a| )Rt)st       ^k;expected writable system register or pstatetyd
+1750705: ;_       n _f | l
+1750706: oswst_caw_(ian          ^    _tt
+1750707: rop_m mir
+1750708:       Gpi( | _er 
+1750752:       |        ^
+1750753: :2341d));
+1750754:       ssize_t;  :cje|           ^
+1750755: _/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/mach/mach_traps.h:707:22: warning: emake[11]: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/bsd/sys/sysproto.hlpac| c:f*** [platform_tests_asm.o] Error 1l identifier '_kernelrpc_mach_vm_purgable_control_trap' is reserved because it starts with '_' at global scope [-Wreserved-identifier]4t_qu:red {
+1750756:        
+1750757: pv /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/mach/mach_vm.he                    ^
+1750758: 
+1750759: 40:
+1750760: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/source-overlay/src/Kernel/xnu/bsd/sys/mount_internal.h:84:
+1750761: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/source-overlay/src/Kernel/xnu/bsd/sys/vfs_context.h:9:
+1750762: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/source-overlay/src/Kernel/xnu/bsd/sys/user.h:89:
+1750763: In file included from  warning: identifier '__Reply__task_generate_corpse_t' is reserved because it starts with '__' [-Wreserved-identifier]
+1750764: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/source-overlay/src/Kernel/xnu/bsd/sys/eventvar.he::i| r a make[11]:  In file included from      n        ^ n2341*** Waiting for unfinished jobs....
+1750765: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/source-overlay/src/Kernel/xnu/bsd/kern/process_policy.c_  eg847t,  ::707 4    | 71/ c*su :h  | bas{bo        o52y:
+1750766: yIn file included from 
+1750767:  r_ pase/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/kern/policy_internal.hnxo/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/source-overlay/src/Kernel/xnu/bsd/sys/sysctl.hd:el45warning: }_:s 968 tidentifier '__Reply__mach_vm_inherit_t' is reserved because it starts with '__' [-Wreserved-identifier]:
+1750768: tIn file included from t:de                AS sha256_compress_arm64.o
+1750769: r _/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/kern/sched_prim.h
+1750949: iAn |   warning: identifier '__Reply__mach_task_is_self_t' is reserved because it starts with '__' [-Wreserved-identifier]uctTwarning: DD  177RE                                         ^ | ___S} R
+1750950:  _,ce  2512 |         _t p identifier '_kernelrpc_mach_port_deallocate_trap' is reserved because it starts with '_' at global scope [-Wreserved-identifier]rAI_
+1750951: axmake[10]: iCf
+1750952: _ at   utTt*** [build_all] Error 2722rne}
+1750953: _Oe i_buNlvi/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/source-overlay/src/Kernel/xnu/bsd/arm/_types.h | uei nrt:Tn32R17lt_R, xmake[9]: tt (t6 _te v4Go:v amepe ee *** [do_all] Error 2id __
+1750954:  R 33:)r _peley t,   _grsr_STwarning: ridentifier '__uint8_t' is reserved because it starts with '__' [-Wreserved-identifier] _ 
+1750955: A Rp   n erip_Tcn(*17lr |  n_y(  _maau_c h_nu  tm_MA_yk,make[8]: _eemlspL*** [build_all] Error 2
+1750956: rLf_eS_e YeOase_toaed_c)BltC )_p_ocsnmake[7]: da(lh_rev_aq
+1750957: tti*** [build_all_recurse_into_conf] Error 2urn_Mt/,      (| mt_                 ^"u L;b 
+1750958: eru{;   ra
+1750959: C _   
+1750960: K_Gwz;_      R
+1750961: s/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/source-overlay/src/Kernel/xnu/bsd/sys/malloc.hee_c      | :hdP183oi*k_   :wD
+1750962: ATAewn| make[6]: o      f_r k        ^ern               ^ 
+1750963: rite_*** [build_all_recurse_into_osfmk] Error 2| 18e:f          ^
+1750964: b"( warning: ,l
+1750965: s
+1750966: k_isq  _p identifier '__REALLOC' is reserved because it starts with '__' [-Wreserved-identifier]_rt/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/mach/task.hsl:ua" ti
+1750967: 2379/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/kern/cs_blobs.h rmake[6]: n   A: */
+1750968:   183 |  Tp tnr_*** Waiting for unfinished jobs....Tc_      uR_s ak :exs_NU236L_mtc_ti
+1750969: _ttLrg)p:nerce16iaern :zie ;bt 4l f vu\ es
+1750970: c| od      
+1750971:       | | i                      ^otlwarning: :identifier '__SC_Scatter' is reserved because it starts with '__' [-Wreserved-identifier]e
+1750972: 
+1750973:  _pu  th236;          ^warning: _ | 
+1896630:       |                     ^
+1896631: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/source-overlay/src/Kernel/xnu/bsd/nfs/nfs4_vnops.c:8584:2: warning: '_Static_assert' is incompatible with C standards before C11 [-Wpre-c11-compat]
+1896632:  8584 |         FREE(nvattr, M_TEMP);
+1896633:       |         ^
+1896634: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/source-overlay/src/Kernel/xnu/bsd/sys/malloc.h:173:2: note: expanded from macro 'FREE'
+1896635:   173 |         kheap_free_addr(KHEAP_DEFAULT, addr)
+1896636:       |         ^
+1896637: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/kern/kalloc.h:374:2: note: expanded from macro 'kheap_free_addr'
+1896638:   374 |         _Static_assert(sizeof(elem) == sizeof(void *), "elem isn't pointer sized"); \
+1896639:       |         ^
+1896640: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/source-overlay/src/Kernel/xnu/bsd/nfs/nfs4_vnops.c:8584:2: warning: identifier '__kfree_heap' is reserved because it starts with '__' [-Wreserved-identifier]
+1896641: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/source-overlay/src/Kernel/xnu/bsd/sys/malloc.h:173:2: note: expanded from macro 'FREE'
+1896642:   173 |         kheap_free_addr(KHEAP_DEFAULT, addr)
+1896643:       |         ^
+1896644: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/kern/kalloc.h:375:14: note: expanded from macro 'kheap_free_addr'
+1896645:   375 |         __auto_type __kfree_heap = (heap); \
+1896646:       |                     ^
+1896647: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/source-overlay/src/Kernel/xnu/bsd/nfs/nfs4_vnops.c:8584:2: warning: identifier '__kfree_eptr' is reserved because it starts with '__' [-Wreserved-identifier]
+1896648: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/source-overlay/src/Kernel/xnu/bsd/sys/malloc.h:173:2: note: expanded from macro 'FREE'
+1896649:   173 |         kheap_free_addr(KHEAP_DEFAULT, addr)
+1896650:       |         ^
+1896651: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/kern/kalloc.h:376:14: note: expanded from macro 'kheap_free_addr'
+1896652:   376 |         __auto_type __kfree_eptr = &(elem); \
+1896653:       |                     ^
+1896654: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/source-overlay/src/Kernel/xnu/bsd/nfs/nfs4_vnops.c:8584:2: warning: identifier '__kfree_elem' is reserved because it starts with '__' [-Wreserved-identifier]
+1896655: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/source-overlay/src/Kernel/xnu/bsd/sys/malloc.h:173:2: note: expanded from macro 'FREE'
+1896656:   173 |         kheap_free_addr(KHEAP_DEFAULT, addr)
+1896657:       |         ^
+1896658: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/kern/kalloc.h:377:14: note: expanded from macro 'kheap_free_addr'
+1896659:   377 |         __auto_type __kfree_elem = *__kfree_eptr; \
+1896660:       |                     ^
+1896661: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/source-overlay/src/Kernel/xnu/bsd/nfs/nfs4_vnops.c:8957:2: warning: '_Static_assert' is incompatible with C standards before C11 [-Wpre-c11-compat]
+1896662:  8957 |         FREE(nvattr, M_TEMP);
+1896663:       |         ^
+1896664: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/source-overlay/src/Kernel/xnu/bsd/sys/malloc.h:173:2: note: expanded from macro 'FREE'
+1896665:   173 |         kheap_free_addr(KHEAP_DEFAULT, addr)
+1896666:       |         ^
+1896667: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/kern/kalloc.h:374:2: note: expanded from macro 'kheap_free_addr'
+1896668:   374 |         _Static_assert(sizeof(elem) == sizeof(void *), "elem isn't pointer sized"); \
+1896669:       |         ^
+1896670: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/source-overlay/src/Kernel/xnu/bsd/nfs/nfs4_vnops.c:8957:2: warning: identifier '__kfree_heap' is reserved because it starts with '__' [-Wreserved-identifier]
+1896671: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/source-overlay/src/Kernel/xnu/bsd/sys/malloc.h:173:2: note: expanded from macro 'FREE'
+1896672:   173 |         kheap_free_addr(KHEAP_DEFAULT, addr)
+1896673:       |         ^
+1896674: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/kern/kalloc.h:375:14: note: expanded from macro 'kheap_free_addr'
+1896675:   375 |         __auto_type __kfree_heap = (heap); \
+1896676:       |                     ^
+1896677: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/source-overlay/src/Kernel/xnu/bsd/nfs/nfs4_vnops.c:8957:2: warning: identifier '__kfree_eptr' is reserved because it starts with '__' [-Wreserved-identifier]
+1896678: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/source-overlay/src/Kernel/xnu/bsd/sys/malloc.h:173:2: note: expanded from macro 'FREE'
+1896679:   173 |         kheap_free_addr(KHEAP_DEFAULT, addr)
+1896680:       |         ^
+1896681: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/kern/kalloc.h:376:14: note: expanded from macro 'kheap_free_addr'
+1896682:   376 |         __auto_type __kfree_eptr = &(elem); \
+1896683:       |                     ^
+1896684: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/source-overlay/src/Kernel/xnu/bsd/nfs/nfs4_vnops.c:8957:2: warning: identifier '__kfree_elem' is reserved because it starts with '__' [-Wreserved-identifier]
+1896685: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/source-overlay/src/Kernel/xnu/bsd/sys/malloc.h:173:2: note: expanded from macro 'FREE'
+1896686:   173 |         kheap_free_addr(KHEAP_DEFAULT, addr)
+1896687:       |         ^
+1896688: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/kern/kalloc.h:377:14: note: expanded from macro 'kheap_free_addr'
+1896689:   377 |         __auto_type __kfree_elem = *__kfree_eptr; \
+1896690:       |                     ^
+1896691: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/source-overlay/src/Kernel/xnu/bsd/nfs/nfs4_vnops.c:9018:2: warning: '_Static_assert' is incompatible with C standards before C11 [-Wpre-c11-compat]
+1896692:  9018 |         FREE(nvattr, M_TEMP);
+1896693:       |         ^
+1896694: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/source-overlay/src/Kernel/xnu/bsd/sys/malloc.h:173:2: note: expanded from macro 'FREE'
+1896695:   173 |         kheap_free_addr(KHEAP_DEFAULT, addr)
+1896696:       |         ^
+1896697: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/kern/kalloc.h:374:2: note: expanded from macro 'kheap_free_addr'
+1896698:   374 |         _Static_assert(sizeof(elem) == sizeof(void *), "elem isn't pointer sized"); \
+1896699:       |         ^
+1896700: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/source-overlay/src/Kernel/xnu/bsd/nfs/nfs4_vnops.c:9018:2: warning: identifier '__kfree_heap' is reserved because it starts with '__' [-Wreserved-identifier]
+1896701: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/source-overlay/src/Kernel/xnu/bsd/sys/malloc.h:173:2: note: expanded from macro 'FREE'
+1896702:   173 |         kheap_free_addr(KHEAP_DEFAULT, addr)
+1896703:       |         ^
+1896704: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/kern/kalloc.h:375:14: note: expanded from macro 'kheap_free_addr'
+1896705:   375 |         __auto_type __kfree_heap = (heap); \
+1896706:       |                     ^
+1896707: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/source-overlay/src/Kernel/xnu/bsd/nfs/nfs4_vnops.c:9018:2: warning: identifier '__kfree_eptr' is reserved because it starts with '__' [-Wreserved-identifier]
+1896708: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/source-overlay/src/Kernel/xnu/bsd/sys/malloc.h:173:2: note: expanded from macro 'FREE'
+1896709:   173 |         kheap_free_addr(KHEAP_DEFAULT, addr)
+1896710:       |         ^
+1896711: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/kern/kalloc.h:376:14: note: expanded from macro 'kheap_free_addr'
+1896712:   376 |         __auto_type __kfree_eptr = &(elem); \
+1896713:       |                     ^
+1896714: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/source-overlay/src/Kernel/xnu/bsd/nfs/nfs4_vnops.c:9018:2: warning: identifier '__kfree_elem' is reserved because it starts with '__' [-Wreserved-identifier]
+1896715: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/source-overlay/src/Kernel/xnu/bsd/sys/malloc.h:173:2: note: expanded from macro 'FREE'
+1896716:   173 |         kheap_free_addr(KHEAP_DEFAULT, addr)
+1896717:       |         ^
+1896718: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/kern/kalloc.h:377:14: note: expanded from macro 'kheap_free_addr'
+1896719:   377 |         __auto_type __kfree_elem = *__kfree_eptr; \
+1896720:       |                     ^
+1896721: 1227 warnings generated.
+1896722: 1926 warnings generated.
+1896723:      LDFILELIST bsd
+1896724: make[5]: *** [build_all_bootstrap_DEVELOPMENT^ARM64^T8103] Error 2
+1896725: make[4]: *** [install] Error 2
+1896726: make[3]: *** [src/Kernel/xnu/xnu_build/src/xnu-stamp/xnu-build] Error 2
+1896727: make[2]: *** [src/Kernel/xnu/CMakeFiles/xnu.dir/all] Error 2
+1896728: make[1]: *** [src/Kernel/xnu/CMakeFiles/xnu.dir/rule] Error 2
+1896729: make: *** [xnu] Error 2

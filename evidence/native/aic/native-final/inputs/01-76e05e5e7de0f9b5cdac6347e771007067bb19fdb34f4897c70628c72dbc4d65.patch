@@ -1,0 +1,48 @@
+diff --git a/src/Kernel/xnu/cmake/MakeInc.def.in b/src/Kernel/xnu/cmake/MakeInc.def.in
+--- a/src/Kernel/xnu/cmake/MakeInc.def.in
++++ b/src/Kernel/xnu/cmake/MakeInc.def.in
+@@ -32,7 +32,7 @@
+ SUPPORTED_ARM64_MACHINE_CONFIGS = NONE
+ else
+ SUPPORTED_ARM_MACHINE_CONFIGS = T8002 T8004 BCM2835
+-SUPPORTED_ARM64_MACHINE_CONFIGS = T7000 T7001 S8000 S8001 T8010 T8011 BCM2837 VIRT
++SUPPORTED_ARM64_MACHINE_CONFIGS = T7000 T7001 S8000 S8001 T8010 T8011 T8103 BCM2837 VIRT
+ 
+ endif
+ 
+@@ -69,6 +69,8 @@
+ # Open-source LLVM spells the same core apple-a10.
+ MACHINE_FLAGS_ARM64_T8010 = -DARM64_BOARD_CONFIG_T8010 -mcpu=apple-a10 -DPUREDARWIN_NO_KERNEL_INTEGRITY -DPUREDARWIN_NO_APPLE_PMU -DPUREDARWIN_EARLY_FB_MARK -DPUREDARWIN_MASK_AIC_SOURCES
+ MACHINE_FLAGS_ARM64_T8011 = -DARM64_BOARD_CONFIG_T8011 -mcpu=apple-a10
++# Experimental native M1 compilation; preserve the existing H13/PPL feature set.
++MACHINE_FLAGS_ARM64_T8103 = -DARM64_BOARD_CONFIG_T8103 -mcpu=apple-a14
+ # Raspberry Pi Zero / Zero W: BCM2835, ARM1176JZF-S, ARMv6Z, single core.
+ # The peripheral block is the same IP as the BCM2837 the arm64 side already
+ # supports, at a different base (0x20000000 rather than 0x3F000000).
+@@ -256,7 +258,11 @@
+ export ARCH_STRING_FOR_CURRENT_MACHINE_CONFIG := $(shell $(EMBEDDED_DEVICE_MAP) -db $(EDM_DBPATH) -query SELECT DISTINCT KernelMachOArchitecture FROM Targets WHERE KernelPlatform IS \"$(CURRENT_MACHINE_CONFIG_LC)\" LIMIT 1 || echo UNKNOWN )
+ else
+ # Without embdedded device map, use a default arch string
++ifeq ($(CURRENT_MACHINE_CONFIG),T8103)
++export ARCH_STRING_FOR_CURRENT_MACHINE_CONFIG := arm64e
++else
+ export ARCH_STRING_FOR_CURRENT_MACHINE_CONFIG := $(shell echo $(CURRENT_ARCH_CONFIG) | tr A-Z a-z)
++endif
+ endif
+ endif
+ 
+@@ -375,6 +381,14 @@
+ #ARM64_LINK_ADDR    =0xfffffe0007004000
+ #endif
+ 
++# H13 uses 16K pages and the native Mac large-memory geometry. The 4K VM/Pi
++# adaptation above must not silently become the native M1 build profile.
++ifeq ($(CURRENT_MACHINE_CONFIG),T8103)
++LARGE_MEMORY_DEFINE=-DARM_LARGE_MEMORY=1
++ARM64_PLKSEG_ADDR  =0xfffffe0004004000
++ARM64_LINK_ADDR    =0xfffffe0007004000
++endif
++
+ 
+ CFLAGS_ARM64	= -Darm64 -DARM64 -D__ARM64__ -DLP64 -DPAGE_SIZE_FIXED -DVM_KERNEL_LINK_ADDRESS=$(ARM64_LINK_ADDR) \
+ 			$(LARGE_MEMORY_DEFINE) -momit-leaf-frame-pointer -fno-strict-aliasing -D__API__=v4 -mkernel

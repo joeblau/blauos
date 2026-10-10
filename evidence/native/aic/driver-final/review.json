@@ -1,0 +1,253 @@
+{
+  "schema_version": 1,
+  "reviewer": "virtual_baseline independent review",
+  "scope": "Source provenance and native platform driver compile/metadata only",
+  "status": "clear_for_compile_only_evidence",
+  "receipt": {
+    "path": "evidence/native/aic/driver-final/result.json",
+    "sha256": "a3a58ef91f212ad306fedac54b9938f6b04448a74da1dfe2dcc26e754e39dd18",
+    "canonical_recipe_sha256": "55d1184024117c7d7d959fa94ad89eb7ecc28e0c8712285186a5a72d674aa6f2",
+    "canonical_recipe_hash_verified": true
+  },
+  "source": {
+    "source_name": "puredarwin-vm-next",
+    "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+    "source_tree": "ed2345d7f3c11dad2e7f6ffeeb377adc789b12b8",
+    "manifest_sha256": "8022bbbfb33204b56bb3297cd8cbb39fb6c08ea65c476492d99462f7edfe3657"
+  },
+  "checker": {
+    "path": "scripts/build/native_platform.py",
+    "sha256": "b699aa45ac6995c423984708c673c26ac605006dd72cb1cfdbf866d974c13494",
+    "parser_path": "scripts/build/native_m1.py",
+    "parser_sha256": "d1fd243308c735282faef2ec11be4b9653333f31332e7335fff8f5302286da87"
+  },
+  "positive_control": {
+    "artifact_sha256": "3a544f93617a9f02f7afec8cd275a386ac00366e3b6eda2556f46f0fee0c45ce",
+    "bytes": 161080,
+    "uuid": "50CF9889-A4D1-3E1B-A466-FA817019495C",
+    "cpu_subtype": "0xc0000002",
+    "filetype": "MH_KEXT_BUNDLE",
+    "metadata_errors": []
+  },
+  "metadata_negative_checks": [
+    {
+      "fixture_kind": "in_memory_mutation_of_actual_compiled_bundle",
+      "alteration": {
+        "field": "mach_header_64.cpusubtype",
+        "byte_offset": 8,
+        "before": "0xc0000002",
+        "after": "0x80000002"
+      },
+      "altered_bytes_sha256": "7323481746916737609c423aa99f7b70e25b16a0780099304334d28f2cbcd379",
+      "rejected": true,
+      "errors": [
+        "Platform binary does not use the matching ARM64e KER00 ABI"
+      ],
+      "written_to_disk": false
+    },
+    {
+      "fixture_kind": "in_memory_mutation_of_actual_compiled_bundle",
+      "alteration": {
+        "field": "mach_header_64.cpusubtype",
+        "byte_offset": 8,
+        "before": "0xc0000002",
+        "after": "0x80000000"
+      },
+      "altered_bytes_sha256": "cbd15f478d0f3a9ba199fd0f2173ac9d6014d5b5e21c959236f7e4572bb537c6",
+      "rejected": true,
+      "errors": [
+        "Platform binary is not a native ARM64e MH_KEXT_BUNDLE",
+        "Platform binary does not use the matching ARM64e KER00 ABI"
+      ],
+      "written_to_disk": false
+    },
+    {
+      "fixture_kind": "in_memory_mutation_of_actual_compiled_bundle",
+      "alteration": {
+        "field": "mach_header_64.cpusubtype",
+        "byte_offset": 8,
+        "before": "0xc0000002",
+        "after": "0x2"
+      },
+      "altered_bytes_sha256": "346c36c06f8c8be816d66fef0f6a6983ceb0a08333f0b237ef221989b35bffc4",
+      "rejected": true,
+      "errors": [
+        "Platform binary does not use the matching ARM64e KER00 ABI"
+      ],
+      "written_to_disk": false
+    }
+  ],
+  "verified_inputs": [
+    {
+      "kind": "loaded_wrapper",
+      "path": "scripts/build/xnu.py",
+      "sha256": "9e789f1228887ead1a40d0659fcb2ccc97c46cd5275ac6f502440a51a9179643",
+      "matches_current_bytes": true
+    },
+    {
+      "kind": "loaded_wrapper",
+      "path": "scripts/build/headers.py",
+      "sha256": "e6b0a9fe420a202535efb2998542195f9d5b5fd063783791309f7b85cc55e0f1",
+      "matches_current_bytes": true
+    },
+    {
+      "kind": "loaded_wrapper",
+      "path": "scripts/blauos.py",
+      "sha256": "fc159232fb6b6fed403680b9e8764cac1704f60bc47a90a798e9a0639476cdff",
+      "matches_current_bytes": true
+    },
+    {
+      "kind": "loaded_wrapper",
+      "path": "scripts/build/native_platform.py",
+      "sha256": "b699aa45ac6995c423984708c673c26ac605006dd72cb1cfdbf866d974c13494",
+      "matches_current_bytes": true
+    },
+    {
+      "kind": "loaded_wrapper",
+      "path": "scripts/build/native_m1.py",
+      "sha256": "d1fd243308c735282faef2ec11be4b9653333f31332e7335fff8f5302286da87",
+      "matches_current_bytes": true
+    },
+    {
+      "kind": "immutable_patch_snapshot",
+      "path": "evidence/native/aic/driver-final/inputs/01-76e05e5e7de0f9b5cdac6347e771007067bb19fdb34f4897c70628c72dbc4d65.patch",
+      "sha256": "76e05e5e7de0f9b5cdac6347e771007067bb19fdb34f4897c70628c72dbc4d65",
+      "matches_recorded_and_current_patch": true
+    },
+    {
+      "kind": "immutable_patch_snapshot",
+      "path": "evidence/native/aic/driver-final/inputs/02-0480c7f6299844af5c6cdd6eb7fb23b76c0f32025cc0a2cf07f429f9bf9a685b.patch",
+      "sha256": "0480c7f6299844af5c6cdd6eb7fb23b76c0f32025cc0a2cf07f429f9bf9a685b",
+      "matches_recorded_and_current_patch": true
+    },
+    {
+      "kind": "immutable_patch_snapshot",
+      "path": "evidence/native/aic/driver-final/inputs/03-3e0f1aac169bf648054be8d20c0f0101404f0e4b6de54758ba3409688ce96f99.patch",
+      "sha256": "3e0f1aac169bf648054be8d20c0f0101404f0e4b6de54758ba3409688ce96f99",
+      "matches_recorded_and_current_patch": true
+    },
+    {
+      "kind": "immutable_patch_snapshot",
+      "path": "evidence/native/aic/driver-final/inputs/04-cd1a6e6281fdda5775f1002d1a26433eb5f3e05d822e1cee0d2b23cb6915a04e.patch",
+      "sha256": "cd1a6e6281fdda5775f1002d1a26433eb5f3e05d822e1cee0d2b23cb6915a04e",
+      "matches_recorded_and_current_patch": true
+    },
+    {
+      "kind": "immutable_patch_snapshot",
+      "path": "evidence/native/aic/driver-final/inputs/05-45300148900c5b448f5a019e0c4f31145ee566f31c7259193faaa0b6f3352919.patch",
+      "sha256": "45300148900c5b448f5a019e0c4f31145ee566f31c7259193faaa0b6f3352919",
+      "matches_recorded_and_current_patch": true
+    },
+    {
+      "kind": "immutable_patch_snapshot",
+      "path": "evidence/native/aic/driver-final/inputs/06-f49d0c2456d54222d1c149cf84750204ae4281199d8156fa9b0748d09ae9894e.patch",
+      "sha256": "f49d0c2456d54222d1c149cf84750204ae4281199d8156fa9b0748d09ae9894e",
+      "matches_recorded_and_current_patch": true
+    },
+    {
+      "kind": "immutable_patch_snapshot",
+      "path": "evidence/native/aic/driver-final/inputs/07-ec38272928a3bcf0d41e977dab316a02d255e15db483b64d82e0535a5bdbffca.patch",
+      "sha256": "ec38272928a3bcf0d41e977dab316a02d255e15db483b64d82e0535a5bdbffca",
+      "matches_recorded_and_current_patch": true
+    },
+    {
+      "kind": "raw_command_log",
+      "path": ".blauos/build/native/aic/driver-final/logs/configure.log",
+      "exit_code": 0,
+      "bytes": 2144,
+      "sha256": "7e1ad3871fe820205212317613f7ef080d9fe3c8f5684bffe1c24d85161402ca",
+      "matches_receipt": true
+    },
+    {
+      "kind": "raw_command_log",
+      "path": ".blauos/build/native/aic/driver-final/logs/build.log",
+      "exit_code": 0,
+      "bytes": 122157,
+      "sha256": "eb5fea2135977309833924419dffabec7aae7e48922201806e0fa0722751df56",
+      "matches_receipt": true
+    },
+    {
+      "kind": "pristine_source_archive",
+      "path": ".blauos/build/native/aic/driver-final/source.tar",
+      "sha256": "1c955560333a1e47a38f2018ead9fd90580eb4b9520f44435ebfa03afcd3c1f6",
+      "matches_receipt": true,
+      "excluded_absolute_symlinks": [
+        "src/Libraries/libSystem/libc/gen/FreeBSD/result"
+      ]
+    }
+  ],
+  "independently_parsed_objects": [
+    {
+      "path": ".blauos/build/native/aic/driver-final/src/Kernel/Extensions/PDArmPlatformExpert/CMakeFiles/PDArmPlatformExpert.dir/PDAppleAIC.cpp.o",
+      "sha256": "3e13333dbf2b6ee249cfb6449666c826d1fbf343461ffdd294ffba13b394c068",
+      "cpu_type": "0x100000c",
+      "cpu_subtype": "0xc0000002",
+      "filetype": "MH_OBJECT"
+    },
+    {
+      "path": ".blauos/build/native/aic/driver-final/src/Kernel/Extensions/PDArmPlatformExpert/CMakeFiles/PDArmPlatformExpert.dir/PDArmCPU.cpp.o",
+      "sha256": "b1d75e624df667bccb0df77ff66fbe6a03f0e2f7e3f19757695fe7b37c7f264c",
+      "cpu_type": "0x100000c",
+      "cpu_subtype": "0xc0000002",
+      "filetype": "MH_OBJECT"
+    },
+    {
+      "path": ".blauos/build/native/aic/driver-final/src/Kernel/Extensions/PDArmPlatformExpert/CMakeFiles/PDArmPlatformExpert.dir/PDArmGIC.cpp.o",
+      "sha256": "f58252f8b3b719a3da1fb45a786a559dc03536a765b5bbb93f3515a9ae9e00bb",
+      "cpu_type": "0x100000c",
+      "cpu_subtype": "0xc0000002",
+      "filetype": "MH_OBJECT"
+    },
+    {
+      "path": ".blauos/build/native/aic/driver-final/src/Kernel/Extensions/PDArmPlatformExpert/CMakeFiles/PDArmPlatformExpert.dir/PDArmPlatformExpert.cpp.o",
+      "sha256": "00ea6614d82ffa0f68637b04e21572d88528004e1ccfa831e441a919e285c98a",
+      "cpu_type": "0x100000c",
+      "cpu_subtype": "0xc0000002",
+      "filetype": "MH_OBJECT"
+    },
+    {
+      "path": ".blauos/build/native/aic/driver-final/src/Kernel/Extensions/PDArmPlatformExpert/CMakeFiles/PDArmPlatformExpert.dir/PDBcm2835IC.cpp.o",
+      "sha256": "9869b35748c7e52dcd90d97bc99b8ece379f20b2a0c790fc7214bd42eb3a666a",
+      "cpu_type": "0x100000c",
+      "cpu_subtype": "0xc0000002",
+      "filetype": "MH_OBJECT"
+    },
+    {
+      "path": ".blauos/build/native/aic/driver-final/src/Kernel/Extensions/PDArmPlatformExpert/CMakeFiles/PDArmPlatformExpert.dir/kmod_info.c.o",
+      "sha256": "103baa0ec987d5d13cea2eebf112ae6babebf4550936fbf62997733dffe0af43",
+      "cpu_type": "0x100000c",
+      "cpu_subtype": "0xc0000002",
+      "filetype": "MH_OBJECT"
+    },
+    {
+      "path": ".blauos/build/native/aic/driver-final/src/Kernel/libkmod/CMakeFiles/libkmod.dir/c_start.c.o",
+      "sha256": "4c40abbdf35366b149d620cf3e8803963cb511a0e6a78ba375efce0c79e6e00e",
+      "cpu_type": "0x100000c",
+      "cpu_subtype": "0xc0000002",
+      "filetype": "MH_OBJECT"
+    },
+    {
+      "path": ".blauos/build/native/aic/driver-final/src/Kernel/libkmod/CMakeFiles/libkmod.dir/c_stop.c.o",
+      "sha256": "d575bd7e9a5457916ac611be98c1474aec9aa9fcf0acf7404dd9cc6fc64bd2ed",
+      "cpu_type": "0x100000c",
+      "cpu_subtype": "0xc0000002",
+      "filetype": "MH_OBJECT"
+    }
+  ],
+  "source_review": {
+    "post_callback_registration_and_soft_disable_recheck": true,
+    "post_mask_OSSynchronizeIO_before_interruptActive_release": true,
+    "T8103_only_arm64e_mkernel_profile": true,
+    "matching_libkmod_object_architecture": true,
+    "concurrency_contract": "Inherited XNU soft-disable semantics; no atomic mask guarantee after concurrent disable and no callback self-unregistration promise"
+  },
+  "limits": [
+    "Dynamic lookup link does not resolve the 453 kernel imports against a native kernel",
+    "Subtype and compile flags establish emitted ABI metadata, not working pointer authentication on hardware",
+    "No AIC device delivery, affinity, SMP, IPI, storm or disabled-source hardware test executed"
+  ],
+  "kernel_linkage_verified": false,
+  "native_boot_assets_ready": false,
+  "physical_interrupt_delivery_verified": false,
+  "physical_gate_passed": false
+}

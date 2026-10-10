@@ -1,0 +1,737 @@
+diff --git a/src/Kernel/xnu/osfmk/arm64/Makefile b/src/Kernel/xnu/osfmk/arm64/Makefile
+index da0e128..ae86013 100644
+--- a/src/Kernel/xnu/osfmk/arm64/Makefile
++++ b/src/Kernel/xnu/osfmk/arm64/Makefile
+@@ -23,7 +23,7 @@ INSTALL_KF_MD_LCL_LIST = \
+ 	machine_remote_time.h \
+ 	monotonic.h \
+ 	pgtrace.h \
+-	proc_reg.h \
++	native_apple_sysregs.h proc_reg.h \
+ 	tlb.h \
+ 	$(ARM_HEADER_FILES)
+ 
+@@ -40,7 +40,7 @@ EXPORT_MD_LIST = \
+ 	machine_remote_time.h \
+ 	monotonic.h \
+ 	pgtrace.h \
+-	proc_reg.h \
++	native_apple_sysregs.h proc_reg.h \
+ 	asm.h \
+ 	tlb.h \
+ 	pal_hibernate.h
+@@ -57,7 +57,7 @@ ARM_HEADER_FILES = \
+ 		lowglobals.h		\
+ 		machine_cpuid.h		\
+ 		machine_machdep.h	\
+-		proc_reg.h		\
++		native_apple_sysregs.h proc_reg.h		\
+ 		tlb.h			\
+ 
+ INSTALL_MD_DIR = arm64
+@@ -70,7 +70,7 @@ INSTALL_KF_MD_LIST = $(ARM_HEADER_FILES)
+ 
+ INSTALL_KF_MD_LCL_LIST = machine_kpc.h machine_remote_time.h monotonic.h pgtrace.h $(ARM_HEADER_FILES)
+ 
+-EXPORT_MD_LIST = machine_cpuid.h machine_kpc.h machine_remote_time.h monotonic.h proc_reg.h pgtrace.h asm.h tlb.h pal_hibernate.h
++EXPORT_MD_LIST = machine_cpuid.h machine_kpc.h machine_remote_time.h monotonic.h native_apple_sysregs.h proc_reg.h pgtrace.h asm.h tlb.h pal_hibernate.h
+ 
+ EXPORT_MD_DIR = arm64
+ 
+diff --git a/src/Kernel/xnu/osfmk/arm64/kpc.c b/src/Kernel/xnu/osfmk/arm64/kpc.c
+index ea81a8e..4d112d2 100644
+--- a/src/Kernel/xnu/osfmk/arm64/kpc.c
++++ b/src/Kernel/xnu/osfmk/arm64/kpc.c
+@@ -26,6 +26,7 @@
+  * @APPLE_OSREFERENCE_LICENSE_HEADER_END@
+  */
+ 
++#include <arm64/native_apple_sysregs.h>
+ #include <arm/cpu_data_internal.h>
+ #include <arm/cpu_internal.h>
+ #include <kern/cpu_number.h>
+@@ -196,26 +197,26 @@ static void
+ dump_regs(void)
+ {
+ 	uint64_t val;
+-	kprintf("PMCR0 = 0x%" PRIx64 "\n", SREG_READ("PMCR0_EL1"));
+-	kprintf("PMCR1 = 0x%" PRIx64 "\n", SREG_READ("PMCR1_EL1"));
+-	kprintf("PMCR2 = 0x%" PRIx64 "\n", SREG_READ("PMCR2_EL1"));
+-	kprintf("PMCR3 = 0x%" PRIx64 "\n", SREG_READ("PMCR3_EL1"));
+-	kprintf("PMCR4 = 0x%" PRIx64 "\n", SREG_READ("PMCR4_EL1"));
+-	kprintf("PMESR0 = 0x%" PRIx64 "\n", SREG_READ("PMESR0_EL1"));
+-	kprintf("PMESR1 = 0x%" PRIx64 "\n", SREG_READ("PMESR1_EL1"));
+-
+-	kprintf("PMC0 = 0x%" PRIx64 "\n", SREG_READ("PMC0"));
+-	kprintf("PMC1 = 0x%" PRIx64 "\n", SREG_READ("PMC1"));
+-	kprintf("PMC2 = 0x%" PRIx64 "\n", SREG_READ("PMC2"));
+-	kprintf("PMC3 = 0x%" PRIx64 "\n", SREG_READ("PMC3"));
+-	kprintf("PMC4 = 0x%" PRIx64 "\n", SREG_READ("PMC4"));
+-	kprintf("PMC5 = 0x%" PRIx64 "\n", SREG_READ("PMC5"));
+-	kprintf("PMC6 = 0x%" PRIx64 "\n", SREG_READ("PMC6"));
+-	kprintf("PMC7 = 0x%" PRIx64 "\n", SREG_READ("PMC7"));
++	kprintf("PMCR0 = 0x%" PRIx64 "\n", SREG_READ(BLAUOS_SYSREG_STR(PMCR0_EL1)));
++	kprintf("PMCR1 = 0x%" PRIx64 "\n", SREG_READ(BLAUOS_SYSREG_STR(PMCR1_EL1)));
++	kprintf("PMCR2 = 0x%" PRIx64 "\n", SREG_READ(BLAUOS_SYSREG_STR(PMCR2_EL1)));
++	kprintf("PMCR3 = 0x%" PRIx64 "\n", SREG_READ(BLAUOS_SYSREG_STR(PMCR3_EL1)));
++	kprintf("PMCR4 = 0x%" PRIx64 "\n", SREG_READ(BLAUOS_SYSREG_STR(PMCR4_EL1)));
++	kprintf("PMESR0 = 0x%" PRIx64 "\n", SREG_READ(BLAUOS_SYSREG_STR(PMESR0_EL1)));
++	kprintf("PMESR1 = 0x%" PRIx64 "\n", SREG_READ(BLAUOS_SYSREG_STR(PMESR1_EL1)));
++
++	kprintf("PMC0 = 0x%" PRIx64 "\n", SREG_READ(BLAUOS_SYSREG_STR(PMC0)));
++	kprintf("PMC1 = 0x%" PRIx64 "\n", SREG_READ(BLAUOS_SYSREG_STR(PMC1)));
++	kprintf("PMC2 = 0x%" PRIx64 "\n", SREG_READ(BLAUOS_SYSREG_STR(PMC2)));
++	kprintf("PMC3 = 0x%" PRIx64 "\n", SREG_READ(BLAUOS_SYSREG_STR(PMC3)));
++	kprintf("PMC4 = 0x%" PRIx64 "\n", SREG_READ(BLAUOS_SYSREG_STR(PMC4)));
++	kprintf("PMC5 = 0x%" PRIx64 "\n", SREG_READ(BLAUOS_SYSREG_STR(PMC5)));
++	kprintf("PMC6 = 0x%" PRIx64 "\n", SREG_READ(BLAUOS_SYSREG_STR(PMC6)));
++	kprintf("PMC7 = 0x%" PRIx64 "\n", SREG_READ(BLAUOS_SYSREG_STR(PMC7)));
+ 
+ #if (KPC_ARM64_CONFIGURABLE_COUNT > 6)
+-	kprintf("PMC8 = 0x%" PRIx64 "\n", SREG_READ("PMC8"));
+-	kprintf("PMC9 = 0x%" PRIx64 "\n", SREG_READ("PMC9"));
++	kprintf("PMC8 = 0x%" PRIx64 "\n", SREG_READ(BLAUOS_SYSREG_STR(PMC8)));
++	kprintf("PMC9 = 0x%" PRIx64 "\n", SREG_READ(BLAUOS_SYSREG_STR(PMC9)));
+ #endif
+ }
+ #endif
+@@ -226,7 +227,7 @@ enable_counter(uint32_t counter)
+ 	uint64_t pmcr0 = 0;
+ 	boolean_t counter_running, pmi_enabled, enabled;
+ 
+-	pmcr0 = SREG_READ("PMCR0_EL1") | 0x3 /* leave the fixed counters enabled for monotonic */;
++	pmcr0 = SREG_READ(BLAUOS_SYSREG_STR(PMCR0_EL1)) | 0x3 /* leave the fixed counters enabled for monotonic */;
+ 
+ 	counter_running = (pmcr0 & PMCR0_PMC_ENABLE_MASK(counter)) != 0;
+ 	pmi_enabled = (pmcr0 & PMCR0_PMI_ENABLE_MASK(counter)) != 0;
+@@ -236,7 +237,7 @@ enable_counter(uint32_t counter)
+ 	if (!enabled) {
+ 		pmcr0 |= PMCR0_PMC_ENABLE_MASK(counter);
+ 		pmcr0 |= PMCR0_PMI_ENABLE_MASK(counter);
+-		SREG_WRITE("PMCR0_EL1", pmcr0);
++		SREG_WRITE(BLAUOS_SYSREG_STR(PMCR0_EL1), pmcr0);
+ 	}
+ 
+ 	return enabled;
+@@ -252,12 +253,12 @@ disable_counter(uint32_t counter)
+ 		return true;
+ 	}
+ 
+-	pmcr0 = SREG_READ("PMCR0_EL1") | 0x3;
++	pmcr0 = SREG_READ(BLAUOS_SYSREG_STR(PMCR0_EL1)) | 0x3;
+ 	enabled = (pmcr0 & PMCR0_PMC_ENABLE_MASK(counter)) != 0;
+ 
+ 	if (enabled) {
+ 		pmcr0 &= PMCR0_PMC_DISABLE_MASK(counter);
+-		SREG_WRITE("PMCR0_EL1", pmcr0);
++		SREG_WRITE(BLAUOS_SYSREG_STR(PMCR0_EL1), pmcr0);
+ 	}
+ 
+ 	return enabled;
+@@ -296,11 +297,11 @@ set_modes(uint32_t counter, kpc_config_t cfgword)
+ 		bits = PMCR1_EL_ALL_ENABLE_MASK(counter);
+ 	}
+ 
+-	uint64_t pmcr1 = SREG_READ("PMCR1_EL1");
++	uint64_t pmcr1 = SREG_READ(BLAUOS_SYSREG_STR(PMCR1_EL1));
+ 	pmcr1 &= PMCR1_EL_ALL_DISABLE_MASK(counter);
+ 	pmcr1 |= bits;
+ 	pmcr1 |= 0x30303; /* monotonic compatibility */
+-	SREG_WRITE("PMCR1_EL1", pmcr1);
++	SREG_WRITE(BLAUOS_SYSREG_STR(PMCR1_EL1), pmcr1);
+ 	saved_PMCR[cpuid][1] = pmcr1;
+ }
+ 
+@@ -308,17 +309,17 @@ static uint64_t
+ read_counter(uint32_t counter)
+ {
+ 	switch (counter) {
+-	// case 0: return SREG_READ("PMC0");
+-	// case 1: return SREG_READ("PMC1");
+-	case 2: return SREG_READ("PMC2");
+-	case 3: return SREG_READ("PMC3");
+-	case 4: return SREG_READ("PMC4");
+-	case 5: return SREG_READ("PMC5");
+-	case 6: return SREG_READ("PMC6");
+-	case 7: return SREG_READ("PMC7");
++	// case 0: return SREG_READ(BLAUOS_SYSREG_STR(PMC0));
++	// case 1: return SREG_READ(BLAUOS_SYSREG_STR(PMC1));
++	case 2: return SREG_READ(BLAUOS_SYSREG_STR(PMC2));
++	case 3: return SREG_READ(BLAUOS_SYSREG_STR(PMC3));
++	case 4: return SREG_READ(BLAUOS_SYSREG_STR(PMC4));
++	case 5: return SREG_READ(BLAUOS_SYSREG_STR(PMC5));
++	case 6: return SREG_READ(BLAUOS_SYSREG_STR(PMC6));
++	case 7: return SREG_READ(BLAUOS_SYSREG_STR(PMC7));
+ #if (KPC_ARM64_CONFIGURABLE_COUNT > 6)
+-	case 8: return SREG_READ("PMC8");
+-	case 9: return SREG_READ("PMC9");
++	case 8: return SREG_READ(BLAUOS_SYSREG_STR(PMC8));
++	case 9: return SREG_READ(BLAUOS_SYSREG_STR(PMC9));
+ #endif
+ 	default: return 0;
+ 	}
+@@ -328,17 +329,17 @@ static void
+ write_counter(uint32_t counter, uint64_t value)
+ {
+ 	switch (counter) {
+-	// case 0: SREG_WRITE("PMC0", value); break;
+-	// case 1: SREG_WRITE("PMC1", value); break;
+-	case 2: SREG_WRITE("PMC2", value); break;
+-	case 3: SREG_WRITE("PMC3", value); break;
+-	case 4: SREG_WRITE("PMC4", value); break;
+-	case 5: SREG_WRITE("PMC5", value); break;
+-	case 6: SREG_WRITE("PMC6", value); break;
+-	case 7: SREG_WRITE("PMC7", value); break;
++	// case 0: SREG_WRITE(BLAUOS_SYSREG_STR(PMC0), value); break;
++	// case 1: SREG_WRITE(BLAUOS_SYSREG_STR(PMC1), value); break;
++	case 2: SREG_WRITE(BLAUOS_SYSREG_STR(PMC2), value); break;
++	case 3: SREG_WRITE(BLAUOS_SYSREG_STR(PMC3), value); break;
++	case 4: SREG_WRITE(BLAUOS_SYSREG_STR(PMC4), value); break;
++	case 5: SREG_WRITE(BLAUOS_SYSREG_STR(PMC5), value); break;
++	case 6: SREG_WRITE(BLAUOS_SYSREG_STR(PMC6), value); break;
++	case 7: SREG_WRITE(BLAUOS_SYSREG_STR(PMC7), value); break;
+ #if (KPC_ARM64_CONFIGURABLE_COUNT > 6)
+-	case 8: SREG_WRITE("PMC8", value); break;
+-	case 9: SREG_WRITE("PMC9", value); break;
++	case 8: SREG_WRITE(BLAUOS_SYSREG_STR(PMC8), value); break;
++	case 9: SREG_WRITE(BLAUOS_SYSREG_STR(PMC9), value); break;
+ #endif
+ 	default: break;
+ 	}
+@@ -353,18 +354,18 @@ kpc_rawpmu_config_count(void)
+ int
+ kpc_get_rawpmu_config(kpc_config_t *configv)
+ {
+-	configv[0] = SREG_READ("PMCR2_EL1");
+-	configv[1] = SREG_READ("PMCR3_EL1");
+-	configv[2] = SREG_READ("PMCR4_EL1");
+-	configv[3] = SREG_READ("OPMAT0_EL1");
+-	configv[4] = SREG_READ("OPMAT1_EL1");
+-	configv[5] = SREG_READ("OPMSK0_EL1");
+-	configv[6] = SREG_READ("OPMSK1_EL1");
++	configv[0] = SREG_READ(BLAUOS_SYSREG_STR(PMCR2_EL1));
++	configv[1] = SREG_READ(BLAUOS_SYSREG_STR(PMCR3_EL1));
++	configv[2] = SREG_READ(BLAUOS_SYSREG_STR(PMCR4_EL1));
++	configv[3] = SREG_READ(BLAUOS_SYSREG_STR(OPMAT0_EL1));
++	configv[4] = SREG_READ(BLAUOS_SYSREG_STR(OPMAT1_EL1));
++	configv[5] = SREG_READ(BLAUOS_SYSREG_STR(OPMSK0_EL1));
++	configv[6] = SREG_READ(BLAUOS_SYSREG_STR(OPMSK1_EL1));
+ #if RAWPMU_CONFIG_COUNT > 7
+-	configv[7] = SREG_READ("PMMMAP_EL1");
+-	configv[8] = SREG_READ("PMTRHLD2_EL1");
+-	configv[9] = SREG_READ("PMTRHLD4_EL1");
+-	configv[10] = SREG_READ("PMTRHLD6_EL1");
++	configv[7] = SREG_READ(BLAUOS_SYSREG_STR(PMMMAP_EL1));
++	configv[8] = SREG_READ(BLAUOS_SYSREG_STR(PMTRHLD2_EL1));
++	configv[9] = SREG_READ(BLAUOS_SYSREG_STR(PMTRHLD4_EL1));
++	configv[10] = SREG_READ(BLAUOS_SYSREG_STR(PMTRHLD6_EL1));
+ #endif
+ 	return 0;
+ }
+@@ -372,18 +373,18 @@ kpc_get_rawpmu_config(kpc_config_t *configv)
+ static int
+ kpc_set_rawpmu_config(kpc_config_t *configv)
+ {
+-	SREG_WRITE("PMCR2_EL1", configv[0]);
+-	SREG_WRITE("PMCR3_EL1", configv[1]);
+-	SREG_WRITE("PMCR4_EL1", configv[2]);
+-	SREG_WRITE("OPMAT0_EL1", configv[3]);
+-	SREG_WRITE("OPMAT1_EL1", configv[4]);
+-	SREG_WRITE("OPMSK0_EL1", configv[5]);
+-	SREG_WRITE("OPMSK1_EL1", configv[6]);
++	SREG_WRITE(BLAUOS_SYSREG_STR(PMCR2_EL1), configv[0]);
++	SREG_WRITE(BLAUOS_SYSREG_STR(PMCR3_EL1), configv[1]);
++	SREG_WRITE(BLAUOS_SYSREG_STR(PMCR4_EL1), configv[2]);
++	SREG_WRITE(BLAUOS_SYSREG_STR(OPMAT0_EL1), configv[3]);
++	SREG_WRITE(BLAUOS_SYSREG_STR(OPMAT1_EL1), configv[4]);
++	SREG_WRITE(BLAUOS_SYSREG_STR(OPMSK0_EL1), configv[5]);
++	SREG_WRITE(BLAUOS_SYSREG_STR(OPMSK1_EL1), configv[6]);
+ #if RAWPMU_CONFIG_COUNT > 7
+-	SREG_WRITE("PMMMAP_EL1", configv[7]);
+-	SREG_WRITE("PMTRHLD2_EL1", configv[8]);
+-	SREG_WRITE("PMTRHLD4_EL1", configv[9]);
+-	SREG_WRITE("PMTRHLD6_EL1", configv[10]);
++	SREG_WRITE(BLAUOS_SYSREG_STR(PMMMAP_EL1), configv[7]);
++	SREG_WRITE(BLAUOS_SYSREG_STR(PMTRHLD2_EL1), configv[8]);
++	SREG_WRITE(BLAUOS_SYSREG_STR(PMTRHLD4_EL1), configv[9]);
++	SREG_WRITE(BLAUOS_SYSREG_STR(PMTRHLD6_EL1), configv[10]);
+ #endif
+ 	return 0;
+ }
+@@ -398,13 +399,13 @@ save_regs(void)
+ 	assert(ml_get_interrupts_enabled() == FALSE);
+ 
+ 	/* Save event selections. */
+-	saved_PMESR[cpuid][0] = SREG_READ("PMESR0_EL1");
+-	saved_PMESR[cpuid][1] = SREG_READ("PMESR1_EL1");
++	saved_PMESR[cpuid][0] = SREG_READ(BLAUOS_SYSREG_STR(PMESR0_EL1));
++	saved_PMESR[cpuid][1] = SREG_READ(BLAUOS_SYSREG_STR(PMESR1_EL1));
+ 
+ 	kpc_get_rawpmu_config(saved_RAWPMU[cpuid]);
+ 
+ 	/* Disable the counters. */
+-	// SREG_WRITE("PMCR0_EL1", clear);
++	// SREG_WRITE(BLAUOS_SYSREG_STR(PMCR0_EL1), clear);
+ 
+ 	/* Finally, save state for each counter*/
+ 	for (int i = 2; i < KPC_ARM64_PMC_COUNT; i++) {
+@@ -418,8 +419,8 @@ restore_regs(void)
+ 	int cpuid = cpu_number();
+ 
+ 	/* Restore PMESR values. */
+-	SREG_WRITE("PMESR0_EL1", saved_PMESR[cpuid][0]);
+-	SREG_WRITE("PMESR1_EL1", saved_PMESR[cpuid][1]);
++	SREG_WRITE(BLAUOS_SYSREG_STR(PMESR0_EL1), saved_PMESR[cpuid][0]);
++	SREG_WRITE(BLAUOS_SYSREG_STR(PMESR1_EL1), saved_PMESR[cpuid][1]);
+ 
+ 	kpc_set_rawpmu_config(saved_RAWPMU[cpuid]);
+ 
+@@ -429,7 +430,7 @@ restore_regs(void)
+ 	}
+ 
+ 	/* Restore PMCR0/1 values (with PMCR0 last to enable). */
+-	SREG_WRITE("PMCR1_EL1", saved_PMCR[cpuid][1] | 0x30303);
++	SREG_WRITE(BLAUOS_SYSREG_STR(PMCR1_EL1), saved_PMCR[cpuid][1] | 0x30303);
+ }
+ 
+ static uint64_t
+@@ -442,7 +443,7 @@ get_counter_config(uint32_t counter)
+ 	case 3:         /* FALLTHROUGH */
+ 	case 4:         /* FALLTHROUGH */
+ 	case 5:
+-		pmesr = PMESR_EVT_DECODE(SREG_READ("PMESR0_EL1"), counter, 2);
++		pmesr = PMESR_EVT_DECODE(SREG_READ(BLAUOS_SYSREG_STR(PMESR0_EL1)), counter, 2);
+ 		break;
+ 	case 6:         /* FALLTHROUGH */
+ 	case 7:
+@@ -451,7 +452,7 @@ get_counter_config(uint32_t counter)
+ 	case 8:         /* FALLTHROUGH */
+ 	case 9:
+ #endif
+-		pmesr = PMESR_EVT_DECODE(SREG_READ("PMESR1_EL1"), counter, 6);
++		pmesr = PMESR_EVT_DECODE(SREG_READ(BLAUOS_SYSREG_STR(PMESR1_EL1)), counter, 6);
+ 		break;
+ 	default:
+ 		pmesr = 0;
+@@ -460,7 +461,7 @@ get_counter_config(uint32_t counter)
+ 
+ 	kpc_config_t config = pmesr;
+ 
+-	uint64_t pmcr1 = SREG_READ("PMCR1_EL1");
++	uint64_t pmcr1 = SREG_READ(BLAUOS_SYSREG_STR(PMCR1_EL1));
+ 
+ 	if (pmcr1 & PMCR1_EL0_A32_ENABLE_MASK(counter)) {
+ 		config |= CFGWORD_EL0A32EN_MASK;
+@@ -494,10 +495,10 @@ set_counter_config(uint32_t counter, uint64_t config)
+ 	case 3:         /* FALLTHROUGH */
+ 	case 4:         /* FALLTHROUGH */
+ 	case 5:
+-		pmesr = SREG_READ("PMESR0_EL1");
++		pmesr = SREG_READ(BLAUOS_SYSREG_STR(PMESR0_EL1));
+ 		pmesr &= PMESR_EVT_CLEAR(counter, 2);
+ 		pmesr |= PMESR_EVT_ENCODE(config, counter, 2);
+-		SREG_WRITE("PMESR0_EL1", pmesr);
++		SREG_WRITE(BLAUOS_SYSREG_STR(PMESR0_EL1), pmesr);
+ 		saved_PMESR[cpuid][0] = pmesr;
+ 		break;
+ 
+@@ -508,10 +509,10 @@ set_counter_config(uint32_t counter, uint64_t config)
+ 	case 8:         /* FALLTHROUGH */
+ 	case 9:
+ #endif
+-		pmesr = SREG_READ("PMESR1_EL1");
++		pmesr = SREG_READ(BLAUOS_SYSREG_STR(PMESR1_EL1));
+ 		pmesr &= PMESR_EVT_CLEAR(counter, 6);
+ 		pmesr |= PMESR_EVT_ENCODE(config, counter, 6);
+-		SREG_WRITE("PMESR1_EL1", pmesr);
++		SREG_WRITE(BLAUOS_SYSREG_STR(PMESR1_EL1), pmesr);
+ 		saved_PMESR[cpuid][1] = pmesr;
+ 		break;
+ 	default:
+diff --git a/src/Kernel/xnu/osfmk/arm64/machine_routines.c b/src/Kernel/xnu/osfmk/arm64/machine_routines.c
+index 66d7563..25844ca 100644
+--- a/src/Kernel/xnu/osfmk/arm64/machine_routines.c
++++ b/src/Kernel/xnu/osfmk/arm64/machine_routines.c
+@@ -26,6 +26,7 @@
+  * @APPLE_OSREFERENCE_LICENSE_HEADER_END@
+  */
+ 
++#include <arm64/native_apple_sysregs.h>
+ #include <arm64/proc_reg.h>
+ #include <arm/machine_cpu.h>
+ #include <arm/cpu_internal.h>
+@@ -184,15 +185,15 @@ ml_cpu_signal_type(unsigned int cpu_mpidr, uint32_t type)
+ 	MRS(local_mpidr, "MPIDR_EL1");
+ 	if (MPIDR_CLUSTER_ID(local_mpidr) == MPIDR_CLUSTER_ID(cpu_mpidr)) {
+ 		uint64_t x = type | MPIDR_CPU_ID(cpu_mpidr);
+-		MSR("IPIRR_LOCAL_EL1", x);
++		MSR(BLAUOS_SYSREG_STR(IPIRR_LOCAL_EL1), x);
+ 	} else {
+ 		#define IPI_RR_TARGET_CLUSTER_SHIFT 16
+ 		uint64_t x = type | (MPIDR_CLUSTER_ID(cpu_mpidr) << IPI_RR_TARGET_CLUSTER_SHIFT) | MPIDR_CPU_ID(cpu_mpidr);
+-		MSR("IPIRR_GLOBAL_EL1", x);
++		MSR(BLAUOS_SYSREG_STR(IPIRR_GLOBAL_EL1), x);
+ 	}
+ #else
+ 	uint64_t x = type | MPIDR_CPU_ID(cpu_mpidr);
+-	MSR("IPIRR_GLOBAL_EL1", x);
++	MSR(BLAUOS_SYSREG_STR(IPIRR_GLOBAL_EL1), x);
+ #endif
+ }
+ #endif
+@@ -236,7 +237,7 @@ ml_cpu_signal_deferred_adjust_timer(uint64_t nanosecs)
+ 	/* update deferred_ipi_timer_ns with the new clamped value */
+ 	absolutetime_to_nanoseconds(abstime, &deferred_ipi_timer_ns);
+ 
+-	MSR("IPICR_EL1", abstime);
++	MSR(BLAUOS_SYSREG_STR(IPICR_EL1), abstime);
+ #else
+ 	(void)nanosecs;
+ 	panic("Platform does not support ACC Fast IPI");
+diff --git a/src/Kernel/xnu/osfmk/arm64/monotonic.h b/src/Kernel/xnu/osfmk/arm64/monotonic.h
+index d12abcc..7058a51 100644
+--- a/src/Kernel/xnu/osfmk/arm64/monotonic.h
++++ b/src/Kernel/xnu/osfmk/arm64/monotonic.h
+@@ -28,6 +28,7 @@
+ #ifndef ARM64_MONOTONIC_H
+ #define ARM64_MONOTONIC_H
+ 
++#include <arm64/native_apple_sysregs.h>
+ #include <sys/cdefs.h>
+ 
+ #if MONOTONIC
+@@ -79,20 +80,20 @@ static inline bool
+ mt_pmi_pending(uint64_t * restrict pmcr0_out,
+     uint64_t * restrict upmsr_out)
+ {
+-	uint64_t pmcr0 = __builtin_arm_rsr64("PMCR0_EL1");
++	uint64_t pmcr0 = __builtin_arm_rsr64(BLAUOS_SYSREG_STR(PMCR0_EL1));
+ 	bool pmi = PMCR0_PMI(pmcr0);
+ 	if (pmi) {
+ 		/*
+ 		 * Acknowledge the PMI by clearing the pmai bit.
+ 		 */
+-		__builtin_arm_wsr64("PMCR0_EL1", pmcr0 & ~PMCR0_PMAI);
++		__builtin_arm_wsr64(BLAUOS_SYSREG_STR(PMCR0_EL1), pmcr0 & ~PMCR0_PMAI);
+ 	}
+ 	*pmcr0_out = pmcr0;
+ 
+ #if HAS_UNCORE_CTRS
+ 	extern bool mt_uncore_enabled;
+ 	if (mt_uncore_enabled) {
+-		uint64_t upmsr = __builtin_arm_rsr64("UPMSR_EL1");
++		uint64_t upmsr = __builtin_arm_rsr64(BLAUOS_SYSREG_STR(UPMSR_EL1));
+ 		if (UPMSR_PMI(upmsr)) {
+ 			pmi = true;
+ 		}
+diff --git a/src/Kernel/xnu/osfmk/arm64/monotonic_arm64.c b/src/Kernel/xnu/osfmk/arm64/monotonic_arm64.c
+index 06d845f..1899534 100644
+--- a/src/Kernel/xnu/osfmk/arm64/monotonic_arm64.c
++++ b/src/Kernel/xnu/osfmk/arm64/monotonic_arm64.c
+@@ -26,6 +26,7 @@
+  * @APPLE_OSREFERENCE_LICENSE_HEADER_END@
+  */
+ 
++#include <arm64/native_apple_sysregs.h>
+ #include <arm/cpu_data_internal.h>
+ #include <arm/machine_routines.h>
+ #include <arm64/monotonic.h>
+@@ -175,9 +176,9 @@ core_init_execution_modes(void)
+ {
+ 	uint64_t pmcr1;
+ 
+-	pmcr1 = __builtin_arm_rsr64("PMCR1_EL1");
++	pmcr1 = __builtin_arm_rsr64(BLAUOS_SYSREG_STR(PMCR1_EL1));
+ 	pmcr1 |= PMCR1_INIT;
+-	__builtin_arm_wsr64("PMCR1_EL1", pmcr1);
++	__builtin_arm_wsr64(BLAUOS_SYSREG_STR(PMCR1_EL1), pmcr1);
+ }
+ 
+ #define PMSR_OVF(CTR) (1ULL << (CTR))
+@@ -213,10 +214,10 @@ mt_core_set_snap(unsigned int ctr, uint64_t count)
+ {
+ 	switch (ctr) {
+ 	case 0:
+-		__builtin_arm_wsr64("PMC0", count);
++		__builtin_arm_wsr64(BLAUOS_SYSREG_STR(PMC0), count);
+ 		break;
+ 	case 1:
+-		__builtin_arm_wsr64("PMC1", count);
++		__builtin_arm_wsr64(BLAUOS_SYSREG_STR(PMC1), count);
+ 		break;
+ 	default:
+ 		panic("monotonic: invalid core counter %u write %llu", ctr, count);
+@@ -227,7 +228,7 @@ mt_core_set_snap(unsigned int ctr, uint64_t count)
+ static void
+ core_set_enabled(void)
+ {
+-	uint64_t pmcr0 = __builtin_arm_rsr64("PMCR0_EL1");
++	uint64_t pmcr0 = __builtin_arm_rsr64(BLAUOS_SYSREG_STR(PMCR0_EL1));
+ 	pmcr0 |= PMCR0_INIT | PMCR0_FIXED_EN;
+ 
+ 	if (kpc_get_running() & KPC_CLASS_CONFIGURABLE_MASK) {
+@@ -243,12 +244,12 @@ core_set_enabled(void)
+ 		pmcr0 |= kpc_ctrs;
+ 	}
+ 
+-	__builtin_arm_wsr64("PMCR0_EL1", pmcr0);
++	__builtin_arm_wsr64(BLAUOS_SYSREG_STR(PMCR0_EL1), pmcr0);
+ #if MACH_ASSERT
+ 	/*
+ 	 * Only check for the values that were ORed in.
+ 	 */
+-	uint64_t pmcr0_check = __builtin_arm_rsr64("PMCR0_EL1");
++	uint64_t pmcr0_check = __builtin_arm_rsr64(BLAUOS_SYSREG_STR(PMCR0_EL1));
+ 	if ((pmcr0_check & (PMCR0_INIT | PMCR0_FIXED_EN)) != (PMCR0_INIT | PMCR0_FIXED_EN)) {
+ 		panic("monotonic: hardware ignored enable (read %llx, wrote %llx)",
+ 		    pmcr0_check, pmcr0);
+@@ -263,18 +264,18 @@ core_idle(__unused cpu_data_t *cpu)
+ 	assert(ml_get_interrupts_enabled() == FALSE);
+ 
+ #if DEBUG
+-	uint64_t pmcr0 = __builtin_arm_rsr64("PMCR0_EL1");
++	uint64_t pmcr0 = __builtin_arm_rsr64(BLAUOS_SYSREG_STR(PMCR0_EL1));
+ 	if ((pmcr0 & PMCR0_FIXED_EN) == 0) {
+ 		panic("monotonic: counters disabled before idling, pmcr0 = 0x%llx\n", pmcr0);
+ 	}
+-	uint64_t pmcr1 = __builtin_arm_rsr64("PMCR1_EL1");
++	uint64_t pmcr1 = __builtin_arm_rsr64(BLAUOS_SYSREG_STR(PMCR1_EL1));
+ 	if ((pmcr1 & PMCR1_INIT) == 0) {
+ 		panic("monotonic: counter modes disabled before idling, pmcr1 = 0x%llx\n", pmcr1);
+ 	}
+ #endif /* DEBUG */
+ 
+ 	/* disable counters before updating */
+-	__builtin_arm_wsr64("PMCR0_EL1", PMCR0_INIT);
++	__builtin_arm_wsr64(BLAUOS_SYSREG_STR(PMCR0_EL1), PMCR0_INIT);
+ 
+ 	mt_update_fixed_counts();
+ }
+@@ -455,7 +456,7 @@ uncmon_set_counting_locked_l(__unused unsigned int monid, uint64_t enctrmask)
+ 	 * UPMCR0 controls which counters are enabled and how interrupts are generated
+ 	 * for overflows.
+ 	 */
+-	__builtin_arm_wsr64("UPMCR0_EL1", UPMCR0_INIT | enctrmask);
++	__builtin_arm_wsr64(BLAUOS_SYSREG_STR(UPMCR0_EL1), UPMCR0_INIT | enctrmask);
+ }
+ 
+ #if UNCORE_PER_CLUSTER
+@@ -579,10 +580,10 @@ uncmon_program_events_locked_l(unsigned int monid)
+ 	 * UPMESR[01] is the event selection register that determines which event a
+ 	 * counter will count.
+ 	 */
+-	CTRL_REG_SET("UPMESR0_EL1", uncore_config.uc_events.uce_regs[0]);
++	CTRL_REG_SET(BLAUOS_SYSREG_STR(UPMESR0_EL1), uncore_config.uc_events.uce_regs[0]);
+ 
+ #if UNCORE_NCTRS > 8
+-	CTRL_REG_SET("UPMESR1_EL1", uncore_config.uc_events.uce_regs[1]);
++	CTRL_REG_SET(BLAUOS_SYSREG_STR(UPMESR1_EL1), uncore_config.uc_events.uce_regs[1]);
+ #endif /* UNCORE_NCTRS > 8 */
+ 
+ 	/*
+@@ -594,15 +595,15 @@ uncmon_program_events_locked_l(unsigned int monid)
+ 	 * has a CPU ID of 4, it might be the first CPU in a cluster.  Shift the
+ 	 * registers right by the ID of the first CPU in the cluster.
+ 	 */
+-	CTRL_REG_SET("UPMECM0_EL1",
++	CTRL_REG_SET(BLAUOS_SYSREG_STR(UPMECM0_EL1),
+ 	    uncore_config.uc_cpu_masks[monid].uccm_regs[0]);
+-	CTRL_REG_SET("UPMECM1_EL1",
++	CTRL_REG_SET(BLAUOS_SYSREG_STR(UPMECM1_EL1),
+ 	    uncore_config.uc_cpu_masks[monid].uccm_regs[1]);
+ 
+ #if UNCORE_NCTRS > 8
+-	CTRL_REG_SET("UPMECM2_EL1",
++	CTRL_REG_SET(BLAUOS_SYSREG_STR(UPMECM2_EL1),
+ 	    uncore_config.uc_cpu_masks[monid].uccm_regs[2]);
+-	CTRL_REG_SET("UPMECM3_EL1",
++	CTRL_REG_SET(BLAUOS_SYSREG_STR(UPMECM3_EL1),
+ 	    uncore_config.uc_cpu_masks[monid].uccm_regs[3]);
+ #endif /* UNCORE_NCTRS > 8 */
+ }
+@@ -636,7 +637,7 @@ uncmon_program_events_locked_r(unsigned int monid)
+ static void
+ uncmon_clear_int_locked_l(__unused unsigned int monid)
+ {
+-	__builtin_arm_wsr64("UPMSR_EL1", 0);
++	__builtin_arm_wsr64(BLAUOS_SYSREG_STR(UPMSR_EL1), 0);
+ }
+ 
+ #if UNCORE_PER_CLUSTER
+@@ -679,7 +680,7 @@ uncmon_init_locked_l(unsigned int monid)
+ 	 * UPMPCM defines the PMI core mask for the UPMCs -- which cores should
+ 	 * receive interrupts on overflow.
+ 	 */
+-	CTRL_REG_SET("UPMPCM_EL1", uncmon_get_pmi_mask(monid));
++	CTRL_REG_SET(BLAUOS_SYSREG_STR(UPMPCM_EL1), uncmon_get_pmi_mask(monid));
+ 	uncmon_set_counting_locked_l(monid,
+ 	    mt_uncore_enabled ? uncore_active_ctrs : 0);
+ }
+@@ -1200,7 +1201,7 @@ mt_cpu_pmi(cpu_data_t *cpu, uint64_t pmcr0)
+ 	assert(cpu != NULL);
+ 	assert(ml_get_interrupts_enabled() == FALSE);
+ 
+-	__builtin_arm_wsr64("PMCR0_EL1", PMCR0_INIT);
++	__builtin_arm_wsr64(BLAUOS_SYSREG_STR(PMCR0_EL1), PMCR0_INIT);
+ 	/*
+ 	 * Ensure the CPMU has flushed any increments at this point, so PMSR is up
+ 	 * to date.
+@@ -1219,7 +1220,7 @@ mt_cpu_pmi(cpu_data_t *cpu, uint64_t pmcr0)
+ #pragma unused(pmcr0)
+ #endif /* !MONOTONIC_DEBUG */
+ 
+-	uint64_t pmsr = __builtin_arm_rsr64("PMSR_EL1");
++	uint64_t pmsr = __builtin_arm_rsr64(BLAUOS_SYSREG_STR(PMSR_EL1));
+ 
+ #if MONOTONIC_DEBUG
+ 	printf("monotonic: cpu = %d, PMSR = 0x%llx, PMCR0 = 0x%llx\n",
+@@ -1275,7 +1276,7 @@ mt_cpu_pmi(cpu_data_t *cpu, uint64_t pmcr0)
+ 	}
+ 
+ #if MACH_ASSERT
+-	uint64_t pmsr_after_handling = __builtin_arm_rsr64("PMSR_EL1");
++	uint64_t pmsr_after_handling = __builtin_arm_rsr64(BLAUOS_SYSREG_STR(PMSR_EL1));
+ 	if (pmsr_after_handling != 0) {
+ 		unsigned int first_ctr_ovf = __builtin_ffsll(pmsr_after_handling) - 1;
+ 		uint64_t count = 0;
+@@ -1289,7 +1290,7 @@ mt_cpu_pmi(cpu_data_t *cpu, uint64_t pmcr0)
+ 		panic("monotonic: PMI status not cleared on exit from handler, "
+ 		    "PMSR = 0x%llx HANDLE -> -> 0x%llx, handled 0x%llx, "
+ 		    "PMCR0 = 0x%llx, PMC%d = 0x%llx%s", pmsr, pmsr_after_handling,
+-		    handled, __builtin_arm_rsr64("PMCR0_EL1"), first_ctr_ovf, count, extra);
++		    handled, __builtin_arm_rsr64(BLAUOS_SYSREG_STR(PMCR0_EL1)), first_ctr_ovf, count, extra);
+ 	}
+ #endif /* MACH_ASSERT */
+ 
+@@ -1305,7 +1306,7 @@ mt_cpmu_aic_pmi(cpu_id_t source)
+ 		panic("monotonic: PMI from IOCPU %p delivered to %p", source,
+ 		    curcpu->interrupt_nub);
+ 	}
+-	mt_cpu_pmi(curcpu, __builtin_arm_rsr64("PMCR0_EL1"));
++	mt_cpu_pmi(curcpu, __builtin_arm_rsr64(BLAUOS_SYSREG_STR(PMCR0_EL1)));
+ }
+ #endif /* CPMU_AIC_PMI */
+ 
+@@ -1332,7 +1333,7 @@ mt_microstackshot_start_remote(__unused void *arg)
+ {
+ 	cpu_data_t *cpu = getCpuDatap();
+ 
+-	__builtin_arm_wsr64("PMCR0_EL1", PMCR0_INIT);
++	__builtin_arm_wsr64(BLAUOS_SYSREG_STR(PMCR0_EL1), PMCR0_INIT);
+ 
+ 	for (int i = 0; i < MT_CORE_NFIXED; i++) {
+ 		uint64_t count = mt_cpu_update_count(cpu, i);
+diff --git a/src/Kernel/xnu/osfmk/arm64/native_apple_sysregs.h b/src/Kernel/xnu/osfmk/arm64/native_apple_sysregs.h
+new file mode 100644
+index 0000000..1d5981e
+--- /dev/null
++++ b/src/Kernel/xnu/osfmk/arm64/native_apple_sysregs.h
+@@ -0,0 +1,54 @@
++/* Numeric spellings for the T8103 native compile profile.
++ * Register meanings, reads, writes and barriers are unchanged.
++ * Encodings: m1n1 7f208771b1352cde2dbce37a866ad46caca978ac/src/cpu_regs.h;
++ * legacy RAWPMU encodings: apple-knowledge 7b2ba25aedc454f0e199924154eb174361dfce9c/_data/registers.yaml.
++ * Physical T8103 execution remains unverified.
++ */
++#ifndef BLAUOS_NATIVE_APPLE_SYSREGS_H
++#define BLAUOS_NATIVE_APPLE_SYSREGS_H
++#define BLAUOS_SYSREG_STR_(reg) #reg
++#define BLAUOS_SYSREG_STR(reg) BLAUOS_SYSREG_STR_(reg)
++#if defined(ARM64_BOARD_CONFIG_T8103)
++#define HID8 S3_0_C15_C8_0
++#define IPICR_EL1 S3_5_C15_C3_1
++#define IPIRR_GLOBAL_EL1 S3_5_C15_C0_1
++#define IPIRR_LOCAL_EL1 S3_5_C15_C0_0
++#define IPISR_EL1 S3_5_C15_C1_1
++#define OPMAT0_EL1 S3_1_C15_C7_0
++#define OPMAT1_EL1 S3_1_C15_C8_0
++#define OPMSK0_EL1 S3_1_C15_C9_0
++#define OPMSK1_EL1 S3_1_C15_C10_0
++#define PMC0 S3_2_C15_C0_0
++#define PMC1 S3_2_C15_C1_0
++#define PMC2 S3_2_C15_C2_0
++#define PMC3 S3_2_C15_C3_0
++#define PMC4 S3_2_C15_C4_0
++#define PMC5 S3_2_C15_C5_0
++#define PMC6 S3_2_C15_C6_0
++#define PMC7 S3_2_C15_C7_0
++#define PMC8 S3_2_C15_C9_0
++#define PMC9 S3_2_C15_C10_0
++#define PMCR0_EL1 S3_1_C15_C0_0
++#define PMCR1_EL1 S3_1_C15_C1_0
++#define PMCR2_EL1 S3_1_C15_C2_0
++#define PMCR3_EL1 S3_1_C15_C3_0
++#define PMCR4_EL1 S3_1_C15_C4_0
++#define PMESR0_EL1 S3_1_C15_C5_0
++#define PMESR1_EL1 S3_1_C15_C6_0
++#define PMMMAP_EL1 S3_2_C15_C15_0
++#define PMSR_EL1 S3_1_C15_C13_0
++#define PMTRHLD2_EL1 S3_2_C15_C14_0
++#define PMTRHLD4_EL1 S3_2_C15_C13_0
++#define PMTRHLD6_EL1 S3_2_C15_C12_0
++#define UPMCR0_EL1 S3_7_C15_C0_4
++#define UPMECM0_EL1 S3_7_C15_C3_4
++#define UPMECM1_EL1 S3_7_C15_C4_4
++#define UPMECM2_EL1 S3_7_C15_C8_5
++#define UPMECM3_EL1 S3_7_C15_C9_5
++#define UPMESR0_EL1 S3_7_C15_C1_4
++#define UPMESR1_EL1 S3_7_C15_C11_5
++#define UPMPCM_EL1 S3_7_C15_C5_4
++#define UPMSR_EL1 S3_7_C15_C6_4
++
++#endif
++#endif
+diff --git a/src/Kernel/xnu/osfmk/arm64/platform_tests_asm.s b/src/Kernel/xnu/osfmk/arm64/platform_tests_asm.s
+index 674080c..c4e2658 100644
+--- a/src/Kernel/xnu/osfmk/arm64/platform_tests_asm.s
++++ b/src/Kernel/xnu/osfmk/arm64/platform_tests_asm.s
+@@ -27,6 +27,7 @@
+  */
+ 
+ #include <arm64/asm.h>
++#include <arm64/native_apple_sysregs.h>
+ #include <pexpert/arm64/board_config.h>
+ 
+ #if HAS_TWO_STAGE_SPR_LOCK
+diff --git a/src/Kernel/xnu/osfmk/arm64/proc_reg.h b/src/Kernel/xnu/osfmk/arm64/proc_reg.h
+index 2ef8fd4..0f20f78 100644
+--- a/src/Kernel/xnu/osfmk/arm64/proc_reg.h
++++ b/src/Kernel/xnu/osfmk/arm64/proc_reg.h
+@@ -30,6 +30,7 @@
+  */
+ #ifndef _ARM64_PROC_REG_H_
+ #define _ARM64_PROC_REG_H_
++#include <arm64/native_apple_sysregs.h>
+ 
+ #include <arm/proc_reg.h>
+ 
+diff --git a/src/Kernel/xnu/osfmk/arm64/sleh.c b/src/Kernel/xnu/osfmk/arm64/sleh.c
+index b38b130..0b78577 100644
+--- a/src/Kernel/xnu/osfmk/arm64/sleh.c
++++ b/src/Kernel/xnu/osfmk/arm64/sleh.c
+@@ -26,6 +26,7 @@
+  * @APPLE_OSREFERENCE_LICENSE_HEADER_END@
+  */
+ 
++#include <arm64/native_apple_sysregs.h>
+ #include <arm/caches_internal.h>
+ #include <arm/cpu_data.h>
+ #include <arm/cpu_data_internal.h>
+@@ -1834,7 +1835,7 @@ sleh_fiq(arm_saved_state_t *state)
+ 	uint64_t     ipi_sr = 0;
+ 
+ 	if (gFastIPI) {
+-		MRS(ipi_sr, "IPISR_EL1");
++		MRS(ipi_sr, BLAUOS_SYSREG_STR(IPISR_EL1));
+ 
+ 		if (ipi_sr & 1) {
+ 			is_ipi = TRUE;
+@@ -1870,7 +1871,7 @@ sleh_fiq(arm_saved_state_t *state)
+ 		 * IPI to this CPU may be lost.  ISB is required to ensure the msr
+ 		 * is retired before execution of cpu_signal_handler().
+ 		 */
+-		MSR("IPISR_EL1", ipi_sr);
++		MSR(BLAUOS_SYSREG_STR(IPISR_EL1), ipi_sr);
+ 		__builtin_arm_isb(ISB_SY);
+ 		cpu_signal_handler();
+ 	} else

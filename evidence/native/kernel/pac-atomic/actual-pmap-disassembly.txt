@@ -1,0 +1,52 @@
+kernel.development.t8103.unstripped[0xfffffe0007b94400] <+564>:  add    x0, x20, #0x30
+kernel.development.t8103.unstripped[0xfffffe0007b94404] <+568>:  bl     0xfffffe00073dd9d4        ; lck_rw_unlock_exclusive at locks_arm.c:1585
+kernel.development.t8103.unstripped[0xfffffe0007b94408] <+572>:  cbz    x23, 0xfffffe0007b94424   ; <+600> [inlined] pmap_lock at pmap.c:1639:31
+kernel.development.t8103.unstripped[0xfffffe0007b9440c] <+576>:  mov    x0, x23
+kernel.development.t8103.unstripped[0xfffffe0007b94410] <+580>:  bl     0xfffffe00073c3854        ; kvtophys at pmap.c:9587
+kernel.development.t8103.unstripped[0xfffffe0007b94414] <+584>:  adrp   x21, 13
+kernel.development.t8103.unstripped[0xfffffe0007b94418] <+588>:  ldr    w8, [x21, #0xf8]
+kernel.development.t8103.unstripped[0xfffffe0007b9441c] <+592>:  cbnz   w8, 0xfffffe0007b94ba4    ; <+2520> at pmap.c
+kernel.development.t8103.unstripped[0xfffffe0007b94420] <+596>:  bl     0xfffffe0007b982a8        ; pmap_give_free_ppl_page at pmap.c:3042
+kernel.development.t8103.unstripped[0xfffffe0007b94424] <+600>:  add    x0, x20, #0x30
+kernel.development.t8103.unstripped[0xfffffe0007b94428] <+604>:  bl     0xfffffe00073dcd18        ; lck_rw_lock_exclusive at locks_arm.c:1071
+kernel.development.t8103.unstripped[0xfffffe0007b9442c] <+608>:  mov    x17, x20
+kernel.development.t8103.unstripped[0xfffffe0007b94430] <+612>:  mov    x10, #0x0                 ; =0 
+kernel.development.t8103.unstripped[0xfffffe0007b94434] <+616>:  add    x9, x19, #0xa0
+kernel.development.t8103.unstripped[0xfffffe0007b94438] <+620>:  mov    x8, x9
+kernel.development.t8103.unstripped[0xfffffe0007b9443c] <+624>:  movk   x8, #0x7d67, lsl #48
+kernel.development.t8103.unstripped[0xfffffe0007b94440] <+628>:  mov    x16, x8
+kernel.development.t8103.unstripped[0xfffffe0007b94444] <+632>:  pacda  x17, x16
+kernel.development.t8103.unstripped[0xfffffe0007b94448] <+636>:  cas    x10, x17, [x9]
+kernel.development.t8103.unstripped[0xfffffe0007b9444c] <+640>:  cmp    x10, #0x0
+kernel.development.t8103.unstripped[0xfffffe0007b94450] <+644>:  cset   w10, eq
+kernel.development.t8103.unstripped[0xfffffe0007b94454] <+648>:  str    x27, [sp, #0x48]
+kernel.development.t8103.unstripped[0xfffffe0007b94458] <+652>:  str    w10, [sp, #0x44]
+kernel.development.t8103.unstripped[0xfffffe0007b9445c] <+656>:  b.ne   0xfffffe0007b94484        ; <+696> at pmap.c:12356:7
+kernel.development.t8103.unstripped[0xfffffe0007b94460] <+660>:  ldrb   w8, [x20, #0x140]
+kernel.development.t8103.unstripped[0xfffffe0007b94464] <+664>:  tbnz   w8, #0x0, 0xfffffe0007b9447c ; <+688> at pmap.c:12353:29
+kernel.development.t8103.unstripped[0xfffffe0007b94468] <+668>:  mov    w8, #0x1                  ; =1 
+kernel.development.t8103.unstripped[0xfffffe0007b9446c] <+672>:  strb   w8, [x19, #0x13f]
+kernel.development.t8103.unstripped[0xfffffe0007b94470] <+676>:  ldr    w8, [x20, #0x100]
+kernel.development.t8103.unstripped[0xfffffe0007b94474] <+680>:  add    w8, w8, #0x1
+kernel.development.t8103.unstripped[0xfffffe0007b94478] <+684>:  str    w8, [x20, #0x100]
+kernel.development.t8103.unstripped[0xfffffe0007b9447c] <+688>:  stp    x27, x22, [x19, #0xa8]
+kernel.development.t8103.unstripped[0xfffffe0007b94480] <+692>:  b      0xfffffe0007b944d4        ; <+776> at pmap.c
+kernel.development.t8103.unstripped[0xfffffe0007b94484] <+696>:  ldr    x16, [x9]
+kernel.development.t8103.unstripped[0xfffffe0007b94488] <+700>:  cbz    x16, 0xfffffe0007b944a8   ; <+732> at pmap.c:12356:7
+kernel.development.t8103.unstripped[0xfffffe0007b9448c] <+704>:  mov    x17, x8
+kernel.development.t8103.unstripped[0xfffffe0007b94490] <+708>:  autda  x16, x17
+kernel.development.t8103.unstripped[0xfffffe0007b94494] <+712>:  mov    x17, x16
+kernel.development.t8103.unstripped[0xfffffe0007b94498] <+716>:  xpacd  x17
+kernel.development.t8103.unstripped[0xfffffe0007b9449c] <+720>:  cmp    x16, x17
+kernel.development.t8103.unstripped[0xfffffe0007b944a0] <+724>:  b.eq   0xfffffe0007b944a8        ; <+732> at pmap.c:12356:7
+kernel.development.t8103.unstripped[0xfffffe0007b944a4] <+728>:  brk    #0xc472
+kernel.development.t8103.unstripped[0xfffffe0007b944a8] <+732>:  cmp    x16, x20
+kernel.development.t8103.unstripped[0xfffffe0007b944ac] <+736>:  b.ne   0xfffffe0007b94b84        ; <+2488> at pmap.c:12357:4
+kernel.development.t8103.unstripped[0xfffffe0007b944b0] <+740>:  ldr    x8, [x19, #0xa8]
+kernel.development.t8103.unstripped[0xfffffe0007b944b4] <+744>:  cmp    x8, x27
+kernel.development.t8103.unstripped[0xfffffe0007b944b8] <+748>:  b.hi   0xfffffe0007b94b94        ; <+2504> at pmap.c:12359:4
+kernel.development.t8103.unstripped[0xfffffe0007b944bc] <+752>:  ldr    x9, [x19, #0xb0]
+kernel.development.t8103.unstripped[0xfffffe0007b944c0] <+756>:  add    x9, x9, x8
+kernel.development.t8103.unstripped[0xfffffe0007b944c4] <+760>:  cmp    x9, x28
+kernel.development.t8103.unstripped[0xfffffe0007b944c8] <+764>:  b.hs   0xfffffe0007b944d4        ; <+776> at pmap.c
+kernel.development.t8103.unstripped[0xfffffe0007b944cc] <+768>:  sub    x8, x28, x8

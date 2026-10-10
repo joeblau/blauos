@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "role": "build-host",
+  "read_only": true,
+  "captured_at": "2026-10-10T18:30:47.620279+00:00",
+  "hardware": {
+    "model": "Mac15,8",
+    "chip": "Apple M3 Max",
+    "architecture": "arm64",
+    "memory_bytes": 137438953472,
+    "logical_cpus": 16,
+    "performance_cores": 12,
+    "efficiency_cores": 4,
+    "firmware_version": "20457.40.172.501.1",
+    "os_loader_version": "20457.40.172.501.1",
+    "board_compatible": "J514cAP\u0000Mac15,8\u0000AppleARM",
+    "target_type": "J514c"
+  },
+  "os": {
+    "version": "27.2",
+    "build": "26B5101f",
+    "kernel_release": "27.2.0"
+  },
+  "storage": [
+    {
+      "controller": "Apple SSD Controller",
+      "model": "APPLE SSD AP8192Z",
+      "firmware_revision": "591.40.3",
+      "capacity_bytes": 8004444651520,
+      "protocol": "NVMe",
+      "removable": "no",
+      "detachable": "no"
+    }
+  ],
+  "ethernet": [
+    {
+      "controller": "USB 10/100/1000 LAN",
+      "bus": "spethernet_usb_device",
+      "driver": "com.apple.DriverKit.AppleUserECM",
+      "vendor": "Realtek",
+      "product_id": "0x8153"
+    }
+  ],
+  "serial_devices": [
+    "/dev/cu.Bluetooth-Incoming-Port",
+    "/dev/cu.debug-console"
+  ],
+  "tools": {
+    "kmutil": {
+      "path": "/usr/bin/kmutil",
+      "sha256": "fb1720da42918e151b7532a83f484665ee2a0b38dbb780cbe48e3bd101f5e84e"
+    },
+    "bputil": {
+      "path": "/usr/bin/bputil",
+      "sha256": "d96ad68d554f1e5890cb68c39f5e79ff624c67bd9e5b4ae7e134e9498b78b2cf"
+    },
+    "diskutil": {
+      "path": "/usr/sbin/diskutil",
+      "sha256": "4275aff1a88ae6b96b2ac0384900e6cafe1d94743d9e30cb1ae5da60c6873c32"
+    },
+    "bless": {
+      "path": "/usr/sbin/bless",
+      "sha256": "81a8d1d23168db69fc56f0e3366d324869ad09816edd1e15df7cd6eb2b795783"
+    }
+  },
+  "target": {
+    "expected_model": "Macmini9,1",
+    "expected_soc": "t8103",
+    "matches_required_hardware": false
+  },
+  "readiness": {
+    "status": "build-host-only",
+    "lab_setup_verified": false,
+    "physical_boot_validated": false,
+    "required_external_evidence": [
+      "dedicated target and recovery operator",
+      "backup/restore verification",
+      "known-good boot and per-OS policy ownership",
+      "physical serial/debug capture"
+    ]
+  },
+  "commands": [
+    {
+      "command": [
+        "/usr/sbin/system_profiler",
+        "SPHardwareDataType",
+        "SPNVMeDataType",
+        "SPEthernetDataType",
+        "-json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "/usr/sbin/ioreg",
+        "-a",
+        "-r",
+        "-c",
+        "IOPlatformExpertDevice"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "/usr/bin/uname",
+        "-m"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "/usr/bin/uname",
+        "-r"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "limitations": [
+    "Stock macOS inventory is not evidence that project XNU ran.",
+    "An offline inventory and identity digest are consistency evidence, not hardware attestation."
+  ]
+}

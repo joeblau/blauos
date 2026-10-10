@@ -1,0 +1,169 @@
+1:      INSTALLHDR _user32_timex.h
+2:      INSTALLHDR _user64_timex.h
+3:      INSTALLHDR _user32_ntptimeval.h
+4:      INSTALLHDR _user64_ntptimeval.h
+5:      INSTALLHDR _user32_ntptimeval.h
+6:      INSTALLHDR _user32_timex.h
+7:      INSTALLHDR _user64_ntptimeval.h
+8:      INSTALLHDR _user64_timex.h
+9:      INSTALLHDR syscall_sw.h
+10:      INSTALLHDR syscall_sw.h
+11:      INSTALLHDR syscall_sw.h
+12:      INSTALLHDR syscall_sw.h
+13:      INSTALLHDR affinity.h
+14:      INSTALLHDR audit_sessionport.h
+15:      INSTALLHDR counter.h
+16:      INSTALLHDR cpu_number.h
+17:      INSTALLHDR cpu_data.h
+18:      INSTALLHDR ipc_misc.h
+19:      INSTALLHDR kalloc.h
+20:      INSTALLHDR lock.h
+21:      INSTALLHDR mach_param.h
+22:      INSTALLHDR page_decrypt.h
+23:      INSTALLHDR pms.h
+24:      INSTALLHDR simple_lock.h
+25:      INSTALLHDR startup.h
+26:      INSTALLHDR zalloc.h
+27:      INSTALLHDR affinity.h
+28:      INSTALLHDR counter.h
+29:      INSTALLHDR cpu_number.h
+30:      INSTALLHDR cpu_data.h
+31:      INSTALLHDR mach_param.h
+32:      INSTALLHDR startup.h
+33:      INSTALLHDR cpu_capabilities.h
+34:      INSTALLHDR cpu_number.h
+35:      INSTALLHDR io_map_entries.h
+36:      INSTALLHDR lock.h
+37:      INSTALLHDR machine_cpuid.h
+38:      INSTALLHDR simple_lock.h
+39:      INSTALLHDR vm_protos.h
+40:      INSTALLHDR vm_protos.h
+41:      INSTALLHDR cpu_number.h
+42:      INSTALLHDR cpu_capabilities.h
+43:      INSTALLHDR cpu_x86_64_capabilities.h
+44:      INSTALLHDR io_map_entries.h
+45:      INSTALLHDR lock.h
+46:      INSTALLHDR simple_lock.h
+47:              CC gssd_mach.o
+48: clang: warning: no such include directory: '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/libsa' [-Wmissing-include-dirs]
+49: In file included from gssd/gssd_mach.c:10:
+50: In file included from gssd/gssd_mach.h:6:
+51: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/string.h:42:
+52: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/libsa/types.h:51:
+53: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/libsa/machine/types.h:34:
+54: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/libsa/arm/types.h:71:22: warning: identifier '__val' is reserved because it starts with '__' [-Wreserved-identifier]
+55:    71 | typedef struct { int __val[2]; } bit64_t;       /* signed 64-bit quantity */
+56:       |                      ^
+57: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/libsa/arm/types.h:72:31: warning: identifier '__val' is reserved because it starts with '__' [-Wreserved-identifier]
+58:    72 | typedef struct { unsigned int __val[2]; } u_bit64_t;/* unsigned 64-bit quantity */
+59:       |                               ^
+60: In file included from gssd/gssd_mach.c:10:
+394882:  2940 |                         printf("CODESIGNING: vm_fault_enter(0x%llx): "
+394883:       |                                                               ~~~~
+394884:       |                                                               %llx
+394885:  2941 |                             "*** INVALID PAGE ***\n",
+394886:  2942 |                             (long long)vaddr);
+394887:       |                             ^~~~~~~~~~~~~~~~
+394888: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/vm/vm_fault.c:3096:5: warning: identifier '__pck_elt' is reserved because it starts with '__' [-Wreserved-identifier]
+394889:  3096 |                                 vm_page_queue_enter(&lq->vpl_queue, m, vmp_pageq);
+394890:       |                                 ^
+521407: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/sleh.c:262:1: warning: identifier '__startup_TUNABLES_entry_fp_exceptions_enabled_262' is reserved because it starts with '__' [-Wreserved-identifier]
+521408: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/kern/startup.h:231:2: note: expanded from macro 'TUNABLE'
+521409:   231 |         __TUNABLE(type_t, var, key)
+521410:       |         ^
+521411: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/kern/startup.h:267:2: note: expanded from macro '__TUNABLE'
+521412:   267 |         __STARTUP_ARG(var, __LINE__, TUNABLES, STARTUP_RANK_FIRST, \
+521413:       |         ^
+521414: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/kern/startup.h:291:2: note: expanded from macro '__STARTUP_ARG'
+521415:   291 |         __STARTUP1(name, line, subsystem, rank, func, arg, arg)
+521416:       |         ^
+521417: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/kern/startup.h:282:2: note: expanded from macro '__STARTUP1'
+521418:   282 |         __startup_ ## subsystem ## _entry_ ## name ## _ ## line = { \
+521419:       |         ^
+521420: <scratch space>:35:1: note: expanded from here
+521421:    35 | __startup_TUNABLES_entry_fp_exceptions_enabled_262
+521422:       | ^
+521423: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/sleh.c:489:2: warning: '_Atomic' is incompatible with C standards before C11 [-Wpre-c11-compat]
+521424:   489 |         os_atomic_cmpxchg(&original_faulting_state, NULL, state, seq_cst);\
+521425:       |         ^
+521426: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/libkern/os/atomic_private.h:652:2: note: expanded from macro 'os_atomic_cmpxchg'
+521427:   652 |         os_atomic_basetypeof(p) _r = (e); int _b; \
+521428:       |         ^
+521429: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/libkern/os/atomic.h:80:65: note: expanded from macro 'os_atomic_basetypeof'
+521430:    80 | #define os_atomic_basetypeof(p)          __typeof__(atomic_load(os_cast_to_atomic_pointer(p)))
+521431:       |                                                                 ^
+521432: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/libkern/os/atomic.h:79:69: note: expanded from macro 'os_cast_to_atomic_pointer'
+521433:    79 | #define os_cast_to_atomic_pointer(p)     (__typeof__(*(p)) volatile _Atomic *)(uintptr_t)(p)
+521434:       |                                                                     ^
+521435: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/sleh.c:489:2: warning: '_Atomic' is incompatible with C standards before C11 [-Wpre-c11-compat]
+521436: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/libkern/os/atomic_private.h:655:6: note: expanded from macro 'os_atomic_cmpxchg'
+521437:   655 |             os_cast_to_atomic_pointer(p), &_r, \
+521438:       |             ^
+521439: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/libkern/os/atomic.h:79:69: note: expanded from macro 'os_cast_to_atomic_pointer'
+521440:    79 | #define os_cast_to_atomic_pointer(p)     (__typeof__(*(p)) volatile _Atomic *)(uintptr_t)(p)
+521441:       |                                                                     ^
+521442: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/sleh.c:489:2: warning: '_Atomic' is incompatible with C standards before C11 [-Wpre-c11-compat]
+521443: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/libkern/os/atomic_private.h:656:6: note: expanded from macro 'os_atomic_cmpxchg'
+521444:   656 |             _os_atomic_value_cast(p, v), \
+521445:       |             ^
+521446: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/libkern/os/atomic_private_impl.h:218:13: note: expanded from macro '_os_atomic_value_cast'
+521447:   218 |         ({ typeof(*os_cast_to_nonatomic_pointer(p)) ___v = (v); ___v; })
+521448:       |                    ^
+521449: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/libkern/os/atomic.h:81:43: note: expanded from macro 'os_cast_to_nonatomic_pointer'
+521450:    81 | #define os_cast_to_nonatomic_pointer(p)  (os_atomic_basetypeof(p) *)(uintptr_t)(p)
+521451:       |                                           ^
+521452: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/libkern/os/atomic.h:80:65: note: expanded from macro 'os_atomic_basetypeof'
+521453:    80 | #define os_atomic_basetypeof(p)          __typeof__(atomic_load(os_cast_to_atomic_pointer(p)))
+521454:       |                                                                 ^
+521455: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/libkern/os/atomic.h:79:69: note: expanded from macro 'os_cast_to_atomic_pointer'
+521456:    79 | #define os_cast_to_atomic_pointer(p)     (__typeof__(*(p)) volatile _Atomic *)(uintptr_t)(p)
+521457:       |                                                                     ^
+521458: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/sleh.c:489:2: warning: identifier '___v' is reserved because it starts with '__' [-Wreserved-identifier]
+521459: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/libkern/os/atomic_private.h:656:6: note: expanded from macro 'os_atomic_cmpxchg'
+521460:   656 |             _os_atomic_value_cast(p, v), \
+521461:       |             ^
+521462: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/libkern/os/atomic_private_impl.h:218:46: note: expanded from macro '_os_atomic_value_cast'
+521463:   218 |         ({ typeof(*os_cast_to_nonatomic_pointer(p)) ___v = (v); ___v; })
+521464:       |                                                     ^
+521465: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/sleh.c:1411:60: warning: format specifies type 'unsigned int' but the argument has type 'kern_return_t' (aka 'int') [-Wformat]
+521466:  1411 |                         assertf(vmfkr != KERN_SUCCESS, "Unexpected vmfkr 0x%x", vmfkr);
+521467:       |                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~
+521468: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/kern/assert.h:96:119: note: expanded from macro 'assertf'
+521469:    96 |         (__builtin_expect(!!((ex)), 1L) ? (void)0 : __Panic("%s:%d Assertion failed: %s : " fmt, __FILE__, __LINE__, # ex, ##args))
+521470:       |                                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~
+521471: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/kern/assert.h:83:44: note: expanded from macro '__Panic'
+521472:    83 | #define __Panic(fmt, args...) panic(fmt, ##args)
+521473:       |                               ~~~~~~~~~~~~~^~~~~
+521474: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/kern/debug.h:530:27: note: expanded from macro 'panic'
+521475:   530 |                 (panic)(# ex, ## __VA_ARGS__); \
+521476:       |                         ~~~~     ^~~~~~~~~~~
+521477: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/sleh.c:1657:3: warning: 'switch' missing 'default' label [-Wswitch-default]
+521478:  1657 |                 switch (trap_no) {
+521479:       |                 ^
+521480: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/sleh.c:1837:3: error: expected readable system register
+521481:  1837 |                 MRS(ipi_sr, "IPISR_EL1");
+521482:       |                 ^
+521483: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/proc_reg.h:2141:42: note: expanded from macro 'MRS'
+521484:  2141 | #define MRS(dest, reg) __asm__ volatile ("mrs %0, " reg : "=r" (dest))
+521485:       |                                          ^
+521486: <inline asm>:1:11: note: instantiated into assembly here
+521487:     1 |         mrs x22, IPISR_EL1
+521488:       |                  ^
+521489: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/sleh.c:1873:3: error: expected writable system register or pstate
+521490:  1873 |                 MSR("IPISR_EL1", ipi_sr);
+521491:       |                 ^
+521492: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103/source-overlay/src/Kernel/xnu/osfmk/arm64/proc_reg.h:2140:42: note: expanded from macro 'MSR'
+521493:  2140 | #define MSR(reg, src)  __asm__ volatile ("msr " reg ", %0" :: "r" (src))
+521494:       |                                          ^
+521495: <inline asm>:1:6: note: instantiated into assembly here
+521496:     1 |         msr IPISR_EL1, x22
+521497:       |             ^
+521498: 397 warnings and 2 errors generated.
+521499: make[7]: *** [sleh.o] Error 1
+521500: make[6]: *** [build_all] Error 2
+521501: make[5]: *** [do_all] Error 2
+521502: make[4]: *** [build_all] Error 2
+521503: make[3]: *** [build_all_recurse_into_conf] Error 2
+521504: make[2]: *** [build_all_recurse_into_osfmk] Error 2
+521505: make[1]: *** [build_all_bootstrap_DEVELOPMENT^ARM64^T8103] Error 2
+521506: make: *** [install] Error 2

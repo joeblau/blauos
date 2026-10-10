@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "purpose": "Published M1 CTRR compile interface; no physical execution claim",
+  "source": {
+    "url": "https://github.com/AsahiLinux/docs",
+    "revision": "0d1f8917fa88745d62a4c05d802c4a7298c8616b",
+    "tree": "706b6cea6e48d15c8d54de063b8111a39ec3c23e",
+    "path": "docs/hw/cpu/system-registers.md",
+    "sha256": "9c6edb865ecab6191bc335827f53e8509095470700cbca31751ba53140cc8d84",
+    "register_lines": [
+      97,
+      110
+    ],
+    "control_bit_lines": [
+      442,
+      451
+    ]
+  },
+  "registers": {
+    "ARM64_REG_CTRR_LOCK_EL1": [
+      3,
+      4,
+      15,
+      2,
+      2
+    ],
+    "ARM64_REG_CTRR_A_LWR_EL1": [
+      3,
+      4,
+      15,
+      2,
+      3
+    ],
+    "ARM64_REG_CTRR_A_UPR_EL1": [
+      3,
+      4,
+      15,
+      2,
+      4
+    ],
+    "ARM64_REG_CTRR_CTL_EL1": [
+      3,
+      4,
+      15,
+      2,
+      5
+    ],
+    "ACC_CTRR_LOCK_EL2": [
+      3,
+      4,
+      15,
+      11,
+      5
+    ],
+    "ACC_CTRR_A_LWR_EL2": [
+      3,
+      4,
+      15,
+      11,
+      0
+    ],
+    "ACC_CTRR_A_UPR_EL2": [
+      3,
+      4,
+      15,
+      11,
+      1
+    ],
+    "ACC_CTRR_CTL_EL2": [
+      3,
+      4,
+      15,
+      11,
+      4
+    ]
+  },
+  "control_bits": {
+    "CTRR_CTL_EL1_A_MMUON_WRPROTECT": 1,
+    "CTRR_CTL_EL1_A_PXN": 4
+  },
+  "source_protection_mask": "0x12",
+  "patch": {
+    "path": "patches/native/0005-t8103-public-ctrr-interface.patch",
+    "sha256": "45300148900c5b448f5a019e0c4f31145ee566f31c7259193faaa0b6f3352919"
+  },
+  "runtime_execution_validated": false
+}

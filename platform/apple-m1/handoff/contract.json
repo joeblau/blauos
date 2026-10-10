@@ -1,0 +1,221 @@
+{
+  "schema_version": 1,
+  "profiles": {
+    "apple-xnu-12377": {
+      "boot_args_size": 1152,
+      "command_line_size": 1024,
+      "reviewed_revision": 2,
+      "reviewed_version": 2,
+      "abi": "little-endian LP64 (ARM64 and ARM64e)",
+      "field_offsets": {
+        "Revision": 0,
+        "Version": 2,
+        "virtBase": 8,
+        "physBase": 16,
+        "memSize": 24,
+        "topOfKernelData": 32,
+        "Video": 40,
+        "machineType": 88,
+        "deviceTreeP": 96,
+        "deviceTreeLength": 104,
+        "CommandLine": 108,
+        "bootFlags": 1136,
+        "memSizeActual": 1144
+      },
+      "sources": [
+        {
+          "source": "xnu",
+          "revision": "ac9718fb1af618d5ce8678d0dc6e8a58f252216f",
+          "path": "pexpert/pexpert/arm64/boot.h",
+          "sha256": "479a74f100116358a0e425d8deefc62c5bcbee72e49e69721c9e2d9c53465cd3",
+          "url": "https://github.com/apple-oss-distributions/xnu/blob/ac9718fb1af618d5ce8678d0dc6e8a58f252216f/pexpert/pexpert/arm64/boot.h"
+        },
+        {
+          "source": "xnu",
+          "revision": "ac9718fb1af618d5ce8678d0dc6e8a58f252216f",
+          "path": "pexpert/pexpert/device_tree.h",
+          "sha256": "4778156e16addc5cd631be849e6cb72c2eed7c6de6346e3638e5e5756a31e37c",
+          "url": "https://github.com/apple-oss-distributions/xnu/blob/ac9718fb1af618d5ce8678d0dc6e8a58f252216f/pexpert/pexpert/device_tree.h"
+        },
+        {
+          "source": "xnu",
+          "revision": "ac9718fb1af618d5ce8678d0dc6e8a58f252216f",
+          "path": "pexpert/gen/device_tree.c",
+          "sha256": "8dccf6192ddaf4c77e504912a44883447a2eae23e3c7f149e0b0997042903614",
+          "url": "https://github.com/apple-oss-distributions/xnu/blob/ac9718fb1af618d5ce8678d0dc6e8a58f252216f/pexpert/gen/device_tree.c"
+        },
+        {
+          "source": "xnu",
+          "revision": "ac9718fb1af618d5ce8678d0dc6e8a58f252216f",
+          "path": "osfmk/arm64/start.s",
+          "sha256": "a5c1a95b087f62f9e548bed7a0274cf420af1d69bfd656c1481d629093e2b07a",
+          "url": "https://github.com/apple-oss-distributions/xnu/blob/ac9718fb1af618d5ce8678d0dc6e8a58f252216f/osfmk/arm64/start.s"
+        },
+        {
+          "source": "xnu",
+          "revision": "ac9718fb1af618d5ce8678d0dc6e8a58f252216f",
+          "path": "osfmk/arm64/arm_vm_init.c",
+          "sha256": "9e17da181e72144d27df4ce256988226bfef0e41c0744fc9ef6466f0844c2a32",
+          "url": "https://github.com/apple-oss-distributions/xnu/blob/ac9718fb1af618d5ce8678d0dc6e8a58f252216f/osfmk/arm64/arm_vm_init.c"
+        },
+        {
+          "source": "xnu",
+          "revision": "ac9718fb1af618d5ce8678d0dc6e8a58f252216f",
+          "path": "osfmk/arm/arm_init.c",
+          "sha256": "14006b33b9b508d3579010ec2d3427c3d9255b8d59917cfa8b7826d3b71c60c0",
+          "url": "https://github.com/apple-oss-distributions/xnu/blob/ac9718fb1af618d5ce8678d0dc6e8a58f252216f/osfmk/arm/arm_init.c"
+        },
+        {
+          "source": "xnu",
+          "revision": "ac9718fb1af618d5ce8678d0dc6e8a58f252216f",
+          "path": "pexpert/arm/pe_init.c",
+          "sha256": "e8dc60fafb6bcf407ceaf3ec8a6ed6237d5d927d57b87827a09136a67d6482eb",
+          "url": "https://github.com/apple-oss-distributions/xnu/blob/ac9718fb1af618d5ce8678d0dc6e8a58f252216f/pexpert/arm/pe_init.c"
+        },
+        {
+          "source": "xnu",
+          "revision": "ac9718fb1af618d5ce8678d0dc6e8a58f252216f",
+          "path": "osfmk/arm64/genassym.c",
+          "sha256": "e2ca4b5c8d0c05d63408fb9cb88365733056fbb3cf8dfe448750fc854bedd263",
+          "url": "https://github.com/apple-oss-distributions/xnu/blob/ac9718fb1af618d5ce8678d0dc6e8a58f252216f/osfmk/arm64/genassym.c"
+        },
+        {
+          "source": "xnu",
+          "revision": "ac9718fb1af618d5ce8678d0dc6e8a58f252216f",
+          "path": "pexpert/pexpert/arm64/board_config.h",
+          "sha256": "147ea1c2e2e23b7844dcebe3ae099f1443505997acb8063da309827b2fb299be",
+          "url": "https://github.com/apple-oss-distributions/xnu/blob/ac9718fb1af618d5ce8678d0dc6e8a58f252216f/pexpert/pexpert/arm64/board_config.h"
+        },
+        {
+          "source": "xnu",
+          "revision": "ac9718fb1af618d5ce8678d0dc6e8a58f252216f",
+          "path": "osfmk/arm64/proc_reg.h",
+          "sha256": "fcbead4162ad09d0f51be9ce88e5f2d6d89e89e58934975ee1aa23e506485055",
+          "url": "https://github.com/apple-oss-distributions/xnu/blob/ac9718fb1af618d5ce8678d0dc6e8a58f252216f/osfmk/arm64/proc_reg.h"
+        }
+      ],
+      "native_m1_execution_verified": false
+    },
+    "puredarwin-xnu-7195": {
+      "boot_args_size": 736,
+      "command_line_size": 608,
+      "reviewed_revision": 2,
+      "reviewed_version": 2,
+      "abi": "little-endian LP64 (ARM64 and ARM64e)",
+      "field_offsets": {
+        "Revision": 0,
+        "Version": 2,
+        "virtBase": 8,
+        "physBase": 16,
+        "memSize": 24,
+        "topOfKernelData": 32,
+        "Video": 40,
+        "machineType": 88,
+        "deviceTreeP": 96,
+        "deviceTreeLength": 104,
+        "CommandLine": 108,
+        "bootFlags": 720,
+        "memSizeActual": 728
+      },
+      "sources": [
+        {
+          "source": "puredarwin-vm-next",
+          "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+          "path": "src/Kernel/xnu/pexpert/pexpert/arm64/boot.h",
+          "sha256": "fb031e88ca57453a9cd0732937f7afa7784f02c4030acd7082ee455ddad48707",
+          "url": "https://github.com/PureDarwin/PureDarwin/blob/1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290/src/Kernel/xnu/pexpert/pexpert/arm64/boot.h"
+        },
+        {
+          "source": "puredarwin-vm-next",
+          "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+          "path": "src/Kernel/xnu/pexpert/pexpert/device_tree.h",
+          "sha256": "37771844b786a54de9e85de2f1158315bf956514cb01a8a936fd312d3fe075a0",
+          "url": "https://github.com/PureDarwin/PureDarwin/blob/1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290/src/Kernel/xnu/pexpert/pexpert/device_tree.h"
+        },
+        {
+          "source": "puredarwin-vm-next",
+          "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+          "path": "src/Kernel/xnu/pexpert/gen/device_tree.c",
+          "sha256": "2856f13969074921f101e8b851545b0b8ed3ff0b1d27d6cf99ec5e1a3e89e0a0",
+          "url": "https://github.com/PureDarwin/PureDarwin/blob/1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290/src/Kernel/xnu/pexpert/gen/device_tree.c"
+        },
+        {
+          "source": "puredarwin-vm-next",
+          "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+          "path": "src/Kernel/xnu/osfmk/arm64/start.s",
+          "sha256": "30c6945de0d8195209165f99851820bc7b1146bddbb87c60156c0752aeeb4f29",
+          "url": "https://github.com/PureDarwin/PureDarwin/blob/1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290/src/Kernel/xnu/osfmk/arm64/start.s"
+        },
+        {
+          "source": "puredarwin-vm-next",
+          "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+          "path": "src/Kernel/xnu/osfmk/arm64/arm_vm_init.c",
+          "sha256": "28dbf29d7f47ec18fada23c6fafc551254c9fcb23b687b5bd4e382d8c5266771",
+          "url": "https://github.com/PureDarwin/PureDarwin/blob/1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290/src/Kernel/xnu/osfmk/arm64/arm_vm_init.c"
+        },
+        {
+          "source": "puredarwin-vm-next",
+          "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+          "path": "src/Kernel/xnu/osfmk/arm/arm_init.c",
+          "sha256": "b9fa5858204376d84954f2e1c202eac0a69b9dadeb57e6c5a721879d5edf2d55",
+          "url": "https://github.com/PureDarwin/PureDarwin/blob/1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290/src/Kernel/xnu/osfmk/arm/arm_init.c"
+        },
+        {
+          "source": "puredarwin-vm-next",
+          "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+          "path": "src/Kernel/xnu/pexpert/arm/pe_init.c",
+          "sha256": "7b656b12e21353443af6d636d578d78d823c5fe1c8eca420854c4a2a8b3b1a83",
+          "url": "https://github.com/PureDarwin/PureDarwin/blob/1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290/src/Kernel/xnu/pexpert/arm/pe_init.c"
+        },
+        {
+          "source": "puredarwin-vm-next",
+          "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+          "path": "src/Kernel/xnu/osfmk/arm64/genassym.c",
+          "sha256": "4dc42569ac6b74dd7e07c37803476ce97430d34a34ecf2a71ce7191f4702aae7",
+          "url": "https://github.com/PureDarwin/PureDarwin/blob/1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290/src/Kernel/xnu/osfmk/arm64/genassym.c"
+        },
+        {
+          "source": "puredarwin-vm-next",
+          "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+          "path": "src/Kernel/xnu/pexpert/pexpert/arm64/board_config.h",
+          "sha256": "f3fc35e3e8d84366bd2a7672c49c7a780a415f04e71c6d1e833025e0617b3f41",
+          "url": "https://github.com/PureDarwin/PureDarwin/blob/1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290/src/Kernel/xnu/pexpert/pexpert/arm64/board_config.h"
+        },
+        {
+          "source": "puredarwin-vm-next",
+          "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+          "path": "src/Kernel/xnu/osfmk/arm64/proc_reg.h",
+          "sha256": "3ac93c4b9287ca3c804396c97a4bd845ce1db9803939a1f628cabfc363781205",
+          "url": "https://github.com/PureDarwin/PureDarwin/blob/1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290/src/Kernel/xnu/osfmk/arm64/proc_reg.h"
+        }
+      ],
+      "native_m1_execution_verified": false
+    }
+  },
+  "adt": {
+    "format": "Apple flattened device tree, not FDT",
+    "node_header_bytes": 8,
+    "node_header_fields": [
+      "uint32 little-endian property count",
+      "uint32 little-endian child count"
+    ],
+    "property_header_bytes": 36,
+    "property_name_bytes": 32,
+    "value_alignment_bytes": 4,
+    "memory_map_range_bytes_lp64": 16
+  },
+  "readiness": {
+    "offline_parser_implemented": true,
+    "physical_handoff_captured": false,
+    "memory_map_validated_on_m1": false,
+    "el_mmu_register_state_validated": false,
+    "exceptions_validated_on_m1": false
+  },
+  "limits": [
+    "Explicit profile selection: version/revision do not distinguish CommandLine608 from1024.",
+    "Only reviewed version2/revision2 supported.",
+    "Only one16-byte memory-map range per property supported; other encodings fail.",
+    "Unknown firmware/MMIO/carveout reservations cannot be inferred from memSizeActual.",
+    "No free-memory allocation map or hardware gate decision is produced."
+  ]
+}

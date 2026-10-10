@@ -12,8 +12,10 @@ instead of importing kernel and runtime forks into the project history.
 | `scripts/blauos.py` | Input validation, source fetching, provenance | Build maintainers |
 | `scripts/build/` | Kernel, headers, runtime, and launchd experiments | Relevant kernel/runtime owner |
 | `scripts/vm/`, `vm/` | Virtual image, boot, and networking validation | Virtual-platform owner |
-| `platform/apple-m1/` | Future isolated M1 hardware modules | Platform/driver maintainers |
+| `scripts/platform/` | Read-only lab inventory, capture and native evidence inspection | Platform owner and evidence reviewer |
+| `platform/apple-m1/` | Source-bound offline handoff parser and future isolated M1 drivers | Platform/driver maintainers |
 | `patches/xnu/` | Ordered, separately reviewed generic/platform patches | Kernel/platform maintainers |
+| `patches/native/` | Separate experimental native source-build compatibility patches | Kernel/platform maintainers |
 | `tests/` | Meaningful negative-path and integration tests | Implementation owner and reviewer |
 | `evidence/` | Small reproducible experiment logs and results | Reviewer of the corresponding issue |
 | `.blauos/` | Ignored downloads, SDK overlays, worktrees, and artifacts | Local generated state |

@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "status": "offline_validation_pass",
+  "profile": "apple-xnu-12377",
+  "validation_scope": "offline bytes and explicit memory assumptions",
+  "synthetic_fixture": true,
+  "physical_execution_verified": false,
+  "mmu_verified": false,
+  "exceptions_verified": false,
+  "errors": [],
+  "source_contract_sha256": "3ce67d69cd920c2310a7b908bab5b4d00389f3a1f5a8c3ad704126ea736e6ad9",
+  "input_sha256": {
+    "boot_args": "a446217601d8549222e1fa1479b242c601f01c879f67e1f690aa20d02d78f98a",
+    "adt": "40cc6d8c28995849d6a52c0295475ce4ae4a53fe3709910dbb4423a90469165e",
+    "memory_plan": "7066474576f6c3f7234ef2bcb01d9686de1e2ad35a79c380a8655c9808419212"
+  },
+  "boot_args": {
+    "profile": "apple-xnu-12377",
+    "revision": 2,
+    "version": 2,
+    "virtBase": 18446462598732840960,
+    "physBase": 268435456,
+    "memSize": 2097152,
+    "topOfKernelData": 268697600,
+    "deviceTreeP": 18446462598732972032,
+    "video": {
+      "base": 0,
+      "display": 0,
+      "row_bytes": 0,
+      "width": 0,
+      "height": 0,
+      "depth": 0
+    },
+    "machineType": 0,
+    "deviceTreeLength": 216,
+    "commandLine": "synthetic_fixture=1",
+    "bootFlags": 1,
+    "memSizeActual": 4194304
+  },
+  "device_tree": [
+    {
+      "path": "/",
+      "properties": {
+        "name": {
+          "length": 12,
+          "sha256": "70632a0247eab068d5a123d29d870051ca91234de32f6057403218e9e2e2780e"
+        }
+      }
+    },
+    {
+      "path": "/chosen",
+      "properties": {
+        "name": {
+          "length": 7,
+          "sha256": "5d3ef567b3ea990ee66a6646fce68af93b0ce3ba0705bc855c26e618ded337a5"
+        }
+      }
+    },
+    {
+      "path": "/chosen/memory-map",
+      "properties": {
+        "name": {
+          "length": 11,
+          "sha256": "f52e198a8f7d21875f8d4e3027a7d4608630890dce40f016f9b39175c4399573"
+        },
+        "BootKC": {
+          "length": 16,
+          "sha256": "aa1090dc74a07002747f33cda6264a06d17ab1ce768bee408b2e0eb5c5f99119"
+        }
+      }
+    }
+  ],
+  "memory": {
+    "page_size_assumption": 16384,
+    "kernel_managed": {
+      "name": "kernel-managed-memory",
+      "base": 268435456,
+      "size": 2097152,
+      "end": 270532608
+    },
+    "ram": [
+      {
+        "name": "synthetic-ram",
+        "base": 268435456,
+        "size": 2097152,
+        "end": 270532608
+      }
+    ],
+    "reservations": [
+      {
+        "name": "synthetic-firmware",
+        "base": 268959744,
+        "size": 16384,
+        "end": 268976128
+      },
+      {
+        "name": "boot-args",
+        "base": 268533760,
+        "size": 1152,
+        "end": 268534912
+      },
+      {
+        "name": "device-tree",
+        "base": 268566528,
+        "size": 216,
+        "end": 268566744
+      },
+      {
+        "name": "adt:BootKC",
+        "base": 268451840,
+        "size": 32768,
+        "end": 268484608
+      }
+    ],
+    "allowed_containment_overlaps": [],
+    "free_memory_derived": false
+  }
+}

@@ -1,0 +1,364 @@
+{
+  "status": "compile_compatibility_not_hardware_validation",
+  "scope": "ARM64_BOARD_CONFIG_T8103",
+  "patch": "patches/native/0002-t8103-public-register-encodings.patch",
+  "patch_sha256": "0480c7f6299844af5c6cdd6eb7fb23b76c0f32025cc0a2cf07f429f9bf9a685b",
+  "registers": [
+    {
+      "name": "HID8",
+      "encoding": "S3_0_C15_C8_0",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_HID8"
+    },
+    {
+      "name": "IPICR_EL1",
+      "encoding": "S3_5_C15_C3_1",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_IPI_CR_EL1"
+    },
+    {
+      "name": "IPIRR_GLOBAL_EL1",
+      "encoding": "S3_5_C15_C0_1",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_IPI_RR_GLOBAL_EL1"
+    },
+    {
+      "name": "IPIRR_LOCAL_EL1",
+      "encoding": "S3_5_C15_C0_0",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_IPI_RR_LOCAL_EL1"
+    },
+    {
+      "name": "IPISR_EL1",
+      "encoding": "S3_5_C15_C1_1",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_IPI_SR_EL1"
+    },
+    {
+      "name": "OPMAT0_EL1",
+      "encoding": "S3_1_C15_C7_0",
+      "research": "apple-knowledge",
+      "symbol": "s3_1_c15_c7_0"
+    },
+    {
+      "name": "OPMAT1_EL1",
+      "encoding": "S3_1_C15_C8_0",
+      "research": "apple-knowledge",
+      "symbol": "s3_1_c15_c8_0"
+    },
+    {
+      "name": "OPMSK0_EL1",
+      "encoding": "S3_1_C15_C9_0",
+      "research": "apple-knowledge",
+      "symbol": "s3_1_c15_c9_0"
+    },
+    {
+      "name": "OPMSK1_EL1",
+      "encoding": "S3_1_C15_C10_0",
+      "research": "apple-knowledge",
+      "symbol": "s3_1_c15_c10_0"
+    },
+    {
+      "name": "PMC0",
+      "encoding": "S3_2_C15_C0_0",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_PMC0"
+    },
+    {
+      "name": "PMC1",
+      "encoding": "S3_2_C15_C1_0",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_PMC1"
+    },
+    {
+      "name": "PMC2",
+      "encoding": "S3_2_C15_C2_0",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_PMC2"
+    },
+    {
+      "name": "PMC3",
+      "encoding": "S3_2_C15_C3_0",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_PMC3"
+    },
+    {
+      "name": "PMC4",
+      "encoding": "S3_2_C15_C4_0",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_PMC4"
+    },
+    {
+      "name": "PMC5",
+      "encoding": "S3_2_C15_C5_0",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_PMC5"
+    },
+    {
+      "name": "PMC6",
+      "encoding": "S3_2_C15_C6_0",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_PMC6"
+    },
+    {
+      "name": "PMC7",
+      "encoding": "S3_2_C15_C7_0",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_PMC7"
+    },
+    {
+      "name": "PMC8",
+      "encoding": "S3_2_C15_C9_0",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_PMC8"
+    },
+    {
+      "name": "PMC9",
+      "encoding": "S3_2_C15_C10_0",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_PMC9"
+    },
+    {
+      "name": "PMCR0_EL1",
+      "encoding": "S3_1_C15_C0_0",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_PMCR0"
+    },
+    {
+      "name": "PMCR1_EL1",
+      "encoding": "S3_1_C15_C1_0",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_PMCR1"
+    },
+    {
+      "name": "PMCR2_EL1",
+      "encoding": "S3_1_C15_C2_0",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_PMCR2"
+    },
+    {
+      "name": "PMCR3_EL1",
+      "encoding": "S3_1_C15_C3_0",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_PMCR3"
+    },
+    {
+      "name": "PMCR4_EL1",
+      "encoding": "S3_1_C15_C4_0",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_PMCR4"
+    },
+    {
+      "name": "PMESR0_EL1",
+      "encoding": "S3_1_C15_C5_0",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_PMESR0"
+    },
+    {
+      "name": "PMESR1_EL1",
+      "encoding": "S3_1_C15_C6_0",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_PMESR1"
+    },
+    {
+      "name": "PMMMAP_EL1",
+      "encoding": "S3_2_C15_C15_0",
+      "research": "apple-knowledge",
+      "symbol": "s3_2_c15_c15_0"
+    },
+    {
+      "name": "PMSR_EL1",
+      "encoding": "S3_1_C15_C13_0",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_PMSR"
+    },
+    {
+      "name": "PMTRHLD2_EL1",
+      "encoding": "S3_2_C15_C14_0",
+      "research": "apple-knowledge",
+      "symbol": "s3_2_c15_c14_0"
+    },
+    {
+      "name": "PMTRHLD4_EL1",
+      "encoding": "S3_2_C15_C13_0",
+      "research": "apple-knowledge",
+      "symbol": "s3_2_c15_c13_0"
+    },
+    {
+      "name": "PMTRHLD6_EL1",
+      "encoding": "S3_2_C15_C12_0",
+      "research": "apple-knowledge",
+      "symbol": "s3_2_c15_c12_0"
+    },
+    {
+      "name": "UPMC0",
+      "encoding": "S3_7_C15_C7_4",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_UPMC0"
+    },
+    {
+      "name": "UPMC1",
+      "encoding": "S3_7_C15_C8_4",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_UPMC1"
+    },
+    {
+      "name": "UPMC10",
+      "encoding": "S3_7_C15_C2_5",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_UPMC10"
+    },
+    {
+      "name": "UPMC11",
+      "encoding": "S3_7_C15_C3_5",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_UPMC11"
+    },
+    {
+      "name": "UPMC12",
+      "encoding": "S3_7_C15_C4_5",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_UPMC12"
+    },
+    {
+      "name": "UPMC13",
+      "encoding": "S3_7_C15_C5_5",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_UPMC13"
+    },
+    {
+      "name": "UPMC14",
+      "encoding": "S3_7_C15_C6_5",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_UPMC14"
+    },
+    {
+      "name": "UPMC15",
+      "encoding": "S3_7_C15_C7_5",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_UPMC15"
+    },
+    {
+      "name": "UPMC2",
+      "encoding": "S3_7_C15_C9_4",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_UPMC2"
+    },
+    {
+      "name": "UPMC3",
+      "encoding": "S3_7_C15_C10_4",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_UPMC3"
+    },
+    {
+      "name": "UPMC4",
+      "encoding": "S3_7_C15_C11_4",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_UPMC4"
+    },
+    {
+      "name": "UPMC5",
+      "encoding": "S3_7_C15_C12_4",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_UPMC5"
+    },
+    {
+      "name": "UPMC6",
+      "encoding": "S3_7_C15_C13_4",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_UPMC6"
+    },
+    {
+      "name": "UPMC7",
+      "encoding": "S3_7_C15_C14_4",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_UPMC7"
+    },
+    {
+      "name": "UPMC8",
+      "encoding": "S3_7_C15_C0_5",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_UPMC8"
+    },
+    {
+      "name": "UPMC9",
+      "encoding": "S3_7_C15_C1_5",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_UPMC9"
+    },
+    {
+      "name": "UPMCR0_EL1",
+      "encoding": "S3_7_C15_C0_4",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_UPMCR0"
+    },
+    {
+      "name": "UPMECM0_EL1",
+      "encoding": "S3_7_C15_C3_4",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_UPMECM0_EL1"
+    },
+    {
+      "name": "UPMECM1_EL1",
+      "encoding": "S3_7_C15_C4_4",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_UPMECM1_EL1"
+    },
+    {
+      "name": "UPMECM2_EL1",
+      "encoding": "S3_7_C15_C8_5",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_UPMECM2_EL1"
+    },
+    {
+      "name": "UPMECM3_EL1",
+      "encoding": "S3_7_C15_C9_5",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_UPMECM3_EL1"
+    },
+    {
+      "name": "UPMESR0_EL1",
+      "encoding": "S3_7_C15_C1_4",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_UPMESR0_EL1"
+    },
+    {
+      "name": "UPMESR1_EL1",
+      "encoding": "S3_7_C15_C11_5",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_UPMESR1_EL1"
+    },
+    {
+      "name": "UPMPCM_EL1",
+      "encoding": "S3_7_C15_C5_4",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_UPMPCM_EL1"
+    },
+    {
+      "name": "UPMSR_EL1",
+      "encoding": "S3_7_C15_C6_4",
+      "research": "m1n1",
+      "symbol": "SYS_IMP_APL_UPMSR"
+    }
+  ],
+  "research_sources": [
+    {
+      "name": "m1n1",
+      "revision": "7f208771b1352cde2dbce37a866ad46caca978ac",
+      "tree": "cc75a6fdf4c9b65f180ac6b694f7cf648caa07b8",
+      "file": ".blauos/sources/m1n1-native-study/src/cpu_regs.h",
+      "file_sha256": "28bdf735344ec058555415e00d4a99f23e93b1e771727a585a77bd75cf9eec51",
+      "url": "https://github.com/AsahiLinux/m1n1/blob/7f208771b1352cde2dbce37a866ad46caca978ac/src/cpu_regs.h"
+    },
+    {
+      "name": "apple-knowledge",
+      "revision": "7b2ba25aedc454f0e199924154eb174361dfce9c",
+      "tree": "4f3fd5c6ee8456c3c10c62545271f7611e96bf4a",
+      "file": ".blauos/sources/apple-register-study/_data/registers.yaml",
+      "file_sha256": "e92c98d41da76f1e37731c2e40b99a48d1b13b8fe487b10cf7ff78f2218fb141",
+      "url": "https://github.com/hack-different/apple-knowledge/blob/7b2ba25aedc454f0e199924154eb174361dfce9c/_data/registers.yaml"
+    }
+  ],
+  "fallback_activated": false,
+  "exported_header": "osfmk/arm64/native_apple_sysregs.h"
+}

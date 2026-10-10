@@ -1,0 +1,726 @@
+{
+  "schema_version": 1,
+  "reviewer": "virtual_baseline independent review",
+  "scope": "Final source/recipe/compiler/linker/metadata and exact symbol-name availability; no boot or hardware claim",
+  "status": "clear_for_compile_and_symbol_availability_evidence",
+  "driver_receipt": {
+    "path": "evidence/native/aic/native-final/result.json",
+    "sha256": "f3a3e4993ac70d2f7f289fbc27576d734c4188e30de72b5de30e29a1e4444716",
+    "canonical_recipe_sha256": "1d5e831cd51c3db58d477791b258410183d0b1b970c286a935759e035922940a",
+    "verified": true
+  },
+  "kernel_receipt": {
+    "path": "evidence/native/kernel/puredarwin-t8103-native-final/result.json",
+    "sha256": "d8479f6e6e24c8f76cdef80bef3e84c4962be828a4d22ceb781d50f4bb17053b",
+    "canonical_recipe_sha256": "fa6082498e8113839969b0e9872b313d43a0d10c75dcc76e78b3c17fe2afbe7c",
+    "verified": true
+  },
+  "source": {
+    "name": "puredarwin-vm-next",
+    "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+    "tree": "ed2345d7f3c11dad2e7f6ffeeb377adc789b12b8",
+    "manifest_sha256": "8022bbbfb33204b56bb3297cd8cbb39fb6c08ea65c476492d99462f7edfe3657",
+    "pristine_checkout_verified": true,
+    "independent_git_archive_sha256": "1c955560333a1e47a38f2018ead9fd90580eb4b9520f44435ebfa03afcd3c1f6",
+    "ordered_patch_snapshots_per_build": 11
+  },
+  "checker": {
+    "path": "scripts/build/native_platform.py",
+    "sha256": "b699aa45ac6995c423984708c673c26ac605006dd72cb1cfdbf866d974c13494",
+    "parser_path": "scripts/build/native_m1.py",
+    "parser_sha256": "6291afab36e11c8fdd578a1052452622acfe6de79197881cb910e3b1c4c73943"
+  },
+  "verified_inputs": [
+    {
+      "kind": "driver_current_loaded_wrapper",
+      "path": "scripts/build/xnu.py",
+      "sha256": "9e789f1228887ead1a40d0659fcb2ccc97c46cd5275ac6f502440a51a9179643",
+      "matches_recorded": true
+    },
+    {
+      "kind": "driver_current_loaded_wrapper",
+      "path": "scripts/build/headers.py",
+      "sha256": "08427445722bdfb487c6aba4c78e6ce91a9bc76dd6d4e1a005bdd63e7a48d502",
+      "matches_recorded": true
+    },
+    {
+      "kind": "driver_current_loaded_wrapper",
+      "path": "scripts/blauos.py",
+      "sha256": "fc159232fb6b6fed403680b9e8764cac1704f60bc47a90a798e9a0639476cdff",
+      "matches_recorded": true
+    },
+    {
+      "kind": "driver_current_loaded_wrapper",
+      "path": "scripts/build/native_platform.py",
+      "sha256": "b699aa45ac6995c423984708c673c26ac605006dd72cb1cfdbf866d974c13494",
+      "matches_recorded": true
+    },
+    {
+      "kind": "driver_current_loaded_wrapper",
+      "path": "scripts/build/native_m1.py",
+      "sha256": "6291afab36e11c8fdd578a1052452622acfe6de79197881cb910e3b1c4c73943",
+      "matches_recorded": true
+    },
+    {
+      "kind": "driver_immutable_patch_snapshot",
+      "path": "evidence/native/aic/native-final/inputs/01-76e05e5e7de0f9b5cdac6347e771007067bb19fdb34f4897c70628c72dbc4d65.patch",
+      "sha256": "76e05e5e7de0f9b5cdac6347e771007067bb19fdb34f4897c70628c72dbc4d65",
+      "matches_recorded": true,
+      "original_path": "patches/native/0001-puredarwin-t8103-build-profile.patch",
+      "current_patch_sha256": "76e05e5e7de0f9b5cdac6347e771007067bb19fdb34f4897c70628c72dbc4d65"
+    },
+    {
+      "kind": "driver_immutable_patch_snapshot",
+      "path": "evidence/native/aic/native-final/inputs/02-0480c7f6299844af5c6cdd6eb7fb23b76c0f32025cc0a2cf07f429f9bf9a685b.patch",
+      "sha256": "0480c7f6299844af5c6cdd6eb7fb23b76c0f32025cc0a2cf07f429f9bf9a685b",
+      "matches_recorded": true,
+      "original_path": "patches/native/0002-t8103-public-register-encodings.patch",
+      "current_patch_sha256": "0480c7f6299844af5c6cdd6eb7fb23b76c0f32025cc0a2cf07f429f9bf9a685b"
+    },
+    {
+      "kind": "driver_immutable_patch_snapshot",
+      "path": "evidence/native/aic/native-final/inputs/03-3e0f1aac169bf648054be8d20c0f0101404f0e4b6de54758ba3409688ce96f99.patch",
+      "sha256": "3e0f1aac169bf648054be8d20c0f0101404f0e4b6de54758ba3409688ce96f99",
+      "matches_recorded": true,
+      "original_path": "patches/native/0003-t8103-current-clang-diagnostics.patch",
+      "current_patch_sha256": "3e0f1aac169bf648054be8d20c0f0101404f0e4b6de54758ba3409688ce96f99"
+    },
+    {
+      "kind": "driver_immutable_patch_snapshot",
+      "path": "evidence/native/aic/native-final/inputs/04-cd1a6e6281fdda5775f1002d1a26433eb5f3e05d822e1cee0d2b23cb6915a04e.patch",
+      "sha256": "cd1a6e6281fdda5775f1002d1a26433eb5f3e05d822e1cee0d2b23cb6915a04e",
+      "matches_recorded": true,
+      "original_path": "patches/native/0004-t8103-public-platform-sources.patch",
+      "current_patch_sha256": "cd1a6e6281fdda5775f1002d1a26433eb5f3e05d822e1cee0d2b23cb6915a04e"
+    },
+    {
+      "kind": "driver_immutable_patch_snapshot",
+      "path": "evidence/native/aic/native-final/inputs/05-45300148900c5b448f5a019e0c4f31145ee566f31c7259193faaa0b6f3352919.patch",
+      "sha256": "45300148900c5b448f5a019e0c4f31145ee566f31c7259193faaa0b6f3352919",
+      "matches_recorded": true,
+      "original_path": "patches/native/0005-t8103-public-ctrr-interface.patch",
+      "current_patch_sha256": "45300148900c5b448f5a019e0c4f31145ee566f31c7259193faaa0b6f3352919"
+    },
+    {
+      "kind": "driver_immutable_patch_snapshot",
+      "path": "evidence/native/aic/native-final/inputs/06-f49d0c2456d54222d1c149cf84750204ae4281199d8156fa9b0748d09ae9894e.patch",
+      "sha256": "f49d0c2456d54222d1c149cf84750204ae4281199d8156fa9b0748d09ae9894e",
+      "matches_recorded": true,
+      "original_path": "patches/native/0006-t8103-early-diagnostics.patch",
+      "current_patch_sha256": "f49d0c2456d54222d1c149cf84750204ae4281199d8156fa9b0748d09ae9894e"
+    },
+    {
+      "kind": "driver_immutable_patch_snapshot",
+      "path": "evidence/native/aic/native-final/inputs/07-ec38272928a3bcf0d41e977dab316a02d255e15db483b64d82e0535a5bdbffca.patch",
+      "sha256": "ec38272928a3bcf0d41e977dab316a02d255e15db483b64d82e0535a5bdbffca",
+      "matches_recorded": true,
+      "original_path": "patches/native/0007-t8103-aic-rearm-and-driver-abi.patch",
+      "current_patch_sha256": "ec38272928a3bcf0d41e977dab316a02d255e15db483b64d82e0535a5bdbffca"
+    },
+    {
+      "kind": "driver_immutable_patch_snapshot",
+      "path": "evidence/native/aic/native-final/inputs/08-f718eae67d8b703dff21d63ac54da1a29d29fa35b900d7f25a69460e3766183f.patch",
+      "sha256": "f718eae67d8b703dff21d63ac54da1a29d29fa35b900d7f25a69460e3766183f",
+      "matches_recorded": true,
+      "original_path": "patches/native/0008-t8103-public-ppl-port.patch",
+      "current_patch_sha256": "f718eae67d8b703dff21d63ac54da1a29d29fa35b900d7f25a69460e3766183f"
+    },
+    {
+      "kind": "driver_immutable_patch_snapshot",
+      "path": "evidence/native/aic/native-final/inputs/09-74b9880d6e9bd42285aec5d951efb24d78c0f036cfb7e71dfb63c570a58adf3e.patch",
+      "sha256": "74b9880d6e9bd42285aec5d951efb24d78c0f036cfb7e71dfb63c570a58adf3e",
+      "matches_recorded": true,
+      "original_path": "patches/native/0009-t8103-pac-atomic-storage.patch",
+      "current_patch_sha256": "74b9880d6e9bd42285aec5d951efb24d78c0f036cfb7e71dfb63c570a58adf3e"
+    },
+    {
+      "kind": "driver_immutable_patch_snapshot",
+      "path": "evidence/native/aic/native-final/inputs/10-c2b10d8513de1abdd8b2c06228b26e23f583a3410959cd0a6fd743be7b9565e3.patch",
+      "sha256": "c2b10d8513de1abdd8b2c06228b26e23f583a3410959cd0a6fd743be7b9565e3",
+      "matches_recorded": true,
+      "original_path": "patches/native/0010-t8103-machine-register-encodings.patch",
+      "current_patch_sha256": "c2b10d8513de1abdd8b2c06228b26e23f583a3410959cd0a6fd743be7b9565e3"
+    },
+    {
+      "kind": "driver_immutable_patch_snapshot",
+      "path": "evidence/native/aic/native-final/inputs/11-b241ac693020cfeb0c614938f1d43789682bab65f17d6c5530614b9bae194dd4.patch",
+      "sha256": "b241ac693020cfeb0c614938f1d43789682bab65f17d6c5530614b9bae194dd4",
+      "matches_recorded": true,
+      "original_path": "patches/native/0011-t8103-public-native-pac.patch",
+      "current_patch_sha256": "b241ac693020cfeb0c614938f1d43789682bab65f17d6c5530614b9bae194dd4"
+    },
+    {
+      "kind": "driver_independent_locked_git_archive",
+      "path": ".blauos/build/native/aic/native-final/source.tar",
+      "sha256": "1c955560333a1e47a38f2018ead9fd90580eb4b9520f44435ebfa03afcd3c1f6",
+      "matches_recorded": true
+    },
+    {
+      "kind": "driver_actual_build_log",
+      "path": ".blauos/build/native/aic/native-final/logs/configure.log",
+      "sha256": "7255cbb1ff339d42c9b25ce69f9daf2af54d7df3a4930f6249742a06d5f23e25",
+      "matches_recorded": true,
+      "bytes": 2144,
+      "exit_code": 0
+    },
+    {
+      "kind": "driver_actual_build_log",
+      "path": ".blauos/build/native/aic/native-final/logs/build.log",
+      "sha256": "0c29c9c4865f8243eebf94194dc4196af89891b0163844d0607f73db325edc13",
+      "matches_recorded": true,
+      "bytes": 122157,
+      "exit_code": 0
+    },
+    {
+      "kind": "driver_actual_artifact",
+      "path": ".blauos/build/native/aic/native-final/src/Kernel/Extensions/PDArmPlatformExpert/PDArmPlatformExpert.kext/Contents/MacOS/PDArmPlatformExpert",
+      "sha256": "3a544f93617a9f02f7afec8cd275a386ac00366e3b6eda2556f46f0fee0c45ce",
+      "matches_recorded": true
+    },
+    {
+      "kind": "kernel_current_loaded_wrapper",
+      "path": "scripts/build/xnu.py",
+      "sha256": "9e789f1228887ead1a40d0659fcb2ccc97c46cd5275ac6f502440a51a9179643",
+      "matches_recorded": true
+    },
+    {
+      "kind": "kernel_current_loaded_wrapper",
+      "path": "scripts/build/headers.py",
+      "sha256": "08427445722bdfb487c6aba4c78e6ce91a9bc76dd6d4e1a005bdd63e7a48d502",
+      "matches_recorded": true
+    },
+    {
+      "kind": "kernel_current_loaded_wrapper",
+      "path": "scripts/blauos.py",
+      "sha256": "fc159232fb6b6fed403680b9e8764cac1704f60bc47a90a798e9a0639476cdff",
+      "matches_recorded": true
+    },
+    {
+      "kind": "kernel_immutable_patch_snapshot",
+      "path": "evidence/native/kernel/puredarwin-t8103-native-final/inputs/01-76e05e5e7de0f9b5cdac6347e771007067bb19fdb34f4897c70628c72dbc4d65.patch",
+      "sha256": "76e05e5e7de0f9b5cdac6347e771007067bb19fdb34f4897c70628c72dbc4d65",
+      "matches_recorded": true,
+      "original_path": "patches/native/0001-puredarwin-t8103-build-profile.patch",
+      "current_patch_sha256": "76e05e5e7de0f9b5cdac6347e771007067bb19fdb34f4897c70628c72dbc4d65"
+    },
+    {
+      "kind": "kernel_immutable_patch_snapshot",
+      "path": "evidence/native/kernel/puredarwin-t8103-native-final/inputs/02-0480c7f6299844af5c6cdd6eb7fb23b76c0f32025cc0a2cf07f429f9bf9a685b.patch",
+      "sha256": "0480c7f6299844af5c6cdd6eb7fb23b76c0f32025cc0a2cf07f429f9bf9a685b",
+      "matches_recorded": true,
+      "original_path": "patches/native/0002-t8103-public-register-encodings.patch",
+      "current_patch_sha256": "0480c7f6299844af5c6cdd6eb7fb23b76c0f32025cc0a2cf07f429f9bf9a685b"
+    },
+    {
+      "kind": "kernel_immutable_patch_snapshot",
+      "path": "evidence/native/kernel/puredarwin-t8103-native-final/inputs/03-3e0f1aac169bf648054be8d20c0f0101404f0e4b6de54758ba3409688ce96f99.patch",
+      "sha256": "3e0f1aac169bf648054be8d20c0f0101404f0e4b6de54758ba3409688ce96f99",
+      "matches_recorded": true,
+      "original_path": "patches/native/0003-t8103-current-clang-diagnostics.patch",
+      "current_patch_sha256": "3e0f1aac169bf648054be8d20c0f0101404f0e4b6de54758ba3409688ce96f99"
+    },
+    {
+      "kind": "kernel_immutable_patch_snapshot",
+      "path": "evidence/native/kernel/puredarwin-t8103-native-final/inputs/04-cd1a6e6281fdda5775f1002d1a26433eb5f3e05d822e1cee0d2b23cb6915a04e.patch",
+      "sha256": "cd1a6e6281fdda5775f1002d1a26433eb5f3e05d822e1cee0d2b23cb6915a04e",
+      "matches_recorded": true,
+      "original_path": "patches/native/0004-t8103-public-platform-sources.patch",
+      "current_patch_sha256": "cd1a6e6281fdda5775f1002d1a26433eb5f3e05d822e1cee0d2b23cb6915a04e"
+    },
+    {
+      "kind": "kernel_immutable_patch_snapshot",
+      "path": "evidence/native/kernel/puredarwin-t8103-native-final/inputs/05-45300148900c5b448f5a019e0c4f31145ee566f31c7259193faaa0b6f3352919.patch",
+      "sha256": "45300148900c5b448f5a019e0c4f31145ee566f31c7259193faaa0b6f3352919",
+      "matches_recorded": true,
+      "original_path": "patches/native/0005-t8103-public-ctrr-interface.patch",
+      "current_patch_sha256": "45300148900c5b448f5a019e0c4f31145ee566f31c7259193faaa0b6f3352919"
+    },
+    {
+      "kind": "kernel_immutable_patch_snapshot",
+      "path": "evidence/native/kernel/puredarwin-t8103-native-final/inputs/06-f49d0c2456d54222d1c149cf84750204ae4281199d8156fa9b0748d09ae9894e.patch",
+      "sha256": "f49d0c2456d54222d1c149cf84750204ae4281199d8156fa9b0748d09ae9894e",
+      "matches_recorded": true,
+      "original_path": "patches/native/0006-t8103-early-diagnostics.patch",
+      "current_patch_sha256": "f49d0c2456d54222d1c149cf84750204ae4281199d8156fa9b0748d09ae9894e"
+    },
+    {
+      "kind": "kernel_immutable_patch_snapshot",
+      "path": "evidence/native/kernel/puredarwin-t8103-native-final/inputs/07-ec38272928a3bcf0d41e977dab316a02d255e15db483b64d82e0535a5bdbffca.patch",
+      "sha256": "ec38272928a3bcf0d41e977dab316a02d255e15db483b64d82e0535a5bdbffca",
+      "matches_recorded": true,
+      "original_path": "patches/native/0007-t8103-aic-rearm-and-driver-abi.patch",
+      "current_patch_sha256": "ec38272928a3bcf0d41e977dab316a02d255e15db483b64d82e0535a5bdbffca"
+    },
+    {
+      "kind": "kernel_immutable_patch_snapshot",
+      "path": "evidence/native/kernel/puredarwin-t8103-native-final/inputs/08-f718eae67d8b703dff21d63ac54da1a29d29fa35b900d7f25a69460e3766183f.patch",
+      "sha256": "f718eae67d8b703dff21d63ac54da1a29d29fa35b900d7f25a69460e3766183f",
+      "matches_recorded": true,
+      "original_path": "patches/native/0008-t8103-public-ppl-port.patch",
+      "current_patch_sha256": "f718eae67d8b703dff21d63ac54da1a29d29fa35b900d7f25a69460e3766183f"
+    },
+    {
+      "kind": "kernel_immutable_patch_snapshot",
+      "path": "evidence/native/kernel/puredarwin-t8103-native-final/inputs/09-74b9880d6e9bd42285aec5d951efb24d78c0f036cfb7e71dfb63c570a58adf3e.patch",
+      "sha256": "74b9880d6e9bd42285aec5d951efb24d78c0f036cfb7e71dfb63c570a58adf3e",
+      "matches_recorded": true,
+      "original_path": "patches/native/0009-t8103-pac-atomic-storage.patch",
+      "current_patch_sha256": "74b9880d6e9bd42285aec5d951efb24d78c0f036cfb7e71dfb63c570a58adf3e"
+    },
+    {
+      "kind": "kernel_immutable_patch_snapshot",
+      "path": "evidence/native/kernel/puredarwin-t8103-native-final/inputs/10-c2b10d8513de1abdd8b2c06228b26e23f583a3410959cd0a6fd743be7b9565e3.patch",
+      "sha256": "c2b10d8513de1abdd8b2c06228b26e23f583a3410959cd0a6fd743be7b9565e3",
+      "matches_recorded": true,
+      "original_path": "patches/native/0010-t8103-machine-register-encodings.patch",
+      "current_patch_sha256": "c2b10d8513de1abdd8b2c06228b26e23f583a3410959cd0a6fd743be7b9565e3"
+    },
+    {
+      "kind": "kernel_immutable_patch_snapshot",
+      "path": "evidence/native/kernel/puredarwin-t8103-native-final/inputs/11-b241ac693020cfeb0c614938f1d43789682bab65f17d6c5530614b9bae194dd4.patch",
+      "sha256": "b241ac693020cfeb0c614938f1d43789682bab65f17d6c5530614b9bae194dd4",
+      "matches_recorded": true,
+      "original_path": "patches/native/0011-t8103-public-native-pac.patch",
+      "current_patch_sha256": "b241ac693020cfeb0c614938f1d43789682bab65f17d6c5530614b9bae194dd4"
+    },
+    {
+      "kind": "kernel_independent_locked_git_archive",
+      "path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/source.tar",
+      "sha256": "1c955560333a1e47a38f2018ead9fd90580eb4b9520f44435ebfa03afcd3c1f6",
+      "matches_recorded": true
+    },
+    {
+      "kind": "kernel_actual_build_log",
+      "path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/logs/configure.log",
+      "sha256": "84d2ccd28bd74f85e4f0a10c5c5dcc3609dc9a1dee648304ec3e1dafbc7c4faa",
+      "matches_recorded": true,
+      "bytes": 2164,
+      "exit_code": 0
+    },
+    {
+      "kind": "kernel_actual_build_log",
+      "path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/logs/build.log",
+      "sha256": "9b63dc54b7bf4451f62cb19c9544e07f3578261130a6ac7559497618f0491bb6",
+      "matches_recorded": true,
+      "bytes": 3457778,
+      "exit_code": 0
+    },
+    {
+      "kind": "kernel_actual_artifact",
+      "path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/src/Kernel/xnu/xnu/System/Library/Kernels/kernel.development.t8103",
+      "sha256": "173b449882f760161120a9885b51381c322075afda50ffc091b9bad0843bff62",
+      "matches_recorded": true
+    },
+    {
+      "kind": "kernel_actual_artifact",
+      "path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_T8103/kernel.development.t8103",
+      "sha256": "173b449882f760161120a9885b51381c322075afda50ffc091b9bad0843bff62",
+      "matches_recorded": true
+    },
+    {
+      "kind": "kernel_actual_artifact",
+      "path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_T8103/kernel.development.t8103.dSYM/Contents/Resources/DWARF/kernel.development.t8103",
+      "sha256": "44e89ea27cc592747c30a75ba358b4c8c2421125d19253504c480d5e30708247",
+      "matches_recorded": true
+    },
+    {
+      "kind": "kernel_actual_artifact",
+      "path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_T8103/kernel.development.t8103.unstripped",
+      "sha256": "65d41ee8b7583a15d153ca8326b387030468444c4b5ac89469c7ce5a16a9f544",
+      "matches_recorded": true
+    },
+    {
+      "kind": "kernel_actual_artifact",
+      "path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_T8103/kernel.development.t8103",
+      "sha256": "173b449882f760161120a9885b51381c322075afda50ffc091b9bad0843bff62",
+      "matches_recorded": true
+    },
+    {
+      "kind": "kernel_actual_artifact",
+      "path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/src/Kernel/xnu/xnu_sym/kernel.development.t8103",
+      "sha256": "65d41ee8b7583a15d153ca8326b387030468444c4b5ac89469c7ce5a16a9f544",
+      "matches_recorded": true
+    },
+    {
+      "kind": "kernel_actual_artifact",
+      "path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/src/Kernel/xnu/xnu_sym/kernel.development.t8103.dSYM/Contents/Resources/DWARF/kernel.development.t8103",
+      "sha256": "44e89ea27cc592747c30a75ba358b4c8c2421125d19253504c480d5e30708247",
+      "matches_recorded": true
+    },
+    {
+      "kind": "driver_receipt",
+      "path": "evidence/native/aic/native-final/result.json",
+      "sha256": "f3a3e4993ac70d2f7f289fbc27576d734c4188e30de72b5de30e29a1e4444716",
+      "matches_recorded": true
+    },
+    {
+      "kind": "driver_inspection_receipt",
+      "path": "evidence/native/aic/native-final/inspection.json",
+      "sha256": "3f6a7b486024e2d3427a0c1e9fef190ea130481ef9f9ed7ee1f8dacc286499f5",
+      "matches_recorded": true
+    },
+    {
+      "kind": "actual_inspection_output",
+      "path": "evidence/native/aic/native-final/bundle-header.log",
+      "sha256": "2b5dadae28c9e57aa41394058546a87a045ca9368009b4fa2ab9191f25cc440a",
+      "matches_recorded": true
+    },
+    {
+      "kind": "actual_inspection_output",
+      "path": "evidence/native/aic/native-final/bundle-imports.log",
+      "sha256": "b6655bb2c567fbe998974c7ee461d822fb48f2be1da70a9ed3f8f952593fcb98",
+      "matches_recorded": true
+    },
+    {
+      "kind": "actual_inspection_output",
+      "path": "evidence/native/aic/native-final/compiler-version.log",
+      "sha256": "ccfa3f404291b2109fe266d4cd9b6be2ceb65b3be5fd5134c634cc2e3f0f255d",
+      "matches_recorded": true
+    },
+    {
+      "kind": "actual_driver_compiler_flags",
+      "path": ".blauos/build/native/aic/native-final/src/Kernel/Extensions/PDArmPlatformExpert/CMakeFiles/PDArmPlatformExpert.dir/flags.make",
+      "sha256": "85dfb50fde0eb87ec8317f495e91ac2aaafdad79bef8288b11038cc7de466437",
+      "matches_recorded": true
+    },
+    {
+      "kind": "actual_driver_compiler_flags",
+      "path": ".blauos/build/native/aic/native-final/src/Kernel/libkmod/CMakeFiles/libkmod.dir/flags.make",
+      "sha256": "a9e798332dbadf5f2886710ad073ab616d7ef3cbb0869871228d070a90157386",
+      "matches_recorded": true
+    },
+    {
+      "kind": "actual_driver_compiler",
+      "path": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+      "sha256": "0993175af320361435e566fa638ad3f0852efe3599bf026da08d9d82be8275fa",
+      "matches_recorded": true
+    },
+    {
+      "kind": "actual_driver_object",
+      "path": ".blauos/build/native/aic/native-final/src/Kernel/Extensions/PDArmPlatformExpert/CMakeFiles/PDArmPlatformExpert.dir/PDAppleAIC.cpp.o",
+      "sha256": "3e13333dbf2b6ee249cfb6449666c826d1fbf343461ffdd294ffba13b394c068",
+      "matches_recorded": true
+    },
+    {
+      "kind": "actual_driver_object",
+      "path": ".blauos/build/native/aic/native-final/src/Kernel/Extensions/PDArmPlatformExpert/CMakeFiles/PDArmPlatformExpert.dir/PDArmCPU.cpp.o",
+      "sha256": "b1d75e624df667bccb0df77ff66fbe6a03f0e2f7e3f19757695fe7b37c7f264c",
+      "matches_recorded": true
+    },
+    {
+      "kind": "actual_driver_object",
+      "path": ".blauos/build/native/aic/native-final/src/Kernel/Extensions/PDArmPlatformExpert/CMakeFiles/PDArmPlatformExpert.dir/PDArmGIC.cpp.o",
+      "sha256": "f58252f8b3b719a3da1fb45a786a559dc03536a765b5bbb93f3515a9ae9e00bb",
+      "matches_recorded": true
+    },
+    {
+      "kind": "actual_driver_object",
+      "path": ".blauos/build/native/aic/native-final/src/Kernel/Extensions/PDArmPlatformExpert/CMakeFiles/PDArmPlatformExpert.dir/PDArmPlatformExpert.cpp.o",
+      "sha256": "00ea6614d82ffa0f68637b04e21572d88528004e1ccfa831e441a919e285c98a",
+      "matches_recorded": true
+    },
+    {
+      "kind": "actual_driver_object",
+      "path": ".blauos/build/native/aic/native-final/src/Kernel/Extensions/PDArmPlatformExpert/CMakeFiles/PDArmPlatformExpert.dir/PDBcm2835IC.cpp.o",
+      "sha256": "9869b35748c7e52dcd90d97bc99b8ece379f20b2a0c790fc7214bd42eb3a666a",
+      "matches_recorded": true
+    },
+    {
+      "kind": "actual_driver_object",
+      "path": ".blauos/build/native/aic/native-final/src/Kernel/Extensions/PDArmPlatformExpert/CMakeFiles/PDArmPlatformExpert.dir/kmod_info.c.o",
+      "sha256": "103baa0ec987d5d13cea2eebf112ae6babebf4550936fbf62997733dffe0af43",
+      "matches_recorded": true
+    },
+    {
+      "kind": "actual_driver_object",
+      "path": ".blauos/build/native/aic/native-final/src/Kernel/libkmod/CMakeFiles/libkmod.dir/c_start.c.o",
+      "sha256": "4c40abbdf35366b149d620cf3e8803963cb511a0e6a78ba375efce0c79e6e00e",
+      "matches_recorded": true
+    },
+    {
+      "kind": "actual_driver_object",
+      "path": ".blauos/build/native/aic/native-final/src/Kernel/libkmod/CMakeFiles/libkmod.dir/c_stop.c.o",
+      "sha256": "d575bd7e9a5457916ac611be98c1474aec9aa9fcf0acf7404dd9cc6fc64bd2ed",
+      "matches_recorded": true
+    },
+    {
+      "kind": "root_symbol_availability_receipt",
+      "path": "evidence/native/aic/import-availability-native-final.json",
+      "sha256": "41d6b82495f4aed9467db30e1a33136673434877c1870393f710a8574ca32458",
+      "matches_recorded": true
+    },
+    {
+      "kind": "driver_receipt_for_symbols",
+      "path": "evidence/native/aic/native-final/result.json",
+      "sha256": "f3a3e4993ac70d2f7f289fbc27576d734c4188e30de72b5de30e29a1e4444716",
+      "matches_recorded": true
+    },
+    {
+      "kind": "kernel_receipt_for_symbols",
+      "path": "evidence/native/kernel/puredarwin-t8103-native-final/result.json",
+      "sha256": "d8479f6e6e24c8f76cdef80bef3e84c4962be828a4d22ceb781d50f4bb17053b",
+      "matches_recorded": true
+    },
+    {
+      "kind": "symbol_inspection_tool",
+      "path": "/usr/bin/nm",
+      "sha256": "bc708fdf9306f01bfdfd979577d18493f71bcf5879c0d59274b7cfe2cd716c1d",
+      "matches_recorded": true
+    },
+    {
+      "kind": "symbol_comparison_kernel",
+      "path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/src/Kernel/xnu/xnu/System/Library/Kernels/kernel.development.t8103",
+      "sha256": "173b449882f760161120a9885b51381c322075afda50ffc091b9bad0843bff62",
+      "matches_recorded": true
+    },
+    {
+      "kind": "symbol_comparison_kernel",
+      "path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_T8103/kernel.development.t8103.unstripped",
+      "sha256": "65d41ee8b7583a15d153ca8326b387030468444c4b5ac89469c7ce5a16a9f544",
+      "matches_recorded": true
+    },
+    {
+      "kind": "original_nm_comparison_output",
+      "path": ".blauos/build/native/aic/import-availability-native-final/stripped.log",
+      "sha256": "6c39a2796154fe04b211769572fefd50119e9f833c71d02efe41f7d5fb65ec54",
+      "matches_recorded": true,
+      "bytes": 549863,
+      "exit_code": 0
+    },
+    {
+      "kind": "original_nm_comparison_output",
+      "path": ".blauos/build/native/aic/import-availability-native-final/unstripped.log",
+      "sha256": "6c39a2796154fe04b211769572fefd50119e9f833c71d02efe41f7d5fb65ec54",
+      "matches_recorded": true,
+      "bytes": 549863,
+      "exit_code": 0
+    }
+  ],
+  "driver_artifact": {
+    "sha256": "3a544f93617a9f02f7afec8cd275a386ac00366e3b6eda2556f46f0fee0c45ce",
+    "bytes": 161080,
+    "uuid": "50CF9889-A4D1-3E1B-A466-FA817019495C",
+    "cpu_subtype": "0xc0000002",
+    "filetype": "MH_KEXT_BUNDLE",
+    "metadata_errors": [],
+    "writable_executable_segments": [],
+    "independently_parsed_objects": [
+      {
+        "path": ".blauos/build/native/aic/native-final/src/Kernel/Extensions/PDArmPlatformExpert/CMakeFiles/PDArmPlatformExpert.dir/PDAppleAIC.cpp.o",
+        "sha256": "3e13333dbf2b6ee249cfb6449666c826d1fbf343461ffdd294ffba13b394c068",
+        "cpu_subtype": "0xc0000002",
+        "filetype": "MH_OBJECT"
+      },
+      {
+        "path": ".blauos/build/native/aic/native-final/src/Kernel/Extensions/PDArmPlatformExpert/CMakeFiles/PDArmPlatformExpert.dir/PDArmCPU.cpp.o",
+        "sha256": "b1d75e624df667bccb0df77ff66fbe6a03f0e2f7e3f19757695fe7b37c7f264c",
+        "cpu_subtype": "0xc0000002",
+        "filetype": "MH_OBJECT"
+      },
+      {
+        "path": ".blauos/build/native/aic/native-final/src/Kernel/Extensions/PDArmPlatformExpert/CMakeFiles/PDArmPlatformExpert.dir/PDArmGIC.cpp.o",
+        "sha256": "f58252f8b3b719a3da1fb45a786a559dc03536a765b5bbb93f3515a9ae9e00bb",
+        "cpu_subtype": "0xc0000002",
+        "filetype": "MH_OBJECT"
+      },
+      {
+        "path": ".blauos/build/native/aic/native-final/src/Kernel/Extensions/PDArmPlatformExpert/CMakeFiles/PDArmPlatformExpert.dir/PDArmPlatformExpert.cpp.o",
+        "sha256": "00ea6614d82ffa0f68637b04e21572d88528004e1ccfa831e441a919e285c98a",
+        "cpu_subtype": "0xc0000002",
+        "filetype": "MH_OBJECT"
+      },
+      {
+        "path": ".blauos/build/native/aic/native-final/src/Kernel/Extensions/PDArmPlatformExpert/CMakeFiles/PDArmPlatformExpert.dir/PDBcm2835IC.cpp.o",
+        "sha256": "9869b35748c7e52dcd90d97bc99b8ece379f20b2a0c790fc7214bd42eb3a666a",
+        "cpu_subtype": "0xc0000002",
+        "filetype": "MH_OBJECT"
+      },
+      {
+        "path": ".blauos/build/native/aic/native-final/src/Kernel/Extensions/PDArmPlatformExpert/CMakeFiles/PDArmPlatformExpert.dir/kmod_info.c.o",
+        "sha256": "103baa0ec987d5d13cea2eebf112ae6babebf4550936fbf62997733dffe0af43",
+        "cpu_subtype": "0xc0000002",
+        "filetype": "MH_OBJECT"
+      },
+      {
+        "path": ".blauos/build/native/aic/native-final/src/Kernel/libkmod/CMakeFiles/libkmod.dir/c_start.c.o",
+        "sha256": "4c40abbdf35366b149d620cf3e8803963cb511a0e6a78ba375efce0c79e6e00e",
+        "cpu_subtype": "0xc0000002",
+        "filetype": "MH_OBJECT"
+      },
+      {
+        "path": ".blauos/build/native/aic/native-final/src/Kernel/libkmod/CMakeFiles/libkmod.dir/c_stop.c.o",
+        "sha256": "d575bd7e9a5457916ac611be98c1474aec9aa9fcf0acf7404dd9cc6fc64bd2ed",
+        "cpu_subtype": "0xc0000002",
+        "filetype": "MH_OBJECT"
+      }
+    ],
+    "actual_link_command": {
+      "path": ".blauos/build/native/aic/native-final/src/Kernel/Extensions/PDArmPlatformExpert/CMakeFiles/PDArmPlatformExpert.dir/link.txt",
+      "sha256": "4fba42bc97396e9d3111d2af1d64aefee0c3fa9d453bc886babb42dd95018237",
+      "matching_source_libkmod_sha256": "6bec338eaafe78ae2c8ef2191f7d01a9c5ec9d0d3ab68db91bf68e043678f728",
+      "undefined_dynamic_lookup": true
+    }
+  },
+  "metadata_negative_checks": [
+    {
+      "fixture_kind": "in_memory_mutation_of_actual_compiled_bundle",
+      "field": "mach_header_64.cpusubtype",
+      "byte_offset": 8,
+      "before": "0xc0000002",
+      "after": "0x80000002",
+      "altered_bytes_sha256": "7323481746916737609c423aa99f7b70e25b16a0780099304334d28f2cbcd379",
+      "rejected": true,
+      "errors": [
+        "Platform binary does not use the matching ARM64e KER00 ABI"
+      ],
+      "written_to_disk": false
+    },
+    {
+      "fixture_kind": "in_memory_mutation_of_actual_compiled_bundle",
+      "field": "mach_header_64.cpusubtype",
+      "byte_offset": 8,
+      "before": "0xc0000002",
+      "after": "0x80000000",
+      "altered_bytes_sha256": "cbd15f478d0f3a9ba199fd0f2173ac9d6014d5b5e21c959236f7e4572bb537c6",
+      "rejected": true,
+      "errors": [
+        "Platform binary is not a native ARM64e MH_KEXT_BUNDLE",
+        "Platform binary does not use the matching ARM64e KER00 ABI"
+      ],
+      "written_to_disk": false
+    },
+    {
+      "fixture_kind": "in_memory_mutation_of_actual_compiled_bundle",
+      "field": "mach_header_64.cpusubtype",
+      "byte_offset": 8,
+      "before": "0xc0000002",
+      "after": "0x2",
+      "altered_bytes_sha256": "346c36c06f8c8be816d66fef0f6a6983ceb0a08333f0b237ef221989b35bffc4",
+      "rejected": true,
+      "errors": [
+        "Platform binary does not use the matching ARM64e KER00 ABI"
+      ],
+      "written_to_disk": false
+    }
+  ],
+  "native_kernels": [
+    {
+      "kind": "stripped",
+      "sha256": "173b449882f760161120a9885b51381c322075afda50ffc091b9bad0843bff62",
+      "uuid": "E3ED90E4-1CB3-314B-BAA7-344D3AF6DF0B",
+      "entry_pc": "0xfffffe00073e8530",
+      "cpu_subtype": "0xc0000002",
+      "filetype": "MH_EXECUTE"
+    },
+    {
+      "kind": "unstripped",
+      "sha256": "65d41ee8b7583a15d153ca8326b387030468444c4b5ac89469c7ce5a16a9f544",
+      "uuid": "E3ED90E4-1CB3-314B-BAA7-344D3AF6DF0B",
+      "entry_pc": "0xfffffe00073e8530",
+      "cpu_subtype": "0xc0000002",
+      "filetype": "MH_EXECUTE"
+    }
+  ],
+  "independent_symbol_comparison": {
+    "algorithm": "Decode every non-STAB LC_SYMTAB/nlist_64 entry directly; compare exact external undefined driver names to defined external kernel names; cross-check against actual nm -gjU output",
+    "driver_import_count": 453,
+    "driver_import_names_sha256": "b6655bb2c567fbe998974c7ee461d822fb48f2be1da70a9ed3f8f952593fcb98",
+    "comparisons": [
+      {
+        "kind": "stripped",
+        "defined_external_symbols": 20712,
+        "required_imports": 453,
+        "missing_imports": [],
+        "independent_nlist_names_match_nm": true,
+        "actual_nm_output_sha256": "6c39a2796154fe04b211769572fefd50119e9f833c71d02efe41f7d5fb65ec54"
+      },
+      {
+        "kind": "unstripped",
+        "defined_external_symbols": 20712,
+        "required_imports": 453,
+        "missing_imports": [],
+        "independent_nlist_names_match_nm": true,
+        "actual_nm_output_sha256": "6c39a2796154fe04b211769572fefd50119e9f833c71d02efe41f7d5fb65ec54"
+      }
+    ],
+    "actual_linkage_verified": false
+  },
+  "native_pac": {
+    "helpers": {
+      "stripped": {
+        "_ml_enable_user_jop_key": "0xfffffe00073f1218",
+        "_ml_disable_user_jop_key": "0xfffffe00073f1284",
+        "_ppl_trampoline_start": "0xfffffe0007ba8000",
+        "_ppl_trampoline_end": "0xfffffe0007bb0000",
+        "_blauos_native_early_diagnostics": "0xfffffe00073d7998"
+      },
+      "unstripped": {
+        "_ml_enable_user_jop_key": "0xfffffe00073f1218",
+        "_ml_disable_user_jop_key": "0xfffffe00073f1284",
+        "_ppl_trampoline_start": "0xfffffe0007ba8000",
+        "_ppl_trampoline_end": "0xfffffe0007bb0000",
+        "_blauos_native_early_diagnostics": "0xfffffe00073d7998"
+      }
+    },
+    "actual_enable_disable_bodies_distinct": true,
+    "actual_final_helper_disassembly_sha256": "56f43b13dc35799fca1c21f86714ff270532d1b740d55586ea2e1b548b6503d5",
+    "reviewed_features": [
+      "Saved x0 key return and matching x1 restore",
+      "Runtime APCTL.UserKeyEn fast/slow A-key branch",
+      "Real key writes and final ISBs"
+    ],
+    "protected_pmap_text_bytes": 48888,
+    "protected_pmap_text_sha256": "16eac8ccb24c3db5f7ff3cbf9edb62e190a2d5dedc735f1ae336d6fae77b6583",
+    "protected_pmap_text_matches_independently_reviewed_nonzero_field_PAC_CAS": true,
+    "actual_makeinc_sha256": "f1991e8904191c3994442c20de8fbf1192d5bb2826a424a0be78bb5915f10c60",
+    "fno_strict_aliasing_present": true,
+    "critical_final_objects": [
+      {
+        "path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_T8103/osfmk/DEVELOPMENT/pmap.o",
+        "sha256": "a7cda9e6e5c3be26017bd1f0bd37adf6187db60350bc78e34b62b8c401ee9c51",
+        "cpu_subtype": "0xc0000002"
+      },
+      {
+        "path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_T8103/osfmk/DEVELOPMENT/locore.o",
+        "sha256": "04c251a4a8ff027b4504c732e12f547605ad32d34d052f75530c3a22f0a749d1",
+        "cpu_subtype": "0xc0000002"
+      },
+      {
+        "path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_T8103/osfmk/DEVELOPMENT/start.o",
+        "sha256": "32ec510095c3f053ddb0f11fd2c2927db5014862dce0e89a434330afb9596c00",
+        "cpu_subtype": "0xc0000002"
+      },
+      {
+        "path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_T8103/osfmk/DEVELOPMENT/cswitch.o",
+        "sha256": "9d43d6187daf97fa749f62ff163443ff9b0cf88adc6438a03003a65804a0e9f4",
+        "cpu_subtype": "0xc0000002"
+      },
+      {
+        "path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_T8103/osfmk/DEVELOPMENT/machine_routines_asm.o",
+        "sha256": "cad74b21a5a9cf1fbbe282d7848c8e2e249a01ac60e9d457e1b962e8dc13feac",
+        "cpu_subtype": "0xc0000002"
+      },
+      {
+        "path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_T8103/osfmk/DEVELOPMENT/machine_routines_apple.o",
+        "sha256": "febc5758d2c71e13f00767bc3e7eacba47d63253187075f012320deadb432af6",
+        "cpu_subtype": "0xc0000002"
+      },
+      {
+        "path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_T8103/osfmk/DEVELOPMENT/arm_init.o",
+        "sha256": "3a91395d5e64c3d3e4c38df8a8b3aa854f9b520c9ec35346b86a73430886defd",
+        "cpu_subtype": "0xc0000002"
+      }
+    ]
+  },
+  "findings": [],
+  "kernel_linkage_verified": false,
+  "native_boot_assets_ready": false,
+  "physical_interrupt_delivery_verified": false,
+  "physical_execution_verified": false,
+  "physical_gate_passed": false,
+  "limitations": [
+    "Exact symbol availability does not prove export-policy permission, ABI compatibility, pointer-authentication fixup correctness or BootKC linkage.",
+    "The genuine linked kernel is raw MH_EXECUTE; target-native MH_FILESET packaging and authorization remain unperformed.",
+    "Source and actual code review do not establish PAC/APRR/CTRR enforcement or interrupt delivery on hardware."
+  ]
+}

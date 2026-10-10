@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/usr/bin/kmutil",
+    "inspect",
+    "--boot-path",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/vm/kernel.collection",
+    "--no-variant-extension",
+    "--arch",
+    "arm64e",
+    "--show-mach-header",
+    "--show-fileset-entries",
+    "--show-kernel-uuid",
+    "--show-mach-boot-properties"
+  ],
+  "cwd": "/Users/joeblau/Developer/joeblau/src/blauos"
+}

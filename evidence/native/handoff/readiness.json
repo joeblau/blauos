@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "status": "offline_preparation_verified_native_acceptance_pending",
+  "source_contract_sha256": "3ce67d69cd920c2310a7b908bab5b4d00389f3a1f5a8c3ad704126ea736e6ad9",
+  "verified_scope": [
+    "Explicit source-profile LP64 layout for ARM64 and ARM64e",
+    "Bounded Apple ADT parsing and named reservation checks",
+    "Synthetic malformed-data, arithmetic, containment and truncation rejection"
+  ],
+  "evidence": {
+    "abi-layout.json": "2163a2b44db17a9812d35a73564d1e762ac8efbbb0bc17afc0eec5667eebc143",
+    "synthetic-apple-xnu-12377.json": "f7bdcad5a7a3260212567e951a3f177bedef895b5522a5881296936a5d0371ae",
+    "synthetic-memory-plan.json": "7066474576f6c3f7234ef2bcb01d9686de1e2ad35a79c380a8655c9808419212",
+    "synthetic-puredarwin-xnu-7195.json": "22db007301ab53e0fda3f9298cb5fe63426012b124b03393c598793eace0be12",
+    "synthetic-truncation-rejected.json": "1a987ee75b81667c830df9773d445644afa68386d23b8d9428165475a6c55221",
+    "tests.json": "db3b53aaaab4ccadaea24553d2a6d4ed727da0b541a4441e45f5180e5686306e"
+  },
+  "physical_handoff_captured": false,
+  "physical_execution_verified": false,
+  "memory_map_validated_on_m1": false,
+  "mmu_verified": false,
+  "exceptions_verified": false,
+  "issue_acceptance": {
+    "30": "physical acceptance pending",
+    "31": "physical acceptance pending",
+    "32": "physical acceptance pending"
+  },
+  "required_physical_evidence": [
+    "Target identity, boot-policy and exact firmware/OS/BootKC profile",
+    "Independent kernel entry and raw boot_args/ADT capture",
+    "Reviewed actual RAM banks and all live asset/firmware/security reservations",
+    "Incoming/current EL, translation/control registers and page tables",
+    "Controlled native exception and UART/debug logs"
+  ]
+}

@@ -15,8 +15,19 @@ from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 
+def clean_git_environment(environment=None):
+    """Keep Git bound to its explicit worktree, without inherited injection."""
+    values = os.environ if environment is None else environment
+    rejected = {'LD_PRELOAD', 'LD_AUDIT', 'LD_LIBRARY_PATH', 'BASH_ENV', 'ENV', 'CDPATH'}
+    result = {name: value for name, value in values.items()
+              if not name.startswith(('GIT_', 'DYLD_')) and name not in rejected}
+    result.update({'GIT_CONFIG_GLOBAL': os.devnull, 'GIT_CONFIG_NOSYSTEM': '1',
+                   'GIT_NO_REPLACE_OBJECTS': '1'})
+    return result
+
 def run(args, cwd=None):
-    result = subprocess.run(args, cwd=cwd, text=True, capture_output=True)
+    options = {'env': clean_git_environment()} if Path(str(args[0])).name == 'git' else {}
+    result = subprocess.run(args, cwd=cwd, text=True, capture_output=True, **options)
     if result.returncode:
         raise RuntimeError(f"{' '.join(map(str, args))}: {result.stderr.strip() or result.stdout.strip()}")
     return result.stdout.strip()
@@ -99,11 +110,47 @@ def select_sources(data, requested, profile):
 def normalize_url(url):
     return url.rstrip('/').removesuffix('.git')
 
+def verify_worktree_index(path, sparse_paths=None):
+    """Reject index flags that can conceal the source bytes being consumed."""
+    if sparse_paths:
+        if run(['git', 'config', '--bool', 'core.sparseCheckoutCone'], cwd=path) != 'true':
+            raise ValueError(f'Locked sparse checkout requires cone mode: {path}')
+        actual = set(run(['git', 'sparse-checkout', 'list'], cwd=path).splitlines())
+        if actual != set(sparse_paths):
+            raise ValueError(f'Sparse checkout differs from locked paths: {path}')
+    absent_sparse = []
+    for entry in run(['git', 'ls-files', '-v', '-z'], cwd=path).split('\0'):
+        if not entry:
+            continue
+        name = entry[2:]
+        if entry[0].islower():
+            raise ValueError(f'Source has assumed-unchanged tracked input; preserved: {name}')
+        if entry[0] == 'S':
+            actual = path / name
+            if not sparse_paths or actual.exists() or actual.is_symlink():
+                raise ValueError(f'Source has masked skip-worktree input; preserved: {name}')
+            absent_sparse.append(name)
+    if absent_sparse:
+        # Absence is legitimate only outside the locked cone. Git's own rule
+        # matcher also includes root files and files beside cone ancestors.
+        # It handles case-insensitive cones without duplicating Git's rules.
+        result = subprocess.run(['git', 'sparse-checkout', 'check-rules', '-z'],
+                                cwd=path, input='\0'.join(absent_sparse) + '\0',
+                                text=True, capture_output=True, env=clean_git_environment())
+        if result.returncode:
+            raise RuntimeError(f'Cannot verify sparse source rules: {result.stderr.strip()}')
+        included = [name for name in result.stdout.split('\0') if name]
+        if included:
+            raise ValueError(f'Source has missing included skip-worktree input; preserved: {included[0]}')
+
 def verify_source(source, path):
     if path.is_symlink():
         raise ValueError(f'Refusing symlink source directory: {path}')
     if not (path / '.git').exists():
         raise ValueError(f'Not a Git checkout: {path}')
+    worktree = Path(run(['git', 'rev-parse', '--show-toplevel'], cwd=path)).resolve()
+    if worktree != path.resolve():
+        raise ValueError(f'Source directory is not its actual Git worktree: {path}')
     revision = run(['git', 'rev-parse', 'HEAD'], cwd=path)
     tree = run(['git', 'rev-parse', 'HEAD^{tree}'], cwd=path)
     origin = run(['git', 'remote', 'get-url', 'origin'], cwd=path)
@@ -113,10 +160,7 @@ def verify_source(source, path):
         raise ValueError(f"{source['name']}: tree differs from lock")
     if normalize_url(origin) != normalize_url(source['url']):
         raise ValueError(f"{source['name']}: origin differs from lock")
-    if source.get('sparse_paths'):
-        actual = set(run(['git', 'sparse-checkout', 'list'], cwd=path).splitlines())
-        if actual != set(source['sparse_paths']):
-            raise ValueError(f"{source['name']}: sparse checkout differs from locked paths")
+    verify_worktree_index(path, source.get('sparse_paths'))
     status = run(['git', 'status', '--porcelain', '--untracked-files=normal'], cwd=path)
     if status:
         raise ValueError(f"{source['name']}: source has local changes; preserved without reset\n{status}")

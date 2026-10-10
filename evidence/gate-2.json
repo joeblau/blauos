@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "gate": 2,
+  "issue": 40,
+  "parent_issue": 4,
+  "milestone": "Phase 1 \u2014 Native kernel bring-up",
+  "review_date": "2026-10-10",
+  "technical_reviewer": "Codex",
+  "decision": "NOT_RUN",
+  "passing_decision": false,
+  "decision_owner": "Joe Blau",
+  "investment_decision_recorded": false,
+  "required_target": {
+    "model": "Macmini9,1",
+    "board": "J274AP",
+    "soc": "T8103",
+    "platform": "physical M1 Mac mini"
+  },
+  "observations": {
+    "current_build_host": "Mac15,8 / Apple M3 Max",
+    "wrong_host_rejection_observed": true,
+    "dedicated_target_verified": false,
+    "target_access_verified": false,
+    "target_recovery_verified": false,
+    "native_boot_object_authorization_attempted": false,
+    "independent_physical_xnu_entry_observed": false,
+    "physical_initialization_checkpoint_observed": false,
+    "repeatable_cold_and_warm_boots_observed": false,
+    "m1n1_fallback_activated": false,
+    "source_bound_arm64_and_arm64e_layout_assertions_passed": true,
+    "partial_native_early_diagnostic_object_compiled": true,
+    "native_arm64e_ker00_platform_extension_linked": true,
+    "platform_extension_imports_resolved_against_native_kernel": false,
+    "physical_interrupt_delivery_verified": false,
+    "fresh_native_t8103_development_kernel_linked": true,
+    "native_kernel_debug_symbols_produced": true,
+    "native_pac_helpers_compile_as_distinct_functions": true,
+    "all_platform_import_names_present_in_linked_kernel": true,
+    "native_boot_collection_produced": false
+  },
+  "evidence": [
+    "docs/milestone-2.md",
+    "docs/audits/native-kernel-build.md",
+    "evidence/native/lab/build-host-inventory-redacted.json",
+    "evidence/native/lab/guard-result.json",
+    "evidence/native/handoff/abi-layout.json",
+    "docs/platform/native-boot.md",
+    "docs/platform/m1-checkpoint.md",
+    "docs/platform/m1-early-diagnostics.md",
+    "evidence/native/early-diagnostics/result.json",
+    "docs/audits/native-aic.md",
+    "evidence/native/aic/driver-final/result.json",
+    "evidence/native/aic/driver-final/inspection.json",
+    "docs/audits/native-security-inputs.md",
+    "evidence/native/kernel/puredarwin-t8103-native-final/result.json",
+    "evidence/native/aic/native-final/result.json",
+    "evidence/native/aic/import-availability-native-final.json",
+    "docs/audits/native-pac.md"
+  ],
+  "remaining_work": [
+    "Identify and access the dedicated M1 target and verify physical recovery and native UART capture.",
+    "Resolve remaining native platform initialization and CPU-registration interfaces; produce and inspect target-compatible boot assets from the source-built T8103 candidate with the actual target driver/firmware inventory.",
+    "Attempt native Path A and distinguish boot-chain authorization from actual source-kernel entry.",
+    "Implement and measure native handoff, MMU, exception, timer, AIC and supported CPU startup checkpoints.",
+    "Repeat physical cold/warm boots, review recovery and measured reconstruction scope, and record an explicit named gate decision."
+  ],
+  "limitations": [
+    "Milestone 1 virtual execution is a separate platform and does not satisfy Gate 2.",
+    "Source compiler assertions, synthetic PTYs and offline evidence consistency do not establish physical kernel execution.",
+    "No physical boot failure or kernel-strategy investment conclusion can be inferred from unavailable target access."
+  ]
+}

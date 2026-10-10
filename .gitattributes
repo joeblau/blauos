@@ -1,3 +1,4 @@
 # Preserve recorded tool output and unified-diff context whitespace verbatim.
 *.log -whitespace
 *.patch -whitespace
+*disassembly.txt -whitespace

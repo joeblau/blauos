@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "status": "native_source_build_blocked_no_linked_kernel",
+  "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+  "build_receipt": "evidence/native/kernel/puredarwin-t8103-ctrr-interface/result.json",
+  "build_receipt_sha256": "b555a8dfa9a06f66ae0f0bff46b2ce20b875d4cd0fb45ea9d84416e5958b6780",
+  "source_files": [
+    {
+      "path": "osfmk/arm/pmap.c",
+      "sha256": "92fa6cc848ed7a7e7adf014a0cb5491032187de5a3a8a640b15e58b678f8e748"
+    },
+    {
+      "path": "osfmk/arm/pmap.h",
+      "sha256": "c5cdebe50c26a80151edd999bca54d914f36665cb689620c8015cd4086c2f176"
+    },
+    {
+      "path": "osfmk/arm64/proc_reg.h",
+      "sha256": "3ac93c4b9287ca3c804396c97a4bd845ce1db9803939a1f628cabfc363781205"
+    },
+    {
+      "path": "osfmk/arm64/locore.s",
+      "sha256": "75f25689e78d08d17edbce54cdac0fabc1462a98bc2bec5946de5143ecfd4851"
+    },
+    {
+      "path": "pexpert/pexpert/arm64/H13.h",
+      "sha256": "e8b7609eb8416fd3b269bcca6f6f9706691e45be7bc2895562ecb6b5d328c6da"
+    }
+  ],
+  "observed_failures": [
+    {
+      "file": "osfmk/arm/pmap.c",
+      "line": 2493,
+      "kind": "missing protected dispatch interface",
+      "names": [
+        "PMAP_IS_TRUST_CACHE_LOADED_INDEX",
+        "PMAP_LOOKUP_IN_STATIC_TRUST_CACHE_INDEX",
+        "PMAP_LOOKUP_IN_LOADED_TRUST_CACHES_INDEX"
+      ],
+      "note": "Source uses all three, but no definitions occur in the complete pinned tree; compiler first reports the first name."
+    },
+    {
+      "file": "osfmk/arm/pmap.c",
+      "line": 2568,
+      "kind": "missing XPRR permission interface",
+      "names": [
+        "XPRR_PPL_RW_PERM",
+        "XPRR_KERN_RW_PERM",
+        "XPRR_KERN_RO_PERM",
+        "XPRR_KERN_RX_PERM",
+        "XPRR_PPL_RX_PERM",
+        "XPRR_MAX_PERM",
+        "ARM_PTE_XPRR_MASK",
+        "xprr_perm_to_pte",
+        "pte_to_xprr_perm",
+        "is_pte_xprr_protected"
+      ]
+    },
+    {
+      "file": "osfmk/arm/pmap.c",
+      "line": 5161,
+      "kind": "published PPL lockdown implementation omitted",
+      "diagnostic": "#error \"XPRR configuration error\""
+    },
+    {
+      "file": "osfmk/arm/pmap.c",
+      "line": 12073,
+      "kind": "current compiler rejects signed-pointer atomic ABI",
+      "diagnostic": "address argument to atomic operation must be a pointer to a non address discriminated type"
+    }
+  ],
+  "additional_source_omissions": [
+    {
+      "file": "osfmk/arm64/locore.s",
+      "lines": [
+        61,
+        1245
+      ],
+      "kind": "PPL protected exception/trampoline implementations omitted",
+      "observed_by": "source inspection; compilation stopped earlier in pmap.c"
+    }
+  ],
+  "historical_public_implementation_lead": {
+    "url": "https://github.com/apple-oss-distributions/xnu",
+    "tag": "xnu-7195.60.75",
+    "revision": "b967469df23b10bc70788727627457ebdfe3653f",
+    "tree": "2fd24b44e4468b7a60261620cccca97bdc7262fa",
+    "source_file_hashes": {
+      "osfmk/arm/pmap.c": "9142fafae9adc54afeec3c203b3f458d3803d11648d16764977caa9f3c45bc6f",
+      "osfmk/arm/pmap.h": "dac2847efc859df087628ea369dd804ef7fef2022269db7dfa9be05b76466c32",
+      "osfmk/arm64/proc_reg.h": "5f61bd6e6868a4afde333cdc52e57bec521e1537fb48ecaf6ff4b615e7a71642",
+      "osfmk/arm64/locore.s": "3233c0a2574e97a11ed72b50bcdcebd2e306c3f90cec503075b13f18b39ff616"
+    },
+    "contains_genuine_aprr_xprr_implementation": true,
+    "missing_trust_cache_dispatch_indices_remain": true,
+    "integrated_into_project_kernel": false,
+    "matching_current_source_abi_validated": false,
+    "required_work": "Review/port complete protected transition and dispatch contract; historical helper snippets alone cannot produce native closure."
+  },
+  "features_preserved": [
+    "XNU_MONITOR/PPL",
+    "CTRR",
+    "pointer authentication",
+    "PMU"
+  ],
+  "linked_kernel_produced": false,
+  "physical_execution_verified": false
+}

@@ -26,6 +26,8 @@ jobs:
         run: python3 -m unittest discover -s tests -v
       - name: Test Mach-O integrity and runtime provenance
         run: python3 -m unittest discover -s runtime/tests -v
+      - name: Test source-specific M1 handoff bounds and reservations
+        run: python3 -m unittest discover -s platform/apple-m1/handoff/tests -v
 
   virtual-boot:
     name: Build independent ARM64 guest and verify boot and network

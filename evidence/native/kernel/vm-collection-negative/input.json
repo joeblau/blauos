@@ -1,0 +1,9 @@
+{
+  "scope": "existing_source_built_VM_collection_only_not_native",
+  "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/vm/kernel.collection",
+  "sha256": "c5749250f9fdbcf7a0bce2e4ad9bc1f1f4ac88a8067b7518059fa8182364ddbb",
+  "exit_code": 71,
+  "os_version": "27.2",
+  "os_build": "26B5101f",
+  "hardware_target_execution": false
+}

@@ -1,0 +1,439 @@
+1: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/allocate.c.o
+2: [  0%] Building C object tools/cctools/libmacho/CMakeFiles/host_libmacho.dir/arch.c.o
+3: [  0%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/begin.c.o
+4: [  0%] Building C object tools/unifdef/CMakeFiles/unifdef.dir/unifdef.c.o
+5: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/apple_version.c.o
+6: [  0%] Linking C static library libmacho.a
+7: [  0%] Linking C executable unifdef
+8: [  0%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/clscook.c.o
+9: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/arch_usage.c.o
+10: [  0%] Built target unifdef
+11: [  0%] Built target host_libmacho
+12: [  0%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/clscook_ELF64.c.o
+13: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/arch.c.o
+14: [ 10%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/cntl.c.o
+15: [ 10%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_create.c.o
+16: [ 10%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/args.c.o
+17: [ 10%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/cook.c.o
+18: [ 10%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_decl.c.o
+19: [ 10%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_error.c.o
+20: [ 10%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/data.c.o
+21: [ 10%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/best_arch.c.o
+22: [ 10%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_abbrev.c.o
+23: [ 10%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/end.c.o
+24: [ 10%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_hash.c.o
+25: [ 10%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/breakout.c.o
+26: [ 10%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_addr_finder.c.o
+27: [ 10%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/error.c.o
+28: [ 10%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_labels.c.o
+29: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_alloc.c.o
+30: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/bytesex.c.o
+31: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/gelf.c.o
+32: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_lib.c.o
+33: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_arange.c.o
+34: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getdata.c.o
+35: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_lookup.c.o
+36: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/checkout.c.o
+37: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_die_deliv.c.o
+38: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getehdr.c.o
+39: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_open.c.o
+40: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_error.c.o
+41: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/coff_bytesex.c.o
+42: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getident.c.o
+43: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_form.c.o
+44: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_subr.c.o
+45: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/crc32.c.o
+46: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getscn.c.o
+47: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/dylib_table.c.o
+48: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_frame.c.o
+49: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_types.c.o
+50: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getshdr.c.o
+51: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_frame2.c.o
+52: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_util.c.o
+53: [ 30%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/dylib_roots.c.o
+54: [ 30%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getshstrndx.c.o
+55: [ 40%] Linking C static library libctf.a
+56: [ 40%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_frame3.c.o
+57: [ 40%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/errors.c.o
+58: [ 40%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/input.c.o
+59: [ 40%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_funcs.c.o
+60: [ 40%] Built target libctf.host
+5761: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/mach/thread_status.h:76:
+5762: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/mach/machine/thread_status.h:35:
+5763: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/mach/arm/thread_status.h:446:
+5764: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/arm64/proc_reg.h:33:10: fatal error: 'arm64/native_apple_sysregs.h' file not found
+5765: ig_nal   33: se |   _101tu#inc:127i9: warning: l nt'_Atomic' is incompatible with C standards before C11 [-Wpre-c11-compat]
+5766: ude <arm64/native_a1 |   6_t      __darwin_mopple_sysregs.h>
+5767:       | de_t;        /* [         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+5768: ???] So101t | tyyp*/m
+5769:       pede|                         ^de file attributefes */ _ef _Atomic(uintptr_t)          atomi
+6101: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/mach/thread_status.h:76:
+6102: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/mach/machine/thread_status.h*dst, const at:35:
+6103: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/mach/arm/thread_status.h: vo446:
+6104: i/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/arm64/proc_reg.h:d33:10: fatal error: 'arm64/native_apple_sysregs.h' file not found
+6105:    33 | #include <arm64/nat *src, size_t sz)
+6106:       | ^
+6107: omic_int_f/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/san/san/memintrinsics.h:40:1a: st32_t;
+6108:       |         ^
+6109: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/bsd/dev/random/randomdev.c:30:
+6391:       |        ^
+6392:      __darwin_wint_In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/mach/machine/thread_status.h:35:
+6393: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/mach/arm/thread_status.h:446:
+6394: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/arm64/proc_reg.h:33:10: fatal error: 'arm64/native_apple_sysregs.h' file not found
+6395: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/kern/debug.htruc:200:8: warning: identifier '_dyld_cache_image_text_info' is reserved because it starts with '_' at global scope [-Wreserved-identifier]
+6396:      33 | #includt; e 200t       | struct _dyld_c<arm64/native_  /* wint_t */
+6397:       |                                 ^
+6398: _/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/bsd/arm/_types.h:93dyld:_cache_header {
+6399:       |        ^
+6527: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/mach/thread_status.h:76:
+6528: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/mach/machine/thread_status.h:35:
+6529: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/mach/arm/thread_status.h:446:
+6530: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/arm64/proc_reg.h:33:10: fatal error: 'arm64/native_apple_sysregs.h' file not found
+6531:    33 | #include <arm64/native_apple_sysregs.h>
+6532:       |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+6533: 124 warnings and 1 error generated.
+6534: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/bsd/sys/signal.h:268:18: warning: identifier '__pad' is reserved because it starts with '__' [-Wreserved-identifier]
+6535:   268 |         user64_ulong_t  __pad[7];               /* Reserved for Future Use */
+6587:   413 |         user64_addr_t   __sa_sigaction;
+6588:       |                         ^
+6589: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/bsd/sys/signal.h:417:29: warning: identifier '__sigaction_u' is reserved because it starts with '__' [-Wreserved-identifier]
+6590:   417 |         unio   57 | n _make[11]: *** [device_tree.o] Error 1
+6591: _utypedef __int32_t ser64_sigaction_u __sigaction_u; 171 make[10]: /* sig*** [build_all] Error 2n warningal handler */
+6592:       |                                    ^
+6593: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/bsd/sys/signal.h:422:9: warning: identifier '__user64_sigaction' is reserved because it starts with '__' [-Wreserved-identifier]
+6594:   422 | struct  __user64_sigaction {
+6595:       |         ^
+6596: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/bsd/sys/signal.h:423:29: warning: identifier '__sigaction_u' is reserved because it starts with '__' [-Wreserved-identifier]
+6599: _use    r64_sigaction_u __sigaction_u;  /* signal handler */
+6600:       |                                    ^
+6601: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/bsd/sys/signal.h:429:7: warning: identifier '__kern_sigaction_u' is reserved because it starts with '__' [-Wreserved-identifier]
+6602:   429 | unmake[9]: *** [do_all] Error 2
+6603:   __darwin_blksize_t;     /* preferred block size */
+6604:       |                         ^
+6605: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/bsd/sys/_types.h:58:25: warning: identifier '__darwin_dev_t' is reserved because it starts with '__' [-Wreserved-identifier]
+6606: ion __kern_sigaction_u {
+6607:       |       ^
+6608:    /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/bsd/sys/signal.h:430:18: warning: sidentifier '__sa_handler' is reserved because it starts with '__' [-Wreserved-identifier]
+6609:   430 |         user_admake[8]:  and dr_t     __sa_handler;158 | typedef __int32_t     *** [build_all] Error 2
+6610:       |  error generated                         ^
+6611:  
+6612: __darwin_dev_t;         /* dev_t */
+6613:       |                         ^
+6614: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/bsd/sys/_types.h:59:25: warning: identifier '__darwin_fsblkcnt_t' is reserved because it starts with '__' [-Wreserved-identifier]
+6615:    59 | typedef unsigned int  /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/bsd/sys/signal.h:431:18: warning:   __daidentifier '__sa_sigaction' is reserved because it starts with '__' [-Wreserved-identifier]
+6616: make[7]: *** [build_all_recurse_into_conf] Error 2
+6617: rwin_fsblkcnt_t;    /* Used by st.
+6618: atvfs and fstatvfs */
+6619:       |                         ^
+6620: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/bsd/sys/_types.h:60:25: warning: identifier '__darwin_fsfilcnt_t' is reserved because it starts with '__' [-Wreserved-identifier]
+6621:    60 | typedef unsigned int    __da  431 |         user_addr_t     __rwin_fsfilcnt_t;    /* Used by statvfs and fstatvfs */
+6622:       |                         ^
+6623: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/bsd/sys/_types.h:61:25: warning: identifier '__darwin_gid_t' is reserved because it starts with '__' [-Wreserved-identifier]
+6624:    61 | typedef __uint32_t      __darwin_gid_t;         /* [???] make[6]: *** [build_all_recurse_into_pexpert] Error 2
+6625: make[6]: *** Waiting for unfinished jobs....
+6626: sa_sigaction;
+6627:       |                         ^
+6628: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/bsd/sys/signal.h:435:27: warning: identifier '__sigaction_u' is reserved because it starts with '__' [-Wreserved-identifier]
+6629:   435 |         union __kern_sigaction_u __sigaction_u;  /* signal phandler */
+6630:       |                                  ^
+6655: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/bsd/sys/_types.h:71:25: warning: identifier '__darwin_mode_t' is reserved because it starts with '__' [-Wreserved-identifier]
+6656:    71 | typedef __uint16_t      __darwin_mode_t;        /* [???] Some file attributes */
+6657:       |                         ^
+6658: make[11]: *** [mac_audit.o] Error 1
+6659:      INSTALLHDR machine_types.defs
+6660: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/bsd/sys/_types.h:72:25: warning: identifier '__darwin_off_t' is reserved because it starts with '__' [-Wreserved-identifier]
+6661:    72 | typedef __int64_t       __darwin_off_t;         /* [???] Used for file sizes */
+6662:       |                         ^
+6663: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/bsd/sys/_types.h:73:25: warning: identifier '__darwin_pid_t' is reserved because it starts with '__' [-Wreserved-identifier]
+6669: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/bsd/sys/malloc.h:88:
+6670: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/mach/vm_types.h:86:8: warning: identifier '_vm_map' is reserved because it starts with '_' at global scope [-Wreserved-identifier]
+6671:    86 | st     INSTALLHDR aes.h
+6672: ruct _vm_ma [???make[10]: *** [build_all] Error 2
+6673: p] signal set;
+6674:       |        ^
+6675:  */
+6676:       |                         ^
+6677: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/bsd/sys/_types.h:75:25: warning: identifier '__darwin_suseconds_t' is reserved because it starts with '__' [-Wreserved-identifier]
+6678:    75 | typedef __int32_t       __darwin_suseconds_t;   /* [???] microseconds */
+6679:       |                         ^
+6680: make[9]: *** [do_all] Error 2
+6681: make[11]: *** [bootstrap.cpo] Error 1
+6682: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/bsd/sys/_types.h:76:25: warning: identifier '__darwin_uid_t' is reserved because it starts with '__' [-Wreserved-identifier]
+6683:    76 | typedef __uint32_t      __darwin_uid_t;         /* [???] user IDs */
+6684:       |                         ^
+6685: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/bsd/sys/_types.h:77:25: warning: identifier '__darwin_useconds_t' is reserved because it starts with '__' [-Wreserved-identifier]
+6686:    77 | typedef __uint32_t      __darwin_useconds_t;make[8]: *** [build_all] Error 2
+6687:     /* [???] microseconds */
+6688:       |                         ^
+6689: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/bsd/sys/_types.h:79:25: warning: identifier '__darwin_uuid_t' is reserved because it starts with '__' [-Wreserved-identifier]
+6690:    79 | typedef unsigned char   __darwin_uuid_t[16];
+6691:       |                         ^
+6692: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/bsd/sys/_types.h:80:17: warning: identifier '__darwin_uuid_string_t' is reserved because it starts with '__' [-Wreserved-identifier]
+6693:    80 | typedef char    __darwin_uuid_string_t[37];
+6694:       |                 ^
+6695: make[10]: *** [build_all] Error 2make[7]: *** [build_all_recurse_into_conf] Error 2
+6696: 
+6697: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/bsd/dev/random/randomdev.c:31:
+6698: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/bsd/sys/systm.h:105:
+6699: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/bsd/sys/malloc.h:89:
+6700: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/kern/kalloc.h:65:
+6708: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/iokit/IOKit/IORPC.h:37     INSTALLHDR boot.h
+6709: x)
+6710:       | ^
+6711: make[6]: *** [build_all_recurse_into_security] Error 2
+6712: :
+6713: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/mach/message.h:754:
+6714: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/kern/debug.h:32:
+6715: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/kern/kcdata.h:246:
+6716: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/string.h:44:
+6722: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/libkern/libkern/arm/OSByteOrder.h:15:1: warning: identifier '_OSSwapInt16' is reserved because it starts with '_' followed by a capital letter [-Wreserved-identifier]
+6723:    15 | _OSSwapInt16(
+6724:       | ^
+6725: make[9]: *** [do_all] Error 2
+6726: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/bsd/dev/random/randomdev.c:31:
+6727: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/bsd/sys/systm.h:105:
+6728: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/bsd/sys/malloc.h:89:
+6729: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/kern/kalloc.h:65:
+6730: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/kern/zalloc.h:72:
+6739:       | ^
+6740: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/mach/message.h:757:/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/libkern/libkern/arm/OSByteOrder.h:41:1: warning: identifier '_OSSwapInt64' is reserved because it starts with '_' followed by a capital letter [-Wreserved-identifier]
+6741:    41 | _OSSwamake[8]: 15: note: expanded from macro 'round_msg_overflow'
+6742:   757*** [build_all] Error 2pI |          nt64(
+6743:              bool| ^
+6744: 
+6745: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/libkern/libkern/arm/OSByteOrder.h:64:8: warning: identifier '_OSUnalignedU16' is reserved because it starts with '_' followed by a capital letter [-Wreserved-identifier]
+6746:    64 | struct _OSUnalignedU16 {
+6747:       |        ^
+6771: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/mach/mach_types.h:80:
+6772: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/mach/host_info.h:67:
+6773: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/mach/vm_statistics.h:399:6: warning: identifier '__vmkf_unused' is reserved because it starts with '__' [-Wreserved-identifier]
+6774:   make[7]: *** [build_all_recurse_into_conf] Error 2
+6775: 399 |             __vmkf_unused:9;
+6776:       |             ^
+6777:      INSTALLHDR IOInterruptDispatchSource.iig
+6778: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/mach/vm_statistics.h:432:6: warning: identifier '__vmnekf_unused' is reserved because it starts with '__' [-Wreserved-identifier]
+6779:   432 |         make[6]: *** [build_all_recurse_into_libsa] Error 2
+6780:     __vmnekf_unused:28;
+6781:       |             ^
+6782: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/bsd/dev/random/randomdev.c:31:
+6783: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/bsd/sys/systm.h:105:
+6784: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/bsd/sys/malloc.h:89:
+7092: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/mach/thread_status.h:76:
+7093: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/mach/machine/thread_status.h:35:
+7094: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/mach/arm/thread_status.h:446:
+7095: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/arm64/proc_reg.h:33:10: fatal error: 'arm64/native_apple_sysregs.h' file not found
+7096:    33 | #include <arm64/native_apple_sysregs.h>
+7097:       |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+7098: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/iokit/Kernel/IOUserServer.cpp:30:
+7099: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/iokit/IOKit/IOKitServer.h:43:
+7100: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/iokit/IOKit/IOTypes.h:38:
+7123: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/mach/thread_status.h:76:
+7124: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/mach/machine/thread_status.h:35:
+7125: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/mach/arm/thread_status.h:446:
+7126: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/arm64/proc_reg.h:33:10: fatal error: 'arm64/native_apple_sysregs.h' file not found
+7127:    33 | #include <arm64/native_apple_sysregs.h>
+7128:       |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+7129:      INSTALLHDR protos.h
+7130:      INSTALLHDR atomic.h
+7131:      INSTALLHDR aesxts.h
+7133:      INSTALLHDR IOMemoryDescriptor.iig
+7134: 84 warnings and 1 error generated.
+7135:      INSTALLHDR fat.h
+7136: make[11]: *** [OSSerialize.cpo] Error 1
+7137: make[10]: *** [build_all] Error 2
+7138: make[9]: *** [do_all] Error 2
+7139:      INSTALLHDR sdt.h
+7140: make[8]: *** [build_all] Error 2
+7141: make[7]: *** [build_all_recurse_into_conf] Error 2
+7142: make[6]: *** [build_all_recurse_into_libkern] Error 2
+7143:      INSTALLHDR OSBoundedArrayRef.h
+7144:     SYMSETPLIST IOKit (arm64)
+7145:      INSTALLHDR pexpert.h
+7146: 155 warnings and 1 error generated.
+7147:      INSTALLHDR audit.h
+7148:      INSTALLHDR base.h
+7149: make[11]: *** [randomdev.o] Error 1
+7150: make[10]: *** [build_all] Error 2
+7151: make[9]: *** [do_all] Error 2
+7152:      INSTALLHDR IOMemoryMap.iig
+7153: make[8]: *** [build_all] Error 2
+7154: make[7]: *** [build_all_recurse_into_conf] Error 2
+7155: make[6]: *** [build_all_recurse_into_bsd] Error 2
+7156:      INSTALLHDR AppleMacIO.h
+7157:      INSTALLHDR sdt_isa.h
+7158:      INSTALLHDR fixup-chains.h
+7159:      INSTALLHDR OSBoundedPtr.h
+7160:      INSTALLHDR boot.h
+7169:      INSTALLHDR atomic.h
+7170:      INSTALLHDR IOServiceNotificationDispatchSource.iig
+7171: 84 warnings and 1 error generated.
+7172: make[11]: *** [IOUserServer.cpo] Error 1
+7173:     SYMSETPLIST Mach (arm64)
+7174: make[10]: *** [build_all] Error 2
+7175:      INSTALLHDR nlist.h
+7176: make[9]: *** [do_all] Error 2
+7177:      INSTALLHDR AppleNMI.h
+7178:      INSTALLHDR asm.h
+7179: make[8]: *** [build_all] Error 2
+7180: make[7]: *** [build_all_recurse_into_conf] Error 2
+7181: make[6]: *** [build_all_recurse_into_iokit] Error 2
+7182:      INSTALLHDR OSCollection.h
+7183:      INSTALLHDR pexpert.h
+7184:      INSTALLHDR IOUserClient.iig
+7185:      INSTALLHDR base.h
+7186:      INSTALLHDR boolean.h
+72057:  e r,       35_gi&:
+72058: | st/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/osfmk/arm/cpu_data_internal.h e__] etc sw_:Vp4ideo in"                                        ^
+72059: i:)
+72060:        231: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/osfmk/ipc/ipc_port.h| 19n(;z75:_error:;s1 A
+72061: ^
+72062: :i_  \d
+72063:       _      e t268t le:| A RG  warning: _,:33:note: (v| In file included from  uexpanded from macro '_os_atomic_c11_op' i            ^CmP'_Static_assert' is incompatible with C standards before C11 [-Wpre-c11-compat]
+72064: a
+72065: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/osfmk/kdp/ml/arm/kdp_machdep.c:32:
+380348: sh | s_c  RGS_ a 89:
+380349: t ,i192_#o cEz a | iiea_t#svon n
+380350:  n      t| In file included from 1oi                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~Kto)dA(/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/osfmk/kern/task.h_afS_Da ; a_s 
+380351: _VAt* d )   :_stvnM;m8 oid  ***\s
+380352: _i_dAs1226A122
+380353: Cre      RsrsO(__ptAo |         r         o_c c  A_:
+380354: uVR|  N tGS,_ r_tA_ In file included from m timD_i__     ^,/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/osfmk/kern/cpu_data.h
+380355: _q  siAcc a e) o;;id      | /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/san/san/kasan.hnz            ^
+380356: 
+498091:       /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/osfmk/mach/mach_traps.h:769ory(|                                                               ~~~~
+498092:       |                                                               %llx
+498093:  :8: warning: identifier '_kernelrpc_mach_port_extract_member_args' is reserved because it starts with '_' at global scope [-Wreserved-identifier]
+498094:  __obj21 | typedef uns  769i | struct82  e/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/bsd/arm/_types.hgned int            _:80:2941 |                          _k    "*** INVALID PAGE ***\n",
+498095: 33: warning: identifier '__darwin_wchar_t' is reserved because it starts with '__' [-Wreserved-identifier]
+498096:  2942 |                             (long long)vaddr);
+498097:       |                             ^~~~~~~~~~~~~~~~
+498098: ect1_unused_bits:16;
+498099:       |             ^
+588376:    uet/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/bsd/sys/_types.h|  1   8175_:63:25
+588377: a | t | tyo_t l:m#i        y            ^6npede/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/EXTERNAL_HEADERS/stdatomic.h  dkwarning: f i:c/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/osfmk/arm64/platform_tests_asm.s_identifier '__darwin_ino64_t' is reserved because it starts with '__' [-Wreserved-identifier]_109ef
+588378: : :i9 :     <scratch space>
+588379:  _i 37:6p: n_  warning: te:     e'_Atomic' is incompatible with C standards before C11 [-Wpre-c11-compat]derror:  *) n151
+588380: 63 |   :1  wor tos_ca  :e a tto_yaexpected writable system register or pstate f 109pmi | tse_t_Aqu3d note: 2expanded from heretee
+588381: _tt_ oomir ufi yc msr HID8, x0c_(  
+588382: ileop engtdu
+588383:   _o  ie _a g 151 | n_d  lt_ui  to__dlpbne_nonngo u f(&t_thag  ^
+588384: 6t)4a4smator_tr ie_;ntak ma 
+588401:    pdIn file included from ye/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/osfmk/arm/cpu_data_internal.h:e)     pedefped _A         46:
+588402: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.h:179o 63d s:
+588403: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/osfmk/kern/queue.h:
+588404: make[11]: f*** [platform_tests_asm.o] Error 1In file included from 
+588405: e: o ect)/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/osfmk/kern/thread.hoo ;nfamake[11]: tmfo*** Waiting for unfinished jobs....at
+588406: iodmc s231r 6
+588407: (:      :i1u142| _4A               ^(p t ) :
+588408: c_on :bi*size  */ 
+588409: 
+588410: o/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/libkern/os/atomic_private.h \
+591099: 
+591100: :rgs {
+591101: 8/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/osfmk/mach/arm/_structs.h:534:6: warning: identifier '__pagein_error' is reserved because it starts with '__' [-Wreserved-identifier]
+591102:   534 |         int __pagein_error:;
+591103:       |             ^
+591104:  /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/libkern/libkern/arm/OSByteOrder.h:72:8: warning: identifier '_OSUnalignedU64' is reserved because it starts with '_' followed by a capital letter [-Wreserved-identifier]
+591105:    72t | n      warning: struct rt_loidentifier '_processor_statistics_np' is reserved because it starts with '_' at global scope [-Wreserved-identifier]
+591106: a_t  278 r __as | str_O | _       ^an_/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/osfmk/mach/vm_param.h:ks392ucSdUernn:teal2
+591107:       | ^
+604222: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/osfmk/kern/startup.h:282:2: note: expanded from macro '__STARTUP1'
+604223:   282 |         __startup_ ## subsystem ## _entry_ ## name ## _ ## line = { \
+604224:       |         ^
+604225: <scratch space>:34:1: note: expanded from here
+604226:    34 | __startup_LOCKS_entry_lck_mtx_startup_init_172
+604227:       | ^
+604228: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/osfmk/vm/vm_fourk_pager.c:347:2: warning: identifier '__next' is reserved because it starts with '__' [-Wreserved-identifier]
+604229:   347 |         queue_remove(&fourk_pager_queue,
+604230:       |         ^
+604231: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/osfmk/kern/queue.h:924:16: note: expanded from macro 'queue_remove'
+604232:   924 |         queue_entry_t   __next, __prev;                         \
+604233:       |                         ^
+604234: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/osfmk/vm/vm_fourk_pager.c:347:2: warning: identifier '__prev' is reserved because it starts with '__' [-Wreserved-identifier]
+604235: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/osfmk/kern/queue.h:924:24: note: expanded from macro 'queue_remove'
+604236:   924 |         queue_entry_t   __next, __prev;                         \
+604237:       |                                 ^
+604238: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/osfmk/vm/vm_fourk_pager.c:446:3: warning: '_Static_assert' is incompatible with C standards before C11 [-Wpre-c11-compat]
+604239:   446 |                 kfree(pager, sizeof(*pager));
+604240:       |                 ^
+604241: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/osfmk/kern/kalloc.h:355:2: note: expanded from macro 'kfree'
+604242:   355 |         _Static_assert(sizeof(elem) == sizeof(void *), "elem isn't pointer sized"); \
+604243:       |         ^
+604244: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/osfmk/vm/vm_fourk_pager.c:446:3: warning: identifier '__kfree_eptr' is reserved because it starts with '__' [-Wreserved-identifier]
+604245: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/osfmk/kern/kalloc.h:356:14: note: expanded from macro 'kfree'
+604246:   356 |         __auto_type __kfree_eptr = &(elem); \
+604247:       |                     ^
+604248: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/osfmk/vm/vm_fourk_pager.c:446:3: warning: identifier '__kfree_elem' is reserved because it starts with '__' [-Wreserved-identifier]
+604249: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/osfmk/kern/kalloc.h:357:14: note: expanded from macro 'kfree'
+604250:   357 |         __auto_type __kfree_elem = *__kfree_eptr; \
+604251:       | 630 warnings generated.
+604252:                     ^
+604253: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/osfmk/vm/vm_fourk_pager.c:446:3: warning: identifier '__kfree_size' is reserved because it starts with '__' [-Wreserved-identifier]
+604254: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/osfmk/kern/kalloc.h:358:14: note: expanded from macro 'kfree'
+604255:   358 |         __auto_type __kfree_size = (size); \
+604256:       |                     ^
+604257: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/osfmk/vm/vm_fourk_pager.c:631:4: warning: identifier '__next' is reserved because it starts with '__' [-Wreserved-identifier]
+604258:   631 |                         queue_enter_first(&trim_queue,
+604259:       |                         ^
+604260: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/osfmk/kern/queue.h:798:16: note: expanded from macro 'queue_enter_first'
+604261:   798 |         queue_entry_t __next;                                   \
+604262:       |                       ^
+604263: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/osfmk/vm/vm_fourk_pager.c:653:3: warning: identifier '__next' is reserved because it starts with '__' [-Wreserved-identifier]
+604264:   653 |                 queue_remove_first(&trim_queue,
+604265:       |                 ^
+604266: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/osfmk/kern/queue.h:956:16: note: expanded from macro 'queue_remove_first'
+604267:   956 |         queue_entry_t   __next;                                 \
+604268:       |                         ^
+604269: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/osfmk/vm/vm_fourk_pager.c:737:2: warning: identifier '__next' is reserved because it starts with '__' [-Wreserved-identifier]
+604270:   737 |         queue_enter_first(&fourk_pager_queue,
+604271:       |         ^
+604272: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/osfmk/kern/queue.h:798:16: note: expanded from macro 'queue_enter_first'
+604273:   798 |         queue_entry_t __next;                                   \
+604274:       |                       ^
+604275: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/osfmk/vm/vm_fourk_pager.c:983:10: warning: format specifies type 'unsigned int' but the argument has type 'int' [-Wformat]
+604276:   978 |                                             "(%p,0x%llx+0x%lx+0x%04x): "
+604277:       |                                                                 ~~~~
+604278:       |                                                                 %04x
+604279:   979 |                                             "ZERO\n",
+604280:   980 |                                             pager,
+604281:   981 |                                             offset,
+604282:   982 |                                             cur_offset,
+604283:   983 |                                             ((sub_page - sub_page_idx)
+604284:       |                                             ^~~~~~~~~~~~~~~~~~~~~~~~~~
+604285:   984 |                                             * FOURK_PAGE_SIZE));
+604286:       |                                             ~~~~~~~~~~~~~~~~~~
+604287: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/osfmk/vm/vm_fourk_pager.c:1047:9: warning: format specifies type 'unsigned int' but the argument has type 'kern_return_t' (aka 'int') [-Wformat]
+604288:  1045 |                                 panic("fourk_pager_data_request: "
+604289:       |                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+604290:  1046 |                                     "vm_fault_page() unexpected error 0x%x\n",
+604291:       |                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+604292:  1047 |                                     kr);
+604293:       |                                     ^~~
+604294: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/osfmk/kern/debug.h:530:27: note: expanded from macro 'panic'
+604295:   530 |                 (panic)(# ex, ## __VA_ARGS__); \
+604296:       |                         ~~~~     ^~~~~~~~~~~
+604297: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers/source-overlay/src/Kernel/xnu/osfmk/vm/vm_fourk_pager.c:1124:9: warning: format specifies type 'unsigned int' but the argument has type 'int' [-Wformat]
+604298:  1117 |                                     "(%p,0x%llx+0x%lx+0x%04x): "
+604299:       |                                                         ~~~~
+604300:       |                                                         %04x
+604301:  1118 |                                     "backed by [%p:0x%llx]: "
+604302:  1119 |                                     "[0x%016llx 0x%016llx] "
+604303:  1120 |                                     "code_signed=%d "
+604304:  1121 |                                     "cs_valid=%d cs_tainted=%d cs_nx=%d\n",
+604305:  1122 |                                     pager,
+604306:  1123 |                                     offset, cur_offset,
+604307:  1124 |                                     (sub_page - sub_page_idx) * FOURK_PAGE_SIZE,
+604308:       |                                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+604309: 623 warnings generated.
+604310: 1020 warnings generated.
+604311: make[10]: *** [build_all] Error 2
+604312: make[9]: *** [do_all] Error 2
+604313: make[8]: *** [build_all] Error 2
+604314: make[7]: *** [build_all_recurse_into_conf] Error 2
+604315: make[6]: *** [build_all_recurse_into_osfmk] Error 2
+604316: make[5]: *** [build_all_bootstrap_DEVELOPMENT^ARM64^T8103] Error 2
+604317: make[4]: *** [install] Error 2
+604318: make[3]: *** [src/Kernel/xnu/xnu_build/src/xnu-stamp/xnu-build] Error 2
+604319: make[2]: *** [src/Kernel/xnu/CMakeFiles/xnu.dir/all] Error 2
+604320: make[1]: *** [src/Kernel/xnu/CMakeFiles/xnu.dir/rule] Error 2
+604321: make: *** [xnu] Error 2

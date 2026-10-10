@@ -1,0 +1,21 @@
+Actual native arm_init.o diagnostic helper: selected disassembly only.
+No M1 execution was performed.
+Raw disassembly path/hash are recorded in result.json.
+_blauos_native_early_diagnostics:
+0000000000001850	pacibsp
+0000000000001854	sub	sp, sp, #0xf0
+0000000000001858	stp	x22, x21, [sp, #0xc0]
+000000000000185c	stp	x20, x19, [sp, #0xd0]
+0000000000001860	stp	x29, x30, [sp, #0xe0]
+0000000000001864	add	x29, sp, #0xe0
+0000000000001a00	adr	x21, #0
+0000000000001a58	mrs	x8, CurrentEL
+0000000000001a70	mrs	x8, SCTLR_EL1
+0000000000001a74	mrs	x9, TCR_EL1
+0000000000001a8c	mrs	x8, TTBR0_EL1
+0000000000001a90	mrs	x9, TTBR1_EL1
+0000000000001a94	mrs	x10, MAIR_EL1
+0000000000001aac	mrs	x8, CNTFRQ_EL0
+0000000000001ab0	mrs	x9, CNTVCT_EL0
+0000000000001ab4	mrs	x10, CNTV_CTL_EL0
+0000000000001ab8	mrs	x11, CNTV_CVAL_EL0

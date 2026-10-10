@@ -1,0 +1,25 @@
+{
+  "argv": [
+    "cmake",
+    "-S",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/source-overlay",
+    "-B",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2",
+    "-G",
+    "Unix Makefiles",
+    "-DCMAKE_POLICY_VERSION_MINIMUM=3.5",
+    "-DPUREDARWIN_ARCH=arm64",
+    "-DCMAKE_OSX_ARCHITECTURES=arm64",
+    "-DCMAKE_OSX_SYSROOT=/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+    "-DCMAKE_C_COMPILER=/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+    "-DCMAKE_CXX_COMPILER=/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++",
+    "-DPUREDARWIN_ARM64_MACHINE_CONFIG=T8103",
+    "-DPUREDARWIN_XNU_KERNEL_CONFIG=DEVELOPMENT",
+    "-DPUREDARWIN_ENABLE_KERNEL=ON",
+    "-DPUREDARWIN_ENABLE_LIBRARIES=ON",
+    "-DPUREDARWIN_ENABLE_TOOLS=ON",
+    "-DPUREDARWIN_ENABLE_USERSPACE=OFF",
+    "-DPUREDARWIN_ENABLE_PROJECTS=OFF"
+  ],
+  "cwd": "/Users/joeblau/Developer/joeblau/src/blauos"
+}

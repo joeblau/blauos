@@ -1,0 +1,1 @@
+{"output": ".blauos/build/native-lab/wrong-host-final.json", "role": "test-machine", "model": "Mac15,8", "matches_target": false, "readiness": "wrong-hardware"}

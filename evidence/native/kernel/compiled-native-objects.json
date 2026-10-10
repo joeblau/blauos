@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "status": "genuine_native_objects_compiled_not_linked_or_executed",
+  "build_receipt": "evidence/native/kernel/puredarwin-t8103-ctrr-interface/result.json",
+  "receipt_sha256": "b555a8dfa9a06f66ae0f0bff46b2ce20b875d4cd0fb45ea9d84416e5958b6780",
+  "objects": [
+    {
+      "path": ".blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_T8103/osfmk/DEVELOPMENT/arm_init.o",
+      "sha256": "195dbd2f23e51014cbcabbf0661e5644d19e7763ca62db564439cddcb3dafcfa",
+      "bytes": 135448,
+      "cpu_subtype": "0xc0000002",
+      "filetype": 1,
+      "architecture": "arm64e"
+    },
+    {
+      "path": ".blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_T8103/osfmk/DEVELOPMENT/amcc_rorgn.o",
+      "sha256": "6e7b5e35b58f39c71c2182eaf476ed6931d311c9617cd17905011f50e07828a2",
+      "bytes": 99240,
+      "cpu_subtype": "0xc0000002",
+      "filetype": 1,
+      "architecture": "arm64e"
+    },
+    {
+      "path": ".blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_T8103/osfmk/DEVELOPMENT/start.o",
+      "sha256": "adeba6faa03856de181b5e99d2f56f2a0f5f3a65d11c623ff113f1d26a53a959",
+      "bytes": 19280,
+      "cpu_subtype": "0xc0000002",
+      "filetype": 1,
+      "architecture": "arm64e"
+    },
+    {
+      "path": ".blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_T8103/osfmk/DEVELOPMENT/kpc.o",
+      "sha256": "32a7b367229d249018d158e5227abdd94191df84c1e540071946985b1b13a579",
+      "bytes": 103368,
+      "cpu_subtype": "0xc0000002",
+      "filetype": 1,
+      "architecture": "arm64e"
+    },
+    {
+      "path": ".blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_T8103/osfmk/DEVELOPMENT/machine_routines.o",
+      "sha256": "7ce1e00b75137901cafb6b72821fd73c66a72df78f55118e9deb5750c9a06618",
+      "bytes": 204600,
+      "cpu_subtype": "0xc0000002",
+      "filetype": 1,
+      "architecture": "arm64e"
+    },
+    {
+      "path": ".blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_T8103/osfmk/DEVELOPMENT/sleh.o",
+      "sha256": "fa0b2fb86e80bdd97707fe6a8c25967e9026c0eb2172da78883f02eb14a2e4f7",
+      "bytes": 161144,
+      "cpu_subtype": "0xc0000002",
+      "filetype": 1,
+      "architecture": "arm64e"
+    },
+    {
+      "path": ".blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_T8103/osfmk/DEVELOPMENT/platform_tests.o",
+      "sha256": "a52193a080d469d77ee0bfdc8628b4c27d101b98739722b871e9aa423eccb836",
+      "bytes": 217896,
+      "cpu_subtype": "0xc0000002",
+      "filetype": 1,
+      "architecture": "arm64e"
+    }
+  ],
+  "disassembly": {
+    "argv": [
+      "/usr/bin/xcrun",
+      "llvm-objdump",
+      "--macho",
+      "--disassemble",
+      ".blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_T8103/osfmk/DEVELOPMENT/amcc_rorgn.o"
+    ],
+    "raw_path": ".blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/amcc_rorgn.disassembly.txt",
+    "raw_sha256": "d21c2dc69957de079676b150684e9df336a898c14412a66a9c3c936b4962fc09",
+    "excerpt_path": "evidence/native/kernel/ctrr-compiled-disassembly.txt",
+    "excerpt_sha256": "2f7d36cd927e4e16fa6d29e7da518768f00d0ffe6c963ce53613cf8fa5249934",
+    "function": "_rorgn_lockdown"
+  },
+  "ctrr_source_interface": "ctrr-interface.json",
+  "physical_execution_verified": false
+}

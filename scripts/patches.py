@@ -6,7 +6,7 @@ from pathlib import Path
 import subprocess
 import sys
 import tempfile
-from blauos import ROOT, load_manifest, run
+from blauos import ROOT, clean_git_environment, load_manifest, run, verify_source
 
 def series(directory):
     directory = Path(directory).resolve()
@@ -30,7 +30,8 @@ def apply_patches(worktree, patches):
 
 def git_diff(worktree):
     # Preserve bytes: decoding would change a patch identity for non-UTF-8 paths.
-    return subprocess.check_output(['git', 'diff', '--binary', 'HEAD', '--'], cwd=worktree)
+    return subprocess.check_output(['git', 'diff', '--binary', 'HEAD', '--'],
+                                   cwd=worktree, env=clean_git_environment())
 
 def prepare(source, revision, worktree, patches):
     worktree = Path(worktree).resolve()
@@ -51,11 +52,13 @@ def main():
     parser.add_argument('--worktree', default=str(ROOT / '.blauos/worktrees/xnu'))
     parser.add_argument('--output', help='Export the exact uncommitted diff to this new file')
     args = parser.parse_args()
-    source = Path(args.source).resolve()
+    source = Path(args.source)
     data = load_manifest(args.manifest)
     entry = next(s for s in data['sources'] if s['name'].lower() == args.source_name.lower())
-    if run(['git','rev-parse','HEAD'], cwd=source) != entry['revision']:
-        raise ValueError('Source HEAD differs from locked commit')
+    # Validate the pristine locked source. The explicitly patched worktree is
+    # compared against the ordered series below and must not be required clean.
+    verify_source(entry, source)
+    source = source.resolve()
     patches = series(args.series_dir)
     if args.command == 'apply':
         worktree = prepare(source, entry['revision'], args.worktree, patches)

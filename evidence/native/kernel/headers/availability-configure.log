@@ -1,0 +1,18 @@
+-- SRCROOT="/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/availabilityversions"
+-- DSTROOT="/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/headers/availability/dst"
+-- OBJROOT="/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/headers/availability/obj"
+-- SYMROOT="/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/headers/availability/sym"
+-- APPLE_INTERNAL="/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/headers/availability/dst/AppleInternal"
+-- CMAKE_CURRENT_BINARY_DIR="/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/headers/availability/obj"
+-- USR_LOCAL_LIBEXEC="/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/headers/availability/dst/usr/local/libexec"
+-- USR_LOCAL_INCLUDE="/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/headers/availability/dst/usr/local/include"
+-- USR_INCLUDE="/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/headers/availability/dst/usr/include"
+-- RUNTIME="/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/headers/availability/dst/Runtime/usr/include"
+-- RUNTIME_LOCAL="/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/headers/availability/dst/Runtime/usr/local/include"
+-- CONFIG_EXCLAVEKIT=""
+-- CONFIG_EXCLAVECORE=""
+-- CONFIG_KERNELKIT=""
+-- DRIVERKIT="0"
+-- Configuring done (0.1s)
+-- Generating done (0.0s)
+-- Build files have been written to: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/headers/availability/obj

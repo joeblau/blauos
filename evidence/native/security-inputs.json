@@ -1,0 +1,328 @@
+{
+  "schema_version": 1,
+  "kind": "public-native-security-input-audit",
+  "checked_on": "2026-10-10",
+  "scope": "Read-only research into the exact missing TrustCache and CoreEntitlements V2 inputs for the pinned Apple XNU T8103 build.",
+  "status": "no_verified_matching_public_header_set_found",
+  "source_lock_sha256": "8022bbbfb33204b56bb3297cd8cbb39fb6c08ea65c476492d99462f7edfe3657",
+  "acceptance": {
+    "research_completed": true,
+    "matching_input_closure_verified": false,
+    "native_build_verified": false,
+    "physical_gate_passed": false
+  },
+  "methodology": {
+    "primary_publishers_only": true,
+    "public_repo_catalogs": {
+      "apple_oss_distributions_public_repositories_observed": 509,
+      "apple_public_repositories_observed": 191,
+      "matching_standalone_TrustCache_or_CoreEntitlements_repository_found": false
+    },
+    "tree_matching": "Inspected complete recursive GitHub trees for paths containing TrustCache/CoreEntitlements and the exact API.h/Kernel.h paths; inspected actual matching header contents and XNU consumers.",
+    "negative_claim_boundary": "Absence applies to the explicitly inspected public catalogs, pinned trees and path histories, not to all Apple internal distributions or uninspected KDK contents.",
+    "api_responses_archived": false,
+    "source_content_copied": false,
+    "new_build_inputs_added": false,
+    "source_lock_changed": false,
+    "proprietary_sdk_or_kdk_downloaded": false
+  },
+  "pinned_xnu": {
+    "repository": "apple-oss-distributions/xnu",
+    "revision": "ac9718fb1af618d5ce8678d0dc6e8a58f252216f",
+    "tag": "xnu-12377.121.6",
+    "tree_sha1": "cba06fba7c9d041633c55cfa3e3130fc367a5a1b",
+    "recursive_entry_count": 6510,
+    "recursive_api_truncated": false,
+    "entry_count_cross_checked_with_local_git_tree": true,
+    "missing_header_paths": [
+      "EXTERNAL_HEADERS/TrustCache/API.h",
+      "EXTERNAL_HEADERS/CoreEntitlements/V2/API.h",
+      "EXTERNAL_HEADERS/CoreEntitlements/V2/Kernel.h"
+    ],
+    "legacy_core_entitlements_header_count": 12,
+    "legacy_core_entitlements_header_paths": [
+      "EXTERNAL_HEADERS/CoreEntitlements/CoreEntitlements.h",
+      "EXTERNAL_HEADERS/CoreEntitlements/CoreEntitlementsPriv.h",
+      "EXTERNAL_HEADERS/CoreEntitlements/Entitlements.h",
+      "EXTERNAL_HEADERS/CoreEntitlements/EntitlementsPriv.h",
+      "EXTERNAL_HEADERS/CoreEntitlements/Errors.h",
+      "EXTERNAL_HEADERS/CoreEntitlements/Index.h",
+      "EXTERNAL_HEADERS/CoreEntitlements/KernelUtils.hpp",
+      "EXTERNAL_HEADERS/CoreEntitlements/QueryHelpers.h",
+      "EXTERNAL_HEADERS/CoreEntitlements/Result.h",
+      "EXTERNAL_HEADERS/CoreEntitlements/Runtime.h",
+      "EXTERNAL_HEADERS/CoreEntitlements/Serialization.h",
+      "EXTERNAL_HEADERS/CoreEntitlements/der_vm.h"
+    ],
+    "tree_api": "https://api.github.com/repos/apple-oss-distributions/xnu/git/trees/ac9718fb1af618d5ce8678d0dc6e8a58f252216f?recursive=1",
+    "inspected_files": [
+      {
+        "path": "README.md",
+        "sha256": "7fad7a72675b4ae7adffd29df3332ea5bff450e1c9a83ed71ca5cfd35683fb6d",
+        "bytes": 32473,
+        "url": "https://github.com/apple-oss-distributions/xnu/blob/ac9718fb1af618d5ce8678d0dc6e8a58f252216f/README.md"
+      },
+      {
+        "path": "libkern/libkern/amfi/amfi.h",
+        "sha256": "268df0e0a8fc1ed25b5d4dcd5497bd5255ec524439da4f718f4f19b1353f0ce7",
+        "bytes": 10755,
+        "url": "https://github.com/apple-oss-distributions/xnu/blob/ac9718fb1af618d5ce8678d0dc6e8a58f252216f/libkern/libkern/amfi/amfi.h"
+      },
+      {
+        "path": "osfmk/vm/pmap_cs.h",
+        "sha256": "76fccfc85cd6b2cffabd367279acd41ed4e022f86cbc8986257113e36f707860",
+        "bytes": 27677,
+        "url": "https://github.com/apple-oss-distributions/xnu/blob/ac9718fb1af618d5ce8678d0dc6e8a58f252216f/osfmk/vm/pmap_cs.h"
+      },
+      {
+        "path": "osfmk/arm/pmap/pmap.c",
+        "sha256": "90312d444fae75ef692106aa0ce755bfcf046395fe39d0c8bda72077d2adb9f0",
+        "bytes": 460556,
+        "url": "https://github.com/apple-oss-distributions/xnu/blob/ac9718fb1af618d5ce8678d0dc6e8a58f252216f/osfmk/arm/pmap/pmap.c"
+      },
+      {
+        "path": "makedefs/MakeInc.def",
+        "sha256": "36f6f4ed246da4d26bb4ffb6935de6160a276561c87a7cb8e19aaacc494eb29f",
+        "bytes": 56342,
+        "url": "https://github.com/apple-oss-distributions/xnu/blob/ac9718fb1af618d5ce8678d0dc6e8a58f252216f/makedefs/MakeInc.def"
+      }
+    ]
+  },
+  "matching_release": {
+    "repository": "apple-oss-distributions/distribution-macOS",
+    "revision": "83390100289cedfe669c31a96c94326d31afa1ed",
+    "tag": "macos-265",
+    "tree_sha1": "5d01aa8dad6d80529d54d7c8b3c86a5509c22357",
+    "release": "macOS 26.5",
+    "project_count": 171,
+    "catalog": {
+      "path": "release.json",
+      "blob_sha1": "83f7bf49951f7caa0bf84289596815276d05f705",
+      "sha256": "7878cf95a3511fad474e17dcd209375539772cfce2e37b3cd0660c1207621670",
+      "bytes": 10932,
+      "url": "https://github.com/apple-oss-distributions/distribution-macOS/blob/83390100289cedfe669c31a96c94326d31afa1ed/release.json"
+    },
+    "xnu_revision": "ac9718fb1af618d5ce8678d0dc6e8a58f252216f",
+    "standalone_missing_input_projects": [],
+    "security": {
+      "repository": "apple-oss-distributions/Security",
+      "revision": "97c3a4296c1ea06b0fe1877a7e616aa84450b5b2",
+      "tag": "Security-61901.120.67",
+      "tree_sha1": "f2174e4fd57c80ed9c933baa9c32af126979e333",
+      "recursive_entry_count": 17364,
+      "truncated": false,
+      "matching_header_paths": [],
+      "tree_api": "https://api.github.com/repos/apple-oss-distributions/Security/git/trees/97c3a4296c1ea06b0fe1877a7e616aa84450b5b2?recursive=1",
+      "observations_reused": true
+    }
+  },
+  "historical_trustcache": {
+    "repository": "apple-oss-distributions/xnu",
+    "revision": "aca3beaa3dfbd42498b42c5e5ce20a938e6554e5",
+    "tag": "xnu-8796.101.5",
+    "tree_sha1": "778f0b98fa60a3f079d43e5d286a27e47fc41445",
+    "tree_truncated": false,
+    "headers": [
+      {
+        "path": "EXTERNAL_HEADERS/TrustCache/API.h",
+        "blob_sha1": "d13cddf36560638696223559c210797fa0442f5d",
+        "sha256": "a8e2994a5b6ec61e3aaab6516d82041f629322a76bb4ee1339a172aaea14417a",
+        "bytes": 6632,
+        "url": "https://github.com/apple-oss-distributions/xnu/blob/aca3beaa3dfbd42498b42c5e5ce20a938e6554e5/EXTERNAL_HEADERS/TrustCache/API.h"
+      },
+      {
+        "path": "EXTERNAL_HEADERS/TrustCache/RawTypes.h",
+        "blob_sha1": "16b684e219975b21f954813cad13bc243d2f6fe0",
+        "sha256": "03e945ba48a3b3400012d42fc1b97fb70bc59835985c2921e8173369e40301bf",
+        "bytes": 2490,
+        "url": "https://github.com/apple-oss-distributions/xnu/blob/aca3beaa3dfbd42498b42c5e5ce20a938e6554e5/EXTERNAL_HEADERS/TrustCache/RawTypes.h"
+      },
+      {
+        "path": "EXTERNAL_HEADERS/TrustCache/Return.h",
+        "blob_sha1": "440a53c4f85a025155a9ac408b4f31acf04089d8",
+        "sha256": "d15cae97bb0c7cfa690b6ffa71805c7aa0c774e7c0bd23095d6684f564674b44",
+        "bytes": 3589,
+        "url": "https://github.com/apple-oss-distributions/xnu/blob/aca3beaa3dfbd42498b42c5e5ce20a938e6554e5/EXTERNAL_HEADERS/TrustCache/Return.h"
+      },
+      {
+        "path": "EXTERNAL_HEADERS/TrustCache/Types.h",
+        "blob_sha1": "f3412f3869c69d1d2e40a0f8883aa9e3f5b3c7ae",
+        "sha256": "68f179189fb0f5e37f6898c8a0daa80e44b4a05c5a7834e4ae68e05f1ef99c4a",
+        "bytes": 11720,
+        "url": "https://github.com/apple-oss-distributions/xnu/blob/aca3beaa3dfbd42498b42c5e5ce20a938e6554e5/EXTERNAL_HEADERS/TrustCache/Types.h"
+      },
+      {
+        "path": "EXTERNAL_HEADERS/TrustCache/TypesConfig.h",
+        "blob_sha1": "d93e8b09336ea508a968c563f2b2483e074e3cd4",
+        "sha256": "bb46daeff6efe7a7bc701741cbc73690b3ee5036aeac7096cbf269b751f0d1d3",
+        "bytes": 10421,
+        "url": "https://github.com/apple-oss-distributions/xnu/blob/aca3beaa3dfbd42498b42c5e5ce20a938e6554e5/EXTERNAL_HEADERS/TrustCache/TypesConfig.h"
+      }
+    ],
+    "introduced_public_path_at": {
+      "revision": "5c2921b07a2480ab43ec66f5b9e41cb872bc554f",
+      "tag": "xnu-8792.41.9"
+    },
+    "removed_public_paths_at": {
+      "revision": "1031c584a5e37aff177559b9f69dbd3c8c3fd30a",
+      "tag": "xnu-10002.1.13",
+      "parent_revision": "aca3beaa3dfbd42498b42c5e5ce20a938e6554e5",
+      "removed_header_count": 5,
+      "commit_api": "https://api.github.com/repos/apple-oss-distributions/xnu/commits/1031c584a5e37aff177559b9f69dbd3c8c3fd30a"
+    },
+    "compatibility": {
+      "old_amfi_interface_version": 6,
+      "current_amfi_interface_version": 7,
+      "old_trustcache_interface_version": 3,
+      "current_trustcache_interface_version": 4,
+      "delta": "Current AMFI TrustCacheInterface_t inserts queryGetUUID after queryGetConstraintCategory and before constructInvalid/checkRuntimeForUUID/extractModule/getModule/getUUID. Historical API.h lacks trustCacheQueryGetUUID.",
+      "all_TC_identifier_names_in_selected_current_consumers_present_in_old_headers": true,
+      "identifier_comparison_scope": [
+        "bsd/kern/kern_trustcache.c",
+        "osfmk/vm/pmap_cs.h",
+        "bsd/sys/trust_caches.h"
+      ],
+      "identifier_coverage_is_abi_proof": false,
+      "current_runtime_structure_layout_verified": false,
+      "matching_implementation_verified": false,
+      "compile_experiment_performed": false,
+      "decision": "Historical genuine headers are a possible isolated compatibility experiment only; they are not approved matching inputs."
+    }
+  },
+  "core_entitlements_v2": {
+    "public_xnu_exact_path_history": {
+      "api_path": "EXTERNAL_HEADERS/CoreEntitlements/V2/API.h",
+      "api_commits": [],
+      "kernel_path": "EXTERNAL_HEADERS/CoreEntitlements/V2/Kernel.h",
+      "kernel_commits": [],
+      "history_api_base": "https://api.github.com/repos/apple-oss-distributions/xnu/commits?path="
+    },
+    "legacy_query_context_type": "CEQueryContext_t",
+    "current_context_type": "CEContext_t",
+    "old_osentitlements_interface_version": 1,
+    "current_osentitlements_interface_version": 2,
+    "current_supports_v2": 1,
+    "concrete_layout_consumers": [
+      {
+        "path": "osfmk/vm/pmap_cs.h",
+        "lines": [
+          226,
+          248
+        ],
+        "reason": "Embeds CEContext_t profile_ctx_storage and entitlements_ctx_storage by value."
+      },
+      {
+        "path": "osfmk/arm/pmap/pmap.c",
+        "lines": [
+          13633,
+          13678,
+          13716
+        ],
+        "reason": "Allocates concrete CEContext_t/CEElement_t/CEBuffer_t objects and uses CEReturn_t, contextValueForKey, elementGetCEBuffer and contextInitWithTypeLegacy callbacks."
+      }
+    ],
+    "forward_declaration_or_legacy_alias_proven_compatible": false,
+    "matching_public_v2_headers_found": false
+  },
+  "private_cloud_compute": {
+    "repository": "apple/security-pcc",
+    "snapshots": [
+      {
+        "revision": "e3b4584d3caeb0b4244728a01fca50405101b42c",
+        "release_date": "2026-05-15",
+        "tree_sha1": "70043b1afee871c270b521505bb581e1be7b2de1",
+        "recursive_entry_count": 2166,
+        "truncated": false,
+        "matching_header_paths": [],
+        "xnu_source_paths": [],
+        "tree_api": "https://api.github.com/repos/apple/security-pcc/git/trees/e3b4584d3caeb0b4244728a01fca50405101b42c?recursive=1",
+        "observations_reused": true
+      },
+      {
+        "revision": "410883f7dfc76ab5e6f4f9c5d5543510b4ff7134",
+        "release_date": "2025-10-31",
+        "tree_sha1": "fb89e11a40ebfaa7ad45fab5ca23bd4b0a6b1c60",
+        "recursive_entry_count": 1857,
+        "truncated": false,
+        "matching_header_paths": [],
+        "xnu_source_paths": [],
+        "tree_api": "https://api.github.com/repos/apple/security-pcc/git/trees/410883f7dfc76ab5e6f4f9c5d5543510b4ff7134?recursive=1",
+        "observations_reused": true
+      },
+      {
+        "revision": "ec6f001d29a587b5e292531e59cfd65e7a19e6c8",
+        "release_date": "2025-04-11",
+        "tree_sha1": "32edfd43cb44340552e5ac026aed710e09e6c149",
+        "recursive_entry_count": 1321,
+        "truncated": false,
+        "matching_header_paths": [],
+        "xnu_source_paths": [],
+        "tree_api": "https://api.github.com/repos/apple/security-pcc/git/trees/ec6f001d29a587b5e292531e59cfd65e7a19e6c8?recursive=1",
+        "observations_reused": true
+      },
+      {
+        "revision": "d8b81dc0cd9eed682204ea1df71463f50e9c4ae0",
+        "release_date": "2024-10-24",
+        "tree_sha1": "a9e9ce64f1a992759dd9e3836a8f9e426c56107a",
+        "recursive_entry_count": 1296,
+        "truncated": false,
+        "matching_header_paths": [],
+        "xnu_source_paths": [],
+        "tree_api": "https://api.github.com/repos/apple/security-pcc/git/trees/d8b81dc0cd9eed682204ea1df71463f50e9c4ae0?recursive=1",
+        "observations_reused": true
+      }
+    ],
+    "matching_headers_found": false,
+    "software_foundations_url": "https://security.apple.com/documentation/private-cloud-compute/softwarefoundations",
+    "documentation_is_header_or_implementation_distribution": false,
+    "decision": "Published selected PCC components and architectural documentation do not supply the required kernel header closure."
+  },
+  "kdk_route": {
+    "status": "documented_candidate_unverified",
+    "readme_url": "https://github.com/apple-oss-distributions/xnu/blob/ac9718fb1af618d5ce8678d0dc6e8a58f252216f/README.md",
+    "readme_locations": {
+      "prerequisites": [
+        42,
+        48
+      ],
+      "apple_silicon_build": [
+        152,
+        165
+      ],
+      "t8103_model_table": [
+        804,
+        808
+      ]
+    },
+    "documented_requirement": "Apple Silicon external builds require a KDK matched to the OS version. Exact missing-header availability inside the matching kit was not inspected.",
+    "matching_release_to_verify": "macOS 26.5 / xnu-12377.121.6",
+    "current_build_host_matches_release": false,
+    "current_build_host_os": "macOS 27.2",
+    "developer_download_url": "https://developer.apple.com/download/all/",
+    "make_inputs": [
+      {
+        "path": "makedefs/MakeInc.def",
+        "line": 1155,
+        "input": "$(KDKROOT)/System/Library/KernelSupport/lib$(CURRENT_MACHINE_CONFIG).os.$(CURRENT_KERNEL_CONFIG).a",
+        "use": "Force-loaded platform support archive."
+      },
+      {
+        "path": "makedefs/MakeInc.def",
+        "line": 1233,
+        "input": "$(KDKROOT)/$(KPINCDIR) and $(KDKROOT)/System/Library/KernelSupport",
+        "use": "Additional private/header include paths."
+      }
+    ],
+    "missing_headers_in_matching_kit_verified": false,
+    "platform_archive_available_verified": false,
+    "downloaded": false,
+    "decision": "Inspect an explicitly supplied matching local KDK/SDK and account for exact hashes and external inputs before any claim of a native build closure."
+  },
+  "local_build_failures": {
+    "receipts": [
+      "evidence/native/kernel/apple-t8103/result.json",
+      "evidence/native/kernel/apple-t8103-platform/result.json"
+    ],
+    "scope": "These establish local missing inputs only; the broader public-source conclusions come from the separate pinned source audit."
+  }
+}

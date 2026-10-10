@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "cmake",
+    "--build",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/aic/driver-1",
+    "--target",
+    "PDArmPlatformExpert",
+    "--parallel",
+    "4"
+  ],
+  "cwd": "/Users/joeblau/Developer/joeblau/src/blauos",
+  "exit_code": 0,
+  "raw_log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/aic/driver-1/logs/build.log",
+  "raw_log_bytes": 122033,
+  "raw_log_sha256": "69c1a2284398e93b5f6a3384ad0a802129e1c8191a80ca6462b27fc2edf390bb",
+  "errors": []
+}

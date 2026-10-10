@@ -1,0 +1,97 @@
+--- a/src/Kernel/xnu/osfmk/arm/arm_init.c
++++ b/src/Kernel/xnu/osfmk/arm/arm_init.c
+@@ -158,6 +158,84 @@
+ SECURITY_READ_ONLY_LATE(uint64_t) gDramSize;
+ 
+ SECURITY_READ_ONLY_LATE(bool) serial_console_enabled = false;
++
++#if defined(ARM64_BOARD_CONFIG_T8103) && (DEVELOPMENT || DEBUG)
++/*
++ * Opt-in, partial native diagnostics. This reports observations only: it does
++ * not validate MMU mappings, interrupt delivery, timer callbacks or CPU startup.
++ * The hex: prefix prevents PE_parse_boot_argn from converting a numeric nonce
++ * to an integer. The extra buffer byte makes a truncated long token invalid.
++ */
++static bool
++blauos_native_diag_nonce_valid(const char nonce[70])
++{
++	if (nonce[0] != 'h' || nonce[1] != 'e' || nonce[2] != 'x' || nonce[3] != ':') {
++		return false;
++	}
++	for (unsigned int i = 4; i < 68; i++) {
++		if (!((nonce[i] >= '0' && nonce[i] <= '9') ||
++		    (nonce[i] >= 'a' && nonce[i] <= 'f'))) {
++			return false;
++		}
++	}
++	return nonce[68] == '\0';
++}
++
++static void __attribute__((noinline))
++blauos_native_early_diagnostics(void)
++{
++	char raw_nonce[70] = { 0 };
++	char uuid_hex[33] = { 0 };
++	const char *nonce;
++	unsigned long uuid_length = 0;
++	const unsigned char *uuid;
++	uint64_t pc;
++	uint32_t stop_after_diagnostics = 0;
++	static const char hex_digits[] = "0123456789abcdef";
++
++	if (!PE_parse_boot_argn("blauos_boot_nonce", raw_nonce, sizeof(raw_nonce))) {
++		return;
++	}
++	if (!blauos_native_diag_nonce_valid(raw_nonce)) {
++		kprintf("BLAUOS_NATIVE_DIAG disabled reason=invalid_nonce\n");
++		return;
++	}
++	nonce = raw_nonce + 4;
++	uuid = getuuidfromheader(&_mh_execute_header, &uuid_length);
++	if (uuid != NULL && uuid_length == 16) {
++		for (unsigned int i = 0; i < 16; i++) {
++			uuid_hex[2 * i] = hex_digits[uuid[i] >> 4];
++			uuid_hex[2 * i + 1] = hex_digits[uuid[i] & 0xf];
++		}
++	}
++	__asm__ volatile("adr %0, ." : "=r" (pc));
++	kprintf("BLAUOS_NATIVE_DIAG %s checkpoint=kprintf_ready protocol=partial-v1\n", nonce);
++	kprintf("BLAUOS_NATIVE_DIAG %s source_profile=puredarwin-xnu-7195 "
++	    "declared_source_revision=1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290\n", nonce);
++	kprintf("BLAUOS_NATIVE_DIAG %s kernel_uuid=%s version_variant=%.96s\n", nonce,
++	    uuid_hex[0] != '\0' ? uuid_hex : "unavailable", version_variant);
++	kprintf("BLAUOS_NATIVE_DIAG %s kernel_version=%.256s\n", nonce, version);
++	kprintf("BLAUOS_NATIVE_DIAG %s pc=0x%llx current_el=0x%llx\n", nonce,
++	    (unsigned long long)pc, (unsigned long long)__builtin_arm_rsr64("CurrentEL"));
++	kprintf("BLAUOS_NATIVE_DIAG %s sctlr_el1=0x%llx tcr_el1=0x%llx\n", nonce,
++	    (unsigned long long)__builtin_arm_rsr64("SCTLR_EL1"),
++	    (unsigned long long)__builtin_arm_rsr64("TCR_EL1"));
++	kprintf("BLAUOS_NATIVE_DIAG %s ttbr0_el1=0x%llx ttbr1_el1=0x%llx mair_el1=0x%llx\n", nonce,
++	    (unsigned long long)__builtin_arm_rsr64("TTBR0_EL1"),
++	    (unsigned long long)__builtin_arm_rsr64("TTBR1_EL1"),
++	    (unsigned long long)__builtin_arm_rsr64("MAIR_EL1"));
++	kprintf("BLAUOS_NATIVE_DIAG %s cntfrq_el0=0x%llx cntvct_el0=0x%llx "
++	    "cntv_ctl_el0=0x%llx cntv_cval_el0=0x%llx\n", nonce,
++	    (unsigned long long)__builtin_arm_rsr64("CNTFRQ_EL0"),
++	    (unsigned long long)__builtin_arm_rsr64("CNTVCT_EL0"),
++	    (unsigned long long)__builtin_arm_rsr64("CNTV_CTL_EL0"),
++	    (unsigned long long)__builtin_arm_rsr64("CNTV_CVAL_EL0"));
++	if (PE_parse_boot_argn("blauos_diag_panic", &stop_after_diagnostics,
++	    sizeof(stop_after_diagnostics)) && stop_after_diagnostics == 1) {
++		panic("BlauOS native diagnostic checkpoint: explicit blauos_diag_panic=1");
++	}
++}
++#endif /* T8103 DEVELOPMENT or DEBUG */
+ 
+ /*
+  * Forward definition
+@@ -930,6 +1008,9 @@
+ 	pd_bcm2835_early_uart_tag('m');
+ #endif
+ 	kernel_startup_initialize_upto(STARTUP_SUB_KPRINTF);
++#if defined(ARM64_BOARD_CONFIG_T8103) && (DEVELOPMENT || DEBUG)
++	blauos_native_early_diagnostics();
++#endif
+ #if defined(ARM64_BOARD_CONFIG_BCM2837)
+ 	pd_dump_iocat_vtable("w:kpf ");
+ #endif

@@ -1,0 +1,408 @@
+(lldb) target create /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-final/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_T8103/kernel.development.t8103.unstripped
+Current executable set to '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-final/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_T8103/kernel.development.t8103.unstripped' (arm64e).
+(lldb) disassemble -n ml_enable_user_jop_key
+kernel.development.t8103.unstripped`ml_enable_user_jop_key:
+kernel.development.t8103.unstripped[0xfffffe00073f1218] <+0>:   mov    x1, x0
+kernel.development.t8103.unstripped[0xfffffe00073f121c] <+4>:   mrs    x2, TPIDR_EL1
+kernel.development.t8103.unstripped[0xfffffe00073f1220] <+8>:   ldr    x2, [x2, #0x200]
+kernel.development.t8103.unstripped[0xfffffe00073f1224] <+12>:  ldr    x0, [x2, #0x210]
+kernel.development.t8103.unstripped[0xfffffe00073f1228] <+16>:  cmp    x0, x1
+kernel.development.t8103.unstripped[0xfffffe00073f122c] <+20>:  b.eq   0xfffffe00073f1264        ; <+76>
+kernel.development.t8103.unstripped[0xfffffe00073f1230] <+24>:  mrs    x2, S3_4_C15_C0_4
+kernel.development.t8103.unstripped[0xfffffe00073f1234] <+28>:  tbz    w2, #0x4, 0xfffffe00073f1248 ; <+48>
+kernel.development.t8103.unstripped[0xfffffe00073f1238] <+32>:  msr    S3_4_C15_C1_0, x1
+kernel.development.t8103.unstripped[0xfffffe00073f123c] <+36>:  add    x2, x1, #0x1
+kernel.development.t8103.unstripped[0xfffffe00073f1240] <+40>:  msr    S3_4_C15_C1_1, x2
+kernel.development.t8103.unstripped[0xfffffe00073f1244] <+44>:  b      0xfffffe00073f1264        ; <+76>
+kernel.development.t8103.unstripped[0xfffffe00073f1248] <+48>:  msr    APIAKeyLo_EL1, x1
+kernel.development.t8103.unstripped[0xfffffe00073f124c] <+52>:  add    x2, x1, #0x1
+kernel.development.t8103.unstripped[0xfffffe00073f1250] <+56>:  msr    APIAKeyHi_EL1, x2
+kernel.development.t8103.unstripped[0xfffffe00073f1254] <+60>:  add    x2, x2, #0x1
+kernel.development.t8103.unstripped[0xfffffe00073f1258] <+64>:  msr    APDAKeyLo_EL1, x2
+kernel.development.t8103.unstripped[0xfffffe00073f125c] <+68>:  add    x2, x2, #0x1
+kernel.development.t8103.unstripped[0xfffffe00073f1260] <+72>:  msr    APDAKeyHi_EL1, x2
+kernel.development.t8103.unstripped[0xfffffe00073f1264] <+76>:  mrs    x1, S3_4_C15_C0_4
+kernel.development.t8103.unstripped[0xfffffe00073f1268] <+80>:  orr    x2, x1, #0x2
+kernel.development.t8103.unstripped[0xfffffe00073f126c] <+84>:  and    x3, x1, #0xfffffffffffffffd
+kernel.development.t8103.unstripped[0xfffffe00073f1270] <+88>:  tst    x1, #0x10
+kernel.development.t8103.unstripped[0xfffffe00073f1274] <+92>:  csel   x1, x2, x3, ne
+kernel.development.t8103.unstripped[0xfffffe00073f1278] <+96>:  msr    S3_4_C15_C0_4, x1
+kernel.development.t8103.unstripped[0xfffffe00073f127c] <+100>: isb    
+kernel.development.t8103.unstripped[0xfffffe00073f1280] <+104>: ret    
+(lldb) disassemble -n ml_disable_user_jop_key
+kernel.development.t8103.unstripped`ml_disable_user_jop_key:
+kernel.development.t8103.unstripped[0xfffffe00073f1284] <+0>:  cmp    x0, x1
+kernel.development.t8103.unstripped[0xfffffe00073f1288] <+4>:  b.eq   0xfffffe00073f12c0        ; <+60>
+kernel.development.t8103.unstripped[0xfffffe00073f128c] <+8>:  mrs    x2, S3_4_C15_C0_4
+kernel.development.t8103.unstripped[0xfffffe00073f1290] <+12>: tbz    w2, #0x4, 0xfffffe00073f12a4 ; <+32>
+kernel.development.t8103.unstripped[0xfffffe00073f1294] <+16>: msr    S3_4_C15_C1_0, x1
+kernel.development.t8103.unstripped[0xfffffe00073f1298] <+20>: add    x2, x1, #0x1
+kernel.development.t8103.unstripped[0xfffffe00073f129c] <+24>: msr    S3_4_C15_C1_1, x2
+kernel.development.t8103.unstripped[0xfffffe00073f12a0] <+28>: b      0xfffffe00073f12c0        ; <+60>
+kernel.development.t8103.unstripped[0xfffffe00073f12a4] <+32>: msr    APIAKeyLo_EL1, x1
+kernel.development.t8103.unstripped[0xfffffe00073f12a8] <+36>: add    x2, x1, #0x1
+kernel.development.t8103.unstripped[0xfffffe00073f12ac] <+40>: msr    APIAKeyHi_EL1, x2
+kernel.development.t8103.unstripped[0xfffffe00073f12b0] <+44>: add    x2, x2, #0x1
+kernel.development.t8103.unstripped[0xfffffe00073f12b4] <+48>: msr    APDAKeyLo_EL1, x2
+kernel.development.t8103.unstripped[0xfffffe00073f12b8] <+52>: add    x2, x2, #0x1
+kernel.development.t8103.unstripped[0xfffffe00073f12bc] <+56>: msr    APDAKeyHi_EL1, x2
+kernel.development.t8103.unstripped[0xfffffe00073f12c0] <+60>: mrs    x1, S3_4_C15_C0_4
+kernel.development.t8103.unstripped[0xfffffe00073f12c4] <+64>: and    x2, x1, #0xfffffffffffffffd
+kernel.development.t8103.unstripped[0xfffffe00073f12c8] <+68>: orr    x3, x1, #0x2
+kernel.development.t8103.unstripped[0xfffffe00073f12cc] <+72>: tst    x1, #0x10
+kernel.development.t8103.unstripped[0xfffffe00073f12d0] <+76>: csel   x1, x2, x3, ne
+kernel.development.t8103.unstripped[0xfffffe00073f12d4] <+80>: msr    S3_4_C15_C0_4, x1
+kernel.development.t8103.unstripped[0xfffffe00073f12d8] <+84>: isb    
+kernel.development.t8103.unstripped[0xfffffe00073f12dc] <+88>: ret    
+(lldb) disassemble -n ml_default_rop_pid
+kernel.development.t8103.unstripped`ml_default_rop_pid:
+kernel.development.t8103.unstripped[0xfffffe00073f1ef8] <+0>:  bti    c
+kernel.development.t8103.unstripped[0xfffffe00073f1efc] <+4>:  mov    x0, #0xfacf               ; =64207 
+kernel.development.t8103.unstripped[0xfffffe00073f1f00] <+8>:  movk   x0, #0xfeed, lsl #16
+kernel.development.t8103.unstripped[0xfffffe00073f1f04] <+12>: movk   x0, #0xface, lsl #32
+kernel.development.t8103.unstripped[0xfffffe00073f1f08] <+16>: movk   x0, #0xfeed, lsl #48
+kernel.development.t8103.unstripped[0xfffffe00073f1f0c] <+20>: ret    
+(lldb) disassemble -n ml_default_jop_pid
+kernel.development.t8103.unstripped`cpu_supports_userkeyen:
+kernel.development.t8103.unstripped[0xfffffe00073f1f10] <+0>:  bti    c
+kernel.development.t8103.unstripped[0xfffffe00073f1f14] <+4>:  mrs    x8, S3_4_C15_C0_4
+kernel.development.t8103.unstripped[0xfffffe00073f1f18] <+8>:  mov    x9, #0xfad3               ; =64211 
+kernel.development.t8103.unstripped[0xfffffe00073f1f1c] <+12>: movk   x9, #0xfeed, lsl #16
+kernel.development.t8103.unstripped[0xfffffe00073f1f20] <+16>: movk   x9, #0xface, lsl #32
+kernel.development.t8103.unstripped[0xfffffe00073f1f24] <+20>: movk   x9, #0xfeed, lsl #48
+kernel.development.t8103.unstripped[0xfffffe00073f1f28] <+24>: add    x10, x9, #0x2
+kernel.development.t8103.unstripped[0xfffffe00073f1f2c] <+28>: tst    x8, #0x10
+kernel.development.t8103.unstripped[0xfffffe00073f1f30] <+32>: csel   x0, x10, x9, eq
+kernel.development.t8103.unstripped[0xfffffe00073f1f34] <+36>: ret    
+(lldb) disassemble -n pmap_is_trust_cache_loaded_ppl
+kernel.development.t8103.unstripped`pmap_is_trust_cache_loaded_ppl:
+kernel.development.t8103.unstripped[0xfffffe00073c3620] <+0>: mov    x15, #0x4d                ; =77 
+kernel.development.t8103.unstripped[0xfffffe00073c3624] <+4>: b      0xfffffe00073e26f4        ; aprr_ppl_enter
+(lldb) disassemble -n pmap_lookup_in_static_trust_cache_ppl
+kernel.development.t8103.unstripped`pmap_lookup_in_static_trust_cache_ppl:
+kernel.development.t8103.unstripped[0xfffffe00073c3628] <+0>: mov    x15, #0x4e                ; =78 
+kernel.development.t8103.unstripped[0xfffffe00073c362c] <+4>: b      0xfffffe00073e26f4        ; aprr_ppl_enter
+(lldb) disassemble -n pmap_lookup_in_loaded_trust_caches_ppl
+kernel.development.t8103.unstripped`pmap_lookup_in_loaded_trust_caches_ppl:
+kernel.development.t8103.unstripped[0xfffffe00073c3630] <+0>: mov    x15, #0x4f                ; =79 
+kernel.development.t8103.unstripped[0xfffffe00073c3634] <+4>: b      0xfffffe00073e26f4        ; aprr_ppl_enter
+(lldb) disassemble -n pmap_lockdown_ppl
+kernel.development.t8103.unstripped`pmap_lockdown_ppl:
+kernel.development.t8103.unstripped[0xfffffe00073c6594] <+0>:  bti    c
+kernel.development.t8103.unstripped[0xfffffe00073c6598] <+4>:  mov    w8, #0x1                  ; =1 
+kernel.development.t8103.unstripped[0xfffffe00073c659c] <+8>:  adrp   x9, 2010
+kernel.development.t8103.unstripped[0xfffffe00073c65a0] <+12>: str    w8, [x9, #0x18]
+kernel.development.t8103.unstripped[0xfffffe00073c65a4] <+16>: mov    w0, #0x0                  ; =0 
+kernel.development.t8103.unstripped[0xfffffe00073c65a8] <+20>: mov    w1, #0x0                  ; =0 
+kernel.development.t8103.unstripped[0xfffffe00073c65ac] <+24>: b      0xfffffe00073c3570        ; pmap_return_ppl
+(lldb) disassemble -n aprr_ppl_enter
+kernel.development.t8103.unstripped`aprr_ppl_enter:
+kernel.development.t8103.unstripped[0xfffffe00073e26f4] <+0>:  pacibsp 
+kernel.development.t8103.unstripped[0xfffffe00073e26f8] <+4>:  stp    x20, x21, [sp, #-0x20]!
+kernel.development.t8103.unstripped[0xfffffe00073e26fc] <+8>:  stp    x29, x30, [sp, #0x10]
+kernel.development.t8103.unstripped[0xfffffe00073e2700] <+12>: add    x29, sp, #0x10
+kernel.development.t8103.unstripped[0xfffffe00073e2704] <+16>: mrs    x10, TPIDR_EL1
+kernel.development.t8103.unstripped[0xfffffe00073e2708] <+20>: ldr    w12, [x10, #0x208]
+kernel.development.t8103.unstripped[0xfffffe00073e270c] <+24>: add    w12, w12, #0x1
+kernel.development.t8103.unstripped[0xfffffe00073e2710] <+28>: str    w12, [x10, #0x208]
+kernel.development.t8103.unstripped[0xfffffe00073e2714] <+32>: adrp   x13, 1982
+kernel.development.t8103.unstripped[0xfffffe00073e2718] <+36>: add    x13, x13, #0x18           ; pmap_ppl_locked_down
+kernel.development.t8103.unstripped[0xfffffe00073e271c] <+40>: ldr    w14, [x13]
+kernel.development.t8103.unstripped[0xfffffe00073e2720] <+44>: cmp    w14, wzr
+kernel.development.t8103.unstripped[0xfffffe00073e2724] <+48>: b.eq   0xfffffe00073e2830        ; ppl_bootstrap_dispatch
+kernel.development.t8103.unstripped[0xfffffe00073e2728] <+52>: mov    w10, #0x0                 ; =0 
+kernel.development.t8103.unstripped[0xfffffe00073e272c] <+56>: b      0xfffffe0007ba7fe0        ; ___lldb_unnamed_symbol_fffffe0007ba4000 + 16352
+(lldb) disassemble -n ppl_dispatch
+kernel.development.t8103.unstripped`ppl_dispatch:
+kernel.development.t8103.unstripped[0xfffffe00073e27ec] <+0>:  stp    x12, x13, [sp, #-0x10]!
+kernel.development.t8103.unstripped[0xfffffe00073e27f0] <+4>:  tst    x20, #0x1c0
+kernel.development.t8103.unstripped[0xfffffe00073e27f4] <+8>:  b.eq   0xfffffe00073e281c        ; <+48>
+kernel.development.t8103.unstripped[0xfffffe00073e27f8] <+12>: tst    x20, #0xc0
+kernel.development.t8103.unstripped[0xfffffe00073e27fc] <+16>: b.eq   0xfffffe00073e2814        ; <+40>
+kernel.development.t8103.unstripped[0xfffffe00073e2800] <+20>: tst    x20, #0x100
+kernel.development.t8103.unstripped[0xfffffe00073e2804] <+24>: b.eq   0xfffffe00073e280c        ; <+32>
+kernel.development.t8103.unstripped[0xfffffe00073e2808] <+28>: b      0xfffffe00073e2820        ; <+52>
+kernel.development.t8103.unstripped[0xfffffe00073e280c] <+32>: msr    DAIFClr, #0x4
+kernel.development.t8103.unstripped[0xfffffe00073e2810] <+36>: b      0xfffffe00073e2820        ; <+52>
+kernel.development.t8103.unstripped[0xfffffe00073e2814] <+40>: msr    DAIFClr, #0x3
+kernel.development.t8103.unstripped[0xfffffe00073e2818] <+44>: b      0xfffffe00073e2820        ; <+52>
+kernel.development.t8103.unstripped[0xfffffe00073e281c] <+48>: msr    DAIFClr, #0x7
+kernel.development.t8103.unstripped[0xfffffe00073e2820] <+52>: blraa  x10, x9
+kernel.development.t8103.unstripped[0xfffffe00073e2824] <+56>: msr    DAIFSet, #0x7
+kernel.development.t8103.unstripped[0xfffffe00073e2828] <+60>: ldp    x12, x13, [sp], #0x10
+kernel.development.t8103.unstripped[0xfffffe00073e282c] <+64>: b      0xfffffe0007ba80dc        ; ppl_trampoline_start + 220
+(lldb) disassemble -n ppl_return_to_kernel_mode
+kernel.development.t8103.unstripped`ppl_return_to_kernel_mode:
+kernel.development.t8103.unstripped[0xfffffe0007baffec] <+0>:  movk   x14, #0x4455, lsl #48
+kernel.development.t8103.unstripped[0xfffffe0007bafff0] <+4>:  movk   x14, #0x4054, lsl #32
+kernel.development.t8103.unstripped[0xfffffe0007bafff4] <+8>:  movk   x14, #0x6666, lsl #16
+kernel.development.t8103.unstripped[0xfffffe0007bafff8] <+12>: movk   x14, #0x6477
+kernel.development.t8103.unstripped[0xfffffe0007bafffc] <+16>: msr    S3_4_C15_C2_1, x14
+(lldb) disassemble -n blauos_native_early_diagnostics
+kernel.development.t8103.unstripped`blauos_native_early_diagnostics:
+kernel.development.t8103.unstripped[0xfffffe00073d7998] <+0>:   pacibsp 
+kernel.development.t8103.unstripped[0xfffffe00073d799c] <+4>:   sub    sp, sp, #0xf0
+kernel.development.t8103.unstripped[0xfffffe00073d79a0] <+8>:   stp    x22, x21, [sp, #0xc0]
+kernel.development.t8103.unstripped[0xfffffe00073d79a4] <+12>:  stp    x20, x19, [sp, #0xd0]
+kernel.development.t8103.unstripped[0xfffffe00073d79a8] <+16>:  stp    x29, x30, [sp, #0xe0]
+kernel.development.t8103.unstripped[0xfffffe00073d79ac] <+20>:  add    x29, sp, #0xe0
+kernel.development.t8103.unstripped[0xfffffe00073d79b0] <+24>:  adrp   x8, 1686
+kernel.development.t8103.unstripped[0xfffffe00073d79b4] <+28>:  add    x8, x8, #0x6f0            ; __stack_chk_guard
+kernel.development.t8103.unstripped[0xfffffe00073d79b8] <+32>:  ldr    x8, [x8]
+kernel.development.t8103.unstripped[0xfffffe00073d79bc] <+36>:  stur   x8, [x29, #-0x28]
+kernel.development.t8103.unstripped[0xfffffe00073d79c0] <+40>:  stur   xzr, [sp, #0xae]
+kernel.development.t8103.unstripped[0xfffffe00073d79c4] <+44>:  movi.2d v0, #0000000000000000
+kernel.development.t8103.unstripped[0xfffffe00073d79c8] <+48>:  stp    q0, q0, [sp, #0x90]
+kernel.development.t8103.unstripped[0xfffffe00073d79cc] <+52>:  stp    q0, q0, [sp, #0x70]
+kernel.development.t8103.unstripped[0xfffffe00073d79d0] <+56>:  strb   wzr, [sp, #0x60]
+kernel.development.t8103.unstripped[0xfffffe00073d79d4] <+60>:  stp    q0, q0, [sp, #0x40]
+kernel.development.t8103.unstripped[0xfffffe00073d79d8] <+64>:  str    xzr, [sp, #0x38]
+kernel.development.t8103.unstripped[0xfffffe00073d79dc] <+68>:  str    wzr, [sp, #0x34]
+kernel.development.t8103.unstripped[0xfffffe00073d79e0] <+72>:  adrp   x0, -871
+kernel.development.t8103.unstripped[0xfffffe00073d79e4] <+76>:  add    x0, x0, #0xbab            ; "blauos_boot_nonce"
+kernel.development.t8103.unstripped[0xfffffe00073d79e8] <+80>:  add    x1, sp, #0x70
+kernel.development.t8103.unstripped[0xfffffe00073d79ec] <+84>:  mov    w2, #0x46                 ; =70 
+kernel.development.t8103.unstripped[0xfffffe00073d79f0] <+88>:  bl     0xfffffe000791fe3c        ; PE_parse_boot_argn at bootargs.c:183:9
+kernel.development.t8103.unstripped[0xfffffe00073d79f4] <+92>:  cbz    w0, 0xfffffe00073d7c88    ; <+752> at arm_init.c
+kernel.development.t8103.unstripped[0xfffffe00073d79f8] <+96>:  ldr    w8, [sp, #0x70]
+kernel.development.t8103.unstripped[0xfffffe00073d79fc] <+100>: mov    w9, #0x6568               ; =25960 
+kernel.development.t8103.unstripped[0xfffffe00073d7a00] <+104>: movk   w9, #0x3a78, lsl #16
+kernel.development.t8103.unstripped[0xfffffe00073d7a04] <+108>: cmp    w8, w9
+kernel.development.t8103.unstripped[0xfffffe00073d7a08] <+112>: b.ne   0xfffffe00073d7c7c        ; <+740> at arm_init.c:200:3
+kernel.development.t8103.unstripped[0xfffffe00073d7a0c] <+116>: ldur   q3, [sp, #0x74]
+kernel.development.t8103.unstripped[0xfffffe00073d7a10] <+120>: movi.16b v0, #0xc6
+kernel.development.t8103.unstripped[0xfffffe00073d7a14] <+124>: add.16b v2, v3, v0
+kernel.development.t8103.unstripped[0xfffffe00073d7a18] <+128>: movi.16b v1, #0xf6
+kernel.development.t8103.unstripped[0xfffffe00073d7a1c] <+132>: cmhi.16b v4, v1, v2
+kernel.development.t8103.unstripped[0xfffffe00073d7a20] <+136>: movi.16b v2, #0x99
+kernel.development.t8103.unstripped[0xfffffe00073d7a24] <+140>: add.16b v5, v3, v2
+kernel.development.t8103.unstripped[0xfffffe00073d7a28] <+144>: movi.16b v3, #0xfa
+kernel.development.t8103.unstripped[0xfffffe00073d7a2c] <+148>: cmhi.16b v5, v3, v5
+kernel.development.t8103.unstripped[0xfffffe00073d7a30] <+152>: and.16b v4, v4, v5
+kernel.development.t8103.unstripped[0xfffffe00073d7a34] <+156>: shl.16b v4, v4, #0x7
+kernel.development.t8103.unstripped[0xfffffe00073d7a38] <+160>: cmlt.16b v4, v4, #0
+kernel.development.t8103.unstripped[0xfffffe00073d7a3c] <+164>: umaxv.16b b4, v4
+kernel.development.t8103.unstripped[0xfffffe00073d7a40] <+168>: fmov   w8, s4
+kernel.development.t8103.unstripped[0xfffffe00073d7a44] <+172>: tbnz   w8, #0x0, 0xfffffe00073d7ab0 ; <+280> at arm_init.c
+kernel.development.t8103.unstripped[0xfffffe00073d7a48] <+176>: ldur   q4, [sp, #0x84]
+kernel.development.t8103.unstripped[0xfffffe00073d7a4c] <+180>: add.16b v0, v4, v0
+kernel.development.t8103.unstripped[0xfffffe00073d7a50] <+184>: cmhi.16b v0, v1, v0
+kernel.development.t8103.unstripped[0xfffffe00073d7a54] <+188>: add.16b v1, v4, v2
+kernel.development.t8103.unstripped[0xfffffe00073d7a58] <+192>: cmhi.16b v1, v3, v1
+kernel.development.t8103.unstripped[0xfffffe00073d7a5c] <+196>: and.16b v0, v0, v1
+kernel.development.t8103.unstripped[0xfffffe00073d7a60] <+200>: shl.16b v0, v0, #0x7
+kernel.development.t8103.unstripped[0xfffffe00073d7a64] <+204>: cmlt.16b v0, v0, #0
+kernel.development.t8103.unstripped[0xfffffe00073d7a68] <+208>: umaxv.16b b0, v0
+kernel.development.t8103.unstripped[0xfffffe00073d7a6c] <+212>: fmov   w8, s0
+kernel.development.t8103.unstripped[0xfffffe00073d7a70] <+216>: tbnz   w8, #0x0, 0xfffffe00073d7ab0 ; <+280> at arm_init.c
+kernel.development.t8103.unstripped[0xfffffe00073d7a74] <+220>: ldur   q3, [sp, #0x94]
+kernel.development.t8103.unstripped[0xfffffe00073d7a78] <+224>: movi.16b v0, #0xc6
+kernel.development.t8103.unstripped[0xfffffe00073d7a7c] <+228>: add.16b v2, v3, v0
+kernel.development.t8103.unstripped[0xfffffe00073d7a80] <+232>: movi.16b v1, #0xf6
+kernel.development.t8103.unstripped[0xfffffe00073d7a84] <+236>: cmhi.16b v4, v1, v2
+kernel.development.t8103.unstripped[0xfffffe00073d7a88] <+240>: movi.16b v2, #0x99
+kernel.development.t8103.unstripped[0xfffffe00073d7a8c] <+244>: add.16b v5, v3, v2
+kernel.development.t8103.unstripped[0xfffffe00073d7a90] <+248>: movi.16b v3, #0xfa
+kernel.development.t8103.unstripped[0xfffffe00073d7a94] <+252>: cmhi.16b v5, v3, v5
+kernel.development.t8103.unstripped[0xfffffe00073d7a98] <+256>: and.16b v4, v4, v5
+kernel.development.t8103.unstripped[0xfffffe00073d7a9c] <+260>: shl.16b v4, v4, #0x7
+kernel.development.t8103.unstripped[0xfffffe00073d7aa0] <+264>: cmlt.16b v4, v4, #0
+kernel.development.t8103.unstripped[0xfffffe00073d7aa4] <+268>: umaxv.16b b4, v4
+kernel.development.t8103.unstripped[0xfffffe00073d7aa8] <+272>: fmov   w8, s4
+kernel.development.t8103.unstripped[0xfffffe00073d7aac] <+276>: tbz    w8, #0x0, 0xfffffe00073d7c4c ; <+692> [inlined] blauos_native_diag_nonce_valid at arm_init.c:176:10
+kernel.development.t8103.unstripped[0xfffffe00073d7ab0] <+280>: mov    w8, #0x1                  ; =1 
+kernel.development.t8103.unstripped[0xfffffe00073d7ab4] <+284>: tbnz   w8, #0x0, 0xfffffe00073d7c7c ; <+740> at arm_init.c:200:3
+kernel.development.t8103.unstripped[0xfffffe00073d7ab8] <+288>: ldrb   w8, [sp, #0xb4]
+kernel.development.t8103.unstripped[0xfffffe00073d7abc] <+292>: cbnz   w8, 0xfffffe00073d7c7c    ; <+740> at arm_init.c:200:3
+kernel.development.t8103.unstripped[0xfffffe00073d7ac0] <+296>: add    x8, sp, #0x70
+kernel.development.t8103.unstripped[0xfffffe00073d7ac4] <+300>: orr    x19, x8, #0x4
+kernel.development.t8103.unstripped[0xfffffe00073d7ac8] <+304>: adrp   x0, -979
+kernel.development.t8103.unstripped[0xfffffe00073d7acc] <+308>: add    x0, x0, #0x0              ; _mh_execute_header
+kernel.development.t8103.unstripped[0xfffffe00073d7ad0] <+312>: add    x1, sp, #0x38
+kernel.development.t8103.unstripped[0xfffffe00073d7ad4] <+316>: bl     0xfffffe000783f814        ; getuuidfromheader at kernel_mach_header.c:101
+kernel.development.t8103.unstripped[0xfffffe00073d7ad8] <+320>: adrp   x20, -871
+kernel.development.t8103.unstripped[0xfffffe00073d7adc] <+324>: add    x20, x20, #0xceb          ; "unavailable"
+kernel.development.t8103.unstripped[0xfffffe00073d7ae0] <+328>: cbz    x0, 0xfffffe00073d7b48    ; <+432> at arm_init.c:211:2
+kernel.development.t8103.unstripped[0xfffffe00073d7ae4] <+332>: ldr    x8, [sp, #0x38]
+kernel.development.t8103.unstripped[0xfffffe00073d7ae8] <+336>: cmp    x8, #0x10
+kernel.development.t8103.unstripped[0xfffffe00073d7aec] <+340>: b.ne   0xfffffe00073d7b48        ; <+432> at arm_init.c:211:2
+kernel.development.t8103.unstripped[0xfffffe00073d7af0] <+344>: mov    x8, #0x0                  ; =0 
+kernel.development.t8103.unstripped[0xfffffe00073d7af4] <+348>: mov    w9, #0x10                 ; =16 
+kernel.development.t8103.unstripped[0xfffffe00073d7af8] <+352>: add    x10, sp, #0x40
+kernel.development.t8103.unstripped[0xfffffe00073d7afc] <+356>: adrp   x11, -871
+kernel.development.t8103.unstripped[0xfffffe00073d7b00] <+360>: add    x11, x11, #0xb9a          ; "0123456789abcdef"
+kernel.development.t8103.unstripped[0xfffffe00073d7b04] <+364>: ldrb   w12, [x0, x8]
+kernel.development.t8103.unstripped[0xfffffe00073d7b08] <+368>: lsr    x13, x12, #4
+kernel.development.t8103.unstripped[0xfffffe00073d7b0c] <+372>: ldrb   w13, [x11, x13]
+kernel.development.t8103.unstripped[0xfffffe00073d7b10] <+376>: lsl    x14, x8, #1
+kernel.development.t8103.unstripped[0xfffffe00073d7b14] <+380>: strb   w13, [x10, x14]
+kernel.development.t8103.unstripped[0xfffffe00073d7b18] <+384>: and    x12, x12, #0xf
+kernel.development.t8103.unstripped[0xfffffe00073d7b1c] <+388>: ldrb   w12, [x11, x12]
+kernel.development.t8103.unstripped[0xfffffe00073d7b20] <+392>: mov    w13, #0x1                 ; =1 
+kernel.development.t8103.unstripped[0xfffffe00073d7b24] <+396>: bfi    x13, x8, #1, #62
+kernel.development.t8103.unstripped[0xfffffe00073d7b28] <+400>: strb   w12, [x10, x13]
+kernel.development.t8103.unstripped[0xfffffe00073d7b2c] <+404>: add    x8, x8, #0x1
+kernel.development.t8103.unstripped[0xfffffe00073d7b30] <+408>: subs   x9, x9, #0x1
+kernel.development.t8103.unstripped[0xfffffe00073d7b34] <+412>: b.ne   0xfffffe00073d7b04        ; <+364> at arm_init.c:207:33
+kernel.development.t8103.unstripped[0xfffffe00073d7b38] <+416>: ldrb   w8, [sp, #0x40]
+kernel.development.t8103.unstripped[0xfffffe00073d7b3c] <+420>: cmp    w8, #0x0
+kernel.development.t8103.unstripped[0xfffffe00073d7b40] <+424>: add    x8, sp, #0x40
+kernel.development.t8103.unstripped[0xfffffe00073d7b44] <+428>: csel   x20, x20, x8, eq
+kernel.development.t8103.unstripped[0xfffffe00073d7b48] <+432>: adr    x21, 0xfffffe00073d7b48   ; <+432> at arm_init.c:211:2
+kernel.development.t8103.unstripped[0xfffffe00073d7b4c] <+436>: str    x19, [sp]
+kernel.development.t8103.unstripped[0xfffffe00073d7b50] <+440>: adrp   x0, -871
+kernel.development.t8103.unstripped[0xfffffe00073d7b54] <+444>: add    x0, x0, #0xbef            ; "BLAUOS_NATIVE_DIAG %s checkpoint=kprintf_ready protocol=partial-v1\n"
+kernel.development.t8103.unstripped[0xfffffe00073d7b58] <+448>: bl     0xfffffe0007922cdc        ; kprintf at pe_kprintf.c:111
+kernel.development.t8103.unstripped[0xfffffe00073d7b5c] <+452>: str    x19, [sp]
+kernel.development.t8103.unstripped[0xfffffe00073d7b60] <+456>: adrp   x0, -871
+kernel.development.t8103.unstripped[0xfffffe00073d7b64] <+460>: add    x0, x0, #0xc33            ; "BLAUOS_NATIVE_DIAG %s source_profile=puredarwin-xnu-7195 declared_source_revision=1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290\n"
+kernel.development.t8103.unstripped[0xfffffe00073d7b68] <+464>: bl     0xfffffe0007922cdc        ; kprintf at pe_kprintf.c:111
+kernel.development.t8103.unstripped[0xfffffe00073d7b6c] <+468>: adrp   x8, -925
+kernel.development.t8103.unstripped[0xfffffe00073d7b70] <+472>: add    x8, x8, #0x740            ; version_variant
+kernel.development.t8103.unstripped[0xfffffe00073d7b74] <+476>: stp    x20, x8, [sp, #0x8]
+kernel.development.t8103.unstripped[0xfffffe00073d7b78] <+480>: str    x19, [sp]
+kernel.development.t8103.unstripped[0xfffffe00073d7b7c] <+484>: adrp   x0, -871
+kernel.development.t8103.unstripped[0xfffffe00073d7b80] <+488>: add    x0, x0, #0xcaf            ; "BLAUOS_NATIVE_DIAG %s kernel_uuid=%s version_variant=%.96s\n"
+kernel.development.t8103.unstripped[0xfffffe00073d7b84] <+492>: bl     0xfffffe0007922cdc        ; kprintf at pe_kprintf.c:111
+kernel.development.t8103.unstripped[0xfffffe00073d7b88] <+496>: adrp   x8, -925
+kernel.development.t8103.unstripped[0xfffffe00073d7b8c] <+500>: add    x8, x8, #0x6c3            ; version
+kernel.development.t8103.unstripped[0xfffffe00073d7b90] <+504>: stp    x19, x8, [sp]
+kernel.development.t8103.unstripped[0xfffffe00073d7b94] <+508>: adrp   x0, -871
+kernel.development.t8103.unstripped[0xfffffe00073d7b98] <+512>: add    x0, x0, #0xcf7            ; "BLAUOS_NATIVE_DIAG %s kernel_version=%.256s\n"
+kernel.development.t8103.unstripped[0xfffffe00073d7b9c] <+516>: bl     0xfffffe0007922cdc        ; kprintf at pe_kprintf.c:111
+kernel.development.t8103.unstripped[0xfffffe00073d7ba0] <+520>: mrs    x8, CurrentEL
+kernel.development.t8103.unstripped[0xfffffe00073d7ba4] <+524>: stp    x21, x8, [sp, #0x8]
+kernel.development.t8103.unstripped[0xfffffe00073d7ba8] <+528>: str    x19, [sp]
+kernel.development.t8103.unstripped[0xfffffe00073d7bac] <+532>: adrp   x0, -871
+kernel.development.t8103.unstripped[0xfffffe00073d7bb0] <+536>: add    x0, x0, #0xd24            ; "BLAUOS_NATIVE_DIAG %s pc=0x%llx current_el=0x%llx\n"
+kernel.development.t8103.unstripped[0xfffffe00073d7bb4] <+540>: bl     0xfffffe0007922cdc        ; kprintf at pe_kprintf.c:111
+kernel.development.t8103.unstripped[0xfffffe00073d7bb8] <+544>: mrs    x8, SCTLR_EL1
+kernel.development.t8103.unstripped[0xfffffe00073d7bbc] <+548>: mrs    x9, TCR_EL1
+kernel.development.t8103.unstripped[0xfffffe00073d7bc0] <+552>: stp    x8, x9, [sp, #0x8]
+kernel.development.t8103.unstripped[0xfffffe00073d7bc4] <+556>: str    x19, [sp]
+kernel.development.t8103.unstripped[0xfffffe00073d7bc8] <+560>: adrp   x0, -871
+kernel.development.t8103.unstripped[0xfffffe00073d7bcc] <+564>: add    x0, x0, #0xd57            ; "BLAUOS_NATIVE_DIAG %s sctlr_el1=0x%llx tcr_el1=0x%llx\n"
+kernel.development.t8103.unstripped[0xfffffe00073d7bd0] <+568>: bl     0xfffffe0007922cdc        ; kprintf at pe_kprintf.c:111
+kernel.development.t8103.unstripped[0xfffffe00073d7bd4] <+572>: mrs    x8, TTBR0_EL1
+kernel.development.t8103.unstripped[0xfffffe00073d7bd8] <+576>: mrs    x9, TTBR1_EL1
+kernel.development.t8103.unstripped[0xfffffe00073d7bdc] <+580>: mrs    x10, MAIR_EL1
+kernel.development.t8103.unstripped[0xfffffe00073d7be0] <+584>: stp    x9, x10, [sp, #0x10]
+kernel.development.t8103.unstripped[0xfffffe00073d7be4] <+588>: stp    x19, x8, [sp]
+kernel.development.t8103.unstripped[0xfffffe00073d7be8] <+592>: adrp   x0, -871
+kernel.development.t8103.unstripped[0xfffffe00073d7bec] <+596>: add    x0, x0, #0xd8e            ; "BLAUOS_NATIVE_DIAG %s ttbr0_el1=0x%llx ttbr1_el1=0x%llx mair_el1=0x%llx\n"
+kernel.development.t8103.unstripped[0xfffffe00073d7bf0] <+600>: bl     0xfffffe0007922cdc        ; kprintf at pe_kprintf.c:111
+kernel.development.t8103.unstripped[0xfffffe00073d7bf4] <+604>: mrs    x8, CNTFRQ_EL0
+kernel.development.t8103.unstripped[0xfffffe00073d7bf8] <+608>: mrs    x9, CNTVCT_EL0
+kernel.development.t8103.unstripped[0xfffffe00073d7bfc] <+612>: mrs    x10, CNTV_CTL_EL0
+kernel.development.t8103.unstripped[0xfffffe00073d7c00] <+616>: mrs    x11, CNTV_CVAL_EL0
+kernel.development.t8103.unstripped[0xfffffe00073d7c04] <+620>: stp    x10, x11, [sp, #0x18]
+kernel.development.t8103.unstripped[0xfffffe00073d7c08] <+624>: stp    x8, x9, [sp, #0x8]
+kernel.development.t8103.unstripped[0xfffffe00073d7c0c] <+628>: str    x19, [sp]
+kernel.development.t8103.unstripped[0xfffffe00073d7c10] <+632>: adrp   x0, -871
+kernel.development.t8103.unstripped[0xfffffe00073d7c14] <+636>: add    x0, x0, #0xdd7            ; "BLAUOS_NATIVE_DIAG %s cntfrq_el0=0x%llx cntvct_el0=0x%llx cntv_ctl_el0=0x%llx cntv_cval_el0=0x%llx\n"
+kernel.development.t8103.unstripped[0xfffffe00073d7c18] <+640>: bl     0xfffffe0007922cdc        ; kprintf at pe_kprintf.c:111
+kernel.development.t8103.unstripped[0xfffffe00073d7c1c] <+644>: adrp   x0, -871
+kernel.development.t8103.unstripped[0xfffffe00073d7c20] <+648>: add    x0, x0, #0xe3b            ; "blauos_diag_panic"
+kernel.development.t8103.unstripped[0xfffffe00073d7c24] <+652>: add    x1, sp, #0x34
+kernel.development.t8103.unstripped[0xfffffe00073d7c28] <+656>: mov    w2, #0x4                  ; =4 
+kernel.development.t8103.unstripped[0xfffffe00073d7c2c] <+660>: bl     0xfffffe000791fe3c        ; PE_parse_boot_argn at bootargs.c:183:9
+kernel.development.t8103.unstripped[0xfffffe00073d7c30] <+664>: cbz    w0, 0xfffffe00073d7c88    ; <+752> at arm_init.c
+kernel.development.t8103.unstripped[0xfffffe00073d7c34] <+668>: ldr    w8, [sp, #0x34]
+kernel.development.t8103.unstripped[0xfffffe00073d7c38] <+672>: cmp    w8, #0x1
+kernel.development.t8103.unstripped[0xfffffe00073d7c3c] <+676>: b.ne   0xfffffe00073d7c88        ; <+752> at arm_init.c
+kernel.development.t8103.unstripped[0xfffffe00073d7c40] <+680>: adrp   x0, -871
+kernel.development.t8103.unstripped[0xfffffe00073d7c44] <+684>: add    x0, x0, #0xe4d            ; ""BlauOS native diagnostic checkpoint: explicit blauos_diag_panic=1""
+kernel.development.t8103.unstripped[0xfffffe00073d7c48] <+688>: bl     0xfffffe00079493a4        ; panic at debug.c:819
+kernel.development.t8103.unstripped[0xfffffe00073d7c4c] <+692>: ldur   q4, [sp, #0xa4]
+kernel.development.t8103.unstripped[0xfffffe00073d7c50] <+696>: add.16b v0, v4, v0
+kernel.development.t8103.unstripped[0xfffffe00073d7c54] <+700>: cmhi.16b v0, v1, v0
+kernel.development.t8103.unstripped[0xfffffe00073d7c58] <+704>: add.16b v1, v4, v2
+kernel.development.t8103.unstripped[0xfffffe00073d7c5c] <+708>: cmhi.16b v1, v3, v1
+kernel.development.t8103.unstripped[0xfffffe00073d7c60] <+712>: and.16b v0, v0, v1
+kernel.development.t8103.unstripped[0xfffffe00073d7c64] <+716>: shl.16b v0, v0, #0x7
+kernel.development.t8103.unstripped[0xfffffe00073d7c68] <+720>: cmlt.16b v0, v0, #0
+kernel.development.t8103.unstripped[0xfffffe00073d7c6c] <+724>: umaxv.16b b0, v0
+kernel.development.t8103.unstripped[0xfffffe00073d7c70] <+728>: fmov   w8, s0
+kernel.development.t8103.unstripped[0xfffffe00073d7c74] <+732>: and    w8, w8, #0x1
+kernel.development.t8103.unstripped[0xfffffe00073d7c78] <+736>: tbz    w8, #0x0, 0xfffffe00073d7ab8 ; <+288> at arm_init.c
+kernel.development.t8103.unstripped[0xfffffe00073d7c7c] <+740>: adrp   x0, -871
+kernel.development.t8103.unstripped[0xfffffe00073d7c80] <+744>: add    x0, x0, #0xbbd            ; "BLAUOS_NATIVE_DIAG disabled reason=invalid_nonce\n"
+kernel.development.t8103.unstripped[0xfffffe00073d7c84] <+748>: bl     0xfffffe0007922cdc        ; kprintf at pe_kprintf.c:111
+kernel.development.t8103.unstripped[0xfffffe00073d7c88] <+752>: ldur   x8, [x29, #-0x28]
+kernel.development.t8103.unstripped[0xfffffe00073d7c8c] <+756>: adrp   x9, 1686
+kernel.development.t8103.unstripped[0xfffffe00073d7c90] <+760>: add    x9, x9, #0x6f0            ; __stack_chk_guard
+kernel.development.t8103.unstripped[0xfffffe00073d7c94] <+764>: ldr    x9, [x9]
+kernel.development.t8103.unstripped[0xfffffe00073d7c98] <+768>: cmp    x9, x8
+kernel.development.t8103.unstripped[0xfffffe00073d7c9c] <+772>: b.ne   0xfffffe00073d7cb4        ; <+796> at arm_init.c
+kernel.development.t8103.unstripped[0xfffffe00073d7ca0] <+776>: ldp    x29, x30, [sp, #0xe0]
+kernel.development.t8103.unstripped[0xfffffe00073d7ca4] <+780>: ldp    x20, x19, [sp, #0xd0]
+kernel.development.t8103.unstripped[0xfffffe00073d7ca8] <+784>: ldp    x22, x21, [sp, #0xc0]
+kernel.development.t8103.unstripped[0xfffffe00073d7cac] <+788>: add    sp, sp, #0xf0
+kernel.development.t8103.unstripped[0xfffffe00073d7cb0] <+792>: retab  
+kernel.development.t8103.unstripped[0xfffffe00073d7cb4] <+796>: bl     0xfffffe00079a83b0        ; __stack_chk_fail at stack_protector.c:36
+(lldb) disassemble -s 0xfffffe0007ba8000 -c 64
+kernel.development.t8103.unstripped`ppl_trampoline_start:
+kernel.development.t8103.unstripped[0xfffffe0007ba8000] <+0>:   msr    DAIFSet, #0x7
+kernel.development.t8103.unstripped[0xfffffe0007ba8004] <+4>:   movk   x14, #0x4455, lsl #48
+kernel.development.t8103.unstripped[0xfffffe0007ba8008] <+8>:   movk   x14, #0x4055, lsl #32
+kernel.development.t8103.unstripped[0xfffffe0007ba800c] <+12>:  movk   x14, #0x6666, lsl #16
+kernel.development.t8103.unstripped[0xfffffe0007ba8010] <+16>:  movk   x14, #0x6677
+kernel.development.t8103.unstripped[0xfffffe0007ba8014] <+20>:  mrs    x21, S3_4_C15_C2_1
+kernel.development.t8103.unstripped[0xfffffe0007ba8018] <+24>:  cmp    x14, x21
+kernel.development.t8103.unstripped[0xfffffe0007ba801c] <+28>:  b.ne   0xfffffe0007ba80d0        ; <+208>
+kernel.development.t8103.unstripped[0xfffffe0007ba8020] <+32>:  cmp    x15, #0x50
+kernel.development.t8103.unstripped[0xfffffe0007ba8024] <+36>:  b.hs   0xfffffe0007ba80d0        ; <+208>
+kernel.development.t8103.unstripped[0xfffffe0007ba8028] <+40>:  mrs    x12, MPIDR_EL1
+kernel.development.t8103.unstripped[0xfffffe0007ba802c] <+44>:  ubfx   x13, x12, #8, #8
+kernel.development.t8103.unstripped[0xfffffe0007ba8030] <+48>:  adrp   x14, -2488
+kernel.development.t8103.unstripped[0xfffffe0007ba8034] <+52>:  add    x14, x14, #0x6f0          ; cluster_offsets
+kernel.development.t8103.unstripped[0xfffffe0007ba8038] <+56>:  ldr    x13, [x14, x13, lsl #3]
+kernel.development.t8103.unstripped[0xfffffe0007ba803c] <+60>:  and    x12, x12, #0xff
+kernel.development.t8103.unstripped[0xfffffe0007ba8040] <+64>:  add    x12, x12, x13
+kernel.development.t8103.unstripped[0xfffffe0007ba8044] <+68>:  adrp   x13, -8
+kernel.development.t8103.unstripped[0xfffffe0007ba8048] <+72>:  add    x13, x13, #0x80           ; pmap_cpu_data_array
+kernel.development.t8103.unstripped[0xfffffe0007ba804c] <+76>:  cmp    x12, #0x8
+kernel.development.t8103.unstripped[0xfffffe0007ba8050] <+80>:  b.hs   0xfffffe0007ba8050        ; <+80>
+kernel.development.t8103.unstripped[0xfffffe0007ba8054] <+84>:  mov    x14, #0x180               ; =384 
+kernel.development.t8103.unstripped[0xfffffe0007ba8058] <+88>:  madd   x12, x12, x14, x13
+kernel.development.t8103.unstripped[0xfffffe0007ba805c] <+92>:  ldr    w9, [x12, #0x18]
+kernel.development.t8103.unstripped[0xfffffe0007ba8060] <+96>:  cmp    w9, #0x0
+kernel.development.t8103.unstripped[0xfffffe0007ba8064] <+100>: b.eq   0xfffffe0007ba8094        ; <+148>
+kernel.development.t8103.unstripped[0xfffffe0007ba8068] <+104>: cmp    w9, #0x1
+kernel.development.t8103.unstripped[0xfffffe0007ba806c] <+108>: b.eq   0xfffffe0007ba80c8        ; <+200>
+kernel.development.t8103.unstripped[0xfffffe0007ba8070] <+112>: cmp    w9, #0x3
+kernel.development.t8103.unstripped[0xfffffe0007ba8074] <+116>: b.ne   0xfffffe0007ba80d0        ; <+208>
+kernel.development.t8103.unstripped[0xfffffe0007ba8078] <+120>: cmp    w10, #0x3
+kernel.development.t8103.unstripped[0xfffffe0007ba807c] <+124>: b.ne   0xfffffe0007ba80d0        ; <+208>
+kernel.development.t8103.unstripped[0xfffffe0007ba8080] <+128>: mov    w9, #0x1                  ; =1 
+kernel.development.t8103.unstripped[0xfffffe0007ba8084] <+132>: str    w9, [x12, #0x18]
+kernel.development.t8103.unstripped[0xfffffe0007ba8088] <+136>: ldr    x0, [x12, #0x10]
+kernel.development.t8103.unstripped[0xfffffe0007ba808c] <+140>: mov    sp, x0
+kernel.development.t8103.unstripped[0xfffffe0007ba8090] <+144>: b      0xfffffe00073e1a68        ; exception_return_unint_tpidr_x3_dont_trash_x18
+kernel.development.t8103.unstripped[0xfffffe0007ba8094] <+148>: cmp    w10, #0x0
+kernel.development.t8103.unstripped[0xfffffe0007ba8098] <+152>: b.ne   0xfffffe0007ba80d0        ; <+208>
+kernel.development.t8103.unstripped[0xfffffe0007ba809c] <+156>: mov    w13, #0x1                 ; =1 
+kernel.development.t8103.unstripped[0xfffffe0007ba80a0] <+160>: str    w13, [x12, #0x18]
+kernel.development.t8103.unstripped[0xfffffe0007ba80a4] <+164>: ldr    x9, [x12, #0x8]
+kernel.development.t8103.unstripped[0xfffffe0007ba80a8] <+168>: mov    x21, sp
+kernel.development.t8103.unstripped[0xfffffe0007ba80ac] <+172>: mov    sp, x9
+kernel.development.t8103.unstripped[0xfffffe0007ba80b0] <+176>: str    x21, [x12]
+kernel.development.t8103.unstripped[0xfffffe0007ba80b4] <+180>: adrp   x9, -2705
+kernel.development.t8103.unstripped[0xfffffe0007ba80b8] <+184>: add    x9, x9, #0x140            ; ppl_handler_table
+kernel.development.t8103.unstripped[0xfffffe0007ba80bc] <+188>: add    x9, x9, x15, lsl #3
+kernel.development.t8103.unstripped[0xfffffe0007ba80c0] <+192>: ldr    x10, [x9]
+kernel.development.t8103.unstripped[0xfffffe0007ba80c4] <+196>: b      0xfffffe00073e27ec        ; ppl_dispatch
+kernel.development.t8103.unstripped[0xfffffe0007ba80c8] <+200>: ldr    x10, [x12]
+kernel.development.t8103.unstripped[0xfffffe0007ba80cc] <+204>: mov    sp, x10
+kernel.development.t8103.unstripped[0xfffffe0007ba80d0] <+208>: mov    x15, #0x2                 ; =2 
+kernel.development.t8103.unstripped[0xfffffe0007ba80d4] <+212>: mov    x10, x20
+kernel.development.t8103.unstripped[0xfffffe0007ba80d8] <+216>: b      0xfffffe0007baffec        ; ppl_return_to_kernel_mode
+kernel.development.t8103.unstripped[0xfffffe0007ba80dc] <+220>: mov    x15, #0x0                 ; =0 
+kernel.development.t8103.unstripped[0xfffffe0007ba80e0] <+224>: mov    sp, x21
+kernel.development.t8103.unstripped[0xfffffe0007ba80e4] <+228>: mov    x10, x20
+kernel.development.t8103.unstripped[0xfffffe0007ba80e8] <+232>: str    xzr, [x12]
+kernel.development.t8103.unstripped[0xfffffe0007ba80ec] <+236>: ldr    w9, [x12, #0x18]
+kernel.development.t8103.unstripped[0xfffffe0007ba80f0] <+240>: cmp    w9, #0x1
+kernel.development.t8103.unstripped[0xfffffe0007ba80f4] <+244>: b.ne   0xfffffe0007ba80f4        ; <+244>
+kernel.development.t8103.unstripped[0xfffffe0007ba80f8] <+248>: mov    w9, #0x0                  ; =0 
+kernel.development.t8103.unstripped[0xfffffe0007ba80fc] <+252>: str    w9, [x12, #0x18]

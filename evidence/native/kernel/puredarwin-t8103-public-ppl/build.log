@@ -1,0 +1,217 @@
+1: [  0%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_create.c.o
+2: [  0%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_abbrev.c.o
+3: [  0%] Building C object tools/cctools/libmacho/CMakeFiles/host_libmacho.dir/arch.c.o
+4: [  0%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/begin.c.o
+5: [  0%] Building C object tools/unifdef/CMakeFiles/unifdef.dir/unifdef.c.o
+6: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/allocate.c.o
+7: [  0%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_addr_finder.c.o
+8: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/apple_version.c.o
+9: [  0%] Linking C static library libmacho.a
+10: [  0%] Linking C executable unifdef
+11: [  0%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_decl.c.o
+12: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/arch_usage.c.o
+13: [  0%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/clscook.c.o
+14: [ 10%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_alloc.c.o
+15: [ 10%] Built target host_libmacho
+16: [ 10%] Built target unifdef
+17: [ 10%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_error.c.o
+18: [ 10%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/arch.c.o
+19: [ 10%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/clscook_ELF64.c.o
+20: [ 10%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_arange.c.o
+21: [ 10%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/args.c.o
+22: [ 10%] Yacc parser.y
+23: [ 10%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_hash.c.o
+24: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/cntl.c.o
+25: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_die_deliv.c.o
+26: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/best_arch.c.o
+27: [ 20%] Creating VersionMap.h and for_dyld_priv.inc
+28: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_labels.c.o
+29: [ 20%] Lex lexxer.l
+30: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/cook.c.o
+31: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_error.c.o
+32: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/breakout.c.o
+33: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_lib.c.o
+34: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/data.c.o
+35: [ 20%] Building C object tools/mig/CMakeFiles/migcom.dir/error.c.o
+36: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_form.c.o
+37: Ignoring nkf-0.2.0 because its extensions are not built. Try: gem pristine nkf --version 0.2.0
+38: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_lookup.c.o
+39: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/bytesex.c.o
+40: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/end.c.o
+41: [ 20%] Building C object tools/mig/CMakeFiles/migcom.dir/global.c.o
+42: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_frame.c.o
+43: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_open.c.o
+44: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/error.c.o
+45: [ 20%] Building C object tools/mig/CMakeFiles/migcom.dir/header.c.o
+46: Ignoring nkf-0.2.0 because its extensions are not built. Try: gem pristine nkf --version 0.2.0
+47: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_frame2.c.o
+48: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/checkout.c.o
+49: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/gelf.c.o
+50: [ 20%] Building C object tools/mig/CMakeFiles/migcom.dir/mig.c.o
+51: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_subr.c.o
+52: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_frame3.c.o
+53: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/coff_bytesex.c.o
+54: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getdata.c.o
+55: [ 20%] Building C object tools/mig/CMakeFiles/migcom.dir/routine.c.o
+56: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_types.c.o
+57: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_funcs.c.o
+58: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/crc32.c.o
+59: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getehdr.c.o
+60: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_util.c.o
+33265:      INSTALLHDR vmmeter.h
+33266:              CC machdep_call.o
+33267: 2 warnings generated.
+33268: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:2407:22: error: expected ')'
+33269:  2407 |         MRS(aprr_el0_value, APRR_EL0);
+33270:       |                             ^
+33271: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/pexpert/pexpert/arm64/apple_arm64_regs.h:19:18: note: expanded from macro 'APRR_EL0'
+33272:    19 | #define APRR_EL0 S3_4_C15_C2_0
+33273:       |                  ^
+33274: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:2408:22: error: expected ')'
+33275:  2408 |         MRS(aprr_el1_value, APRR_EL1);
+33276:       |                             ^
+33277: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/pexpert/pexpert/arm64/apple_arm64_regs.h:20:18: note: expanded from macro 'APRR_EL1'
+33278:    20 | #define APRR_EL1 S3_4_C15_C2_1
+33279:       |                  ^
+33462: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:1775:15: note: expanded from macro 'WRITE_PTE_FAST'
+33463:  1775 |                 if (((unsigned)(pte_p)) & 0x1f) {                                       \
+33464:       |                      ^~~~~~~~~~~~~~~~~
+33465: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:12326:6: error: address argument to atomic operation must be a pointer to a non address discriminated type ('volatile __ptrauth(2,1,32103) _Atomic(struct pmap *) *' invalid)
+33466:  12326 |         if (os_atomic_cmpxchg(&grand->nested_pmap, PMAP_NULL, subord_addr, relaxed)) {
+33467:        |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+33468: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/libkern/os/atomic_private.h:652:2: note: expanded from macro 'os_atomic_cmpxchg'
+33469:   652 |         os_atomic_basetypeof(p) _r = (e); int _b; \
+33470:       |         ^~~~~~~~~~~~~~~~~~~~~~~
+33474: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl/source-overlay/src/Kernel/xnu/EXTERNAL_HEADERS/stdatomic.h:138:29: note: expanded from macro 'atomic_load'
+33475:   138 | #define atomic_load(object) __c11_atomic_load(object, __ATOMIC_SEQ_CST)
+33476:       |                             ^                 ~~~~~~
+33477: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:12326:6: error: address argument to atomic operation must be a pointer to a non address discriminated type ('volatile __ptrauth(2,1,32103) _Atomic(struct pmap *) *' invalid)
+33478:  12326 |         if (os_atomic_cmpxchg(&grand->nested_pmap, PMAP_NULL, subord_addr, relaxed)) {
+33479:        |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+33480: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/libkern/os/atomic_private.h:656:6: note: expanded from macro 'os_atomic_cmpxchg'
+33481:   656 |             _os_atomic_value_cast(p, v), \
+33482:       |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+33545:        |                                                              ||
+33546: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:15872:17: note: cast one or both operands to int to silence this warning
+33547: 31 warnings and 4 errors generated.
+33548: make[11]: *** [pmap.o] Error 1
+33549: make[11]: *** Waiting for unfinished jobs....
+33550:              AS WKdmCompress_4k.o
+33551:              CC lockstat.o
+33552:              CC dtrace_ptss.o
+33553:      INSTALLHDR wait.h
+33554:      INSTALLHDR xattr.h
+34177: 24 warnings generated.
+34178:      INSTALLHDR guarded.h
+34179:      INSTALLHDR gmon.h
+34180: make[10]: *** [build_all] Error 2
+34181: make[9]: *** [do_all] Error 2
+34182: make[8]: *** [build_all] Error 2
+34183: make[7]: *** [build_all_recurse_into_conf] Error 2
+34184: make[6]: *** [build_all_recurse_into_osfmk] Error 2
+34185: make[6]: *** Waiting for unfinished jobs....
+34186:      INSTALLHDR imgsrc.h
+34187:      INSTALLHDR ioccom.h
+34188: 11 warnings generated.
+34189:      INSTALLHDR ioctl.h
+34190:      INSTALLHDR ioctl_compat.h
+34363:      INSTALLHDR stdio.h
+34364:      INSTALLHDR sysctl.h
+34365:      INSTALLHDR stat.h
+34366:      INSTALLHDR syslimits.h
+34367:      INSTALLHDR sys_domain.h
+34368:      INSTALLHDR systm.h
+34369:      INSTALLHDR syslog.h
+34370:      INSTALLHDR time.h
+34371:      INSTALLHDR types.h
+34372:      INSTALLHDR ubc.h
+34373:      INSTALLHDR ucred.h
+34374:      INSTALLHDR ucontext.h
+34375:      INSTALLHDR uio.h
+34376:      INSTALLHDR unistd.h
+34377:      INSTALLHDR un.h
+34378:      INSTALLHDR unpcb.h
+34379:      INSTALLHDR utfconv.h
+34380:      INSTALLHDR vm.h
+34381:      INSTALLHDR unicode.h
+34382:      INSTALLHDR vmparam.h
+34383:      INSTALLHDR vsock.h
+34384:      INSTALLHDR vnode.h
+34385:      INSTALLHDR vnode_if.h
+34386:      INSTALLHDR xattr.h
+34387:      INSTALLHDR _types.h
+34388:      INSTALLHDR _endian.h
+34389:      INSTALLHDR _structs.h
+34390:      INSTALLHDR _select.h
+34391:      INSTALLHDR protosw.h
+34392:      INSTALLHDR domain.h
+34393:      INSTALLHDR kpi_mbuf.h
+34394:      INSTALLHDR kpi_socket.h
+34395:      INSTALLHDR kpi_socketfilter.h
+34396:      INSTALLHDR ttycom.h
+34397:      INSTALLHDR termios.h
+34398:      INSTALLHDR msg.h
+34399:      INSTALLHDR wait.h
+34400:      INSTALLHDR spawn.h
+34401:      INSTALLHDR timex.h
+34402:      INSTALLHDR commpage.h
+34403:      INSTALLHDR content_protection.h
+34404:      INSTALLHDR codesign.h
+34405:      INSTALLHDR cprotect.h
+34406:      INSTALLHDR decmpfs.h
+34407:      INSTALLHDR csr.h
+34408:      INSTALLHDR disktab.h
+34409:      INSTALLHDR eventhandler.h
+34410:      INSTALLHDR fbt.h
+34411:      INSTALLHDR fileport.h
+34412:      INSTALLHDR fsctl.h
+34413:      INSTALLHDR fslog.h
+34414:      INSTALLHDR kasl.h
+34415:      INSTALLHDR kern_memorystatus.h
+34416:      INSTALLHDR kern_memorystatus_freeze.h
+34417:      INSTALLHDR ktrace.h
+34418:      INSTALLHDR kpi_private.h
+34419:      INSTALLHDR kern_memorystatus_notify.h
+34420:      INSTALLHDR linker_set.h
+34421:      INSTALLHDR mach_swapon.h
+34422:      INSTALLHDR msgbuf.h
+34423:      INSTALLHDR monotonic.h
+34424:      INSTALLHDR persona.h
+34425:      INSTALLHDR eventvar.h
+34426:      INSTALLHDR proc_info.h
+34427:      INSTALLHDR pthread_shims.h
+34428:      INSTALLHDR quota.h
+34429:      INSTALLHDR reboot.h
+34430:      INSTALLHDR shm_internal.h
+34431:      INSTALLHDR sem_internal.h
+34432:      INSTALLHDR stackshot.h
+34433:      INSTALLHDR tty.h
+34434:      INSTALLHDR signalvar.h
+34435:      INSTALLHDR ttychars.h
+34436:      INSTALLHDR ttydev.h
+34437:      INSTALLHDR ttydefaults.h
+34438:      INSTALLHDR user.h
+34439:      INSTALLHDR spawn_internal.h
+34440:      INSTALLHDR vfs_context.h
+34441:      INSTALLHDR reason.h
+34442:      INSTALLHDR vmmeter.h
+34443:      INSTALLHDR priv.h
+34444:      INSTALLHDR pgo.h
+34445:      INSTALLHDR doc_tombstone.h
+34446:      INSTALLHDR fsevents.h
+34447:      INSTALLHDR memory_maintenance.h
+34448:      INSTALLHDR work_interval.h
+34449:      INSTALLHDR kern_sysctl.h
+34450:      INSTALLHDR vsock_transport.h
+34451:      INSTALLHDR sys__types.modulemap
+34452:      INSTALLHDR sysproto.h
+34453:      INSTALLHDR sys_cdefs.modulemap
+34454:      INSTALLHDR sys_types.modulemap
+34455: 2 warnings generated.
+34456:      LDFILELIST bsd
+34457: make[5]: *** [build_all_bootstrap_DEVELOPMENT^ARM64^T8103] Error 2
+34458: make[4]: *** [install] Error 2
+34459: make[3]: *** [src/Kernel/xnu/xnu_build/src/xnu-stamp/xnu-build] Error 2
+34460: make[2]: *** [src/Kernel/xnu/CMakeFiles/xnu.dir/all] Error 2
+34461: make[1]: *** [src/Kernel/xnu/CMakeFiles/xnu.dir/rule] Error 2
+34462: make: *** [xnu] Error 2

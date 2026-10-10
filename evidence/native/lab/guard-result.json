@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-10T18:47:34.142898+00:00",
+  "status": "software_guards_passed",
+  "experiments": [
+    {
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_lab_inventory.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "log": {
+        "path": "guard-1.log",
+        "sha256": "62ffca3852ae2f89ebad5181b50eb38098b1c8efa56412dff16dbd3d268e5a30"
+      },
+      "expected_exit_code": 0
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_serial_capture.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "log": {
+        "path": "guard-2.log",
+        "sha256": "d8da199361add127f8dd77ba6d46e4b203b83bfb9700b786f02a0ce65359bf49"
+      },
+      "expected_exit_code": 0
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/platform/lab_inventory.py",
+        "--role",
+        "test-machine",
+        "--output",
+        ".blauos/build/native-lab/wrong-host-final.json"
+      ],
+      "exit_code": 2,
+      "log": {
+        "path": "guard-3.log",
+        "sha256": "08b8cac911d22b55eba92d01efe98b436a8655b3eeddd1ec69e4b047acf5db4e"
+      },
+      "expected_exit_code": 2
+    }
+  ],
+  "test_evidence_class": "synthetic PTY and hardware-identity rejection on the actual M3 build host",
+  "tools": [
+    {
+      "path": "scripts/platform/lab_inventory.py",
+      "sha256": "0ed511ad88e20e9f955c28a63fdf646e046daead1cf5ba9e7c9b84aa1576b579"
+    },
+    {
+      "path": "scripts/platform/capture_serial.py",
+      "sha256": "651170fece9651e15039289875ad0403238991979ff34bfad3a5a18b15cdc89d"
+    },
+    {
+      "path": "tests/test_lab_inventory.py",
+      "sha256": "0ce4a1d33083caac69f6f40c5b6d125240318d3a3d06ef5c2b4b317d4f622c3f"
+    },
+    {
+      "path": "tests/test_serial_capture.py",
+      "sha256": "b367cde7d149462982e0492a54fead216e986d0533c202bd2d87c7393363e4b8"
+    }
+  ],
+  "lab_verified": false,
+  "physical_xnu_execution_observed": false
+}

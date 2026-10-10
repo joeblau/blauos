@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "page_size": 16384,
+  "ram": [
+    {
+      "name": "synthetic-ram",
+      "base": 268435456,
+      "size": 2097152
+    }
+  ],
+  "reservations": [
+    {
+      "name": "synthetic-firmware",
+      "base": 268959744,
+      "size": 16384
+    }
+  ],
+  "boot_args_phys": 268533760,
+  "device_tree_pointer_space": "kernel_virtual",
+  "fixture_kind": "synthetic_not_hardware_capture"
+}

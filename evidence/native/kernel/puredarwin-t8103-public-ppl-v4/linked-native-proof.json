@@ -1,0 +1,178 @@
+{
+  "schema_version": 1,
+  "status": "compiled_linked_native_experiment_with_pac_lifecycle_gap",
+  "source_profile": {
+    "name": "puredarwin-vm-next",
+    "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+    "tree": "ed2345d7f3c11dad2e7f6ffeeb377adc789b12b8",
+    "machine": "T8103",
+    "kernel_config": "DEVELOPMENT",
+    "architecture": "arm64e",
+    "boot_args_command_line_bytes": 608
+  },
+  "build_receipt_sha256": "d2bc0fdda45a26cd6d12e58448514e4c4a7d948da8f251717ba471f1b1fb5b88",
+  "recipe_sha256": "67db69fe0e9c1bec7345f68a53407f15a9c2d2ddedaa5d080ded0bb57efc8cc5",
+  "loaded_wrapper_inputs": [
+    {
+      "path": "scripts/build/xnu.py",
+      "sha256": "9e789f1228887ead1a40d0659fcb2ccc97c46cd5275ac6f502440a51a9179643"
+    },
+    {
+      "path": "scripts/build/headers.py",
+      "sha256": "e6b0a9fe420a202535efb2998542195f9d5b5fd063783791309f7b85cc55e0f1"
+    },
+    {
+      "path": "scripts/blauos.py",
+      "sha256": "fc159232fb6b6fed403680b9e8764cac1704f60bc47a90a798e9a0639476cdff"
+    }
+  ],
+  "kernel_sha256": "ebcc31d919f88ed3358d6bc38393349ab8f3b33a2f32808aedaced28bcbd23ac",
+  "kernel_uuid": "9B0E1920-0B14-3A66-9EE5-2830064699C6",
+  "entry_pc": "0xfffffe00073e8530",
+  "native_source_provenance_verified": true,
+  "file_type": "MH_EXECUTE",
+  "undefined_kernel_symbols": [],
+  "critical_native_objects": [
+    {
+      "name": "pmap.o",
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl-v4/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_T8103/osfmk/DEVELOPMENT/pmap.o",
+      "sha256": "72720b824fb5d8b27f435f4d6a55708289a11a9e594376dc42aebf5cf9c262d2",
+      "cpu_subtype": "0xc0000002",
+      "file_type": "MH_OBJECT"
+    },
+    {
+      "name": "locore.o",
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl-v4/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_T8103/osfmk/DEVELOPMENT/locore.o",
+      "sha256": "08e9543c6378d2a59d36fdb4cc6f911d40c7520dd635f77ef476e0dbc35016d3",
+      "cpu_subtype": "0xc0000002",
+      "file_type": "MH_OBJECT"
+    },
+    {
+      "name": "start.o",
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl-v4/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_T8103/osfmk/DEVELOPMENT/start.o",
+      "sha256": "d22e052b7b5b8d322c580ceb8bb892f62c6ad63db7fb566be6c0f727c417a479",
+      "cpu_subtype": "0xc0000002",
+      "file_type": "MH_OBJECT"
+    },
+    {
+      "name": "amcc_rorgn.o",
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl-v4/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_T8103/osfmk/DEVELOPMENT/amcc_rorgn.o",
+      "sha256": "df1558eb0d950abde2d9e54f7933e73091c97c5f5807f7ce6f3f7f254b9a8540",
+      "cpu_subtype": "0xc0000002",
+      "file_type": "MH_OBJECT"
+    },
+    {
+      "name": "kpc.o",
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl-v4/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_T8103/osfmk/DEVELOPMENT/kpc.o",
+      "sha256": "6f45c621470dd3a549718b269ac0a0907de565235e716fb6cdcff0f9699188f3",
+      "cpu_subtype": "0xc0000002",
+      "file_type": "MH_OBJECT"
+    },
+    {
+      "name": "machine_routines_asm.o",
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl-v4/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_T8103/osfmk/DEVELOPMENT/machine_routines_asm.o",
+      "sha256": "c150ad074e2a380d7068309e5c5e153d566a7dae6d5274126b51087b3708f9ba",
+      "cpu_subtype": "0xc0000002",
+      "file_type": "MH_OBJECT"
+    },
+    {
+      "name": "cswitch.o",
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl-v4/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_T8103/osfmk/DEVELOPMENT/cswitch.o",
+      "sha256": "ed65bd11b847138bdb28e16b2cd773c760cbfc660850daa2697bd3a6e6edfd68",
+      "cpu_subtype": "0xc0000002",
+      "file_type": "MH_OBJECT"
+    },
+    {
+      "name": "arm_init.o",
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl-v4/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_T8103/osfmk/DEVELOPMENT/arm_init.o",
+      "sha256": "d12805c6ae5157a64175791a7db3db53385672a0d082aadf32093e4483826ad4",
+      "cpu_subtype": "0xc0000002",
+      "file_type": "MH_OBJECT"
+    }
+  ],
+  "protected_segments": [
+    {
+      "name": "__PPLTEXT",
+      "vmaddr": "0xfffffe0007b90000",
+      "vmsize": 65536,
+      "fileoff": 11321344,
+      "filesize": 65536,
+      "initial_protection": 3,
+      "max_protection": 3
+    },
+    {
+      "name": "__PPLDATA",
+      "vmaddr": "0xfffffe0007ba0000",
+      "vmsize": 16384,
+      "fileoff": 11386880,
+      "filesize": 16384,
+      "initial_protection": 3,
+      "max_protection": 3
+    },
+    {
+      "name": "__PPLTRAMP",
+      "vmaddr": "0xfffffe0007ba4000",
+      "vmsize": 65536,
+      "fileoff": 11403264,
+      "filesize": 65536,
+      "initial_protection": 3,
+      "max_protection": 3
+    }
+  ],
+  "protection_note": "PPL segments have the recorded initial Mach-O RW mappings; compiled pmap/APRR/CTRR code changes protections during real startup, which has not been executed. Header flags alone do not prove enforcement.",
+  "trampoline_alignment_verified": true,
+  "source_local_selectors": {
+    "pmap_is_trust_cache_loaded": 77,
+    "pmap_lookup_in_static_trust_cache": 78,
+    "pmap_lookup_in_loaded_trust_caches": 79,
+    "table_count": 80,
+    "private_stock_driver_abi_compatible": null,
+    "classification": "new experimental BlauOS internal table contract; not published stock IDs"
+  },
+  "symbols": {
+    "_ppl_handler_table": "0xfffffe0007117140",
+    "_blauos_native_early_diagnostics": "0xfffffe00073d7998",
+    "_aprr_ppl_enter": "0xfffffe00073e243c",
+    "_start_first_cpu": "0xfffffe00073ec06c",
+    "_ml_disable_user_jop_key": "0xfffffe00073f0f70",
+    "_ml_enable_user_jop_key": "0xfffffe00073f0f70",
+    "_pmap_ppl_locked_down": "0xfffffe0007ba0018",
+    "_ppl_trampoline_start": "0xfffffe0007ba8000",
+    "_ppl_trampoline_end": "0xfffffe0007bb0000"
+  },
+  "native_pac_lifecycle_gap": {
+    "enabled_user_jop_key_symbol": "0xfffffe00073f0f70",
+    "disabled_user_jop_key_symbol": "0xfffffe00073f0f70",
+    "same_address_verified": true,
+    "observed_source": "Native helper bodies absent outside HAS_PARAVIRTUALIZED_PAC; published older native startup/key-switch paths require explicit restoration.",
+    "remediation_patch_reserved": "0011-t8103-public-native-pac.patch"
+  },
+  "read_only_inspections": [
+    {
+      "argv": [
+        "/usr/bin/xcrun",
+        "nm",
+        "-nm",
+        ".blauos/build/native/kernel/puredarwin-t8103-public-ppl-v4/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_T8103/kernel.development.t8103.unstripped"
+      ],
+      "exit_code": 0,
+      "full_output_sha256": "1e421c152dca74e262f030d62a13aeb65611ac5692accee863997ea8d81cd1aa"
+    },
+    {
+      "argv": [
+        "/usr/bin/xcrun",
+        "nm",
+        "-u",
+        ".blauos/build/native/kernel/puredarwin-t8103-public-ppl-v4/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_T8103/kernel.development.t8103.unstripped"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "generated_makeinc_sha256": "1403c38858e28d1a8453f668e42fc3be9e6fb7ed9f52b18988e837ba1c3b7292",
+  "native_driver_bundle_inventory_captured": false,
+  "BootKC_packaged": false,
+  "firmware_compatibility_verified": false,
+  "local_authorization_verified": false,
+  "physical_execution_verified": false
+}

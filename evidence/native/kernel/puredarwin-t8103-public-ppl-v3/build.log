@@ -1,0 +1,229 @@
+1: [  0%] Building C object tools/cctools/libmacho/CMakeFiles/host_libmacho.dir/arch.c.o
+2: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/allocate.c.o
+3: [  0%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_create.c.o
+4: [  0%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/begin.c.o
+5: [  0%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_abbrev.c.o
+6: [  0%] Building C object tools/unifdef/CMakeFiles/unifdef.dir/unifdef.c.o
+7: [  0%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_addr_finder.c.o
+8: [  0%] Linking C static library libmacho.a
+9: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/apple_version.c.o
+10: [  0%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_decl.c.o
+11: [  0%] Linking C executable unifdef
+12: [  0%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/clscook.c.o
+13: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/arch_usage.c.o
+14: [ 10%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_alloc.c.o
+15: [ 10%] Built target host_libmacho
+16: [ 10%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_error.c.o
+17: [ 10%] Built target unifdef
+18: [ 10%] Yacc parser.y
+19: [ 10%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/clscook_ELF64.c.o
+20: [ 10%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/arch.c.o
+21: [ 10%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_arange.c.o
+22: [ 10%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_hash.c.o
+23: [ 10%] Creating VersionMap.h and for_dyld_priv.inc
+24: [ 10%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_die_deliv.c.o
+25: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/cntl.c.o
+26: [ 20%] Lex lexxer.l
+27: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/args.c.o
+28: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_labels.c.o
+29: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/cook.c.o
+30: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_error.c.o
+31: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_lib.c.o
+32: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/best_arch.c.o
+33: Ignoring nkf-0.2.0 because its extensions are not built. Try: gem pristine nkf --version 0.2.0
+34: [ 20%] Building C object tools/mig/CMakeFiles/migcom.dir/error.c.o
+35: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_form.c.o
+36: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/data.c.o
+37: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/breakout.c.o
+38: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_lookup.c.o
+39: [ 20%] Building C object tools/mig/CMakeFiles/migcom.dir/global.c.o
+40: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_frame.c.o
+41: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/end.c.o
+42: Ignoring nkf-0.2.0 because its extensions are not built. Try: gem pristine nkf --version 0.2.0
+43: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_open.c.o
+44: [ 20%] Building C object tools/mig/CMakeFiles/migcom.dir/header.c.o
+45: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/bytesex.c.o
+46: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/error.c.o
+47: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_frame2.c.o
+48: [ 20%] Building C object tools/mig/CMakeFiles/migcom.dir/mig.c.o
+49: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_subr.c.o
+50: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/checkout.c.o
+51: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/gelf.c.o
+52: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_frame3.c.o
+53: [ 20%] Building C object tools/mig/CMakeFiles/migcom.dir/routine.c.o
+54: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_types.c.o
+55: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getdata.c.o
+56: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_funcs.c.o
+57: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/coff_bytesex.c.o
+58: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_util.c.o
+59: [ 20%] Building C object tools/mig/CMakeFiles/migcom.dir/server.c.o
+60: [ 20%] Built target generate_dyld_headers
+29016:              CC subr_xxx.o
+29017:      INSTALLHDR kdebug.h
+29018:              AS strnlen.o
+29019: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl-v3/source-overlay/src/Kernel/xnu/osfmk/arm64/machine_routines_asm.s:95:11: error: expected readable system register
+29020:  mrs x13, CPU_CFG
+29021:           ^
+29022: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl-v3/source-overlay/src/Kernel/xnu/osfmk/arm64/machine_routines_asm.s:99:6: error: expected writable system register or pstate
+29023:  msr CPU_CFG, x13
+29024:      ^
+29025: <instantiation>:1:10: error: expected readable system register
+29026: mrs x13, HID13
+29027:          ^
+29028: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl-v3/source-overlay/src/Kernel/xnu/osfmk/arm64/machine_routines_asm.s:114:2: note: while in macro instantiation
+29029:  HID_INSERT_BITS HID13, (0xfULL << 60), (0xcULL << 60), x13
+29030:  ^
+29031: <instantiation>:4:5: error: expected writable system register or pstate
+29032: msr HID13, x13
+29033:     ^
+29034: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl-v3/source-overlay/src/Kernel/xnu/osfmk/arm64/machine_routines_asm.s:114:2: note: while in macro instantiation
+29035:  HID_INSERT_BITS HID13, (0xfULL << 60), (0xcULL << 60), x13
+29036:  ^
+29037: <instantiation>:1:10: error: expected readable system register
+29038: mrs x13, HID14
+29039:          ^
+29040: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl-v3/source-overlay/src/Kernel/xnu/osfmk/arm64/machine_routines_asm.s:115:2: note: while in macro instantiation
+29041:  HID_SET_BITS HID14, (1ULL << 32), x13
+29042:  ^
+29043: <instantiation>:3:5: error: expected writable system register or pstate
+29044: msr HID14, x13
+29045:     ^
+29046: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl-v3/source-overlay/src/Kernel/xnu/osfmk/arm64/machine_routines_asm.s:115:2: note: while in macro instantiation
+29047:  HID_SET_BITS HID14, (1ULL << 32), x13
+29048:  ^
+29049: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl-v3/source-overlay/src/Kernel/xnu/osfmk/arm64/machine_routines_asm.s:232:10: error: expected readable system register
+29050:  mrs x1, VMSA_LOCK_EL1
+29051:          ^
+29052: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl-v3/source-overlay/src/Kernel/xnu/osfmk/arm64/machine_routines_asm.s:307:6: error: expected writable system register or pstate
+29053:  msr VMSA_LOCK_EL1, x0
+29054:      ^
+29055: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl-v3/source-overlay/src/Kernel/xnu/osfmk/arm64/machine_routines_asm.s:335:10: error: expected readable system register
+29056:  mrs x1, VMSA_LOCK_EL1
+29057:          ^
+29058: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl-v3/source-overlay/src/Kernel/xnu/bsd/kern/mcache.c:204:24: warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+29059:   204 |                     (btp->bt_bktsize + 1) * sizeof(void *), 0, 0, MCR_SLEEP);
+29060:       |                      ~~~~~~~~~~~~~~~~^~~  ~
+29107:   993 | #define __probable(x)   __builtin_expect(!!(x), 1)
+29108:       |                                             ^
+29109: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl-v3/source-overlay/src/Kernel/xnu/bsd/kern/mcache.c:923:8: warning: implicit conversion changes signedness: 'intptr_t' (aka 'long') to 'size_t' (aka 'unsigned long') [-Wsign-conversion]
+29110:   923 |                     ((intptr_t)buf + cp-make[11]: *** [machine_routines_asm.o] Error 1
+29111: make[11]: *** Waiting for unfinished jobs....
+29112: >mc_chunksize));
+29113:       |                      ^~~~~~~~~~~~~ ~
+29114: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl-v3/source-overlay/src/Kernel/xnu/bsd/sys/mcache.h:55:22: note: expanded from macro 'VERIFY'
+29115:    55 |         ((void)(__probable((EX)) || assfail(#EX, __FILE__, __LINE__)))
+29116:       |                             ^~
+33927:      INSTALLHDR mman.h
+33928:              CC sdt.o
+33929: 32 warnings generated.
+33930: make[10]: *** [build_all] Error 2
+33931: make[9]: *** [do_all] Error 2
+33932: make[8]: *** [build_all] Error 2
+33933: make[7]: *** [build_all_recurse_into_conf] Error 2
+33934: make[6]: *** [build_all_recurse_into_osfmk] Error 2
+33935: make[6]: *** Waiting for unfinished jobs....
+33936:      INSTALLHDR monotonic.h
+33937:      INSTALLHDR mount.h
+33938: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl-v3/source-overlay/src/Kernel/xnu/bsd/dev/dtrace/fbt.c:589:13: warning: cast from 'int (*)(void)' to 'open_close_fcn_t *' (aka 'int (*)(int, int, int, struct proc *)') converts to incompatible function type [-Wcast-function-type-mismatch]
+33939:   589 |         .d_close = eno_opcl,
+33940:       |                    ^~~~~~~~
+34383:      INSTALLHDR syslimits.h
+34384:      INSTALLHDR syslog.h
+34385:      INSTALLHDR systm.h
+34386:      INSTALLHDR sys_domain.h
+34387:      INSTALLHDR time.h
+34388:      INSTALLHDR types.h
+34389:      INSTALLHDR ubc.h
+34390:      INSTALLHDR ucontext.h
+34391:      INSTALLHDR ucred.h
+34392:      INSTALLHDR uio.h
+34393:      INSTALLHDR un.h
+34394:      INSTALLHDR unistd.h
+34395:      INSTALLHDR unpcb.h
+34396:      INSTALLHDR utfconv.h
+34397:      INSTALLHDR unicode.h
+34398:      INSTALLHDR vm.h
+34399:      INSTALLHDR vmparam.h
+34400:      INSTALLHDR vnode.h
+34401:      INSTALLHDR vnode_if.h
+34402:      INSTALLHDR vsock.h
+34403:      INSTALLHDR _structs.h
+34404:      INSTALLHDR xattr.h
+34405:      INSTALLHDR _select.h
+34406:      INSTALLHDR _types.h
+34407:      INSTALLHDR _endian.h
+34408:      INSTALLHDR protosw.h
+34409:      INSTALLHDR domain.h
+34410:      INSTALLHDR kpi_socket.h
+34411:      INSTALLHDR kpi_mbuf.h
+34412:      INSTALLHDR ttycom.h
+34413:      INSTALLHDR kpi_socketfilter.h
+34414:      INSTALLHDR termios.h
+34415:      INSTALLHDR msg.h
+34416:      INSTALLHDR wait.h
+34417:      INSTALLHDR spawn.h
+34418:      INSTALLHDR timex.h
+34419:      INSTALLHDR commpage.h
+34420:      INSTALLHDR codesign.h
+34421:      INSTALLHDR content_protection.h
+34422:      INSTALLHDR cprotect.h
+34423:      INSTALLHDR csr.h
+34424:      INSTALLHDR decmpfs.h
+34425:      INSTALLHDR eventhandler.h
+34426:      INSTALLHDR disktab.h
+34427:      INSTALLHDR fileport.h
+34428:      INSTALLHDR fbt.h
+34429:      INSTALLHDR fsctl.h
+34430:      INSTALLHDR fslog.h
+34431:      INSTALLHDR kasl.h
+34432:      INSTALLHDR kern_memorystatus.h
+34433:      INSTALLHDR kern_memorystatus_freeze.h
+34434:      INSTALLHDR kern_memorystatus_notify.h
+34435:      INSTALLHDR kpi_private.h
+34436:      INSTALLHDR ktrace.h
+34437:      INSTALLHDR linker_set.h
+34438:      INSTALLHDR mach_swapon.h
+34439:      INSTALLHDR monotonic.h
+34440:      INSTALLHDR msgbuf.h
+34441:      INSTALLHDR eventvar.h
+34442:      INSTALLHDR persona.h
+34443:      INSTALLHDR proc_info.h
+34444:      INSTALLHDR pthread_shims.h
+34445:      INSTALLHDR quota.h
+34446:      INSTALLHDR reboot.h
+34447:      INSTALLHDR sem_internal.h
+34448:      INSTALLHDR shm_internal.h
+34449:      INSTALLHDR signalvar.h
+34450:      INSTALLHDR stackshot.h
+34451:      INSTALLHDR tty.h
+34452:      INSTALLHDR ttychars.h
+34453:      INSTALLHDR ttydefaults.h
+34454:      INSTALLHDR ttydev.h
+34455:      INSTALLHDR user.h
+34456:      INSTALLHDR vfs_context.h
+34457:      INSTALLHDR vmmeter.h
+34458:      INSTALLHDR reason.h
+34459:      INSTALLHDR spawn_internal.h
+34460:      INSTALLHDR priv.h
+34461:      INSTALLHDR pgo.h
+34462:      INSTALLHDR doc_tombstone.h
+34463:      INSTALLHDR fsevents.h
+34464:      INSTALLHDR memory_maintenance.h
+34465:      INSTALLHDR kern_sysctl.h
+34466:      INSTALLHDR work_interval.h
+34467:      INSTALLHDR vsock_transport.h
+34468:      INSTALLHDR sysproto.h
+34469:      INSTALLHDR sys_types.modulemap
+34470:      INSTALLHDR sys__types.modulemap
+34471:      INSTALLHDR sys_cdefs.modulemap
+34472: 11 warnings generated.
+34473: 1 warning generated.
+34474: 19 warnings generated.
+34475: 2 warnings generated.
+34476:      LDFILELIST bsd
+34477: make[5]: *** [build_all_bootstrap_DEVELOPMENT^ARM64^T8103] Error 2
+34478: make[4]: *** [install] Error 2
+34479: make[3]: *** [src/Kernel/xnu/xnu_build/src/xnu-stamp/xnu-build] Error 2
+34480: make[2]: *** [src/Kernel/xnu/CMakeFiles/xnu.dir/all] Error 2
+34481: make[1]: *** [src/Kernel/xnu/CMakeFiles/xnu.dir/rule] Error 2
+34482: make: *** [xnu] Error 2
