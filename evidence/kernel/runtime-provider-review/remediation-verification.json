@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "reviewer": "kernel_build independent source/provider review",
+  "status": "source_provider_remediation_verified",
+  "compatibility_object_sha256": "fb191a5c773ddaa2281cf1d9f14b49ccc974cff718b26c272d32faed34c2e0b7",
+  "compatibility_definition_count": 27,
+  "selected_archive_count": 29,
+  "old_archive_shadows_count": 36,
+  "old_archive_shadows_still_present": [],
+  "compatibility_symbols_with_selected_archive_provider": {},
+  "old_libdyld_reexports_still_compatibility_defined": [],
+  "staged_artifacts": [
+    {
+      "path": "usr/lib/libSystem.B.dylib",
+      "sha256": "b3a30f416a30f1ce9fd74c0d51f576a4dc6381f6a9114b43c676b8bd62a28b75"
+    },
+    {
+      "path": "usr/lib/system/libdyld.dylib",
+      "sha256": "aee5e980fde762e4588b0af3aadc8370fb16bc87396601895d62b67e62e338a1"
+    },
+    {
+      "path": "usr/lib/dyld",
+      "sha256": "5ec46a3be638541ef7e6caf6801ac32bee24818f04c8117822d2c8673a28e5f5"
+    }
+  ],
+  "ordinary_libdyld_runtime_state_records": {
+    "_malloc_zones": [],
+    "_default_zone_malloc": [],
+    "___global_locale": [],
+    "___locale_key": [],
+    "_mach_task_self_": [
+      "                 U _mach_task_self_"
+    ],
+    "_vm_page_size": [
+      "                 U _vm_page_size"
+    ]
+  },
+  "ordinary_libdyld_dependencies": [
+    {
+      "path": "/usr/lib/libSystem.B.dylib",
+      "weak": false,
+      "reexport": false
+    }
+  ],
+  "ordinary_libdyld_imports": [],
+  "system_interface": {
+    "sha256": "4bdf6659c106db2690820b09502540879567e41ea4387bf007e740f04819a85a",
+    "declaration_only": true,
+    "staged_tbd_files": []
+  },
+  "source_inputs": [
+    {
+      "path": "scripts/build/runtime.py",
+      "sha256": "b0be02d523a562234016e365d36ee0a7100b34a32ac49c6c1e0dd1945a266bb8"
+    },
+    {
+      "path": "runtime/compat/sdk27-dyld.patch",
+      "sha256": "28d745e5d0862f7034f57674ba2f3374310c8740732c2b11d1073d938ebb8a5e"
+    },
+    {
+      "path": "runtime/compat/libdyld.exports",
+      "sha256": "4bec45e063b7da16164b30c0b07a62456d05b01cb56455029d8050186dbf1712"
+    },
+    {
+      "path": ".blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/stub/CMakeFiles/libSystem_B_stub.dir/link.txt",
+      "sha256": "cc75b1d6fc7bf529e91ca56b6f08e92e2bb917219f0c53c5374ea08801c9f548"
+    }
+  ],
+  "required_guest_execution_verified": false,
+  "limitations": [
+    "Static source/provider/initializer review verifies routing; actual guest shell, supervision, DNS and shutdown remain required.",
+    "Remaining partial compatibility contracts are separately inventoried and do not claim general Darwin parity."
+  ]
+}

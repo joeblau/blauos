@@ -46,7 +46,12 @@ flowchart TD
     HEADERS --> SYSCALL[libsystem_kernel syscall and Mach IPC interfaces]
     SYSCALL --> CORE[libc / libplatform / pthread / malloc / dispatch / Blocks / libdyld]
     CORE --> SYSTEM[Independent libSystem and dynamic loader]
-    SYSTEM --> INIT[launchd / XPC / bootstrap IPC / plist parsing]
+    SYSTEM --> LANG[Source Objective-C / C++ ABI / C++ runtime]
+    LANG --> ICU[Locked ICU implementation and Unicode data]
+    ICU --> CF[CoreFoundation and IOKitCF]
+    SYSTEM --> CF
+    CF --> INIT[launchd / XPC / bootstrap IPC / plist parsing]
+    SYSTEM --> INIT
     INIT --> SHELL[Shell, jobs and services]
     KERNEL --> BOOT[Loader / root filesystem / VM hardware]
     SHELL --> BOOT
@@ -61,8 +66,15 @@ The aggregate target is named `libSystem_B_stub` upstream, but links the actual
 source-built libraries; the target name alone does not establish independence.
 The runtime additionally brings in resolver/account services, notify, ASL/syslog,
 trace, Darwin support, SystemConfiguration, math/compiler builtins, Blocks,
-unwind/C++ ABI, and crypto components as configured. The broader userspace can
-bring in CoreFoundation, XML, ICU, and zlib. Exclude optional targets by a reviewed
+unwind/C++ ABI, and crypto components as configured. The selected source launchd
+requires CoreFoundation and IOKitCF; CoreFoundation in turn needs the source
+Objective-C runtime and ICU. The measured ARM64 closure therefore includes real
+Objective-C, C++ ABI, C++, ICU common/internationalization libraries, and Unicode
+data, rather than treating them as optional future packages. The ICU 76.1 source
+archive is separately locked and verified; the PureDarwin tree provides
+CoreFoundation 1338. Their actual compile/link closure is recorded in the
+[source build evidence](../../evidence/runtime/corefoundation/all-result.json).
+XML and zlib remain dependent on selected targets. Exclude optional targets by a reviewed
 build closure, then inspect the resulting Mach-O load commands; do not infer
 runtime dependencies from compilation success. Further evidence belongs in the
 runtime audit and VM boot results.

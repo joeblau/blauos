@@ -4,8 +4,11 @@
  */
 #include <mach/mach.h>
 #include <servers/bootstrap.h>
+#include <errno.h>
+#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <sys/sysctl.h>
 #include <unistd.h>
 
 #define SERVICE "org.blauos.test.bootstrap"
@@ -14,6 +17,17 @@ struct receive_buffer { struct message payload; mach_msg_max_trailer_t trailer; 
 
 int main(int argc, char **argv)
 {
+    if (argc == 3 && !strcmp(argv[1], "--reaped")) {
+        char *end = NULL;
+        errno = 0;
+        long pid = strtol(argv[2], &end, 10);
+        if (errno || !end || *end || pid <= 1 || pid > 2147483647) return 64;
+        int mib[] = {CTL_KERN, KERN_PROC, KERN_PROC_PID, (int)pid};
+        struct kinfo_proc process;
+        size_t length = sizeof(process);
+        /* A zombie still has a KERN_PROC record. A fully reaped process does not. */
+        return sysctl(mib, 4, &process, &length, NULL, 0) || length != 0;
+    }
     if (argc != 2) return 64;
     mach_port_t port;
     if (!strcmp(argv[1], "--server")) {

@@ -10,6 +10,8 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import urllib.request
+from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -47,8 +49,9 @@ def load_manifest(path):
         names.add(name.lower())
         if not re.fullmatch(r'[0-9a-f]{40}', source.get('revision', '')):
             raise ValueError(f'{name}: require a full immutable Git commit')
-        if not source.get('url', '').startswith('https://github.com/'):
-            raise ValueError(f'{name}: require an explicit HTTPS GitHub source URL')
+        parsed_url = urlsplit(source.get('url', ''))
+        if parsed_url.scheme != 'https' or not parsed_url.hostname or parsed_url.username or parsed_url.password or parsed_url.query or parsed_url.fragment:
+            raise ValueError(f'{name}: require an explicit HTTPS source URL without credentials, query or fragment')
         if not source.get('license') or not source.get('role'):
             raise ValueError(f'{name}: license and role are required')
         if source.get('tree') and not re.fullmatch(r'[0-9a-f]{40}', source['tree']):
@@ -60,6 +63,19 @@ def load_manifest(path):
         unknown = {n.lower() for n in profile.get('sources', [])} - names
         if unknown:
             raise ValueError(f'{name}: unknown sources {sorted(unknown)}')
+    archive_names, filenames = set(), set()
+    for archive in data.get('archives', []):
+        name, filename = archive.get('name', ''), archive.get('filename', '')
+        for label, value, seen in [('archive name', name, archive_names), ('archive filename', filename, filenames)]:
+            if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9._-]*', value) or value.lower() in seen:
+                raise ValueError(f'Unsafe or duplicate {label}: {value!r}')
+            seen.add(value.lower())
+        if not archive.get('url', '').startswith('https://github.com/'):
+            raise ValueError(f'{name}: require an explicit HTTPS GitHub archive URL')
+        if not re.fullmatch(r'[0-9a-f]{64}', archive.get('sha256', '')):
+            raise ValueError(f'{name}: require an immutable archive SHA-256')
+        if not archive.get('license') or not archive.get('role'):
+            raise ValueError(f'{name}: archive license and role are required')
     root = Path(path).resolve().parent
     for lock in data.get('transitive_locks', []):
         target = root / lock['path']
@@ -152,6 +168,42 @@ def fingerprint_sdk(path):
         dirs.sort()
     return {'content_sha256': aggregate.hexdigest(), 'entries': count, 'algorithm': 'sha256(relative-path NUL file-sha256-or-link-target LF; sorted walk; no symlink following)'}
 
+def fetch_archives(args):
+    data = load_manifest(args.manifest)
+    archives = data.get('archives', [])
+    requested = {name.lower() for name in args.names}
+    unknown = requested - {entry['name'].lower() for entry in archives}
+    if unknown:
+        raise ValueError(f'Unknown archives: {sorted(unknown)}')
+    destination = Path(args.inputs_dir).resolve()
+    destination.mkdir(parents=True, exist_ok=True)
+    results = []
+    for entry in archives:
+        if requested and entry['name'].lower() not in requested:
+            continue
+        target = destination / entry['filename']
+        if target.is_symlink():
+            raise ValueError(f'Existing archive symlink preserved: {target}')
+        if not target.exists():
+            temporary = None
+            try:
+                with tempfile.NamedTemporaryFile('wb', dir=destination, delete=False) as output:
+                    temporary = Path(output.name)
+                    with urllib.request.urlopen(entry['url'], timeout=60) as response:
+                        shutil.copyfileobj(response, output)
+                if digest(temporary) != entry['sha256']:
+                    raise ValueError(f"{entry['name']}: downloaded archive hash differs from lock")
+                temporary.rename(target)
+            finally:
+                if temporary and temporary.exists():
+                    temporary.unlink()
+        if digest(target) != entry['sha256']:
+            raise ValueError(f"{entry['name']}: existing archive differs from lock; preserved")
+        results.append({'name': entry['name'], 'filename': target.name, 'url': entry['url'],
+                        'sha256': entry['sha256'], 'bytes': target.stat().st_size})
+        print(f"Verified archive {entry['name']} {entry['sha256']}", flush=True)
+    atomic_json(args.report, {'schema_version': 1, 'source_lock_sha256': digest(args.manifest), 'archives': results})
+
 def doctor(args):
     lock = json.loads(Path(args.toolchain_lock).read_text())
     report = {'schema_version': 1, 'checks': {}, 'errors': [], 'limitations': lock.get('limitations', [])}
@@ -220,6 +272,11 @@ def main():
     fetcher.add_argument('--profile')
     fetcher.add_argument('--sources-dir', default=str(ROOT / '.blauos/sources'))
     fetcher.add_argument('--report', default=str(ROOT / '.blauos/reports/sources.json'))
+    archive_fetcher = sub.add_parser('fetch-archives')
+    archive_fetcher.add_argument('--manifest', default=argparse.SUPPRESS)
+    archive_fetcher.add_argument('names', nargs='*')
+    archive_fetcher.add_argument('--inputs-dir', default=str(ROOT / '.blauos/inputs'))
+    archive_fetcher.add_argument('--report', default=str(ROOT / '.blauos/reports/archives.json'))
     host = sub.add_parser('doctor')
     host.add_argument('--toolchain-lock', default=str(ROOT / 'toolchain.lock.json'))
     host.add_argument('--report', default=str(ROOT / '.blauos/reports/host.json'))
@@ -227,9 +284,11 @@ def main():
     args = parser.parse_args()
     if args.command == 'validate-lock':
         data = load_manifest(args.manifest)
-        print(f"Valid lock: {len(data['sources'])} immutable sources; SHA-256 {digest(args.manifest)}")
+        print(f"Valid lock: {len(data['sources'])} immutable sources, {len(data.get('archives', []))} archives; SHA-256 {digest(args.manifest)}")
     elif args.command == 'fetch':
         fetch(args)
+    elif args.command == 'fetch-archives':
+        fetch_archives(args)
     else:
         doctor(args)
 

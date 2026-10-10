@@ -1,0 +1,33 @@
+{
+  "command": [
+    "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+    "-arch",
+    "arm64",
+    "-mmacosx-version-min=11.0",
+    "-isysroot",
+    "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+    "-DPOSIX_BUILD",
+    "-fno-builtin",
+    "-fblocks",
+    "-g",
+    "-O2",
+    "-Wno-nullability-completeness",
+    "-include",
+    "/Users/joeblau/Developer/joeblau/src/blauos/runtime/compat/sdk27_compile.h",
+    "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSCore",
+    "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSShared",
+    "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSPosix",
+    "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/mDNSResponder/DSO",
+    "-dM",
+    "-E",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSPosix/PosixDaemon.c"
+  ],
+  "macros": {
+    "AF_DNSSD": "AF_LOCAL",
+    "MDNS_UDS_SERVERPATH": "\"/var/run/mDNSResponder\"",
+    "POSIX_BUILD": "1",
+    "VERSION": "1",
+    "uDNS_SERVERS_FILE": "\"/etc/resolv.conf\""
+  },
+  "preprocessor_exit_code": 0
+}

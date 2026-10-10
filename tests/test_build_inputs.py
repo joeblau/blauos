@@ -5,6 +5,7 @@ from pathlib import Path
 import subprocess
 import sys
 import tempfile
+from types import SimpleNamespace
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -109,6 +110,22 @@ class InputIntegrityTests(unittest.TestCase):
         (directory/'series').write_text('../outside.patch\n')
         with self.assertRaisesRegex(ValueError,'Invalid patch entry'):
             patches.series(directory)
+
+    def test_archive_requires_an_immutable_hash(self):
+        self.write_manifest(archives=[{'name':'icu','filename':'icu.tgz','url':'https://github.com/fixture/source/archive.tar.gz',
+                                      'sha256':'latest','license':'MIT','role':'fixture'}])
+        with self.assertRaisesRegex(ValueError,'immutable archive'):
+            blauos.load_manifest(self.manifest)
+
+    def test_mismatched_archive_is_preserved(self):
+        directory = self.root/'inputs'; directory.mkdir()
+        archive = directory/'icu.tgz'; archive.write_bytes(b'user-owned input')
+        self.write_manifest(archives=[{'name':'icu','filename':'icu.tgz','url':'https://github.com/fixture/source/archive.tar.gz',
+                                      'sha256':'a'*64,'license':'MIT','role':'fixture'}])
+        args = SimpleNamespace(manifest=self.manifest,names=['icu'],inputs_dir=directory,report=self.root/'report.json')
+        with self.assertRaisesRegex(ValueError,'preserved'):
+            blauos.fetch_archives(args)
+        self.assertEqual(archive.read_bytes(),b'user-owned input')
 
 if __name__ == '__main__':
     unittest.main()

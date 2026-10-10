@@ -1,3 +1,59 @@
+diff --git a/src/Libraries/IOKit/CMakeLists.txt b/src/Libraries/IOKit/CMakeLists.txt
+index 7b1ca6de..91a447cb 100644
+--- a/src/Libraries/IOKit/CMakeLists.txt
++++ b/src/Libraries/IOKit/CMakeLists.txt
+@@ -5,6 +5,8 @@ add_darwin_static_library(IOKit)
+ # than its x86_64 default.
+ if(PUREDARWIN_ARCH STREQUAL "armv6")
+     set(_iokit_mig_arch armv6)
++elseif(PUREDARWIN_ARM64)
++    set(_iokit_mig_arch arm64)
+ else()
+     set(_iokit_mig_arch x86_64)
+ endif()
+@@ -60,7 +62,7 @@ target_sources(IOKitCF PRIVATE
+     ${CMAKE_CURRENT_BINARY_DIR}/device_user.c
+ )
+ 
+-target_compile_definitions(IOKitCF PRIVATE IOKIT=1 KERNEL=0
++target_compile_definitions(IOKitCF PRIVATE IOKIT=1 KERNEL=0 DEPLOYMENT_RUNTIME_OBJC=1
+     __DARWIN_ONLY_UNIX_CONFORMANCE=1 PRIVATE=1)
+ target_compile_options(IOKitCF PRIVATE -UKERNEL -fblocks -w
+     -Wno-error=int-conversion)
+@@ -115,4 +117,8 @@ add_dependencies(IOKitCF libc_features)
+ 
+ install(TARGETS IOKitCF DESTINATION usr/local/lib COMPONENT DeveloperInternal)
+ 
+-endif()
+\ No newline at end of file
++endif()
++# Resolve the source CoreFoundation/MacTypes typedef order for IOKit clients.
++if(TARGET IOKitCF)
++    target_compile_options(IOKitCF PRIVATE $<$<COMPILE_LANGUAGE:C>:-includeMacTypes.h>)
++endif()
+diff --git a/src/Libraries/XPC/launchd/pd_sandbox_check.c b/src/Libraries/XPC/launchd/pd_sandbox_check.c
+index 11f41fb9..6cbc2bd4 100644
+--- a/src/Libraries/XPC/launchd/pd_sandbox_check.c
++++ b/src/Libraries/XPC/launchd/pd_sandbox_check.c
+@@ -5,6 +5,7 @@
+  * documented sandbox_check() behavior for "no active sandbox profile",
+  * which matches PD's actual current state.
+  */
++#include <errno.h>
+ #include <stdarg.h>
+ #include <stddef.h>
+ #include <stdint.h>
+@@ -27,7 +28,9 @@ sandbox_init(const char *profile, uint64_t flags, char **errorbuf)
+     if (errorbuf != NULL) {
+         *errorbuf = NULL;
+     }
+-    return 0;
++    /* A requested policy cannot be enforced without Sandbox.kext. */
++    errno = ENOTSUP;
++    return -1;
+ }
+ 
+ /*
 diff --git a/src/Libraries/XPC/libinfo/mdns_module.c b/src/Libraries/XPC/libinfo/mdns_module.c
 index f5b4d30b..f9bc7c7f 100644
 --- a/src/Libraries/XPC/libinfo/mdns_module.c
@@ -23,10 +79,10 @@ index 98b05716..3a216d4c 100644
 +# Ensure generated MIG declarations exist before compiling their consumer.
 +add_dependencies(XPC_notify_client_static XPC_notifyd_mig_static)
 diff --git a/src/Libraries/dyld/CMakeLists.txt b/src/Libraries/dyld/CMakeLists.txt
-index 35e55820..70d2e86a 100644
+index 35e55820..f25be431 100644
 --- a/src/Libraries/dyld/CMakeLists.txt
 +++ b/src/Libraries/dyld/CMakeLists.txt
-@@ -221,3 +221,8 @@ if(PUREDARWIN_USE_LD64_LLD)
+@@ -221,3 +221,21 @@ if(PUREDARWIN_USE_LD64_LLD)
  endif()
  
  install(TARGETS dyld RUNTIME DESTINATION usr/lib COMPONENT BaseSystem)
@@ -35,6 +91,143 @@ index 35e55820..70d2e86a 100644
 +target_include_directories(dyld BEFORE PRIVATE ${BLAUOS_CXX_HEADERS})
 +target_compile_options(dyld PRIVATE $<$<COMPILE_LANGUAGE:CXX>:-nostdinc++>)
 +target_sources(dyld PRIVATE ${BLAUOS_STACK_PROBE})
++
++# Self-rebase runs before libkernel's function-pointer tables are themselves
++# rebased. Pull the real VARIANT_STATIC source primitives; their public strong
++# definitions override the weak libkernel callback wrappers.
++foreach(_bootstrap_primitive bzero memchr memcmp memmove memset strchr strcmp strcpy strlen strncmp strncpy strstr)
++    target_link_options(dyld PRIVATE "-Wl,-u,__platform_${_bootstrap_primitive}")
++endforeach()
++
++# Bootstrap-safe C Blocks runtime uses dyld's actual pool allocator.
++target_sources(dyld PRIVATE
++    ${CMAKE_SOURCE_DIR}/src/Libraries/libSystem/libdispatch/src/BlocksRuntime/runtime.c)
++target_include_directories(dyld PRIVATE
++    ${CMAKE_SOURCE_DIR}/src/Libraries/libSystem/libdispatch/src/BlocksRuntime)
+diff --git a/src/Libraries/dyld/pd_stubs.c b/src/Libraries/dyld/pd_stubs.c
+index 97a32a4e..ed59a60e 100644
+--- a/src/Libraries/dyld/pd_stubs.c
++++ b/src/Libraries/dyld/pd_stubs.c
+@@ -54,17 +54,22 @@ long double nanl(const char *tagp)
+ 
+ int __availability_version_check(uint32_t count, void *versions)
+ {
+-	(void)count;
+-	(void)versions;
+-	return 1;
++    /* This pinned guest targets Darwin 20.5 / macOS 11.3. Bootstrap cannot
++     * claim newer runtime APIs merely because its build SDK is newer. */
++    const struct { uint32_t platform, version; } *requests = versions;
++    if (!requests) return 0;
++    for (uint32_t index = 0; index < count; ++index)
++        if (requests[index].platform == 1) /* PLATFORM_MACOS */
++            return requests[index].version <= ((11u << 16) | (3u << 8));
++    return 0;
+ }
+ 
++/* Use the pinned libplatform once gate: acquire/release ordering, waiting,
++ * recursive-initializer rejection, and the same all-ones completion token. */
++extern void _os_once(long *, void *, void (*)(void *));
+ void dispatch_once_f(long *predicate, void *context, void (*function)(void *))
+ {
+-	if (*predicate == 0) {
+-		*predicate = 1;
+-		function(context);
+-	}
++    _os_once(predicate, context, function);
+ }
+ 
+ int fls(int value)
+@@ -110,6 +115,7 @@ int __pd_connect_unix2003(int socket, const struct sockaddr *address, socklen_t
+ 	return __pd_connect_default(socket, address, address_len);
+ }
+ 
++#if !defined(__arm64__) && !defined(__aarch64__)
+ int __pd_fcntl_default(int fd, int cmd, ...) __asm("_fcntl");
+ int __pd_fcntl_default(int fd, int cmd, ...)
+ {
+@@ -122,18 +128,28 @@ int __pd_fcntl_default(int fd, int cmd, ...)
+ 	return __pd_fcntl_syscall(fd, cmd, arg);
+ }
+ 
++#endif
++
++/* ARM64 uses the pinned native implementation; reversing the alias here
++ * would recurse through pd_unix2003.c/pd_arm64_abi.c. */
++#if !defined(__arm64__) && !defined(__aarch64__)
+ int __pd_getrlimit_default(int resource, struct rlimit *rlp) __asm("_getrlimit");
+ int __pd_getrlimit_default(int resource, struct rlimit *rlp)
+ {
+ 	return __pd_getrlimit_unix2003(resource, rlp);
+ }
+ 
++#endif
++
+ int __pd_mprotect_unix2003(void *addr, size_t len, int prot) __asm("_mprotect$UNIX2003");
+ int __pd_mprotect_unix2003(void *addr, size_t len, int prot)
+ {
+ 	return __pd_mprotect_default(addr, len, prot);
+ }
+ 
++/* ARM64 uses the pinned native implementation; reversing the alias here
++ * would recurse through pd_unix2003.c/pd_arm64_abi.c. */
++#if !defined(__arm64__) && !defined(__aarch64__)
+ int __pd_open_default(const char *path, int flags, ...) __asm("_open");
+ int __pd_open_default(const char *path, int flags, ...)
+ {
+@@ -148,6 +164,8 @@ int __pd_open_default(const char *path, int flags, ...)
+ 	return __pd_open_unix2003(path, flags, mode);
+ }
+ 
++#endif
++
+ DIR *__pd_opendir_inode64_unix2003(const char *path) __asm("_opendir$INODE64$UNIX2003");
+ DIR *__pd_opendir_inode64_unix2003(const char *path)
+ {
+@@ -170,6 +188,9 @@ ssize_t __pd_write_unix2003(int fd, const void *buf, size_t nbyte)
+ 	return __pd_write_default(fd, buf, nbyte);
+ }
+ 
++/* ARM64 uses the pinned native implementation; reversing the alias here
++ * would recurse through pd_unix2003.c/pd_arm64_abi.c. */
++#if !defined(__arm64__) && !defined(__aarch64__)
+ int __pd_pthread_cond_wait_default(pthread_cond_t *cond, pthread_mutex_t *mutex) __asm("_pthread_cond_wait");
+ int __pd_pthread_cond_wait_default(pthread_cond_t *cond, pthread_mutex_t *mutex)
+ {
+@@ -200,6 +221,8 @@ int __pd_pthread_rwlock_wrlock_default(pthread_rwlock_t *rwlock)
+ 	return __pd_pthread_rwlock_wrlock_unix2003(rwlock);
+ }
+ 
++#endif
++
+ #if !defined(__arm__) && !defined(__arm64__) && !defined(__aarch64__)
+ size_t __pd_fwrite_default(const void *ptr, size_t size, size_t nitems, FILE *stream) __asm("_fwrite");
+ size_t __pd_fwrite_default(const void *ptr, size_t size, size_t nitems, FILE *stream)
+@@ -278,16 +301,12 @@ void arc4random_addrandom(unsigned char *data, int datalen)
+ 	(void)data; (void)datalen; /* getentropy() needs no caller-supplied entropy */
+ }
+ 
+-extern void _ZN4dyld4haltEPKc(const char *msg) __attribute__((noreturn));
++/* _Block_copy/_Block_release are supplied by the pinned BlocksRuntime,
++ * wired into the dyld target rather than aborting in compatibility hooks. */
+ 
+-void *_Block_copy(const void *block)
+-{
+-	(void)block;
+-	_ZN4dyld4haltEPKc("_Block_copy()");
+-}
+-
+-void _Block_release(const void *block)
+-{
+-	(void)block;
+-	_ZN4dyld4haltEPKc("_Block_release()");
+-}
++/* Stack/global class storage must be reachable before dyld self-rebasing.
++ * Compile the pinned storage declarations as hidden to permit PC-relative
++ * addressing while preserving the complete real Blocks ABI data layout. */
++#pragma GCC visibility push(hidden)
++#include "../libSystem/libdispatch/src/BlocksRuntime/data.c"
++#pragma GCC visibility pop
 diff --git a/src/Libraries/dyld/upstream/src/ImageLoader.h b/src/Libraries/dyld/upstream/src/ImageLoader.h
 index 60dd9a88..d09e66ca 100644
 --- a/src/Libraries/dyld/upstream/src/ImageLoader.h
@@ -60,6 +253,71 @@ index 60dd9a88..d09e66ca 100644
         }
  
  // utilities
+diff --git a/src/Libraries/dyld/upstream/src/glue.c b/src/Libraries/dyld/upstream/src/glue.c
+index 4fa52f81..ee6f5454 100644
+--- a/src/Libraries/dyld/upstream/src/glue.c
++++ b/src/Libraries/dyld/upstream/src/glue.c
+@@ -1162,25 +1162,8 @@ vm_size_t vm_page_size = 0x1000;
+ #endif
+ 
+ 
+-/* Referenced by every stack block dyld builds, including the ones rebaseDyld()
+- * needs before the GOT is usable; hidden keeps those references pc-relative. */
+-__attribute__((visibility("hidden"))) void* _NSConcreteStackBlock[32];
+-__attribute__((visibility("hidden"))) void* _NSConcreteGlobalBlock[32];
+-
+-void _Block_object_assign()
+-{
+-	_ZN4dyld4haltEPKc("_Block_object_assign()");
+-}
+-
+-void _Block_object_dispose(const void* object, int flags)
+-{
+-	// only support stack blocks in dyld: BLOCK_FIELD_IS_BYREF=8
+-	if ( flags != 8 )
+-		_ZN4dyld4haltEPKc("_Block_object_dispose()");
+-}
+-
+-
+-
++/* Real BlocksRuntime storage is hidden by pd_stubs.c for pc-relative
++ * pre-rebase stack/global block references; lifetime APIs use pinned source. */
+ #if !TARGET_OS_SIMULATOR
+ errno_t memset_s(void* s, rsize_t smax, int c, rsize_t n)
+ {
+diff --git a/src/Libraries/libSystem/libc/CMakeLists.txt b/src/Libraries/libSystem/libc/CMakeLists.txt
+index c8d1fca9..284c2560 100644
+--- a/src/Libraries/libSystem/libc/CMakeLists.txt
++++ b/src/Libraries/libSystem/libc/CMakeLists.txt
+@@ -247,6 +247,8 @@ target_sources(libc_static PRIVATE
+     gen/FreeBSD/getlogin.c       # _getlogin / _getlogin_r
+     gen/getusershell.c           # getusershell/setusershell/endusershell (/etc/shells)
+     string/FreeBSD/wcscmp.c      # _wcscmp (wcscoll)
++    stdlib/FreeBSD/llabs.c
++    stdlib/FreeBSD/lldiv.c
+     stdlib/FreeBSD/imaxabs.c     # _imaxabs (inttypes)
+     stdlib/FreeBSD/strtoimax.c   # _strtoimax / _strtoimax_l (scanf)
+     stdlib/FreeBSD/strtoumax.c   # _strtoumax / _strtoumax_l (scanf)
+diff --git a/src/Libraries/libSystem/libc/darwin/pd_unix2003.c b/src/Libraries/libSystem/libc/darwin/pd_unix2003.c
+index 25d0d18f..88266526 100644
+--- a/src/Libraries/libSystem/libc/darwin/pd_unix2003.c
++++ b/src/Libraries/libSystem/libc/darwin/pd_unix2003.c
+@@ -156,6 +156,9 @@ __pd_nanosleep_unix2003(const struct timespec *rqtp, struct timespec *rmtp)
+     return __pd_real_nanosleep(rqtp, rmtp);
+ }
+ 
++/* ARM64 pthread exports are plain native symbols, with one-way legacy
++ * suffixed aliases in pd_arm64_abi.c. */
++#if !defined(__arm64__) && !defined(__aarch64__)
+ extern int __pd_pthread_cancel_unix2003(pthread_t thread) __asm("_pthread_cancel$UNIX2003");
+ extern int __pd_pthread_cond_init_unix2003(pthread_cond_t *cond, const pthread_condattr_t *attr) __asm("_pthread_cond_init$UNIX2003");
+ extern int __pd_pthread_cond_timedwait_unix2003(pthread_cond_t *cond, pthread_mutex_t *mutex, const struct timespec *abstime) __asm("_pthread_cond_timedwait$UNIX2003");
+@@ -292,3 +295,5 @@ __pd_pthread_testcancel_default(void)
+ {
+     __pd_pthread_testcancel_unix2003();
+ }
++
++#endif
 diff --git a/src/Libraries/libSystem/libdispatch/CMakeLists.txt b/src/Libraries/libSystem/libdispatch/CMakeLists.txt
 index 2743bfa7..617dd352 100644
 --- a/src/Libraries/libSystem/libdispatch/CMakeLists.txt
@@ -73,10 +331,10 @@ index 2743bfa7..617dd352 100644
 +target_include_directories(libdispatch_static BEFORE PRIVATE $<$<COMPILE_LANGUAGE:CXX>:${BLAUOS_CXX_HEADERS}>)
 +target_compile_options(libdispatch_static PRIVATE $<$<COMPILE_LANGUAGE:CXX>:-nostdinc++>)
 diff --git a/src/Libraries/libSystem/libdyld/CMakeLists.txt b/src/Libraries/libSystem/libdyld/CMakeLists.txt
-index 1cd6939b..1c6a770b 100644
+index 1cd6939b..6ada559b 100644
 --- a/src/Libraries/libSystem/libdyld/CMakeLists.txt
 +++ b/src/Libraries/libSystem/libdyld/CMakeLists.txt
-@@ -193,3 +193,7 @@ else()
+@@ -193,3 +193,45 @@ else()
  endif()
  
  install(TARGETS libdyld LIBRARY DESTINATION usr/lib/system COMPONENT BaseSystem)
@@ -84,8 +342,241 @@ index 1cd6939b..1c6a770b 100644
 +# BlauOS SDK27 profile: matching generated Mach declarations and C++ wrappers.
 +target_include_directories(libdyld BEFORE PRIVATE ${BLAUOS_CXX_HEADERS} ${CMAKE_BINARY_DIR}/src/Libraries/libSystem/libsystem_kernel/public_include)
 +target_compile_options(libdyld PRIVATE $<$<COMPILE_LANGUAGE:CXX>:-nostdinc++>)
++
++# Avoid stock SDK libSystem declarations selecting imports before source archives.
++get_target_property(_blauos_libdyld_link_options libdyld LINK_OPTIONS)
++list(REMOVE_ITEM _blauos_libdyld_link_options -Wl,-framework,System)
++set_target_properties(libdyld PROPERTIES LINK_OPTIONS "${_blauos_libdyld_link_options}")
++target_sources(libdyld PRIVATE ${BLAUOS_STACK_PROBE})
++
++# Resolve the real C++ ABI unwinder inside the standalone source dylib.
++add_dependencies(libdyld libunwind_static_build)
++target_link_libraries(libdyld PRIVATE $<TARGET_FILE:libunwind_static>)
++
++# Standalone source implementation exports only loader, blocks and C++ ABI APIs.
++# Keep embedded libc/syscall storage private so libSystem uses its own state.
++target_link_options(libdyld PRIVATE -Wl,-exported_symbols_list,${BLAUOS_LIBDYLD_EXPORTS})
++
++# dyld's isLaunchdOwned helper performs a real bootstrap RPC, never a
++# compatibility success stub. Dead stripping keeps only the required clients.
++add_dependencies(libdyld XPC_libxpc_static XPC_launchd_mig_static)
++target_link_libraries(libdyld PRIVATE
++    $<TARGET_FILE:XPC_libxpc_static> $<TARGET_FILE:XPC_launchd_mig_static>)
++
++# Ordinary libdyld shares the initialized process runtime with libSystem.
++# Its source-derived link interface is built from actual selected providers;
++# the declaration file is never staged as a runtime implementation.
++if(BLAUOS_SYSTEM_INTERFACE)
++    get_target_property(_blauos_libdyld_libs libdyld LINK_LIBRARIES)
++    foreach(_runtime_target libsystem_kernel_static libplatform_static
++            pthread_static libmalloc_static libc_static libc_internal_static)
++        list(REMOVE_ITEM _blauos_libdyld_libs "$<TARGET_FILE:${_runtime_target}>")
++    endforeach()
++    list(REMOVE_ITEM _blauos_libdyld_libs
++        "${CMAKE_BINARY_DIR}/src/Libraries/libSystem/libsystem_kernel/syscalls.a"
++        "$<TARGET_FILE:XPC_libxpc_static>" "$<TARGET_FILE:XPC_launchd_mig_static>")
++    set_property(TARGET libdyld PROPERTY LINK_LIBRARIES "${_blauos_libdyld_libs}")
++    target_link_libraries(libdyld PRIVATE "${BLAUOS_SYSTEM_INTERFACE}")
++    set_property(TARGET libdyld APPEND PROPERTY LINK_DEPENDS "${BLAUOS_SYSTEM_INTERFACE}")
++    target_link_options(libdyld PRIVATE -Wl,-Z)
++endif()
+diff --git a/src/Libraries/libSystem/libdyld/pd_libdyld_exports.c b/src/Libraries/libSystem/libdyld/pd_libdyld_exports.c
+index 33399ae3..f38d446b 100644
+--- a/src/Libraries/libSystem/libdyld/pd_libdyld_exports.c
++++ b/src/Libraries/libSystem/libdyld/pd_libdyld_exports.c
+@@ -72,19 +72,6 @@ _availability_version_check(uint32_t count, pd_dyld_build_version_t versions[])
+ 	return false;
+ }
+ 
+-/* launchd's vproc API is not present in the first PureDarwin userland. */
+-int
+-vproc_swap_integer(void *vp, int key, int64_t *inval, int64_t *outval)
+-{
+-	(void)vp;
+-	(void)key;
+-	(void)inval;
+-	if (outval != NULL) {
+-		*outval = 0;
+-	}
+-    return 0;
+-}
+-
+ /* Small bootstrap fallbacks.  The full libSystem implementations are wired
+  * later; dyld only needs these while bringing up the first ARMv6 process. */
+ int fls(int value)
+@@ -111,12 +98,9 @@ int sandbox_check(int pid, const char *operation, unsigned int type, ...)
+     return 0;
+ }
+ 
+-typedef long pd_dispatch_once_t;
+-void dispatch_once_f(pd_dispatch_once_t *predicate, void *context,
+-    void (*function)(void *))
++/* libplatform's genuine synchronized gate is available before libSystem. */
++extern void _os_once(long *, void *, void (*)(void *));
++void dispatch_once_f(long *predicate, void *context, void (*function)(void *))
+ {
+-    if (*predicate == 0) {
+-        *predicate = 1;
+-        function(context);
+-    }
++    _os_once(predicate, context, function);
+ }
+diff --git a/src/Libraries/libSystem/libplatform/CMakeLists.txt b/src/Libraries/libSystem/libplatform/CMakeLists.txt
+index 0ea94d03..1b4733c4 100644
+--- a/src/Libraries/libSystem/libplatform/CMakeLists.txt
++++ b/src/Libraries/libSystem/libplatform/CMakeLists.txt
+@@ -125,6 +125,9 @@ if(TARGET libc_headers_gen_script)
+ endif()
+ # bridgeos availability shim, force-included (C only -- no .s).
+ target_compile_options(libplatform_static PRIVATE
++    # These leaf routines are also used while dyld rebases itself. Prevent
++    # compiler loop idioms from calling libc callback dispatchers recursively.
++    $<$<COMPILE_LANGUAGE:C>:-fno-builtin>
+     $<$<COMPILE_LANGUAGE:C>:-include${CMAKE_CURRENT_SOURCE_DIR}/pd_bridgeos_compat.h>
+ )
+ target_link_libraries(libplatform_static PRIVATE
+diff --git a/src/Libraries/libSystem/libsystem_kernel/scripts/compile-syscalls.pl b/src/Libraries/libSystem/libsystem_kernel/scripts/compile-syscalls.pl
+index 2d3bfcb6..050c78f2 100755
+--- a/src/Libraries/libSystem/libsystem_kernel/scripts/compile-syscalls.pl
++++ b/src/Libraries/libSystem/libsystem_kernel/scripts/compile-syscalls.pl
+@@ -96,6 +96,9 @@ my @CFLAGS = (
+ # have dropped syscall numbers syscalls.master still lists. SDKROOT is not
+ # usable for this: nixpkgs' cc-wrapper overwrites it with its own SDK.
+ push(@CFLAGS, "-isysroot $ENV{PUREDARWIN_SDKROOT}") if $ENV{PUREDARWIN_SDKROOT};
++# Hand-driven assembly must record the same deployment target as CMake.
++push(@CFLAGS, "-mmacosx-version-min=$ENV{MACOSX_DEPLOYMENT_TARGET}")
++    if $ENV{MACOSX_DEPLOYMENT_TARGET};
+ 
+ my $LIBTOOL = find_tool('LIBTOOL', 'libtool');
+ my @LIBTOOLFLAGS = (
+diff --git a/src/Libraries/libSystem/libsystem_kernel/wrappers/_libc_funcptr.c b/src/Libraries/libSystem/libsystem_kernel/wrappers/_libc_funcptr.c
+index 0ad859ba..2ec0c3b8 100644
+--- a/src/Libraries/libSystem/libsystem_kernel/wrappers/_libc_funcptr.c
++++ b/src/Libraries/libSystem/libsystem_kernel/wrappers/_libc_funcptr.c
+@@ -36,8 +36,8 @@ extern void mig_os_release(void* ptr);
+ #define PD_LIBKERNEL_FUNCPTR_ATTR __attribute__((visibility("hidden"), weak))
+ #define PD_LIBKERNEL_FUNCPTR_EXPORT_ATTR __attribute__((weak))
+ #else
+-#define PD_LIBKERNEL_FUNCPTR_ATTR __attribute__((visibility("hidden")))
+-#define PD_LIBKERNEL_FUNCPTR_EXPORT_ATTR
++#define PD_LIBKERNEL_FUNCPTR_ATTR __attribute__((visibility("hidden"), weak))
++#define PD_LIBKERNEL_FUNCPTR_EXPORT_ATTR __attribute__((weak))
+ #endif
+ 
+ /*
+@@ -72,14 +72,14 @@ realloc(void *ptr, size_t size)
+ 	return _libkernel_functions->realloc(ptr, size);
+ }
+ 
+-PD_LIBKERNEL_FUNCPTR_ATTR
++__attribute__((visibility("hidden"), weak))
+ void
+ _pthread_exit_if_canceled(int error)
+ {
+ 	return _libkernel_functions->_pthread_exit_if_canceled(error);
+ }
+ 
+-PD_LIBKERNEL_FUNCPTR_ATTR
++__attribute__((visibility("hidden"), weak))
+ void
+ _pthread_set_self(void *ptr __attribute__((__unused__)))
+ {
+@@ -270,14 +270,14 @@ __libkernel_platform_init(_libkernel_string_functions_t fns)
+ 	return KERN_SUCCESS;
+ }
+ 
+-PD_LIBKERNEL_FUNCPTR_ATTR
++PD_LIBKERNEL_FUNCPTR_EXPORT_ATTR
+ void
+ bzero(void *s, size_t n)
+ {
+ 	return _libkernel_string_functions->bzero(s, n);
+ }
+ 
+-PD_LIBKERNEL_FUNCPTR_ATTR
++PD_LIBKERNEL_FUNCPTR_EXPORT_ATTR
+ void
+ __bzero(void *s, size_t n)
+ {
+@@ -295,21 +295,21 @@ memchr(const void *s, int c, size_t n)
+ 	return _libkernel_string_functions->memchr(s, c, n);
+ }
+ 
+-PD_LIBKERNEL_FUNCPTR_ATTR
++PD_LIBKERNEL_FUNCPTR_EXPORT_ATTR
+ int
+ memcmp(const void *s1, const void *s2, size_t n)
+ {
+ 	return _libkernel_string_functions->memcmp(s1, s2, n);
+ }
+ 
+-PD_LIBKERNEL_FUNCPTR_ATTR
++PD_LIBKERNEL_FUNCPTR_EXPORT_ATTR
+ void *
+ memmove(void *dst, const void *src, size_t n)
+ {
+ 	return _libkernel_string_functions->memmove(dst, src, n);
+ }
+ 
+-PD_LIBKERNEL_FUNCPTR_ATTR
++PD_LIBKERNEL_FUNCPTR_EXPORT_ATTR
+ void *
+ memcpy(void *dst, const void *src, size_t n)
+ {
+@@ -320,14 +320,14 @@ memcpy(void *dst, const void *src, size_t n)
+  * already has a genuinely public memccpy, so just drop this hidden dup
+  * rather than add a third definition. */
+ 
+-PD_LIBKERNEL_FUNCPTR_ATTR
++PD_LIBKERNEL_FUNCPTR_EXPORT_ATTR
+ void *
+ memset(void *b, int c, size_t len)
+ {
+ 	return _libkernel_string_functions->memset(b, c, len);
+ }
+ 
+-PD_LIBKERNEL_FUNCPTR_ATTR
++PD_LIBKERNEL_FUNCPTR_EXPORT_ATTR
+ char *
+ strchr(const char *s, int c)
+ {
+@@ -338,7 +338,7 @@ strchr(const char *s, int c)
+  * (explicit visibility("hidden") here with no public alternative). Real
+  * public index() now lives in stub/pd_libSystem_compat.c. */
+ 
+-PD_LIBKERNEL_FUNCPTR_ATTR
++PD_LIBKERNEL_FUNCPTR_EXPORT_ATTR
+ int
+ strcmp(const char *s1, const char *s2)
+ {
+@@ -365,14 +365,14 @@ strcpy(char * restrict dst, const char * restrict src)
+  * lives in libc/string/pd_strnlen.c.
+  */
+ 
+-PD_LIBKERNEL_FUNCPTR_ATTR
++PD_LIBKERNEL_FUNCPTR_EXPORT_ATTR
+ size_t
+ strlen(const char *str)
+ {
+ 	return _libkernel_string_functions->strlen(str);
+ }
+ 
+-PD_LIBKERNEL_FUNCPTR_ATTR
++PD_LIBKERNEL_FUNCPTR_EXPORT_ATTR
+ int
+ strncmp(const char *s1, const char *s2, size_t n)
+ {
+@@ -389,7 +389,7 @@ strncpy(char * restrict dst, const char * restrict src, size_t maxlen)
+ /* strnlen: see the strlcpy comment above -- same problem, same fix (real
+  * public strnlen now lives in libc/string/pd_strnlen.c). */
+ 
+-PD_LIBKERNEL_FUNCPTR_ATTR
++PD_LIBKERNEL_FUNCPTR_EXPORT_ATTR
+ char *
+ strstr(const char *s, const char *find)
+ {
 diff --git a/src/Libraries/libSystem/stub/CMakeLists.txt b/src/Libraries/libSystem/stub/CMakeLists.txt
-index ca88c328..a155128e 100644
+index ca88c328..68ba0365 100644
 --- a/src/Libraries/libSystem/stub/CMakeLists.txt
 +++ b/src/Libraries/libSystem/stub/CMakeLists.txt
 @@ -26,7 +26,7 @@ target_sources(libSystem_B_stub PRIVATE
@@ -97,18 +588,211 @@ index ca88c328..a155128e 100644
      ${CMAKE_SOURCE_DIR}/src/Libraries/dyld/pd_libc_common_storage.c
      ${CMAKE_SOURCE_DIR}/src/Libraries/XPC/launchd/pd_sandbox_check.c
      # mach-o getsection helpers (getsectiondata/getsegmentdata/... ) that
-@@ -286,3 +286,6 @@ install(TARGETS libSystem_B_stub LIBRARY DESTINATION usr/lib COMPONENT BaseSyste
+@@ -286,3 +286,18 @@ install(TARGETS libSystem_B_stub LIBRARY DESTINATION usr/lib COMPONENT BaseSyste
  install_symlink(usr/lib/libSystem.dylib libSystem.B.dylib COMPONENT BaseSystem)
  install_symlink(usr/lib/libc.dylib libSystem.B.dylib COMPONENT BaseSystem)
  install_symlink(usr/lib/libm.dylib libSystem.B.dylib COMPONENT BaseSystem)
 +
 +# This independent experimental dylib is not an Apple shared-cache candidate.
 +target_link_options(libSystem_B_stub PRIVATE -Wl,-not_for_dyld_shared_cache)
++
++# Source implementation for the public segment lookup export.
++target_sources(libSystem_B_stub PRIVATE ${CMAKE_SOURCE_DIR}/tools/cctools/libmacho/getsegbyname.c)
++
++# The aggregate source libSystem contains required Objective-C clients.
++# Bootstrap it first, build the real ObjC provider against that ABI, then add
++# an actual strong load dependency. A staged provider or environment variable
++# alone must not masquerade as a complete runtime dependency graph.
++if(BLAUOS_OBJC_DYLIB)
++    target_link_options(libSystem_B_stub PRIVATE "-Wl,-needed_library,${BLAUOS_OBJC_DYLIB}")
++    set_property(TARGET libSystem_B_stub APPEND PROPERTY LINK_DEPENDS "${BLAUOS_OBJC_DYLIB}")
++endif()
+diff --git a/src/Libraries/libSystem/stub/libSystem.exports b/src/Libraries/libSystem/stub/libSystem.exports
+index ff944477..eb04a5a0 100644
+--- a/src/Libraries/libSystem/stub/libSystem.exports
++++ b/src/Libraries/libSystem/stub/libSystem.exports
+@@ -2018,3 +2018,9 @@ _os_activity_get_identifier
+ _os_state_add_handler
+ _os_state_remove_handler
+ _csops_audittoken
++
++_llabs
++_lldiv
++
++# Thread-local C++ destructor registration belongs to the initialized libc.
++___cxa_thread_atexit
 diff --git a/src/Libraries/libSystem/stub/pd_libSystem_compat.c b/src/Libraries/libSystem/stub/pd_libSystem_compat.c
-index 26c6b4ad..9c60f464 100644
+index 26c6b4ad..5a85dce8 100644
 --- a/src/Libraries/libSystem/stub/pd_libSystem_compat.c
 +++ b/src/Libraries/libSystem/stub/pd_libSystem_compat.c
-@@ -427,6 +427,7 @@ __pd_popen_extsn(const char *command, const char *type)
+@@ -1,3 +1,6 @@
++/* Required Mach, pthread, locks, locale and loader APIs are supplied by
++ * the genuine selected archives or libdyld reexports. Compatibility adapters
++ * below must not override those providers with reduced or dummy behavior. */
+ #include <sys/types.h>
+ #include <errno.h>
+ #include <stdbool.h>
+@@ -147,127 +150,6 @@ ldexp(double x, int n)
+     return scalbn(x, n);
+ }
+ 
+-static pthread_key_t pd_dlerror_key;
+-static pthread_once_t pd_dlerror_once = PTHREAD_ONCE_INIT;
+-
+-static void
+-pd_dlerror_key_init(void)
+-{
+-    if (pthread_key_create(&pd_dlerror_key, free) != 0) {
+-        pd_dlerror_key = 0;
+-    }
+-}
+-
+-static void
+-pd_dlerror_set(const char *fmt, const char *a, const char *b)
+-{
+-    char *msg;
+-
+-    pthread_once(&pd_dlerror_once, pd_dlerror_key_init);
+-    if (pd_dlerror_key == 0) {
+-        return;
+-    }
+-    if (asprintf(&msg, fmt, a, b) < 0) {
+-        return;
+-    }
+-    free(pthread_getspecific(pd_dlerror_key));
+-    (void)pthread_setspecific(pd_dlerror_key, msg);
+-}
+-
+-static char *
+-pd_dlerror_take(void)
+-{
+-    char *msg;
+-
+-    pthread_once(&pd_dlerror_once, pd_dlerror_key_init);
+-    if (pd_dlerror_key == 0) {
+-        return NULL;
+-    }
+-    msg = pthread_getspecific(pd_dlerror_key);
+-    if (msg != NULL) {
+-        /* dlerror() reports an error once, then clears it. The buffer is kept
+-         * and freed on the next set or at thread exit so the caller can read it. */
+-        (void)pthread_setspecific(pd_dlerror_key, NULL);
+-    }
+-    return msg;
+-}
+-
+-int
+-dlclose(void *handle)
+-{
+-    typedef int (*dlclose_fn)(void *);
+-    static dlclose_fn fn;
+-
+-    if (fn == NULL && !_dyld_func_lookup("__dyld_dlclose", (void **)&fn)) {
+-        return -1;
+-    }
+-
+-    return fn(handle);
+-}
+-
+-void *
+-dlopen(const char *path, int mode)
+-{
+-    typedef void *(*dlopen_fn)(const char *, int, void *);
+-    static dlopen_fn fn;
+-
+-    if (fn == NULL && !_dyld_func_lookup("__dyld_dlopen_internal", (void **)&fn)) {
+-        return NULL;
+-    }
+-
+-    void *handle = fn(path, mode, __builtin_return_address(0));
+-    if (handle == NULL) {
+-        pd_dlerror_set("dlopen(%s): image not loaded%s", path ? path : "(null)", "");
+-    }
+-    return handle;
+-}
+-
+-void *
+-dlsym(void *handle, const char *symbol)
+-{
+-    typedef void *(*dlsym_fn)(void *, const char *, void *);
+-    static dlsym_fn fn;
+-
+-    if (fn == NULL && !_dyld_func_lookup("__dyld_dlsym_internal", (void **)&fn)) {
+-        return NULL;
+-    }
+-
+-    void *addr = fn(handle, symbol, __builtin_return_address(0));
+-    if (addr == NULL) {
+-        pd_dlerror_set("dlsym(%s%s): symbol not found", symbol ? symbol : "(null)", "");
+-    }
+-    return addr;
+-}
+-
+-bool
+-_dyld_is_memory_immutable(const void *addr, size_t length)
+-{
+-    typedef bool (*dyld_is_memory_immutable_fn)(const void *, size_t);
+-    static dyld_is_memory_immutable_fn fn;
+-
+-    if (fn == NULL && !_dyld_func_lookup("__dyld_is_memory_immutable", (void **)&fn)) {
+-        return false;
+-    }
+-
+-    return fn(addr, length);
+-}
+-
+-char *
+-dlerror(void)
+-{
+-    typedef char *(*dlerror_fn)(void);
+-    static dlerror_fn fn;
+-
+-    if (fn != NULL || _dyld_func_lookup("__dyld_dlerror", (void **)&fn)) {
+-        char *from_dyld = fn();
+-        if (from_dyld != NULL) {
+-            return from_dyld;
+-        }
+-    }
+-
+-    return pd_dlerror_take();
+-}
+-
+ char *index(const char *s, int c)
+ {
+     return __builtin_strchr(s, c);
+@@ -294,10 +176,6 @@ char *index(const char *s, int c)
+ #include <wchar.h>
+ #include <wctype.h>
+ 
+-
+-
+-
+-
+ static void
+ pd_pwcopy(struct passwd *dst, const struct passwd *src,
+           char *buf, size_t buflen, struct passwd **result)
+@@ -337,8 +215,6 @@ pd_pwcopy(struct passwd *dst, const struct passwd *src,
+     *result = dst;
+ }
+ 
+-
+-
+ /*
+  * PureDarwin's libc archive ships none of the Unix98 pty helpers, so provide
+  * them here directly over /dev/ptmx using Darwin's pty ioctls (sys/ttycom.h).
+@@ -355,11 +231,6 @@ pd_pwcopy(struct passwd *dst, const struct passwd *src,
+ #define TIOCPTYUNLK _IO('t', 82)
+ #endif
+ 
+-
+-
+-
+-
+-
+ /*
+  * popen$DARWIN_EXTSN: xterm references the versioned symbol (the SDK's
+  * <stdio.h> asm-renames popen). PureDarwin's libc archive exports neither
+@@ -427,6 +298,7 @@ __pd_popen_extsn(const char *command, const char *type)
   * otherwise the header rename would apply here too and we would just be
   * redefining _sigwait$UNIX2003.
   */
@@ -116,7 +800,7 @@ index 26c6b4ad..9c60f464 100644
  extern int __pd_sigwait_unix2003(const sigset_t *set, int *sig)
      __asm("_sigwait$UNIX2003");
  extern int __pd_sigwait(const sigset_t *set, int *sig) __asm("_sigwait");
-@@ -436,6 +437,7 @@ __pd_sigwait(const sigset_t *set, int *sig)
+@@ -436,6 +308,7 @@ __pd_sigwait(const sigset_t *set, int *sig)
  {
      return __pd_sigwait_unix2003(set, sig);
  }
@@ -124,3 +808,702 @@ index 26c6b4ad..9c60f464 100644
  
  /*
   * select$1050: xterm's SDK <sys/select.h> asm-renames select to the 10.5
+@@ -471,45 +344,16 @@ __pd_select_1050(int nfds, fd_set *readfds, fd_set *writefds,
+ #undef sigfillset
+ #undef sigaddset
+ 
+-int
+-sigemptyset(sigset_t *set)
+-{
+-    *set = 0;
+-    return 0;
+-}
+-
+-int
+-sigfillset(sigset_t *set)
+-{
+-    *set = ~(sigset_t)0;
+-    return 0;
+-}
+-
+-int
+-sigaddset(sigset_t *set, int signo)
+-{
+-    if (signo <= 0 || signo >= (int)(sizeof(sigset_t) * 8)) {
+-        errno = EINVAL;
+-        return -1;
+-    }
+-    *set |= ((sigset_t)1 << (signo - 1));
+-    return 0;
+-}
+-
+ /*
+  * rewinddir$INODE64: opendir$INODE64/readdir$INODE64 (from libc_static) read
+  * directory entries directly off the fd with no additional userspace
+  * buffering layer here, so resetting the fd's file offset is equivalent to
+  * reopening the stream at the start.
+  */
+-void
+-__pd_rewinddir_inode64(DIR *dirp) __asm("_rewinddir$INODE64");
+-
+-void
+-__pd_rewinddir_inode64(DIR *dirp)
+-{
+-    lseek(dirfd(dirp), 0, SEEK_SET);
+-}
++#if defined(__i386__) || defined(__x86_64__)
++void __pd_rewinddir_inode64(DIR *dirp) __asm("_rewinddir$INODE64");
++void __pd_rewinddir_inode64(DIR *dirp) { rewinddir(dirp); }
++#endif
+ 
+ 
+ static void
+@@ -563,8 +407,6 @@ pd_grcopy(struct group *dst, const struct group *src,
+     *result = dst;
+ }
+ 
+-
+-
+ extern int __pd_getgroups(int gidsetsize, gid_t grouplist[]) __asm("_getgroups");
+ int __pd_getgroups_extsn(int gidsetsize, gid_t grouplist[]) __asm("_getgroups$DARWIN_EXTSN");
+ 
+@@ -574,48 +416,13 @@ __pd_getgroups_extsn(int gidsetsize, gid_t grouplist[])
+     return __pd_getgroups(gidsetsize, grouplist);
+ }
+ 
+-int
+-statvfs(const char *path, struct statvfs *buf)
+-{
+-    struct statfs sf;
+-
+-    if (statfs(path, &sf) != 0)
+-        return -1;
+-    memset(buf, 0, sizeof(*buf));
+-    buf->f_bsize   = sf.f_bsize;
+-    buf->f_frsize  = sf.f_bsize;
+-    buf->f_blocks  = sf.f_blocks;
+-    buf->f_bfree   = sf.f_bfree;
+-    buf->f_bavail  = sf.f_bavail;
+-    buf->f_files   = sf.f_files;
+-    buf->f_ffree   = sf.f_ffree;
+-    buf->f_favail  = sf.f_ffree;
+-    buf->f_fsid    = (unsigned long)sf.f_fsid.val[0];
+-    buf->f_flag    = 0;
+-    buf->f_namemax = 255;
+-    return 0;
+-}
+-
+-
+-
+-int
+-pthread_atfork(void (*prepare)(void), void (*parent)(void), void (*child)(void))
+-{
+-    (void)prepare; (void)parent; (void)child;
+-    return 0;
+-}
+-
+ /*
+  * issetugid(): real Apple semantics report whether the process is running
+  * with elevated privilege from a setuid/setgid exec (libc/CF/etc use it to
+  * decide whether to trust environment variables). PureDarwin doesn't run
+  * setuid binaries, so this is never true here - always report "no".
+  */
+-int
+-issetugid(void)
+-{
+-    return 0;
+-}
++
+ 
+ /*
+  * sysdir(3)
+@@ -708,14 +515,6 @@ sysdir_get_next_search_path_enumeration(sysdir_search_path_enumeration_state sta
+     return 0;
+ }
+ 
+-vm_size_t vm_page_size = 4096;
+-
+-int
+-OSAtomicCompareAndSwapPtrBarrier(void *oldValue, void *newValue, void * volatile *theValue)
+-{
+-    return __sync_bool_compare_and_swap(theValue, oldValue, newValue);
+-}
+-
+ /*
+  * _os_log_create: the symbol <os/log.h>'s os_log_create(subsystem, category)
+  * macro actually emits, with the caller's &__dso_handle prepended. The dso is
+@@ -732,34 +531,6 @@ _os_log_create(void *dso, const char *subsystem, const char *category)
+ }
+ 
+ typedef unsigned int __pd_mvr_kern_return_t;
+-__pd_mvr_kern_return_t
+-mach_vm_region(unsigned int target_task, unsigned long long *address,
+-    unsigned long long *size, unsigned int flavor,
+-    int *info, unsigned int *infoCnt, unsigned int *object_name)
+-{
+-    (void)target_task; (void)address; (void)size; (void)flavor;
+-    (void)info; (void)infoCnt; (void)object_name;
+-    return 5; /* KERN_FAILURE */
+-}
+-
+-int
+-pthread_getugid_np(uid_t *uid, gid_t *gid)
+-{
+-    if (uid) *uid = getuid();
+-    if (gid) *gid = getgid();
+-    return 0;
+-}
+-
+-int
+-fprintf_l(FILE *stream, locale_t loc, const char *format, ...)
+-{
+-    (void)loc;
+-    va_list ap;
+-    va_start(ap, format);
+-    int ret = vfprintf(stream, format, ap);
+-    va_end(ap);
+-    return ret;
+-}
+ 
+ #if !defined(__arm__) && !defined(__arm64__) && !defined(__aarch64__)
+ extern int __pd_readdir_r_inode64(DIR *dirp, struct dirent *entry, struct dirent **result) __asm("_readdir_r$INODE64");
+@@ -839,49 +610,9 @@ __pd_scandir_plain(const char *dirname, struct dirent ***namelist,
+  * of <stdatomic.h> but still linked by CF and others). Real implementations
+  * via the same compiler intrinsics <stdatomic.h> itself would use.
+  */
+-int32_t
+-OSAtomicIncrement32(volatile int32_t *theValue)
+-{
+-    return __sync_add_and_fetch(theValue, 1);
+-}
+-
+-int32_t
+-OSAtomicDecrement32(volatile int32_t *theValue)
+-{
+-    return __sync_sub_and_fetch(theValue, 1);
+-}
+ 
+ /* The Barrier variants differ only in ordering guarantees; __sync_* builtins
+  * are already full barriers, so the plain and Barrier forms are the same here. */
+-int32_t
+-OSAtomicIncrement32Barrier(volatile int32_t *theValue)
+-{
+-    return __sync_add_and_fetch(theValue, 1);
+-}
+-
+-int32_t
+-OSAtomicDecrement32Barrier(volatile int32_t *theValue)
+-{
+-    return __sync_sub_and_fetch(theValue, 1);
+-}
+-
+-bool
+-OSAtomicCompareAndSwapLongBarrier(long oldValue, long newValue, volatile long *theValue)
+-{
+-    return __sync_bool_compare_and_swap(theValue, oldValue, newValue);
+-}
+-
+-int
+-OSAtomicCompareAndSwap32Barrier(int32_t oldValue, int32_t newValue, volatile int32_t *theValue)
+-{
+-    return __sync_bool_compare_and_swap(theValue, oldValue, newValue);
+-}
+-
+-void
+-OSMemoryBarrier(void)
+-{
+-    __sync_synchronize();
+-}
+ 
+ /*
+  * OSSpinLock: fully removed from the real SDK headers by 10.12 (superseded
+@@ -892,150 +623,11 @@ OSMemoryBarrier(void)
+  */
+ typedef volatile int32_t OSSpinLock;
+ 
+-void
+-OSSpinLockLock(OSSpinLock *lock)
+-{
+-    while (!__sync_bool_compare_and_swap(lock, 0, 1)) {
+-        /* spin */
+-    }
+-}
+-
+-void
+-OSSpinLockUnlock(OSSpinLock *lock)
+-{
+-    __sync_lock_release(lock);
+-}
+-
+ typedef struct { volatile int32_t locked; } pd_os_unfair_lock_s;
+ 
+-void
+-os_unfair_lock_lock(pd_os_unfair_lock_s *lock)
+-{
+-    while (!__sync_bool_compare_and_swap(&lock->locked, 0, 1)) {
+-        /* spin */
+-    }
+-}
+-
+-void
+-os_unfair_lock_unlock(pd_os_unfair_lock_s *lock)
+-{
+-    __sync_lock_release(&lock->locked);
+-}
+-
+-/*
+- * *_l (locale-variant) wrappers: no real per-thread locale support here
+- * (every locale_t is effectively "C"/"POSIX"), so these just ignore the
+- * locale_t argument and call the ordinary, already-real implementation.
+- */
+-unsigned long
+-strtoul_l(const char *nptr, char **endptr, int base, locale_t loc)
+-{
+-    (void)loc;
+-    return strtoul(nptr, endptr, base);
+-}
+-
+-long
+-strtol_l(const char *nptr, char **endptr, int base, locale_t loc)
+-{
+-    (void)loc;
+-    return strtol(nptr, endptr, base);
+-}
+-
+-long long
+-strtoll_l(const char *nptr, char **endptr, int base, locale_t loc)
+-{
+-    (void)loc;
+-    return strtoll(nptr, endptr, base);
+-}
+-
+-unsigned long long
+-strtoull_l(const char *nptr, char **endptr, int base, locale_t loc)
+-{
+-    (void)loc;
+-    return strtoull(nptr, endptr, base);
+-}
+-
+-double
+-strtod_l(const char *nptr, char **endptr, locale_t loc)
+-{
+-    (void)loc;
+-    return strtod(nptr, endptr);
+-}
+-
+-int
+-strncasecmp_l(const char *s1, const char *s2, size_t n, locale_t loc)
+-{
+-    (void)loc;
+-    return strncasecmp(s1, s2, n);
+-}
+-
+-int
+-snprintf_l(char *str, size_t size, locale_t loc, const char *format, ...)
+-{
+-    (void)loc;
+-    va_list ap;
+-    va_start(ap, format);
+-    int ret = vsnprintf(str, size, format, ap);
+-    va_end(ap);
+-    return ret;
+-}
+-
+-unsigned int
+-mk_timer_create(void)
+-{
+-    return 1; /* dummy, non-MACH_PORT_NULL port name */
+-}
+-
+-int
+-mk_timer_destroy(unsigned int name)
+-{
+-    (void)name;
+-    return 0;
+-}
+-
+-int
+-mk_timer_arm(unsigned int name, uint64_t expire_time)
+-{
+-    (void)name; (void)expire_time;
+-    return 0;
+-}
+-
+-int
+-mk_timer_cancel(unsigned int name, uint64_t *result_time)
+-{
+-    (void)name;
+-    if (result_time) *result_time = 0;
+-    return 0;
+-}
+-
+-int
+-task_threads(unsigned int task, unsigned int **thread_list, unsigned int *thread_count)
+-{
+-    (void)task;
+-    if (thread_list) *thread_list = NULL;
+-    if (thread_count) *thread_count = 0;
+-    return 5; /* KERN_FAILURE */
+-}
+-
+-int
+-thread_resume(unsigned int thread)
+-{
+-    (void)thread;
+-    return 5; /* KERN_FAILURE */
+-}
+-
+-int
+-thread_suspend(unsigned int thread)
+-{
+-    (void)thread;
+-    return 5; /* KERN_FAILURE */
+-}
+-
+-qos_class_t
+-qos_class_self(void)
+-{
+-    return QOS_CLASS_UNSPECIFIED;
+-}
++/* Locale-aware conversions and formatting come from the pinned libc
++ * implementations. Ordinary APIs already call their _l counterpart, so
++ * reverse compatibility wrappers here would recurse and discard locale. */
+ 
+ /*
+  * The compiler-rt 128-bit builtins (__udivti3, __divti3, __umodti3, __modti3,
+@@ -1054,30 +646,16 @@ qos_class_self(void)
+ extern void __pd_platform_memset_pattern4(void *b, const void *pattern4, size_t len)
+     __asm("__platform_memset_pattern4");
+ void __pd_memset_pattern4(void *b, const void *pattern4, size_t len) __asm("_memset_pattern4");
+-void
+-__pd_memset_pattern4(void *b, const void *pattern4, size_t len)
+-{
+-    __pd_platform_memset_pattern4(b, pattern4, len);
+-}
++
+ 
+ extern void __pd_platform_memset_pattern8(void *b, const void *pattern8, size_t len)
+     __asm("__platform_memset_pattern8");
+ void __pd_memset_pattern8(void *b, const void *pattern8, size_t len) __asm("_memset_pattern8");
+-void
+-__pd_memset_pattern8(void *b, const void *pattern8, size_t len)
+-{
+-    __pd_platform_memset_pattern8(b, pattern8, len);
+-}
++
+ 
+ extern void __pd_platform_memset_pattern16(void *b, const void *pattern16, size_t len)
+     __asm("__platform_memset_pattern16");
+ void __pd_memset_pattern16(void *b, const void *pattern16, size_t len) __asm("_memset_pattern16");
+-void
+-__pd_memset_pattern16(void *b, const void *pattern16, size_t len)
+-{
+-    __pd_platform_memset_pattern16(b, pattern16, len);
+-}
+-
+ 
+ /*
+  * ldexpl: openlibm defines it as __weak_reference(scalbnl, ldexpl) in
+@@ -1202,11 +780,7 @@ creat(const char *path, mode_t mode)
+  * plain syscall wrapper is exactly the right behavior.
+  */
+ int __pd_close_nocancel(int fd) __asm("_close$NOCANCEL");
+-int
+-__pd_close_nocancel(int fd)
+-{
+-    return close(fd);
+-}
++
+ 
+ /*
+  * realpath: stdlib.h decorates the definition in stdlib/FreeBSD/realpath.c
+@@ -1227,19 +801,7 @@ __pd_realpath_plain(const char * __restrict path, char * __restrict resolved)
+  * dlopen_preflight(3): forwarded to dyld the same way as dlopen/dlsym above.
+  * CF uses it to probe bundles before loading them.
+  */
+-bool
+-dlopen_preflight(const char *path)
+-{
+-    typedef bool (*preflight_fn)(const char *, void *);
+-    static preflight_fn fn;
+ 
+-    if (fn == NULL &&
+-        !_dyld_func_lookup("__dyld_dlopen_preflight_internal", (void **)&fn)) {
+-        return false;
+-    }
+-
+-    return fn(path, __builtin_return_address(0));
+-}
+ 
+ /*
+  * swap_fat_header/swap_fat_arch/swap_fat_arch_64 (libmacho): fat headers are
+@@ -1296,19 +858,6 @@ swap_fat_arch_64(struct __pd_fat_arch_64 *a, uint32_t n, int target_byte_order)
+  * PD doesn't build (C locale only). In the C locale strxfrm is defined to be
+  * a plain copy whose result compares like strcmp - i.e. strlcpy semantics.
+  */
+-size_t
+-strxfrm(char * __restrict dst, const char * __restrict src, size_t n)
+-{
+-    size_t len = strlen(src);
+-
+-    if (n != 0) {
+-        size_t copy = (len >= n) ? n - 1 : len;
+-        memcpy(dst, src, copy);
+-        dst[copy] = '\0';
+-    }
+-    return len;
+-}
+-
+ 
+ /*
+  * qsort_b: referenced by gen/fts.c for the fts_open_b (block comparator)
+@@ -1365,35 +914,3 @@ _Exit(int status)
+     _exit(status);
+ }
+ 
+-char **
+-backtrace_symbols(void *const *buffer, int size)
+-{
+-    if (size < 0)
+-        return NULL;
+-
+-    /* One char* per frame followed by the string storage. Each line is
+-     * "<idx>  <address>" - up to ~40 bytes; use a fixed generous slot. */
+-    const size_t slot = 48;
+-    char **result = (char **)malloc((size_t)size * (sizeof(char *) + slot));
+-    if (result == NULL)
+-        return NULL;
+-
+-    char *strings = (char *)(result + size);
+-    for (int i = 0; i < size; i++) {
+-        char *line = strings + (size_t)i * slot;
+-        snprintf(line, slot, "%-3d  %p", i, buffer[i]);
+-        result[i] = line;
+-    }
+-    return result;
+-}
+-
+-void
+-backtrace_symbols_fd(void *const *buffer, int size, int fd)
+-{
+-    char line[48];
+-    for (int i = 0; i < size; i++) {
+-        int n = snprintf(line, sizeof(line), "%-3d  %p\n", i, buffer[i]);
+-        if (n > 0)
+-            (void)write(fd, line, (size_t)n);
+-    }
+-}
+diff --git a/src/Libraries/libSystem/stub/pd_libSystem_init.c b/src/Libraries/libSystem/stub/pd_libSystem_init.c
+index 729bffb2..21a7dc50 100644
+--- a/src/Libraries/libSystem/stub/pd_libSystem_init.c
++++ b/src/Libraries/libSystem/stub/pd_libSystem_init.c
+@@ -19,33 +19,7 @@ struct ProgramVars {
+ 	char **__prognamePtr;
+ };
+ 
+-/* Mirrors dyld::LibSystemHelpers (dyld/src/dyldLibSystemInterface.h). */
+-struct LibSystemHelpers {
+-	uintptr_t version;
+-	void   (*acquireGlobalDyldLock)(void);
+-	void   (*releaseGlobalDyldLock)(void);
+-	char  *(*getThreadBufferFor_dlerror)(size_t sizeRequired);
+-	void  *(*malloc)(size_t);
+-	void   (*free)(void *);
+-	int    (*cxa_atexit)(void (*)(void *), void *, void *);
+-	void   (*dyld_shared_cache_missing)(void);
+-	void   (*dyld_shared_cache_out_of_date)(void);
+-	void   (*acquireDyldInitializerLock)(void);
+-	void   (*releaseDyldInitializerLock)(void);
+-	int    (*pthread_key_create)(pthread_key_t *, void (*destructor)(void *));
+-	int    (*pthread_setspecific)(pthread_key_t, const void *);
+-	size_t (*malloc_size)(const void *ptr);
+-	void  *(*pthread_getspecific)(pthread_key_t);
+-	void   (*cxa_finalize)(const void *);
+-	void  *startGlueToCallExit;
+-	bool   (*hasPerThreadBufferFor_dlerror)(void);
+-	bool   (*isLaunchdOwned)(void);
+-	kern_return_t (*vm_alloc)(vm_map_t task, vm_address_t *addr, vm_size_t size, int flags);
+-	void  *(*mmap)(void *addr, size_t len, int prot, int flags, int fd, off_t offset);
+-	void   (*cxa_finalize_ranges)(const struct __cxa_range_t ranges[], int count);
+-};
+-
+-extern void *pd_libdyld_getStartGlueToCallExit(void);
++extern void _dyld_initializer(void);
+ extern int _dyld_func_lookup(const char *name, void **address);
+ extern void _pthread_set_self(void *p);   /* p == NULL selects the VARIANT_DYLD seed path */
+ extern void __malloc_init(const char *apple[]);
+@@ -91,17 +65,18 @@ pd_main_executable_header(void)
+ }
+ 
+ extern void libdispatch_init(void);
+-/* Exported wrapper in libdyld.dylib (pd_libdyld_exports.c) for the hidden-
+- * visibility tlv_initializer() -- see that file for why the bridge is needed. */
+-extern void pd_libdyld_tlv_initializer(void);
++
+ 
+ #include "../libc/darwin/libc_private.h"
+ extern void _malloc_fork_prepare(void);
+ extern void _malloc_fork_parent(void);
+ extern void _malloc_fork_child(void);
+-extern void _pthread_fork_prepare(void);
+-extern void _pthread_fork_parent(void);
++extern void _pthread_atfork_prepare_handlers(void);
++extern void _pthread_atfork_prepare(void);
++extern void _pthread_atfork_parent(void);
++extern void _pthread_atfork_parent_handlers(void);
+ extern void _pthread_fork_child(void);
++extern void _dyld_fork_child(void);
+ extern void _pthread_fork_child_postinit(void);
+ extern int  _mach_fork_child(void);
+ extern void dispatch_atfork_prepare(void);
+@@ -112,23 +87,26 @@ extern void _notify_fork_child(void);
+ static void
+ pd_atfork_prepare(void)
+ {
++	_pthread_atfork_prepare_handlers();
+ 	dispatch_atfork_prepare();
+ 	_malloc_fork_prepare();
+-	_pthread_fork_prepare();
++	_pthread_atfork_prepare();
+ }
+ 
+ static void
+ pd_atfork_parent(void)
+ {
+-	_pthread_fork_parent();
++	_pthread_atfork_parent();
+ 	_malloc_fork_parent();
+ 	dispatch_atfork_parent();
++	_pthread_atfork_parent_handlers();
+ }
+ 
+ static void
+ pd_atfork_child(void)
+ {
+ 	_mach_fork_child();
++	_dyld_fork_child();
+ 	_pthread_fork_child();
+ 	_malloc_fork_child();
+ 	_libc_fork_child();
+@@ -140,49 +118,6 @@ pd_atfork_child(void)
+ 	_pthread_fork_child_postinit();
+ }
+ 
+-static pthread_mutex_t sGlobalDyldLock = PTHREAD_MUTEX_INITIALIZER;
+-static void acquireGlobalDyldLock(void) { pthread_mutex_lock(&sGlobalDyldLock); }
+-static void releaseGlobalDyldLock(void) { pthread_mutex_unlock(&sGlobalDyldLock); }
+-static char sDlerrorBuffer[512];
+-static char *getThreadBufferFor_dlerror(size_t sizeRequired)
+-{
+-	return (sizeRequired <= sizeof(sDlerrorBuffer)) ? sDlerrorBuffer : NULL;
+-}
+-static bool hasPerThreadBufferFor_dlerror(void) { return false; }
+-
+-static void noop_void(void) {}
+-
+-static bool isLaunchdOwned(void) { return getpid() == 1; }
+-
+-extern int  __cxa_atexit(void (*)(void *), void *, void *);
+-extern void __cxa_finalize(const void *);
+-extern void __cxa_finalize_ranges(const struct __cxa_range_t ranges[], int count);
+-
+-static struct LibSystemHelpers sHelpers = {
+-	.version                     = 13,
+-	.acquireGlobalDyldLock       = &acquireGlobalDyldLock,
+-	.releaseGlobalDyldLock       = &releaseGlobalDyldLock,
+-	.getThreadBufferFor_dlerror  = &getThreadBufferFor_dlerror,
+-	.malloc                      = &malloc,
+-	.free                        = &free,
+-	.cxa_atexit                  = &__cxa_atexit,
+-	.dyld_shared_cache_missing   = &noop_void,
+-	.dyld_shared_cache_out_of_date = &noop_void,
+-	.acquireDyldInitializerLock  = NULL,
+-	.releaseDyldInitializerLock  = NULL,
+-	.pthread_key_create          = &pthread_key_create,
+-	.pthread_setspecific         = &pthread_setspecific,
+-	.malloc_size                 = &malloc_size,
+-	.pthread_getspecific         = &pthread_getspecific,
+-	.cxa_finalize                = &__cxa_finalize,
+-	.startGlueToCallExit         = NULL,  /* filled at runtime below - see pd_libSystem_initializer() */
+-	.hasPerThreadBufferFor_dlerror = &hasPerThreadBufferFor_dlerror,
+-	.isLaunchdOwned              = &isLaunchdOwned,
+-	.vm_alloc                    = &vm_allocate,
+-	.mmap                        = &mmap,
+-	.cxa_finalize_ranges         = &__cxa_finalize_ranges,
+-};
+-
+ __attribute__((constructor))
+ static void pd_libSystem_initializer(int argc, const char *argv[], const char *envp[],
+     const char *apple[], const struct ProgramVars *vars)
+@@ -249,6 +184,7 @@ static void pd_libSystem_initializer(int argc, const char *argv[], const char *e
+ 	 * correct earliest-safe point (pthread + malloc are up, which is all
+ 	 * libdispatch_init() needs). Without this, notifyd aborts the moment it
+ 	 * touches a dispatch queue/source - see extern decl above. */
++	_dyld_initializer();
+ 	libdispatch_init();
+ 
+ 	/* __malloc_late_init() is deliberately NOT called: its real work is
+@@ -260,24 +196,8 @@ static void pd_libSystem_initializer(int argc, const char *argv[], const char *e
+ 	 * guaranteed to have already resolved for every caller by this point in
+ 	 * PD's merged single-dylib boot). Real risk for zero real benefit here. */
+ 
+-	sHelpers.startGlueToCallExit = pd_libdyld_getStartGlueToCallExit();
+-
+-	typedef void (*register_fn)(struct LibSystemHelpers *);
+-	register_fn reg = NULL;
+-	if (_dyld_func_lookup("__dyld_register_thread_helpers", (void **)&reg) && reg != NULL)
+-		reg(&sHelpers);
+-
+-	/* Thread-local-variable runtime. Real Apple runs this inside
+-	 * _dyld_initializer() (dyldAPIsInLibSystem.cpp); PD open-codes the
+-	 * thread-helper registration above instead of calling _dyld_initializer(),
+-	 * so tlv_initializer() would otherwise never run. Without it, dyld never
+-	 * gets the tlv_load_notification add-image callback, no image's
+-	 * __thread_vars descriptors are ever initialized, and the FIRST access to
+-	 * any __thread variable jumps through an uninitialized (null/_tlv_bootstrap)
+-	 * thunk -> SIGSEGV. Must come after pthread + malloc are up (it does
+-	 * pthread_key_create); registering here also fires the notification
+-	 * immediately for every already-mapped dylib (e.g. libOSMesa's glapi TLS). */
+-	pd_libdyld_tlv_initializer();
++	/* The genuine libdyld initializer above registers its native recursive
++	 * lock, per-thread error buffers, real launchd RPC and TLV helpers. */
+ 
+ 	/* C99 7.5(3) / rdar://11588042: errno is zero at program startup and is
+ 	 * never set to zero by any library function - so clear whatever the init
+diff --git a/src/Libraries/libcxxabi/CMakeLists.txt b/src/Libraries/libcxxabi/CMakeLists.txt
+index 671c3a9c..3f489cd7 100644
+--- a/src/Libraries/libcxxabi/CMakeLists.txt
++++ b/src/Libraries/libcxxabi/CMakeLists.txt
+@@ -69,6 +69,7 @@ set(_config "${CMAKE_CURRENT_SOURCE_DIR}/config")   # __config_site, __assertion
+ set(_abi_flags
+     ${_target_flags}
+     -isysroot ${_sdk}
++    -mmacosx-version-min=11.0
+     # LLVM 21's libc++/libc++abi are written in C++23 (constinit, etc).
+     -std=c++23 -nostdinc++ -funwind-tables -fexceptions -fPIC -Os -DNDEBUG
+     # charconv.cpp reaches for <shared/fp_bits.h>, which LLVM 21 shares with
+@@ -167,6 +168,7 @@ endif()
+ set(_uw_flags
+     ${_target_flags}
+     -isysroot ${_sdk}
++    -mmacosx-version-min=11.0
+     -nostdinc++ -funwind-tables -fPIC -Os -DNDEBUG
+     -I ${_libunwind}/include
+     -I ${_libunwind}/src
+diff --git a/src/Libraries/objc4/runtime/objc-block-trampolines.mm b/src/Libraries/objc4/runtime/objc-block-trampolines.mm
+index f905d35c..4ac43cf2 100644
+--- a/src/Libraries/objc4/runtime/objc-block-trampolines.mm
++++ b/src/Libraries/objc4/runtime/objc-block-trampolines.mm
+@@ -477,9 +477,9 @@ _imp_implementationWithBlock_init(void)
+     //
+     // This fixes EA Origin (rdar://problem/50813789)
+     // and Steam (rdar://problem/55286131)
+-    if (__progname &&
+-        (strcmp(__progname, "QtWebEngineProcess") == 0 ||
+-         strcmp(__progname, "Steam Helper") == 0)) {
++    if (getprogname() &&
++        (strcmp(getprogname(), "QtWebEngineProcess") == 0 ||
++         strcmp(getprogname(), "Steam Helper") == 0)) {
+         Trampolines.Initialize();
+     }
+ #endif

@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "source_lock_sha256": "8022bbbfb33204b56bb3297cd8cbb39fb6c08ea65c476492d99462f7edfe3657",
+  "sources": [
+    {
+      "name": "dash",
+      "revision": "1365bb36a92656eb52b64cb04d249c47a1d3c4cf",
+      "tree": "4e35b89352208719b04855c46800705db110e035",
+      "origin": "https://git.kernel.org/pub/scm/utils/dash/dash.git"
+    }
+  ]
+}

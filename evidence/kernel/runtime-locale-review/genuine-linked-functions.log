@@ -1,0 +1,232 @@
+(lldb) target create "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib"
+Current executable set to '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib' (arm64).
+(lldb) image lookup -vn strtoul_l
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x00000000001148b4] (libSystem.B.dylib.__TEXT.__text + 1126420)
+        Summary: libSystem.B.dylib`strtoul_l at strtoul.c:52
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libc/stdlib/FreeBSD/strtoul.c", language = "c11"
+       Function: id = {0x4002110000000c85}, name = "strtoul_l", range = [0x00000000001148b4-0x0000000000114d28)
+       FuncType: id = {0x4002110000000c85}, byte-size = 0, decl = strtoul.c:50, compiler_type = "unsigned long (const char *__restrict, char **__restrict, int, locale_t)"
+         Blocks: id = {0x4002110000000c85}, range = [0x001148b4-0x00114d28)
+      LineEntry: [0x00000000001148b4-0x00000000001148d0): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libc/stdlib/FreeBSD/strtoul.c:52
+         Symbol: id = {0x0000548e}, range = [0x00000000001148b4-0x0000000000114d28), name="strtoul_l"
+       Variable: id = {0x4002110000000c9e}, name = "nptr", type = "const char *__restrict", valid ranges = <block>, location = DW_OP_fbreg -8, decl = strtoul.c:50
+       Variable: id = {0x4002110000000cac}, name = "endptr", type = "char **__restrict", valid ranges = <block>, location = DW_OP_fbreg -16, decl = strtoul.c:50
+       Variable: id = {0x4002110000000cba}, name = "base", type = "int", valid ranges = <block>, location = DW_OP_fbreg -20, decl = strtoul.c:50
+       Variable: id = {0x4002110000000cc8}, name = "loc", type = "locale_t", valid ranges = <block>, location = DW_OP_fbreg -32, decl = strtoul.c:51
+       Variable: id = {0x4002110000000cd6}, name = "s", type = "const char *", valid ranges = <block>, location = DW_OP_fbreg -40, decl = strtoul.c:53
+       Variable: id = {0x4002110000000ce4}, name = "acc", type = "unsigned long", valid ranges = <block>, location = DW_OP_breg31 WSP+48, decl = strtoul.c:54
+       Variable: id = {0x4002110000000cf2}, name = "c", type = "char", valid ranges = <block>, location = DW_OP_breg31 WSP+47, decl = strtoul.c:55
+       Variable: id = {0x4002110000000d00}, name = "cutoff", type = "unsigned long", valid ranges = <block>, location = DW_OP_breg31 WSP+32, decl = strtoul.c:56
+       Variable: id = {0x4002110000000d0e}, name = "neg", type = "int", valid ranges = <block>, location = DW_OP_breg31 WSP+28, decl = strtoul.c:57
+       Variable: id = {0x4002110000000d1c}, name = "any", type = "int", valid ranges = <block>, location = DW_OP_breg31 WSP+24, decl = strtoul.c:57
+       Variable: id = {0x4002110000000d2a}, name = "cutlim", type = "int", valid ranges = <block>, location = DW_OP_breg31 WSP+20, decl = strtoul.c:57
+
+(lldb) image lookup -vn strtol_l
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x0000000000113adc] (libSystem.B.dylib.__TEXT.__text + 1122876)
+        Summary: libSystem.B.dylib`strtol_l at strtol.c:53
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libc/stdlib/FreeBSD/strtol.c", language = "c11"
+       Function: id = {0x40020b0000000c85}, name = "strtol_l", range = [0x0000000000113adc-0x0000000000113f7c)
+       FuncType: id = {0x40020b0000000c85}, byte-size = 0, decl = strtol.c:51, compiler_type = "long (const char *__restrict, char **__restrict, int, locale_t)"
+         Blocks: id = {0x40020b0000000c85}, range = [0x00113adc-0x00113f7c)
+      LineEntry: [0x0000000000113adc-0x0000000000113af8): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libc/stdlib/FreeBSD/strtol.c:53
+         Symbol: id = {0x00005456}, range = [0x0000000000113adc-0x0000000000113f7c), name="strtol_l"
+       Variable: id = {0x40020b0000000c9e}, name = "nptr", type = "const char *__restrict", valid ranges = <block>, location = DW_OP_fbreg -8, decl = strtol.c:51
+       Variable: id = {0x40020b0000000cac}, name = "endptr", type = "char **__restrict", valid ranges = <block>, location = DW_OP_fbreg -16, decl = strtol.c:51
+       Variable: id = {0x40020b0000000cba}, name = "base", type = "int", valid ranges = <block>, location = DW_OP_fbreg -20, decl = strtol.c:51
+       Variable: id = {0x40020b0000000cc8}, name = "loc", type = "locale_t", valid ranges = <block>, location = DW_OP_fbreg -32, decl = strtol.c:52
+       Variable: id = {0x40020b0000000cd6}, name = "s", type = "const char *", valid ranges = <block>, location = DW_OP_fbreg -40, decl = strtol.c:54
+       Variable: id = {0x40020b0000000ce4}, name = "acc", type = "unsigned long", valid ranges = <block>, location = DW_OP_breg31 WSP+48, decl = strtol.c:55
+       Variable: id = {0x40020b0000000cf2}, name = "c", type = "char", valid ranges = <block>, location = DW_OP_breg31 WSP+47, decl = strtol.c:56
+       Variable: id = {0x40020b0000000d00}, name = "cutoff", type = "unsigned long", valid ranges = <block>, location = DW_OP_breg31 WSP+32, decl = strtol.c:57
+       Variable: id = {0x40020b0000000d0e}, name = "neg", type = "int", valid ranges = <block>, location = DW_OP_breg31 WSP+28, decl = strtol.c:58
+       Variable: id = {0x40020b0000000d1c}, name = "any", type = "int", valid ranges = <block>, location = DW_OP_breg31 WSP+24, decl = strtol.c:58
+       Variable: id = {0x40020b0000000d2a}, name = "cutlim", type = "int", valid ranges = <block>, location = DW_OP_breg31 WSP+20, decl = strtol.c:58
+
+(lldb) image lookup -vn strtoll_l
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x0000000000114048] (libSystem.B.dylib.__TEXT.__text + 1124264)
+        Summary: libSystem.B.dylib`strtoll_l at strtoll.c:52
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libc/stdlib/FreeBSD/strtoll.c", language = "c11"
+       Function: id = {0x40020c0000000c8c}, name = "strtoll_l", range = [0x0000000000114048-0x00000000001144e8)
+       FuncType: id = {0x40020c0000000c8c}, byte-size = 0, decl = strtoll.c:50, compiler_type = "long long (const char *__restrict, char **__restrict, int, locale_t)"
+         Blocks: id = {0x40020c0000000c8c}, range = [0x00114048-0x001144e8)
+      LineEntry: [0x0000000000114048-0x0000000000114064): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libc/stdlib/FreeBSD/strtoll.c:52
+         Symbol: id = {0x00005462}, range = [0x0000000000114048-0x00000000001144e8), name="strtoll_l"
+       Variable: id = {0x40020c0000000ca5}, name = "nptr", type = "const char *__restrict", valid ranges = <block>, location = DW_OP_fbreg -8, decl = strtoll.c:50
+       Variable: id = {0x40020c0000000cb3}, name = "endptr", type = "char **__restrict", valid ranges = <block>, location = DW_OP_fbreg -16, decl = strtoll.c:50
+       Variable: id = {0x40020c0000000cc1}, name = "base", type = "int", valid ranges = <block>, location = DW_OP_fbreg -20, decl = strtoll.c:50
+       Variable: id = {0x40020c0000000ccf}, name = "loc", type = "locale_t", valid ranges = <block>, location = DW_OP_fbreg -32, decl = strtoll.c:51
+       Variable: id = {0x40020c0000000cdd}, name = "s", type = "const char *", valid ranges = <block>, location = DW_OP_fbreg -40, decl = strtoll.c:53
+       Variable: id = {0x40020c0000000ceb}, name = "acc", type = "unsigned long long", valid ranges = <block>, location = DW_OP_breg31 WSP+48, decl = strtoll.c:54
+       Variable: id = {0x40020c0000000cf9}, name = "c", type = "char", valid ranges = <block>, location = DW_OP_breg31 WSP+47, decl = strtoll.c:55
+       Variable: id = {0x40020c0000000d07}, name = "cutoff", type = "unsigned long long", valid ranges = <block>, location = DW_OP_breg31 WSP+32, decl = strtoll.c:56
+       Variable: id = {0x40020c0000000d15}, name = "neg", type = "int", valid ranges = <block>, location = DW_OP_breg31 WSP+28, decl = strtoll.c:57
+       Variable: id = {0x40020c0000000d23}, name = "any", type = "int", valid ranges = <block>, location = DW_OP_breg31 WSP+24, decl = strtoll.c:57
+       Variable: id = {0x40020c0000000d31}, name = "cutlim", type = "int", valid ranges = <block>, location = DW_OP_breg31 WSP+20, decl = strtoll.c:57
+
+(lldb) image lookup -vn strtoull_l
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x0000000000114df4] (libSystem.B.dylib.__TEXT.__text + 1127764)
+        Summary: libSystem.B.dylib`strtoull_l at strtoull.c:52
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libc/stdlib/FreeBSD/strtoull.c", language = "c11"
+       Function: id = {0x4002120000000c85}, name = "strtoull_l", range = [0x0000000000114df4-0x0000000000115268)
+       FuncType: id = {0x4002120000000c85}, byte-size = 0, decl = strtoull.c:50, compiler_type = "unsigned long long (const char *__restrict, char **__restrict, int, locale_t)"
+         Blocks: id = {0x4002120000000c85}, range = [0x00114df4-0x00115268)
+      LineEntry: [0x0000000000114df4-0x0000000000114e10): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libc/stdlib/FreeBSD/strtoull.c:52
+         Symbol: id = {0x0000549a}, range = [0x0000000000114df4-0x0000000000115268), name="strtoull_l"
+       Variable: id = {0x4002120000000c9e}, name = "nptr", type = "const char *__restrict", valid ranges = <block>, location = DW_OP_fbreg -8, decl = strtoull.c:50
+       Variable: id = {0x4002120000000cac}, name = "endptr", type = "char **__restrict", valid ranges = <block>, location = DW_OP_fbreg -16, decl = strtoull.c:50
+       Variable: id = {0x4002120000000cba}, name = "base", type = "int", valid ranges = <block>, location = DW_OP_fbreg -20, decl = strtoull.c:50
+       Variable: id = {0x4002120000000cc8}, name = "loc", type = "locale_t", valid ranges = <block>, location = DW_OP_fbreg -32, decl = strtoull.c:51
+       Variable: id = {0x4002120000000cd6}, name = "s", type = "const char *", valid ranges = <block>, location = DW_OP_fbreg -40, decl = strtoull.c:53
+       Variable: id = {0x4002120000000ce4}, name = "acc", type = "unsigned long long", valid ranges = <block>, location = DW_OP_breg31 WSP+48, decl = strtoull.c:54
+       Variable: id = {0x4002120000000cf2}, name = "c", type = "char", valid ranges = <block>, location = DW_OP_breg31 WSP+47, decl = strtoull.c:55
+       Variable: id = {0x4002120000000d00}, name = "cutoff", type = "unsigned long long", valid ranges = <block>, location = DW_OP_breg31 WSP+32, decl = strtoull.c:56
+       Variable: id = {0x4002120000000d0e}, name = "neg", type = "int", valid ranges = <block>, location = DW_OP_breg31 WSP+28, decl = strtoull.c:57
+       Variable: id = {0x4002120000000d1c}, name = "any", type = "int", valid ranges = <block>, location = DW_OP_breg31 WSP+24, decl = strtoull.c:57
+       Variable: id = {0x4002120000000d2a}, name = "cutlim", type = "int", valid ranges = <block>, location = DW_OP_breg31 WSP+20, decl = strtoull.c:57
+
+(lldb) image lookup -vn strtod_l
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x0000000000156cec] (libSystem.B.dylib.__TEXT.__text + 1397836)
+        Summary: libSystem.B.dylib`_strtod_l at gdtoa-strtod.c:69
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libc/gdtoa/FreeBSD/gdtoa-strtod.c", language = "c11"
+       Function: id = {0x4002d30000000032}, name = "_strtod_l", range = [0x0000000000156cec-0x0000000000158f54)
+       FuncType: id = {0x4002d30000000032}, byte-size = 0, decl = gdtoa-strtod.c:63, compiler_type = "double (const char *, char **, locale_t)"
+         Blocks: id = {0x4002d30000000032}, range = [0x00156cec-0x00158f54)
+      LineEntry: [0x0000000000156cec-0x0000000000156d24): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libc/gdtoa/FreeBSD/gdtoa-strtod.c:69
+         Symbol: id = {0x00006208}, range = [0x0000000000156cec-0x0000000000158f54), name="strtod_l"
+       Variable: id = {0x4002d30000000064}, name = "fpinan", type = "FPI", valid ranges = <block>, location = DW_OP_addr 0x233038, decl = gdtoa-strtod.c:275
+       Variable: id = {0x4002d3000000007a}, name = "s00", type = "const char *", valid ranges = <block>, location = DW_OP_fbreg -48, decl = gdtoa-strtod.c:67
+       Variable: id = {0x4002d30000000088}, name = "se", type = "char **", valid ranges = <block>, location = DW_OP_fbreg -56, decl = gdtoa-strtod.c:67
+       Variable: id = {0x4002d30000000096}, name = "loc", type = "locale_t", valid ranges = <block>, location = DW_OP_fbreg -64, decl = gdtoa-strtod.c:67
+       Variable: id = {0x4002d300000000a4}, name = "scale", type = "int", valid ranges = <block>, location = DW_OP_fbreg -68, decl = gdtoa-strtod.c:71
+       Variable: id = {0x4002d300000000b3}, name = "bb2", type = "int", valid ranges = <block>, location = DW_OP_fbreg -72, decl = gdtoa-strtod.c:73
+       Variable: id = {0x4002d300000000c2}, name = "bb5", type = "int", valid ranges = <block>, location = DW_OP_fbreg -76, decl = gdtoa-strtod.c:73
+       Variable: id = {0x4002d300000000d1}, name = "bbe", type = "int", valid ranges = <block>, location = DW_OP_fbreg -80, decl = gdtoa-strtod.c:73
+       Variable: id = {0x4002d300000000e0}, name = "bd2", type = "int", valid ranges = <block>, location = DW_OP_fbreg -84, decl = gdtoa-strtod.c:73
+       Variable: id = {0x4002d300000000ef}, name = "bd5", type = "int", valid ranges = <block>, location = DW_OP_fbreg -88, decl = gdtoa-strtod.c:73
+       Variable: id = {0x4002d300000000fe}, name = "bbbits", type = "int", valid ranges = <block>, location = DW_OP_fbreg -92, decl = gdtoa-strtod.c:73
+       Variable: id = {0x4002d3000000010d}, name = "bs2", type = "int", valid ranges = <block>, location = DW_OP_fbreg -96, decl = gdtoa-strtod.c:73
+       Variable: id = {0x4002d3000000011c}, name = "c", type = "int", valid ranges = <block>, location = DW_OP_fbreg -100, decl = gdtoa-strtod.c:73
+       Variable: id = {0x4002d3000000012b}, name = "decpt", type = "int", valid ranges = <block>, location = DW_OP_fbreg -104, decl = gdtoa-strtod.c:73
+       Variable: id = {0x4002d3000000013a}, name = "dsign", type = "int", valid ranges = <block>, location = DW_OP_fbreg -108, decl = gdtoa-strtod.c:73
+       Variable: id = {0x4002d30000000149}, name = "e", type = "int", valid ranges = <block>, location = DW_OP_fbreg -112, decl = gdtoa-strtod.c:74
+       Variable: id = {0x4002d30000000158}, name = "e1", type = "int", valid ranges = <block>, location = DW_OP_fbreg -116, decl = gdtoa-strtod.c:74
+       Variable: id = {0x4002d30000000167}, name = "esign", type = "int", valid ranges = <block>, location = DW_OP_fbreg -120, decl = gdtoa-strtod.c:74
+       Variable: id = {0x4002d30000000176}, name = "i", type = "int", valid ranges = <block>, location = DW_OP_fbreg -124, decl = gdtoa-strtod.c:74
+       Variable: id = {0x4002d30000000185}, name = "j", type = "int", valid ranges = <block>, location = DW_OP_fbreg -128, decl = gdtoa-strtod.c:74
+       Variable: id = {0x4002d30000000194}, name = "k", type = "int", valid ranges = <block>, location = DW_OP_fbreg -132, decl = gdtoa-strtod.c:74
+       Variable: id = {0x4002d300000001a3}, name = "nd", type = "int", valid ranges = <block>, location = DW_OP_fbreg -136, decl = gdtoa-strtod.c:74
+       Variable: id = {0x4002d300000001b2}, name = "nd0", type = "int", valid ranges = <block>, location = DW_OP_fbreg -140, decl = gdtoa-strtod.c:74
+       Variable: id = {0x4002d300000001c1}, name = "nf", type = "int", valid ranges = <block>, location = DW_OP_fbreg -144, decl = gdtoa-strtod.c:74
+       Variable: id = {0x4002d300000001d0}, name = "nz", type = "int", valid ranges = <block>, location = DW_OP_fbreg -148, decl = gdtoa-strtod.c:74
+       Variable: id = {0x4002d300000001df}, name = "nz0", type = "int", valid ranges = <block>, location = DW_OP_fbreg -152, decl = gdtoa-strtod.c:74
+       Variable: id = {0x4002d300000001ee}, name = "sign", type = "int", valid ranges = <block>, location = DW_OP_fbreg -156, decl = gdtoa-strtod.c:74
+       Variable: id = {0x4002d300000001fd}, name = "s", type = "const char *", valid ranges = <block>, location = DW_OP_fbreg -168, decl = gdtoa-strtod.c:75
+       Variable: id = {0x4002d3000000020c}, name = "s0", type = "const char *", valid ranges = <block>, location = DW_OP_fbreg -176, decl = gdtoa-strtod.c:75
+       Variable: id = {0x4002d3000000021b}, name = "s1", type = "const char *", valid ranges = <block>, location = DW_OP_fbreg -184, decl = gdtoa-strtod.c:75
+       Variable: id = {0x4002d3000000022a}, name = "strunc", type = "char *", valid ranges = <block>, location = DW_OP_fbreg -192, decl = gdtoa-strtod.c:76
+       Variable: id = {0x4002d30000000239}, name = "aadj", type = "double", valid ranges = <block>, location = DW_OP_fbreg -200, decl = gdtoa-strtod.c:77
+       Variable: id = {0x4002d30000000248}, name = "L", type = "int", valid ranges = <block>, location = DW_OP_fbreg -204, decl = gdtoa-strtod.c:78
+       Variable: id = {0x4002d30000000257}, name = "adj", type = "U", valid ranges = <block>, location = DW_OP_fbreg -216, decl = gdtoa-strtod.c:79
+       Variable: id = {0x4002d30000000266}, name = "aadj1", type = "U", valid ranges = <block>, location = DW_OP_fbreg -224, decl = gdtoa-strtod.c:79
+       Variable: id = {0x4002d30000000275}, name = "rv", type = "U", valid ranges = <block>, location = DW_OP_fbreg -232, decl = gdtoa-strtod.c:79
+       Variable: id = {0x4002d30000000284}, name = "rv0", type = "U", valid ranges = <block>, location = DW_OP_fbreg -240, decl = gdtoa-strtod.c:79
+       Variable: id = {0x4002d30000000293}, name = "y", type = "ULong", valid ranges = <block>, location = DW_OP_fbreg -244, decl = gdtoa-strtod.c:80
+       Variable: id = {0x4002d300000002a2}, name = "z", type = "ULong", valid ranges = <block>, location = DW_OP_breg31 WSP+248, decl = gdtoa-strtod.c:80
+       Variable: id = {0x4002d300000002b1}, name = "bb", type = "Bigint *", valid ranges = <block>, location = DW_OP_breg31 WSP+240, decl = gdtoa-strtod.c:81
+       Variable: id = {0x4002d300000002c0}, name = "bb1", type = "Bigint *", valid ranges = <block>, location = DW_OP_breg31 WSP+232, decl = gdtoa-strtod.c:81
+       Variable: id = {0x4002d300000002cf}, name = "bd", type = "Bigint *", valid ranges = <block>, location = DW_OP_breg31 WSP+224, decl = gdtoa-strtod.c:81
+       Variable: id = {0x4002d300000002de}, name = "bd0", type = "Bigint *", valid ranges = <block>, location = DW_OP_breg31 WSP+216, decl = gdtoa-strtod.c:81
+       Variable: id = {0x4002d300000002ed}, name = "bs", type = "Bigint *", valid ranges = <block>, location = DW_OP_breg31 WSP+208, decl = gdtoa-strtod.c:81
+       Variable: id = {0x4002d300000002fc}, name = "delta", type = "Bigint *", valid ranges = <block>, location = DW_OP_breg31 WSP+200, decl = gdtoa-strtod.c:81
+       Variable: id = {0x4002d3000000030b}, name = "decimalpoint", type = "char *", valid ranges = <block>, location = DW_OP_breg31 WSP+192, decl = gdtoa-strtod.c:88
+       Variable: id = {0x4002d3000000031a}, name = "dplen", type = "int", valid ranges = <block>, location = DW_OP_breg31 WSP+188, decl = gdtoa-strtod.c:89
+       Variable: id = {0x4002d30000000329}, name = "Rounding", type = "int", valid ranges = <block>, location = DW_OP_breg31 WSP+184, decl = gdtoa-strtod.c:109
+
+(lldb) image lookup -vn strncasecmp_l
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x0000000000140484] (libSystem.B.dylib.__TEXT.__text + 1305572)
+        Summary: libSystem.B.dylib`strncasecmp_l at strcasecmp.c:70
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libc/string/FreeBSD/strcasecmp.c", language = "c11"
+       Function: id = {0x4002830000000e19}, name = "strncasecmp_l", range = [0x0000000000140484-0x00000000001405d4)
+       FuncType: id = {0x4002830000000e19}, byte-size = 0, decl = strcasecmp.c:66, compiler_type = "int (const char *, const char *, size_t, locale_t)"
+         Blocks: id = {0x4002830000000e19}, range = [0x00140484-0x001405d4)
+      LineEntry: [0x0000000000140484-0x00000000001404a0): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libc/string/FreeBSD/strcasecmp.c:70
+         Symbol: id = {0x00005cb4}, range = [0x0000000000140484-0x00000000001405d4), name="strncasecmp_l"
+       Variable: id = {0x4002830000000e32}, name = "s1", type = "const char *", valid ranges = <block>, location = DW_OP_fbreg -16, decl = strcasecmp.c:67
+       Variable: id = {0x4002830000000e40}, name = "s2", type = "const char *", valid ranges = <block>, location = DW_OP_fbreg -24, decl = strcasecmp.c:67
+       Variable: id = {0x4002830000000e4e}, name = "n", type = "size_t", valid ranges = <block>, location = DW_OP_breg31 WSP+32, decl = strcasecmp.c:68
+       Variable: id = {0x4002830000000e5c}, name = "loc", type = "locale_t", valid ranges = <block>, location = DW_OP_breg31 WSP+24, decl = strcasecmp.c:69
+
+(lldb) image lookup -vn snprintf_l
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x00000000001305e8] (libSystem.B.dylib.__TEXT.__text + 1240392)
+        Summary: libSystem.B.dylib`snprintf_l at snprintf.c:62
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libc/stdio/FreeBSD/snprintf.c", language = "c11"
+       Function: id = {0x4002550000000dcf}, name = "snprintf_l", range = [0x00000000001305e8-0x000000000013063c)
+       FuncType: id = {0x4002550000000dcf}, byte-size = 0, decl = snprintf.c:60, compiler_type = "int (char *__restrict, size_t, locale_t, const char *__restrict, ...)"
+         Blocks: id = {0x4002550000000dcf}, range = [0x001305e8-0x0013063c)
+      LineEntry: [0x00000000001305e8-0x0000000000130608): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libc/stdio/FreeBSD/snprintf.c:62
+         Symbol: id = {0x000059a2}, range = [0x00000000001305e8-0x000000000013063c), name="snprintf_l"
+       Variable: id = {0x4002550000000de8}, name = "str", type = "char *__restrict", valid ranges = <block>, location = DW_OP_fbreg -8, decl = snprintf.c:60
+       Variable: id = {0x4002550000000df6}, name = "n", type = "size_t", valid ranges = <block>, location = DW_OP_fbreg -16, decl = snprintf.c:60
+       Variable: id = {0x4002550000000e04}, name = "loc", type = "locale_t", valid ranges = <block>, location = DW_OP_breg31 WSP+24, decl = snprintf.c:60
+       Variable: id = {0x4002550000000e12}, name = "fmt", type = "const char *__restrict", valid ranges = <block>, location = DW_OP_breg31 WSP+16, decl = snprintf.c:61
+       Variable: id = {0x4002550000000e20}, name = "ret", type = "int", valid ranges = <block>, location = DW_OP_breg31 WSP+12, decl = snprintf.c:63
+       Variable: id = {0x4002550000000e2e}, name = "ap", type = "va_list", valid ranges = <block>, location = DW_OP_breg31 WSP+0, decl = snprintf.c:64
+
+(lldb) image lookup -vn fprintf_l
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x00000000001300a4] (libSystem.B.dylib.__TEXT.__text + 1239044)
+        Summary: libSystem.B.dylib`fprintf_l at fprintf.c:58
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libc/stdio/FreeBSD/fprintf.c", language = "c11"
+       Function: id = {0x4002520000000dc1}, name = "fprintf_l", range = [0x00000000001300a4-0x00000000001300f0)
+       FuncType: id = {0x4002520000000dc1}, byte-size = 0, decl = fprintf.c:57, compiler_type = "int (FILE *__restrict, locale_t, const char *__restrict, ...)"
+         Blocks: id = {0x4002520000000dc1}, range = [0x001300a4-0x001300f0)
+      LineEntry: [0x00000000001300a4-0x00000000001300c0): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libc/stdio/FreeBSD/fprintf.c:58
+         Symbol: id = {0x0000597e}, range = [0x00000000001300a4-0x00000000001300f0), name="fprintf_l"
+       Variable: id = {0x4002520000000dda}, name = "fp", type = "FILE *__restrict", valid ranges = <block>, location = DW_OP_fbreg -8, decl = fprintf.c:57
+       Variable: id = {0x4002520000000de8}, name = "loc", type = "locale_t", valid ranges = <block>, location = DW_OP_fbreg -16, decl = fprintf.c:57
+       Variable: id = {0x4002520000000df6}, name = "fmt", type = "const char *__restrict", valid ranges = <block>, location = DW_OP_breg31 WSP+24, decl = fprintf.c:57
+       Variable: id = {0x4002520000000e04}, name = "ret", type = "int", valid ranges = <block>, location = DW_OP_breg31 WSP+20, decl = fprintf.c:59
+       Variable: id = {0x4002520000000e12}, name = "ap", type = "va_list", valid ranges = <block>, location = DW_OP_breg31 WSP+8, decl = fprintf.c:60
+
+(lldb) disassemble --name strtoull_l --count 25
+libSystem.B.dylib`strtoull_l:
+libSystem.B.dylib[0x114df4] <+0>:  sub    sp, sp, #0x70
+libSystem.B.dylib[0x114df8] <+4>:  stp    x29, x30, [sp, #0x60]
+libSystem.B.dylib[0x114dfc] <+8>:  add    x29, sp, #0x60
+libSystem.B.dylib[0x114e00] <+12>: stur   x0, [x29, #-0x8]
+libSystem.B.dylib[0x114e04] <+16>: stur   x1, [x29, #-0x10]
+libSystem.B.dylib[0x114e08] <+20>: stur   w2, [x29, #-0x14]
+libSystem.B.dylib[0x114e0c] <+24>: stur   x3, [x29, #-0x20]
+libSystem.B.dylib[0x114e10] <+28>: ldur   x8, [x29, #-0x20]
+libSystem.B.dylib[0x114e14] <+32>: cbnz   x8, 0x114e30              ; <+60> at strtoull.c:59:2
+libSystem.B.dylib[0x114e18] <+36>: b      0x114e1c                  ; <+40> at strtoull.c:59:2
+libSystem.B.dylib[0x114e1c] <+40>: adrp   x8, 320
+libSystem.B.dylib[0x114e20] <+44>: add    x8, x8, #0x8b8            ; _c_locale
+libSystem.B.dylib[0x114e24] <+48>: ldr    x8, [x8]
+libSystem.B.dylib[0x114e28] <+52>: stur   x8, [x29, #-0x20]
+libSystem.B.dylib[0x114e2c] <+56>: b      0x114e54                  ; <+96> at strtoull.c:63:6
+libSystem.B.dylib[0x114e30] <+60>: ldur   x8, [x29, #-0x20]
+libSystem.B.dylib[0x114e34] <+64>: adds   x8, x8, #0x1
+libSystem.B.dylib[0x114e38] <+68>: b.ne   0x114e50                  ; <+92> at strtoull.c
+libSystem.B.dylib[0x114e3c] <+72>: b      0x114e40                  ; <+76> at strtoull.c:59:2
+libSystem.B.dylib[0x114e40] <+76>: adrp   x8, 348
+libSystem.B.dylib[0x114e44] <+80>: add    x8, x8, #0xf0             ; __global_locale
+libSystem.B.dylib[0x114e48] <+84>: stur   x8, [x29, #-0x20]
+libSystem.B.dylib[0x114e4c] <+88>: b      0x114e50                  ; <+92> at strtoull.c
+libSystem.B.dylib[0x114e50] <+92>: b      0x114e54                  ; <+96> at strtoull.c:63:6
+libSystem.B.dylib[0x114e54] <+96>: ldur   x8, [x29, #-0x8]

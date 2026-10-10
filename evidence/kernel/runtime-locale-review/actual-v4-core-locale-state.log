@@ -1,0 +1,44 @@
+(lldb) target create --core "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/vm/native-image-v4/core-extraction/core.1"
+Core file '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/vm/native-image-v4/core-extraction/core.1' (arm64) was loaded.
+(lldb) thread backtrace -c 16
+* thread #1, stop reason = ESR_EC_DABORT_EL0 (fault address: 0x16b213fd8)
+   * frame #0: 0x0000000104e0c080 libSystem.B.dylib`strtoull(nptr=0x0000000000000000, endptr=0x0000000000000000, base=0) at strtoull.c:126
+     frame #1: 0x0000000104d88780 libSystem.B.dylib`strtoull_l + 44
+     frame #2: 0x0000000104e0c134 libSystem.B.dylib`strtoull(nptr="0xc7815537c05600d3", endptr=0x0000000000000000, base=0) at strtoull.c:127:9
+     frame #3: 0x0000000104d88780 libSystem.B.dylib`strtoull_l + 44
+     frame #4: 0x0000000104e0c134 libSystem.B.dylib`strtoull(nptr="0xc7815537c05600d3", endptr=0x0000000000000000, base=0) at strtoull.c:127:9
+     frame #5: 0x0000000104d88780 libSystem.B.dylib`strtoull_l + 44
+     frame #6: 0x0000000104e0c134 libSystem.B.dylib`strtoull(nptr="0xc7815537c05600d3", endptr=0x0000000000000000, base=0) at strtoull.c:127:9
+     frame #7: 0x0000000104d88780 libSystem.B.dylib`strtoull_l + 44
+     frame #8: 0x0000000104e0c134 libSystem.B.dylib`strtoull(nptr="0xc7815537c05600d3", endptr=0x0000000000000000, base=0) at strtoull.c:127:9
+     frame #9: 0x0000000104d88780 libSystem.B.dylib`strtoull_l + 44
+     frame #10: 0x0000000104e0c134 libSystem.B.dylib`strtoull(nptr="0xc7815537c05600d3", endptr=0x0000000000000000, base=0) at strtoull.c:127:9
+     frame #11: 0x0000000104d88780 libSystem.B.dylib`strtoull_l + 44
+     frame #12: 0x0000000104e0c134 libSystem.B.dylib`strtoull(nptr="0xc7815537c05600d3", endptr=0x0000000000000000, base=0) at strtoull.c:127:9
+     frame #13: 0x0000000104d88780 libSystem.B.dylib`strtoull_l + 44
+     frame #14: 0x0000000104e0c134 libSystem.B.dylib`strtoull(nptr="0xc7815537c05600d3", endptr=0x0000000000000000, base=0) at strtoull.c:127:9
+     frame #15: 0x0000000104d88780 libSystem.B.dylib`strtoull_l + 44
+(lldb) target variable __global_locale.__lc_ctype __locale_key
+(__xlocale_st_runelocale *) __global_locale.__lc_ctype = 0x0000000104877530
+(__xlocale_st_runelocale *) __global_locale.__lc_ctype = 0x0000000104f68660
+(__xlocale_st_runelocale *) __global_locale.__lc_ctype = 0x00000001058e4c88
+(pthread_key_t) __locale_key = 18446744073709551615
+(pthread_key_t) __locale_key = 10
+(pthread_key_t) __locale_key = 18446744073709551615
+(lldb) memory read --format x --size 8 --count 1 0x104f646b8
+0x104f646b8: 0x000000000000000a
+warning: (arm64) /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/vm/native-image-v4/core-extraction/core.1 load command 58 LC_SEGMENT_64 has a fileoff + filesize (0x0000000047414000) that extends beyond the end of the file (0x0000000007414000), the segment will be truncated to match
+warning: (arm64) /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/vm/native-image-v4/core-extraction/core.1 load command 59 LC_SEGMENT_64 has a fileoff (0x0000000047414000) that extends beyond the end of the file (0x0000000007414000), ignoring this section
+warning: failed to set breakpoint site at 0x10473e8ac for breakpoint -1.1: error: mach-o-core does not support enabling breakpoints
+error: libSystem.B.dylib(0x0000000104cf8000) debug map object file "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/stub/CMakeFiles/libSystem_B_stub.dir/pd_libSystem_compat.c.o" changed (actual: 0x6aca72bb, debug map: 0x6aca661d) since this executable was linked, debug info will not be loaded
+error: libsystem_kernel.a(_libc_funcptr.c.o) failed to load objfile for /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libsystem_kernel/libsystem_kernel.a
+Debugging will be degraded for this module.
+error: dyld(0x0000000104710000) debug map object file "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/dyld/CMakeFiles/dyld.dir/pd_stubs.c.o" changed (actual: 0x6aca72b9, debug map: 0x6aca7073) since this executable was linked, debug info will not be loaded
+error: libsystem_kernel.a(_libc_funcptr.c.o) failed to load objfile for /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libsystem_kernel/libsystem_kernel.a
+Debugging will be degraded for this module.
+error: libdyld.dylib(0x0000000105800000) debug map object file "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libdyld/CMakeFiles/libdyld.dir/__/__/dyld/upstream/dyld3/Closure.cpp.o" changed (actual: 0x6aca72f2, debug map: 0x6aca70bd) since this executable was linked, debug info will not be loaded
+error: libdyld.dylib(0x0000000105800000) debug map object file "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libdyld/CMakeFiles/libdyld.dir/__/__/dyld/upstream/dyld3/Loading.cpp.o" changed (actual: 0x6aca72f2, debug map: 0x6aca70bd) since this executable was linked, debug info will not be loaded
+error: libdyld.dylib(0x0000000105800000) debug map object file "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libdyld/CMakeFiles/libdyld.dir/__/__/dyld/upstream/src/dyld_stub_binder.s.o" changed (actual: 0x6aca72f2, debug map: 0x6aca70bc) since this executable was linked, debug info will not be loaded
+error: libdyld.dylib(0x0000000105800000) debug map object file "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libdyld/CMakeFiles/libdyld.dir/__/__/dyld/upstream/src/threadLocalHelpers.s.o" changed (actual: 0x6aca72f2, debug map: 0x6aca70bc) since this executable was linked, debug info will not be loaded
+error: libsystem_kernel.a(_libc_funcptr.c.o) failed to load objfile for /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libsystem_kernel/libsystem_kernel.a
+Debugging will be degraded for this module.

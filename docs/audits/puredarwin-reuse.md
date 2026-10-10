@@ -12,6 +12,8 @@ The audited sources are immutable entries in `sources.lock.json`:
 | PureDarwin next | `1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290` | Prototype candidate: source ARM64 XNU, dyld, libSystem, launchd and shell, with a QEMU virt platform. Validate each component below. |
 | PureDarwin XPC | `ad1163a623528ec83af7ec3c1d28ee0700bdef58` | Reject as the runtime foundation. The repository is archived, its README declares incomplete functionality, and required paths contain unimplemented operations. |
 | LLVM compiler-rt | `2078da43e25a4623cab2d0d60decddf709aaea28` | Build real ARM64 compiler builtins from source; keep the symbol visibility overlay reviewable. |
+| dash 0.5.13 | `1365bb36a92656eb52b64cb04d249c47a1d3c4cf` | Use the independently built shell from its primary upstream; cross-build against the source runtime and require actual guest execution. |
+| ICU 76.1 | Archive SHA-256 `dfacb46bfe4747410472ce3e1144bf28a102feeaa4e3875bac9b4c6cf30f4f3e` | Build common/internationalization libraries and real Unicode data for CoreFoundation; host data generators remain separate from target libraries. |
 
 The [current upstream status](https://puredarwin.org/handbook/status.html)
 describes an ARM64 QEMU prototype. Its claims are discovery evidence, not our
@@ -25,8 +27,9 @@ version label from hiding a different source snapshot.
 | libSystem (`src/Libraries/libSystem`) | Aggregates source libc, Mach/BSD syscall wrappers, libplatform, pthread, malloc, dispatch, math, resolver, crypto and compiler builtins; reexports source libdyld. Several actual ARM64 archives compile. | Keep as the minimum candidate, require the complete linked dylib and dependency closure. Replace its return-only stack probe with the tested ARM64 page-touch helper. Do not treat placeholder APIs as functional merely because they link. |
 | launchd and launchctl (`src/Libraries/XPC/launchd`) | Source job manager and Mach IPC/MIG interfaces exist. The implementation is the older launchd 842.91.1 lineage, with compatibility files. | Use the real implementation; validate PID 1, RunAtLoad, MachServices, KeepAlive, load/unload, failures and shutdown with guest fixtures. Never substitute a small PID 1 program. |
 | libxpc/libinfo/notify (`src/Libraries/XPC`) | Source ARM64 targets exist. notify needs generated MIG declarations; libinfo mixes old resolver headers with the modern SDK unless the matching source header is selected. | Review compatibility patches and test the required service subset. `xpc_create_from_plist` and sandbox enforcement remain excluded, not claimed as supported. |
-| libc++/libc++abi/libunwind | Source archives build for ARM64. Modern SDK C++ headers must be explicit for the old dyld build. | Include source archive provenance and test loading/unwinding before declaring broad C++ support. |
-| IOKit and DiskArbitration | Source trees exist, but presence does not implement M-series hardware drivers. | Defer beyond runtime baseline; require separate driver tests. |
+| libc++/libc++abi/libunwind | Source ARM64 libraries build; the full libc++ library compiles 54 source files with source C++ headers. SDK compatibility headers used to compile the older dyld remain separately recorded. | Include source archive provenance and test loading/unwinding before declaring broad C++ support. |
+| CoreFoundation and IOKitCF | Source ARM64 CoreFoundation, ICU, and IOKitCF are required by the measured launchctl dependency closure. | Include their actual source-built libraries and generated MIG interfaces in the baseline; compilation alone does not establish bootstrap success. |
+| IOKit hardware drivers and DiskArbitration | Source trees exist, but presence does not implement M-series hardware drivers. | Require separate physical driver tests; virtual source IOKitCF support does not establish them. |
 | corecrypto/CommonCrypto | Source crypto links into the candidate runtime; corecrypto is GPL version 3 or later while CommonCrypto carries Apple notices. | Preserve file notices; audit the linked distribution's obligations and license compatibility before release. No license clearance is implied by this prototype. |
 
 The [archived XPC repository](https://github.com/PureDarwin/XPC) was verified
@@ -47,6 +50,12 @@ is an orientation aid, not a single license for this aggregate. A release
 needs a file-level inventory, retained notices, corresponding-source review
 and review of the aggregate license conditions. SDK availability does not
 authorize redistributing Apple's SDK or runtime binaries.
+
+The newly selected ICU archive retains its `LICENSE`, including Unicode-3.0
+and bundled third-party notices. dash's `COPYING` includes BSD notices and
+GPL-2.0-or-later notices for `mksignames.c` and its generated output. These
+additional inputs are recorded in the lock and retain their original notices;
+the project MIT license does not replace them.
 
 The pinned Nix path requires a locally supplied proprietary
 `MacOSX11.3.sdk.tar.xz` with SHA-256

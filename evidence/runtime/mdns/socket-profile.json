@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "status": "source_build_and_socket_profile_verified",
+  "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+  "client_and_daemon": {
+    "client": {
+      "command": [
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+        "-DTARGET_OS_MACOSX=1",
+        "-D__DARWIN_ONLY_64_BIT_INO_T=1",
+        "-D__DARWIN_ONLY_UNIX_CONFORMANCE=1",
+        "-D__DARWIN_ONLY_VERS_1050=1",
+        "-D__PUREDARWIN__",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSShared",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/mDNSResponder/../libSystem/libc/include",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/mDNSResponder/../libSystem/libc/darwin",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/mDNSResponder/../libSystem/pthread/include/pthread",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/mDNSResponder/../libSystem/pthread/private",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/mDNSResponder/../libSystem/libsystem_kernel/private_include",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/mDNSResponder/../libSystem/libsystem_kernel/include",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/mDNSResponder/../libSystem/libplatform/include",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/mDNSResponder/../libSystem/libplatform/private",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/mDNSResponder/../libSystem/libdispatch",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libc/include/arm64",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/AvailabilityVersions/include",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/clang_bootstrap",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libc/headers/usr/include",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libc/../libsystem_kernel/wrappers",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Kernel/xnu/bsd",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libmalloc/include",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libc/include",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/pthread/include",
+        "-Wno-nullability-completeness",
+        "-include",
+        "/Users/joeblau/Developer/joeblau/src/blauos/runtime/compat/sdk27_compile.h",
+        "-g",
+        "-arch",
+        "arm64",
+        "-mmacosx-version-min=11.0",
+        "-Wno-undef-prefix",
+        "-nostdlib",
+        "-nostdinc",
+        "-include/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/mDNSResponder/../libSystem/libplatform/pd_bridgeos_compat.h",
+        "-dM",
+        "-E",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSShared/dnssd_clientstub.c"
+      ],
+      "macros": {
+        "AF_DNSSD": "AF_LOCAL",
+        "MDNS_UDS_SERVERPATH": "\"/var/run/mDNSResponder\"",
+        "VERSION": "1"
+      },
+      "preprocessor_exit_code": 0
+    },
+    "daemon": {
+      "command": [
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+        "-arch",
+        "arm64",
+        "-mmacosx-version-min=11.0",
+        "-isysroot",
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+        "-DPOSIX_BUILD",
+        "-fno-builtin",
+        "-fblocks",
+        "-g",
+        "-O2",
+        "-Wno-nullability-completeness",
+        "-include",
+        "/Users/joeblau/Developer/joeblau/src/blauos/runtime/compat/sdk27_compile.h",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSCore",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSShared",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSPosix",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/mDNSResponder/DSO",
+        "-dM",
+        "-E",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSPosix/PosixDaemon.c"
+      ],
+      "macros": {
+        "AF_DNSSD": "AF_LOCAL",
+        "MDNS_UDS_SERVERPATH": "\"/var/run/mDNSResponder\"",
+        "POSIX_BUILD": "1",
+        "VERSION": "1",
+        "uDNS_SERVERS_FILE": "\"/etc/resolv.conf\""
+      },
+      "preprocessor_exit_code": 0
+    }
+  },
+  "configuration": {
+    "server_file": "/etc/resolv.conf",
+    "expected_guest_nameserver": "10.0.2.3",
+    "daemon_launch_arguments": [
+      "/usr/sbin/mdnsd",
+      "-debug"
+    ],
+    "foreground": true,
+    "required_writable_paths": [
+      "/var/run",
+      "/var/log"
+    ]
+  },
+  "source_route": [
+    "libinfo getaddrinfo/search/mdns_module",
+    "DNSServiceQueryRecord over AF_LOCAL /var/run/mDNSResponder",
+    "POSIX mdnsd ClientRequests/uDNS",
+    "mDNSPosix ParseDNSServers(/etc/resolv.conf)",
+    "actual UDP query to configured server and reply through mDNSCoreReceive"
+  ],
+  "guest_dns_verified": false,
+  "unmet_acceptance": [
+    "actual guest getaddrinfo returns a real DNS response"
+  ]
+}

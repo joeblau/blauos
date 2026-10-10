@@ -1,0 +1,292 @@
+{
+  "schema_version": 1,
+  "reviewer": "kernel_build agent",
+  "status": "actionable_shadowed_providers_sent_to_runtime_owner",
+  "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+  "original_compatibility_source_sha256": "8d5d31764eb672a2cd668df1de8ee5622542fe48413bb4fa545c3159c1da159f",
+  "compiled_inventory": "evidence/kernel/runtime-provider-review/compiled-provider-inventory.json",
+  "compiled_external_definitions": 70,
+  "selected_archives_inspected": 29,
+  "same_name_archive_duplicates": 36,
+  "same_name_selected_reexport_duplicates": 6,
+  "classifications": [
+    {
+      "symbols": [
+        "_mk_timer_create",
+        "_mk_timer_destroy",
+        "_mk_timer_arm",
+        "_mk_timer_cancel"
+      ],
+      "category": "dummy_success_overrides_real_traps",
+      "finding": "Returns fake timer port1 and successful no-op operations; CFRunLoop.c:953/2191\u20132225 requires real timer ports/deadline delivery",
+      "genuine_sources": [
+        "libsystem_kernel/mach/mach_traps.s",
+        "CoreFoundation/RunLoop.subproj/CFRunLoop.c"
+      ]
+    },
+    {
+      "symbols": [
+        "_task_threads",
+        "_thread_suspend",
+        "_thread_resume",
+        "_mach_vm_region"
+      ],
+      "category": "failure_only_overrides_real_MIG",
+      "finding": "Always KERN_FAILURE rather than real task/thread enumeration, state control, or VM region queries. Actual Mach MIG providers are selected; CFRunLoop.c:263\u2013286 uses real thread control",
+      "genuine_sources": [
+        "libsystem_kernel generated mach_vm.c/task.c/thread_act.c from pinned XNU .defs"
+      ]
+    },
+    {
+      "symbols": [
+        "_pthread_atfork"
+      ],
+      "category": "dummy_success_overrides_real_registration",
+      "finding": "Drops all prepare/parent/child callbacks while returning0. Genuine pthread provider registers them; CFRuntime.c:1198 requires callbacks",
+      "genuine_sources": [
+        "pthread/src/pthread_atfork.c:30-85",
+        "CoreFoundation/Base.subproj/CFRuntime.c:1198"
+      ]
+    },
+    {
+      "symbols": [
+        "_issetugid",
+        "_pthread_getugid_np"
+      ],
+      "category": "credential_semantics_replaced_by_process_values",
+      "finding": "issetugid always returns0; pthread_getugid_np returns process getuid/getgid rather than real per-thread credentials",
+      "genuine_sources": [
+        "libsystem_kernel/syscalls.a:_issetugid.o",
+        "libsystem_kernel/syscalls.a:___gettid.o"
+      ]
+    },
+    {
+      "symbols": [
+        "_os_unfair_lock_lock",
+        "_os_unfair_lock_unlock"
+      ],
+      "category": "incompatible_lock_protocol",
+      "finding": "CAS0-to1 spinlock substitutes for owner-bit and __ulock_wait/wake protocol; mixed genuine trylock/options/recursive APIs use a different state protocol and wake semantics",
+      "genuine_sources": [
+        "libplatform/src/os/lock.c:567-633"
+      ]
+    },
+    {
+      "symbols": [
+        "_OSSpinLockLock",
+        "_OSSpinLockUnlock"
+      ],
+      "category": "incompatible_spinlock_protocol",
+      "finding": "Compatibility sets locked=1 while genuine non-iPhone Darwin spin locks use-1; real OSSpinLockTry and slow paths validate that state. Real lock contention/yield behavior is lost",
+      "genuine_sources": [
+        "libplatform/src/os/lock.c:81-84,280-309"
+      ]
+    },
+    {
+      "symbols": [
+        "_OSAtomicCompareAndSwap32Barrier",
+        "_OSAtomicCompareAndSwapLongBarrier",
+        "_OSAtomicCompareAndSwapPtrBarrier",
+        "_OSAtomicIncrement32",
+        "_OSAtomicIncrement32Barrier",
+        "_OSAtomicDecrement32",
+        "_OSAtomicDecrement32Barrier",
+        "_OSMemoryBarrier"
+      ],
+      "category": "redundant_atomic_definitions",
+      "finding": "Builtins generally implement these operations but strong wrappers unnecessarily shadow the complete selected platform family and its declared memory ordering",
+      "genuine_sources": [
+        "libplatform/src/os/atomic.c"
+      ]
+    },
+    {
+      "symbols": [
+        "_qos_class_self"
+      ],
+      "category": "constant_overrides_real_thread_state",
+      "finding": "Always unspecified rather than querying current thread QoS state",
+      "genuine_sources": [
+        "pthread/src/qos.c:190"
+      ]
+    },
+    {
+      "symbols": [
+        "_vm_page_size"
+      ],
+      "category": "redundant_runtime_data_definition",
+      "finding": "Initial4096 shadows genuine mach_init.c data; actual mach_init_doit later sets the comm-page derived size, confirmed16384 in failed v4 core",
+      "genuine_sources": [
+        "libsystem_kernel/mach/mach_init.c:158"
+      ]
+    },
+    {
+      "symbols": [
+        "_close$NOCANCEL"
+      ],
+      "category": "cancellation_semantics_replaced",
+      "finding": "Calls normal close instead of selected genuine noncancelable syscall stub",
+      "genuine_sources": [
+        "libsystem_kernel/syscalls.a:___close_nocancel.o"
+      ]
+    },
+    {
+      "symbols": [
+        "_statvfs"
+      ],
+      "category": "incomplete_filesystem_translation",
+      "finding": "Drops read-only/nosuid flags and uses f_bsize for both block sizes; genuine translator preserves flags and uses f_iosize/f_bsize",
+      "genuine_sources": [
+        "libc/emulated/statvfs.c:34-84"
+      ]
+    },
+    {
+      "symbols": [
+        "_strxfrm"
+      ],
+      "category": "locale_collation_replaced",
+      "finding": "Always copies raw string while genuine selected implementation handles collate tables and current locale",
+      "genuine_sources": [
+        "libc/string/FreeBSD/strxfrm.c:67"
+      ]
+    },
+    {
+      "symbols": [
+        "_backtrace_symbols",
+        "_backtrace_symbols_fd"
+      ],
+      "category": "diagnostic_semantics_reduced",
+      "finding": "Prints addresses only rather than actual image/symbol/UUID details",
+      "genuine_sources": [
+        "libc/gen/backtrace.c:145"
+      ]
+    },
+    {
+      "symbols": [
+        "_sigemptyset",
+        "_sigfillset",
+        "_sigaddset"
+      ],
+      "category": "redundant_signal_set_definitions",
+      "finding": "Reimplements basic bitset operations already supplied by selected libc sigsetops provider",
+      "genuine_sources": [
+        "libc/gen/sigsetops.c"
+      ]
+    },
+    {
+      "symbols": [
+        "_memset_pattern4",
+        "_memset_pattern8",
+        "_memset_pattern16"
+      ],
+      "category": "redundant_platform_adapters",
+      "finding": "Forwards to _platform_memset_pattern while selected platform archive also supplies the actual public entrypoints",
+      "genuine_sources": [
+        "libplatform/src/string/generic/memset_pattern.c"
+      ]
+    },
+    {
+      "symbols": [
+        "_dlclose",
+        "_dlerror",
+        "_dlopen",
+        "_dlopen_preflight",
+        "_dlsym",
+        "__dyld_is_memory_immutable"
+      ],
+      "category": "genuine_dyld_reexport_shadowed",
+      "finding": "Compatibility duplicates selected libdyld APIs with reduced locking/error-state/runtime selection semantics. Actual LLDB resolves genuine selected dylib providers to dyldAPIsInLibSystem.cpp",
+      "genuine_sources": [
+        "dyld/upstream/src/dyldAPIsInLibSystem.cpp:1670-1800,2247"
+      ]
+    }
+  ],
+  "independent_guest_execution_verified": false,
+  "known_guest_evidence": {
+    "actual_v4_system_vm_page_size": 16384,
+    "address": "0x104f63c40",
+    "interpretation": "Genuine mach_init_doit updates the duplicate compatibility storage from its initial4096; this is not evidence of a current page-size fault."
+  },
+  "remaining_nonduplicate_definitions": [
+    "__Exit",
+    "__os_log_create",
+    "_creat",
+    "_fdopen$DARWIN_EXTSN",
+    "_fls",
+    "_fmtcheck",
+    "_fopen$DARWIN_EXTSN",
+    "_getgroups$DARWIN_EXTSN",
+    "_getresgid",
+    "_getresuid",
+    "_index",
+    "_ldexp",
+    "_ldexpl",
+    "_pause",
+    "_popen$DARWIN_EXTSN",
+    "_qsort_b",
+    "_realpath",
+    "_rewinddir$INODE64",
+    "_select$1050",
+    "_setresgid",
+    "_setresuid",
+    "_slot_name",
+    "_swap_fat_arch",
+    "_swap_fat_arch_64",
+    "_swap_fat_header",
+    "_sysdir_get_next_search_path_enumeration",
+    "_sysdir_start_search_path_enumeration",
+    "_waitpid"
+  ],
+  "remaining_nonduplicate_assessment": {
+    "required_aliases": [
+      "pause->real__pause",
+      "waitpid->real__waitpid",
+      "realpath->realpath$DARWIN_EXTSN",
+      "fmtcheck->__fmtcheck",
+      "ldexp/ldexpl->scalbn",
+      "index->strchr",
+      "fdopen/fopen$DARWIN_EXTSN->plain providers"
+    ],
+    "pure_or_direct_adapters": [
+      "fls bit scan",
+      "_Exit->_exit",
+      "creat->open",
+      "qsort_b->realqsort_r via actual block invoke ABI",
+      "_os_log_create->realos_log_create"
+    ],
+    "retained_partial_compatibility": [
+      "getresuid/getresgid saved IDs represented as effective IDs",
+      "setresuid/setresgid limited Darwin setreuid/setregid mapping",
+      "sysdir maps known directories only",
+      "slot_name limited CPU naming",
+      "popen$DARWIN_EXTSN provides pipe/fork/exec but does not itself track pclose child PID"
+    ],
+    "legacy_suffixes": [
+      "rewinddir$INODE64 and select$1050 have no same-name selected ARM64 provider; real plain rewinddir exists and handles DIR buffer/telldir/locking, these legacy aliases are excluded from ARM64 exports"
+    ],
+    "execution_scope": "This is provider/source contract review, not proof of every remaining compatibility path at guest runtime."
+  },
+  "reexport_verification": {
+    "library": ".blauos/build/runtime/root/usr/lib/system/libdyld.dylib",
+    "sha256": "3511d2c792ec09c4de79b91f2d1b3a6df1465cc2dc710700f750d1b599d10ada",
+    "command": [
+      "xcrun",
+      "lldb",
+      "--batch",
+      "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/system/libdyld.dylib",
+      "-o",
+      "image lookup -n dlclose",
+      "-o",
+      "image lookup -n dlerror",
+      "-o",
+      "image lookup -n dlopen",
+      "-o",
+      "image lookup -n dlopen_preflight",
+      "-o",
+      "image lookup -n dlsym",
+      "-o",
+      "image lookup -n _dyld_is_memory_immutable"
+    ],
+    "exit_code": 0,
+    "log": "evidence/kernel/runtime-provider-review/genuine-dyld-reexport-functions.log"
+  }
+}

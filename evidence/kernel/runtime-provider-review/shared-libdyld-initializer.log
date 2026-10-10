@@ -1,0 +1,181 @@
+(lldb) target create "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/system/libdyld.dylib"
+Current executable set to '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/system/libdyld.dylib' (arm64).
+(lldb) image lookup -vn _dyld_initializer
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/system/libdyld.dylib:
+        Address: libdyld.dylib[0x00000000000042e4] (libdyld.dylib.__TEXT.__text + 13012)
+        Summary: libdyld.dylib`::_dyld_initializer() at dyldAPIsInLibSystem.cpp:1597
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/system/libdyld.dylib", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyldAPIsInLibSystem.cpp", language = "c++14"
+       Function: id = {0x4000000000001bd5}, name = "::_dyld_initializer()", range = [0x00000000000042e4-0x0000000000004540)
+       FuncType: id = {0x4000000000001bd5}, byte-size = 0, decl = dyldAPIsInLibSystem.cpp:1596, compiler_type = "void (void)"
+         Blocks: id = {0x4000000000001bd5}, range = [0x000042e4-0x00004540)
+      LineEntry: [0x00000000000042e4-0x0000000000004300): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyldAPIsInLibSystem.cpp:1597
+         Symbol: id = {0x00000f1b}, range = [0x00000000000042e4-0x0000000000004540), name="_dyld_initializer"
+       Variable: id = {0x4000000000001beb}, name = "p", type = "funcType", valid ranges = <block>, location = DW_OP_addr 0x910b0, decl = dyldAPIsInLibSystem.cpp:1621
+       Variable: id = {0x4000000000001c0d}, name = "allInfo", type = "const dyld_all_image_infos *", valid ranges = <block>, location = DW_OP_fbreg -8, decl = dyldAPIsInLibSystem.cpp:1624
+
+(lldb) disassemble -n _dyld_initializer
+libdyld.dylib`::_dyld_initializer():
+libdyld.dylib[0x42e4] <+0>:   sub    sp, sp, #0x40
+libdyld.dylib[0x42e8] <+4>:   stp    x29, x30, [sp, #0x30]
+libdyld.dylib[0x42ec] <+8>:   add    x29, sp, #0x30
+libdyld.dylib[0x42f0] <+12>:  adrp   x8, 82
+libdyld.dylib[0x42f4] <+16>:  add    x8, x8, #0xde4            ; start
+libdyld.dylib[0x42f8] <+20>:  add    x8, x8, #0x4
+libdyld.dylib[0x42fc] <+24>:  str    x8, [sp, #0x10]
+libdyld.dylib[0x4300] <+28>:  adrp   x0, 3
+libdyld.dylib[0x4304] <+32>:  add    x0, x0, #0xec0            ; dyldGlobalLockAcquire at dyldLock.cpp:48
+libdyld.dylib[0x4308] <+36>:  bl     0x4540                    ; resign_for_dyld<void ()> at dyldAPIsInLibSystem.cpp:1580
+libdyld.dylib[0x430c] <+40>:  adrp   x8, 140
+libdyld.dylib[0x4310] <+44>:  add    x8, x8, #0x38             ; sHelpers
+libdyld.dylib[0x4314] <+48>:  str    x8, [sp, #0x18]
+libdyld.dylib[0x4318] <+52>:  str    x0, [x8, #0x8]
+libdyld.dylib[0x431c] <+56>:  adrp   x0, 3
+libdyld.dylib[0x4320] <+60>:  add    x0, x0, #0xf4c            ; dyldGlobalLockRelease at dyldLock.cpp:54
+libdyld.dylib[0x4324] <+64>:  bl     0x4540                    ; resign_for_dyld<void ()> at dyldAPIsInLibSystem.cpp:1580
+libdyld.dylib[0x4328] <+68>:  ldr    x8, [sp, #0x18]
+libdyld.dylib[0x432c] <+72>:  str    x0, [x8, #0x10]
+libdyld.dylib[0x4330] <+76>:  adrp   x0, 0
+libdyld.dylib[0x4334] <+80>:  add    x0, x0, #0x568            ; getPerThreadBufferFor_dlerror at dyldAPIsInLibSystem.cpp:1490
+libdyld.dylib[0x4338] <+84>:  bl     0x4554                    ; resign_for_dyld<char* (unsigned long)> at dyldAPIsInLibSystem.cpp:1580
+libdyld.dylib[0x433c] <+88>:  ldr    x8, [sp, #0x18]
+libdyld.dylib[0x4340] <+92>:  str    x0, [x8, #0x18]
+libdyld.dylib[0x4344] <+96>:  adrp   x0, 139
+libdyld.dylib[0x4348] <+100>: ldr    x0, [x0, #0x298]
+libdyld.dylib[0x434c] <+104>: bl     0x46d4                    ; resign_for_dyld<void* (unsigned long)> at dyldAPIsInLibSystem.cpp:1580
+libdyld.dylib[0x4350] <+108>: ldr    x8, [sp, #0x18]
+libdyld.dylib[0x4354] <+112>: str    x0, [x8, #0x20]
+libdyld.dylib[0x4358] <+116>: adrp   x0, 139
+libdyld.dylib[0x435c] <+120>: ldr    x0, [x0, #0x230]
+libdyld.dylib[0x4360] <+124>: bl     0x46e8                    ; resign_for_dyld<void (void*)> at dyldAPIsInLibSystem.cpp:1580
+libdyld.dylib[0x4364] <+128>: ldr    x8, [sp, #0x18]
+libdyld.dylib[0x4368] <+132>: str    x0, [x8, #0x28]
+libdyld.dylib[0x436c] <+136>: adrp   x0, 0
+libdyld.dylib[0x4370] <+140>: add    x0, x0, #0x710            ; cxa_atexit_thunk at dyldAPIsInLibSystem.cpp:1571
+libdyld.dylib[0x4374] <+144>: bl     0x46fc                    ; resign_for_dyld<int (void (*)(void*), void*, void*)> at dyldAPIsInLibSystem.cpp:1580
+libdyld.dylib[0x4378] <+148>: ldr    x8, [sp, #0x18]
+libdyld.dylib[0x437c] <+152>: str    x0, [x8, #0x30]
+libdyld.dylib[0x4380] <+156>: adrp   x0, 0
+libdyld.dylib[0x4384] <+160>: add    x0, x0, #0x74c            ; shared_cache_missing at dyldAPIsInLibSystem.cpp:1562:1
+libdyld.dylib[0x4388] <+164>: bl     0x4540                    ; resign_for_dyld<void ()> at dyldAPIsInLibSystem.cpp:1580
+libdyld.dylib[0x438c] <+168>: ldr    x8, [sp, #0x18]
+libdyld.dylib[0x4390] <+172>: str    x0, [x8, #0x38]
+libdyld.dylib[0x4394] <+176>: adrp   x0, 0
+libdyld.dylib[0x4398] <+180>: add    x0, x0, #0x750            ; shared_cache_out_of_date at dyldAPIsInLibSystem.cpp:1567:1
+libdyld.dylib[0x439c] <+184>: bl     0x4540                    ; resign_for_dyld<void ()> at dyldAPIsInLibSystem.cpp:1580
+libdyld.dylib[0x43a0] <+188>: ldr    x8, [sp, #0x18]
+libdyld.dylib[0x43a4] <+192>: str    x0, [x8, #0x40]
+libdyld.dylib[0x43a8] <+196>: str    xzr, [x8, #0x48]
+libdyld.dylib[0x43ac] <+200>: str    xzr, [x8, #0x50]
+libdyld.dylib[0x43b0] <+204>: adrp   x0, 139
+libdyld.dylib[0x43b4] <+208>: ldr    x0, [x0, #0x348]
+libdyld.dylib[0x43b8] <+212>: bl     0x4754                    ; resign_for_dyld<int (unsigned long*, void (*)(void*))> at dyldAPIsInLibSystem.cpp:1580
+libdyld.dylib[0x43bc] <+216>: ldr    x8, [sp, #0x18]
+libdyld.dylib[0x43c0] <+220>: str    x0, [x8, #0x58]
+libdyld.dylib[0x43c4] <+224>: adrp   x0, 139
+libdyld.dylib[0x43c8] <+228>: ldr    x0, [x0, #0x370]
+libdyld.dylib[0x43cc] <+232>: bl     0x4768                    ; resign_for_dyld<int (unsigned long, void const*)> at dyldAPIsInLibSystem.cpp:1580
+libdyld.dylib[0x43d0] <+236>: ldr    x8, [sp, #0x18]
+libdyld.dylib[0x43d4] <+240>: str    x0, [x8, #0x60]
+libdyld.dylib[0x43d8] <+244>: adrp   x0, 139
+libdyld.dylib[0x43dc] <+248>: ldr    x0, [x0, #0x2a0]
+libdyld.dylib[0x43e0] <+252>: bl     0x477c                    ; resign_for_dyld<unsigned long (void const*)> at dyldAPIsInLibSystem.cpp:1580
+libdyld.dylib[0x43e4] <+256>: ldr    x8, [sp, #0x18]
+libdyld.dylib[0x43e8] <+260>: str    x0, [x8, #0x68]
+libdyld.dylib[0x43ec] <+264>: adrp   x0, 139
+libdyld.dylib[0x43f0] <+268>: ldr    x0, [x0, #0x340]
+libdyld.dylib[0x43f4] <+272>: bl     0x46d4                    ; resign_for_dyld<void* (unsigned long)> at dyldAPIsInLibSystem.cpp:1580
+libdyld.dylib[0x43f8] <+276>: ldr    x8, [sp, #0x18]
+libdyld.dylib[0x43fc] <+280>: str    x0, [x8, #0x70]
+libdyld.dylib[0x4400] <+284>: adrp   x0, 139
+libdyld.dylib[0x4404] <+288>: ldr    x0, [x0, #0x130]
+libdyld.dylib[0x4408] <+292>: bl     0x4790                    ; resign_for_dyld<void (void const*)> at dyldAPIsInLibSystem.cpp:1580
+libdyld.dylib[0x440c] <+296>: ldr    x8, [sp, #0x10]
+libdyld.dylib[0x4410] <+300>: ldr    x9, [sp, #0x18]
+libdyld.dylib[0x4414] <+304>: str    x0, [x9, #0x78]
+libdyld.dylib[0x4418] <+308>: str    x8, [x9, #0x80]
+libdyld.dylib[0x441c] <+312>: adrp   x0, 0
+libdyld.dylib[0x4420] <+316>: add    x0, x0, #0x7b8            ; hasPerThreadBufferFor_dlerror at dyldAPIsInLibSystem.cpp:1525
+libdyld.dylib[0x4424] <+320>: bl     0x47a4                    ; resign_for_dyld<bool ()> at dyldAPIsInLibSystem.cpp:1580
+libdyld.dylib[0x4428] <+324>: ldr    x8, [sp, #0x18]
+libdyld.dylib[0x442c] <+328>: str    x0, [x8, #0x88]
+libdyld.dylib[0x4430] <+332>: adrp   x0, 0
+libdyld.dylib[0x4434] <+336>: add    x0, x0, #0x848            ; isLaunchdOwned at dyldAPIsInLibSystem.cpp:1546
+libdyld.dylib[0x4438] <+340>: bl     0x47a4                    ; resign_for_dyld<bool ()> at dyldAPIsInLibSystem.cpp:1580
+libdyld.dylib[0x443c] <+344>: ldr    x8, [sp, #0x18]
+libdyld.dylib[0x4440] <+348>: str    x0, [x8, #0x90]
+libdyld.dylib[0x4444] <+352>: adrp   x0, 139
+libdyld.dylib[0x4448] <+356>: ldr    x0, [x0, #0x440]
+libdyld.dylib[0x444c] <+360>: bl     0x48c0                    ; resign_for_dyld<int (unsigned int, unsigned long*, unsigned long, int)> at dyldAPIsInLibSystem.cpp:1580
+libdyld.dylib[0x4450] <+364>: ldr    x8, [sp, #0x18]
+libdyld.dylib[0x4454] <+368>: str    x0, [x8, #0x98]
+libdyld.dylib[0x4458] <+372>: adrp   x0, 139
+libdyld.dylib[0x445c] <+376>: ldr    x0, [x0, #0x2e0]
+libdyld.dylib[0x4460] <+380>: bl     0x48d4                    ; resign_for_dyld<void* (void*, unsigned long, int, int, int, long long)> at dyldAPIsInLibSystem.cpp:1580
+libdyld.dylib[0x4464] <+384>: ldr    x8, [sp, #0x18]
+libdyld.dylib[0x4468] <+388>: str    x0, [x8, #0xa0]
+libdyld.dylib[0x446c] <+392>: adrp   x0, 139
+libdyld.dylib[0x4470] <+396>: ldr    x0, [x0, #0x138]
+libdyld.dylib[0x4474] <+400>: bl     0x48e8                    ; resign_for_dyld<void (__cxa_range_t const*, int)> at dyldAPIsInLibSystem.cpp:1580
+libdyld.dylib[0x4478] <+404>: ldr    x8, [sp, #0x18]
+libdyld.dylib[0x447c] <+408>: str    x0, [x8, #0xa8]
+libdyld.dylib[0x4480] <+412>: bl     0x284c                    ; ::_dyld_get_all_image_infos() at dyldAPIsInLibSystem.cpp:1804
+libdyld.dylib[0x4484] <+416>: stur   x0, [x29, #-0x8]
+libdyld.dylib[0x4488] <+420>: ldur   x8, [x29, #-0x8]
+libdyld.dylib[0x448c] <+424>: cbz    x8, 0x44c4                ; <+480> at dyldAPIsInLibSystem.cpp:1631:7
+libdyld.dylib[0x4490] <+428>: b      0x4494                    ; <+432> at dyldAPIsInLibSystem.cpp:1626:65
+libdyld.dylib[0x4494] <+432>: ldur   x8, [x29, #-0x8]
+libdyld.dylib[0x4498] <+436>: ldr    x8, [x8, #0xb0]
+libdyld.dylib[0x449c] <+440>: stur   x8, [x29, #-0x10]
+libdyld.dylib[0x44a0] <+444>: ldur   x8, [x29, #-0x10]
+libdyld.dylib[0x44a4] <+448>: cbz    x8, 0x44c0                ; <+476> at dyldAPIsInLibSystem.cpp:1629:5
+libdyld.dylib[0x44a8] <+452>: b      0x44ac                    ; <+456> at dyldAPIsInLibSystem.cpp:1628:24
+libdyld.dylib[0x44ac] <+456>: ldur   x0, [x29, #-0x10]
+libdyld.dylib[0x44b0] <+460>: bl     0x569a4                   ; DyldSharedCache::objcOpt at DyldSharedCache.cpp:988
+libdyld.dylib[0x44b4] <+464>: adrp   x8, 141
+libdyld.dylib[0x44b8] <+468>: str    x0, [x8, #0xb8]
+libdyld.dylib[0x44bc] <+472>: b      0x44c0                    ; <+476> at dyldAPIsInLibSystem.cpp:1629:5
+libdyld.dylib[0x44c0] <+476>: b      0x44c4                    ; <+480> at dyldAPIsInLibSystem.cpp:1631:7
+libdyld.dylib[0x44c4] <+480>: adrp   x8, 141
+libdyld.dylib[0x44c8] <+484>: add    x8, x8, #0x4c8            ; gUseDyld3
+libdyld.dylib[0x44cc] <+488>: ldr    x8, [x8]
+libdyld.dylib[0x44d0] <+492>: cbz    x8, 0x44e8                ; <+516> at dyldAPIsInLibSystem.cpp:1640:3
+libdyld.dylib[0x44d4] <+496>: b      0x44d8                    ; <+500> at dyldAPIsInLibSystem.cpp:1632:21
+libdyld.dylib[0x44d8] <+500>: adrp   x0, 140
+libdyld.dylib[0x44dc] <+504>: add    x0, x0, #0x140            ; dyld3::gAllImages
+libdyld.dylib[0x44e0] <+508>: bl     0x8658                    ; dyld3::AllImages::applyInitialImages at AllImages.cpp:153
+libdyld.dylib[0x44e4] <+512>: b      0x4530                    ; <+588> at dyldAPIsInLibSystem.cpp:1645:2
+libdyld.dylib[0x44e8] <+516>: adrp   x0, 115
+libdyld.dylib[0x44ec] <+520>: add    x0, x0, #0xdbf            ; "__dyld_register_thread_helpers"
+libdyld.dylib[0x44f0] <+524>: adrp   x8, 141
+libdyld.dylib[0x44f4] <+528>: str    x8, [sp, #0x8]
+libdyld.dylib[0x44f8] <+532>: adrp   x1, 141
+libdyld.dylib[0x44fc] <+536>: add    x1, x1, #0xb0             ; _dyld_initializer::p
+libdyld.dylib[0x4500] <+540>: bl     0x48fc                    ; dyld_func_lookup_and_resign<void (dyld::LibSystemHelpers*)> at dyldAPIsInLibSystem.cpp:79
+libdyld.dylib[0x4504] <+544>: ldr    x8, [sp, #0x8]
+libdyld.dylib[0x4508] <+548>: ldr    x8, [x8, #0xb0]
+libdyld.dylib[0x450c] <+552>: cbz    x8, 0x452c                ; <+584> at dyldAPIsInLibSystem.cpp
+libdyld.dylib[0x4510] <+556>: b      0x4514                    ; <+560> at dyldAPIsInLibSystem.cpp:1642:4
+libdyld.dylib[0x4514] <+560>: adrp   x8, 141
+libdyld.dylib[0x4518] <+564>: ldr    x8, [x8, #0xb0]
+libdyld.dylib[0x451c] <+568>: adrp   x0, 140
+libdyld.dylib[0x4520] <+572>: add    x0, x0, #0x38             ; sHelpers
+libdyld.dylib[0x4524] <+576>: blr    x8
+libdyld.dylib[0x4528] <+580>: b      0x452c                    ; <+584> at dyldAPIsInLibSystem.cpp
+libdyld.dylib[0x452c] <+584>: b      0x4530                    ; <+588> at dyldAPIsInLibSystem.cpp:1645:2
+libdyld.dylib[0x4530] <+588>: bl     0x5759c                   ; tlv_initializer at threadLocalVariables.c:393
+libdyld.dylib[0x4534] <+592>: ldp    x29, x30, [sp, #0x30]
+libdyld.dylib[0x4538] <+596>: add    sp, sp, #0x40
+libdyld.dylib[0x453c] <+600>: ret    
+(lldb) image lookup -vn dyldGlobalLockAcquire
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/system/libdyld.dylib:
+        Address: libdyld.dylib[0x0000000000007ec0] (libdyld.dylib.__TEXT.__text + 28336)
+        Summary: libdyld.dylib`dyldGlobalLockAcquire() at dyldLock.cpp:48
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/system/libdyld.dylib", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyldLock.cpp", language = "<not loaded>"
+       Function: id = {0x400001000000011d}, name = "dyldGlobalLockAcquire()", mangled = "_Z21dyldGlobalLockAcquirev", range = [0x0000000000007ec0-0x0000000000007eec)
+       FuncType: id = {0x400001000000011d}, byte-size = 0, decl = dyldLock.cpp:47, compiler_type = "void (void)"
+         Blocks: id = {0x400001000000011d}, range = [0x00007ec0-0x00007eec)
+      LineEntry: [0x0000000000007ec0-0x0000000000007ec8): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyldLock.cpp:48
+         Symbol: id = {0x0000114d}, range = [0x0000000000007ec0-0x0000000000007eec), name="dyldGlobalLockAcquire()", mangled="_Z21dyldGlobalLockAcquirev"
+

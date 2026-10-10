@@ -1,0 +1,43 @@
+--- a/src/Libraries/CoreFoundation/CMakeLists.txt
++++ b/src/Libraries/CoreFoundation/CMakeLists.txt
+@@ -457,18 +457,31 @@
+                       PRIVATE
+                         dispatch)
+ if(CMAKE_SYSTEM_NAME STREQUAL Darwin)
++  # DarwinSymbolAliases defines these legacy names directly at link time.
++  # The constructor fallback is required only on other linkers.
++  set_source_files_properties(Locale.subproj/CFLocale_PureDarwin_LegacyAliases.c
++                             PROPERTIES HEADER_FILE_ONLY TRUE)
+   target_link_libraries(CoreFoundation
+                         PRIVATE
+                           icucore)
+-  set_target_properties(CoreFoundation
+-                        PROPERTIES LINK_FLAGS
+-                          # Absolute paths, not relative: link flags are evaluated in the
+-                          # build directory, so "CharacterSets/..." resolved to nothing.
+-                          # ld64 created the __UNICODE sections empty instead of failing,
+-                          # which left CFUniChar reading its Unicode tables out of a
+-                          # zero-length section - garbage header, wild offsets, SIGSEGV
+-                          # the first time anything decomposed a string.
+-                          -Xlinker;-alias_list;-Xlinker;${CMAKE_CURRENT_SOURCE_DIR}/Base.subproj/DarwinSymbolAliases;-twolevel_namespace;-sectcreate;__UNICODE;__csbitmaps;${CMAKE_CURRENT_SOURCE_DIR}/CharacterSets/CFCharacterSetBitmaps.bitmap;-sectcreate;__UNICODE;__properties;${CMAKE_CURRENT_SOURCE_DIR}/CharacterSets/CFUniCharPropertyDatabase.data;-sectcreate;__UNICODE;__data;${CMAKE_CURRENT_SOURCE_DIR}/CharacterSets/CFUnicodeData-L.mapping;-segprot;__UNICODE;r;r)
++  # CMake LINK_FLAGS is a string; semicolon lists leave a dangling -Xlinker.
++  # Preserve aliases and embedded Unicode data with structured linker options.
++  set(CF_DARWIN_ALIASES "${CMAKE_CURRENT_SOURCE_DIR}/Base.subproj/DarwinSymbolAliases")
++  if(NOT CF_DEPLOYMENT_SWIFT)
++    # C/ObjC supplies its own constant-string class reference in CFRuntime.c.
++    # The Swift class metadata alias is valid only for the Swift runtime.
++    file(READ "${CF_DARWIN_ALIASES}" CF_DARWIN_ALIAS_CONTENTS)
++    string(REGEX REPLACE "[^\n]*SwiftFoundation[^\n]*\n" "" CF_DARWIN_ALIAS_CONTENTS "${CF_DARWIN_ALIAS_CONTENTS}")
++    set(CF_DARWIN_ALIASES "${CMAKE_CURRENT_BINARY_DIR}/DarwinSymbolAliasesC")
++    file(WRITE "${CF_DARWIN_ALIASES}" "${CF_DARWIN_ALIAS_CONTENTS}\n")
++  endif()
++  target_link_options(CoreFoundation PRIVATE
++    "LINKER:-alias_list,${CF_DARWIN_ALIASES}"
++    "LINKER:-twolevel_namespace"
++    "LINKER:-sectcreate,__UNICODE,__csbitmaps,${CMAKE_CURRENT_SOURCE_DIR}/CharacterSets/CFCharacterSetBitmaps.bitmap"
++    "LINKER:-sectcreate,__UNICODE,__properties,${CMAKE_CURRENT_SOURCE_DIR}/CharacterSets/CFUniCharPropertyDatabase.data"
++    "LINKER:-sectcreate,__UNICODE,__data,${CMAKE_CURRENT_SOURCE_DIR}/CharacterSets/CFUnicodeData-L.mapping"
++    "LINKER:-segprot,__UNICODE,r,r")
+ endif()
+ 
+ install(TARGETS

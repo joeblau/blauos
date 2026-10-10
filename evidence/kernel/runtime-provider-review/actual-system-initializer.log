@@ -1,0 +1,159 @@
+(lldb) target create "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib"
+Current executable set to '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib' (arm64).
+(lldb) image lookup -vn pd_libSystem_initializer
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x000000000008ec28] (libSystem.B.dylib.__TEXT.__text + 579520)
+        Summary: libSystem.B.dylib`pd_libSystem_initializer at pd_libSystem_init.c:124
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/stub/pd_libSystem_init.c", language = "c11"
+       Function: id = {0x4000ba0000000032}, name = "pd_libSystem_initializer", range = [0x000000000008ec28-0x000000000008ee04)
+       FuncType: id = {0x4000ba0000000032}, byte-size = 0, decl = pd_libSystem_init.c:122, compiler_type = "void (int, const char **, const char **, const char **, const struct ProgramVars *)"
+         Blocks: id = {0x4000ba0000000032}, range = [0x0008ec28-0x0008ee04)
+      LineEntry: [0x000000000008ec28-0x000000000008ec48): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/stub/pd_libSystem_init.c:124
+         Symbol: id = {0x00003622}, range = [0x000000000008ec28-0x000000000008ee04), name="pd_libSystem_initializer"
+       Variable: id = {0x4000ba0000000047}, name = "fallback_argc", type = "int", valid ranges = <block>, location = DW_OP_addr 0x27f710, decl = pd_libSystem_init.c:125
+       Variable: id = {0x4000ba000000005c}, name = "fallback_argv", type = "const char **", valid ranges = <block>, location = DW_OP_addr 0x27f718, decl = pd_libSystem_init.c:126
+       Variable: id = {0x4000ba0000000071}, name = "fallback_envp", type = "const char **", valid ranges = <block>, location = DW_OP_addr 0x27f720, decl = pd_libSystem_init.c:127
+       Variable: id = {0x4000ba0000000086}, name = "fallback_progname", type = "char *", valid ranges = <block>, location = DW_OP_addr 0x27f728, decl = pd_libSystem_init.c:128
+       Variable: id = {0x4000ba000000009b}, name = "fallback_vars", type = "ProgramVars", valid ranges = <block>, location = DW_OP_addr 0x27f730, decl = pd_libSystem_init.c:129
+       Variable: id = {0x4000ba00000000b0}, name = "argc", type = "int", valid ranges = <block>, location = DW_OP_fbreg -4, decl = pd_libSystem_init.c:122
+       Variable: id = {0x4000ba00000000be}, name = "argv", type = "const char **", valid ranges = <block>, location = DW_OP_fbreg -16, decl = pd_libSystem_init.c:122
+       Variable: id = {0x4000ba00000000cc}, name = "envp", type = "const char **", valid ranges = <block>, location = DW_OP_fbreg -24, decl = pd_libSystem_init.c:122
+       Variable: id = {0x4000ba00000000da}, name = "apple", type = "const char **", valid ranges = <block>, location = DW_OP_fbreg -32, decl = pd_libSystem_init.c:123
+       Variable: id = {0x4000ba00000000e8}, name = "vars", type = "const ProgramVars *", valid ranges = <block>, location = DW_OP_fbreg -40, decl = pd_libSystem_init.c:123
+
+(lldb) disassemble -n pd_libSystem_initializer
+libSystem.B.dylib`pd_libSystem_initializer:
+libSystem.B.dylib[0x8ec28] <+0>:   sub    sp, sp, #0xb0
+libSystem.B.dylib[0x8ec2c] <+4>:   stp    x29, x30, [sp, #0xa0]
+libSystem.B.dylib[0x8ec30] <+8>:   add    x29, sp, #0xa0
+libSystem.B.dylib[0x8ec34] <+12>:  stur   w0, [x29, #-0x4]
+libSystem.B.dylib[0x8ec38] <+16>:  stur   x1, [x29, #-0x10]
+libSystem.B.dylib[0x8ec3c] <+20>:  stur   x2, [x29, #-0x18]
+libSystem.B.dylib[0x8ec40] <+24>:  stur   x3, [x29, #-0x20]
+libSystem.B.dylib[0x8ec44] <+28>:  stur   x4, [x29, #-0x28]
+libSystem.B.dylib[0x8ec48] <+32>:  ldur   x8, [x29, #-0x28]
+libSystem.B.dylib[0x8ec4c] <+36>:  cbnz   x8, 0x8ed10               ; <+232> at pd_libSystem_init.c:142:13
+libSystem.B.dylib[0x8ec50] <+40>:  b      0x8ec54                   ; <+44> at pd_libSystem_init.c:132:19
+libSystem.B.dylib[0x8ec54] <+44>:  ldur   w8, [x29, #-0x4]
+libSystem.B.dylib[0x8ec58] <+48>:  adrp   x9, 497
+libSystem.B.dylib[0x8ec5c] <+52>:  str    w8, [x9, #0x710]
+libSystem.B.dylib[0x8ec60] <+56>:  ldur   x8, [x29, #-0x10]
+libSystem.B.dylib[0x8ec64] <+60>:  adrp   x9, 497
+libSystem.B.dylib[0x8ec68] <+64>:  str    x8, [x9, #0x718]
+libSystem.B.dylib[0x8ec6c] <+68>:  ldur   x8, [x29, #-0x18]
+libSystem.B.dylib[0x8ec70] <+72>:  adrp   x9, 497
+libSystem.B.dylib[0x8ec74] <+76>:  str    x8, [x9, #0x720]
+libSystem.B.dylib[0x8ec78] <+80>:  ldur   x8, [x29, #-0x10]
+libSystem.B.dylib[0x8ec7c] <+84>:  cbz    x8, 0x8eca4               ; <+124> at pd_libSystem_init.c
+libSystem.B.dylib[0x8ec80] <+88>:  b      0x8ec84                   ; <+92> at pd_libSystem_init.c:135:32
+libSystem.B.dylib[0x8ec84] <+92>:  ldur   x8, [x29, #-0x10]
+libSystem.B.dylib[0x8ec88] <+96>:  ldr    x8, [x8]
+libSystem.B.dylib[0x8ec8c] <+100>: cbz    x8, 0x8eca4               ; <+124> at pd_libSystem_init.c
+libSystem.B.dylib[0x8ec90] <+104>: b      0x8ec94                   ; <+108> at pd_libSystem_init.c:135:51
+libSystem.B.dylib[0x8ec94] <+108>: ldur   x8, [x29, #-0x10]
+libSystem.B.dylib[0x8ec98] <+112>: ldr    x8, [x8]
+libSystem.B.dylib[0x8ec9c] <+116>: str    x8, [sp, #0x20]
+libSystem.B.dylib[0x8eca0] <+120>: b      0x8ecb0                   ; <+136> at pd_libSystem_init.c
+libSystem.B.dylib[0x8eca4] <+124>: mov    x8, #0x0                  ; =0 
+libSystem.B.dylib[0x8eca8] <+128>: str    x8, [sp, #0x20]
+libSystem.B.dylib[0x8ecac] <+132>: b      0x8ecb0                   ; <+136> at pd_libSystem_init.c
+libSystem.B.dylib[0x8ecb0] <+136>: ldr    x8, [sp, #0x20]
+libSystem.B.dylib[0x8ecb4] <+140>: adrp   x9, 497
+libSystem.B.dylib[0x8ecb8] <+144>: adrp   x10, 497
+libSystem.B.dylib[0x8ecbc] <+148>: add    x10, x10, #0x728          ; pd_libSystem_initializer.fallback_progname
+libSystem.B.dylib[0x8ecc0] <+152>: str    x10, [sp, #0x18]
+libSystem.B.dylib[0x8ecc4] <+156>: str    x8, [x9, #0x728]
+libSystem.B.dylib[0x8ecc8] <+160>: bl     0x8ee04                   ; pd_main_executable_header at pd_libSystem_init.c:51
+libSystem.B.dylib[0x8eccc] <+164>: ldr    x9, [sp, #0x18]
+libSystem.B.dylib[0x8ecd0] <+168>: adrp   x10, 497
+libSystem.B.dylib[0x8ecd4] <+172>: adrp   x8, 497
+libSystem.B.dylib[0x8ecd8] <+176>: add    x8, x8, #0x730            ; pd_libSystem_initializer.fallback_vars
+libSystem.B.dylib[0x8ecdc] <+180>: str    x0, [x10, #0x730]
+libSystem.B.dylib[0x8ece0] <+184>: adrp   x10, 497
+libSystem.B.dylib[0x8ece4] <+188>: add    x10, x10, #0x710          ; pd_libSystem_initializer.fallback_argc
+libSystem.B.dylib[0x8ece8] <+192>: str    x10, [x8, #0x8]
+libSystem.B.dylib[0x8ecec] <+196>: adrp   x10, 497
+libSystem.B.dylib[0x8ecf0] <+200>: add    x10, x10, #0x718          ; pd_libSystem_initializer.fallback_argv
+libSystem.B.dylib[0x8ecf4] <+204>: str    x10, [x8, #0x10]
+libSystem.B.dylib[0x8ecf8] <+208>: adrp   x10, 497
+libSystem.B.dylib[0x8ecfc] <+212>: add    x10, x10, #0x720          ; pd_libSystem_initializer.fallback_envp
+libSystem.B.dylib[0x8ed00] <+216>: str    x10, [x8, #0x18]
+libSystem.B.dylib[0x8ed04] <+220>: str    x9, [x8, #0x20]
+libSystem.B.dylib[0x8ed08] <+224>: stur   x8, [x29, #-0x28]
+libSystem.B.dylib[0x8ed0c] <+228>: b      0x8ed5c                   ; <+308> at pd_libSystem_init.c:148:2
+libSystem.B.dylib[0x8ed10] <+232>: ldur   x8, [x29, #-0x28]
+libSystem.B.dylib[0x8ed14] <+236>: ldr    x8, [x8]
+libSystem.B.dylib[0x8ed18] <+240>: cbnz   x8, 0x8ed58               ; <+304> at pd_libSystem_init.c
+libSystem.B.dylib[0x8ed1c] <+244>: b      0x8ed20                   ; <+248> at pd_libSystem_init.c:143:20
+libSystem.B.dylib[0x8ed20] <+248>: ldur   x1, [x29, #-0x28]
+libSystem.B.dylib[0x8ed24] <+252>: mov    x2, #0x28                 ; =40 
+libSystem.B.dylib[0x8ed28] <+256>: adrp   x8, 497
+libSystem.B.dylib[0x8ed2c] <+260>: str    x8, [sp, #0x8]
+libSystem.B.dylib[0x8ed30] <+264>: adrp   x0, 497
+libSystem.B.dylib[0x8ed34] <+268>: add    x0, x0, #0x730            ; pd_libSystem_initializer.fallback_vars
+libSystem.B.dylib[0x8ed38] <+272>: str    x0, [sp, #0x10]
+libSystem.B.dylib[0x8ed3c] <+276>: bl     0xaaadc                   ; memcpy at memmove.c:129
+libSystem.B.dylib[0x8ed40] <+280>: bl     0x8ee04                   ; pd_main_executable_header at pd_libSystem_init.c:51
+libSystem.B.dylib[0x8ed44] <+284>: ldr    x9, [sp, #0x8]
+libSystem.B.dylib[0x8ed48] <+288>: ldr    x8, [sp, #0x10]
+libSystem.B.dylib[0x8ed4c] <+292>: str    x0, [x9, #0x730]
+libSystem.B.dylib[0x8ed50] <+296>: stur   x8, [x29, #-0x28]
+libSystem.B.dylib[0x8ed54] <+300>: b      0x8ed58                   ; <+304> at pd_libSystem_init.c
+libSystem.B.dylib[0x8ed58] <+304>: b      0x8ed5c                   ; <+308> at pd_libSystem_init.c:148:2
+libSystem.B.dylib[0x8ed5c] <+308>: bl     0x93178                   ; mach_init at mach_init.c:101
+libSystem.B.dylib[0x8ed60] <+312>: mov    x0, #0x0                  ; =0 
+libSystem.B.dylib[0x8ed64] <+316>: bl     0xb37f8                   ; _pthread_set_self at pthread.c:1532
+libSystem.B.dylib[0x8ed68] <+320>: adrp   x8, 494
+libSystem.B.dylib[0x8ed6c] <+324>: add    x8, x8, #0x84             ; mach_task_self_
+libSystem.B.dylib[0x8ed70] <+328>: ldr    w0, [x8]
+libSystem.B.dylib[0x8ed74] <+332>: mov    w1, #0x4                  ; =4 
+libSystem.B.dylib[0x8ed78] <+336>: adrp   x2, 494
+libSystem.B.dylib[0x8ed7c] <+340>: add    x2, x2, #0x80             ; bootstrap_port
+libSystem.B.dylib[0x8ed80] <+344>: bl     0xa52f0                   ; task_get_special_port at task.c:1601
+libSystem.B.dylib[0x8ed84] <+348>: adrp   x8, 451
+libSystem.B.dylib[0x8ed88] <+352>: add    x8, x8, #0x9f8            ; __block_literal_global + 32
+libSystem.B.dylib[0x8ed8c] <+356>: ldr    q0, [x8]
+libSystem.B.dylib[0x8ed90] <+360>: add    x0, sp, #0x50
+libSystem.B.dylib[0x8ed94] <+364>: str    q0, [sp, #0x50]
+libSystem.B.dylib[0x8ed98] <+368>: ldr    q0, [x8, #0x10]
+libSystem.B.dylib[0x8ed9c] <+372>: str    q0, [sp, #0x60]
+libSystem.B.dylib[0x8eda0] <+376>: ldur   x1, [x29, #-0x18]
+libSystem.B.dylib[0x8eda4] <+380>: ldur   x2, [x29, #-0x20]
+libSystem.B.dylib[0x8eda8] <+384>: ldur   x3, [x29, #-0x28]
+libSystem.B.dylib[0x8edac] <+388>: bl     0xb3ae4                   ; __pthread_init at pthread.c:1782
+libSystem.B.dylib[0x8edb0] <+392>: add    x0, sp, #0x28
+libSystem.B.dylib[0x8edb4] <+396>: str    x0, [sp]
+libSystem.B.dylib[0x8edb8] <+400>: adrp   x1, 451
+libSystem.B.dylib[0x8edbc] <+404>: add    x1, x1, #0xa18            ; __block_literal_global + 64
+libSystem.B.dylib[0x8edc0] <+408>: mov    x2, #0x28                 ; =40 
+libSystem.B.dylib[0x8edc4] <+412>: bl     0xaaadc                   ; memcpy at memmove.c:129
+libSystem.B.dylib[0x8edc8] <+416>: ldr    x0, [sp]
+libSystem.B.dylib[0x8edcc] <+420>: ldur   x1, [x29, #-0x18]
+libSystem.B.dylib[0x8edd0] <+424>: ldur   x2, [x29, #-0x20]
+libSystem.B.dylib[0x8edd4] <+428>: ldur   x3, [x29, #-0x28]
+libSystem.B.dylib[0x8edd8] <+432>: bl     0xc9b1c                   ; _libc_initializer at _libc_init.c:54
+libSystem.B.dylib[0x8eddc] <+436>: ldur   x0, [x29, #-0x20]
+libSystem.B.dylib[0x8ede0] <+440>: bl     0x15df3c                  ; __malloc_init at malloc.c:322
+libSystem.B.dylib[0x8ede4] <+444>: bl     0x8ef24                   ; __libdarwin_init at pd_libSystem_init.c:36:38
+libSystem.B.dylib[0x8ede8] <+448>: bl     0x22f77c                  ; symbol stub for: _dyld_initializer
+libSystem.B.dylib[0x8edec] <+452>: bl     0x1ba3cc                  ; libdispatch_init at queue.c:7871
+libSystem.B.dylib[0x8edf0] <+456>: bl     0x9af30                   ; __error at errno.c:68
+libSystem.B.dylib[0x8edf4] <+460>: str    wzr, [x0]
+libSystem.B.dylib[0x8edf8] <+464>: ldp    x29, x30, [sp, #0xa0]
+libSystem.B.dylib[0x8edfc] <+468>: add    sp, sp, #0xb0
+libSystem.B.dylib[0x8ee00] <+472>: ret    
+(lldb) disassemble -n pd_atfork_child
+libSystem.B.dylib`pd_atfork_child:
+libSystem.B.dylib[0x8eef4] <+0>:  stp    x29, x30, [sp, #-0x10]!
+libSystem.B.dylib[0x8eef8] <+4>:  mov    x29, sp
+libSystem.B.dylib[0x8eefc] <+8>:  bl     0x93290                   ; _mach_fork_child at mach_init.c:113
+libSystem.B.dylib[0x8ef00] <+12>: bl     0x22f74c                  ; symbol stub for: _dyld_fork_child
+libSystem.B.dylib[0x8ef04] <+16>: bl     0xc57b8                   ; _pthread_fork_child at pthread_atfork.c:198
+libSystem.B.dylib[0x8ef08] <+20>: bl     0x161b44                  ; _malloc_fork_child at malloc.c:2519
+libSystem.B.dylib[0x8ef0c] <+24>: bl     0xc9b7c                   ; _libc_fork_child at _libc_fork_child.c:43
+libSystem.B.dylib[0x8ef10] <+28>: bl     0x185ec0                  ; dispatch_atfork_child at init.c:74
+libSystem.B.dylib[0x8ef14] <+32>: bl     0x22464                   ; _notify_fork_child at notify_client.c:1029
+libSystem.B.dylib[0x8ef18] <+36>: bl     0xc57cc                   ; _pthread_fork_child_postinit at pthread_atfork.c:204
+libSystem.B.dylib[0x8ef1c] <+40>: ldp    x29, x30, [sp], #0x10
+libSystem.B.dylib[0x8ef20] <+44>: ret    

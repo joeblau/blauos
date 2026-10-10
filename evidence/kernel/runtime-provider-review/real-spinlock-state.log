@@ -1,0 +1,26 @@
+(lldb) target create ".blauos/build/runtime/root/usr/lib/libSystem.B.dylib"
+Current executable set to '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib' (arm64).
+(lldb) disassemble --name OSSpinLockTry --count 22
+libSystem.B.dylib`OSSpinLockTry:
+libSystem.B.dylib[0xadeb0] <+0>:  sub    sp, sp, #0x30
+libSystem.B.dylib[0xadeb4] <+4>:  str    x0, [sp, #0x28]
+libSystem.B.dylib[0xadeb8] <+8>:  str    wzr, [sp, #0x20]
+libSystem.B.dylib[0xadebc] <+12>: ldr    x11, [sp, #0x28]
+libSystem.B.dylib[0xadec0] <+16>: mov    w8, #-0x1                 ; =-1 
+libSystem.B.dylib[0xadec4] <+20>: str    w8, [sp, #0x14]
+libSystem.B.dylib[0xadec8] <+24>: ldr    w8, [sp, #0x14]
+libSystem.B.dylib[0xadecc] <+28>: str    w8, [sp, #0x10]
+libSystem.B.dylib[0xaded0] <+32>: ldr    w8, [sp, #0x10]
+libSystem.B.dylib[0xaded4] <+36>: str    w8, [sp, #0x18]
+libSystem.B.dylib[0xaded8] <+40>: ldr    w9, [sp, #0x20]
+libSystem.B.dylib[0xadedc] <+44>: ldr    w10, [sp, #0x18]
+libSystem.B.dylib[0xadee0] <+48>: mov    x8, x9
+libSystem.B.dylib[0xadee4] <+52>: casa   w8, w10, [x11]
+libSystem.B.dylib[0xadee8] <+56>: str    w8, [sp]
+libSystem.B.dylib[0xadeec] <+60>: subs   w10, w8, w9
+libSystem.B.dylib[0xadef0] <+64>: cset   w10, eq
+libSystem.B.dylib[0xadef4] <+68>: str    w10, [sp, #0x4]
+libSystem.B.dylib[0xadef8] <+72>: subs   w8, w8, w9
+libSystem.B.dylib[0xadefc] <+76>: b.eq   0xadf10                   ; <+96> at lock.c
+libSystem.B.dylib[0xadf00] <+80>: b      0xadf04                   ; <+84> at lock.c
+libSystem.B.dylib[0xadf04] <+84>: ldr    w8, [sp]
