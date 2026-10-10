@@ -1,0 +1,6 @@
+Raw log: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/logs/compiler-rt-build.log
+SHA256: be2ff2e3ba87a80db351c362a8a9d1efd168d9492cac21dca04f167fa4b04c7f
+Bytes: 222
+
+$ ['cmake', '--build', '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/compiler-rt-overlay', '--target', 'clang_rt.builtins_arm64_osx', '--parallel', '4']
+[100%] Built target clang_rt.builtins_arm64_osx

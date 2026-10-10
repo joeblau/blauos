@@ -1,0 +1,38 @@
+Raw log: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/logs/objc-objc-class.log
+SHA256: 50c5387888eb49ca7094fff5a5070a9d4cb7dcb26a03b6ca0634d7e0bb617f79
+Bytes: 7196
+
+$ ['xcrun', 'clang++', '-arch', 'arm64', '-isysroot', '/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk', '-x', 'objective-c++', '-std=gnu++17', '-mmacosx-version-min=11.0', '-fno-objc-arc', '-fexceptions', '-fno-delete-null-pointer-checks', '-fobjc-exceptions', '-fPIC', '-Os', '-DNDEBUG', '-DLIBC_NO_LIBCRASHREPORTERCLIENT', '-D__PUREDARWIN__=1', '-Wno-undef-prefix', '-D_LIBCPP_ENABLE_CXX17_REMOVED_UNARY_BINARY_FUNCTION', '-include', '/Users/joeblau/Developer/joeblau/src/blauos/runtime/compat/sdk27_compile.h', '-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/objc/generated', '-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/objc/include', '-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime', '-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/macosx.internal/System/Library/Frameworks/System.framework/Versions/B/PrivateHeaders', '-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/include', '-c', '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime/objc-class.mm', '-o', '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/objc/objc-class.o']
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime/objc-class.mm:159:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime/objc-private.h:280:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime/objc-runtime-new.h:846:17: warning: 'binary_function<const method_t::big &, const method_t::big &, bool>' is deprecated [-Wdeprecated-declarations]
+  846 |     public std::binary_function<const struct method_t::big&,
+      |                 ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/binary_function.h:24:8: note: 'binary_function<const method_t::big &, const method_t::big &, bool>' has been explicitly marked deprecated here
+   24 | struct _LIBCPP_DEPRECATED_IN_CXX11 binary_function {
+      |        ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__config:528:41: note: expanded from macro '_LIBCPP_DEPRECATED_IN_CXX11'
+  762 |         _objc_flush_caches(Nil);
+      |         ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime/runtime.h:2054:1: note: '_objc_flush_caches' has been explicitly marked deprecated here
+ 2054 | _objc_flush_caches(Class _Nullable cls) 
+      | ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime/objc-class.mm:946:22: warning: 'sprintf' is deprecated: This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead. [-Wdeprecated-declarations]
+  946 |                 s += sprintf(s, "\"%s\"%s,", attrs[i].name, attrs[i].value);
+      |                      ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_stdio.h:278:1: note: 'sprintf' has been explicitly marked deprecated here
+  278 | __deprecated_msg("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.")
+      | ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h:227:48: note: expanded from macro '__deprecated_msg'
+  227 |         #define __deprecated_msg(_msg) __attribute__((__deprecated__(_msg)))
+      |                                                       ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime/objc-class.mm:948:22: warning: 'sprintf' is deprecated: This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead. [-Wdeprecated-declarations]
+  948 |                 s += sprintf(s, "%s%s,", attrs[i].name, attrs[i].value);
+      |                      ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_stdio.h:278:1: note: 'sprintf' has been explicitly marked deprecated here
+  278 | __deprecated_msg("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.")
+      | ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h:227:48: note: expanded from macro '__deprecated_msg'
+  227 |         #define __deprecated_msg(_msg) __attribute__((__deprecated__(_msg)))
+      |                                                       ^
+5 warnings generated.

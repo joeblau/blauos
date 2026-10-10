@@ -1,0 +1,38 @@
+Raw log: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/logs/objc-objc-sync.log
+SHA256: c4daf7ff21a95c94263b8b31f82b55bc4282132da6be504a72ff7781b3dd1a68
+Bytes: 6337
+
+$ ['xcrun', 'clang++', '-arch', 'arm64', '-isysroot', '/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk', '-x', 'objective-c++', '-std=gnu++17', '-mmacosx-version-min=11.0', '-fno-objc-arc', '-fexceptions', '-fno-delete-null-pointer-checks', '-fobjc-exceptions', '-fPIC', '-Os', '-DNDEBUG', '-DLIBC_NO_LIBCRASHREPORTERCLIENT', '-D__PUREDARWIN__=1', '-Wno-undef-prefix', '-D_LIBCPP_ENABLE_CXX17_REMOVED_UNARY_BINARY_FUNCTION', '-include', '/Users/joeblau/Developer/joeblau/src/blauos/runtime/compat/sdk27_compile.h', '-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/objc/generated', '-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/objc/include', '-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime', '-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/macosx.internal/System/Library/Frameworks/System.framework/Versions/B/PrivateHeaders', '-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/include', '-c', '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime/objc-sync.mm', '-o', '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/objc/objc-sync.o']
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime/objc-sync.mm:24:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime/objc-private.h:280:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime/objc-runtime-new.h:846:17: warning: 'binary_function<const method_t::big &, const method_t::big &, bool>' is deprecated [-Wdeprecated-declarations]
+  846 |     public std::binary_function<const struct method_t::big&,
+      |                 ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/binary_function.h:24:8: note: 'binary_function<const method_t::big &, const method_t::big &, bool>' has been explicitly marked deprecated here
+   24 | struct _LIBCPP_DEPRECATED_IN_CXX11 binary_function {
+      |        ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__config:528:41: note: expanded from macro '_LIBCPP_DEPRECATED_IN_CXX11'
+ 1511 |         } while (!OSAtomicCompareAndSwap32Barrier(oldf, newf, (volatile int32_t *)&flags));
+      |                   ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/libkern/OSAtomicDeprecated.h:520:9: note: 'OSAtomicCompareAndSwap32Barrier' has been explicitly marked deprecated here
+  520 | bool    OSAtomicCompareAndSwap32Barrier( int32_t __oldValue, int32_t __newValue, volatile int32_t *__theValue );
+      |         ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime/objc-sync.mm:146:21: warning: 'OSAtomicDecrement32Barrier' is deprecated: first deprecated in macOS 10.12 - Use std::atomic_fetch_sub() from <atomic> instead [-Wdeprecated-declarations]
+  146 |                     OSAtomicDecrement32Barrier(&result->threadCount);
+      |                     ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/libkern/OSAtomicDeprecated.h:203:9: note: 'OSAtomicDecrement32Barrier' has been explicitly marked deprecated here
+  203 | int32_t OSAtomicDecrement32Barrier( volatile int32_t *__theValue );
+      |         ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime/objc-sync.mm:183:21: warning: 'OSAtomicDecrement32Barrier' is deprecated: first deprecated in macOS 10.12 - Use std::atomic_fetch_sub() from <atomic> instead [-Wdeprecated-declarations]
+  183 |                     OSAtomicDecrement32Barrier(&result->threadCount);
+      |                     ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/libkern/OSAtomicDeprecated.h:203:9: note: 'OSAtomicDecrement32Barrier' has been explicitly marked deprecated here
+  203 | int32_t OSAtomicDecrement32Barrier( volatile int32_t *__theValue );
+      |         ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime/objc-sync.mm:211:17: warning: 'OSAtomicIncrement32Barrier' is deprecated: first deprecated in macOS 10.12 - Use std::atomic_fetch_add() from <atomic> instead [-Wdeprecated-declarations]
+  211 |                 OSAtomicIncrement32Barrier(&result->threadCount);
+      |                 ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/libkern/OSAtomicDeprecated.h:184:9: note: 'OSAtomicIncrement32Barrier' has been explicitly marked deprecated here
+  184 | int32_t OSAtomicIncrement32Barrier( volatile int32_t *__theValue );
+      |         ^
+5 warnings generated.

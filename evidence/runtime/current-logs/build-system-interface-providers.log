@@ -1,0 +1,38 @@
+Raw log: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/logs/system-interface-providers.log
+SHA256: 849d28d10e272c2054f204a03aac5a1eb97c468d987f94395aabeb767e4e311e
+Bytes: 5457
+
+$ ['cmake', '--build', '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay', '--target', 'libsystem_kernel_static', 'libplatform_static', 'pthread_static', 'libmalloc_static', 'libc_static', 'libc_internal_static', 'openlibm_static', 'corecrypto_static', 'CrashReporterClient', 'XPC_libxpc_static', 'XPC_launchd_mig_static', 'XPC_notify_client_static', 'mDNSResponder_dnssd_static', 'XPC_libinfo_static', 'syslog_asl_static', 'libsystem_trace_static', 'libdarwin_static', 'libSystemConfiguration_static', 'XPC_libnv_static', 'XPC_libxpc_objc_static', 'XPC_notifyd_mig_static', 'pthread_full_static', 'libdispatch_static', 'libresolv_static', 'libcxxabi_static_build', 'libunwind_static_build', 'libcxx_static_build', 'commoncrypto_static', '--parallel', '4']
+[  0%] Built target libc_headers_gen_script
+[  7%] Built target migcom
+[100%] Built target libsystem_kernel_static
+[  0%] Built target libc_headers_gen_script
+[  6%] Built target migcom
+[ 86%] Built target libsystem_kernel_static
+[100%] Built target libplatform_static
+[  0%] Built target libc_headers_gen_script
+[  7%] Built target migcom
+[100%] Built target XPC_notifyd_mig_static
+[  0%] Built target libc_headers_gen_script
+[  7%] Built target migcom
+[ 92%] Built target libsystem_kernel_static
+[100%] Built target pthread_full_static
+[  0%] Built target libc_headers_gen_script
+[  6%] Built target migcom
+[ 86%] Built target libsystem_kernel_static
+[100%] Built target libdispatch_static
+[ 50%] Generating libc-features.h
+[ 50%] Built target libc_headers_gen_script
+[ 50%] Built target libc_features
+[100%] Built target libresolv_static
+[100%] Built target libcxxabi_static_build
+Built target libunwind_static_build
+[100%] Built target libcxx_static_build
+[  0%] Built target libc_headers_gen_script
+[  0%] Built target host_cc_user_stub
+[  0%] Built target corecrypto_user
+[ 40%] Built target corecrypto_shared
+[ 70%] Built target host_corecrypto_static
+[ 70%] Built target corecrypto_static
+[100%] Built target host_commoncrypto_static
+[100%] Built target commoncrypto_static

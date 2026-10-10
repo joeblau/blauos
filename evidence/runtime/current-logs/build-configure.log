@@ -1,0 +1,17 @@
+Raw log: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/logs/configure.log
+SHA256: e600f6f9debdadfd73783badbb327eee207b2f9ec76e61dd7a231c04a7aeb175
+Bytes: 2031
+
+$ ['cmake', '-S', '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay', '-B', '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay', '-G', 'Unix Makefiles', '-DCMAKE_BUILD_TYPE=Debug', '-DCMAKE_OSX_DEPLOYMENT_TARGET=11.0', '-DCMAKE_POLICY_VERSION_MINIMUM=3.5', '-DPUREDARWIN_ARCH=arm64', '-DPUREDARWIN_MACOSX_SDK=/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk', '-DPUREDARWIN_ENABLE_PROJECTS=OFF', '-DPUREDARWIN_ENABLE_KERNEL=OFF', '-DPUREDARWIN_ENABLE_LIBRARIES=ON', '-DPUREDARWIN_ENABLE_USERSPACE=OFF', '-DPUREDARWIN_ENABLE_TOOLS=ON', '-DPUREDARWIN_COMPILER_RT_PREFIX=/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/compiler-rt-install', '-DBLAUOS_STACK_PROBE=/Users/joeblau/Developer/joeblau/src/blauos/runtime/compat/arm64_stack_probe.S', '-DBLAUOS_LIBDYLD_EXPORTS=/Users/joeblau/Developer/joeblau/src/blauos/runtime/compat/libdyld.exports', '-DBLAUOS_SYSTEM_INTERFACE=/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/system-interface/libSystem.tbd', '-DBLAUOS_OBJC_DYLIB=', '-DBLAUOS_CXX_HEADERS=/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/sdk-cxx-headers', '-DCMAKE_C_FLAGS=-Wno-nullability-completeness -include /Users/joeblau/Developer/joeblau/src/blauos/runtime/compat/sdk27_compile.h', '-DCMAKE_CXX_FLAGS=-Wno-nullability-completeness -include /Users/joeblau/Developer/joeblau/src/blauos/runtime/compat/sdk27_compile.h']
+-- PureDarwin target architecture: arm64
+CMake Warning at cmake/iig.cmake:10 (message):
+  iig not found on PATH, run `nix profile install` in the iig-tools repo
+  (https://github.com/PureDarwin/iig-tools, or your local checkout) before
+  building any target that calls iig()
+Call Stack (most recent call first):
+  CMakeLists.txt:139 (include)
+
+
+-- Configuring done (0.2s)
+-- Generating done (0.5s)
+-- Build files have been written to: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay

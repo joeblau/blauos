@@ -1,0 +1,6 @@
+Raw log: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/logs/source-headers.log
+SHA256: e7d2ce961005691d4955335da7735fe80bb6ae503f6d3ccd2a3e5bcd11b0fe32
+Bytes: 206
+
+$ ['cmake', '--build', '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay', '--target', 'libc_headers_gen_script', '--parallel', '4']
+Built target libc_headers_gen_script

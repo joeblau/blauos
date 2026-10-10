@@ -1,0 +1,11 @@
+Raw log: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/logs/iokit-archive.log
+SHA256: f31f68488124858b6648b43b6a410cfb66e9abd5e845ba4034db063a80fd81a5
+Bytes: 364
+
+$ ['cmake', '--build', '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay', '--target', 'IOKitCF', '--parallel', '4']
+[  7%] Generating libc-features.h
+[  7%] Built target libc_headers_gen_script
+[ 14%] Built target migcom
+[ 14%] Built target libc_features
+[100%] Built target libsystem_kernel_static
+[100%] Built target IOKitCF

@@ -1,0 +1,38 @@
+Raw log: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/logs/system-objc-link.log
+SHA256: a5795f5dc3a8a5b443f76c895e9455a0425d940c250568f2ff5a5f711b9c8d5f
+Bytes: 24431
+
+$ ['cmake', '--build', '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay', '--target', 'libSystem_B_stub', '--parallel', '4']
+[  1%] Generating libc-features.h
+[  1%] Built target libc_headers_gen_script
+[  1%] Built target CrashReporterClient
+[  2%] Built target migcom
+[  2%] Built target host_cc_user_stub
+[  2%] Built target corecrypto_user
+[  2%] Built target libc_features
+[  4%] Built target libunwind_static_build
+[  4%] Built target libcxxabi_static_build
+ld: warning: explicit re-export for symbol '__ZTISt14overflow_error' is redundant because it is already re-exported from dylib '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libdyld/libdyld.dylib'
+ld: warning: explicit re-export for symbol '__ZTISt20bad_array_new_length' is redundant because it is already re-exported from dylib '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libdyld/libdyld.dylib'
+ld: warning: explicit re-export for symbol '__ZTISt9bad_alloc' is redundant because it is already re-exported from dylib '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libdyld/libdyld.dylib'
+ld: warning: explicit re-export for symbol '__ZTVSt12length_error' is redundant because it is already re-exported from dylib '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libdyld/libdyld.dylib'
+ld: warning: explicit re-export for symbol '__ZTVSt12out_of_range' is redundant because it is already re-exported from dylib '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libdyld/libdyld.dylib'
+ld: warning: explicit re-export for symbol '__ZTVSt14overflow_error' is redundant because it is already re-exported from dylib '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libdyld/libdyld.dylib'
+ld: warning: explicit re-export for symbol '___cxa_demangle' is redundant because it is already re-exported from dylib '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libdyld/libdyld.dylib'
+ld: warning: explicit re-export for symbol '___cxa_guard_abort' is redundant because it is already re-exported from dylib '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libdyld/libdyld.dylib'
+ld: warning: explicit re-export for symbol '___cxa_guard_acquire' is redundant because it is already re-exported from dylib '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libdyld/libdyld.dylib'
+ld: warning: explicit re-export for symbol '___cxa_guard_release' is redundant because it is already re-exported from dylib '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libdyld/libdyld.dylib'
+ld: warning: explicit re-export for symbol '___gxx_personality_v0' is redundant because it is already re-exported from dylib '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libdyld/libdyld.dylib'
+ld: warning: explicit re-export for symbol '___isPlatformVersionAtLeast' is redundant because it is already re-exported from dylib '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libdyld/libdyld.dylib'
+ld: warning: explicit re-export for symbol '__availability_version_check' is redundant because it is already re-exported from dylib '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libdyld/libdyld.dylib'
+ld: warning: explicit re-export for symbol '__dyld_find_unwind_sections' is redundant because it is already re-exported from dylib '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libdyld/libdyld.dylib'
+ld: warning: explicit re-export for symbol '__dyld_is_memory_immutable' is redundant because it is already re-exported from dylib '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libdyld/libdyld.dylib'
+ld: warning: explicit re-export for symbol '__dyld_register_func_for_remove_image' is redundant because it is already re-exported from dylib '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libdyld/libdyld.dylib'
+ld: warning: explicit re-export for symbol '_dladdr' is redundant because it is already re-exported from dylib '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libdyld/libdyld.dylib'
+ld: warning: explicit re-export for symbol '_dlclose' is redundant because it is already re-exported from dylib '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libdyld/libdyld.dylib'
+ld: warning: explicit re-export for symbol '_dlerror' is redundant because it is already re-exported from dylib '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libdyld/libdyld.dylib'
+ld: warning: explicit re-export for symbol '_dlopen' is redundant because it is already re-exported from dylib '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libdyld/libdyld.dylib'
+ld: warning: explicit re-export for symbol '_dlopen_preflight' is redundant because it is already re-exported from dylib '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libdyld/libdyld.dylib'
+ld: warning: explicit re-export for symbol '_dlsym' is redundant because it is already re-exported from dylib '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libdyld/libdyld.dylib'
+ld: warning: explicit re-export for symbol '_dyld_image_path_containing_address' is redundant because it is already re-exported from dylib '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libdyld/libdyld.dylib'
+[100%] Built target libSystem_B_stub

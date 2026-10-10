@@ -1,0 +1,17 @@
+Raw log: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/logs/system-objc-configure.log
+SHA256: 8ec7c19d75cbec35bbc0d6d5721f00f408649794f2496cbfa159059aafd7b346
+Bytes: 834
+
+$ ['cmake', '-S', '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay', '-B', '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay', '-DBLAUOS_OBJC_DYLIB=/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libobjc.A.dylib']
+-- PureDarwin target architecture: arm64
+CMake Warning at cmake/iig.cmake:10 (message):
+  iig not found on PATH, run `nix profile install` in the iig-tools repo
+  (https://github.com/PureDarwin/iig-tools, or your local checkout) before
+  building any target that calls iig()
+Call Stack (most recent call first):
+  CMakeLists.txt:139 (include)
+
+
+-- Configuring done (0.3s)
+-- Generating done (0.5s)
+-- Build files have been written to: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay

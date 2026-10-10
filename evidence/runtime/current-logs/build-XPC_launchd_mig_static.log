@@ -1,0 +1,11 @@
+Raw log: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/logs/XPC_launchd_mig_static.log
+SHA256: b5f17bcdbef5884effcdb3bd61e71d5562161fd8550897eaff20578477c74dc8
+Bytes: 394
+
+$ ['cmake', '--build', '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay', '--target', 'XPC_launchd_mig_static', '--parallel', '4']
+[  6%] Generating libc-features.h
+[  6%] Built target libc_headers_gen_script
+[ 12%] Built target migcom
+[ 12%] Built target libc_features
+[ 87%] Built target libsystem_kernel_static
+[100%] Built target XPC_launchd_mig_static

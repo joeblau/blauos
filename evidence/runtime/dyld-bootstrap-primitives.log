@@ -1,0 +1,437 @@
+(lldb) target create "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/dyld"
+Current executable set to '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/dyld' (arm64).
+(lldb) image lookup -vn bzero
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/dyld:
+        Address: dyld[0x00000000000e7b0c] (dyld.__TEXT.__text + 944908)
+        Summary: dyld`bzero at bzero.c:71
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/dyld", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/string/generic/bzero.c", language = "c11"
+       Function: id = {0x40005f0000000101}, name = "bzero", range = [0x00000000000e7b0c-0x00000000000e7b38)
+       FuncType: id = {0x40005f0000000101}, byte-size = 0, decl = bzero.c:71, compiler_type = "void (void *, size_t)"
+         Blocks: id = {0x40005f0000000101}, range = [0x000e7b0c-0x000e7b38)
+      LineEntry: [0x00000000000e7b0c-0x00000000000e7b20): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/string/generic/bzero.c:71
+         Symbol: id = {0x00006831}, range = [0x00000000000e7b0c-0x00000000000e7b38), name="bzero"
+       Variable: id = {0x40005f0000000116}, name = "s", type = "void *", valid ranges = <block>, location = DW_OP_breg31 WSP+8, decl = bzero.c:71
+       Variable: id = {0x40005f0000000124}, name = "n", type = "size_t", valid ranges = <block>, location = DW_OP_breg31 WSP+0, decl = bzero.c:71
+
+(lldb) disassemble -n bzero
+dyld`bzero:
+dyld[0xe7b0c] <+0>:  sub    sp, sp, #0x20
+dyld[0xe7b10] <+4>:  stp    x29, x30, [sp, #0x10]
+dyld[0xe7b14] <+8>:  add    x29, sp, #0x10
+dyld[0xe7b18] <+12>: str    x0, [sp, #0x8]
+dyld[0xe7b1c] <+16>: str    x1, [sp]
+dyld[0xe7b20] <+20>: ldr    x0, [sp, #0x8]
+dyld[0xe7b24] <+24>: ldr    x1, [sp]
+dyld[0xe7b28] <+28>: bl     0xe7adc                   ; _platform_bzero at bzero.c:65
+dyld[0xe7b2c] <+32>: ldp    x29, x30, [sp, #0x10]
+dyld[0xe7b30] <+36>: add    sp, sp, #0x20
+dyld[0xe7b34] <+40>: ret    
+(lldb) image lookup -vn memchr
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/dyld:
+        Address: dyld[0x00000000000e7c2c] (dyld.__TEXT.__text + 945196)
+        Summary: dyld`memchr at memchr.c:56
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/dyld", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/string/generic/memchr.c", language = "c11"
+       Function: id = {0x400061000000009a}, name = "memchr", range = [0x00000000000e7c2c-0x00000000000e7c60)
+       FuncType: id = {0x400061000000009a}, byte-size = 0, decl = memchr.c:55, compiler_type = "void *(const void *, int, size_t)"
+         Blocks: id = {0x400061000000009a}, range = [0x000e7c2c-0x000e7c60)
+      LineEntry: [0x00000000000e7c2c-0x00000000000e7c44): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/string/generic/memchr.c:56
+         Symbol: id = {0x00006849}, range = [0x00000000000e7c2c-0x00000000000e7c60), name="memchr"
+       Variable: id = {0x40006100000000b3}, name = "s", type = "const void *", valid ranges = <block>, location = DW_OP_fbreg -8, decl = memchr.c:55
+       Variable: id = {0x40006100000000c1}, name = "c", type = "int", valid ranges = <block>, location = DW_OP_fbreg -12, decl = memchr.c:55
+       Variable: id = {0x40006100000000cf}, name = "n", type = "size_t", valid ranges = <block>, location = DW_OP_breg31 WSP+8, decl = memchr.c:55
+
+(lldb) disassemble -n memchr
+dyld`memchr:
+dyld[0xe7c2c] <+0>:  sub    sp, sp, #0x30
+dyld[0xe7c30] <+4>:  stp    x29, x30, [sp, #0x20]
+dyld[0xe7c34] <+8>:  add    x29, sp, #0x20
+dyld[0xe7c38] <+12>: stur   x0, [x29, #-0x8]
+dyld[0xe7c3c] <+16>: stur   w1, [x29, #-0xc]
+dyld[0xe7c40] <+20>: str    x2, [sp, #0x8]
+dyld[0xe7c44] <+24>: ldur   x0, [x29, #-0x8]
+dyld[0xe7c48] <+28>: ldur   w1, [x29, #-0xc]
+dyld[0xe7c4c] <+32>: ldr    x2, [sp, #0x8]
+dyld[0xe7c50] <+36>: bl     0xe7ba4                   ; _platform_memchr at memchr.c:41
+dyld[0xe7c54] <+40>: ldp    x29, x30, [sp, #0x20]
+dyld[0xe7c58] <+44>: add    sp, sp, #0x30
+dyld[0xe7c5c] <+48>: ret    
+(lldb) image lookup -vn memcmp
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/dyld:
+        Address: dyld[0x00000000000e7d18] (dyld.__TEXT.__text + 945432)
+        Summary: dyld`memcmp at memcmp.c:54
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/dyld", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/string/generic/memcmp.c", language = "c11"
+       Function: id = {0x40006200000000a0}, name = "memcmp", range = [0x00000000000e7d18-0x00000000000e7d4c)
+       FuncType: id = {0x40006200000000a0}, byte-size = 0, decl = memcmp.c:53, compiler_type = "int (const void *, const void *, size_t)"
+         Blocks: id = {0x40006200000000a0}, range = [0x000e7d18-0x000e7d4c)
+      LineEntry: [0x00000000000e7d18-0x00000000000e7d30): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/string/generic/memcmp.c:54
+         Symbol: id = {0x00006855}, range = [0x00000000000e7d18-0x00000000000e7d4c), name="memcmp"
+       Variable: id = {0x40006200000000b9}, name = "s1", type = "const void *", valid ranges = <block>, location = DW_OP_fbreg -8, decl = memcmp.c:53
+       Variable: id = {0x40006200000000c7}, name = "s2", type = "const void *", valid ranges = <block>, location = DW_OP_breg31 WSP+16, decl = memcmp.c:53
+       Variable: id = {0x40006200000000d5}, name = "n", type = "size_t", valid ranges = <block>, location = DW_OP_breg31 WSP+8, decl = memcmp.c:53
+
+(lldb) disassemble -n memcmp
+dyld`memcmp:
+dyld[0xe7d18] <+0>:  sub    sp, sp, #0x30
+dyld[0xe7d1c] <+4>:  stp    x29, x30, [sp, #0x20]
+dyld[0xe7d20] <+8>:  add    x29, sp, #0x20
+dyld[0xe7d24] <+12>: stur   x0, [x29, #-0x8]
+dyld[0xe7d28] <+16>: str    x1, [sp, #0x10]
+dyld[0xe7d2c] <+20>: str    x2, [sp, #0x8]
+dyld[0xe7d30] <+24>: ldur   x0, [x29, #-0x8]
+dyld[0xe7d34] <+28>: ldr    x1, [sp, #0x10]
+dyld[0xe7d38] <+32>: ldr    x2, [sp, #0x8]
+dyld[0xe7d3c] <+36>: bl     0xe7c60                   ; _platform_memcmp at memcmp.c:39
+dyld[0xe7d40] <+40>: ldp    x29, x30, [sp, #0x20]
+dyld[0xe7d44] <+44>: add    sp, sp, #0x30
+dyld[0xe7d48] <+48>: ret    
+(lldb) image lookup -vn memcpy
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/dyld:
+        Address: dyld[0x00000000000e813c] (dyld.__TEXT.__text + 946492)
+        Summary: dyld`memcpy at memmove.c:129
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/dyld", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/string/generic/memmove.c", language = "c11"
+       Function: id = {0x400063000000011d}, name = "memcpy", range = [0x00000000000e813c-0x00000000000e8170)
+       FuncType: id = {0x400063000000011d}, byte-size = 0, decl = memmove.c:128, compiler_type = "void *(void *, const void *, size_t)"
+         Blocks: id = {0x400063000000011d}, range = [0x000e813c-0x000e8170)
+      LineEntry: [0x00000000000e813c-0x00000000000e8154): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/string/generic/memmove.c:129
+         Symbol: id = {0x00006869}, range = [0x00000000000e813c-0x00000000000e8170), name="memcpy"
+       Variable: id = {0x4000630000000136}, name = "dst0", type = "void *", valid ranges = <block>, location = DW_OP_fbreg -8, decl = memmove.c:128
+       Variable: id = {0x4000630000000144}, name = "src0", type = "const void *", valid ranges = <block>, location = DW_OP_breg31 WSP+16, decl = memmove.c:128
+       Variable: id = {0x4000630000000152}, name = "length", type = "size_t", valid ranges = <block>, location = DW_OP_breg31 WSP+8, decl = memmove.c:128
+
+(lldb) disassemble -n memcpy
+dyld`memcpy:
+dyld[0xe813c] <+0>:  sub    sp, sp, #0x30
+dyld[0xe8140] <+4>:  stp    x29, x30, [sp, #0x20]
+dyld[0xe8144] <+8>:  add    x29, sp, #0x20
+dyld[0xe8148] <+12>: stur   x0, [x29, #-0x8]
+dyld[0xe814c] <+16>: str    x1, [sp, #0x10]
+dyld[0xe8150] <+20>: str    x2, [sp, #0x8]
+dyld[0xe8154] <+24>: ldur   x0, [x29, #-0x8]
+dyld[0xe8158] <+28>: ldr    x1, [sp, #0x10]
+dyld[0xe815c] <+32>: ldr    x2, [sp, #0x8]
+dyld[0xe8160] <+36>: bl     0xe7d80                   ; _platform_memmove at memmove.c:56
+dyld[0xe8164] <+40>: ldp    x29, x30, [sp, #0x20]
+dyld[0xe8168] <+44>: add    sp, sp, #0x30
+dyld[0xe816c] <+48>: ret    
+(lldb) image lookup -vn memmove
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/dyld:
+        Address: dyld[0x00000000000e8108] (dyld.__TEXT.__text + 946440)
+        Summary: dyld`memmove at memmove.c:123
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/dyld", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/string/generic/memmove.c", language = "c11"
+       Function: id = {0x40006300000000d9}, name = "memmove", range = [0x00000000000e8108-0x00000000000e813c)
+       FuncType: id = {0x40006300000000d9}, byte-size = 0, decl = memmove.c:122, compiler_type = "void *(void *, const void *, size_t)"
+         Blocks: id = {0x40006300000000d9}, range = [0x000e8108-0x000e813c)
+      LineEntry: [0x00000000000e8108-0x00000000000e8120): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/string/generic/memmove.c:123
+         Symbol: id = {0x00006865}, range = [0x00000000000e8108-0x00000000000e813c), name="memmove"
+       Variable: id = {0x40006300000000f2}, name = "dst0", type = "void *", valid ranges = <block>, location = DW_OP_fbreg -8, decl = memmove.c:122
+       Variable: id = {0x4000630000000100}, name = "src0", type = "const void *", valid ranges = <block>, location = DW_OP_breg31 WSP+16, decl = memmove.c:122
+       Variable: id = {0x400063000000010e}, name = "length", type = "size_t", valid ranges = <block>, location = DW_OP_breg31 WSP+8, decl = memmove.c:122
+
+(lldb) disassemble -n memmove
+dyld`memmove:
+dyld[0xe8108] <+0>:  sub    sp, sp, #0x30
+dyld[0xe810c] <+4>:  stp    x29, x30, [sp, #0x20]
+dyld[0xe8110] <+8>:  add    x29, sp, #0x20
+dyld[0xe8114] <+12>: stur   x0, [x29, #-0x8]
+dyld[0xe8118] <+16>: str    x1, [sp, #0x10]
+dyld[0xe811c] <+20>: str    x2, [sp, #0x8]
+dyld[0xe8120] <+24>: ldur   x0, [x29, #-0x8]
+dyld[0xe8124] <+28>: ldr    x1, [sp, #0x10]
+dyld[0xe8128] <+32>: ldr    x2, [sp, #0x8]
+dyld[0xe812c] <+36>: bl     0xe7d80                   ; _platform_memmove at memmove.c:56
+dyld[0xe8130] <+40>: ldp    x29, x30, [sp, #0x20]
+dyld[0xe8134] <+44>: add    sp, sp, #0x30
+dyld[0xe8138] <+48>: ret    
+(lldb) image lookup -vn memset
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/dyld:
+        Address: dyld[0x0000000000032234] (dyld.__TEXT.__text + 201268)
+        Summary: dyld`memset at glue.c:434
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/dyld", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/glue.c", language = "c11"
+       Function: id = {0x4000060000000bf4}, name = "memset", range = [0x0000000000032234-0x000000000003229c)
+       FuncType: id = {0x4000060000000bf4}, byte-size = 0, decl = glue.c:433, compiler_type = "void *(void *, int, size_t)"
+         Blocks: id = {0x4000060000000bf4}, range = [0x00032234-0x0003229c)
+      LineEntry: [0x0000000000032234-0x0000000000032244): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/glue.c:434
+         Symbol: id = {0x00002ec6}, range = [0x0000000000032234-0x000000000003229c), name="memset"
+       Variable: id = {0x4000060000000c0e}, name = "b", type = "void *", valid ranges = <block>, location = DW_OP_fbreg +40, decl = glue.c:433
+       Variable: id = {0x4000060000000c1d}, name = "c", type = "int", valid ranges = <block>, location = DW_OP_fbreg +36, decl = glue.c:433
+       Variable: id = {0x4000060000000c2c}, name = "len", type = "size_t", valid ranges = <block>, location = DW_OP_fbreg +24, decl = glue.c:433
+       Variable: id = {0x4000060000000c3b}, name = "p", type = "uint8_t *", valid ranges = <block>, location = DW_OP_fbreg +16, decl = glue.c:435
+
+(lldb) disassemble -n memset
+dyld`memset:
+dyld[0x32234] <+0>:   sub    sp, sp, #0x30
+dyld[0x32238] <+4>:   str    x0, [sp, #0x28]
+dyld[0x3223c] <+8>:   str    w1, [sp, #0x24]
+dyld[0x32240] <+12>:  str    x2, [sp, #0x18]
+dyld[0x32244] <+16>:  ldr    x8, [sp, #0x28]
+dyld[0x32248] <+20>:  str    x8, [sp, #0x10]
+dyld[0x3224c] <+24>:  ldr    x8, [sp, #0x18]
+dyld[0x32250] <+28>:  str    x8, [sp, #0x8]
+dyld[0x32254] <+32>:  b      0x32258                   ; <+36> at glue.c:436:20
+dyld[0x32258] <+36>:  ldr    x8, [sp, #0x8]
+dyld[0x3225c] <+40>:  subs   x8, x8, #0x0
+dyld[0x32260] <+44>:  b.ls   0x32290                   ; <+92> at glue.c:438:9
+dyld[0x32264] <+48>:  b      0x32268                   ; <+52> at glue.c:437:10
+dyld[0x32268] <+52>:  ldr    w8, [sp, #0x24]
+dyld[0x3226c] <+56>:  ldr    x9, [sp, #0x10]
+dyld[0x32270] <+60>:  add    x10, x9, #0x1
+dyld[0x32274] <+64>:  str    x10, [sp, #0x10]
+dyld[0x32278] <+68>:  strb   w8, [x9]
+dyld[0x3227c] <+72>:  b      0x32280                   ; <+76> at glue.c:436:27
+dyld[0x32280] <+76>:  ldr    x8, [sp, #0x8]
+dyld[0x32284] <+80>:  subs   x8, x8, #0x1
+dyld[0x32288] <+84>:  str    x8, [sp, #0x8]
+dyld[0x3228c] <+88>:  b      0x32258                   ; <+36> at glue.c:436:20
+dyld[0x32290] <+92>:  ldr    x0, [sp, #0x28]
+dyld[0x32294] <+96>:  add    sp, sp, #0x30
+dyld[0x32298] <+100>: ret    
+(lldb) image lookup -vn strchr
+2 matches found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/dyld:
+        Address: dyld[0x000000000001b7b8] (dyld.__TEXT.__text + 108472)
+        Summary: dyld`strchr[abi:nqe220106](char const*, int) [enable_if:true] at string.h:77
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/dyld", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp", language = "<not loaded>"
+       Function: id = {0x400000000003a0ac}, name = "strchr[abi:nqe220106](char const*, int) [enable_if:true]", mangled = "_Z6strchrB9nqe220106Ua9enable_ifIXLb1EEEPKci", range = [0x000000000001b7b8-0x000000000001b7e4)
+       FuncType: id = {0x400000000003a0ac}, byte-size = 0, decl = string.h:77, compiler_type = "const char *(const char *, int)"
+         Blocks: id = {0x400000000003a0ac}, range = [0x0001b7b8-0x0001b7e4)
+      LineEntry: [0x000000000001b7b8-0x000000000001b7cc): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/sdk-cxx-headers/string.h:77
+         Symbol: id = {0x00001f40}, range = [0x000000000001b7b8-0x000000000001b7e4), name="strchr[abi:nqe220106](char const*, int) [enable_if:true]", mangled="_Z6strchrB9nqe220106Ua9enable_ifIXLb1EEEPKci"
+       Variable: id = {0x400000000003a0c9}, name = "__s", type = "const char *", valid ranges = <block>, location = DW_OP_breg31 WSP+8, decl = string.h:77
+       Variable: id = {0x400000000003a0d7}, name = "__c", type = "int", valid ranges = <block>, location = DW_OP_breg31 WSP+4, decl = string.h:77
+
+        Address: dyld[0x00000000000e84a8] (dyld.__TEXT.__text + 947368)
+        Summary: dyld`strchr at strchr.c:54
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/dyld", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/string/generic/strchr.c", language = "c11"
+       Function: id = {0x4000650000000082}, name = "strchr", range = [0x00000000000e84a8-0x00000000000e84d4)
+       FuncType: id = {0x4000650000000082}, byte-size = 0, decl = strchr.c:53, compiler_type = "char *(const char *, int)"
+         Blocks: id = {0x4000650000000082}, range = [0x000e84a8-0x000e84d4)
+      LineEntry: [0x00000000000e84a8-0x00000000000e84bc): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/string/generic/strchr.c:54
+         Symbol: id = {0x00006891}, range = [0x00000000000e84a8-0x00000000000e84d4), name="strchr"
+       Variable: id = {0x400065000000009b}, name = "p", type = "const char *", valid ranges = <block>, location = DW_OP_breg31 WSP+8, decl = strchr.c:53
+       Variable: id = {0x40006500000000a9}, name = "ch", type = "int", valid ranges = <block>, location = DW_OP_breg31 WSP+4, decl = strchr.c:53
+
+(lldb) disassemble -n strchr
+dyld`strchr[abi:nqe220106](char const*, int) [enable_if:true]:
+dyld[0x1b7b8] <+0>:  sub    sp, sp, #0x20
+dyld[0x1b7bc] <+4>:  stp    x29, x30, [sp, #0x10]
+dyld[0x1b7c0] <+8>:  add    x29, sp, #0x10
+dyld[0x1b7c4] <+12>: str    x0, [sp, #0x8]
+dyld[0x1b7c8] <+16>: str    w1, [sp, #0x4]
+dyld[0x1b7cc] <+20>: ldr    x0, [sp, #0x8]
+dyld[0x1b7d0] <+24>: ldr    w1, [sp, #0x4]
+dyld[0x1b7d4] <+28>: bl     0xe84a8                   ; strchr at strchr.c:54
+dyld[0x1b7d8] <+32>: ldp    x29, x30, [sp, #0x10]
+dyld[0x1b7dc] <+36>: add    sp, sp, #0x20
+dyld[0x1b7e0] <+40>: ret    
+
+dyld`strchr:
+dyld[0xe84a8] <+0>:  sub    sp, sp, #0x20
+dyld[0xe84ac] <+4>:  stp    x29, x30, [sp, #0x10]
+dyld[0xe84b0] <+8>:  add    x29, sp, #0x10
+dyld[0xe84b4] <+12>: str    x0, [sp, #0x8]
+dyld[0xe84b8] <+16>: str    w1, [sp, #0x4]
+dyld[0xe84bc] <+20>: ldr    x0, [sp, #0x8]
+dyld[0xe84c0] <+24>: ldr    w1, [sp, #0x4]
+dyld[0xe84c4] <+28>: bl     0xe8434                   ; _platform_strchr at strchr.c:38
+dyld[0xe84c8] <+32>: ldp    x29, x30, [sp, #0x10]
+dyld[0xe84cc] <+36>: add    sp, sp, #0x20
+dyld[0xe84d0] <+40>: ret    
+
+(lldb) image lookup -vn strcmp
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/dyld:
+        Address: dyld[0x00000000000e8554] (dyld.__TEXT.__text + 947540)
+        Summary: dyld`strcmp at strcmp.c:49
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/dyld", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/string/generic/strcmp.c", language = "c11"
+       Function: id = {0x4000660000000079}, name = "strcmp", range = [0x00000000000e8554-0x00000000000e8580)
+       FuncType: id = {0x4000660000000079}, byte-size = 0, decl = strcmp.c:48, compiler_type = "int (const char *, const char *)"
+         Blocks: id = {0x4000660000000079}, range = [0x000e8554-0x000e8580)
+      LineEntry: [0x00000000000e8554-0x00000000000e8568): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/string/generic/strcmp.c:49
+         Symbol: id = {0x0000689d}, range = [0x00000000000e8554-0x00000000000e8580), name="strcmp"
+       Variable: id = {0x4000660000000092}, name = "s1", type = "const char *", valid ranges = <block>, location = DW_OP_breg31 WSP+8, decl = strcmp.c:48
+       Variable: id = {0x40006600000000a0}, name = "s2", type = "const char *", valid ranges = <block>, location = DW_OP_breg31 WSP+0, decl = strcmp.c:48
+
+(lldb) disassemble -n strcmp
+dyld`strcmp:
+dyld[0xe8554] <+0>:  sub    sp, sp, #0x20
+dyld[0xe8558] <+4>:  stp    x29, x30, [sp, #0x10]
+dyld[0xe855c] <+8>:  add    x29, sp, #0x10
+dyld[0xe8560] <+12>: str    x0, [sp, #0x8]
+dyld[0xe8564] <+16>: str    x1, [sp]
+dyld[0xe8568] <+20>: ldr    x0, [sp, #0x8]
+dyld[0xe856c] <+24>: ldr    x1, [sp]
+dyld[0xe8570] <+28>: bl     0xe84d4                   ; _platform_strcmp at strcmp.c:39
+dyld[0xe8574] <+32>: ldp    x29, x30, [sp, #0x10]
+dyld[0xe8578] <+36>: add    sp, sp, #0x20
+dyld[0xe857c] <+40>: ret    
+(lldb) image lookup -vn strcpy
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/dyld:
+        Address: dyld[0x00000000000e85c4] (dyld.__TEXT.__text + 947652)
+        Summary: dyld`strcpy at strcpy.c:40
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/dyld", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/string/generic/strcpy.c", language = "c11"
+       Function: id = {0x4000670000000076}, name = "strcpy", range = [0x00000000000e85c4-0x00000000000e85f0)
+       FuncType: id = {0x4000670000000076}, byte-size = 0, decl = strcpy.c:40, compiler_type = "char *(char *__restrict, const char *__restrict)"
+         Blocks: id = {0x4000670000000076}, range = [0x000e85c4-0x000e85f0)
+      LineEntry: [0x00000000000e85c4-0x00000000000e85d8): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/string/generic/strcpy.c:40
+         Symbol: id = {0x000068a9}, range = [0x00000000000e85c4-0x00000000000e85f0), name="strcpy"
+       Variable: id = {0x400067000000008f}, name = "dst", type = "char *__restrict", valid ranges = <block>, location = DW_OP_breg31 WSP+8, decl = strcpy.c:40
+       Variable: id = {0x400067000000009d}, name = "src", type = "const char *__restrict", valid ranges = <block>, location = DW_OP_breg31 WSP+0, decl = strcpy.c:40
+
+(lldb) disassemble -n strcpy
+dyld`strcpy:
+dyld[0xe85c4] <+0>:  sub    sp, sp, #0x20
+dyld[0xe85c8] <+4>:  stp    x29, x30, [sp, #0x10]
+dyld[0xe85cc] <+8>:  add    x29, sp, #0x10
+dyld[0xe85d0] <+12>: str    x0, [sp, #0x8]
+dyld[0xe85d4] <+16>: str    x1, [sp]
+dyld[0xe85d8] <+20>: ldr    x0, [sp, #0x8]
+dyld[0xe85dc] <+24>: ldr    x1, [sp]
+dyld[0xe85e0] <+28>: bl     0xe8580                   ; _platform_strcpy at strcpy.c:29
+dyld[0xe85e4] <+32>: ldp    x29, x30, [sp, #0x10]
+dyld[0xe85e8] <+36>: add    sp, sp, #0x20
+dyld[0xe85ec] <+40>: ret    
+(lldb) image lookup -vn strlen
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/dyld:
+        Address: dyld[0x00000000000e8a20] (dyld.__TEXT.__text + 948768)
+        Summary: dyld`strlen at strlen.c:116
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/dyld", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/string/generic/strlen.c", language = "c11"
+       Function: id = {0x40006a00000000cc}, name = "strlen", range = [0x00000000000e8a20-0x00000000000e8a44)
+       FuncType: id = {0x40006a00000000cc}, byte-size = 0, decl = strlen.c:115, compiler_type = "size_t (const char *)"
+         Blocks: id = {0x40006a00000000cc}, range = [0x000e8a20-0x000e8a44)
+      LineEntry: [0x00000000000e8a20-0x00000000000e8a30): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/string/generic/strlen.c:116
+         Symbol: id = {0x000068cd}, range = [0x00000000000e8a20-0x00000000000e8a44), name="strlen"
+       Variable: id = {0x40006a00000000e5}, name = "str", type = "const char *", valid ranges = <block>, location = DW_OP_breg31 WSP+8, decl = strlen.c:115
+
+(lldb) disassemble -n strlen
+dyld`strlen:
+dyld[0xe8a20] <+0>:  sub    sp, sp, #0x20
+dyld[0xe8a24] <+4>:  stp    x29, x30, [sp, #0x10]
+dyld[0xe8a28] <+8>:  add    x29, sp, #0x10
+dyld[0xe8a2c] <+12>: str    x0, [sp, #0x8]
+dyld[0xe8a30] <+16>: ldr    x0, [sp, #0x8]
+dyld[0xe8a34] <+20>: bl     0xe87ec                   ; _platform_strlen at strlen.c:84
+dyld[0xe8a38] <+24>: ldp    x29, x30, [sp, #0x10]
+dyld[0xe8a3c] <+28>: add    sp, sp, #0x20
+dyld[0xe8a40] <+32>: ret    
+(lldb) image lookup -vn strncmp
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/dyld:
+        Address: dyld[0x00000000000e8af4] (dyld.__TEXT.__text + 948980)
+        Summary: dyld`strncmp at strncmp.c:53
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/dyld", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/string/generic/strncmp.c", language = "c11"
+       Function: id = {0x40006b0000000087}, name = "strncmp", range = [0x00000000000e8af4-0x00000000000e8b28)
+       FuncType: id = {0x40006b0000000087}, byte-size = 0, decl = strncmp.c:52, compiler_type = "int (const char *, const char *, size_t)"
+         Blocks: id = {0x40006b0000000087}, range = [0x000e8af4-0x000e8b28)
+      LineEntry: [0x00000000000e8af4-0x00000000000e8b0c): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/string/generic/strncmp.c:53
+         Symbol: id = {0x000068d9}, range = [0x00000000000e8af4-0x00000000000e8b28), name="strncmp"
+       Variable: id = {0x40006b00000000a0}, name = "s1", type = "const char *", valid ranges = <block>, location = DW_OP_fbreg -8, decl = strncmp.c:52
+       Variable: id = {0x40006b00000000ae}, name = "s2", type = "const char *", valid ranges = <block>, location = DW_OP_breg31 WSP+16, decl = strncmp.c:52
+       Variable: id = {0x40006b00000000bc}, name = "n", type = "size_t", valid ranges = <block>, location = DW_OP_breg31 WSP+8, decl = strncmp.c:52
+
+(lldb) disassemble -n strncmp
+dyld`strncmp:
+dyld[0xe8af4] <+0>:  sub    sp, sp, #0x30
+dyld[0xe8af8] <+4>:  stp    x29, x30, [sp, #0x20]
+dyld[0xe8afc] <+8>:  add    x29, sp, #0x20
+dyld[0xe8b00] <+12>: stur   x0, [x29, #-0x8]
+dyld[0xe8b04] <+16>: str    x1, [sp, #0x10]
+dyld[0xe8b08] <+20>: str    x2, [sp, #0x8]
+dyld[0xe8b0c] <+24>: ldur   x0, [x29, #-0x8]
+dyld[0xe8b10] <+28>: ldr    x1, [sp, #0x10]
+dyld[0xe8b14] <+32>: ldr    x2, [sp, #0x8]
+dyld[0xe8b18] <+36>: bl     0xe8a44                   ; _platform_strncmp at strncmp.c:36
+dyld[0xe8b1c] <+40>: ldp    x29, x30, [sp, #0x20]
+dyld[0xe8b20] <+44>: add    sp, sp, #0x30
+dyld[0xe8b24] <+48>: ret    
+(lldb) image lookup -vn strncpy
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/dyld:
+        Address: dyld[0x00000000000e8bbc] (dyld.__TEXT.__text + 949180)
+        Summary: dyld`strncpy at strncpy.c:48
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/dyld", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/string/generic/strncpy.c", language = "c11"
+       Function: id = {0x40006c0000000084}, name = "strncpy", range = [0x00000000000e8bbc-0x00000000000e8bf0)
+       FuncType: id = {0x40006c0000000084}, byte-size = 0, decl = strncpy.c:48, compiler_type = "char *(char *__restrict, const char *__restrict, size_t)"
+         Blocks: id = {0x40006c0000000084}, range = [0x000e8bbc-0x000e8bf0)
+      LineEntry: [0x00000000000e8bbc-0x00000000000e8bd4): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/string/generic/strncpy.c:48
+         Symbol: id = {0x000068e5}, range = [0x00000000000e8bbc-0x00000000000e8bf0), name="strncpy"
+       Variable: id = {0x40006c000000009d}, name = "dst", type = "char *__restrict", valid ranges = <block>, location = DW_OP_fbreg -8, decl = strncpy.c:48
+       Variable: id = {0x40006c00000000ab}, name = "src", type = "const char *__restrict", valid ranges = <block>, location = DW_OP_breg31 WSP+16, decl = strncpy.c:48
+       Variable: id = {0x40006c00000000b9}, name = "maxlen", type = "size_t", valid ranges = <block>, location = DW_OP_breg31 WSP+8, decl = strncpy.c:48
+
+(lldb) disassemble -n strncpy
+dyld`strncpy:
+dyld[0xe8bbc] <+0>:  sub    sp, sp, #0x30
+dyld[0xe8bc0] <+4>:  stp    x29, x30, [sp, #0x20]
+dyld[0xe8bc4] <+8>:  add    x29, sp, #0x20
+dyld[0xe8bc8] <+12>: stur   x0, [x29, #-0x8]
+dyld[0xe8bcc] <+16>: str    x1, [sp, #0x10]
+dyld[0xe8bd0] <+20>: str    x2, [sp, #0x8]
+dyld[0xe8bd4] <+24>: ldur   x0, [x29, #-0x8]
+dyld[0xe8bd8] <+28>: ldr    x1, [sp, #0x10]
+dyld[0xe8bdc] <+32>: ldr    x2, [sp, #0x8]
+dyld[0xe8be0] <+36>: bl     0xe8b28                   ; _platform_strncpy at strncpy.c:29
+dyld[0xe8be4] <+40>: ldp    x29, x30, [sp, #0x20]
+dyld[0xe8be8] <+44>: add    sp, sp, #0x30
+dyld[0xe8bec] <+48>: ret    
+(lldb) image lookup -vn strstr
+2 matches found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/dyld:
+        Address: dyld[0x000000000000858c] (dyld.__TEXT.__text + 30092)
+        Summary: dyld`strstr[abi:nqe220106](char const*, char const*) [enable_if:true] at string.h:105
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/dyld", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp", language = "c++14"
+       Function: id = {0x4000000000035733}, name = "strstr[abi:nqe220106](char const*, char const*) [enable_if:true]", mangled = "_Z6strstrB9nqe220106Ua9enable_ifIXLb1EEEPKcS0_", range = [0x000000000000858c-0x00000000000085b8)
+       FuncType: id = {0x4000000000035733}, byte-size = 0, decl = string.h:105, compiler_type = "const char *(const char *, const char *)"
+         Blocks: id = {0x4000000000035733}, range = [0x0000858c-0x000085b8)
+      LineEntry: [0x000000000000858c-0x00000000000085a0): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/sdk-cxx-headers/string.h:105
+         Symbol: id = {0x00001828}, range = [0x000000000000858c-0x00000000000085b8), name="strstr[abi:nqe220106](char const*, char const*) [enable_if:true]", mangled="_Z6strstrB9nqe220106Ua9enable_ifIXLb1EEEPKcS0_"
+       Variable: id = {0x4000000000035750}, name = "__s1", type = "const char *", valid ranges = <block>, location = DW_OP_breg31 WSP+8, decl = string.h:105
+       Variable: id = {0x400000000003575e}, name = "__s2", type = "const char *", valid ranges = <block>, location = DW_OP_breg31 WSP+0, decl = string.h:105
+
+        Address: dyld[0x00000000000e8d4c] (dyld.__TEXT.__text + 949580)
+        Summary: dyld`strstr at strstr.c:69
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/dyld", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/string/generic/strstr.c", language = "c11"
+       Function: id = {0x40006e000000009e}, name = "strstr", range = [0x00000000000e8d4c-0x00000000000e8d78)
+       FuncType: id = {0x40006e000000009e}, byte-size = 0, decl = strstr.c:68, compiler_type = "char *(const char *, const char *)"
+         Blocks: id = {0x40006e000000009e}, range = [0x000e8d4c-0x000e8d78)
+      LineEntry: [0x00000000000e8d4c-0x00000000000e8d60): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/string/generic/strstr.c:69
+         Symbol: id = {0x000068fd}, range = [0x00000000000e8d4c-0x00000000000e8d78), name="strstr"
+       Variable: id = {0x40006e00000000b7}, name = "s", type = "const char *", valid ranges = <block>, location = DW_OP_breg31 WSP+8, decl = strstr.c:68
+       Variable: id = {0x40006e00000000c5}, name = "find", type = "const char *", valid ranges = <block>, location = DW_OP_breg31 WSP+0, decl = strstr.c:68
+
+(lldb) disassemble -n strstr
+dyld`strstr[abi:nqe220106](char const*, char const*) [enable_if:true]:
+dyld[0x858c] <+0>:  sub    sp, sp, #0x20
+dyld[0x8590] <+4>:  stp    x29, x30, [sp, #0x10]
+dyld[0x8594] <+8>:  add    x29, sp, #0x10
+dyld[0x8598] <+12>: str    x0, [sp, #0x8]
+dyld[0x859c] <+16>: str    x1, [sp]
+dyld[0x85a0] <+20>: ldr    x0, [sp, #0x8]
+dyld[0x85a4] <+24>: ldr    x1, [sp]
+dyld[0x85a8] <+28>: bl     0xe8d4c                   ; strstr at strstr.c:69
+dyld[0x85ac] <+32>: ldp    x29, x30, [sp, #0x10]
+dyld[0x85b0] <+36>: add    sp, sp, #0x20
+dyld[0x85b4] <+40>: ret    
+
+dyld`strstr:
+dyld[0xe8d4c] <+0>:  sub    sp, sp, #0x20
+dyld[0xe8d50] <+4>:  stp    x29, x30, [sp, #0x10]
+dyld[0xe8d54] <+8>:  add    x29, sp, #0x10
+dyld[0xe8d58] <+12>: str    x0, [sp, #0x8]
+dyld[0xe8d5c] <+16>: str    x1, [sp]
+dyld[0xe8d60] <+20>: ldr    x0, [sp, #0x8]
+dyld[0xe8d64] <+24>: ldr    x1, [sp]
+dyld[0xe8d68] <+28>: bl     0xe8c84                   ; _platform_strstr at strstr.c:49
+dyld[0xe8d6c] <+32>: ldp    x29, x30, [sp, #0x10]
+dyld[0xe8d70] <+36>: add    sp, sp, #0x20
+dyld[0xe8d74] <+40>: ret    
+

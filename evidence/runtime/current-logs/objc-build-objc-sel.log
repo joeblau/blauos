@@ -1,0 +1,31 @@
+Raw log: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/logs/objc-objc-sel.log
+SHA256: 70fa8baa389ae7236608eafb2200e551bb664a879bca7973ea99046a03813143
+Bytes: 4531
+
+$ ['xcrun', 'clang++', '-arch', 'arm64', '-isysroot', '/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk', '-x', 'objective-c++', '-std=gnu++17', '-mmacosx-version-min=11.0', '-fno-objc-arc', '-fexceptions', '-fno-delete-null-pointer-checks', '-fobjc-exceptions', '-fPIC', '-Os', '-DNDEBUG', '-DLIBC_NO_LIBCRASHREPORTERCLIENT', '-D__PUREDARWIN__=1', '-Wno-undef-prefix', '-D_LIBCPP_ENABLE_CXX17_REMOVED_UNARY_BINARY_FUNCTION', '-include', '/Users/joeblau/Developer/joeblau/src/blauos/runtime/compat/sdk27_compile.h', '-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/objc/generated', '-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/objc/include', '-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime', '-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/macosx.internal/System/Library/Frameworks/System.framework/Versions/B/PrivateHeaders', '-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/include', '-c', '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime/objc-sel.mm', '-o', '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/objc/objc-sel.o']
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime/objc-sel.mm:26:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime/objc-private.h:280:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime/objc-runtime-new.h:846:17: warning: 'binary_function<const method_t::big &, const method_t::big &, bool>' is deprecated [-Wdeprecated-declarations]
+  846 |     public std::binary_function<const struct method_t::big&,
+      |                 ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/binary_function.h:24:8: note: 'binary_function<const method_t::big &, const method_t::big &, bool>' has been explicitly marked deprecated here
+   24 | struct _LIBCPP_DEPRECATED_IN_CXX11 binary_function {
+      |        ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__config:528:41: note: expanded from macro '_LIBCPP_DEPRECATED_IN_CXX11'
+  528 | #    define _LIBCPP_DEPRECATED_IN_CXX11 _LIBCPP_DEPRECATED
+      |                                         ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__config:504:49: note: expanded from macro '_LIBCPP_DEPRECATED'
+  504 | #      define _LIBCPP_DEPRECATED __attribute__((__deprecated__))
+      |                                                 ^
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime/objc-sel.mm:26:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime/objc-private.h:280:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime/objc-runtime-new.h:1511:19: warning: 'OSAtomicCompareAndSwap32Barrier' is deprecated: first deprecated in macOS 10.12 - Use std::atomic_compare_exchange_strong() from <atomic> instead [-Wdeprecated-declarations]
+ 1511 |         } while (!OSAtomicCompareAndSwap32Barrier(oldf, newf, (volatile int32_t *)&flags));
+      |                   ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/libkern/OSAtomicDeprecated.h:520:9: note: 'OSAtomicCompareAndSwap32Barrier' has been explicitly marked deprecated here
+  520 | bool    OSAtomicCompareAndSwap32Barrier( int32_t __oldValue, int32_t __newValue, volatile int32_t *__theValue );
+      |         ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime/objc-sel.mm:120:29: warning: cast of type 'SEL' to 'const char *' is deprecated; use sel_getName instead [-Wcast-of-sel-type]
+  120 |                 *it.first = (const char *)sel_alloc(name, copy);
+      |                                           ^~~~~~~~~~~~~~~~~~~~~
+3 warnings generated.

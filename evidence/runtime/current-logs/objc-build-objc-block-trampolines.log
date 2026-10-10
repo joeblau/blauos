@@ -1,0 +1,28 @@
+Raw log: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/logs/objc-objc-block-trampolines.log
+SHA256: 482540335cac58abcc6cf0e7806e2dcb5c254e777408aedb666a7041062c9ed2
+Bytes: 4207
+
+$ ['xcrun', 'clang++', '-arch', 'arm64', '-isysroot', '/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk', '-x', 'objective-c++', '-std=gnu++17', '-mmacosx-version-min=11.0', '-fno-objc-arc', '-fexceptions', '-fno-delete-null-pointer-checks', '-fobjc-exceptions', '-fPIC', '-Os', '-DNDEBUG', '-DLIBC_NO_LIBCRASHREPORTERCLIENT', '-D__PUREDARWIN__=1', '-Wno-undef-prefix', '-D_LIBCPP_ENABLE_CXX17_REMOVED_UNARY_BINARY_FUNCTION', '-include', '/Users/joeblau/Developer/joeblau/src/blauos/runtime/compat/sdk27_compile.h', '-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/objc/generated', '-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/objc/include', '-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime', '-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/macosx.internal/System/Library/Frameworks/System.framework/Versions/B/PrivateHeaders', '-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/include', '-c', '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime/objc-block-trampolines.mm', '-o', '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/objc/objc-block-trampolines.o']
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime/objc-block-trampolines.mm:32:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime/objc-private.h:280:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime/objc-runtime-new.h:846:17: warning: 'binary_function<const method_t::big &, const method_t::big &, bool>' is deprecated [-Wdeprecated-declarations]
+  846 |     public std::binary_function<const struct method_t::big&,
+      |                 ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/binary_function.h:24:8: note: 'binary_function<const method_t::big &, const method_t::big &, bool>' has been explicitly marked deprecated here
+   24 | struct _LIBCPP_DEPRECATED_IN_CXX11 binary_function {
+      |        ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__config:528:41: note: expanded from macro '_LIBCPP_DEPRECATED_IN_CXX11'
+  528 | #    define _LIBCPP_DEPRECATED_IN_CXX11 _LIBCPP_DEPRECATED
+      |                                         ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__config:504:49: note: expanded from macro '_LIBCPP_DEPRECATED'
+  504 | #      define _LIBCPP_DEPRECATED __attribute__((__deprecated__))
+      |                                                 ^
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime/objc-block-trampolines.mm:32:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime/objc-private.h:280:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime/objc-runtime-new.h:1511:19: warning: 'OSAtomicCompareAndSwap32Barrier' is deprecated: first deprecated in macOS 10.12 - Use std::atomic_compare_exchange_strong() from <atomic> instead [-Wdeprecated-declarations]
+ 1511 |         } while (!OSAtomicCompareAndSwap32Barrier(oldf, newf, (volatile int32_t *)&flags));
+      |                   ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/libkern/OSAtomicDeprecated.h:520:9: note: 'OSAtomicCompareAndSwap32Barrier' has been explicitly marked deprecated here
+  520 | bool    OSAtomicCompareAndSwap32Barrier( int32_t __oldValue, int32_t __newValue, volatile int32_t *__theValue );
+      |         ^
+2 warnings generated.

@@ -8,9 +8,23 @@
         "clang",
         "-arch",
         "arm64",
+        "-dynamiclib",
+        "/Users/joeblau/Developer/joeblau/src/blauos/runtime/probes/loader_fixture.c",
+        "-o",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/host-probe/libblauos-loader-fixture.dylib"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "xcrun",
+        "clang",
+        "-arch",
+        "arm64",
         "-Wall",
         "-Wextra",
         "-Werror",
+        "-fblocks",
         "/Users/joeblau/Developer/joeblau/src/blauos/runtime/probes/runtime_probe.c",
         "-o",
         "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/host-probe/runtime-probe"
@@ -26,7 +40,7 @@
     }
   ],
   "binary": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/host-probe/runtime-probe",
-  "binary_sha256": "9102250dbb9e04dc2755d1d777c7343c4fa535eb55fba7cc1a18fc9df34c71fc",
+  "binary_sha256": "bdb20071a1352ab52bdbbc248dbe6a0270e443a36d6d3e888f4c468320b509b4",
   "macho": {
     "architecture": "arm64",
     "cpu_subtype": 0,
@@ -35,11 +49,424 @@
     "dependencies": [
       {
         "path": "/usr/lib/libSystem.B.dylib",
-        "weak": false
+        "weak": false,
+        "reexport": false
       }
     ],
     "rpaths": [],
-    "dylinker": "/usr/lib/dyld"
+    "dylinker": "/usr/lib/dyld",
+    "flat_namespace_imports": [],
+    "imports": [
+      {
+        "name": "__Block_copy",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "__Block_object_assign",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "__Block_object_dispose",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "__Block_release",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "__NSConcreteStackBlock",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "___chkstk_darwin",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "___error",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "___memset_chk",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "___snprintf_chk",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "___stack_chk_fail",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "___stack_chk_guard",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "___stderrp",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "__dyld_get_image_name",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "__dyld_get_shared_cache_uuid",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "__dyld_image_count",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "__exit",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_close",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_dispatch_once_f",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_dladdr",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_dlclose",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_dlerror",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_dlopen",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_dlsym",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_fclose",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_fflush",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_fork",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_fprintf",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_fprintf_l",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_fread",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_free",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_freelocale",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_fseek",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_fsync",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_getpid",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_lseek",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_mach_absolute_time",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_mach_msg",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_mach_port_type",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_mach_task_self_",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_mach_timebase_info",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_malloc",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_memcmp",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_memset",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_mk_timer_arm",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_mk_timer_cancel",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_mk_timer_create",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_mk_timer_destroy",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_mkstemp",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_mmap",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_munmap",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_newlocale",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_perror",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_printf",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_pthread_atfork",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_pthread_cond_broadcast",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_pthread_cond_wait",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_pthread_create",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_pthread_join",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_pthread_mutex_lock",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_pthread_mutex_unlock",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_puts",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_read",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_realloc",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_realpath$DARWIN_EXTSN",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_snprintf_l",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_strcmp",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_strncasecmp_l",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_strncmp",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_strstr",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_strtod_l",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_strtol_l",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_strtoll_l",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_strtoul_l",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_strtoull",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_strtoull_l",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_tmpfile",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_unlink",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_uselocale",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_usleep",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_waitpid",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_write",
+        "weak": false,
+        "library_ordinal": 1
+      }
+    ],
+    "defined_external_symbols": [
+      "__mh_execute_header",
+      "_main"
+    ]
   },
   "kernel": "stock host macOS",
   "runtime": "stock host dyld/libSystem",

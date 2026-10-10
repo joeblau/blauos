@@ -1,0 +1,6 @@
+Raw log: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/logs/iokit-link.log
+SHA256: 090a48b638102bf9efe7dc035453c6f4ad5bce660bac944fa6781c6140a9c831
+Bytes: 943
+
+$ ['xcrun', 'clang', '-arch', 'arm64', '-mmacosx-version-min=11.0', '-isysroot', '/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk', '-dynamiclib', '-nostdlib', '-Wl,-Z', '-L/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib', '-Wl,-dylib_file,/usr/lib/system/libdyld.dylib:/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/system/libdyld.dylib', '-Wl,-install_name,/usr/lib/libIOKitCF.dylib', '-Wl,-platform_version,macos,11.0,11.5', '-Wl,-fixup_chains', '-Wl,-force_load,/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/IOKit/libIOKitCF.a', '-lCoreFoundation', '-lSystem', '-o', '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/iokitcf-prefix/libIOKitCF.dylib']
+ld: warning: -dylib_file is deprecated. Use -F or -L to control where indirect dylibs are found

@@ -1,0 +1,23 @@
+{
+  "argv": [
+    "cmake",
+    "-S",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/corefoundation-source",
+    "-B",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/corefoundation",
+    "-G",
+    "Unix Makefiles",
+    "-DCMAKE_POLICY_VERSION_MINIMUM=3.5",
+    "-DCMAKE_TRY_COMPILE_TARGET_TYPE=STATIC_LIBRARY",
+    "-DCMAKE_OSX_ARCHITECTURES=arm64",
+    "-DCMAKE_OSX_SYSROOT=/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+    "-DCMAKE_OSX_DEPLOYMENT_TARGET=11.0",
+    "-DBUILD_SHARED_LIBS=ON",
+    "-DCMAKE_C_FLAGS=-include /Users/joeblau/Developer/joeblau/src/blauos/runtime/compat/sdk27_compile.h -I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/include -I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/objc/include -I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libc/pd-compat-include -I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-source/icu/source/common -I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-source/icu/source/i18n -I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/corefoundation-support -DU_DISABLE_RENAMING=1 -DDEPLOYMENT_RUNTIME_OBJC=1 -DINCLUDE_OBJC=1 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0 -fno-stack-check",
+    "-DCMAKE_OBJC_FLAGS=-include /Users/joeblau/Developer/joeblau/src/blauos/runtime/compat/sdk27_compile.h -I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/include -I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/objc/include -I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libc/pd-compat-include -I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-source/icu/source/common -I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-source/icu/source/i18n -I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/corefoundation-support -DU_DISABLE_RENAMING=1 -DDEPLOYMENT_RUNTIME_OBJC=1 -DINCLUDE_OBJC=1 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0 -fno-stack-check -fno-objc-arc",
+    "-DCMAKE_SHARED_LINKER_FLAGS=-nostdlib -L/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/corefoundation-support/lib -L/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib -lSystem -lobjc -Wl,-dylib_file,/usr/lib/system/libdyld.dylib:/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/system/libdyld.dylib -Wl,-platform_version,macos,11.0,11.5 -Wl,-fixup_chains -Wl,-not_for_dyld_shared_cache",
+    "-DCMAKE_INSTALL_NAME_DIR=/usr/lib",
+    "-DCMAKE_BUILD_WITH_INSTALL_NAME_DIR=ON"
+  ],
+  "cwd": "/Users/joeblau/Developer/joeblau/src/blauos"
+}

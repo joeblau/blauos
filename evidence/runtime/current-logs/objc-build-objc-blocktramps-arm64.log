@@ -1,0 +1,5 @@
+Raw log: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/logs/objc-objc-blocktramps-arm64.log
+SHA256: bd43bfab6e4a9c1bdd9f52af0b4db715d22c8186fd5246522e64e01b6c4837da
+Bytes: 553
+
+$ ['xcrun', 'clang', '-arch', 'arm64', '-mmacosx-version-min=11.0', '-isysroot', '/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk', '-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime', '-c', '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime/objc-blocktramps-arm64.s', '-o', '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/objc/objc-blocktramps-arm64.o']

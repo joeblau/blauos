@@ -1,0 +1,5 @@
+Raw log: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/logs/objc-objc-msg-arm64.log
+SHA256: 4248d4a5c96aa2df546d2af02678388b8ba3bc9ef3959633965d439ee5b62cd4
+Bytes: 556
+
+$ ['xcrun', 'clang', '-arch', 'arm64', '-mmacosx-version-min=11.0', '-isysroot', '/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk', '-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime', '-c', '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime/Messengers.subproj/objc-msg-arm64.s', '-o', '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/objc/objc-msg-arm64.o']

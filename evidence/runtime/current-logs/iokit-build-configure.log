@@ -1,0 +1,17 @@
+Raw log: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/logs/iokit-configure.log
+SHA256: 63eadc19f58b5fae394e8fc796a54d12b1a8887e3f402efa529e06a07caad080
+Bytes: 869
+
+$ ['cmake', '-S', '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay', '-B', '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay', '-DPUREDARWIN_ENABLE_IOKITCF=ON', '-DPUREDARWIN_COREFOUNDATION_PREFIX=/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/iokitcf-prefix']
+-- PureDarwin target architecture: arm64
+CMake Warning at cmake/iig.cmake:10 (message):
+  iig not found on PATH, run `nix profile install` in the iig-tools repo
+  (https://github.com/PureDarwin/iig-tools, or your local checkout) before
+  building any target that calls iig()
+Call Stack (most recent call first):
+  CMakeLists.txt:139 (include)
+
+
+-- Configuring done (0.3s)
+-- Generating done (0.6s)
+-- Build files have been written to: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay

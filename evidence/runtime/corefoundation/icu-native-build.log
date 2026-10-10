@@ -1,0 +1,47 @@
+cd ./config; \
+		/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/usr/bin/make -f pkgdataMakefile
+rebuilding config/icucross.mk
+rm -rf config/icu-config
+rebuilding config/icucross.inc
+/opt/homebrew/bin/ginstall -c /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-source/icu/source/config/icu-config-top config/icu-config
+chmod u+w config/icu-config
+rm -rf pkgdata.inc
+LC_ALL=C /opt/homebrew/bin/gsed -f /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-source/icu/source/config/make2sh.sed < ./config/Makefile.inc | grep -v '#M#' | uniq >> config/icu-config
+LC_ALL=C /opt/homebrew/bin/gsed -f /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-source/icu/source/config/make2sh.sed < /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-source/icu/source/config/mh-darwin | grep -v '#M#' | uniq >> config/icu-config
+config/icu-uc.pc updated.
+cat /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-source/icu/source/config/icu-config-bottom >> config/icu-config
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/usr/bin/make[1]: Making `all' in `genccode'
+make[2]: Nothing to be done for `all'.
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/usr/bin/make[1]: Making `all' in `gencmn'
+make[2]: Nothing to be done for `all'.
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/usr/bin/make[1]: Making `all' in `icupkg'
+make[2]: Nothing to be done for `all'.
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/usr/bin/make[1]: Making `all' in `pkgdata'
+make[2]: Nothing to be done for `all'.
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/usr/bin/make[1]: Making `all' in `gentest'
+make[2]: Nothing to be done for `all'.
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/usr/bin/make[1]: Making `all' in `gennorm2'
+make[2]: Nothing to be done for `all'.
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/usr/bin/make[1]: Making `all' in `gencfu'
+make[2]: Nothing to be done for `all'.
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/usr/bin/make[1]: Making `all' in `gendict'
+make[2]: Nothing to be done for `all'.
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/usr/bin/make[1]: Making `all' in `icuexportdata'
+make[2]: Nothing to be done for `all'.
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/usr/bin/make[1]: Making `all' in `escapesrc'
+make[2]: Nothing to be done for `all'.
+make[2]: Nothing to be done for `all-local'.
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/usr/bin/make[0]: Making `all' in `data'
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/usr/bin/make -f pkgdataMakefile
+/bin/sh /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-source/icu/source/mkinstalldirs ./out/tmp ./out/build/icudt76l
+rm -rf icupkg.inc
+Unpacking /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-source/icu/source/data/in/icudt76l.dat and generating out/tmp/icudata.lst (list of data files)
+DYLD_LIBRARY_PATH=../lib:../stubdata:../tools/ctestfw:$DYLD_LIBRARY_PATH  ../bin/icupkg -d ./out/build/icudt76l --list -x \* /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-source/icu/source/data/in/icudt76l.dat -o out/tmp/icudata.lst
+echo timestamp > build-local
+DYLD_LIBRARY_PATH=../stubdata:../tools/ctestfw:../lib:$DYLD_LIBRARY_PATH  ../bin/pkgdata -O ../data/icupkg.inc -q -c -s /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-native/data/out/build/icudt76l -d ../lib -e icudt76  -T ./out/tmp -p icudt76l -m dll -r 76.1 -L icudata ./out/tmp/icudata.lst
+pkgdata: cc -DU_ALL_IMPLEMENTATION -DU_ATTRIBUTE_DEPRECATED=   -DU_HAVE_STRTOD_L=1 -DU_HAVE_XLOCALE_H=1  -O2 -std=c11 -Wall -pedantic -Wshadow -Wpointer-arith -Wmissing-prototypes -Wwrite-strings   -fno-common -c -I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-source/icu/source/common -I../common  -dynamic -o ./out/tmp/icudt76l_dat.o ./out/tmp/icudt76l_dat.S
+pkgdata: cc -dynamiclib -dynamic -O2 -std=c11 -Wall -pedantic -Wshadow -Wpointer-arith -Wmissing-prototypes -Wwrite-strings      -o ../lib/libicudata.76.1.dylib ./out/tmp/icudt76l_dat.o -Wl,-compatibility_version -Wl,76 -Wl,-current_version -Wl,76.1 -install_name  libicudata.76.dylib  
+pkgdata: cd ../lib/ && rm -f libicudata.76.dylib && ln -s libicudata.76.1.dylib libicudata.76.dylib
+pkgdata: cd ../lib/ && rm -f libicudata.dylib && ln -s libicudata.76.1.dylib libicudata.dylib
+echo timestamp > packagedata
+Note: rebuild with "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/usr/bin/make VERBOSE=1 all-local" to show all compiler parameters.

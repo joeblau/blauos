@@ -1,0 +1,38 @@
+Raw log: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/logs/objc-objc-runtime-new.log
+SHA256: fc24d09332701f8b6ef6b0b9f470400c8ad745d4a8f536079e6f8a85f76bf266
+Bytes: 9810
+
+$ ['xcrun', 'clang++', '-arch', 'arm64', '-isysroot', '/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk', '-x', 'objective-c++', '-std=gnu++17', '-mmacosx-version-min=11.0', '-fno-objc-arc', '-fexceptions', '-fno-delete-null-pointer-checks', '-fobjc-exceptions', '-fPIC', '-Os', '-DNDEBUG', '-DLIBC_NO_LIBCRASHREPORTERCLIENT', '-D__PUREDARWIN__=1', '-Wno-undef-prefix', '-D_LIBCPP_ENABLE_CXX17_REMOVED_UNARY_BINARY_FUNCTION', '-include', '/Users/joeblau/Developer/joeblau/src/blauos/runtime/compat/sdk27_compile.h', '-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/objc/generated', '-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/objc/include', '-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime', '-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/macosx.internal/System/Library/Frameworks/System.framework/Versions/B/PrivateHeaders', '-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/include', '-c', '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime/objc-runtime-new.mm', '-o', '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/objc/objc-runtime-new.o']
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime/objc-runtime-new.mm:31:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime/DenseMapExtras.h:27:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime/llvm-DenseMap.h:22:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime/llvm-DenseMapInfo.h:19:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime/objc-private.h:280:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime/objc-runtime-new.h:846:17: warning: 'binary_function<const method_t::big &, const method_t::big &, bool>' is deprecated [-Wdeprecated-declarations]
+  846 |     public std::binary_function<const struct method_t::big&,
+      |                 ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/binary_function.h:24:8: note: 'binary_function<const method_t::big &, const method_t::big &, bool>' has been explicitly marked deprecated here
+  549 | bool    OSAtomicCompareAndSwapPtrBarrier( void *__oldValue, void *__newValue, void * volatile *__theValue );
+      |         ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime/objc-runtime-new.mm:4507:15: warning: 'OSAtomicCompareAndSwapPtrBarrier' is deprecated: first deprecated in macOS 10.12 - Use std::atomic_compare_exchange_strong() from <atomic> instead [-Wdeprecated-declarations]
+ 4507 |         if (! OSAtomicCompareAndSwapPtrBarrier(nil, (void*)(de ?: mangledName), 
+      |               ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/libkern/OSAtomicDeprecated.h:549:6: note: 'OSAtomicCompareAndSwapPtrBarrier' has been explicitly marked deprecated here
+  549 | bool    OSAtomicCompareAndSwapPtrBarrier( void *__oldValue, void *__newValue, void * volatile *__theValue );
+      |         ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime/objc-runtime-new.mm:5836:15: warning: 'OSAtomicCompareAndSwapPtrBarrier' is deprecated: first deprecated in macOS 10.12 - Use std::atomic_compare_exchange_strong() from <atomic> instead [-Wdeprecated-declarations]
+ 5836 |         if (! OSAtomicCompareAndSwapPtrBarrier(nil, (void*)(de ?: mangled), 
+      |               ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/libkern/OSAtomicDeprecated.h:549:6: note: 'OSAtomicCompareAndSwapPtrBarrier' has been explicitly marked deprecated here
+  549 | bool    OSAtomicCompareAndSwapPtrBarrier( void *__oldValue, void *__newValue, void * volatile *__theValue );
+      |         ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime/objc-runtime-new.mm:6163:2: warning: fixme build and search caches [-W#warnings]
+ 6163 | #warning fixme build and search caches
+      |  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime/objc-runtime-new.mm:6168:2: warning: fixme build and search caches [-W#warnings]
+ 6168 | #warning fixme build and search caches
+      |  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime/objc-runtime-new.mm:8048:2: warning: fixme optimize class_createInstances [-W#warnings]
+ 8048 | #warning fixme optimize class_createInstances
+      |  ^
+10 warnings generated.
