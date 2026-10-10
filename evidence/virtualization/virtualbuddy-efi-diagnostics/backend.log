@@ -1,0 +1,6 @@
+configuration-validated [:]
+framework-start-succeeded [:]
+screenshot-saved ["file": "frame-4s.png", "bytes": 78321]
+screenshot-saved ["file": "frame-12s.png", "bytes": 78321]
+bounded-observation-finished ["vm_state": 1, "serial_bytes": 0]
+host-stopped-probe ["result": "nil"]

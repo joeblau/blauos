@@ -1,0 +1,14 @@
+-- The C compiler identification is GNU 14.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /nix/store/48ywmq5vl4jld47z5f1p662vwi0anw6y-gcc-wrapper-14.3.0/bin/gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- The ASM compiler identification is GNU
+-- Found assembler: /nix/store/48ywmq5vl4jld47z5f1p662vwi0anw6y-gcc-wrapper-14.3.0/bin/gcc
+-- libgcc: /nix/store/35f3jqq1xw3lk9cpg7sb99nbrbgxd9ag-gcc-14.3.0/lib/gcc/aarch64-unknown-linux-gnu/14.3.0/libgcc.a
+CMake Error at CMakeLists.txt:96 (message):
+  EFI diagnostics require the aarch64 QEMU VIRT source profile
+
+
+-- Configuring incomplete, errors occurred!

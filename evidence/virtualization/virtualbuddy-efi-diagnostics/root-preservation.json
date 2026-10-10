@@ -1,0 +1,11 @@
+{
+  "root_partition_first_lba": 133120,
+  "root_partition_last_lba": 1181695,
+  "sha256": "3ffe36818b24f87c9d092b56acfb1d28310e5ec2961565eca161e47d83920dc2",
+  "baseline_equals_probe_after_boot_equals_gui_before_boot": true,
+  "files": [
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native-ci/run-2/image/blauos-arm64.img",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy/safe-Disk.img",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy/gui-safe-Disk.img"
+  ]
+}

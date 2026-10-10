@@ -25,6 +25,10 @@ work; this virtual target does not satisfy it.
 
 ## Selected experimental backend
 
+The separate [VirtualBuddy EFI diagnostic experiment](platform/virtualbuddy.md)
+reaches kernel-file parsing and a firmware memory-map checkpoint. It deliberately
+stops before XNU handoff; the current image does not boot on that backend.
+
 | Input | Immutable identity |
 | --- | --- |
 | PureDarwin `next` (including XNU 20.5.0 and VIRT platform code) | `1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290` |

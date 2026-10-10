@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "docker",
+    "exec",
+    "blauos-vb-6b65250ffe10",
+    "/nix/store/zr6x083p3h8xz3y6kqw3lz683qaz423x-mtools-4.0.49/bin/mcopy",
+    "-i",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy/safe-Disk.img@@1048576",
+    "::/EFI/BOOT/blauos-efi.txt",
+    "-"
+  ],
+  "utf16_sha256": "92f497325dd1795f98af81d43480fad87c8f2b7b412e16a4be1dfea86717b3ad",
+  "utf8_sha256": "864dbfa835d7257e216bb74c034c71e69b448ebd00298755fab2f4ff7507ec3f",
+  "passed": true,
+  "kernel_handoff_attempted": false,
+  "original_decoded_utf8_sha256": "82e5a6f511dafc37ee6f898672b9600933793646d709d44ce0d477a49d189b5f",
+  "utf8_normalization": "Decode UTF-16LE; replace CR CR LF and CR LF with LF. Preserve original firmware bytes in firmware-trace.utf16."
+}

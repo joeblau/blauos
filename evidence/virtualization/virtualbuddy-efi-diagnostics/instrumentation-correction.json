@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "virtualbuddy_version": "2.1 (325)",
+  "source_image_sha256": "35208e014274d56e9cfbdac7f2802e2219d54ce2d7f743e75fc208eb870ff120",
+  "source_and_GUI_bundle_image_still_match": true,
+  "gui_bundle": "/Users/joeblau/Library/Application Support/VirtualBuddy/BlauOS-ARM64-Experiment.vbvm",
+  "gui_vm_start_observed": true,
+  "gui_automation_accessibility_trusted": false,
+  "actual_framework_probe": "Virtualization.framework generic EFI, similar VirtualBuddy devices plus diagnostic serial",
+  "image_probe": {
+    "framework_start_succeeded": true,
+    "stopped_unexpectedly": true,
+    "kernel_execution_observed": false,
+    "serial_bytes": 0,
+    "diagnostic_validity": "Unexpected stop coincided with private screenshot SPI; invalid evidence of guest boot failure."
+  },
+  "control_probe": {
+    "framework_start_succeeded": true,
+    "guest_stopped_without_reported_error": true,
+    "xnu_loader_disabled": true,
+    "kernel_execution_observed": false
+  },
+  "source_bound_compatibility_concerns": {
+    "loader_QEMU_UART_physical_address": "0x09000000",
+    "loader_QEMU_RAM_base": "0x40000000",
+    "kernel_platform": "QEMU VIRT",
+    "VirtualBuddy_Linux_option_selects": "VZGenericPlatformConfiguration and VZEFIBootLoader",
+    "physical_M1_boot_gate_passed": false
+  },
+  "conclusion": "The current image did not demonstrate XNU execution in this EFI backend. A loader/platform compatibility port remains necessary. The exact failing guest instruction has not been observed.",
+  "probe_inputs": {
+    "efi_probe.swift": "94016e43d340674e94a8827734f09be94d7485cab9696ae7a92a1a3920c0f8cf",
+    "screenshot.h": "e1e2d50a595b9fbc88a25ebaf49ca88f46346a843bd93e2f89b33bc905c40b3b",
+    "efi-probe": "92c4c002fdc85a1830c49cd9bc5f4afe166f2098a7c321c7550198f5427368e4",
+    "entitlements.plist": "5d95521eb14d3cce9af386b484a3c01d767df8681e56d277d999a8f2fa1aa85b"
+  },
+  "upstream_VirtualBuddy_reference_commit": "088351b0fc67e0b24b83e7954ad48314dda4ce04",
+  "private_screenshot_control_correction": {
+    "same_stop_with_diagnostic_loader_at_four_seconds": true,
+    "no_capture_control_ran_until_bounded_host_stop": true,
+    "conclusion": "Private screenshot instrumentation invalidates the initial unexpected-stop inference; use fresh firmware file traces instead."
+  },
+  "gui_evidence": "User screenshot shows XNU EFI loader start only, not XNU execution."
+}

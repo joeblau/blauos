@@ -1,0 +1,23 @@
+{
+  "argv": [
+    "docker",
+    "exec",
+    "blauos-vb-6b65250ffe10",
+    "nix",
+    "--extra-experimental-features",
+    "nix-command flakes",
+    "build",
+    "--impure",
+    "--expr",
+    "let f=builtins.getFlake \"path:/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next\"; base=f.inputs.xnu-loader.packages.aarch64-linux.arm64-virt; in base.overrideAttrs (old: { src=builtins.path {path=\"/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy/loader-source\";name=\"xnu-loader-efi-diagnostics-source\";}; cmakeFlags=old.cmakeFlags ++ [\"-DXNU_LOADER_EFI_DIAGNOSTICS_ONLY=ON\"]; })",
+    "--no-link",
+    "--json",
+    "--max-jobs",
+    "1",
+    "--cores",
+    "2",
+    "--print-build-logs"
+  ],
+  "patch_sha256": "7b6ff7a7b8bd1d11dd0a5087ef2c47fc6a6d4c4067711d74a97d58f5e4d3b803",
+  "source_revision": "8295cd89c184785896d007d0554b398d22d8e32f"
+}

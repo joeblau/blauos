@@ -1,0 +1,33 @@
+{
+  "backend" : "Virtualization.framework generic EFI",
+  "configuration" : "VirtualBuddy 2.1 generic EFI, 1 CPU, 1 GiB, virtio block\/GPU\/network, USB input, empty virtiofs and SPICE console; additional diagnostic serial port",
+  "disk" : "\/Users\/joeblau\/Developer\/joeblau\/src\/blauos\/.blauos\/experiments\/virtualbuddy\/probe-Disk.img",
+  "events" : [
+    {
+      "name" : "configuration-validated",
+      "time" : "2026-10-10T22:52:22Z"
+    },
+    {
+      "name" : "framework-start-succeeded",
+      "time" : "2026-10-10T22:52:22Z"
+    },
+    {
+      "name" : "bounded-observation-finished",
+      "serial_bytes" : 0,
+      "time" : "2026-10-10T22:52:42Z",
+      "vm_state" : 1
+    },
+    {
+      "name" : "host-stopped-probe",
+      "result" : "nil",
+      "time" : "2026-10-10T22:52:42Z"
+    }
+  ],
+  "framework_start_succeeded" : true,
+  "host_os" : "Version 27.2 (Build 26B5101f)",
+  "independent_xnu_execution_observed" : false,
+  "physical_gate_passed" : false,
+  "schema_version" : 1,
+  "screenshot_method" : "disabled; private capture may disturb the backend",
+  "virtualbuddy_app_started_vm" : false
+}

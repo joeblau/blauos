@@ -1,0 +1,23 @@
+{
+  "argv": [
+    "docker",
+    "exec",
+    "blauos-vb-6b65250ffe10",
+    "/nix/store/ipjw0mbzcycidbw62gsz47cgivqxm2lv-cmake-4.1.2/bin/cmake",
+    "-S",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy/loader-source",
+    "-B",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy/invalid-profile-safe-build",
+    "-DARCH=aarch64",
+    "-DGNU_EFI_DIR=/nix/store/z534w7770fzs2lbl5g5v1bxdhfmj7gv0-gnu-efi-4.0.2",
+    "-DCMAKE_C_COMPILER=/nix/store/48ywmq5vl4jld47z5f1p662vwi0anw6y-gcc-wrapper-14.3.0/bin/gcc",
+    "-DCMAKE_ASM_COMPILER=/nix/store/48ywmq5vl4jld47z5f1p662vwi0anw6y-gcc-wrapper-14.3.0/bin/gcc",
+    "-DCMAKE_MAKE_PROGRAM=/nix/store/hf48sa5ghnzq4b0m80g2cplh34s5jvqj-gnumake-4.4.1/bin/make",
+    "-DXNU_LOADER_QEMU_VIRT=OFF",
+    "-DXNU_LOADER_EFI_DIAGNOSTICS_ONLY=ON"
+  ],
+  "exit_code": 1,
+  "expected_profile_rejection_observed": true,
+  "log_sha256": "27a6b82f45a314909a97b3cd3b54a096041ba97c57e62dac83feb1004d4de718",
+  "patch_sha256": "7b6ff7a7b8bd1d11dd0a5087ef2c47fc6a6d4c4067711d74a97d58f5e4d3b803"
+}
