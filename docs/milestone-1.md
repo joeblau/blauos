@@ -22,9 +22,13 @@ separate evidence; they are not substituted for the complete passing guest.
 The earlier [fresh source-build experiment](../evidence/ci/native-run-2/result.json)
 compiled XNU, all 13 essential extensions, runtime, launchd, shell and commands,
 but failed during guest initialization. Real cores and logs led to the reviewed
-loader, syscall, locale, provider and initialization corrections. A fresh clean
-GitHub native build of the corrected implementation is the remaining acceptance
-check for #23 and Gate 1; the older build does not satisfy that replay.
+loader, syscall, locale, provider and initialization corrections. The corrected
+[fresh GitHub source build and complete guest replay](https://github.com/joeblau/blauos/actions/runs/38074322304)
+now passes at clean revision `bf6d081f6eb2348d7d3d5b80a6b80899f5518695`. All 24
+pipeline stages and 20 fresh-nonce guest checks pass. The uploaded archive was
+downloaded and verified against its SHA-256; it contains full audits, manifests,
+symbols, serial output and results. [Tracked CI evidence](../evidence/ci/github-native-38074322304/result.json)
+preserves actual receipts and compact audits with exact raw hashes.
 
 | Issue | Evidence | Acceptance status |
 | --- | --- | --- |
@@ -43,8 +47,8 @@ check for #23 and Gate 1; the older build does not satisfy that replay.
 | #20 launchd and IPC | `runtime/service-subset.json`, [guest log](../evidence/virtualization/pid1-checkpoint/serial.log) | Job launch, Mach registration/IPC, KeepAlive restart, reaping, load/unload, errors and complete guest shutdown pass |
 | #21 Shell/PID 1 image | `scripts/vm/native_ci.py`, [actual boot](../evidence/virtualization/pid1-checkpoint/result.json) | Source PID 1, dash, utilities and services execute from the persistent root image |
 | #22 VM networking | `vm/guest_probe.c`, [guest log](../evidence/virtualization/pid1-checkpoint/serial.log) | Real BSD en0 registration, address/route/DNS/time, guest-to-host challenge and host-to-guest service pass |
-| #23 Build/boot CI | `.github/workflows/native-baseline.yml`, `scripts/vm/native_ci.py` | Implemented; corrected clean GitHub source-build and complete guest replay pending |
-| #24 Gate 1 | Runtime, executable and clean-build evidence above | **NO-GO pending the corrected clean CI replay**; named passing decision follows its actual success |
+| #23 Build/boot CI | `.github/workflows/native-baseline.yml`, `scripts/vm/native_ci.py` | All 24 fresh pipeline stages and complete guest replay pass; archive download/digest/content verified |
+| #24 Gate 1 | Runtime, executable and clean-build evidence above | **PASS/GO**, technical reviewer Codex; [named decision and limitations](../evidence/gate-1.json) |
 
 Source-build repeatability and identical output bytes are separate findings.
 The two kernel builds have different timestamps, UUIDs and embedded absolute
@@ -58,6 +62,7 @@ SDK 11.3 archive. The tested SDK 27.2 adaptation has a separate input identity
 and reviewed compatibility changes. The passing independent runtime applies
 to that tested profile. Virtual execution does not establish physical M1 boot.
 
-Keep #3, #23 and #24 open until the corrected clean source-build CI and automated
-guest replay pass. Record its exact revision, hashes, workflow run and named
-technical decision before closing the gate and milestone.
+All 18 milestone issues meet their scoped acceptance criteria. Codex records
+**PASS/GO for Gate 1 technical acceptance** in the [decision record](../evidence/gate-1.json).
+The investment decision owner remains Joe Blau; no human approval or physical
+M1 boot is implied. The next work is Phase 1 native kernel bring-up.

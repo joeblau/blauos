@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "implementation": "PureDarwin next launchd 842.91.1 lineage",
-  "supported_subset_status": "unverified_pending_source_runtime_and_guest_tests",
+  "supported_subset_status": "verified_in_fresh_source_xnu_virtual_guest",
   "required": [
     "PID 1 Mach bootstrap namespace",
     "RunAtLoad executable jobs",
@@ -23,5 +23,14 @@
     "xpc_create_from_plist aborting as unimplemented",
     "dyld dispatch_once_f used from multiple threads without synchronization",
     "dyld _Block_copy or _Block_release paths that abort"
-  ]
+  ],
+  "verification": {
+    "date": "2026-10-10",
+    "project_revision": "bf6d081f6eb2348d7d3d5b80a6b80899f5518695",
+    "github_run": "https://github.com/joeblau/blauos/actions/runs/38074322304",
+    "evidence": "evidence/ci/github-native-38074322304/boot/serial.log",
+    "guest_result": "evidence/ci/github-native-38074322304/boot/result.json",
+    "guest_shutdown_verified": true,
+    "scope": "Declared required subset on the documented ARM64 VIRT profile"
+  }
 }

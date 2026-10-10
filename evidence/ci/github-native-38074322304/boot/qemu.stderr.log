@@ -1,0 +1,1 @@
+qemu-system-aarch64: terminating on signal 15 from pid 141 (/nix/store/73wpgfhvhs97jpf7lshvx7sj0q3c275q-python3-3.14.6/bin/python3)

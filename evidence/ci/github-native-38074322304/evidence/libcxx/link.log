@@ -1,0 +1,2 @@
+ld: warning: passed two min versions (27.2, 11.0) for platform macOS. Using 11.0.
+ld: warning: -dylib_file is deprecated. Use -F or -L to control where indirect dylibs are found

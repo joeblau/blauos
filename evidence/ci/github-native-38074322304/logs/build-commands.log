@@ -1,0 +1,189 @@
+{
+  "schema_version": 1,
+  "artifacts": [
+    {
+      "path": "/bin/netsetup",
+      "sha256": "9022764b9db6f7a89f9b82eb8760771ea874dba9f90a1459fd4d3074b051a94d",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "source_path": "src/Userspace/netsetup/netsetup.c",
+      "source_file_sha256": "1c4c225929fb86623bb5a68574322d81efdc30b1ce852d493e893f6869a048d5",
+      "upstream_source_file_sha256": "90a3feedacf6b20f12aee0094d808c13fae0a05967725a29bf7432f402092878",
+      "build_amendments": [
+        {
+          "path": "vm/patches/netsetup-interface-registration.patch",
+          "sha256": "d1b2177b70a01f7a963211b104e60b687951e35fbc19d4c135856ceb77034752"
+        },
+        {
+          "path": "scripts/vm/build_userspace.py",
+          "sha256": "5c33913a9241282c0c67775d076f021d25f4153cf7ebcbd400835aebc7eb1b2f"
+        }
+      ],
+      "framework_link_inputs": {
+        "usr/lib/libIOKitCF.dylib": "65c262069cca6d038e53036634344046ee689093fecefbe31384b78f1c2eb1da",
+        "usr/lib/libCoreFoundation.dylib": "45941c24b9cc7f9ac97e3c83f2fdae294422061a370b58def10606429dc096c9"
+      }
+    },
+    {
+      "path": "/bin/uname",
+      "sha256": "42d178f5667716fcd5166e22454f5470406d2357bc396f0fb5c00ee4bb66ef8f",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "source_path": "src/Userspace/shell_cmds/uname.c",
+      "source_file_sha256": "5e57fa96b6ed90f48405df9e4ffd89605a995da886143d80d37db7d1e3318d17"
+    },
+    {
+      "path": "/bin/sleep",
+      "sha256": "32bc6c8ee8438b1d237e2ee3d9d2aa830faf567a1d8227fe8a03725b78ad55d7",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "source_path": "src/Userspace/shell_cmds/sleep.c",
+      "source_file_sha256": "535bae69a24d23c253050f9d72f86540e748c7abd65e6719eb8418f039c05986"
+    },
+    {
+      "path": "/bin/test",
+      "sha256": "8559c075344b48ccea5283023de10f210192db57b40e11f2318d704326e3ea4d",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "source_path": "src/Userspace/shell_cmds/test.c",
+      "source_file_sha256": "bf54b67c1f9428b7e3e7dcd2d38eb387159bec7c29eca070c00189a604ce0ffa"
+    },
+    {
+      "path": "/bin/true",
+      "sha256": "4e752d400a44a766f0b2b745e28769168ed83cb7661793fb2b1a6230cf00b3ec",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "source_path": "src/Userspace/shell_cmds/true.c",
+      "source_file_sha256": "a2fdf2ba35694c7d2369f3ea4e420cbe6cc9ca198cccca2bb95e7747bb6e3313"
+    },
+    {
+      "path": "/bin/false",
+      "sha256": "bd2b64d57a6be2f4f0a12a723120953be9eb9338dc652803f91a8b0ca7a8390e",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "source_path": "src/Userspace/shell_cmds/false.c",
+      "source_file_sha256": "03c627dece34818a231b4bdeb7ba1818eacf981900425ecc26382990a85d13f9"
+    },
+    {
+      "path": "/bin/echo",
+      "sha256": "aff9d07015737d184692a586650256de6ee8846ced46db59e1e7d517899cdd2c",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "source_path": "src/Userspace/shell_cmds/echo.c",
+      "source_file_sha256": "72e1a23f72fc2ed10ba5fdaebe7bbc0092ec71988a874cd067108f4a711e6f3a"
+    },
+    {
+      "path": "/sbin/reboot",
+      "sha256": "85608a465e81c09bcb14e5d1473e7e0aeda7e4fb29d13e22fde92b08492163f6",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "source_path": "src/Userspace/system_cmds/pd_shutdown.c",
+      "source_file_sha256": "440f5e050a0d0fec3c1bbea5d47edaebf7a812d9d2e18a5c52a600c3b09624e4"
+    },
+    {
+      "path": "/bin/blauos_guest_probe",
+      "sha256": "fc456e67f1e7367ff7a8f438873b1b53363256f32aa7d7e363812aedc204aad7",
+      "source": "blauos",
+      "revision": "workspace-sha256:e2ede716ace2bec8ece0379f9725ccbbc2311836ea744be3f944a678f3f91276",
+      "source_path": "vm/guest_probe.c",
+      "source_file_sha256": "cf6f97b226b4c39772ac265f98660b89f00377b19216694e8ffffb5012b6908b",
+      "source_files": [
+        {
+          "path": "vm/guest_probe.c",
+          "sha256": "cf6f97b226b4c39772ac265f98660b89f00377b19216694e8ffffb5012b6908b"
+        },
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        }
+      ],
+      "workspace_revision": "bf6d081f6eb2348d7d3d5b80a6b80899f5518695"
+    },
+    {
+      "path": "/bin/blauos_runtime_probe",
+      "sha256": "0334a17dc7527657530fcebaa502a7d2a038bbcee0312352b98bd024c4af661e",
+      "source": "blauos",
+      "revision": "workspace-sha256:2a70d31a76e27b56431659a2ad21c2e536389ee0492eab3e26aeaea1fd3f5254",
+      "source_path": "runtime/probes/runtime_probe.c",
+      "source_file_sha256": "262bc33658922292a640bb1dcea680fcf67b4420f64373c447dc629eb104a82f",
+      "source_files": [
+        {
+          "path": "runtime/probes/runtime_probe.c",
+          "sha256": "262bc33658922292a640bb1dcea680fcf67b4420f64373c447dc629eb104a82f"
+        },
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        }
+      ],
+      "workspace_revision": "bf6d081f6eb2348d7d3d5b80a6b80899f5518695"
+    },
+    {
+      "path": "/usr/libexec/blauos-bootstrap-probe",
+      "sha256": "1de32668943899f01e0ff9a9a6bfa2518fbd7419ad64f4850f4c81f27959ac73",
+      "source": "blauos",
+      "revision": "workspace-sha256:123ffc0f3fbf6305d5ff3db55a772f3c698ef1a2317f1d7f009d4cbb3d00935e",
+      "source_path": "runtime/probes/bootstrap_probe.c",
+      "source_file_sha256": "57b69b632f9d9a5315ab89a0df1ebf0fdda5f9719972449469fd75361dbec31f",
+      "source_files": [
+        {
+          "path": "runtime/probes/bootstrap_probe.c",
+          "sha256": "57b69b632f9d9a5315ab89a0df1ebf0fdda5f9719972449469fd75361dbec31f"
+        },
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        }
+      ],
+      "workspace_revision": "bf6d081f6eb2348d7d3d5b80a6b80899f5518695"
+    },
+    {
+      "path": "/usr/libexec/blauos-shutdown-probe",
+      "sha256": "efff5fb1e66b7adb073bb87a8b98c9a52798f969916478f68562e6ad93bff9d3",
+      "source": "blauos",
+      "revision": "workspace-sha256:fdde1efa5514fb5a723beed7830ab8e65ab8cb55db3f61bedb842d8182b391ba",
+      "source_path": "runtime/probes/shutdown_probe.c",
+      "source_file_sha256": "01d02b9d5f32210a19361ea8cb86f9f761e0fb67d42d7e6ea12ae2d4d71fd3f8",
+      "source_files": [
+        {
+          "path": "runtime/probes/shutdown_probe.c",
+          "sha256": "01d02b9d5f32210a19361ea8cb86f9f761e0fb67d42d7e6ea12ae2d4d71fd3f8"
+        },
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        }
+      ],
+      "workspace_revision": "bf6d081f6eb2348d7d3d5b80a6b80899f5518695"
+    },
+    {
+      "path": "/usr/lib/libblauos-loader-fixture.dylib",
+      "sha256": "0ec6d89e36f274aac88eb8b2d9e310a370cefd196a64b6c6f6996044278a0843",
+      "source": "blauos",
+      "revision": "workspace-sha256:3aee9ffbec581589ba7e05af3e26e8d77132785c2e8a03150d839f7520daaecd",
+      "source_path": "runtime/probes/loader_fixture.c",
+      "source_file_sha256": "242c758f89b0b7ea225918fa3310419c93279a788174ebb3f78bf2035186cde0",
+      "source_files": [
+        {
+          "path": "runtime/probes/loader_fixture.c",
+          "sha256": "242c758f89b0b7ea225918fa3310419c93279a788174ebb3f78bf2035186cde0"
+        },
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        }
+      ],
+      "workspace_revision": "bf6d081f6eb2348d7d3d5b80a6b80899f5518695"
+    }
+  ],
+  "sdk": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.2.sdk",
+  "built": true,
+  "errors": [],
+  "compiler_version": "Apple clang version 21.0.0 (clang-2100.3.34.2)",
+  "runtime_link_inputs": {
+    "usr/lib/libSystem.B.dylib": "7835ae5be0bdc774d78671a1924ea0c7939fecfe08690af650cb758001daf068",
+    "usr/lib/system/libdyld.dylib": "ad43b41ad092d2b901bef947176275b15ab3e47afb22b91c294b28e0a6b0cb12"
+  },
+  "stock_runtime_used": false,
+  "guest_execution_verified": false
+}

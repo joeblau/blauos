@@ -3,17 +3,18 @@
 A headless Darwin server project for Apple Silicon: native XNU, independent
 userspace, and reproducible releases.
 
-The project is establishing an ARM64 build and virtual baseline. Source-built
-components and recorded experiments are tracked separately from proven guest
-execution and physical M1 hardware support. Check the evidence before treating
-an experiment as a completed operating system.
+Milestone 1 is complete: a clean pinned source build boots an independent ARM64
+XNU guest to launchd and a shell, with networking, runtime/service tests and clean
+shutdown. [GitHub CI](https://github.com/joeblau/blauos/actions/runs/38074322304)
+and the [Gate 1 decision](evidence/gate-1.json) preserve the evidence and limits.
+Physical M1 kernel and driver bring-up is the next milestone.
 
 - [Release scope and evidence gates](docs/scope.md)
 - [Repository/source architecture](docs/architecture.md)
 - [Pinned inputs and build instructions](docs/build.md)
 - [Kernel patch policy](docs/kernel-patches.md)
 - [Virtual baseline](docs/virtualization.md)
-- [Milestone 1 evidence and remaining work](docs/milestone-1.md)
+- [Milestone 1 acceptance evidence](docs/milestone-1.md)
 - [GitHub roadmap](https://github.com/joeblau/blauos/issues/1)
 - [Milestone 1: reproducible baseline](https://github.com/joeblau/blauos/milestone/1)
 

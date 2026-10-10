@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "architecture": "arm64",
+  "runtime_audit_passed": true,
+  "runtime_audit_sha256": "9dbb6e75f6935c8a1c58a8f7d242e6dc5e8f471f0e0c4ee5f369d7c6669e4e80",
+  "stock_kernel_used": false,
+  "guest_execution_observed": false,
+  "sha256": {
+    "image": "99ec2e49adf68eed3c97b525eba75aebfb0bac1c7108747d9ce65ca49ab96caa",
+    "firmware": "ff38109e82f343aac708df62e1d707c81ac42d3b7feaff375b87dcc1e846734b",
+    "vars_template": "b3b855c5a80310168051164986855692d1bdb06e67619856177965cd87c6774f",
+    "symbols": "907d922c6ae4141cb3bb9d3b1cb9bca7e3a7288aee2f27378370131202dc48fb"
+  },
+  "qemu_version": "QEMU emulator version 10.2.4",
+  "emulator_profile": {
+    "machine": "virt-10.2",
+    "virtualization": false,
+    "gic_version": 3,
+    "accel": "tcg",
+    "cpu": "neoverse-n2"
+  },
+  "source_lock_sha256": "8022bbbfb33204b56bb3297cd8cbb39fb6c08ea65c476492d99462f7edfe3657"
+}

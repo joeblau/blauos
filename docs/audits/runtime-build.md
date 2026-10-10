@@ -212,7 +212,10 @@ executable error reporting. The shutdown fixture and VM smoke require the
 fresh nonce-bound job start, child reap and job exit markers plus a real
 guest-triggered QMP shutdown event. Host process termination cannot satisfy
 that criterion. The captured v11 run passes these tests and the real shutdown
-witness. Issue acceptance also requires the full clean replay.
+witness. The [fresh GitHub replay](https://github.com/joeblau/blauos/actions/runs/38074322304)
+now independently rebuilds every component and passes the same runtime, service,
+network and shutdown checks with a new nonce. Its full raw audits and symbols are
+archived; tracked compact evidence preserves all artifact identities and routes.
 
 Two actual guest cores exposed bootstrap faults before PID 1 could initialize.
 The first reached `rebaseDyld` and called a libkernel string callback through

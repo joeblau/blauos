@@ -1,0 +1,13 @@
+{
+  "status": "pass",
+  "result": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/composed/runtime-audit.json",
+  "errors": []
+}
+{
+  "schema_version": 1,
+  "root": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/composed/root",
+  "provenance": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/composed/provenance.json",
+  "runtime_audit": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/composed/runtime-audit.json",
+  "composed": true,
+  "guest_boot_verified": false
+}

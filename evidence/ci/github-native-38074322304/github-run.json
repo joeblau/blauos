@@ -1,0 +1,78 @@
+{
+  "conclusion": "success",
+  "createdAt": "2026-10-10T18:04:40Z",
+  "databaseId": 38074322304,
+  "headSha": "bf6d081f6eb2348d7d3d5b80a6b80899f5518695",
+  "jobs": [
+    {
+      "completedAt": "2026-10-10T18:15:30Z",
+      "conclusion": "success",
+      "databaseId": 114277996121,
+      "name": "Clean source build, independent userspace, and virtual boot",
+      "startedAt": "2026-10-10T18:04:50Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-10-10T18:04:53Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-10-10T18:04:51Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-10T18:04:54Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09",
+          "number": 2,
+          "startedAt": "2026-10-10T18:04:53Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-10T18:15:19Z",
+          "conclusion": "success",
+          "name": "Build and boot the pinned native profile",
+          "number": 3,
+          "startedAt": "2026-10-10T18:04:54Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-10T18:15:19Z",
+          "conclusion": "success",
+          "name": "Remove the run's container after success, failure, or cancellation",
+          "number": 4,
+          "startedAt": "2026-10-10T18:15:19Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-10T18:15:24Z",
+          "conclusion": "success",
+          "name": "Archive source inputs, symbols, serial output, and results",
+          "number": 5,
+          "startedAt": "2026-10-10T18:15:19Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-10T18:15:25Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09",
+          "number": 10,
+          "startedAt": "2026-10-10T18:15:24Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-10T18:15:28Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 11,
+          "startedAt": "2026-10-10T18:15:25Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/joeblau/blauos/actions/runs/38074322304/job/114277996121"
+    }
+  ],
+  "status": "completed",
+  "updatedAt": "2026-10-10T18:15:31Z",
+  "url": "https://github.com/joeblau/blauos/actions/runs/38074322304"
+}

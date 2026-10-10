@@ -1,0 +1,1579 @@
+{
+  "schema_version": 1,
+  "status": "source_build_pass",
+  "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+  "implementation": "pinned POSIX mDNSResponder and real unicast DNS",
+  "steps": [
+    {
+      "name": "mDNSPosix/PosixDaemon.c",
+      "command": [
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+        "-arch",
+        "arm64",
+        "-mmacosx-version-min=11.0",
+        "-isysroot",
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+        "-DPOSIX_BUILD",
+        "-fno-builtin",
+        "-fblocks",
+        "-g",
+        "-O2",
+        "-Wno-nullability-completeness",
+        "-include",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/runtime/compat/sdk27_compile.h",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSCore",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSShared",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSPosix",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/DSO",
+        "-c",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSPosix/PosixDaemon.c",
+        "-o",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/mdns/objects/mDNSPosix_PosixDaemon.c.o"
+      ],
+      "exit_code": 0,
+      "log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/logs/mdns/mDNSPosix_PosixDaemon.c.log"
+    },
+    {
+      "name": "mDNSPosix/mDNSPosix.c",
+      "command": [
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+        "-arch",
+        "arm64",
+        "-mmacosx-version-min=11.0",
+        "-isysroot",
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+        "-DPOSIX_BUILD",
+        "-fno-builtin",
+        "-fblocks",
+        "-g",
+        "-O2",
+        "-Wno-nullability-completeness",
+        "-include",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/runtime/compat/sdk27_compile.h",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSCore",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSShared",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSPosix",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/DSO",
+        "-c",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSPosix/mDNSPosix.c",
+        "-o",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/mdns/objects/mDNSPosix_mDNSPosix.c.o"
+      ],
+      "exit_code": 0,
+      "log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/logs/mdns/mDNSPosix_mDNSPosix.c.log"
+    },
+    {
+      "name": "mDNSPosix/mDNSUNP.c",
+      "command": [
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+        "-arch",
+        "arm64",
+        "-mmacosx-version-min=11.0",
+        "-isysroot",
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+        "-DPOSIX_BUILD",
+        "-fno-builtin",
+        "-fblocks",
+        "-g",
+        "-O2",
+        "-Wno-nullability-completeness",
+        "-include",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/runtime/compat/sdk27_compile.h",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSCore",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSShared",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSPosix",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/DSO",
+        "-c",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSPosix/mDNSUNP.c",
+        "-o",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/mdns/objects/mDNSPosix_mDNSUNP.c.o"
+      ],
+      "exit_code": 0,
+      "log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/logs/mdns/mDNSPosix_mDNSUNP.c.log"
+    },
+    {
+      "name": "mDNSPosix/posix_utilities.c",
+      "command": [
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+        "-arch",
+        "arm64",
+        "-mmacosx-version-min=11.0",
+        "-isysroot",
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+        "-DPOSIX_BUILD",
+        "-fno-builtin",
+        "-fblocks",
+        "-g",
+        "-O2",
+        "-Wno-nullability-completeness",
+        "-include",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/runtime/compat/sdk27_compile.h",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSCore",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSShared",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSPosix",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/DSO",
+        "-c",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSPosix/posix_utilities.c",
+        "-o",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/mdns/objects/mDNSPosix_posix_utilities.c.o"
+      ],
+      "exit_code": 0,
+      "log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/logs/mdns/mDNSPosix_posix_utilities.c.log"
+    },
+    {
+      "name": "mDNSCore/mDNS.c",
+      "command": [
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+        "-arch",
+        "arm64",
+        "-mmacosx-version-min=11.0",
+        "-isysroot",
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+        "-DPOSIX_BUILD",
+        "-fno-builtin",
+        "-fblocks",
+        "-g",
+        "-O2",
+        "-Wno-nullability-completeness",
+        "-include",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/runtime/compat/sdk27_compile.h",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSCore",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSShared",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSPosix",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/DSO",
+        "-c",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSCore/mDNS.c",
+        "-o",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/mdns/objects/mDNSCore_mDNS.c.o"
+      ],
+      "exit_code": 0,
+      "log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/logs/mdns/mDNSCore_mDNS.c.log"
+    },
+    {
+      "name": "mDNSCore/DNSDigest.c",
+      "command": [
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+        "-arch",
+        "arm64",
+        "-mmacosx-version-min=11.0",
+        "-isysroot",
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+        "-DPOSIX_BUILD",
+        "-fno-builtin",
+        "-fblocks",
+        "-g",
+        "-O2",
+        "-Wno-nullability-completeness",
+        "-include",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/runtime/compat/sdk27_compile.h",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSCore",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSShared",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSPosix",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/DSO",
+        "-c",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSCore/DNSDigest.c",
+        "-o",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/mdns/objects/mDNSCore_DNSDigest.c.o"
+      ],
+      "exit_code": 0,
+      "log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/logs/mdns/mDNSCore_DNSDigest.c.log"
+    },
+    {
+      "name": "mDNSCore/uDNS.c",
+      "command": [
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+        "-arch",
+        "arm64",
+        "-mmacosx-version-min=11.0",
+        "-isysroot",
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+        "-DPOSIX_BUILD",
+        "-fno-builtin",
+        "-fblocks",
+        "-g",
+        "-O2",
+        "-Wno-nullability-completeness",
+        "-include",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/runtime/compat/sdk27_compile.h",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSCore",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSShared",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSPosix",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/DSO",
+        "-c",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSCore/uDNS.c",
+        "-o",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/mdns/objects/mDNSCore_uDNS.c.o"
+      ],
+      "exit_code": 0,
+      "log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/logs/mdns/mDNSCore_uDNS.c.log"
+    },
+    {
+      "name": "mDNSCore/DNSCommon.c",
+      "command": [
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+        "-arch",
+        "arm64",
+        "-mmacosx-version-min=11.0",
+        "-isysroot",
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+        "-DPOSIX_BUILD",
+        "-fno-builtin",
+        "-fblocks",
+        "-g",
+        "-O2",
+        "-Wno-nullability-completeness",
+        "-include",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/runtime/compat/sdk27_compile.h",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSCore",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSShared",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSPosix",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/DSO",
+        "-c",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSCore/DNSCommon.c",
+        "-o",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/mdns/objects/mDNSCore_DNSCommon.c.o"
+      ],
+      "exit_code": 0,
+      "log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/logs/mdns/mDNSCore_DNSCommon.c.log"
+    },
+    {
+      "name": "mDNSShared/uds_daemon.c",
+      "command": [
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+        "-arch",
+        "arm64",
+        "-mmacosx-version-min=11.0",
+        "-isysroot",
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+        "-DPOSIX_BUILD",
+        "-fno-builtin",
+        "-fblocks",
+        "-g",
+        "-O2",
+        "-Wno-nullability-completeness",
+        "-include",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/runtime/compat/sdk27_compile.h",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSCore",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSShared",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSPosix",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/DSO",
+        "-c",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSShared/uds_daemon.c",
+        "-o",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/mdns/objects/mDNSShared_uds_daemon.c.o"
+      ],
+      "exit_code": 0,
+      "log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/logs/mdns/mDNSShared_uds_daemon.c.log"
+    },
+    {
+      "name": "mDNSShared/mDNSDebug.c",
+      "command": [
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+        "-arch",
+        "arm64",
+        "-mmacosx-version-min=11.0",
+        "-isysroot",
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+        "-DPOSIX_BUILD",
+        "-fno-builtin",
+        "-fblocks",
+        "-g",
+        "-O2",
+        "-Wno-nullability-completeness",
+        "-include",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/runtime/compat/sdk27_compile.h",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSCore",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSShared",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSPosix",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/DSO",
+        "-c",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSShared/mDNSDebug.c",
+        "-o",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/mdns/objects/mDNSShared_mDNSDebug.c.o"
+      ],
+      "exit_code": 0,
+      "log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/logs/mdns/mDNSShared_mDNSDebug.c.log"
+    },
+    {
+      "name": "mDNSShared/dnssd_ipc.c",
+      "command": [
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+        "-arch",
+        "arm64",
+        "-mmacosx-version-min=11.0",
+        "-isysroot",
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+        "-DPOSIX_BUILD",
+        "-fno-builtin",
+        "-fblocks",
+        "-g",
+        "-O2",
+        "-Wno-nullability-completeness",
+        "-include",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/runtime/compat/sdk27_compile.h",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSCore",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSShared",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSPosix",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/DSO",
+        "-c",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSShared/dnssd_ipc.c",
+        "-o",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/mdns/objects/mDNSShared_dnssd_ipc.c.o"
+      ],
+      "exit_code": 0,
+      "log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/logs/mdns/mDNSShared_dnssd_ipc.c.log"
+    },
+    {
+      "name": "mDNSShared/GenLinkedList.c",
+      "command": [
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+        "-arch",
+        "arm64",
+        "-mmacosx-version-min=11.0",
+        "-isysroot",
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+        "-DPOSIX_BUILD",
+        "-fno-builtin",
+        "-fblocks",
+        "-g",
+        "-O2",
+        "-Wno-nullability-completeness",
+        "-include",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/runtime/compat/sdk27_compile.h",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSCore",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSShared",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSPosix",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/DSO",
+        "-c",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSShared/GenLinkedList.c",
+        "-o",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/mdns/objects/mDNSShared_GenLinkedList.c.o"
+      ],
+      "exit_code": 0,
+      "log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/logs/mdns/mDNSShared_GenLinkedList.c.log"
+    },
+    {
+      "name": "mDNSShared/PlatformCommon.c",
+      "command": [
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+        "-arch",
+        "arm64",
+        "-mmacosx-version-min=11.0",
+        "-isysroot",
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+        "-DPOSIX_BUILD",
+        "-fno-builtin",
+        "-fblocks",
+        "-g",
+        "-O2",
+        "-Wno-nullability-completeness",
+        "-include",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/runtime/compat/sdk27_compile.h",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSCore",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSShared",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSPosix",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/DSO",
+        "-c",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSShared/PlatformCommon.c",
+        "-o",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/mdns/objects/mDNSShared_PlatformCommon.c.o"
+      ],
+      "exit_code": 0,
+      "log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/logs/mdns/mDNSShared_PlatformCommon.c.log"
+    },
+    {
+      "name": "mDNSShared/ClientRequests.c",
+      "command": [
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+        "-arch",
+        "arm64",
+        "-mmacosx-version-min=11.0",
+        "-isysroot",
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+        "-DPOSIX_BUILD",
+        "-fno-builtin",
+        "-fblocks",
+        "-g",
+        "-O2",
+        "-Wno-nullability-completeness",
+        "-include",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/runtime/compat/sdk27_compile.h",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSCore",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSShared",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSPosix",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/DSO",
+        "-c",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSShared/ClientRequests.c",
+        "-o",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/mdns/objects/mDNSShared_ClientRequests.c.o"
+      ],
+      "exit_code": 0,
+      "log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/logs/mdns/mDNSShared_ClientRequests.c.log"
+    },
+    {
+      "name": "mDNSShared/dnssd_clientshim.c",
+      "command": [
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+        "-arch",
+        "arm64",
+        "-mmacosx-version-min=11.0",
+        "-isysroot",
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+        "-DPOSIX_BUILD",
+        "-fno-builtin",
+        "-fblocks",
+        "-g",
+        "-O2",
+        "-Wno-nullability-completeness",
+        "-include",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/runtime/compat/sdk27_compile.h",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSCore",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSShared",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSPosix",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/DSO",
+        "-c",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSShared/dnssd_clientshim.c",
+        "-o",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/mdns/objects/mDNSShared_dnssd_clientshim.c.o"
+      ],
+      "exit_code": 0,
+      "log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/logs/mdns/mDNSShared_dnssd_clientshim.c.log"
+    },
+    {
+      "name": "DSO/dso.c",
+      "command": [
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+        "-arch",
+        "arm64",
+        "-mmacosx-version-min=11.0",
+        "-isysroot",
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+        "-DPOSIX_BUILD",
+        "-fno-builtin",
+        "-fblocks",
+        "-g",
+        "-O2",
+        "-Wno-nullability-completeness",
+        "-include",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/runtime/compat/sdk27_compile.h",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSCore",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSShared",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSPosix",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/DSO",
+        "-c",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/DSO/dso.c",
+        "-o",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/mdns/objects/DSO_dso.c.o"
+      ],
+      "exit_code": 0,
+      "log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/logs/mdns/DSO_dso.c.log"
+    },
+    {
+      "name": "DSO/dso-transport.c",
+      "command": [
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+        "-arch",
+        "arm64",
+        "-mmacosx-version-min=11.0",
+        "-isysroot",
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+        "-DPOSIX_BUILD",
+        "-fno-builtin",
+        "-fblocks",
+        "-g",
+        "-O2",
+        "-Wno-nullability-completeness",
+        "-include",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/runtime/compat/sdk27_compile.h",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSCore",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSShared",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/mDNSPosix",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/DSO",
+        "-c",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay/src/Libraries/mDNSResponder/DSO/dso-transport.c",
+        "-o",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/mdns/objects/DSO_dso-transport.c.o"
+      ],
+      "exit_code": 0,
+      "log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/logs/mdns/DSO_dso-transport.c.log"
+    },
+    {
+      "name": "mdnsd-link",
+      "command": [
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+        "-arch",
+        "arm64",
+        "-mmacosx-version-min=11.0",
+        "-isysroot",
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+        "-nostdlib",
+        "-Wl,-Z",
+        "-Wl,-dylinker_install_name,/usr/lib/dyld",
+        "-Wl,-platform_version,macos,11.0,11.5",
+        "-Wl,-fixup_chains",
+        "-Wl,-dylib_file,/usr/lib/system/libdyld.dylib:/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/root/usr/lib/system/libdyld.dylib",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/mdns/objects/mDNSPosix_PosixDaemon.c.o",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/mdns/objects/mDNSPosix_mDNSPosix.c.o",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/mdns/objects/mDNSPosix_mDNSUNP.c.o",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/mdns/objects/mDNSPosix_posix_utilities.c.o",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/mdns/objects/mDNSCore_mDNS.c.o",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/mdns/objects/mDNSCore_DNSDigest.c.o",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/mdns/objects/mDNSCore_uDNS.c.o",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/mdns/objects/mDNSCore_DNSCommon.c.o",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/mdns/objects/mDNSShared_uds_daemon.c.o",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/mdns/objects/mDNSShared_mDNSDebug.c.o",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/mdns/objects/mDNSShared_dnssd_ipc.c.o",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/mdns/objects/mDNSShared_GenLinkedList.c.o",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/mdns/objects/mDNSShared_PlatformCommon.c.o",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/mdns/objects/mDNSShared_ClientRequests.c.o",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/mdns/objects/mDNSShared_dnssd_clientshim.c.o",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/mdns/objects/DSO_dso.c.o",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/mdns/objects/DSO_dso-transport.c.o",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/root/usr/lib/libSystem.B.dylib",
+        "-o",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/mdns/mdnsd"
+      ],
+      "exit_code": 0,
+      "log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/logs/mdns/link.log"
+    }
+  ],
+  "errors": [],
+  "guest_dns_verified": false,
+  "link_dependencies": [
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/root/usr/lib/libSystem.B.dylib",
+      "sha256": "7835ae5be0bdc774d78671a1924ea0c7939fecfe08690af650cb758001daf068"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/root/usr/lib/system/libdyld.dylib",
+      "sha256": "ad43b41ad092d2b901bef947176275b15ab3e47afb22b91c294b28e0a6b0cb12"
+    }
+  ],
+  "compiler": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+  "sdk": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+  "sdk_settings_sha256": "51114e56c4717c0713ce5196b0b2263e003809dac369616322aa7e958d6992b2",
+  "source_inputs": [
+    {
+      "path": "src/Libraries/mDNSResponder/mDNSPosix/PosixDaemon.c",
+      "sha256": "d8d8b6d3ab2e11e839e4f2cf8fa08a28ec95541a267fb6e3e16e481e501913a6"
+    },
+    {
+      "path": "src/Libraries/mDNSResponder/mDNSPosix/mDNSPosix.c",
+      "sha256": "abf05be61a771ecb87c0feee2b60a1a8e1a36f9cff912c275e26e890ea8515c8"
+    },
+    {
+      "path": "src/Libraries/mDNSResponder/mDNSPosix/mDNSUNP.c",
+      "sha256": "4877044ec7ba5794696020740e674eb3ff35908c0448c3fee1f82d3f28e10f03"
+    },
+    {
+      "path": "src/Libraries/mDNSResponder/mDNSPosix/posix_utilities.c",
+      "sha256": "3a3d51e7744b20ea3ad1f44b401bb66080f663546c2b5978981b982d760186af"
+    },
+    {
+      "path": "src/Libraries/mDNSResponder/mDNSCore/mDNS.c",
+      "sha256": "62de71be29a082a05b4cd2bb806c834c2f1ea4dde9dd504b3a5305c3ff69a162"
+    },
+    {
+      "path": "src/Libraries/mDNSResponder/mDNSCore/DNSDigest.c",
+      "sha256": "cb9966fe1d51aa3d52163c91acf77121129bbfd9df746f4048ee00835238e7ec"
+    },
+    {
+      "path": "src/Libraries/mDNSResponder/mDNSCore/uDNS.c",
+      "sha256": "be6a619875004a5af55007c3a43139bb7d004199716e630fb7723a13c559afb7"
+    },
+    {
+      "path": "src/Libraries/mDNSResponder/mDNSCore/DNSCommon.c",
+      "sha256": "cc53bd1bd24cfa2f0a856186531bf2f45147d2c5ec0123935a1020244a433f6b"
+    },
+    {
+      "path": "src/Libraries/mDNSResponder/mDNSShared/uds_daemon.c",
+      "sha256": "a903ccde0761c878045c2d04caf9fd42d659756f92d847d1f9b868710512bdc5"
+    },
+    {
+      "path": "src/Libraries/mDNSResponder/mDNSShared/mDNSDebug.c",
+      "sha256": "ecdb49964cc6714f0bfa3972a4a313bbf9444caba52143370b17440d753c4ca9"
+    },
+    {
+      "path": "src/Libraries/mDNSResponder/mDNSShared/dnssd_ipc.c",
+      "sha256": "e700d9edef620087dc089c85867e613c6be158e03d3f96515497a975ade5391e"
+    },
+    {
+      "path": "src/Libraries/mDNSResponder/mDNSShared/GenLinkedList.c",
+      "sha256": "b918512444c5f75f771df88ac53b5f5d728cebbff3568535117229c179573e8d"
+    },
+    {
+      "path": "src/Libraries/mDNSResponder/mDNSShared/PlatformCommon.c",
+      "sha256": "eff9ae356cce8c6ec2c2a7bf98d4b043f855922b2d94ee7b8717595a3b9b7f38"
+    },
+    {
+      "path": "src/Libraries/mDNSResponder/mDNSShared/ClientRequests.c",
+      "sha256": "3d0c8316f7c7d4ce718932fb9703edb733bc28d103438804a51138a5c4cb0dc3"
+    },
+    {
+      "path": "src/Libraries/mDNSResponder/mDNSShared/dnssd_clientshim.c",
+      "sha256": "da66899092da4d6cbd44ab7a48fd68480e672edca90ccd513cf24d0680acb07f"
+    },
+    {
+      "path": "src/Libraries/mDNSResponder/DSO/dso.c",
+      "sha256": "6c3da1f439c42387f92c43dad6cdf4a69fea3edf34028be4113bf63de18876f3"
+    },
+    {
+      "path": "src/Libraries/mDNSResponder/DSO/dso-transport.c",
+      "sha256": "4ed378050db3e8e39573d9e5001b526ee578034b289e40eb90ed4a632c58ea1b"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "/usr/sbin/mdnsd",
+      "sha256": "7629312e5179dada5e6a1ba1d360429eb7b6313068ca45f512bd4603b36e4552",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "build_amendments": [
+        {
+          "path": "scripts/build/mdns.py",
+          "sha256": "90e3f7c89003809f68c683e10c91f7186660923eb4669ba51f05f917a61c350f"
+        },
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        }
+      ],
+      "compiler": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+      "sdk_settings_sha256": "51114e56c4717c0713ce5196b0b2263e003809dac369616322aa7e958d6992b2"
+    },
+    {
+      "path": "/System/Library/LaunchDaemons/com.apple.mDNSResponder.plist",
+      "sha256": "fc973415b6254b5b56b96c06cada9ccf36b4d79c3d1655962a81d4276122415e",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "build_amendments": [
+        {
+          "path": "scripts/build/mdns.py",
+          "sha256": "90e3f7c89003809f68c683e10c91f7186660923eb4669ba51f05f917a61c350f"
+        },
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        }
+      ],
+      "compiler": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+      "sdk_settings_sha256": "51114e56c4717c0713ce5196b0b2263e003809dac369616322aa7e958d6992b2"
+    }
+  ],
+  "macho": {
+    "architecture": "arm64",
+    "cpu_subtype": 0,
+    "file_type": 2,
+    "flags": 2097285,
+    "dependencies": [
+      {
+        "path": "/usr/lib/libSystem.B.dylib",
+        "weak": false,
+        "reexport": false
+      }
+    ],
+    "rpaths": [],
+    "dylinker": "/usr/lib/dyld",
+    "flat_namespace_imports": [],
+    "imports": [
+      {
+        "name": "___assert_rtn",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "___chkstk_darwin",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "___darwin_check_fd_set_overflow",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "___error",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "___memset_chk",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "___snprintf_chk",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "___stack_chk_fail",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "___stack_chk_guard",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "___stderrp",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "___strcpy_chk",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "___strncpy_chk",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_abort",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_accept",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_bind",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_bzero",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_calloc",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_clock_gettime",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_close",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_connect",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_daemon",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_exit",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_fclose",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_fcntl",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_fflush",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_fgets",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_fopen",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_fprintf",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_free",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_freeifaddrs",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_fseek",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_gethostname",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_getifaddrs",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_getpid",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_getpwnam",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_getrlimit",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_getsockname",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_getsockopt",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_gettimeofday",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_if_nametoindex",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_inet_aton",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_inet_ntop",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_inet_pton",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_listen",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_localtime_r",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_malloc",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_memcmp",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_memcpy",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_memmove",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_openlog",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_perror",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_printf",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_proc_pidinfo",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_qsort",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_read",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_recv",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_recvmsg",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_select",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_send",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_sendto",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_setgid",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_setrlimit",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_setsockopt",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_setuid",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_shutdown",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_sigaction",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_sigprocmask",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_sleep",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_socket",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_sscanf",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_stat",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_strcasecmp",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_strcmp",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_strdup",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_strerror",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_strftime",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_strlen",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_strncasecmp",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_strncmp",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_syslog$DARWIN_EXTSN",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_time",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_umask",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_unlink",
+        "weak": false,
+        "library_ordinal": 1
+      },
+      {
+        "name": "_write",
+        "weak": false,
+        "library_ordinal": 1
+      }
+    ],
+    "defined_external_symbols": [
+      "_ActivateUnicastRegistration",
+      "_AddToHead",
+      "_AddToTail",
+      "_AllDNSAdminGroup",
+      "_AllDNSLinkGroup_v4",
+      "_AllDNSLinkGroup_v6",
+      "_AllHosts_v4",
+      "_AllHosts_v6",
+      "_AllHosts_v6_Eth",
+      "_AlwaysAppendSearchDomains",
+      "_AnswerCurrentQuestionWithResourceRecord",
+      "_AnswerQuestionByFollowingCNAME",
+      "_AnyTypeRecordAnswersQuestion",
+      "_AppendDNSNameString",
+      "_AppendDomainLabel",
+      "_AppendDomainName",
+      "_AppendLabelSuffix",
+      "_AppendLiteralLabelString",
+      "_AuthGroupForName",
+      "_AuthGroupForRecord",
+      "_AuthRecordAnswersQuestion",
+      "_AutoBrowseDomains",
+      "_AutoRegistrationDomains",
+      "_BitmapTypeCheck",
+      "_CacheGroupForName",
+      "_CacheRecordAnswersQuestion",
+      "_CacheRecordRmvEventsForQuestion",
+      "_CancelGetZoneData",
+      "_CheckNATMappings",
+      "_CheckSuppressUnusableQuestions",
+      "_CompleteDeregistration",
+      "_CompressedDomainNameLength",
+      "_ConstructServiceName",
+      "_ConvertDomainLabelToCString_withescape",
+      "_ConvertDomainNameToCString_withescape",
+      "_ConvertHeaderBytes",
+      "_ConvertUTF8PstringToRFC1034HostLabel",
+      "_CountExistingRegistrations",
+      "_CountLabels",
+      "_CountPeerRegistrations",
+      "_CreateNewCacheEntry",
+      "_DLLAddToHead",
+      "_DLLRemoveFromList",
+      "_DNSDigest_ConstructHMACKeyfromBase64",
+      "_DNSDigest_SignMessage",
+      "_DNSDigest_VerifyMessage",
+      "_DNSEXTPort",
+      "_DNSNameToLowerCase",
+      "_DNSProxyInit",
+      "_DNSProxySetAttributes",
+      "_DNSProxyTerminate",
+      "_DNSScopeToString",
+      "_DNSServerChangeForQuestion",
+      "_DNSServiceAddRecord",
+      "_DNSServiceBrowse",
+      "_DNSServiceCreateConnection",
+      "_DNSServiceEnumerateDomains",
+      "_DNSServiceGetAddrInfo",
+      "_DNSServiceProcessResult",
+      "_DNSServiceQueryRecord",
+      "_DNSServiceReconfirmRecord",
+      "_DNSServiceRefDeallocate",
+      "_DNSServiceRefSockFD",
+      "_DNSServiceRegister",
+      "_DNSServiceRegisterRecord",
+      "_DNSServiceRemoveRecord",
+      "_DNSServiceResolve",
+      "_DNSServiceUpdateRecord",
+      "_DNSTypeName",
+      "_DeconstructServiceName",
+      "_DiscardPort",
+      "_DisposeTCPConn",
+      "_DomainEnumQuery",
+      "_DomainNameHashValue",
+      "_DomainNameLengthLimit",
+      "_DumpPacket",
+      "_EnableAllowExpired",
+      "_FindCompressionPointer",
+      "_FindSPSInCache",
+      "_FreeEtcHosts",
+      "_FreeExtraRR",
+      "_GetAddrInfoClientRequestGetQName",
+      "_GetAddrInfoClientRequestIsMulticast",
+      "_GetAddrInfoClientRequestParamsInit",
+      "_GetAddrInfoClientRequestStart",
+      "_GetAddrInfoClientRequestStop",
+      "_GetAuthInfoForName",
+      "_GetAuthInfoForName_internal",
+      "_GetAuthInfoForQuestion",
+      "_GetFirstActiveInterface",
+      "_GetHeadPtr",
+      "_GetLLQOptData",
+      "_GetLargeResourceRecord",
+      "_GetNextActiveInterfaceID",
+      "_GetOffsetLink",
+      "_GetPktLease",
+      "_GetRDLength",
+      "_GetRRDisplayString_rdb",
+      "_GetReverseIPv6Addr",
+      "_GetServerForQuestion",
+      "_GetServiceTarget",
+      "_GetTailPtr",
+      "_GrantCacheExtensions",
+      "_IPSECPort",
+      "_IncrementLabelSuffix",
+      "_InitDoubleLinkedList",
+      "_InitLinkedList",
+      "_InitLinkedOffsetList",
+      "_InitializeDNSMessage",
+      "_InsertAuthRecord",
+      "_InterfaceNameForID",
+      "_IsGetZoneDataQuestion",
+      "_IsLocalDomain",
+      "_LLQGotZoneData",
+      "_LabelContainsSuffix",
+      "_LastLabel",
+      "_LocalOnlyRecordAnswersQuestion",
+      "_LocateAdditionals",
+      "_LocateAnswers",
+      "_LocateAuthorities",
+      "_LocateOptRR",
+      "_LogMDNSStatisticsToFD",
+      "_LogMcastStateInfo",
+      "_LogMsgWithLevel",
+      "_LogToFD",
+      "_LoopbackIPCPort",
+      "_MD5_Final",
+      "_MD5_Init",
+      "_MD5_Transform",
+      "_MD5_Update",
+      "_MakeDomainLabelFromLiteralString",
+      "_MakeDomainNameFromDNSNameString",
+      "_MakeNegativeCacheRecord",
+      "_MulticastDNSPort",
+      "_NATPMPAnnouncementPort",
+      "_NATPMPPort",
+      "_NDP_prefix",
+      "_NSIPCPort",
+      "_NumCacheRecordsForInterfaceID",
+      "_OffsetAddToHead",
+      "_OffsetAddToTail",
+      "_OffsetRemoveFromList",
+      "_OffsetReplaceElem",
+      "_ParseDNSServers",
+      "_PenalizeDNSServer",
+      "_PrivateDNSPort",
+      "_ProgramName",
+      "_PutResourceRecordTTLWithLimit",
+      "_QueryFlags",
+      "_QueryRecordClientRequestGetQName",
+      "_QueryRecordClientRequestGetType",
+      "_QueryRecordClientRequestIsMulticast",
+      "_QueryRecordClientRequestParamsInit",
+      "_QueryRecordClientRequestStart",
+      "_QueryRecordClientRequestStop",
+      "_RDataHashValue",
+      "_RRAssertsExistence",
+      "_RRAssertsNonexistence",
+      "_ReadDDNSSettingsFromConfFile",
+      "_RecordRegistrationGotZoneData",
+      "_RecordUpdatedNiceLabel",
+      "_RecreateNATMappings",
+      "_ReleaseCacheRecord",
+      "_RemoveAuthRecord",
+      "_RemoveFromList",
+      "_RemoveLabelSuffix",
+      "_ReplaceElem",
+      "_ResourceRecordAnswersQuestion",
+      "_ResourceRecordAnswersUnicastResponse",
+      "_ResponseFlags",
+      "_RetrySearchDomainQuestions",
+      "_SSDPPort",
+      "_SSHPort",
+      "_SameDomainLabel",
+      "_SameDomainName",
+      "_SameDomainNameCS",
+      "_SameNameCacheRecordAnswersQuestion",
+      "_SameRDataBody",
+      "_ScheduleNextCacheCheckTime",
+      "_SearchList",
+      "_SetNewRData",
+      "_SetNextCacheCheckTimeForRecord",
+      "_SetNextQueryTime",
+      "_SetRData",
+      "_SetValidDNSServers",
+      "_ShowTaskSchedulingError",
+      "_SkipLeadingLabels",
+      "_SleepRecordRegistrations",
+      "_StartGetZoneData",
+      "_StrictUnicastOrdering",
+      "_TruncateUTF8ToLength",
+      "_UnicastDNSPort",
+      "_UpdateAllSRVRecords",
+      "_UpdateKeepaliveRData",
+      "_UpdateRMAC",
+      "_UpdateReqFlags",
+      "_UpdateRespFlags",
+      "_ValidateRData",
+      "__mh_execute_header",
+      "_dns_message_received",
+      "_dso_add_activity",
+      "_dso_add_tlv_byte",
+      "_dso_add_tlv_bytes",
+      "_dso_add_tlv_bytes_no_copy",
+      "_dso_add_tlv_u16",
+      "_dso_add_tlv_u32",
+      "_dso_connect",
+      "_dso_connect_state_create",
+      "_dso_connect_state_drop",
+      "_dso_create",
+      "_dso_drop",
+      "_dso_drop_activity",
+      "_dso_find_activity",
+      "_dso_find_by_serial",
+      "_dso_finish_tlv",
+      "_dso_idle",
+      "_dso_ignore_response",
+      "_dso_keepalive",
+      "_dso_listen",
+      "_dso_make_message",
+      "_dso_message_length",
+      "_dso_message_received",
+      "_dso_message_write",
+      "_dso_retry_delay",
+      "_dso_schedule_reconnect",
+      "_dso_send_formerr",
+      "_dso_send_name_error",
+      "_dso_send_no_error",
+      "_dso_send_not_implemented",
+      "_dso_send_refused",
+      "_dso_send_servfail",
+      "_dso_send_simple_response",
+      "_dso_set_callback",
+      "_dso_start_tlv",
+      "_dso_transport_idle",
+      "_dso_transport_init",
+      "_dso_write",
+      "_dso_write_finish",
+      "_dso_write_start",
+      "_gMDNSPlatformPosixVerboseLevel",
+      "_getDomainName",
+      "_getLocalTimestamp",
+      "_getQuestion",
+      "_get_rdata",
+      "_get_string",
+      "_get_uint16",
+      "_get_uint32",
+      "_mDNSAddrIPv4FromMappedIPv6",
+      "_mDNSAddrIsDNSMulticast",
+      "_mDNSAddrMapIPv4toIPv6",
+      "_mDNSCoreBeSleepProxyServer_internal",
+      "_mDNSCoreHaveAdvertisedMulticastServices",
+      "_mDNSCoreInitComplete",
+      "_mDNSCoreIntervalToNextWake",
+      "_mDNSCoreMachineSleep",
+      "_mDNSCoreReadyForSleep",
+      "_mDNSCoreReceive",
+      "_mDNSCoreReceiveCacheCheck",
+      "_mDNSCoreReceiveRawPacket",
+      "_mDNSCoreRestartAddressQueries",
+      "_mDNSCoreRestartQueries",
+      "_mDNSCoreRestartQuestion",
+      "_mDNSCoreRestartRegistration",
+      "_mDNSInterfaceMark",
+      "_mDNSInterface_Any",
+      "_mDNSInterface_BLE",
+      "_mDNSInterface_LocalOnly",
+      "_mDNSInterface_P2P",
+      "_mDNSPlatformClearSPSData",
+      "_mDNSPlatformClose",
+      "_mDNSPlatformDynDNSHostNameStatusChanged",
+      "_mDNSPlatformEventContextSize",
+      "_mDNSPlatformFormatTime",
+      "_mDNSPlatformGetPID",
+      "_mDNSPlatformGetPrimaryInterface",
+      "_mDNSPlatformGetRemoteMacAddr",
+      "_mDNSPlatformGetUDPPort",
+      "_mDNSPlatformInit",
+      "_mDNSPlatformInterfaceIDfromInterfaceIndex",
+      "_mDNSPlatformInterfaceIndexfromInterfaceID",
+      "_mDNSPlatformInterfaceIsD2D",
+      "_mDNSPlatformLock",
+      "_mDNSPlatformMemAllocate",
+      "_mDNSPlatformMemAllocateClear",
+      "_mDNSPlatformMemCmp",
+      "_mDNSPlatformMemCopy",
+      "_mDNSPlatformMemFree",
+      "_mDNSPlatformMemSame",
+      "_mDNSPlatformMemZero",
+      "_mDNSPlatformOneSecond",
+      "_mDNSPlatformPosixRefreshInterfaceList",
+      "_mDNSPlatformQsort",
+      "_mDNSPlatformRandomSeed",
+      "_mDNSPlatformRawTime",
+      "_mDNSPlatformReadTCP",
+      "_mDNSPlatformRetrieveTCPInfo",
+      "_mDNSPlatformSendKeepalive",
+      "_mDNSPlatformSendRawPacket",
+      "_mDNSPlatformSendUDP",
+      "_mDNSPlatformSendWakeupPacket",
+      "_mDNSPlatformSetAllowSleep",
+      "_mDNSPlatformSetDNSConfig",
+      "_mDNSPlatformSetLocalAddressCacheEntry",
+      "_mDNSPlatformSetSocktOpt",
+      "_mDNSPlatformSourceAddrForDest",
+      "_mDNSPlatformStoreOwnerOptRecord",
+      "_mDNSPlatformStoreSPSMACAddr",
+      "_mDNSPlatformStrLCopy",
+      "_mDNSPlatformStrLen",
+      "_mDNSPlatformTCPAccept",
+      "_mDNSPlatformTCPCloseConnection",
+      "_mDNSPlatformTCPConnect",
+      "_mDNSPlatformTCPGetFD",
+      "_mDNSPlatformTCPListen",
+      "_mDNSPlatformTCPSocket",
+      "_mDNSPlatformTCPSocketSetCallback",
+      "_mDNSPlatformTCPWritable",
+      "_mDNSPlatformTLSSetupCerts",
+      "_mDNSPlatformTLSTearDownCerts",
+      "_mDNSPlatformTimeInit",
+      "_mDNSPlatformUDPClose",
+      "_mDNSPlatformUDPSocket",
+      "_mDNSPlatformUTC",
+      "_mDNSPlatformUnlock",
+      "_mDNSPlatformUpdateProxyList",
+      "_mDNSPlatformValidQuestionForInterface",
+      "_mDNSPlatformValidRecordForInterface",
+      "_mDNSPlatformWriteLogMsg",
+      "_mDNSPlatformWriteTCP",
+      "_mDNSPosixAddFDToEventLoop",
+      "_mDNSPosixDoTCPListenCallback",
+      "_mDNSPosixGetFDSet",
+      "_mDNSPosixGetFDSetForSelect",
+      "_mDNSPosixGetNextDNSEventTime",
+      "_mDNSPosixIgnoreSignalInEventLoop",
+      "_mDNSPosixListenForSignalInEventLoop",
+      "_mDNSPosixProcessFDSet",
+      "_mDNSPosixReadTCP",
+      "_mDNSPosixRemoveFDFromEventLoop",
+      "_mDNSPosixRunEventLoopOnce",
+      "_mDNSPosixTCPListen",
+      "_mDNSPosixTCPSocketSetup",
+      "_mDNSPosixWriteTCP",
+      "_mDNSRandom",
+      "_mDNSResponderVersionString_SCCS",
+      "_mDNSSameAddress",
+      "_mDNSSendDNSMessage",
+      "_mDNSStorage",
+      "_mDNSValidKeepAliveRecord",
+      "_mDNS_ActivateNetWake_internal",
+      "_mDNS_AddDNSServer",
+      "_mDNS_AddDynDNSHostName",
+      "_mDNS_AddMcastResolver",
+      "_mDNS_AddRecordToService",
+      "_mDNS_AddSearchDomain",
+      "_mDNS_AddressIsLocalSubnet",
+      "_mDNS_AdvertiseDomains",
+      "_mDNS_ConfigChanged",
+      "_mDNS_DeactivateNetWake_internal",
+      "_mDNS_DebugMode",
+      "_mDNS_Deregister",
+      "_mDNS_DeregisterInterface",
+      "_mDNS_DeregisterService_drt",
+      "_mDNS_Deregister_internal",
+      "_mDNS_DomainTypeNames",
+      "_mDNS_Execute",
+      "_mDNS_FinalExit",
+      "_mDNS_GetDomains",
+      "_mDNS_GetNextResolverGroupID",
+      "_mDNS_GrowCache",
+      "_mDNS_Init",
+      "_mDNS_Lock_",
+      "_mDNS_LoggingEnabled",
+      "_mDNS_McastLoggingEnabled",
+      "_mDNS_McastTracingEnabled",
+      "_mDNS_NewMessageID",
+      "_mDNS_PacketLoggingEnabled",
+      "_mDNS_PurgeCacheResourceRecord",
+      "_mDNS_Reconfirm",
+      "_mDNS_ReconfirmByValue",
+      "_mDNS_Reconfirm_internal",
+      "_mDNS_Register",
+      "_mDNS_RegisterInterface",
+      "_mDNS_RegisterNoSuchService",
+      "_mDNS_RegisterService",
+      "_mDNS_Register_internal",
+      "_mDNS_RemoveDynDNSHostName",
+      "_mDNS_RemoveRecordFromService",
+      "_mDNS_RenameAndReregisterService",
+      "_mDNS_SetFQDN",
+      "_mDNS_SetPrimaryInterfaceInfo",
+      "_mDNS_SetSecretForDomain",
+      "_mDNS_SetupQuestion",
+      "_mDNS_SetupResourceRecord",
+      "_mDNS_StartBrowse",
+      "_mDNS_StartExit",
+      "_mDNS_StartNATOperation",
+      "_mDNS_StartNATOperation_internal",
+      "_mDNS_StartQuery",
+      "_mDNS_StartQuery_internal",
+      "_mDNS_StopNATOperation",
+      "_mDNS_StopNATOperation_internal",
+      "_mDNS_StopQuery",
+      "_mDNS_StopQueryWithRemoves",
+      "_mDNS_StopQuery_internal",
+      "_mDNS_TimeNow",
+      "_mDNS_Unlock_",
+      "_mDNS_Update",
+      "_mDNS_UpdateAllowSleep",
+      "_mDNS_snprintf",
+      "_mDNS_snprintf_add",
+      "_mDNS_vsnprintf",
+      "_mDNSv4AddrIsRFC1918",
+      "_mStatusDescription",
+      "_main",
+      "_md5_block_data_order",
+      "_md5_block_host_order",
+      "_natTraversalHandleAddressReply",
+      "_natTraversalHandlePortMapReply",
+      "_onesEthAddr",
+      "_onesID",
+      "_onesIPv4Addr",
+      "_onesIPv6Addr",
+      "_proc",
+      "_putDeleteAllRRSets",
+      "_putDeleteRRSetWithLimit",
+      "_putDeletionRecord",
+      "_putDeletionRecordWithLimit",
+      "_putDomainNameAsLabels",
+      "_putPrereqNameNotInUse",
+      "_putQuestion",
+      "_putRData",
+      "_putUpdateLease",
+      "_putUpdateLeaseWithLimit",
+      "_putZone",
+      "_put_rdata",
+      "_put_string",
+      "_put_uint16",
+      "_put_uint32",
+      "_recvfrom_flags",
+      "_sendLLQRefresh",
+      "_skipDomainName",
+      "_skipQuestion",
+      "_skipResourceRecord",
+      "_startLLQHandshake",
+      "_swap16",
+      "_swap32",
+      "_uDNSInterfaceMark",
+      "_uDNS_DeregisterRecord",
+      "_uDNS_GetNextSearchDomain",
+      "_uDNS_ReceiveMsg",
+      "_uDNS_ReceiveNATPacket",
+      "_uDNS_RestartQuestionAsTCP",
+      "_uDNS_SetupDNSConfig",
+      "_uDNS_SetupWABQueries",
+      "_uDNS_StartWABQueries",
+      "_uDNS_StopWABQueries",
+      "_uDNS_Tasks",
+      "_uDNS_UpdateRecord",
+      "_uDNS_recvLLQResponse",
+      "_uQueryFlags",
+      "_udsSupportAddFDToEventLoop",
+      "_udsSupportReadFD",
+      "_udsSupportRemoveFDFromEventLoop",
+      "_udsserver_exit",
+      "_udsserver_handle_configchange",
+      "_udsserver_idle",
+      "_udsserver_info_dump_to_fd",
+      "_udsserver_init",
+      "_zeroAddr",
+      "_zeroEthAddr",
+      "_zeroID",
+      "_zeroIPPort",
+      "_zeroOpaque128",
+      "_zeroOpaque64",
+      "_zeroOwner",
+      "_zerov4Addr",
+      "_zerov6Addr"
+    ]
+  },
+  "unmet_acceptance": [
+    "real guest daemon startup and DNS response remain unverified"
+  ]
+}

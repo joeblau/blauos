@@ -1,0 +1,47 @@
+checking for ICU version numbers... release 76.1, library 76.1, unicode version 16.0
+checking build system type... aarch64-apple-darwin27.2.0
+checking host system type... aarch64-apple-darwin27.2.0
+checking whether to build debug libraries... no
+checking whether to build release libraries... yes
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether the compiler supports GNU C... yes
+checking whether /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang accepts -g... yes
+config.status: creating test/letest/Makefile
+config.status: creating test/perf/Makefile
+config.status: creating test/perf/collationperf/Makefile
+config.status: creating test/perf/collperf/Makefile
+config.status: creating test/perf/collperf2/Makefile
+config.status: creating test/perf/dicttrieperf/Makefile
+config.status: creating test/perf/ubrkperf/Makefile
+config.status: creating test/perf/charperf/Makefile
+config.status: creating test/perf/convperf/Makefile
+config.status: creating test/perf/localecanperf/Makefile
+config.status: creating test/perf/normperf/Makefile
+config.status: creating test/perf/DateFmtPerf/Makefile
+config.status: creating test/perf/howExpensiveIs/Makefile
+config.status: creating test/perf/strsrchperf/Makefile
+config.status: creating test/perf/unisetperf/Makefile
+config.status: creating test/perf/usetperf/Makefile
+config.status: creating test/perf/ustrperf/Makefile
+config.status: creating test/perf/utfperf/Makefile
+config.status: creating test/perf/utrie2perf/Makefile
+config.status: creating test/perf/leperf/Makefile
+config.status: creating test/fuzzer/Makefile
+config.status: creating samples/Makefile
+Not rebuilding data/rules.mk, assuming prebuilt data in data/in
+Spawning Python to generate test/testdata/rules.mk...
+
+ICU for C/C++ 76.1 is ready to be built.
+=== Important Notes: ===
+Data Packaging: library
+ This means: ICU data will be linked with ICU. A shared data library will be built. 
+ To locate data: ICU will use the linked data library. If linked with the stub library located in stubdata/, the application can use udata_setCommonData() or set a data path to override.
+Building ICU: Use a GNU make such as /usr/bin/gnumake to build ICU.
+checking the version of "/usr/bin/gnumake"... 3.81 (we wanted at least 3.80)
+ok
+C   apps may want to build with CFLAGS   =  -std=c11
+C++ apps may want to build with CXXFLAGS =  -std=c++17

@@ -1,0 +1,568 @@
+{
+  "schema_version": 1,
+  "status": "source_build_pass",
+  "independent_runtime": false,
+  "profile": "installed-sdk-experiment",
+  "steps": [
+    {
+      "name": "compiler-rt-configure",
+      "command": [
+        "cmake",
+        "-S",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/llvm-overlay/compiler-rt/lib/builtins",
+        "-B",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/compiler-rt-overlay",
+        "-G",
+        "Unix Makefiles",
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-DCMAKE_OSX_SYSROOT=/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+        "-DCMAKE_OSX_ARCHITECTURES=arm64",
+        "-DCMAKE_OSX_DEPLOYMENT_TARGET=11.0",
+        "-DCMAKE_C_COMPILER_TARGET=arm64-apple-macosx11.0",
+        "-DCMAKE_CXX_COMPILER_TARGET=arm64-apple-macosx11.0",
+        "-DCMAKE_ASM_COMPILER_TARGET=arm64-apple-macosx11.0",
+        "-DLLVM_CMAKE_DIR=/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/llvm-overlay/llvm/cmake/modules",
+        "-DDARWIN_osx_BUILTIN_ARCHS=arm64",
+        "-DCOMPILER_RT_DEFAULT_TARGET_ONLY=ON",
+        "-DCOMPILER_RT_INCLUDE_TESTS=OFF",
+        "-DCOMPILER_RT_ENABLE_IOS=OFF",
+        "-DCOMPILER_RT_ENABLE_WATCHOS=OFF",
+        "-DCOMPILER_RT_ENABLE_TVOS=OFF",
+        "-DCOMPILER_RT_ENABLE_MACCATALYST=OFF"
+      ],
+      "exit_code": 0,
+      "log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/logs/compiler-rt-configure.log"
+    },
+    {
+      "name": "compiler-rt-build",
+      "command": [
+        "cmake",
+        "--build",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/compiler-rt-overlay",
+        "--target",
+        "clang_rt.builtins_arm64_osx",
+        "--parallel",
+        "4"
+      ],
+      "exit_code": 0,
+      "log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/logs/compiler-rt-build.log"
+    },
+    {
+      "name": "configure",
+      "command": [
+        "cmake",
+        "-S",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/source-overlay",
+        "-B",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay",
+        "-G",
+        "Unix Makefiles",
+        "-DCMAKE_BUILD_TYPE=Debug",
+        "-DCMAKE_OSX_DEPLOYMENT_TARGET=11.0",
+        "-DCMAKE_POLICY_VERSION_MINIMUM=3.5",
+        "-DPUREDARWIN_ARCH=arm64",
+        "-DPUREDARWIN_MACOSX_SDK=/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+        "-DPUREDARWIN_ENABLE_PROJECTS=OFF",
+        "-DPUREDARWIN_ENABLE_KERNEL=OFF",
+        "-DPUREDARWIN_ENABLE_LIBRARIES=ON",
+        "-DPUREDARWIN_ENABLE_USERSPACE=OFF",
+        "-DPUREDARWIN_ENABLE_TOOLS=ON",
+        "-DPUREDARWIN_COMPILER_RT_PREFIX=/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/compiler-rt-install",
+        "-DBLAUOS_STACK_PROBE=/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/runtime/compat/arm64_stack_probe.S",
+        "-DBLAUOS_LIBDYLD_EXPORTS=/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/runtime/compat/libdyld.exports",
+        "-DBLAUOS_SYSTEM_INTERFACE=/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/system-interface/libSystem.tbd",
+        "-DBLAUOS_OBJC_DYLIB=",
+        "-DBLAUOS_CXX_HEADERS=/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/sdk-cxx-headers",
+        "-DCMAKE_C_FLAGS=-Wno-nullability-completeness -include /Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/runtime/compat/sdk27_compile.h",
+        "-DCMAKE_CXX_FLAGS=-Wno-nullability-completeness -include /Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/runtime/compat/sdk27_compile.h"
+      ],
+      "exit_code": 0,
+      "log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/logs/configure.log"
+    },
+    {
+      "name": "source-headers",
+      "command": [
+        "cmake",
+        "--build",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay",
+        "--target",
+        "libc_headers_gen_script",
+        "--parallel",
+        "4"
+      ],
+      "exit_code": 0,
+      "log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/logs/source-headers.log"
+    },
+    {
+      "name": "system-interface-providers",
+      "command": [
+        "cmake",
+        "--build",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay",
+        "--target",
+        "libsystem_kernel_static",
+        "libplatform_static",
+        "pthread_static",
+        "libmalloc_static",
+        "libc_static",
+        "libc_internal_static",
+        "openlibm_static",
+        "corecrypto_static",
+        "CrashReporterClient",
+        "XPC_libxpc_static",
+        "XPC_launchd_mig_static",
+        "XPC_notify_client_static",
+        "mDNSResponder_dnssd_static",
+        "XPC_libinfo_static",
+        "syslog_asl_static",
+        "libsystem_trace_static",
+        "libdarwin_static",
+        "libSystemConfiguration_static",
+        "XPC_libnv_static",
+        "XPC_libxpc_objc_static",
+        "XPC_notifyd_mig_static",
+        "pthread_full_static",
+        "libdispatch_static",
+        "libresolv_static",
+        "libcxxabi_static_build",
+        "libunwind_static_build",
+        "libcxx_static_build",
+        "commoncrypto_static",
+        "--parallel",
+        "4"
+      ],
+      "exit_code": 0,
+      "log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/logs/system-interface-providers.log"
+    },
+    {
+      "name": "dyld",
+      "command": [
+        "cmake",
+        "--build",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay",
+        "--target",
+        "dyld",
+        "--parallel",
+        "4"
+      ],
+      "exit_code": 0,
+      "log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/logs/dyld.log"
+    },
+    {
+      "name": "libSystem_B_stub",
+      "command": [
+        "cmake",
+        "--build",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay",
+        "--target",
+        "libSystem_B_stub",
+        "--parallel",
+        "4"
+      ],
+      "exit_code": 0,
+      "log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/logs/libSystem_B_stub.log"
+    },
+    {
+      "name": "XPC_launchd_static",
+      "command": [
+        "cmake",
+        "--build",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay",
+        "--target",
+        "XPC_launchd_static",
+        "--parallel",
+        "4"
+      ],
+      "exit_code": 0,
+      "log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/logs/XPC_launchd_static.log"
+    },
+    {
+      "name": "XPC_launchd_mig_static",
+      "command": [
+        "cmake",
+        "--build",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay",
+        "--target",
+        "XPC_launchd_mig_static",
+        "--parallel",
+        "4"
+      ],
+      "exit_code": 0,
+      "log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/logs/XPC_launchd_mig_static.log"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/compiler-rt-install/lib/libcompiler_rt.a",
+      "sha256": "c34252043207f0f25c097f4bc50ceebed1a68e91e644a82f1470d6f062b91dc4",
+      "source": "llvm-project",
+      "revision": "2078da43e25a4623cab2d0d60decddf709aaea28",
+      "patch_sha256": "4eeed573e39f4655ac798fe9401d50aa5df592a7b51c8e4f1d6969daed3fff68"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/CommonCrypto/libcommoncrypto_static.a",
+      "sha256": "aeeba0248d6f19f82d4a39251b5d11f0c77a6cee7b465ec7bcc4d4cd4d498fa9",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/CommonCrypto/libhost_commoncrypto_static.a",
+      "sha256": "aeeba0248d6f19f82d4a39251b5d11f0c77a6cee7b465ec7bcc4d4cd4d498fa9",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/CrashReporterClient/libCrashReporterClient.a",
+      "sha256": "0fc2291f3ebabc9875ec1d2b04db0d3eed81b2d6c0a06682b7b1ee7bc62de553",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/XPC/launchd/libXPC_launchd_mig_static.a",
+      "sha256": "35c80aecb3d0f6d3a052e55d65a1725f759d93dc1e467b7c249d150e36ff4634",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/XPC/launchd/libXPC_launchd_static.a",
+      "sha256": "79d2a45eea2ed4171a7d5e493a966ce8303d5448f35c1c83b1c370bb526e15e1",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/XPC/libinfo/libXPC_libinfo_static.a",
+      "sha256": "0322d826db3c4f8db6de05c36833bd0a12948bb6c03a7235fe5a7d6990058f96",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/XPC/libnv/libXPC_libnv_static.a",
+      "sha256": "8929bd0e0f7cb3cd7989229094594861b8ff7d85dc5963849107a6d7d912c8dc",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/XPC/libxpc/libXPC_libxpc_objc_static.a",
+      "sha256": "093f65343e07aa87d17d16fd0616912d00c8666726348a3e091da68e3d4af92a",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/XPC/libxpc/libXPC_libxpc_static.a",
+      "sha256": "58277adb9f661d82699ff923577c43b28d824cde900613fe25b304a2deb130d3",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/XPC/notify/libXPC_notify_client_static.a",
+      "sha256": "b49f6f13a0ac48afec122a5e98b1f5ec2b29e263a270688f4baa35bffa302f12",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/XPC/notify/libXPC_notifyd_mig_static.a",
+      "sha256": "9f1ccc1d9cc7966a166e15414cc305c167ffcd43d184e6359c10df7eb5b52322",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/dyld/dyld",
+      "sha256": "6d975a3bd32ac909af7c439cfb83f13bcb0addcb901d9e7cce71766c12affb69",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/libSystem/corecrypto/libcorecrypto_static.a",
+      "sha256": "5719b0c77c503359a842a61d6c6eeb6174c57b68d307d5d9403610e3a7aec968",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/libSystem/corecrypto/libhost_corecrypto_static.a",
+      "sha256": "ad03e44ca642a878d0bc5319c7d690a7781380d85f00b82944c75794831505e0",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/libSystem/libc/liblibc_internal_static.a",
+      "sha256": "e8f391866bee4493ff7bdd2593b7884ac8766d595417c0fab15d9e51f48685f3",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/libSystem/libc/liblibc_static.a",
+      "sha256": "7c3399b9ad2a13cf7c8139ef8bf2612c11ad3930ba19d969aacd6c1ac2d3cf6a",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/libSystem/libc/libm/openlibm/libopenlibm_static.a",
+      "sha256": "95570257fbda4341d5d944876077d29a6cdedcfc90131e0dc99c2c5d60137ba7",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/libSystem/libdispatch/liblibdispatch_static.a",
+      "sha256": "f886fe20a753c4621b07f5ad4cc44322bb0d3f480b01bd1923cb2a69e8ddddac",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/libSystem/libdyld/libdyld.dylib",
+      "sha256": "0663b162247d96883edd6410972fa3edbb20df3bded7e92c88822be2f66482d8",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/libSystem/libmalloc/liblibmalloc_static.a",
+      "sha256": "fb814ed6c662ac7433d8e076e2003e158793ab49300a88a3be648b1ab8fe5d6e",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/libSystem/libplatform/liblibplatform_static.a",
+      "sha256": "33f3abc2e36fdc0c396d5c6adf99ba868130396cc412de903063a7429757bb8d",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/libSystem/libsystem_kernel/libsystem_kernel.a",
+      "sha256": "ce041750052389fd7410499464884f43da1dab5b53321b821dc9bfc7bcef7cdb",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/libSystem/libsystem_kernel/syscalls.a",
+      "sha256": "d6a22c50a233fd0905bececf1097c06c620f14ffc15362df7dab169de5ae5430",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/libSystem/pthread/libpthread_full_static.a",
+      "sha256": "7fa720845de56843d5040f90fede88ff42f412a4ed074c53fdba93a12334745d",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/libSystem/pthread/libpthread_static.a",
+      "sha256": "2a990d6ec497a146599807125bb8a27d0e29148cc9f2780af9d486d9aea2b666",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/libSystem/stub/libSystem.B.dylib",
+      "sha256": "5af29d848b88452ee3d9b6ec7f9c078a0bab71622ac10effa09ed2a7387b4bff",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/libSystem/stub/libSystem.dylib",
+      "sha256": "5af29d848b88452ee3d9b6ec7f9c078a0bab71622ac10effa09ed2a7387b4bff",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/libSystem/stub/libdyld.dylib",
+      "sha256": "0663b162247d96883edd6410972fa3edbb20df3bded7e92c88822be2f66482d8",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/libSystemConfiguration/liblibSystemConfiguration_static.a",
+      "sha256": "e6f313259b5230525a19530fe8b9e1b2ad5b39a4ef7df270e2bc7300901d2894",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/libcxxabi/libcxx_static.a",
+      "sha256": "1154e0ddf0ff1f37f3d17d70a6d7c7c57a3c06ce34b10026eae99ccf7344eb66",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/libcxxabi/libcxxabi_static.a",
+      "sha256": "338b0498f407bf9500675f8f9313cabbdb45899d92698b7dd232bec768f3bce1",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/libcxxabi/libunwind_static.a",
+      "sha256": "525f82e2980659d88ff7fdc863cc36717f1c3adb2e06fef16bb146ba089dff1b",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/libdarwin/liblibdarwin_static.a",
+      "sha256": "2b7840d87e0f8b221652530836cd559a14563e0203ba4227dd9f89097f0b4f24",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/libresolv/liblibresolv_static.a",
+      "sha256": "9b93915db164bc074e636de7992def3577dd4835189c1e18f42f7ffd882ddb1b",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/libsystem_trace/liblibsystem_trace_static.a",
+      "sha256": "02cba005b87476c5efb63a2c6ab433ddeffe1724f62b91d74f3a617a9145f4ca",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/mDNSResponder/libmDNSResponder_dnssd_static.a",
+      "sha256": "cc9567b21f1db5e2370c117c7539529a0be329ad3fc8948d71c22e959cf95a19",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/syslog/libsyslog_asl_static.a",
+      "sha256": "e707297fb4d5e254ab1a644bf4daf5e99747b3c640fb684c2ce53113a91c1487",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290"
+    }
+  ],
+  "errors": [],
+  "source": "puredarwin-vm-next",
+  "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+  "sdk": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+  "sdk_settings_sha256": "51114e56c4717c0713ce5196b0b2263e003809dac369616322aa7e958d6992b2",
+  "compiler": "Apple clang version 21.0.0 (clang-2100.3.34.2)\nTarget: arm64-apple-darwin27.2.0\nThread model: posix\nInstalledDir: /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin",
+  "source_patch_sha256": "28d745e5d0862f7034f57674ba2f3374310c8740732c2b11d1073d938ebb8a5e",
+  "annotation_header_sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85",
+  "stack_probe_sha256": "34a355f12dacb843fb879e350f0ffaf2343b27dce183202e6b99b743c7c3b62f",
+  "system_link_interface": {
+    "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/system-interface/libSystem.tbd",
+    "sha256": "4bdf6659c106db2690820b09502540879567e41ea4387bf007e740f04819a85a",
+    "declaration_only": true,
+    "symbols_count": 1930,
+    "symbols_sha256": "2997db8bd4f93b2dd680c68160873a6d1fb89425bdde6b22448c8ca32881d246",
+    "providers": [
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/compiler-rt-install/lib/libcompiler_rt.a",
+        "sha256": "c34252043207f0f25c097f4bc50ceebed1a68e91e644a82f1470d6f062b91dc4"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/CommonCrypto/libcommoncrypto_static.a",
+        "sha256": "aeeba0248d6f19f82d4a39251b5d11f0c77a6cee7b465ec7bcc4d4cd4d498fa9"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/CrashReporterClient/libCrashReporterClient.a",
+        "sha256": "0fc2291f3ebabc9875ec1d2b04db0d3eed81b2d6c0a06682b7b1ee7bc62de553"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/XPC/launchd/libXPC_launchd_mig_static.a",
+        "sha256": "35c80aecb3d0f6d3a052e55d65a1725f759d93dc1e467b7c249d150e36ff4634"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/XPC/libinfo/libXPC_libinfo_static.a",
+        "sha256": "0322d826db3c4f8db6de05c36833bd0a12948bb6c03a7235fe5a7d6990058f96"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/XPC/libnv/libXPC_libnv_static.a",
+        "sha256": "8929bd0e0f7cb3cd7989229094594861b8ff7d85dc5963849107a6d7d912c8dc"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/XPC/libxpc/libXPC_libxpc_objc_static.a",
+        "sha256": "093f65343e07aa87d17d16fd0616912d00c8666726348a3e091da68e3d4af92a"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/XPC/libxpc/libXPC_libxpc_static.a",
+        "sha256": "58277adb9f661d82699ff923577c43b28d824cde900613fe25b304a2deb130d3"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/XPC/notify/libXPC_notify_client_static.a",
+        "sha256": "b49f6f13a0ac48afec122a5e98b1f5ec2b29e263a270688f4baa35bffa302f12"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/XPC/notify/libXPC_notifyd_mig_static.a",
+        "sha256": "9f1ccc1d9cc7966a166e15414cc305c167ffcd43d184e6359c10df7eb5b52322"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/libSystem/corecrypto/libcorecrypto_static.a",
+        "sha256": "5719b0c77c503359a842a61d6c6eeb6174c57b68d307d5d9403610e3a7aec968"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/libSystem/libc/liblibc_internal_static.a",
+        "sha256": "e8f391866bee4493ff7bdd2593b7884ac8766d595417c0fab15d9e51f48685f3"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/libSystem/libc/liblibc_static.a",
+        "sha256": "7c3399b9ad2a13cf7c8139ef8bf2612c11ad3930ba19d969aacd6c1ac2d3cf6a"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/libSystem/libc/libm/openlibm/libopenlibm_static.a",
+        "sha256": "95570257fbda4341d5d944876077d29a6cdedcfc90131e0dc99c2c5d60137ba7"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/libSystem/libdispatch/liblibdispatch_static.a",
+        "sha256": "f886fe20a753c4621b07f5ad4cc44322bb0d3f480b01bd1923cb2a69e8ddddac"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/libSystem/libmalloc/liblibmalloc_static.a",
+        "sha256": "fb814ed6c662ac7433d8e076e2003e158793ab49300a88a3be648b1ab8fe5d6e"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/libSystem/libplatform/liblibplatform_static.a",
+        "sha256": "33f3abc2e36fdc0c396d5c6adf99ba868130396cc412de903063a7429757bb8d"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/libSystem/libsystem_kernel/libsystem_kernel.a",
+        "sha256": "ce041750052389fd7410499464884f43da1dab5b53321b821dc9bfc7bcef7cdb"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/libSystem/libsystem_kernel/syscalls.a",
+        "sha256": "d6a22c50a233fd0905bececf1097c06c620f14ffc15362df7dab169de5ae5430"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/libSystem/pthread/libpthread_full_static.a",
+        "sha256": "7fa720845de56843d5040f90fede88ff42f412a4ed074c53fdba93a12334745d"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/libSystemConfiguration/liblibSystemConfiguration_static.a",
+        "sha256": "e6f313259b5230525a19530fe8b9e1b2ad5b39a4ef7df270e2bc7300901d2894"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/libcxxabi/libcxx_static.a",
+        "sha256": "1154e0ddf0ff1f37f3d17d70a6d7c7c57a3c06ce34b10026eae99ccf7344eb66"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/libcxxabi/libcxxabi_static.a",
+        "sha256": "338b0498f407bf9500675f8f9313cabbdb45899d92698b7dd232bec768f3bce1"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/libcxxabi/libunwind_static.a",
+        "sha256": "525f82e2980659d88ff7fdc863cc36717f1c3adb2e06fef16bb146ba089dff1b"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/libdarwin/liblibdarwin_static.a",
+        "sha256": "2b7840d87e0f8b221652530836cd559a14563e0203ba4227dd9f89097f0b4f24"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/libresolv/liblibresolv_static.a",
+        "sha256": "9b93915db164bc074e636de7992def3577dd4835189c1e18f42f7ffd882ddb1b"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/libsystem_trace/liblibsystem_trace_static.a",
+        "sha256": "02cba005b87476c5efb63a2c6ab433ddeffe1724f62b91d74f3a617a9145f4ca"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/mDNSResponder/libmDNSResponder_dnssd_static.a",
+        "sha256": "cc9567b21f1db5e2370c117c7539529a0be329ad3fc8948d71c22e959cf95a19"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/puredarwin-overlay/src/Libraries/syslog/libsyslog_asl_static.a",
+        "sha256": "e707297fb4d5e254ab1a644bf4daf5e99747b3c640fb684c2ce53113a91c1487"
+      }
+    ]
+  },
+  "staged_root": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/root",
+  "provenance": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/provenance.json",
+  "closure": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/runtime/closure.json",
+  "offline_dependency_closure": false,
+  "base_build_verified": true,
+  "independent_execution": false,
+  "unmet_acceptance": [
+    "complete target runtime and source userspace execution remain unverified"
+  ]
+}

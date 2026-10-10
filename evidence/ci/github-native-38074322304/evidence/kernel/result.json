@@ -1,0 +1,72 @@
+{
+  "status": "kernel-built-not-boot-validated",
+  "exit_code": 0,
+  "source": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/kernel/source-overlay",
+  "configuration": "DEVELOPMENT ARM64",
+  "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+  "source_amendments": [
+    {
+      "source_archive_sha256": "1c955560333a1e47a38f2018ead9fd90580eb4b9520f44435ebfa03afcd3c1f6",
+      "excluded_absolute_symlinks": [
+        "src/Libraries/libSystem/libc/gen/FreeBSD/result"
+      ]
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/vm/patches/xnu-classic-arm64-protections.patch",
+      "sha256": "371466a26ab5ecb68d7491566900c7239a6987cd7f52ddfdc9865ce81c29ba69"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/vm/patches/pdarm-qemu-psci-shutdown.patch",
+      "sha256": "b153ed78a06dd06f41dcd6cd36dffb4b17d1ea792fed9ae08535d02c0694f201"
+    }
+  ],
+  "manifest_sha256": "8022bbbfb33204b56bb3297cd8cbb39fb6c08ea65c476492d99462f7edfe3657",
+  "machine": "VIRT",
+  "sdk": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.2.sdk",
+  "artifacts": [
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/kernel/src/Kernel/xnu/xnu/System/Library/Kernels/kernel.development.virt",
+      "size": 12604496,
+      "sha256": "efa36095f9d73dd94c920460d96b35703e71a8ef2df526dc5fb13c72f98b9e13",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/kernel/src/Kernel/xnu/xnu/System/Library/Kernels/kernel.development.virt: Mach-O 64-bit executable arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/kernel/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_VIRT/kernel.development.virt",
+      "size": 12604496,
+      "sha256": "efa36095f9d73dd94c920460d96b35703e71a8ef2df526dc5fb13c72f98b9e13",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/kernel/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_VIRT/kernel.development.virt: Mach-O 64-bit executable arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/kernel/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_VIRT/kernel.development.virt.dSYM/Contents/Resources/DWARF/kernel.development.virt",
+      "size": 52695155,
+      "sha256": "7cea04bbbfeb004c684bc90801cbb20d857811587bd2af1e17a9837f96aafbe9",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/kernel/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_VIRT/kernel.development.virt.dSYM/Contents/Resources/DWARF/kernel.development.virt: Mach-O 64-bit dSYM companion file arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/kernel/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_VIRT/kernel.development.virt.unstripped",
+      "size": 15520904,
+      "sha256": "907d922c6ae4141cb3bb9d3b1cb9bca7e3a7288aee2f27378370131202dc48fb",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/kernel/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_VIRT/kernel.development.virt.unstripped: Mach-O 64-bit executable arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/kernel/src/Kernel/xnu/xnu_build/src/xnu-build/kernel.development.virt",
+      "size": 12604496,
+      "sha256": "efa36095f9d73dd94c920460d96b35703e71a8ef2df526dc5fb13c72f98b9e13",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/kernel/src/Kernel/xnu/xnu_build/src/xnu-build/kernel.development.virt: Mach-O 64-bit executable arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/kernel/src/Kernel/xnu/xnu_sym/kernel.development.virt",
+      "size": 15520904,
+      "sha256": "907d922c6ae4141cb3bb9d3b1cb9bca7e3a7288aee2f27378370131202dc48fb",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/kernel/src/Kernel/xnu/xnu_sym/kernel.development.virt: Mach-O 64-bit executable arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/kernel/src/Kernel/xnu/xnu_sym/kernel.development.virt.dSYM/Contents/Resources/DWARF/kernel.development.virt",
+      "size": 52695155,
+      "sha256": "7cea04bbbfeb004c684bc90801cbb20d857811587bd2af1e17a9837f96aafbe9",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/actions-runner/job-work/blauos/blauos/.blauos/build/native-ci/actions-38074322304/kernel/src/Kernel/xnu/xnu_sym/kernel.development.virt.dSYM/Contents/Resources/DWARF/kernel.development.virt: Mach-O 64-bit dSYM companion file arm64"
+    }
+  ],
+  "qemu_psci_hvc_profile": true,
+  "boot_validated": false
+}
