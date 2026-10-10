@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 import shutil
 import subprocess
+import sys
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -27,11 +28,12 @@ def main():
     parser.add_argument("--vars-template", type=Path, required=True)
     parser.add_argument("--symbols", type=Path, required=True)
     parser.add_argument("--qemu", default="qemu-system-aarch64")
+    parser.add_argument("--machine", default="virt-10.2")
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=True)
     audit_path = args.output / "runtime-audit.json"
-    command = ["python3", str(ROOT / "scripts/build/runtime.py"), "inspect", "--root", str(args.root),
+    command = [sys.executable, str(ROOT / "scripts/build/runtime.py"), "inspect", "--root", str(args.root),
                "--provenance", str(args.provenance), "--manifest", str(ROOT / "sources.lock.json"),
                "--output", str(audit_path)]
     subprocess.run(command, check=True)
@@ -44,6 +46,8 @@ def main():
                 "runtime_audit_sha256": digest(audit_path), "stock_kernel_used": False,
                 "guest_execution_observed": False, "sha256": {name: digest(path) for name, path in artifacts.items()},
                 "qemu_version": subprocess.check_output([args.qemu, "--version"], text=True).splitlines()[0],
+                "emulator_profile": {"machine": args.machine, "virtualization": False, "gic_version": 3,
+                                     "accel": "tcg", "cpu": "neoverse-n2"},
                 "source_lock_sha256": digest(ROOT / "sources.lock.json")}
     (args.output / "image-manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
     shutil.copyfile(args.provenance, args.output / "runtime-provenance.json")

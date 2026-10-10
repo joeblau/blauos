@@ -1,8 +1,10 @@
 /* VM-only readiness probe. Compile against the source-built guest libSystem. */
 #include <arpa/inet.h>
 #include <errno.h>
+#include <fcntl.h>
 #include <netdb.h>
 #include <netinet/in.h>
+#include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -97,6 +99,9 @@ int main(void)
     printf("BLAUOS_GUEST_KERNEL %s\n", kernel);
     configure_network();
     challenge();
+    int nonce_file = open("/var/run/blauos-smoke-nonce", O_WRONLY | O_CREAT | O_TRUNC, 0600);
+    if (nonce_file < 0 || write(nonce_file, nonce, 64) != 64 || fsync(nonce_file) || close(nonce_file))
+        fail("shutdown-nonce-file");
     marker("kernel");
     marker("launchd");
     pid_t child = fork();
@@ -111,11 +116,17 @@ int main(void)
     child = fork();
     if (child < 0) fail("runtime-probe-fork");
     if (!child) {
-        execl("/bin/blauos_runtime_probe", "blauos_runtime_probe", "/tmp", (char *)NULL);
+        execl("/bin/blauos_runtime_probe", "blauos_runtime_probe", "/tmp", "--require-source-images", (char *)NULL);
         _exit(127);
     }
     if (waitpid(child, &status, 0) != child || !WIFEXITED(status) || WEXITSTATUS(status)) fail("runtime-probe");
     marker("runtime");
+    marker("concurrent_once");
+    marker("blocks_lifetime");
+    marker("locale_conversions");
+    marker("mach_timer");
+    marker("atfork_handlers");
+    marker("dynamic_loader");
     child = fork();
     if (child < 0) fail("launchd-tests-fork");
     if (!child) {
@@ -132,6 +143,13 @@ int main(void)
     if (getaddrinfo("example.com", "80", &hints, &answer) || !answer) fail("dns");
     freeaddrinfo(answer);
     marker("dns");
+    child = fork();
+    if (child < 0) fail("shutdown-job-fork");
+    if (!child) {
+        execl("/usr/bin/launchctl", "launchctl", "load", "/etc/blauos-tests/org.blauos.test.shutdown.plist", (char *)NULL);
+        _exit(127);
+    }
+    if (waitpid(child, &status, 0) != child || !WIFEXITED(status) || WEXITSTATUS(status)) fail("shutdown-job-load");
     int listener = socket(AF_INET, SOCK_STREAM, 0);
     if (listener < 0) fail("service-socket");
     int yes = 1;
@@ -150,7 +168,7 @@ int main(void)
         if (fd < 0) fail("service-accept");
         struct timeval timeout = {5, 0};
         setsockopt(fd, SOL_SOCKET, SO_RCVTIMEO, &timeout, sizeof(timeout));
-        char request[256], response[256];
+        char request[256], response[256], shutdown_request[128];
         ssize_t received = read(fd, request, sizeof(request) - 1);
         if (received > 0) {
             request[received] = 0;
@@ -158,6 +176,18 @@ int main(void)
                 int size = snprintf(response, sizeof(response),
                     "HTTP/1.0 200 OK\r\nContent-Length: 65\r\n\r\n%s\n", nonce);
                 if (write(fd, response, size) == size) marker("host_to_guest");
+            } else {
+                int expected = snprintf(shutdown_request, sizeof(shutdown_request), "GET /shutdown/%s ", nonce);
+                if (expected > 0 && !strncmp(request, shutdown_request, (size_t)expected)) {
+                    int size = snprintf(response, sizeof(response),
+                        "HTTP/1.0 202 Accepted\r\nContent-Length: 65\r\n\r\n%s\n", nonce);
+                    if (write(fd, response, size) != size) fail("shutdown-acknowledge");
+                    close(fd);
+                    marker("shutdown_requested");
+                    sync();
+                    if (kill(1, SIGTERM)) fail("shutdown-pid1-signal");
+                    for (;;) pause();
+                }
             }
         }
         close(fd);

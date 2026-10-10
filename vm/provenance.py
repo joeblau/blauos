@@ -29,4 +29,6 @@ for path in sorted(root.rglob("*")):
                         source_files=source_files, workspace_revision=local_sources["workspaceRevision"],
                         provenance_scope="Exact BlauOS source snapshot compiled against the source-built PureDarwin runtime")
     artifacts.append(artifact)
-Path(sys.argv[3]).write_text(json.dumps({"schema_version": 1, "artifacts": artifacts}, indent=2) + "\n")
+providers = ["/usr/lib/libobjc.A.dylib"] if (root / "usr/lib/libobjc.A.dylib").is_file() else []
+Path(sys.argv[3]).write_text(json.dumps({"schema_version": 1, "artifacts": artifacts,
+                                        "flat_namespace_providers": providers}, indent=2) + "\n")

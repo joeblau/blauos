@@ -34,7 +34,7 @@ sha256sum "$kernel" "$loader" "$code" "$vars_template" > "$output/input-sha256.t
 "$qemu" --version > "$output/qemu-version.txt"
 set +e
 timeout --kill-after=5 "$seconds" "$qemu" \
-  -machine virt-10.2,gic-version=3 -accel tcg -cpu neoverse-n2 -smp 1 -m 1024 \
+  -machine virt-10.2,gic-version=3,virtualization=off -accel tcg -cpu neoverse-n2 -smp 1 -m 1024 \
   -drive "if=pflash,format=raw,unit=0,readonly=on,file=$code" \
   -drive "if=pflash,format=raw,unit=1,file=$output/AAVMF_VARS.fd" \
   -drive "if=none,id=system,format=raw,snapshot=on,file=$image" \

@@ -1,0 +1,1201 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "root": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native-ci/run-2/runtime/root",
+  "architecture": "arm64",
+  "artifacts": [
+    {
+      "architecture": "arm64",
+      "cpu_subtype": 0,
+      "file_type": 2,
+      "flags": 2097285,
+      "dependencies": [
+        {
+          "path": "/usr/lib/libCoreFoundation.dylib",
+          "weak": false,
+          "reexport": false
+        },
+        {
+          "path": "/usr/lib/libIOKitCF.dylib",
+          "weak": false,
+          "reexport": false
+        },
+        {
+          "path": "/usr/lib/libSystem.B.dylib",
+          "weak": false,
+          "reexport": false
+        }
+      ],
+      "rpaths": [],
+      "dylinker": "/usr/lib/dyld",
+      "flat_namespace_imports": [],
+      "path": "/usr/bin/launchctl",
+      "sha256": "a650d81b56cd3e538bb34513beb278132b813e7924da50dc9ce9807e2e029b1a",
+      "source": "puredarwin-vm-next",
+      "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "build_amendments": [
+        {
+          "path": "scripts/build/launchd.py",
+          "sha256": "f3c37c880cac6268be3982ebbeddee7a0286b8cfa183b93ee2f863ab939141db"
+        },
+        {
+          "path": "runtime/compat/sdk27-dyld.patch",
+          "sha256": "ab7b3f6ed2373d50fb5a14d51cb54f15c3f372e8e5a236802b147fc853c53331"
+        },
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        }
+      ],
+      "artifact_kind": "userspace",
+      "loaded_flat_namespace_providers": [
+        "/usr/lib/libobjc.A.dylib"
+      ],
+      "imports_count": 310,
+      "imports_sha256": "0f289ac011a5aea568760b9491d746f9ec1f2adca856438cf4cbaa61deb5855a",
+      "defined_external_symbols_count": 960,
+      "defined_external_symbols_sha256": "398b88705cdac540b820147eb37fe823e0287004491c068f0f48c562ed94c9ee"
+    },
+    {
+      "architecture": "arm64",
+      "cpu_subtype": 0,
+      "file_type": 6,
+      "flags": 1147013,
+      "dependencies": [
+        {
+          "path": "/usr/lib/libSystem.B.dylib",
+          "weak": false,
+          "reexport": false
+        },
+        {
+          "path": "/usr/lib/libc++abi.dylib",
+          "weak": false,
+          "reexport": false
+        },
+        {
+          "path": "/usr/lib/libc++.1.dylib",
+          "weak": false,
+          "reexport": false
+        },
+        {
+          "path": "/usr/lib/libicudata.76.dylib",
+          "weak": false,
+          "reexport": false
+        }
+      ],
+      "rpaths": [],
+      "dylinker": null,
+      "flat_namespace_imports": [],
+      "path": "/usr/lib/libicuuc.76.dylib",
+      "sha256": "583f18b8046c1b96b4b57db4bb052e6904e821ed2e30f0c113015dfe474d5253",
+      "symlink_target": "/usr/lib/libicuuc.76.1.dylib",
+      "source": "icu4c-76.1",
+      "source_revision": "dfacb46bfe4747410472ce3e1144bf28a102feeaa4e3875bac9b4c6cf30f4f3e",
+      "build_amendments": [
+        {
+          "path": "scripts/build/corefoundation.py",
+          "sha256": "6172deacd3d742b8317e6e624cef1773d4c13e7054544219a6b936ebb82a854f"
+        }
+      ],
+      "artifact_kind": "userspace",
+      "loaded_flat_namespace_providers": [
+        "/usr/lib/libobjc.A.dylib"
+      ],
+      "imports_count": 389,
+      "imports_sha256": "dd14124ff2e8b504c63863b6e9cbcc0cba879b3f95ee86f6787631f8dd996e3a",
+      "defined_external_symbols_count": 3157,
+      "defined_external_symbols_sha256": "91fef823ae390f4e65977a222225f42280de85f90b36c3eb3c873c2d7c57ee8d"
+    },
+    {
+      "architecture": "arm64",
+      "cpu_subtype": 0,
+      "file_type": 6,
+      "flags": 1048709,
+      "dependencies": [
+        {
+          "path": "/usr/lib/libCoreFoundation.dylib",
+          "weak": false,
+          "reexport": false
+        },
+        {
+          "path": "/usr/lib/libSystem.B.dylib",
+          "weak": false,
+          "reexport": false
+        }
+      ],
+      "rpaths": [],
+      "dylinker": null,
+      "flat_namespace_imports": [],
+      "path": "/usr/lib/libIOKitCF.dylib",
+      "sha256": "32872c7efd6150235dc70879805f206f1abe8a9f96074d03f24e28a313200ad8",
+      "source": "puredarwin-vm-next",
+      "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "build_amendments": [
+        {
+          "path": "scripts/build/iokit.py",
+          "sha256": "e2c8d92403e0aa15aa07a5981cbed966cfc32b4e0419c7c60579a1ce81f2cc8a"
+        },
+        {
+          "path": "runtime/compat/sdk27-dyld.patch",
+          "sha256": "ab7b3f6ed2373d50fb5a14d51cb54f15c3f372e8e5a236802b147fc853c53331"
+        },
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        }
+      ],
+      "artifact_kind": "userspace",
+      "loaded_flat_namespace_providers": [
+        "/usr/lib/libobjc.A.dylib"
+      ],
+      "imports_count": 143,
+      "imports_sha256": "a5b61c446c734489cf29c727e3058fd7bb3269c6237716011691161e060d2874",
+      "defined_external_symbols_count": 220,
+      "defined_external_symbols_sha256": "671a3c1cfafbb0c5433aa113c295d5b599e3fa4bfb84a2207402e0494ed02736"
+    },
+    {
+      "architecture": "arm64",
+      "cpu_subtype": 0,
+      "file_type": 6,
+      "flags": 1147013,
+      "dependencies": [
+        {
+          "path": "/usr/lib/libc++abi.dylib",
+          "weak": false,
+          "reexport": false
+        },
+        {
+          "path": "/usr/lib/libSystem.B.dylib",
+          "weak": false,
+          "reexport": false
+        }
+      ],
+      "rpaths": [],
+      "dylinker": null,
+      "flat_namespace_imports": [],
+      "path": "/usr/lib/libobjc.dylib",
+      "sha256": "d7754f2359a8519b91a4e48334de1798b937105e4a22be1163d50cde1470f4a0",
+      "symlink_target": "/usr/lib/libobjc.A.dylib",
+      "source": "puredarwin-vm-next",
+      "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "build_amendments": [
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        },
+        {
+          "path": "runtime/compat/sdk27-dyld.patch",
+          "sha256": "ab7b3f6ed2373d50fb5a14d51cb54f15c3f372e8e5a236802b147fc853c53331"
+        },
+        {
+          "path": "scripts/build/objc.py",
+          "sha256": "c096a211747c21c423d2019d082296d8ff906d174c7d13b98230a9cd2545acf9"
+        }
+      ],
+      "artifact_kind": "userspace",
+      "loaded_flat_namespace_providers": [
+        "/usr/lib/libobjc.A.dylib"
+      ],
+      "imports_count": 142,
+      "imports_sha256": "993ba8812fe9a95ecb2a9a23d22c61146a99dd09756db07bcf2720d9069e4e10",
+      "defined_external_symbols_count": 707,
+      "defined_external_symbols_sha256": "912b10559290de08cb2d2acfcd99c5bc2f58ef42008a7f8a52154fe8ebb8afb0"
+    },
+    {
+      "architecture": "arm64",
+      "cpu_subtype": 0,
+      "file_type": 6,
+      "flags": 1147013,
+      "dependencies": [
+        {
+          "path": "/usr/lib/libSystem.B.dylib",
+          "weak": false,
+          "reexport": false
+        },
+        {
+          "path": "/usr/lib/libc++abi.dylib",
+          "weak": false,
+          "reexport": false
+        },
+        {
+          "path": "/usr/lib/libc++.1.dylib",
+          "weak": false,
+          "reexport": false
+        },
+        {
+          "path": "/usr/lib/libicuuc.76.dylib",
+          "weak": false,
+          "reexport": false
+        },
+        {
+          "path": "/usr/lib/libicudata.76.dylib",
+          "weak": false,
+          "reexport": false
+        }
+      ],
+      "rpaths": [],
+      "dylinker": null,
+      "flat_namespace_imports": [],
+      "path": "/usr/lib/libicui18n.76.dylib",
+      "sha256": "a2d039f21527d1ac83eea453fbab7b82e97db92f0eb208721df880daff00b4f0",
+      "symlink_target": "/usr/lib/libicui18n.76.1.dylib",
+      "source": "icu4c-76.1",
+      "source_revision": "dfacb46bfe4747410472ce3e1144bf28a102feeaa4e3875bac9b4c6cf30f4f3e",
+      "build_amendments": [
+        {
+          "path": "scripts/build/corefoundation.py",
+          "sha256": "6172deacd3d742b8317e6e624cef1773d4c13e7054544219a6b936ebb82a854f"
+        }
+      ],
+      "artifact_kind": "userspace",
+      "loaded_flat_namespace_providers": [
+        "/usr/lib/libobjc.A.dylib"
+      ],
+      "imports_count": 1145,
+      "imports_sha256": "2beebf4d0b16f2fb30609681c15060086bdf5fb292d29e412b9982e6c22a4d39",
+      "defined_external_symbols_count": 6553,
+      "defined_external_symbols_sha256": "24f42099aebfac341e66d530c54c1a03aff64eed1a2914133524489be6b989bb"
+    },
+    {
+      "architecture": "arm64",
+      "cpu_subtype": 0,
+      "file_type": 6,
+      "flags": 1048709,
+      "dependencies": [
+        {
+          "path": "/usr/lib/libSystem.B.dylib",
+          "weak": false,
+          "reexport": false
+        },
+        {
+          "path": "/usr/lib/libc++abi.dylib",
+          "weak": false,
+          "reexport": false
+        },
+        {
+          "path": "/usr/lib/libc++.1.dylib",
+          "weak": false,
+          "reexport": false
+        }
+      ],
+      "rpaths": [],
+      "dylinker": null,
+      "flat_namespace_imports": [],
+      "path": "/usr/lib/libicudata.dylib",
+      "sha256": "3497ce6b058da88a8b22a180be33dc919f85f2b852711bbaaa73188ca09ddb73",
+      "symlink_target": "/usr/lib/libicudata.76.1.dylib",
+      "source": "icu4c-76.1",
+      "source_revision": "dfacb46bfe4747410472ce3e1144bf28a102feeaa4e3875bac9b4c6cf30f4f3e",
+      "build_amendments": [
+        {
+          "path": "scripts/build/corefoundation.py",
+          "sha256": "6172deacd3d742b8317e6e624cef1773d4c13e7054544219a6b936ebb82a854f"
+        }
+      ],
+      "artifact_kind": "userspace",
+      "loaded_flat_namespace_providers": [
+        "/usr/lib/libobjc.A.dylib"
+      ],
+      "imports_count": 0,
+      "imports_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "defined_external_symbols_count": 1,
+      "defined_external_symbols_sha256": "c78d607ed40e7b5ac68cc0e6ddb614c5f66c6a3d39cf26357b1cb9d86675bec3"
+    },
+    {
+      "architecture": "arm64",
+      "cpu_subtype": 0,
+      "file_type": 6,
+      "flags": 1048709,
+      "dependencies": [
+        {
+          "path": "/usr/lib/libSystem.B.dylib",
+          "weak": false,
+          "reexport": false
+        },
+        {
+          "path": "/usr/lib/libobjc.A.dylib",
+          "weak": false,
+          "reexport": false
+        },
+        {
+          "path": "/usr/lib/libicucore.A.dylib",
+          "weak": false,
+          "reexport": false
+        },
+        {
+          "path": "/usr/lib/libicui18n.76.1.dylib",
+          "weak": false,
+          "reexport": false
+        },
+        {
+          "path": "/usr/lib/libicuuc.76.1.dylib",
+          "weak": false,
+          "reexport": false
+        }
+      ],
+      "rpaths": [],
+      "dylinker": null,
+      "flat_namespace_imports": [],
+      "path": "/usr/lib/libCoreFoundation.dylib",
+      "sha256": "b628929a337d4a0055a1fee1d00b7e5b1696c0ab9703db72c3e4910217b2bf0f",
+      "source": "puredarwin-vm-next",
+      "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "build_amendments": [
+        {
+          "path": "scripts/build/corefoundation.py",
+          "sha256": "6172deacd3d742b8317e6e624cef1773d4c13e7054544219a6b936ebb82a854f"
+        },
+        {
+          "path": "runtime/compat/sdk27-corefoundation.patch",
+          "sha256": "d726b76be5364692b5756ad8029225d7843800a2b7c7703c01273059d52717cc"
+        }
+      ],
+      "artifact_kind": "userspace",
+      "loaded_flat_namespace_providers": [
+        "/usr/lib/libobjc.A.dylib"
+      ],
+      "imports_count": 484,
+      "imports_sha256": "30ccd75dec656ff8958c880af550ae3e47bca30e57efb309f235a1fdd1445106",
+      "defined_external_symbols_count": 1803,
+      "defined_external_symbols_sha256": "d508e216f0d6269d315ed7b6dfa506bf535769c503d27410232c4cb90593fd1b"
+    },
+    {
+      "architecture": "arm64",
+      "cpu_subtype": 0,
+      "file_type": 7,
+      "flags": 98437,
+      "dependencies": [],
+      "rpaths": [],
+      "dylinker": null,
+      "flat_namespace_imports": [],
+      "path": "/usr/lib/dyld",
+      "sha256": "22fb41b9c55c84c94ce663014ce8b26c782d40275eef02d85f996538c9ba80b1",
+      "source": "puredarwin-vm-next",
+      "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "build_amendments": [
+        {
+          "path": "runtime/compat/sdk27-dyld.patch",
+          "sha256": "ab7b3f6ed2373d50fb5a14d51cb54f15c3f372e8e5a236802b147fc853c53331"
+        },
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        },
+        {
+          "path": "runtime/compat/arm64_stack_probe.S",
+          "sha256": "34a355f12dacb843fb879e350f0ffaf2343b27dce183202e6b99b743c7c3b62f"
+        },
+        {
+          "path": "runtime/compat/compiler-rt-exports.patch",
+          "sha256": "4eeed573e39f4655ac798fe9401d50aa5df592a7b51c8e4f1d6969daed3fff68"
+        },
+        {
+          "path": "runtime/compat/libdyld.exports",
+          "sha256": "2006860d47ae36f063a87e52797d8c092f3111062a2f96934de494bca65b92b0"
+        }
+      ],
+      "artifact_kind": "userspace",
+      "loaded_flat_namespace_providers": [],
+      "imports_count": 0,
+      "imports_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "defined_external_symbols_count": 2504,
+      "defined_external_symbols_sha256": "4865975fe3caa835a6ab07086a8efd28efa052082ca74bb43dcfe8b39b16a7b5"
+    },
+    {
+      "architecture": "arm64",
+      "cpu_subtype": 0,
+      "file_type": 6,
+      "flags": 98437,
+      "dependencies": [
+        {
+          "path": "/usr/lib/system/libdyld.dylib",
+          "weak": false,
+          "reexport": true
+        },
+        {
+          "path": "/usr/lib/libobjc.A.dylib",
+          "weak": false,
+          "reexport": false
+        }
+      ],
+      "rpaths": [],
+      "dylinker": null,
+      "flat_namespace_imports": [],
+      "path": "/usr/lib/libSystem.dylib",
+      "sha256": "09288ac925121429bd59072de7b30b2cfc85a6c1aae32f4c1657cbe2530bc74c",
+      "symlink_target": "/usr/lib/libSystem.B.dylib",
+      "source": "puredarwin-vm-next",
+      "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "build_amendments": [
+        {
+          "path": "runtime/compat/sdk27-dyld.patch",
+          "sha256": "ab7b3f6ed2373d50fb5a14d51cb54f15c3f372e8e5a236802b147fc853c53331"
+        },
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        },
+        {
+          "path": "runtime/compat/arm64_stack_probe.S",
+          "sha256": "34a355f12dacb843fb879e350f0ffaf2343b27dce183202e6b99b743c7c3b62f"
+        },
+        {
+          "path": "runtime/compat/compiler-rt-exports.patch",
+          "sha256": "4eeed573e39f4655ac798fe9401d50aa5df592a7b51c8e4f1d6969daed3fff68"
+        },
+        {
+          "path": "runtime/compat/libdyld.exports",
+          "sha256": "2006860d47ae36f063a87e52797d8c092f3111062a2f96934de494bca65b92b0"
+        },
+        {
+          "path": "scripts/build/objc.py",
+          "sha256": "c096a211747c21c423d2019d082296d8ff906d174c7d13b98230a9cd2545acf9"
+        }
+      ],
+      "artifact_kind": "userspace",
+      "loaded_flat_namespace_providers": [
+        "/usr/lib/libobjc.A.dylib"
+      ],
+      "imports_count": 85,
+      "imports_sha256": "fdf7cec5718d7f6d05b23ba01ae6a57d59206b25fed97515d2c54873cc83b4cc",
+      "defined_external_symbols_count": 1921,
+      "defined_external_symbols_sha256": "72b969a43550415756daf387c274473251a9c53a67d1143661ffa5f55430dde7"
+    },
+    {
+      "architecture": "arm64",
+      "cpu_subtype": 0,
+      "file_type": 6,
+      "flags": 1147013,
+      "dependencies": [
+        {
+          "path": "/usr/lib/libSystem.B.dylib",
+          "weak": false,
+          "reexport": false
+        },
+        {
+          "path": "/usr/lib/libc++abi.dylib",
+          "weak": false,
+          "reexport": false
+        },
+        {
+          "path": "/usr/lib/libc++.1.dylib",
+          "weak": false,
+          "reexport": false
+        },
+        {
+          "path": "/usr/lib/libicudata.76.dylib",
+          "weak": false,
+          "reexport": false
+        }
+      ],
+      "rpaths": [],
+      "dylinker": null,
+      "flat_namespace_imports": [],
+      "path": "/usr/lib/libicuuc.76.1.dylib",
+      "sha256": "583f18b8046c1b96b4b57db4bb052e6904e821ed2e30f0c113015dfe474d5253",
+      "source": "icu4c-76.1",
+      "source_revision": "dfacb46bfe4747410472ce3e1144bf28a102feeaa4e3875bac9b4c6cf30f4f3e",
+      "build_amendments": [
+        {
+          "path": "scripts/build/corefoundation.py",
+          "sha256": "6172deacd3d742b8317e6e624cef1773d4c13e7054544219a6b936ebb82a854f"
+        }
+      ],
+      "artifact_kind": "userspace",
+      "loaded_flat_namespace_providers": [
+        "/usr/lib/libobjc.A.dylib"
+      ],
+      "imports_count": 389,
+      "imports_sha256": "dd14124ff2e8b504c63863b6e9cbcc0cba879b3f95ee86f6787631f8dd996e3a",
+      "defined_external_symbols_count": 3157,
+      "defined_external_symbols_sha256": "91fef823ae390f4e65977a222225f42280de85f90b36c3eb3c873c2d7c57ee8d"
+    },
+    {
+      "architecture": "arm64",
+      "cpu_subtype": 0,
+      "file_type": 6,
+      "flags": 1048709,
+      "dependencies": [
+        {
+          "path": "/usr/lib/libSystem.B.dylib",
+          "weak": false,
+          "reexport": false
+        },
+        {
+          "path": "/usr/lib/libc++abi.dylib",
+          "weak": false,
+          "reexport": false
+        },
+        {
+          "path": "/usr/lib/libc++.1.dylib",
+          "weak": false,
+          "reexport": false
+        }
+      ],
+      "rpaths": [],
+      "dylinker": null,
+      "flat_namespace_imports": [],
+      "path": "/usr/lib/libicudata.76.dylib",
+      "sha256": "3497ce6b058da88a8b22a180be33dc919f85f2b852711bbaaa73188ca09ddb73",
+      "symlink_target": "/usr/lib/libicudata.76.1.dylib",
+      "source": "icu4c-76.1",
+      "source_revision": "dfacb46bfe4747410472ce3e1144bf28a102feeaa4e3875bac9b4c6cf30f4f3e",
+      "build_amendments": [
+        {
+          "path": "scripts/build/corefoundation.py",
+          "sha256": "6172deacd3d742b8317e6e624cef1773d4c13e7054544219a6b936ebb82a854f"
+        }
+      ],
+      "artifact_kind": "userspace",
+      "loaded_flat_namespace_providers": [
+        "/usr/lib/libobjc.A.dylib"
+      ],
+      "imports_count": 0,
+      "imports_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "defined_external_symbols_count": 1,
+      "defined_external_symbols_sha256": "c78d607ed40e7b5ac68cc0e6ddb614c5f66c6a3d39cf26357b1cb9d86675bec3"
+    },
+    {
+      "architecture": "arm64",
+      "cpu_subtype": 0,
+      "file_type": 6,
+      "flags": 1048709,
+      "dependencies": [
+        {
+          "path": "/usr/lib/libSystem.B.dylib",
+          "weak": false,
+          "reexport": false
+        },
+        {
+          "path": "/usr/lib/libc++abi.dylib",
+          "weak": false,
+          "reexport": false
+        },
+        {
+          "path": "/usr/lib/libc++.1.dylib",
+          "weak": false,
+          "reexport": false
+        }
+      ],
+      "rpaths": [],
+      "dylinker": null,
+      "flat_namespace_imports": [],
+      "path": "/usr/lib/libicudata.76.1.dylib",
+      "sha256": "3497ce6b058da88a8b22a180be33dc919f85f2b852711bbaaa73188ca09ddb73",
+      "source": "icu4c-76.1",
+      "source_revision": "dfacb46bfe4747410472ce3e1144bf28a102feeaa4e3875bac9b4c6cf30f4f3e",
+      "build_amendments": [
+        {
+          "path": "scripts/build/corefoundation.py",
+          "sha256": "6172deacd3d742b8317e6e624cef1773d4c13e7054544219a6b936ebb82a854f"
+        }
+      ],
+      "artifact_kind": "userspace",
+      "loaded_flat_namespace_providers": [
+        "/usr/lib/libobjc.A.dylib"
+      ],
+      "imports_count": 0,
+      "imports_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "defined_external_symbols_count": 1,
+      "defined_external_symbols_sha256": "c78d607ed40e7b5ac68cc0e6ddb614c5f66c6a3d39cf26357b1cb9d86675bec3"
+    },
+    {
+      "architecture": "arm64",
+      "cpu_subtype": 0,
+      "file_type": 6,
+      "flags": 1147013,
+      "dependencies": [
+        {
+          "path": "/usr/lib/libSystem.B.dylib",
+          "weak": false,
+          "reexport": false
+        },
+        {
+          "path": "/usr/lib/libc++abi.dylib",
+          "weak": false,
+          "reexport": false
+        },
+        {
+          "path": "/usr/lib/libc++.1.dylib",
+          "weak": false,
+          "reexport": false
+        },
+        {
+          "path": "/usr/lib/libicudata.76.dylib",
+          "weak": false,
+          "reexport": false
+        }
+      ],
+      "rpaths": [],
+      "dylinker": null,
+      "flat_namespace_imports": [],
+      "path": "/usr/lib/libicuuc.dylib",
+      "sha256": "583f18b8046c1b96b4b57db4bb052e6904e821ed2e30f0c113015dfe474d5253",
+      "symlink_target": "/usr/lib/libicuuc.76.1.dylib",
+      "source": "icu4c-76.1",
+      "source_revision": "dfacb46bfe4747410472ce3e1144bf28a102feeaa4e3875bac9b4c6cf30f4f3e",
+      "build_amendments": [
+        {
+          "path": "scripts/build/corefoundation.py",
+          "sha256": "6172deacd3d742b8317e6e624cef1773d4c13e7054544219a6b936ebb82a854f"
+        }
+      ],
+      "artifact_kind": "userspace",
+      "loaded_flat_namespace_providers": [
+        "/usr/lib/libobjc.A.dylib"
+      ],
+      "imports_count": 389,
+      "imports_sha256": "dd14124ff2e8b504c63863b6e9cbcc0cba879b3f95ee86f6787631f8dd996e3a",
+      "defined_external_symbols_count": 3157,
+      "defined_external_symbols_sha256": "91fef823ae390f4e65977a222225f42280de85f90b36c3eb3c873c2d7c57ee8d"
+    },
+    {
+      "architecture": "arm64",
+      "cpu_subtype": 0,
+      "file_type": 6,
+      "flags": 98437,
+      "dependencies": [
+        {
+          "path": "/usr/lib/system/libdyld.dylib",
+          "weak": false,
+          "reexport": true
+        },
+        {
+          "path": "/usr/lib/libobjc.A.dylib",
+          "weak": false,
+          "reexport": false
+        }
+      ],
+      "rpaths": [],
+      "dylinker": null,
+      "flat_namespace_imports": [],
+      "path": "/usr/lib/libSystem.B.dylib",
+      "sha256": "09288ac925121429bd59072de7b30b2cfc85a6c1aae32f4c1657cbe2530bc74c",
+      "source": "puredarwin-vm-next",
+      "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "build_amendments": [
+        {
+          "path": "runtime/compat/sdk27-dyld.patch",
+          "sha256": "ab7b3f6ed2373d50fb5a14d51cb54f15c3f372e8e5a236802b147fc853c53331"
+        },
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        },
+        {
+          "path": "runtime/compat/arm64_stack_probe.S",
+          "sha256": "34a355f12dacb843fb879e350f0ffaf2343b27dce183202e6b99b743c7c3b62f"
+        },
+        {
+          "path": "runtime/compat/compiler-rt-exports.patch",
+          "sha256": "4eeed573e39f4655ac798fe9401d50aa5df592a7b51c8e4f1d6969daed3fff68"
+        },
+        {
+          "path": "runtime/compat/libdyld.exports",
+          "sha256": "2006860d47ae36f063a87e52797d8c092f3111062a2f96934de494bca65b92b0"
+        },
+        {
+          "path": "scripts/build/objc.py",
+          "sha256": "c096a211747c21c423d2019d082296d8ff906d174c7d13b98230a9cd2545acf9"
+        }
+      ],
+      "artifact_kind": "userspace",
+      "loaded_flat_namespace_providers": [
+        "/usr/lib/libobjc.A.dylib"
+      ],
+      "imports_count": 85,
+      "imports_sha256": "fdf7cec5718d7f6d05b23ba01ae6a57d59206b25fed97515d2c54873cc83b4cc",
+      "defined_external_symbols_count": 1921,
+      "defined_external_symbols_sha256": "72b969a43550415756daf387c274473251a9c53a67d1143661ffa5f55430dde7"
+    },
+    {
+      "architecture": "arm64",
+      "cpu_subtype": 0,
+      "file_type": 6,
+      "flags": 98437,
+      "dependencies": [
+        {
+          "path": "/usr/lib/libc++abi.dylib",
+          "weak": false,
+          "reexport": true
+        },
+        {
+          "path": "/usr/lib/libSystem.B.dylib",
+          "weak": false,
+          "reexport": false
+        }
+      ],
+      "rpaths": [],
+      "dylinker": null,
+      "flat_namespace_imports": [],
+      "path": "/usr/lib/libc++.dylib",
+      "sha256": "131f470d15b0b5cd06742e9af0f5d807d28ae9dd56660ddd99879ae63f9092aa",
+      "symlink_target": "/usr/lib/libc++.1.dylib",
+      "source": "puredarwin-vm-next",
+      "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "build_amendments": [
+        {
+          "path": "scripts/build/libcxx.py",
+          "sha256": "88345923dfcfdd00f13e04a131378f8850912831c590a4fac601b1e795b42e41"
+        },
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        }
+      ],
+      "artifact_kind": "userspace",
+      "loaded_flat_namespace_providers": [
+        "/usr/lib/libobjc.A.dylib"
+      ],
+      "imports_count": 687,
+      "imports_sha256": "ddf42e98434091a00ef13acb4bb5e75700d41fb448ebd7a5205c599f892d474e",
+      "defined_external_symbols_count": 2078,
+      "defined_external_symbols_sha256": "db7646bb913af9ca64f45f007bb4a73884b802c657d7c6fd7a6333f43fd1663d"
+    },
+    {
+      "architecture": "arm64",
+      "cpu_subtype": 0,
+      "file_type": 6,
+      "flags": 1147013,
+      "dependencies": [
+        {
+          "path": "/usr/lib/libSystem.B.dylib",
+          "weak": false,
+          "reexport": false
+        },
+        {
+          "path": "/usr/lib/libc++abi.dylib",
+          "weak": false,
+          "reexport": false
+        },
+        {
+          "path": "/usr/lib/libc++.1.dylib",
+          "weak": false,
+          "reexport": false
+        },
+        {
+          "path": "/usr/lib/libicuuc.76.dylib",
+          "weak": false,
+          "reexport": false
+        },
+        {
+          "path": "/usr/lib/libicudata.76.dylib",
+          "weak": false,
+          "reexport": false
+        }
+      ],
+      "rpaths": [],
+      "dylinker": null,
+      "flat_namespace_imports": [],
+      "path": "/usr/lib/libicui18n.dylib",
+      "sha256": "a2d039f21527d1ac83eea453fbab7b82e97db92f0eb208721df880daff00b4f0",
+      "symlink_target": "/usr/lib/libicui18n.76.1.dylib",
+      "source": "icu4c-76.1",
+      "source_revision": "dfacb46bfe4747410472ce3e1144bf28a102feeaa4e3875bac9b4c6cf30f4f3e",
+      "build_amendments": [
+        {
+          "path": "scripts/build/corefoundation.py",
+          "sha256": "6172deacd3d742b8317e6e624cef1773d4c13e7054544219a6b936ebb82a854f"
+        }
+      ],
+      "artifact_kind": "userspace",
+      "loaded_flat_namespace_providers": [
+        "/usr/lib/libobjc.A.dylib"
+      ],
+      "imports_count": 1145,
+      "imports_sha256": "2beebf4d0b16f2fb30609681c15060086bdf5fb292d29e412b9982e6c22a4d39",
+      "defined_external_symbols_count": 6553,
+      "defined_external_symbols_sha256": "24f42099aebfac341e66d530c54c1a03aff64eed1a2914133524489be6b989bb"
+    },
+    {
+      "architecture": "arm64",
+      "cpu_subtype": 0,
+      "file_type": 6,
+      "flags": 133,
+      "dependencies": [
+        {
+          "path": "/usr/lib/libSystem.B.dylib",
+          "weak": false,
+          "reexport": false
+        },
+        {
+          "path": "/usr/lib/libicuuc.76.1.dylib",
+          "weak": false,
+          "reexport": true
+        },
+        {
+          "path": "/usr/lib/libicudata.76.1.dylib",
+          "weak": false,
+          "reexport": true
+        },
+        {
+          "path": "/usr/lib/libicui18n.76.1.dylib",
+          "weak": false,
+          "reexport": true
+        }
+      ],
+      "rpaths": [],
+      "dylinker": null,
+      "flat_namespace_imports": [],
+      "path": "/usr/lib/libicucore.dylib",
+      "sha256": "ce28a905bec3d0bbce583ada276cd69330051d2fe39143c6fdc5a05a8a8f927f",
+      "symlink_target": "/usr/lib/libicucore.A.dylib",
+      "source": "icu4c-76.1",
+      "source_revision": "dfacb46bfe4747410472ce3e1144bf28a102feeaa4e3875bac9b4c6cf30f4f3e",
+      "build_amendments": [
+        {
+          "path": "scripts/build/corefoundation.py",
+          "sha256": "6172deacd3d742b8317e6e624cef1773d4c13e7054544219a6b936ebb82a854f"
+        }
+      ],
+      "artifact_kind": "userspace",
+      "loaded_flat_namespace_providers": [
+        "/usr/lib/libobjc.A.dylib"
+      ],
+      "imports_count": 0,
+      "imports_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "defined_external_symbols_count": 0,
+      "defined_external_symbols_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "architecture": "arm64",
+      "cpu_subtype": 0,
+      "file_type": 6,
+      "flags": 1147013,
+      "dependencies": [
+        {
+          "path": "/usr/lib/libc++abi.dylib",
+          "weak": false,
+          "reexport": false
+        },
+        {
+          "path": "/usr/lib/libSystem.B.dylib",
+          "weak": false,
+          "reexport": false
+        }
+      ],
+      "rpaths": [],
+      "dylinker": null,
+      "flat_namespace_imports": [],
+      "path": "/usr/lib/libobjc.A.dylib",
+      "sha256": "d7754f2359a8519b91a4e48334de1798b937105e4a22be1163d50cde1470f4a0",
+      "source": "puredarwin-vm-next",
+      "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "build_amendments": [
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        },
+        {
+          "path": "runtime/compat/sdk27-dyld.patch",
+          "sha256": "ab7b3f6ed2373d50fb5a14d51cb54f15c3f372e8e5a236802b147fc853c53331"
+        },
+        {
+          "path": "scripts/build/objc.py",
+          "sha256": "c096a211747c21c423d2019d082296d8ff906d174c7d13b98230a9cd2545acf9"
+        }
+      ],
+      "artifact_kind": "userspace",
+      "loaded_flat_namespace_providers": [
+        "/usr/lib/libobjc.A.dylib"
+      ],
+      "imports_count": 142,
+      "imports_sha256": "993ba8812fe9a95ecb2a9a23d22c61146a99dd09756db07bcf2720d9069e4e10",
+      "defined_external_symbols_count": 707,
+      "defined_external_symbols_sha256": "912b10559290de08cb2d2acfcd99c5bc2f58ef42008a7f8a52154fe8ebb8afb0"
+    },
+    {
+      "architecture": "arm64",
+      "cpu_subtype": 0,
+      "file_type": 6,
+      "flags": 98437,
+      "dependencies": [
+        {
+          "path": "/usr/lib/libc++abi.dylib",
+          "weak": false,
+          "reexport": true
+        },
+        {
+          "path": "/usr/lib/libSystem.B.dylib",
+          "weak": false,
+          "reexport": false
+        }
+      ],
+      "rpaths": [],
+      "dylinker": null,
+      "flat_namespace_imports": [],
+      "path": "/usr/lib/libc++.1.dylib",
+      "sha256": "131f470d15b0b5cd06742e9af0f5d807d28ae9dd56660ddd99879ae63f9092aa",
+      "source": "puredarwin-vm-next",
+      "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "build_amendments": [
+        {
+          "path": "scripts/build/libcxx.py",
+          "sha256": "88345923dfcfdd00f13e04a131378f8850912831c590a4fac601b1e795b42e41"
+        },
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        }
+      ],
+      "artifact_kind": "userspace",
+      "loaded_flat_namespace_providers": [
+        "/usr/lib/libobjc.A.dylib"
+      ],
+      "imports_count": 687,
+      "imports_sha256": "ddf42e98434091a00ef13acb4bb5e75700d41fb448ebd7a5205c599f892d474e",
+      "defined_external_symbols_count": 2078,
+      "defined_external_symbols_sha256": "db7646bb913af9ca64f45f007bb4a73884b802c657d7c6fd7a6333f43fd1663d"
+    },
+    {
+      "architecture": "arm64",
+      "cpu_subtype": 0,
+      "file_type": 6,
+      "flags": 1147013,
+      "dependencies": [
+        {
+          "path": "/usr/lib/libSystem.B.dylib",
+          "weak": false,
+          "reexport": false
+        }
+      ],
+      "rpaths": [],
+      "dylinker": null,
+      "flat_namespace_imports": [],
+      "path": "/usr/lib/libc++abi.dylib",
+      "sha256": "90546ad776b2f5549a80233796dbe526153678752d7d71a97cee5306b77782f0",
+      "source": "puredarwin-vm-next",
+      "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "build_amendments": [
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        },
+        {
+          "path": "runtime/compat/sdk27-dyld.patch",
+          "sha256": "ab7b3f6ed2373d50fb5a14d51cb54f15c3f372e8e5a236802b147fc853c53331"
+        },
+        {
+          "path": "scripts/build/objc.py",
+          "sha256": "c096a211747c21c423d2019d082296d8ff906d174c7d13b98230a9cd2545acf9"
+        }
+      ],
+      "artifact_kind": "userspace",
+      "loaded_flat_namespace_providers": [
+        "/usr/lib/libobjc.A.dylib"
+      ],
+      "imports_count": 43,
+      "imports_sha256": "e371a7825e56207b607a2ec465d4649ba11cf00917bdbd5b55754a7890605b92",
+      "defined_external_symbols_count": 410,
+      "defined_external_symbols_sha256": "64612df22be5988341a7bd2d500b7db9cce482e515cd9d31410ec2b3d5261e91"
+    },
+    {
+      "architecture": "arm64",
+      "cpu_subtype": 0,
+      "file_type": 6,
+      "flags": 1147013,
+      "dependencies": [
+        {
+          "path": "/usr/lib/libSystem.B.dylib",
+          "weak": false,
+          "reexport": false
+        },
+        {
+          "path": "/usr/lib/libc++abi.dylib",
+          "weak": false,
+          "reexport": false
+        },
+        {
+          "path": "/usr/lib/libc++.1.dylib",
+          "weak": false,
+          "reexport": false
+        },
+        {
+          "path": "/usr/lib/libicuuc.76.dylib",
+          "weak": false,
+          "reexport": false
+        },
+        {
+          "path": "/usr/lib/libicudata.76.dylib",
+          "weak": false,
+          "reexport": false
+        }
+      ],
+      "rpaths": [],
+      "dylinker": null,
+      "flat_namespace_imports": [],
+      "path": "/usr/lib/libicui18n.76.1.dylib",
+      "sha256": "a2d039f21527d1ac83eea453fbab7b82e97db92f0eb208721df880daff00b4f0",
+      "source": "icu4c-76.1",
+      "source_revision": "dfacb46bfe4747410472ce3e1144bf28a102feeaa4e3875bac9b4c6cf30f4f3e",
+      "build_amendments": [
+        {
+          "path": "scripts/build/corefoundation.py",
+          "sha256": "6172deacd3d742b8317e6e624cef1773d4c13e7054544219a6b936ebb82a854f"
+        }
+      ],
+      "artifact_kind": "userspace",
+      "loaded_flat_namespace_providers": [
+        "/usr/lib/libobjc.A.dylib"
+      ],
+      "imports_count": 1145,
+      "imports_sha256": "2beebf4d0b16f2fb30609681c15060086bdf5fb292d29e412b9982e6c22a4d39",
+      "defined_external_symbols_count": 6553,
+      "defined_external_symbols_sha256": "24f42099aebfac341e66d530c54c1a03aff64eed1a2914133524489be6b989bb"
+    },
+    {
+      "architecture": "arm64",
+      "cpu_subtype": 0,
+      "file_type": 6,
+      "flags": 133,
+      "dependencies": [
+        {
+          "path": "/usr/lib/libSystem.B.dylib",
+          "weak": false,
+          "reexport": false
+        },
+        {
+          "path": "/usr/lib/libicuuc.76.1.dylib",
+          "weak": false,
+          "reexport": true
+        },
+        {
+          "path": "/usr/lib/libicudata.76.1.dylib",
+          "weak": false,
+          "reexport": true
+        },
+        {
+          "path": "/usr/lib/libicui18n.76.1.dylib",
+          "weak": false,
+          "reexport": true
+        }
+      ],
+      "rpaths": [],
+      "dylinker": null,
+      "flat_namespace_imports": [],
+      "path": "/usr/lib/libicucore.A.dylib",
+      "sha256": "ce28a905bec3d0bbce583ada276cd69330051d2fe39143c6fdc5a05a8a8f927f",
+      "source": "icu4c-76.1",
+      "source_revision": "dfacb46bfe4747410472ce3e1144bf28a102feeaa4e3875bac9b4c6cf30f4f3e",
+      "build_amendments": [
+        {
+          "path": "scripts/build/corefoundation.py",
+          "sha256": "6172deacd3d742b8317e6e624cef1773d4c13e7054544219a6b936ebb82a854f"
+        }
+      ],
+      "artifact_kind": "userspace",
+      "loaded_flat_namespace_providers": [
+        "/usr/lib/libobjc.A.dylib"
+      ],
+      "imports_count": 0,
+      "imports_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "defined_external_symbols_count": 0,
+      "defined_external_symbols_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "architecture": "arm64",
+      "cpu_subtype": 0,
+      "file_type": 6,
+      "flags": 1147013,
+      "dependencies": [],
+      "rpaths": [],
+      "dylinker": null,
+      "flat_namespace_imports": [],
+      "path": "/usr/lib/system/libdyld.dylib",
+      "sha256": "d56098c327793cce992f104ba7696f0713526369629c6854991985602811e542",
+      "source": "puredarwin-vm-next",
+      "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "build_amendments": [
+        {
+          "path": "runtime/compat/sdk27-dyld.patch",
+          "sha256": "ab7b3f6ed2373d50fb5a14d51cb54f15c3f372e8e5a236802b147fc853c53331"
+        },
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        },
+        {
+          "path": "runtime/compat/arm64_stack_probe.S",
+          "sha256": "34a355f12dacb843fb879e350f0ffaf2343b27dce183202e6b99b743c7c3b62f"
+        },
+        {
+          "path": "runtime/compat/compiler-rt-exports.patch",
+          "sha256": "4eeed573e39f4655ac798fe9401d50aa5df592a7b51c8e4f1d6969daed3fff68"
+        },
+        {
+          "path": "runtime/compat/libdyld.exports",
+          "sha256": "2006860d47ae36f063a87e52797d8c092f3111062a2f96934de494bca65b92b0"
+        }
+      ],
+      "artifact_kind": "userspace",
+      "loaded_flat_namespace_providers": [],
+      "imports_count": 25,
+      "imports_sha256": "9262b7672185a377558ac1044b7f2de3aa635f34b0828d0686951418e9002498",
+      "defined_external_symbols_count": 531,
+      "defined_external_symbols_sha256": "c61fe7f39f9a9ec59fdbeabd2bc62fed1115dcc43d9790a921b05b5528b6cbaf"
+    },
+    {
+      "architecture": "arm64",
+      "cpu_subtype": 0,
+      "file_type": 2,
+      "flags": 2097285,
+      "dependencies": [
+        {
+          "path": "/usr/lib/libCoreFoundation.dylib",
+          "weak": false,
+          "reexport": false
+        },
+        {
+          "path": "/usr/lib/libIOKitCF.dylib",
+          "weak": false,
+          "reexport": false
+        },
+        {
+          "path": "/usr/lib/libSystem.B.dylib",
+          "weak": false,
+          "reexport": false
+        }
+      ],
+      "rpaths": [],
+      "dylinker": "/usr/lib/dyld",
+      "flat_namespace_imports": [],
+      "path": "/sbin/launchd",
+      "sha256": "762117352609fb46340a273e6c42d975a1677d16d20b93a69d0a44e97aeecbbc",
+      "source": "puredarwin-vm-next",
+      "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "build_amendments": [
+        {
+          "path": "scripts/build/launchd.py",
+          "sha256": "f3c37c880cac6268be3982ebbeddee7a0286b8cfa183b93ee2f863ab939141db"
+        },
+        {
+          "path": "runtime/compat/sdk27-dyld.patch",
+          "sha256": "ab7b3f6ed2373d50fb5a14d51cb54f15c3f372e8e5a236802b147fc853c53331"
+        },
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        }
+      ],
+      "artifact_kind": "userspace",
+      "loaded_flat_namespace_providers": [
+        "/usr/lib/libobjc.A.dylib"
+      ],
+      "imports_count": 340,
+      "imports_sha256": "e3b1e6fee60835a4ed3a2b56ee35438fe04e682b5a6a4aaf1a8711b874d70b87",
+      "defined_external_symbols_count": 1202,
+      "defined_external_symbols_sha256": "0be3d5609d24184d4e0c0ae697dcd1719e0c72179ab94d00adf3ea8e1787b0cd"
+    }
+  ],
+  "errors": [],
+  "offline_dependency_closure": true,
+  "execution_verified": false,
+  "host_dyld_shared_cache_used": "not_tested",
+  "evidence_kind": "compact_offline_audit",
+  "raw_audit": {
+    "retained_path": ".blauos/build/native-ci/run-2/runtime-closure.json",
+    "sha256": "1855a88847d4914d6960660099642f76a3d9dc837d48180a2c84c9d3a133718b",
+    "bytes": 3534851,
+    "complete_audits_in_future_ci_artifacts": true
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "reviewer": "kernel_build agent",
+  "scope": "Acceptance-critical clean native CI, source libc++, reviewed kernel/drivers and genuine virtual guest readiness/shutdown",
+  "status": "actionable_findings_fixed_and_independently_rechecked",
+  "inputs": [
+    {
+      "path": "scripts/vm/native_ci.py",
+      "sha256": "4948b75c552ed5b012259d677a4bf3fb94339d30507f40cd37520cc27b6340c7"
+    },
+    {
+      "path": "scripts/build/libcxx.py",
+      "sha256": "cb9070f4697418cf760fb5d8e401165a20b5c58c9b60508487c30de5f687ab8e"
+    },
+    {
+      "path": ".github/workflows/native-baseline.yml",
+      "sha256": "19a7af3535899df19463c798b488c833ccb02a16204f15ab6f4f7f3cf4584687"
+    },
+    {
+      "path": "scripts/build/xnu.py",
+      "sha256": "e6c10a45f38879187508650f21b0bcb958a0bc45e0c255b5a79d48e5e14b2cfe"
+    },
+    {
+      "path": "vm/patches/pdarm-qemu-psci-shutdown.patch",
+      "sha256": "b153ed78a06dd06f41dcd6cd36dffb4b17d1ea792fed9ae08535d02c0694f201"
+    }
+  ],
+  "findings": [
+    {
+      "id": "CI-REVIEW-1",
+      "status": "fixed_and_rechecked",
+      "path": "scripts/vm/native_ci.py",
+      "trigger": "Docker creates daemon-owned container before CLI failure/timeout",
+      "fix": "Cleanup ownership now begins before launch and final forced removal targets the unique owned name",
+      "actual_evidence": "evidence/ci/container-cleanup.json"
+    },
+    {
+      "id": "CI-REVIEW-2",
+      "status": "fixed_and_rechecked",
+      "paths": [
+        "scripts/vm/native_ci.py",
+        "scripts/build/libcxx.py"
+      ],
+      "trigger": "SDKROOT selects a different SDK in unqualified build lookup than explicit macosx preflight",
+      "actual_evidence": "evidence/kernel/native-ci-sdk-selection.json",
+      "requested_fix": "Use verified host.json SDK path, pass it explicitly to libcxx and constrain compiler selection",
+      "fix": "Use verified host.json macOS SDK and developer path, clear inherited DEVELOPER_DIR/SDK/compiler/header overrides before doctor, pass explicit SDK to each source builder including libc++, and select CC/CXX with explicit macosx lookup"
+    },
+    {
+      "id": "CI-REVIEW-3",
+      "status": "fixed_and_rechecked",
+      "paths": [
+        "scripts/vm/native_ci.py",
+        ".github/workflows/native-baseline.yml"
+      ],
+      "trigger": "SIGTERM/Actions deadline bypasses default Python finally and leaves daemon workload",
+      "requested_fix": "Handle termination with bounded process-group/container cleanup or provide named-container always cleanup",
+      "fix": "SIGINT/SIGTERM raises a handled failure, active child process group receives bounded TERM/KILL cleanup, atomic result.json records unique container ownership, and workflow always performs named forced cleanup"
+    }
+  ],
+  "checked": [
+    "Pipeline requires a fresh output directory and CI clean project before source builds",
+    "Source fetch uses exact manifest revisions; host preflight verifies tool executable hashes and complete SDK contents",
+    "Kernel uses fresh pinned isolated source with both reviewed classic protections and explicit PSCI HVC opt-in, builds 13 real drivers and supplies unstripped source kernel to collection",
+    "Independent relocation verification is performed on each fresh collection",
+    "libc++ compiles the 54 genuine source files with source C++ headers and links using nostdlib/-Z against source System/ABI/libdyld; target runtime closure audit rejects absent/unpinned providers",
+    "ICU/CF/IOKit/launchd provenance is merged and recursively audited before root composition and after assembly",
+    "Image/firmware/symbol hashes and explicit QEMU virt-10.2 virtualization=false profile bind final smoke inputs",
+    "Fresh nonce markers, both network directions and genuine guest=true guest-shutdown QMP event are required before pipeline success",
+    "Workflow artifacts include evidence, composed provenance, real target image/kernel symbols/serial output rather than SDK/header directories",
+    "Native CI now builds the pinned POSIX mDNSResponder through mdns.py with explicit verified SDK and runtime directory, stages source daemon/launch job, and requires recursive source closure before root composition"
+  ],
+  "limitations": [
+    "Current passing compilation/static review does not establish a passing guest bootstrap or physical M-series boot",
+    "Final clean-checkout CI execution remains separate acceptance evidence"
+  ],
+  "independent_validation": {
+    "command": [
+      "python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_native_ci.py",
+      "-v"
+    ],
+    "passed": true,
+    "tests_run": 7,
+    "meaningful_cases": [
+      "actual sanitized subprocess environment",
+      "actual SIGTERM stops active child process group and retains failed log",
+      "actual subprocess failure",
+      "actual subprocess timeout",
+      "fresh output rejection",
+      "Nix trailing diagnostic parsing",
+      "incomplete Nix output rejection"
+    ],
+    "test_source_sha256": "9493222aba150f97c243138942201948d70bdba44048c5dbeee2d48f0d4cc7bb"
+  }
+}

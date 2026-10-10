@@ -24,6 +24,17 @@ supports a fresh reconstruction; `--report` writes the verified identities and
 lock checksum. Large sources and generated artifacts remain under `.blauos/`.
 The LLVM compiler-runtime source is a locked sparse checkout: the allowed
 prefixes are in the manifest, and its full commit/tree identities remain pinned.
+The independent shell uses a pinned dash checkout from its primary upstream.
+ICU's official source archive includes generated data absent from a Git checkout;
+its release archive has a separate mandatory SHA-256:
+
+```sh
+python3 scripts/blauos.py fetch-archives icu4c-76.1
+```
+
+Archive retrieval verifies the bytes before accepting an input and preserves an
+existing mismatched archive. Archive hashes and licenses are recorded alongside
+Git pins in the source lock.
 
 ## Two distinct source profiles
 
@@ -57,11 +68,46 @@ records its actual SHA-256. It contains licensed build inputs and must remain
 local. Supplying SDK headers is different from copying proprietary dylibs into
 the target root filesystem; the latter would fail the runtime independence gate.
 
+## Fresh native build and virtual boot
+
+On the pinned ARM64 macOS host, with Docker connected to an ARM64 Linux daemon:
+
+```sh
+python3 scripts/vm/native_ci.py --output .blauos/build/native-ci/run-new
+```
+
+Use a new output directory for each run. The orchestrator verifies the full
+host/SDK fingerprint, fetches new source checkouts and the hash-pinned ICU
+archive, and builds the kernel, essential drivers, runtime, launchd, shell, and
+commands. A digest-pinned Nix container supplies Linux image-formatting tools,
+the source-built EFI loader, QEMU, and firmware from the locked PureDarwin
+flake. Disk formatting operates on files in the output directory.
+
+Each step has a deadline and records its invocation, result, and log hash.
+The pipeline clears inherited compiler flags and SDK overrides, then uses the
+SDK and compiler paths verified by preflight. It records those paths without
+copying the host environment into public logs. Interrupted builds terminate
+their active child process group and remove the run's named Docker container;
+the workflow also performs cleanup before archiving its evidence.
+Complete runtime provenance and dependency checks precede image assembly.
+The final result requires the actual guest smoke test; successful compilation
+alone leaves `guest_boot_passed` false. This path is under active validation;
+the current acceptance status is in [milestone-1.md](milestone-1.md).
+
+The manual `Native ARM64 baseline` GitHub workflow uses a provisioned
+`[self-hosted, macOS, ARM64, blauos-native-sdk]` runner with this host toolchain
+and an ARM64 Docker daemon. It executes the same fresh pipeline and archives
+manifests, kernel symbols, serial output, and test results. Its artifact list
+excludes the SDK archive and SDK-derived headers.
+
 ## Evidence and acceptance
 
 Build scripts record commands, source pins, logs, artifacts, and unresolved
 requirements. Raw warning logs, SDKs, binaries, and symbols stay ignored; small
 results and meaningful diagnostics are committed under `evidence/`.
+Tracked closure summaries retain every artifact identity, dependency, load
+route and error, with counts and hashes for complete symbol tables. Full raw
+audits remain in the build output and are included in native CI artifacts.
 
 - Host compilation is not guest execution.
 - A successful ARM64 kernel link is not a guest boot or physical M1 execution.
