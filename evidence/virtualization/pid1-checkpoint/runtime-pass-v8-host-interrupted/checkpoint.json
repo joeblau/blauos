@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "source_kernel_execution_observed": true,
+  "persistent_root_mounted": true,
+  "source_launchd_main_observed": true,
+  "source_launchctl_exec_observed": true,
+  "mach_post_fork_ping_observed": true,
+  "source_launchd_job_exec_observed": true,
+  "source_mdnsd_exec_observed": true,
+  "pid1_crashed": false,
+  "bootstrap_child_crashed": false,
+  "runtime_functional_tests_passed": true,
+  "shell_execution_passed": true,
+  "runtime_shared_cache": "absent",
+  "source_loaded_runtime_images": [
+    "/usr/lib/libobjc.A.dylib",
+    "/usr/lib/libSystem.B.dylib",
+    "/usr/lib/system/libdyld.dylib",
+    "/usr/lib/libc++abi.dylib"
+  ],
+  "first_job_bootstrap_ipc_roundtrip_passed": true,
+  "launchd_service_subset_complete": false,
+  "network_connectivity_passed": false,
+  "guest_shutdown_passed": false,
+  "acceptance_passed": false,
+  "blocker": "Lab container lifetime expired during service supervision tests. Source netsetup now includes the genuine IONetworkStack registration protocol; next guest execution pending.",
+  "serial_sha256": "b6497574e55b3aff1b19999fb98434e7a558fbed0049a7869733cef4b0beb4eb",
+  "image_manifest": "image-manifest.json",
+  "boot_result": "result.json",
+  "runtime_audit_summary": "runtime-audit.summary.json",
+  "runtime_audit_raw_sha256": "bc26e70c6e5ca852b0c0698d2029661cea895c4119b5e7f9abf3a8a4eaec5dff"
+}

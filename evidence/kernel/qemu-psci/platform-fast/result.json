@@ -1,0 +1,23 @@
+{
+  "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+  "source": "PureDarwin source overlay from pinned Git archive",
+  "bundle_id": "org.puredarwin.kext.PDArmPlatformExpert",
+  "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci-platform/src/Kernel/Extensions/PDArmPlatformExpert/PDArmPlatformExpert.kext",
+  "binary_sha256": "852cac99c8bb26394d22ebd97918915af9b7a95f8d039245eef329d8012e54e3",
+  "plist_sha256": "915b78bb6adbfcf211313912e9c025fe00b5ed902d203283ff80a568c6610c67",
+  "exit_code": 0,
+  "source_amendments": [
+    {
+      "path": "vm/patches/xnu-classic-arm64-protections.patch",
+      "sha256": "371466a26ab5ecb68d7491566900c7239a6987cd7f52ddfdc9865ce81c29ba69"
+    },
+    {
+      "path": "vm/patches/pdarm-qemu-psci-shutdown.patch",
+      "sha256": "b153ed78a06dd06f41dcd6cd36dffb4b17d1ea792fed9ae08535d02c0694f201"
+    }
+  ],
+  "configuration_evidence": "platform-fast/configure-result.json",
+  "compilation_evidence": "platform-fast/build-result.json",
+  "platform_profile": "QEMU virt-10.2, virtualization=off, PSCI HVC",
+  "guest_shutdown_verified": false
+}

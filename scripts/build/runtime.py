@@ -6,10 +6,12 @@ import argparse
 import hashlib
 import json
 import os
+import posixpath
 from pathlib import Path
 import platform
 import re
 import shutil
+import shlex
 import struct
 import subprocess
 import sys
@@ -28,6 +30,40 @@ def digest(path: Path) -> str:
         for block in iter(lambda: stream.read(1024 * 1024), b""):
             result.update(block)
         return result.hexdigest()
+
+
+def system_link_interface(source: Path, build_dir: Path, destination: Path) -> dict:
+    """Declare actual selected source providers for the System/libdyld cycle.
+
+    No implementation comes from the declaration file: the final staged Mach-O
+    closure must resolve every import to a genuine runtime library.
+    """
+    link = build_dir / "src/Libraries/libSystem/stub/CMakeFiles/libSystem_B_stub.dir/link.txt"
+    archives = set()
+    for token in shlex.split(link.read_text()):
+        candidate = token.rsplit(",", 1)[-1]
+        if candidate.endswith(".a"):
+            path = Path(candidate)
+            path = path if path.is_absolute() else link.parents[2] / path
+            if not path.is_file():
+                raise ValueError(f"selected source System provider archive missing: {path}")
+            archives.add(path.resolve())
+    if not archives:
+        raise ValueError("source libSystem link interface has no compiled providers")
+    output = subprocess.check_output(["xcrun", "nm", "-g", "-U", *map(str, sorted(archives))], text=True)
+    defined = {line.split()[-1] for line in output.splitlines()
+               if re.search(r"\s[ASTDBICW]\s+\S+$", line)}
+    requested = {line.split("#", 1)[0].strip() for line in
+                 (source / "src/Libraries/libSystem/stub/libSystem.exports").read_text().splitlines()}
+    symbols = sorted((requested - {""}) & defined)
+    if not {"_malloc", "_free", "_pthread_create", "_mach_vm_region", "__os_once"} <= set(symbols):
+        raise ValueError("source libSystem interface lacks required actual providers")
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    declaration = "--- !tapi-tbd\ntbd-version: 4\ntargets: [ arm64-macos ]\ninstall-name: '/usr/lib/libSystem.B.dylib'\ncurrent-version: 1.0\ncompatibility-version: 1.0\nexports:\n  - targets: [ arm64-macos ]\n    symbols:\n"
+    destination.write_text(declaration + "".join("      - " + json.dumps(symbol) + "\n" for symbol in symbols) + "...\n")
+    return {"path": str(destination), "sha256": digest(destination), "declaration_only": True,
+            "symbols_count": len(symbols), "symbols_sha256": hashlib.sha256(json.dumps(symbols).encode()).hexdigest(),
+            "providers": [{"path": str(path), "sha256": digest(path)} for path in sorted(archives)]}
 
 
 def macho(path: Path) -> dict | None:
@@ -66,7 +102,8 @@ def macho(path: Path) -> dict | None:
             raise ValueError("load command table outside Mach-O slice")
         commands = stream.read(command_bytes)
         result = {"architecture": "arm64", "cpu_subtype": subtype, "file_type": kind,
-                  "flags": flags, "dependencies": [], "rpaths": [], "dylinker": None}
+                  "flags": flags, "dependencies": [], "rpaths": [], "dylinker": None,
+                  "flat_namespace_imports": [], "imports": [], "defined_external_symbols": []}
         cursor = 0
         for _ in range(count):
             if cursor + 8 > len(commands):
@@ -92,7 +129,49 @@ def macho(path: Path) -> dict | None:
                 elif cmd == 0x8000001C:
                     result["rpaths"].append(name)
                 else:
-                    result["dependencies"].append({"path": name, "weak": cmd == 0x80000018})
+                    result["dependencies"].append({"path": name, "weak": cmd == 0x80000018,
+                                                   "reexport": cmd == 0x8000001F})
+            if cmd == 2:  # LC_SYMTAB; enough to validate explicit provider exports.
+                if length < 24:
+                    raise ValueError("truncated symbol table command")
+                symoff, nsyms, stroff, strsize = struct.unpack_from("<4I", commands, cursor + 8)
+                if symoff + nsyms * 16 > extent or stroff + strsize > extent:
+                    raise ValueError("symbol table outside Mach-O slice")
+                stream.seek(offset + stroff)
+                strings = stream.read(strsize)
+                stream.seek(offset + symoff)
+                for _ in range(nsyms):
+                    string_index, symbol_type, section, description, value = struct.unpack("<IBBHQ", stream.read(16))
+                    if symbol_type & 1 and symbol_type & 0xE and not symbol_type & 0xF0:
+                        if string_index >= len(strings) or b"\0" not in strings[string_index:]:
+                            raise ValueError("invalid symbol name")
+                        result["defined_external_symbols"].append(strings[string_index:].split(b"\0", 1)[0].decode())
+            if cmd == 0x80000034:  # LC_DYLD_CHAINED_FIXUPS import descriptors.
+                if length < 16:
+                    raise ValueError("truncated chained fixups command")
+                fixoff, fixsize = struct.unpack_from("<II", commands, cursor + 8)
+                if fixsize < 28 or fixoff + fixsize > extent:
+                    raise ValueError("chained fixups outside Mach-O slice")
+                stream.seek(offset + fixoff)
+                fixups = stream.read(fixsize)
+                version, starts, imports_offset, symbols_offset, import_count, import_format, symbols_format = struct.unpack_from("<7I", fixups)
+                sizes = {1: 4, 2: 8, 3: 16}
+                if version or symbols_format or import_format not in sizes or imports_offset + import_count * sizes.get(import_format, 0) > fixsize or symbols_offset > fixsize:
+                    raise ValueError("unsupported or malformed chained import table")
+                for index in range(import_count):
+                    descriptor = imports_offset + index * sizes[import_format]
+                    bits = struct.unpack_from("<Q" if import_format == 3 else "<I", fixups, descriptor)[0]
+                    mask, shift = (0xFFFF, 16) if import_format == 3 else (0xFF, 8)
+                    ordinal, weak = bits & mask, bool((bits >> shift) & 1)
+                    name_offset = bits >> (32 if import_format == 3 else 9)
+                    symbol = symbols_offset + name_offset
+                    if symbol >= fixsize or b"\0" not in fixups[symbol:]:
+                        raise ValueError("chained import name outside symbols")
+                    name = fixups[symbol:].split(b"\0", 1)[0].decode()
+                    signed_ordinal = ordinal - mask - 1 if ordinal > mask // 2 else ordinal
+                    result["imports"].append({"name": name, "weak": weak, "library_ordinal": signed_ordinal})
+                    if signed_ordinal == -2:
+                        result["flat_namespace_imports"].append({"name": name, "weak": weak})
             cursor += length
         return result
 
@@ -114,8 +193,10 @@ def inspect(root: Path, provenance_path: Path | None, manifest_path: Path, proje
     root = root.resolve()
     errors, artifacts = [], []
     provenance = {}
+    providers = []
     if provenance_path and provenance_path.is_file():
         data = json.loads(provenance_path.read_text())
+        providers = data.get("flat_namespace_providers", [])
         for entry in data.get("artifacts", []):
             name = entry.get("path", "")
             if name in provenance:
@@ -125,6 +206,8 @@ def inspect(root: Path, provenance_path: Path | None, manifest_path: Path, proje
         errors.append("source artifact provenance manifest is missing")
     lock = json.loads(manifest_path.read_text()) if manifest_path.is_file() else {}
     source_pins = {item["name"]: item["revision"] for item in lock.get("sources", [])}
+    archive_pins = {item["name"]: item for item in lock.get("archives", [])}
+    source_pins.update({name: pin["sha256"] for name, pin in archive_pins.items()})
     if not root.is_dir():
         errors.append(f"staged root is missing: {root}")
     for current, directories, names in os.walk(root):
@@ -149,9 +232,21 @@ def inspect(root: Path, provenance_path: Path | None, manifest_path: Path, proje
             try:
                 info = macho(target)
                 info.update(path=install_path, sha256=digest(target))
-                entry = provenance.get(install_path, {})
+                canonical_path = "/" + str(target.resolve().relative_to(root))
+                entry = provenance.get(install_path, provenance.get(canonical_path, {}))
+                if canonical_path != install_path:
+                    info["symlink_target"] = canonical_path
                 source, revision = entry.get("source"), entry.get("revision")
                 info.update(source=source, source_revision=revision)
+                amendments = entry.get("build_amendments", [])
+                for amendment in amendments:
+                    amendment_path = project_root / amendment.get("path", "")
+                    if not within_root(project_root, amendment_path) or not amendment_path.is_file() or digest(amendment_path) != amendment.get("sha256"):
+                        errors.append(f"build amendment missing or mismatched: {install_path}")
+                info["build_amendments"] = amendments
+                for additional in entry.get("additional_sources", []):
+                    if source_pins.get(additional.get("source")) != additional.get("revision"):
+                        errors.append(f"additional source is unpinned: {install_path}")
                 if info["sha256"] != entry.get("sha256"):
                     errors.append(f"missing or mismatched source hash: {install_path}")
                 if source == "blauos":
@@ -167,6 +262,8 @@ def inspect(root: Path, provenance_path: Path | None, manifest_path: Path, proje
                     info["workspace_revision"] = entry.get("workspace_revision")
                 elif not source or source_pins.get(source) != revision:
                     errors.append(f"unknown or unpinned source revision: {install_path}")
+                elif source in archive_pins and entry.get("archive_sha256") != archive_pins[source]["sha256"]:
+                    errors.append(f"source archive hash missing or mismatched: {install_path}")
                 kernel = (install_path.startswith("/System/Library/Kernels/") and
                           info["file_type"] == 2 and not info["flags"] & 4 and
                           not info["dylinker"] and not info["dependencies"])
@@ -194,6 +291,58 @@ def inspect(root: Path, provenance_path: Path | None, manifest_path: Path, proje
             except (OSError, ValueError, UnicodeError, struct.error) as exc:
                 errors.append(f"invalid Mach-O: {install_path}: {exc}")
     present = {entry["path"] for entry in artifacts}
+    by_path = {entry["path"]: entry for entry in artifacts}
+    def dependency_path(owner, path):
+        if path.startswith("@loader_path/"):
+            return posixpath.normpath(posixpath.join(posixpath.dirname(owner), path[len("@loader_path/"):]))
+        return path
+    def loaded_dependencies(path, visited=None):
+        visited = set() if visited is None else visited
+        if path in visited or path not in by_path:
+            return visited
+        visited.add(path)
+        entry = by_path[path]
+        for dependency in entry["dependencies"]:
+            # An optional load command cannot establish a required provider.
+            if not dependency["weak"]:
+                loaded_dependencies(dependency_path(path, dependency["path"]), visited)
+        return visited
+    def exports(path, visited=None):
+        visited = set() if visited is None else visited
+        if path in visited or path not in by_path:
+            return set()
+        visited.add(path)
+        entry = by_path[path]
+        names = set(entry["defined_external_symbols"])
+        for dependency in entry["dependencies"]:
+            if dependency["reexport"]:
+                names.update(exports(dependency_path(path, dependency["path"]), visited))
+        return names
+    provider_symbols = set()
+    for provider in providers:
+        record = next((entry for entry in artifacts if entry["path"] == provider), None)
+        if record is None:
+            errors.append(f"flat namespace provider absent from staged root: {provider}")
+        else:
+            provider_symbols.update(exports(provider))
+    for artifact in artifacts:
+        loaded = loaded_dependencies(artifact["path"])
+        artifact["loaded_flat_namespace_providers"] = sorted(set(providers) & loaded)
+        for imported in artifact["flat_namespace_imports"]:
+            if not imported["weak"] and imported["name"] not in provider_symbols:
+                errors.append(f"required flat namespace import unresolved: {artifact['path']}: {imported['name']}")
+            elif not imported["weak"] and not any(imported["name"] in exports(provider)
+                                                   for provider in artifact["loaded_flat_namespace_providers"]):
+                errors.append(f"required flat namespace provider is not loaded by dependency graph: {artifact['path']}: {imported['name']}")
+        for imported in artifact["imports"]:
+            ordinal = imported["library_ordinal"]
+            if ordinal > 0 and not imported["weak"]:
+                if ordinal > len(artifact["dependencies"]):
+                    errors.append(f"import library ordinal outside dependency table: {artifact['path']}")
+                else:
+                    provider = dependency_path(artifact["path"], artifact["dependencies"][ordinal - 1]["path"])
+                    if imported["name"] not in exports(provider):
+                        errors.append(f"required dependency symbol unresolved: {artifact['path']}: {provider}: {imported['name']}")
     for required in ("/usr/lib/dyld", "/usr/lib/libSystem.B.dylib", "/usr/lib/system/libdyld.dylib"):
         if required not in present:
             errors.append(f"required runtime artifact missing: {required}")
@@ -311,15 +460,19 @@ def build(args: argparse.Namespace) -> dict:
     shutil.copytree(sdk / "usr/include/c++/v1", cxx_headers, dirs_exist_ok=True)
     env = os.environ.copy()
     env["PUREDARWIN_SDKROOT"] = str(sdk)
+    env["MACOSX_DEPLOYMENT_TARGET"] = "11.0"
     compat = REPO / "runtime/compat/sdk27_compile.h"
     flags = f"-Wno-nullability-completeness -include {compat}"
     configure = ["cmake", "-S", str(source), "-B", str(build_dir), "-G", "Unix Makefiles",
-                 "-DCMAKE_BUILD_TYPE=Debug", "-DCMAKE_POLICY_VERSION_MINIMUM=3.5",
+                 "-DCMAKE_BUILD_TYPE=Debug", "-DCMAKE_OSX_DEPLOYMENT_TARGET=11.0", "-DCMAKE_POLICY_VERSION_MINIMUM=3.5",
                  "-DPUREDARWIN_ARCH=arm64", f"-DPUREDARWIN_MACOSX_SDK={sdk}",
                  "-DPUREDARWIN_ENABLE_PROJECTS=OFF", "-DPUREDARWIN_ENABLE_KERNEL=OFF",
                  "-DPUREDARWIN_ENABLE_LIBRARIES=ON", "-DPUREDARWIN_ENABLE_USERSPACE=OFF",
                  "-DPUREDARWIN_ENABLE_TOOLS=ON", f"-DPUREDARWIN_COMPILER_RT_PREFIX={rt_prefix}",
                  f"-DBLAUOS_STACK_PROBE={REPO / 'runtime/compat/arm64_stack_probe.S'}",
+                 f"-DBLAUOS_LIBDYLD_EXPORTS={REPO / 'runtime/compat/libdyld.exports'}",
+                 f"-DBLAUOS_SYSTEM_INTERFACE={output / 'system-interface/libSystem.tbd'}",
+                 "-DBLAUOS_OBJC_DYLIB=",
                  f"-DBLAUOS_CXX_HEADERS={cxx_headers}", f"-DCMAKE_C_FLAGS={flags}", f"-DCMAKE_CXX_FLAGS={flags}"]
     stages = [("configure", configure),
               ("source-headers", ["cmake", "--build", str(build_dir), "--target", "libc_headers_gen_script", "--parallel", str(args.jobs)])]
@@ -336,6 +489,24 @@ def build(args: argparse.Namespace) -> dict:
     headers = build_dir / "src/Libraries/libSystem/libc/headers/usr/include"
     if not expected.exists():
         expected.symlink_to(os.path.relpath(headers, expected.parent), target_is_directory=True)
+    # Build genuine interface providers before linking the ordinary libdyld.
+    # Main dyld has its own separately initialized bootstrap runtime.
+    interface_targets = ("libsystem_kernel_static", "libplatform_static", "pthread_static",
+                         "libmalloc_static", "libc_static", "libc_internal_static", "openlibm_static",
+                         "corecrypto_static", "CrashReporterClient", "XPC_libxpc_static", "XPC_launchd_mig_static",
+                         "XPC_notify_client_static", "mDNSResponder_dnssd_static", "XPC_libinfo_static",
+                         "syslog_asl_static", "libsystem_trace_static", "libdarwin_static", "libSystemConfiguration_static",
+                         "XPC_libnv_static", "XPC_libxpc_objc_static", "XPC_notifyd_mig_static", "pthread_full_static",
+                         "libdispatch_static", "libresolv_static", "libcxxabi_static_build", "libunwind_static_build",
+                         "libcxx_static_build", "commoncrypto_static")
+    invocation = ["cmake", "--build", str(build_dir), "--target", *interface_targets, "--parallel", str(args.jobs)]
+    code = command(invocation, logs / "system-interface-providers.log", env)
+    result["steps"].append({"name": "system-interface-providers", "command": invocation, "exit_code": code,
+                            "log": str(logs / "system-interface-providers.log")})
+    if code:
+        result["errors"].append("source System interface providers did not compile")
+        return result
+    result["system_link_interface"] = system_link_interface(source, build_dir, output / "system-interface/libSystem.tbd")
     for target in ("dyld", "libSystem_B_stub", "XPC_launchd_static", "XPC_launchd_mig_static"):
         invocation = ["cmake", "--build", str(build_dir), "--target", target, "--parallel", str(args.jobs)]
         code = command(invocation, logs / f"{target}.log", env)
@@ -346,9 +517,47 @@ def build(args: argparse.Namespace) -> dict:
         if artifact.is_file() and (artifact.suffix in {".a", ".dylib"} or artifact.name == "dyld"):
             result["artifacts"].append({"path": str(artifact), "sha256": digest(artifact),
                                         "source": args.source_name, "revision": revision})
+    if not result["errors"]:
+        stage = output / "root"
+        mappings = {"/usr/lib/dyld": build_dir / "src/Libraries/dyld/dyld",
+                    "/usr/lib/libSystem.B.dylib": build_dir / "src/Libraries/libSystem/stub/libSystem.B.dylib",
+                    "/usr/lib/system/libdyld.dylib": build_dir / "src/Libraries/libSystem/libdyld/libdyld.dylib"}
+        amendments = [{"path": path, "sha256": digest(REPO / path)} for path in
+                      ("scripts/build/runtime.py", "runtime/compat/sdk27-dyld.patch", "runtime/compat/sdk27_compile.h",
+                       "runtime/compat/arm64_stack_probe.S", "runtime/compat/compiler-rt-exports.patch",
+                       "runtime/compat/libdyld.exports")]
+        existing_provenance = output / "provenance.json"
+        existing = json.loads(existing_provenance.read_text()) if existing_provenance.is_file() else {}
+        records = [entry for entry in existing.get("artifacts", []) if entry["path"] not in mappings]
+        for install_path, artifact in mappings.items():
+            destination = stage / install_path.lstrip("/")
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(artifact, destination)
+            record = {"path": install_path, "sha256": digest(destination),
+                            "source": args.source_name, "revision": revision,
+                            "build_amendments": amendments,
+                            "additional_sources": [{"source": "llvm-project", "revision": next(s["revision"] for s in lock["sources"] if s["name"] == "llvm-project")}],
+                            "compiler": result["compiler"], "sdk_settings_sha256": result["sdk_settings_sha256"]}
+            if install_path == "/usr/lib/system/libdyld.dylib":
+                record["generated_link_interface"] = result["system_link_interface"]
+            records.append(record)
+        (stage / "usr/lib/libSystem.dylib").unlink(missing_ok=True)
+        (stage / "usr/lib/libSystem.dylib").symlink_to("libSystem.B.dylib")
+        provenance = output / "provenance.json"
+        write_result(provenance, {"schema_version": 1, "artifacts": records,
+                                 "flat_namespace_providers": ["/usr/lib/libobjc.A.dylib"]})
+        audit = inspect(stage, provenance, args.manifest)
+        write_result(output / "closure.json", audit)
+        result.update(staged_root=str(stage), provenance=str(provenance),
+                      closure=str(output / "closure.json"), offline_dependency_closure=audit["offline_dependency_closure"])
     # The build diagnostic does not stage or execute a target system. Mark this
     # explicitly even if all compile targets happen to finish successfully.
-    result["errors"].append("target sysroot closure and isolated execution remain unverified")
+    result["source_patch_sha256"] = digest(REPO / "runtime/compat/sdk27-dyld.patch")
+    result["base_build_verified"] = not result["errors"]
+    result["independent_execution"] = False
+    result["unmet_acceptance"] = ["complete target runtime and source userspace execution remain unverified"]
+    if not result["errors"]:
+        result["status"] = "source_build_pass"
     return result
 
 
@@ -357,9 +566,14 @@ def host_probe(args: argparse.Namespace) -> dict:
     output.mkdir(parents=True, exist_ok=True)
     binary = output / "runtime-probe"
     source = REPO / "runtime/probes/runtime_probe.c"
-    compile_cmd = ["xcrun", "clang", "-arch", "arm64", "-Wall", "-Wextra", "-Werror", str(source), "-o", str(binary)]
+    fixture = output / "libblauos-loader-fixture.dylib"
+    fixture_cmd = ["xcrun", "clang", "-arch", "arm64", "-dynamiclib", str(REPO / "runtime/probes/loader_fixture.c"),
+                   "-o", str(fixture)]
+    fixture_code = command(fixture_cmd, output / "fixture-compile.log")
+    compile_cmd = ["xcrun", "clang", "-arch", "arm64", "-Wall", "-Wextra", "-Werror", "-fblocks", str(source), "-o", str(binary)]
     code = command(compile_cmd, output / "compile.log")
-    steps = [{"command": compile_cmd, "exit_code": code}]
+    steps = [{"command": fixture_cmd, "exit_code": fixture_code}, {"command": compile_cmd, "exit_code": code}]
+    code = code or fixture_code
     if not code:
         env = os.environ.copy()
         env["DYLD_PRINT_LIBRARIES"] = "1"
@@ -399,7 +613,7 @@ def main() -> int:
     output = args.output or args.output_dir / f"{args.action}-result.json"
     write_result(output, result)
     print(json.dumps({"status": result["status"], "result": str(output), "errors": result.get("errors", [])}, indent=2))
-    return 0 if result["status"] in {"pass", "diagnostic_pass"} else 1
+    return 0 if result["status"] in {"pass", "diagnostic_pass", "source_build_pass"} else 1
 
 
 if __name__ == "__main__":

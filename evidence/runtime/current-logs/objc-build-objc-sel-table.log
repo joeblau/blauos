@@ -1,0 +1,5 @@
+Raw log: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/logs/objc-objc-sel-table.log
+SHA256: a8777804025fcaddee1e9354aae0d87bf9d05294c4bb33e05d03488402389405
+Bytes: 537
+
+$ ['xcrun', 'clang', '-arch', 'arm64', '-mmacosx-version-min=11.0', '-isysroot', '/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk', '-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime', '-c', '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/objc4/runtime/objc-sel-table.s', '-o', '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/objc/objc-sel-table.o']

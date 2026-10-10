@@ -1,0 +1,1 @@
+Command '['git', 'apply', '--check', '/Users/joeblau/Developer/joeblau/src/blauos/vm/patches/kc-tools-arm64-16k.patch']' returned non-zero exit status 1.

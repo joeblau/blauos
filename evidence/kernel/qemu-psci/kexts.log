@@ -1,0 +1,160 @@
+1: [  0%] Built target host_libmacho
+2: [  0%] Built target unifdef
+3: [ 11%] Built target libctf.host
+4: [ 11%] Built target migcom
+5: [ 22%] Built target libelf.host
+6: [ 44%] Built target libdwarf.host
+7: [ 66%] Built target host_libstuff
+8: [ 66%] Built target host_nm
+9: [ 66%] Built target host_strip
+10: [ 66%] Built target host_libtool
+11: [ 66%] Built target host_lipo
+12: [ 66%] Built target host_ctf_insert
+13: [ 66%] Built target host_codesign_allocate
+14: [ 77%] Built target host_ctfconvert
+15: [ 88%] Built target host_ctfmerge
+16: [ 88%] Built target host_nmedit
+17: [100%] Built target xnu_headers.extproj
+18: [100%] Building C object src/Kernel/libkmod/CMakeFiles/libkmod.dir/c_start.c.o
+19: [100%] Building C object src/Kernel/libkmod/CMakeFiles/libkmod.dir/c_stop.c.o
+20: [100%] Linking C static library libkmod.a
+21: [100%] Built target libkmod
+22: [100%] Building CXX object src/Kernel/Extensions/PDArmPlatformExpert/CMakeFiles/PDArmPlatformExpert.dir/PDAppleAIC.cpp.o
+23: [100%] Building C object src/Kernel/Extensions/PDArmPlatformExpert/CMakeFiles/PDArmPlatformExpert.dir/kmod_info.c.o
+24: [100%] Building CXX object src/Kernel/Extensions/PDArmPlatformExpert/CMakeFiles/PDArmPlatformExpert.dir/PDArmPlatformExpert.cpp.o
+25: [100%] Building CXX object src/Kernel/Extensions/PDArmPlatformExpert/CMakeFiles/PDArmPlatformExpert.dir/PDArmCPU.cpp.o
+26: [100%] Building CXX object src/Kernel/Extensions/PDArmPlatformExpert/CMakeFiles/PDArmPlatformExpert.dir/PDArmGIC.cpp.o
+27: [100%] Building CXX object src/Kernel/Extensions/PDArmPlatformExpert/CMakeFiles/PDArmPlatformExpert.dir/PDBcm2835IC.cpp.o
+28: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/source-overlay/src/Kernel/Extensions/PDArmPlatformExpert/PDAppleAIC.cpp:249:22: warning: implicit conversion changes signedness: 'uint32_t' (aka 'unsigned int') to 'IOInterruptVectorNumber' (aka 'int') [-Wsign-conversion]
+29:   249 |                         disableVectorHard(irq, vector);
+30:       |                         ~~~~~~~~~~~~~~~~~ ^~~
+31: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/source-overlay/src/Kernel/Extensions/PDArmPlatformExpert/PDAppleAIC.cpp:276:10: warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
+32:   276 |         write32(kAICIntMaskSet(vectorNumber / 32), 1u << (vectorNumber % 32));
+33:       |         ~~~~~~~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+34: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/source-overlay/src/Kernel/Extensions/PDArmPlatformExpert/PDAppleAIC.cpp:22:42: note: expanded from macro 'kAICIntMaskSet'
+35:    22 | #define kAICIntMaskSet(n)        (0x4100 + (n) * 4)
+36:       |                                   ~~~~~~~^~~~~~~~~
+37: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/source-overlay/src/Kernel/Extensions/PDArmPlatformExpert/PDAppleAIC.cpp:283:10: warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
+38:   283 |         write32(kAICIntMaskClr(vectorNumber / 32), 1u << (vectorNumber % 32));
+39:       |         ~~~~~~~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+40: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/source-overlay/src/Kernel/Extensions/PDArmPlatformExpert/PDAppleAIC.cpp:23:42: note: expanded from macro 'kAICIntMaskClr'
+41:    23 | #define kAICIntMaskClr(n)        (0x4180 + (n) * 4)
+42:       |                                   ~~~~~~~^~~~~~~~~
+43: 3 warnings generated.
+44: [100%] Linking CXX CFBundle shared module PDArmPlatformExpert.kext/Contents/MacOS/PDArmPlatformExpert
+45: [100%] Built target PDArmPlatformExpert
+46: [  0%] Built target host_libmacho
+47: [  0%] Built target unifdef
+48: [ 11%] Built target libctf.host
+49: [ 11%] Built target migcom
+50: [ 22%] Built target libelf.host
+51: [ 44%] Built target libdwarf.host
+52: [ 66%] Built target host_libstuff
+53: [ 66%] Built target host_lipo
+54: [ 66%] Built target host_nm
+55: [ 66%] Built target host_libtool
+56: [ 66%] Built target host_strip
+57: [ 66%] Built target host_codesign_allocate
+58: [ 66%] Built target host_ctf_insert
+59: [ 77%] Built target host_ctfmerge
+60: [ 88%] Built target host_ctfconvert
+645: [  0%] Built target host_libmacho
+646: [  0%] Built target migcom
+647: [ 11%] Built target libelf.host
+648: [ 22%] Built target libctf.host
+649: [ 44%] Built target libdwarf.host
+650: [ 66%] Built target host_libstuff
+651: [ 66%] Built target host_nm
+652: [ 66%] Built target host_ctf_insert
+653: [ 66%] Built target host_codesign_allocate
+654: [ 66%] Built target host_strip
+655: [ 66%] Built target host_libtool
+656: [ 77%] Built target host_ctfmerge
+657: [ 88%] Built target host_ctfconvert
+658: [ 88%] Built target host_lipo
+659: [ 88%] Built target host_nmedit
+660: [100%] Built target xnu_headers.extproj
+661: [100%] Built target libkmod
+662: [100%] Built target IOVirtIOFamily.kext
+663: [100%] Building CXX object src/Kernel/Extensions/IOVirtIOBlock/CMakeFiles/IOVirtIOBlock.kext.dir/IOVirtIOBlock.cpp.o
+664: [100%] Building C object src/Kernel/Extensions/IOVirtIOBlock/CMakeFiles/IOVirtIOBlock.kext.dir/kmod_info.c.o
+665: [100%] Building CXX object src/Kernel/Extensions/IOVirtIOBlock/CMakeFiles/IOVirtIOBlock.kext.dir/IOVirtIOBlockDisk.cpp.o
+666: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/source-overlay/src/Kernel/Extensions/IOVirtIOBlock/IOVirtIOBlock.cpp:1:
+667: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/source-overlay/src/Kernel/Extensions/IOVirtIOBlock/IOVirtIOBlock.h:7:
+668: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/source-overlay/src/Kernel/Extensions/IOVirtIOBlock/../IOPCIFamily/include/IOKit/pci/IOPCIDevice.h:383:18: warning: 'handleOpen' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+669:   383 |     virtual bool handleOpen(IOService * forClient, IOOptionBits options, void * arg);
+670:       |                  ^
+671: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/src/Kernel/xnu/xnu_header_install/System/Library/Frameworks/Kernel.framework/Versions/A/PrivateHeaders/IOKit/IOService.h:636:15: note: overridden virtual function is here
+672:   636 |         virtual bool handleOpen(    IOService *   forClient,
+673:       |                      ^
+674: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/source-overlay/src/Kernel/Extensions/IOVirtIOBlock/IOVirtIOBlock.cpp:1:
+675: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/source-overlay/src/Kernel/Extensions/IOVirtIOBlock/IOVirtIOBlock.h:7:
+676: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/source-overlay/src/Kernel/Extensions/IOVirtIOBlock/../IOPCIFamily/include/IOKit/pci/IOPCIDevice.h:384:18: warning: 'handleClose' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+677:   384 |     virtual void handleClose(IOService * forClient, IOOptionBits options);
+678:       |                  ^
+679: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/src/Kernel/xnu/xnu_header_install/System/Library/Frameworks/Kernel.framework/Versions/A/PrivateHeaders/IOKit/IOService.h:646:15: note: overridden virtual function is here
+680:   646 |         virtual void handleClose(   IOService *       forClient,
+681:       |                      ^
+682: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/source-overlay/src/Kernel/Extensions/IOVirtIOBlock/IOVirtIOBlockDisk.cpp:1:
+683: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/source-overlay/src/Kernel/Extensions/IOVirtIOBlock/IOVirtIOBlockDisk.h:5:
+684: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/source-overlay/src/Kernel/Extensions/IOVirtIOBlock/IOVirtIOBlock.h:7:
+685: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/source-overlay/src/Kernel/Extensions/IOVirtIOBlock/../IOPCIFamily/include/IOKit/pci/IOPCIDevice.h:383:18: warning: 'handleOpen' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+686:   383 |     virtual bool handleOpen(IOService * forClient, IOOptionBits options, void * arg);
+687:       |                  ^
+688: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/src/Kernel/xnu/xnu_header_install/System/Library/Frameworks/Kernel.framework/Versions/A/PrivateHeaders/IOKit/IOService.h:636:15: note: overridden virtual function is here
+689:   636 |         virtual bool handleOpen(    IOService *   forClient,
+690:       |                      ^
+691: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/source-overlay/src/Kernel/Extensions/IOVirtIOBlock/IOVirtIOBlockDisk.cpp:1:
+692: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/source-overlay/src/Kernel/Extensions/IOVirtIOBlock/IOVirtIOBlockDisk.h:5:
+693: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/source-overlay/src/Kernel/Extensions/IOVirtIOBlock/IOVirtIOBlock.h:7:
+694: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/source-overlay/src/Kernel/Extensions/IOVirtIOBlock/../IOPCIFamily/include/IOKit/pci/IOPCIDevice.h:384:18: warning: 'handleClose' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+695:   384 |     virtual void handleClose(IOService * forClient, IOOptionBits options);
+696:       |                  ^
+697: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/src/Kernel/xnu/xnu_header_install/System/Library/Frameworks/Kernel.framework/Versions/A/PrivateHeaders/IOKit/IOService.h:646:15: note: overridden virtual function is here
+698:   646 |         virtual void handleClose(   IOService *       forClient,
+699:       |                      ^
+700: 2 warnings generated.
+701: 2 warnings generated.
+702: [100%] Linking CXX CFBundle shared module IOVirtIOBlock.kext/Contents/MacOS/IOVirtIOBlock
+703: [100%] Built target IOVirtIOBlock.kext
+704: [  0%] Built target unifdef
+705: [  0%] Built target host_libmacho
+706: [  9%] Built target libctf.host
+707: [ 18%] Built target libelf.host
+708: [ 27%] Built target migcom
+709: [ 36%] Built target libdwarf.host
+710: [ 54%] Built target host_libstuff
+711: [ 54%] Built target host_libtool
+712: [ 54%] Built target host_strip
+713: [ 54%] Built target host_ctf_insert
+714: [ 54%] Built target host_nm
+715: [ 54%] Built target host_codesign_allocate
+716: [ 54%] Built target host_lipo
+717: [ 63%] Built target host_ctfmerge
+718: [ 72%] Built target host_ctfconvert
+719: [ 72%] Built target host_nmedit
+720: [ 81%] Built target xnu_headers.extproj
+721: [ 81%] Built target libkmod
+722: [ 81%] Built target IOVirtIOFamily.kext
+723: [ 90%] Built target IONetworkingFamily.kext
+724: [ 90%] Building C object src/Kernel/Extensions/IOVirtIONet/CMakeFiles/IOVirtIONet.kext.dir/kmod_info.c.o
+725: [ 90%] Building CXX object src/Kernel/Extensions/IOVirtIONet/CMakeFiles/IOVirtIONet.kext.dir/IOVirtIONet.cpp.o
+726: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/source-overlay/src/Kernel/Extensions/IOVirtIONet/IOVirtIONet.cpp:1:
+727: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/source-overlay/src/Kernel/Extensions/IOVirtIONet/IOVirtIONet.h:7:
+728: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/source-overlay/src/Kernel/Extensions/IOVirtIONet/../IOPCIFamily/include/IOKit/pci/IOPCIDevice.h:383:18: warning: 'handleOpen' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+729:   383 |     virtual bool handleOpen(IOService * forClient, IOOptionBits options, void * arg);
+730:       |                  ^
+731: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/src/Kernel/xnu/xnu_header_install/System/Library/Frameworks/Kernel.framework/Versions/A/PrivateHeaders/IOKit/IOService.h:636:15: note: overridden virtual function is here
+732:   636 |         virtual bool handleOpen(    IOService *   forClient,
+733:       |                      ^
+734: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/source-overlay/src/Kernel/Extensions/IOVirtIONet/IOVirtIONet.cpp:1:
+735: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/source-overlay/src/Kernel/Extensions/IOVirtIONet/IOVirtIONet.h:7:
+736: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/source-overlay/src/Kernel/Extensions/IOVirtIONet/../IOPCIFamily/include/IOKit/pci/IOPCIDevice.h:384:18: warning: 'handleClose' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+737:   384 |     virtual void handleClose(IOService * forClient, IOOptionBits options);
+738:       |                  ^
+739: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/src/Kernel/xnu/xnu_header_install/System/Library/Frameworks/Kernel.framework/Versions/A/PrivateHeaders/IOKit/IOService.h:646:15: note: overridden virtual function is here
+740:   646 |         virtual void handleClose(   IOService *       forClient,
+741:       |                      ^
+742: 2 warnings generated.
+743: [100%] Linking CXX CFBundle shared module IOVirtIONet.kext/Contents/MacOS/IOVirtIONet
+744: [100%] Built target IOVirtIONet.kext

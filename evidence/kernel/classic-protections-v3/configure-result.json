@@ -1,0 +1,28 @@
+{
+  "argv": [
+    "cmake",
+    "-S",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/classic-protections-v3/source-overlay",
+    "-B",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/classic-protections-v3",
+    "-G",
+    "Unix Makefiles",
+    "-DCMAKE_POLICY_VERSION_MINIMUM=3.5",
+    "-DPUREDARWIN_ARCH=arm64",
+    "-DCMAKE_OSX_ARCHITECTURES=arm64",
+    "-DCMAKE_OSX_SYSROOT=/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.2.sdk",
+    "-DPUREDARWIN_ARM64_MACHINE_CONFIG=VIRT",
+    "-DPUREDARWIN_XNU_KERNEL_CONFIG=DEVELOPMENT",
+    "-DPUREDARWIN_ENABLE_KERNEL=ON",
+    "-DPUREDARWIN_ENABLE_LIBRARIES=ON",
+    "-DPUREDARWIN_ENABLE_TOOLS=ON",
+    "-DPUREDARWIN_ENABLE_USERSPACE=OFF",
+    "-DPUREDARWIN_ENABLE_PROJECTS=OFF"
+  ],
+  "cwd": "/Users/joeblau/Developer/joeblau/src/blauos",
+  "exit_code": 0,
+  "raw_log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/classic-protections-v3/logs/configure.log",
+  "raw_log_bytes": 1785,
+  "raw_log_sha256": "6048c05365fc940afb65b7e740a0f49d1ddb2f2341c3d218f357fd2cf936a282",
+  "errors": []
+}

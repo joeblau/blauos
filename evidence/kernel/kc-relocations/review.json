@@ -1,0 +1,29 @@
+{
+  "status": "reviewed_no_functional_defect_found_in_exercised_profile",
+  "scope": "Pinned PureDarwin QEMUVIRT ARM64 classic collection with the 13 essential source-built kexts",
+  "inputs": [
+    {
+      "path": "patches/kc-tools/0002-arm64-dynamic-relocations.patch",
+      "sha256": "9a74f638b591de8872b4de87b703ca28774bf89093a9f9fbc394e75d066611fd"
+    },
+    {
+      "path": "patches/kc-tools/0003-classic-arm64-protections.patch",
+      "sha256": "06678f055bf0537c67bfc827c6e83519833634fd788f025507c5d06af8c39b0a"
+    },
+    {
+      "path": "vm/patches/xnu-classic-arm64-protections.patch",
+      "sha256": "371466a26ab5ecb68d7491566900c7239a6987cd7f52ddfdc9865ce81c29ba69"
+    }
+  ],
+  "checks": [
+    "Relocation buffer realloc recreates MachoView before subsequent use; caller does not use stale symbol/load-command pointers",
+    "Appended normalized slide table belongs to LINKEDIT and extends its 16 KiB VM extent; kmod layout and next-kext placement include occupied VM extent",
+    "Requested inputs and relocation failures stop the builder before output instead of silently emitting a partial collection",
+    "Split-info command removal compacts load commands without changing segment offsets/addresses/protections",
+    "OSKext installs per-segment maxprot/initprot; QEMUVIRT classic lockdown preserves these attributes while coalesced/native paths retain the original policy"
+  ],
+  "actual_verification": "v6-pointer-verification.json",
+  "actual_negative_fixtures": "rejection-tests.json",
+  "guest_execution_evidence": "evidence/virtualization/driver-checkpoint",
+  "findings": []
+}

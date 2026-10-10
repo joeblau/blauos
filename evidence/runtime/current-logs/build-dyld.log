@@ -1,0 +1,25 @@
+Raw log: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/logs/dyld.log
+SHA256: 1a8fa059d42b15923ad9058584c73e16f0494b06589e7a1713ef095f6210983a
+Bytes: 907
+
+$ ['cmake', '--build', '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay', '--target', 'dyld', '--parallel', '4']
+[  1%] Built target CrashReporterClient
+[  1%] Built target libc_headers_gen_script
+[  1%] Built target generate_dyld_headers
+[  3%] Built target migcom
+[  3%] Built target libunwind_static_build
+[  6%] Built target libcxx_static_build
+[  6%] Built target libcxxabi_static_build
+[  6%] Built target corecrypto_user
+[  8%] Generating libc-features.h
+[  8%] Built target dyld_availability_headers
+[ 14%] Built target corecrypto_shared
+[ 14%] Built target libc_features
+[ 14%] Built target corecrypto_static
+[ 34%] Built target libsystem_kernel_static
+[ 36%] Built target pthread_static
+[ 37%] Built target libplatform_static
+[ 54%] Built target openlibm_static
+[ 70%] Built target libc_internal_static
+[ 96%] Built target libc_static
+[100%] Built target dyld

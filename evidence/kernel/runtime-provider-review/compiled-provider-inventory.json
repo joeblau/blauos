@@ -1,0 +1,261 @@
+{
+  "compatibility_object": ".blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/stub/CMakeFiles/libSystem_B_stub.dir/pd_libSystem_compat.c.o",
+  "compatibility_object_sha256": "5d467c23169c92dee29e4511e9ed8a903e4e7f63a8b35282c3fc61d2ce813324",
+  "link_script_sha256": "e517ca6aadc070bf1d3a389a7dfd7bd36b182c4f76908047f4e7dc0bb640b0a4",
+  "archives_inspected": 29,
+  "defined_external_symbols": 70,
+  "duplicates": {
+    "_OSAtomicCompareAndSwap32Barrier": [
+      {
+        "archive": ".blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libplatform/liblibplatform_static.a",
+        "symbol_record": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libplatform/liblibplatform_static.a:atomic.c.o: 0000000000000b9c T _OSAtomicCompareAndSwap32Barrier"
+      }
+    ],
+    "_OSAtomicCompareAndSwapLongBarrier": [
+      {
+        "archive": ".blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libplatform/liblibplatform_static.a",
+        "symbol_record": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libplatform/liblibplatform_static.a:atomic.c.o: 0000000000000f44 T _OSAtomicCompareAndSwapLongBarrier"
+      }
+    ],
+    "_OSAtomicCompareAndSwapPtrBarrier": [
+      {
+        "archive": ".blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libplatform/liblibplatform_static.a",
+        "symbol_record": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libplatform/liblibplatform_static.a:atomic.c.o: 0000000000000cd4 T _OSAtomicCompareAndSwapPtrBarrier"
+      }
+    ],
+    "_OSAtomicDecrement32": [
+      {
+        "archive": ".blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libplatform/liblibplatform_static.a",
+        "symbol_record": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libplatform/liblibplatform_static.a:atomic.c.o: 00000000000001f8 T _OSAtomicDecrement32"
+      }
+    ],
+    "_OSAtomicDecrement32Barrier": [
+      {
+        "archive": ".blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libplatform/liblibplatform_static.a",
+        "symbol_record": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libplatform/liblibplatform_static.a:atomic.c.o: 0000000000000274 T _OSAtomicDecrement32Barrier"
+      }
+    ],
+    "_OSAtomicIncrement32": [
+      {
+        "archive": ".blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libplatform/liblibplatform_static.a",
+        "symbol_record": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libplatform/liblibplatform_static.a:atomic.c.o: 0000000000000100 T _OSAtomicIncrement32"
+      }
+    ],
+    "_OSAtomicIncrement32Barrier": [
+      {
+        "archive": ".blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libplatform/liblibplatform_static.a",
+        "symbol_record": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libplatform/liblibplatform_static.a:atomic.c.o: 000000000000017c T _OSAtomicIncrement32Barrier"
+      }
+    ],
+    "_OSMemoryBarrier": [
+      {
+        "archive": ".blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libplatform/liblibplatform_static.a",
+        "symbol_record": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libplatform/liblibplatform_static.a:atomic.c.o: 0000000000001650 T _OSMemoryBarrier"
+      }
+    ],
+    "_OSSpinLockLock": [
+      {
+        "archive": ".blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libplatform/liblibplatform_static.a",
+        "symbol_record": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libplatform/liblibplatform_static.a:lock.c.o: 000000000000044c T _OSSpinLockLock"
+      }
+    ],
+    "_OSSpinLockUnlock": [
+      {
+        "archive": ".blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libplatform/liblibplatform_static.a",
+        "symbol_record": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libplatform/liblibplatform_static.a:lock.c.o: 00000000000005c8 T _OSSpinLockUnlock"
+      }
+    ],
+    "_backtrace_symbols": [
+      {
+        "archive": ".blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libc/liblibc_static.a",
+        "symbol_record": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libc/liblibc_static.a:backtrace.c.o: 000000000000012c T _backtrace_symbols"
+      }
+    ],
+    "_backtrace_symbols_fd": [
+      {
+        "archive": ".blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libc/liblibc_static.a",
+        "symbol_record": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libc/liblibc_static.a:backtrace.c.o: 0000000000000644 T _backtrace_symbols_fd"
+      }
+    ],
+    "_close$NOCANCEL": [
+      {
+        "archive": ".blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libsystem_kernel/syscalls.a",
+        "symbol_record": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libsystem_kernel/syscalls.a:___close_nocancel.o: 0000000000000000 T _close$NOCANCEL"
+      }
+    ],
+    "_issetugid": [
+      {
+        "archive": ".blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libsystem_kernel/syscalls.a",
+        "symbol_record": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libsystem_kernel/syscalls.a:_issetugid.o: 0000000000000000 T _issetugid"
+      }
+    ],
+    "_mach_vm_region": [
+      {
+        "archive": ".blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libsystem_kernel/libsystem_kernel.a",
+        "symbol_record": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libsystem_kernel/libsystem_kernel.a:mach_vm.c.o: 0000000000002a9c T _mach_vm_region"
+      }
+    ],
+    "_memset_pattern16": [
+      {
+        "archive": ".blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libplatform/liblibplatform_static.a",
+        "symbol_record": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libplatform/liblibplatform_static.a:memset_pattern.c.o: 0000000000000290 T _memset_pattern16"
+      }
+    ],
+    "_memset_pattern4": [
+      {
+        "archive": ".blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libplatform/liblibplatform_static.a",
+        "symbol_record": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libplatform/liblibplatform_static.a:memset_pattern.c.o: 00000000000000b8 T _memset_pattern4"
+      }
+    ],
+    "_memset_pattern8": [
+      {
+        "archive": ".blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libplatform/liblibplatform_static.a",
+        "symbol_record": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libplatform/liblibplatform_static.a:memset_pattern.c.o: 00000000000001a4 T _memset_pattern8"
+      }
+    ],
+    "_mk_timer_arm": [
+      {
+        "archive": ".blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libsystem_kernel/libsystem_kernel.a",
+        "symbol_record": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libsystem_kernel/libsystem_kernel.a:mach_traps.s.o: 000000000000027c T _mk_timer_arm"
+      }
+    ],
+    "_mk_timer_cancel": [
+      {
+        "archive": ".blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libsystem_kernel/libsystem_kernel.a",
+        "symbol_record": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libsystem_kernel/libsystem_kernel.a:mach_traps.s.o: 0000000000000288 T _mk_timer_cancel"
+      }
+    ],
+    "_mk_timer_create": [
+      {
+        "archive": ".blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libsystem_kernel/libsystem_kernel.a",
+        "symbol_record": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libsystem_kernel/libsystem_kernel.a:mach_traps.s.o: 0000000000000264 T _mk_timer_create"
+      }
+    ],
+    "_mk_timer_destroy": [
+      {
+        "archive": ".blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libsystem_kernel/libsystem_kernel.a",
+        "symbol_record": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libsystem_kernel/libsystem_kernel.a:mach_traps.s.o: 0000000000000270 T _mk_timer_destroy"
+      }
+    ],
+    "_os_unfair_lock_lock": [
+      {
+        "archive": ".blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libplatform/liblibplatform_static.a",
+        "symbol_record": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libplatform/liblibplatform_static.a:lock.c.o: 0000000000000a24 T _os_unfair_lock_lock"
+      }
+    ],
+    "_os_unfair_lock_unlock": [
+      {
+        "archive": ".blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libplatform/liblibplatform_static.a",
+        "symbol_record": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libplatform/liblibplatform_static.a:lock.c.o: 0000000000001018 T _os_unfair_lock_unlock"
+      }
+    ],
+    "_pthread_atfork": [
+      {
+        "archive": ".blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/pthread/libpthread_full_static.a",
+        "symbol_record": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/pthread/libpthread_full_static.a:pthread_atfork.c.o: 0000000000000000 T _pthread_atfork"
+      }
+    ],
+    "_pthread_getugid_np": [
+      {
+        "archive": ".blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libsystem_kernel/syscalls.a",
+        "symbol_record": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libsystem_kernel/syscalls.a:___gettid.o: 0000000000000000 T _pthread_getugid_np"
+      }
+    ],
+    "_qos_class_self": [
+      {
+        "archive": ".blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/pthread/libpthread_full_static.a",
+        "symbol_record": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/pthread/libpthread_full_static.a:qos.c.o: 000000000000088c T _qos_class_self"
+      }
+    ],
+    "_sigaddset": [
+      {
+        "archive": ".blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libc/liblibc_static.a",
+        "symbol_record": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libc/liblibc_static.a:sigsetops.c.o: 000000000000003c T _sigaddset"
+      }
+    ],
+    "_sigemptyset": [
+      {
+        "archive": ".blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libc/liblibc_static.a",
+        "symbol_record": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libc/liblibc_static.a:sigsetops.c.o: 0000000000000000 T _sigemptyset"
+      }
+    ],
+    "_sigfillset": [
+      {
+        "archive": ".blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libc/liblibc_static.a",
+        "symbol_record": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libc/liblibc_static.a:sigsetops.c.o: 000000000000001c T _sigfillset"
+      }
+    ],
+    "_statvfs": [
+      {
+        "archive": ".blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libc/liblibc_static.a",
+        "symbol_record": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libc/liblibc_static.a:statvfs.c.o: 000000000000018c T _statvfs"
+      }
+    ],
+    "_strxfrm": [
+      {
+        "archive": ".blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libc/liblibc_static.a",
+        "symbol_record": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libc/liblibc_static.a:strxfrm.c.o: 0000000000000430 T _strxfrm"
+      }
+    ],
+    "_task_threads": [
+      {
+        "archive": ".blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libsystem_kernel/libsystem_kernel.a",
+        "symbol_record": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libsystem_kernel/libsystem_kernel.a:task.c.o: 0000000000000550 T _task_threads"
+      }
+    ],
+    "_thread_resume": [
+      {
+        "archive": ".blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libsystem_kernel/libsystem_kernel.a",
+        "symbol_record": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libsystem_kernel/libsystem_kernel.a:thread_act.c.o: 0000000000001088 T _thread_resume"
+      }
+    ],
+    "_thread_suspend": [
+      {
+        "archive": ".blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libsystem_kernel/libsystem_kernel.a",
+        "symbol_record": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libsystem_kernel/libsystem_kernel.a:thread_act.c.o: 0000000000000e94 T _thread_suspend"
+      }
+    ],
+    "_vm_page_size": [
+      {
+        "archive": ".blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libsystem_kernel/libsystem_kernel.a",
+        "symbol_record": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libsystem_kernel/libsystem_kernel.a:mach_init.c.o: 00000000000010f8 S _vm_page_size"
+      }
+    ]
+  },
+  "no_archive_definition": [
+    "__Exit",
+    "__dyld_is_memory_immutable",
+    "__os_log_create",
+    "_creat",
+    "_dlclose",
+    "_dlerror",
+    "_dlopen",
+    "_dlopen_preflight",
+    "_dlsym",
+    "_fdopen$DARWIN_EXTSN",
+    "_fls",
+    "_fmtcheck",
+    "_fopen$DARWIN_EXTSN",
+    "_getgroups$DARWIN_EXTSN",
+    "_getresgid",
+    "_getresuid",
+    "_index",
+    "_ldexp",
+    "_ldexpl",
+    "_pause",
+    "_popen$DARWIN_EXTSN",
+    "_qsort_b",
+    "_realpath",
+    "_rewinddir$INODE64",
+    "_select$1050",
+    "_setresgid",
+    "_setresuid",
+    "_slot_name",
+    "_swap_fat_arch",
+    "_swap_fat_arch_64",
+    "_swap_fat_header",
+    "_sysdir_get_next_search_path_enumeration",
+    "_sysdir_start_search_path_enumeration",
+    "_waitpid"
+  ]
+}

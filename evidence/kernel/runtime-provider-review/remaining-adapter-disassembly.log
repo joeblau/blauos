@@ -1,0 +1,280 @@
+(lldb) target create "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib"
+Current executable set to '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib' (arm64).
+(lldb) disassemble --name pause --count 15
+libSystem.B.dylib`_pause:
+libSystem.B.dylib[0x8f70c] <+0>:  stp    x29, x30, [sp, #-0x10]!
+libSystem.B.dylib[0x8f710] <+4>:  mov    x29, sp
+libSystem.B.dylib[0x8f714] <+8>:  bl     0xc9cdc                   ; __pause at pause.c:49
+libSystem.B.dylib[0x8f718] <+12>: ldp    x29, x30, [sp], #0x10
+libSystem.B.dylib[0x8f71c] <+16>: ret    
+
+libSystem.B.dylib`_waitpid:
+libSystem.B.dylib[0x8f720] <+0>:  sub    sp, sp, #0x30
+libSystem.B.dylib[0x8f724] <+4>:  stp    x29, x30, [sp, #0x20]
+libSystem.B.dylib[0x8f728] <+8>:  add    x29, sp, #0x20
+libSystem.B.dylib[0x8f72c] <+12>: stur   w0, [x29, #-0x4]
+libSystem.B.dylib[0x8f730] <+16>: str    x1, [sp, #0x10]
+libSystem.B.dylib[0x8f734] <+20>: str    w2, [sp, #0xc]
+libSystem.B.dylib[0x8f738] <+24>: ldur   w0, [x29, #-0x4]
+libSystem.B.dylib[0x8f73c] <+28>: ldr    x1, [sp, #0x10]
+libSystem.B.dylib[0x8f740] <+32>: ldr    w2, [sp, #0xc]
+libSystem.B.dylib[0x8f744] <+36>: bl     0xc7244                   ; __waitpid at waitpid.c:54
+(lldb) disassemble --name waitpid --count 15
+libSystem.B.dylib`_waitpid:
+libSystem.B.dylib[0x8f720] <+0>:  sub    sp, sp, #0x30
+libSystem.B.dylib[0x8f724] <+4>:  stp    x29, x30, [sp, #0x20]
+libSystem.B.dylib[0x8f728] <+8>:  add    x29, sp, #0x20
+libSystem.B.dylib[0x8f72c] <+12>: stur   w0, [x29, #-0x4]
+libSystem.B.dylib[0x8f730] <+16>: str    x1, [sp, #0x10]
+libSystem.B.dylib[0x8f734] <+20>: str    w2, [sp, #0xc]
+libSystem.B.dylib[0x8f738] <+24>: ldur   w0, [x29, #-0x4]
+libSystem.B.dylib[0x8f73c] <+28>: ldr    x1, [sp, #0x10]
+libSystem.B.dylib[0x8f740] <+32>: ldr    w2, [sp, #0xc]
+libSystem.B.dylib[0x8f744] <+36>: bl     0xc7244                   ; __waitpid at waitpid.c:54
+libSystem.B.dylib[0x8f748] <+40>: ldp    x29, x30, [sp, #0x20]
+libSystem.B.dylib[0x8f74c] <+44>: add    sp, sp, #0x30
+libSystem.B.dylib[0x8f750] <+48>: ret    
+
+libSystem.B.dylib`_fdopen$DARWIN_EXTSN:
+libSystem.B.dylib[0x8f754] <+0>:  sub    sp, sp, #0x20
+libSystem.B.dylib[0x8f758] <+4>:  stp    x29, x30, [sp, #0x10]
+(lldb) disassemble --name fdopen$DARWIN_EXTSN --count 15
+libSystem.B.dylib`_fdopen$DARWIN_EXTSN:
+libSystem.B.dylib[0x8f754] <+0>:  sub    sp, sp, #0x20
+libSystem.B.dylib[0x8f758] <+4>:  stp    x29, x30, [sp, #0x10]
+libSystem.B.dylib[0x8f75c] <+8>:  add    x29, sp, #0x10
+libSystem.B.dylib[0x8f760] <+12>: stur   w0, [x29, #-0x4]
+libSystem.B.dylib[0x8f764] <+16>: str    x1, [sp]
+libSystem.B.dylib[0x8f768] <+20>: ldur   w0, [x29, #-0x4]
+libSystem.B.dylib[0x8f76c] <+24>: ldr    x1, [sp]
+libSystem.B.dylib[0x8f770] <+28>: bl     0x13f090                  ; _fdopen at fdopen.c:62
+libSystem.B.dylib[0x8f774] <+32>: ldp    x29, x30, [sp, #0x10]
+libSystem.B.dylib[0x8f778] <+36>: add    sp, sp, #0x20
+libSystem.B.dylib[0x8f77c] <+40>: ret    
+
+libSystem.B.dylib`_fopen$DARWIN_EXTSN:
+libSystem.B.dylib[0x8f780] <+0>:  sub    sp, sp, #0x20
+libSystem.B.dylib[0x8f784] <+4>:  stp    x29, x30, [sp, #0x10]
+libSystem.B.dylib[0x8f788] <+8>:  add    x29, sp, #0x10
+libSystem.B.dylib[0x8f78c] <+12>: str    x0, [sp, #0x8]
+(lldb) disassemble --name fopen$DARWIN_EXTSN --count 15
+libSystem.B.dylib`_fopen$DARWIN_EXTSN:
+libSystem.B.dylib[0x8f780] <+0>:  sub    sp, sp, #0x20
+libSystem.B.dylib[0x8f784] <+4>:  stp    x29, x30, [sp, #0x10]
+libSystem.B.dylib[0x8f788] <+8>:  add    x29, sp, #0x10
+libSystem.B.dylib[0x8f78c] <+12>: str    x0, [sp, #0x8]
+libSystem.B.dylib[0x8f790] <+16>: str    x1, [sp]
+libSystem.B.dylib[0x8f794] <+20>: ldr    x0, [sp, #0x8]
+libSystem.B.dylib[0x8f798] <+24>: ldr    x1, [sp]
+libSystem.B.dylib[0x8f79c] <+28>: bl     0x13ef38                  ; _fopen at fopen.c:64
+libSystem.B.dylib[0x8f7a0] <+32>: ldp    x29, x30, [sp, #0x10]
+libSystem.B.dylib[0x8f7a4] <+36>: add    sp, sp, #0x20
+libSystem.B.dylib[0x8f7a8] <+40>: ret    
+
+libSystem.B.dylib`ldexp:
+libSystem.B.dylib[0x8f7ac] <+0>:  sub    sp, sp, #0x20
+libSystem.B.dylib[0x8f7b0] <+4>:  stp    x29, x30, [sp, #0x10]
+libSystem.B.dylib[0x8f7b4] <+8>:  add    x29, sp, #0x10
+libSystem.B.dylib[0x8f7b8] <+12>: str    d0, [sp, #0x8]
+(lldb) disassemble --name getgroups$DARWIN_EXTSN --count 15
+libSystem.B.dylib`_getgroups$DARWIN_EXTSN:
+libSystem.B.dylib[0x8fef0] <+0>:  sub    sp, sp, #0x20
+libSystem.B.dylib[0x8fef4] <+4>:  stp    x29, x30, [sp, #0x10]
+libSystem.B.dylib[0x8fef8] <+8>:  add    x29, sp, #0x10
+libSystem.B.dylib[0x8fefc] <+12>: stur   w0, [x29, #-0x4]
+libSystem.B.dylib[0x8ff00] <+16>: str    x1, [sp]
+libSystem.B.dylib[0x8ff04] <+20>: ldur   w0, [x29, #-0x4]
+libSystem.B.dylib[0x8ff08] <+24>: ldr    x1, [sp]
+libSystem.B.dylib[0x8ff0c] <+28>: bl     0x5470                    ; getgroups
+libSystem.B.dylib[0x8ff10] <+32>: ldp    x29, x30, [sp, #0x10]
+libSystem.B.dylib[0x8ff14] <+36>: add    sp, sp, #0x20
+libSystem.B.dylib[0x8ff18] <+40>: ret    
+
+libSystem.B.dylib`statvfs:
+libSystem.B.dylib[0x8ff1c] <+0>:  stp    x28, x27, [sp, #-0x20]!
+libSystem.B.dylib[0x8ff20] <+4>:  stp    x29, x30, [sp, #0x10]
+libSystem.B.dylib[0x8ff24] <+8>:  add    x29, sp, #0x10
+libSystem.B.dylib[0x8ff28] <+12>: sub    sp, sp, #0x8a0
+(lldb) disassemble --name realpath --count 15
+libSystem.B.dylib`_realpath$DARWIN_EXTSN:
+libSystem.B.dylib[0x10fd44] <+0>:  stp    x28, x27, [sp, #-0x20]!
+libSystem.B.dylib[0x10fd48] <+4>:  stp    x29, x30, [sp, #0x10]
+libSystem.B.dylib[0x10fd4c] <+8>:  add    x29, sp, #0x10
+libSystem.B.dylib[0x10fd50] <+12>: mov    w9, #0x1df0               ; =7664 
+libSystem.B.dylib[0x10fd54] <+16>: adrp   x16, -126
+libSystem.B.dylib[0x10fd58] <+20>: add    x16, x16, #0xc4           ; __chkstk_darwin
+libSystem.B.dylib[0x10fd5c] <+24>: blr    x16
+libSystem.B.dylib[0x10fd60] <+28>: sub    sp, sp, #0x1, lsl #12     ; =0x1000 
+libSystem.B.dylib[0x10fd64] <+32>: sub    sp, sp, #0xdf0
+libSystem.B.dylib[0x10fd68] <+36>: add    x8, sp, #0x1, lsl #12     ; =0x1000 
+libSystem.B.dylib[0x10fd6c] <+40>: add    x8, x8, #0x1cc
+libSystem.B.dylib[0x10fd70] <+44>: str    x8, [sp, #0x20]
+libSystem.B.dylib[0x10fd74] <+48>: add    x8, sp, #0x138
+libSystem.B.dylib[0x10fd78] <+52>: str    x8, [sp, #0x28]
+libSystem.B.dylib[0x10fd7c] <+56>: adrp   x9, 365
+
+libSystem.B.dylib`_realpath:
+libSystem.B.dylib[0x909a0] <+0>:  sub    sp, sp, #0x20
+libSystem.B.dylib[0x909a4] <+4>:  stp    x29, x30, [sp, #0x10]
+libSystem.B.dylib[0x909a8] <+8>:  add    x29, sp, #0x10
+libSystem.B.dylib[0x909ac] <+12>: str    x0, [sp, #0x8]
+libSystem.B.dylib[0x909b0] <+16>: str    x1, [sp]
+libSystem.B.dylib[0x909b4] <+20>: ldr    x0, [sp, #0x8]
+libSystem.B.dylib[0x909b8] <+24>: ldr    x1, [sp]
+libSystem.B.dylib[0x909bc] <+28>: bl     0x10fd44                  ; _realpath$DARWIN_EXTSN at realpath.c:83
+libSystem.B.dylib[0x909c0] <+32>: ldp    x29, x30, [sp, #0x10]
+libSystem.B.dylib[0x909c4] <+36>: add    sp, sp, #0x20
+libSystem.B.dylib[0x909c8] <+40>: ret    
+
+libSystem.B.dylib`dlopen_preflight:
+libSystem.B.dylib[0x909cc] <+0>:  sub    sp, sp, #0x30
+libSystem.B.dylib[0x909d0] <+4>:  stp    x29, x30, [sp, #0x20]
+libSystem.B.dylib[0x909d4] <+8>:  add    x29, sp, #0x20
+libSystem.B.dylib[0x909d8] <+12>: str    x30, [sp, #0x8]
+
+(lldb) disassemble --name fmtcheck --count 15
+libSystem.B.dylib`fmtcheck:
+libSystem.B.dylib[0x90d78] <+0>:  sub    sp, sp, #0x20
+libSystem.B.dylib[0x90d7c] <+4>:  stp    x29, x30, [sp, #0x10]
+libSystem.B.dylib[0x90d80] <+8>:  add    x29, sp, #0x10
+libSystem.B.dylib[0x90d84] <+12>: str    x0, [sp, #0x8]
+libSystem.B.dylib[0x90d88] <+16>: str    x1, [sp]
+libSystem.B.dylib[0x90d8c] <+20>: ldr    x0, [sp, #0x8]
+libSystem.B.dylib[0x90d90] <+24>: ldr    x1, [sp]
+libSystem.B.dylib[0x90d94] <+28>: bl     0xfa060                   ; __fmtcheck at fmtcheck.c:307
+libSystem.B.dylib[0x90d98] <+32>: ldp    x29, x30, [sp, #0x10]
+libSystem.B.dylib[0x90d9c] <+36>: add    sp, sp, #0x20
+libSystem.B.dylib[0x90da0] <+40>: ret    
+
+libSystem.B.dylib`_qsort_b:
+libSystem.B.dylib[0x90da4] <+0>:  sub    sp, sp, #0x30
+libSystem.B.dylib[0x90da8] <+4>:  stp    x29, x30, [sp, #0x20]
+libSystem.B.dylib[0x90dac] <+8>:  add    x29, sp, #0x20
+libSystem.B.dylib[0x90db0] <+12>: stur   x0, [x29, #-0x8]
+(lldb) disassemble --name ldexp --count 15
+libSystem.B.dylib`ldexp:
+libSystem.B.dylib[0x8f7ac] <+0>:  sub    sp, sp, #0x20
+libSystem.B.dylib[0x8f7b0] <+4>:  stp    x29, x30, [sp, #0x10]
+libSystem.B.dylib[0x8f7b4] <+8>:  add    x29, sp, #0x10
+libSystem.B.dylib[0x8f7b8] <+12>: str    d0, [sp, #0x8]
+libSystem.B.dylib[0x8f7bc] <+16>: str    w0, [sp, #0x4]
+libSystem.B.dylib[0x8f7c0] <+20>: ldr    d0, [sp, #0x8]
+libSystem.B.dylib[0x8f7c4] <+24>: ldr    w0, [sp, #0x4]
+libSystem.B.dylib[0x8f7c8] <+28>: bl     0x1f0b0                   ; scalbn at s_scalbn.c:35
+libSystem.B.dylib[0x8f7cc] <+32>: ldp    x29, x30, [sp, #0x10]
+libSystem.B.dylib[0x8f7d0] <+36>: add    sp, sp, #0x20
+libSystem.B.dylib[0x8f7d4] <+40>: ret    
+
+libSystem.B.dylib`dlclose:
+libSystem.B.dylib[0x8f7d8] <+0>:  sub    sp, sp, #0x20
+libSystem.B.dylib[0x8f7dc] <+4>:  stp    x29, x30, [sp, #0x10]
+libSystem.B.dylib[0x8f7e0] <+8>:  add    x29, sp, #0x10
+libSystem.B.dylib[0x8f7e4] <+12>: str    x0, [sp]
+(lldb) disassemble --name ldexpl --count 15
+libSystem.B.dylib`ldexpl:
+libSystem.B.dylib[0x907e0] <+0>:  sub    sp, sp, #0x20
+libSystem.B.dylib[0x907e4] <+4>:  stp    x29, x30, [sp, #0x10]
+libSystem.B.dylib[0x907e8] <+8>:  add    x29, sp, #0x10
+libSystem.B.dylib[0x907ec] <+12>: str    d0, [sp, #0x8]
+libSystem.B.dylib[0x907f0] <+16>: str    w0, [sp, #0x4]
+libSystem.B.dylib[0x907f4] <+20>: ldr    d0, [sp, #0x8]
+libSystem.B.dylib[0x907f8] <+24>: ldr    w0, [sp, #0x4]
+libSystem.B.dylib[0x907fc] <+28>: bl     0x1f0b0                   ; scalbn at s_scalbn.c:35
+libSystem.B.dylib[0x90800] <+32>: ldp    x29, x30, [sp, #0x10]
+libSystem.B.dylib[0x90804] <+36>: add    sp, sp, #0x20
+libSystem.B.dylib[0x90808] <+40>: ret    
+
+libSystem.B.dylib`slot_name:
+libSystem.B.dylib[0x9080c] <+0>:  sub    sp, sp, #0x40
+libSystem.B.dylib[0x90810] <+4>:  stp    x29, x30, [sp, #0x30]
+libSystem.B.dylib[0x90814] <+8>:  add    x29, sp, #0x30
+libSystem.B.dylib[0x90818] <+12>: stur   w0, [x29, #-0x4]
+(lldb) disassemble --name index --count 15
+libSystem.B.dylib`index:
+libSystem.B.dylib[0x8fc1c] <+0>:  sub    sp, sp, #0x20
+libSystem.B.dylib[0x8fc20] <+4>:  stp    x29, x30, [sp, #0x10]
+libSystem.B.dylib[0x8fc24] <+8>:  add    x29, sp, #0x10
+libSystem.B.dylib[0x8fc28] <+12>: str    x0, [sp, #0x8]
+libSystem.B.dylib[0x8fc2c] <+16>: str    w1, [sp, #0x4]
+libSystem.B.dylib[0x8fc30] <+20>: ldr    x0, [sp, #0x8]
+libSystem.B.dylib[0x8fc34] <+24>: ldr    w1, [sp, #0x4]
+libSystem.B.dylib[0x8fc38] <+28>: bl     0xab490                   ; strchr at strchr.c:54
+libSystem.B.dylib[0x8fc3c] <+32>: ldp    x29, x30, [sp, #0x10]
+libSystem.B.dylib[0x8fc40] <+36>: add    sp, sp, #0x20
+libSystem.B.dylib[0x8fc44] <+40>: ret    
+
+libSystem.B.dylib`_popen$DARWIN_EXTSN:
+libSystem.B.dylib[0x8fc48] <+0>:  sub    sp, sp, #0x70
+libSystem.B.dylib[0x8fc4c] <+4>:  stp    x29, x30, [sp, #0x60]
+libSystem.B.dylib[0x8fc50] <+8>:  add    x29, sp, #0x60
+libSystem.B.dylib[0x8fc54] <+12>: adrp   x8, 493
+(lldb) disassemble --name _Exit --count 15
+libSystem.B.dylib`_Exit:
+libSystem.B.dylib[0x90e78] <+0>:  sub    sp, sp, #0x20
+libSystem.B.dylib[0x90e7c] <+4>:  stp    x29, x30, [sp, #0x10]
+libSystem.B.dylib[0x90e80] <+8>:  add    x29, sp, #0x10
+libSystem.B.dylib[0x90e84] <+12>: stur   w0, [x29, #-0x4]
+libSystem.B.dylib[0x90e88] <+16>: ldur   w0, [x29, #-0x4]
+libSystem.B.dylib[0x90e8c] <+20>: bl     0x3bd4                    ; _exit
+
+libSystem.B.dylib`backtrace_symbols:
+libSystem.B.dylib[0x90e90] <+0>:  sub    sp, sp, #0x60
+libSystem.B.dylib[0x90e94] <+4>:  stp    x29, x30, [sp, #0x50]
+libSystem.B.dylib[0x90e98] <+8>:  add    x29, sp, #0x50
+libSystem.B.dylib[0x90e9c] <+12>: stur   x0, [x29, #-0x10]
+libSystem.B.dylib[0x90ea0] <+16>: stur   w1, [x29, #-0x14]
+libSystem.B.dylib[0x90ea4] <+20>: ldur   w8, [x29, #-0x14]
+libSystem.B.dylib[0x90ea8] <+24>: tbz    w8, #0x1f, 0x90eb8        ; <+40> at pd_libSystem_compat.c:1313:18
+libSystem.B.dylib[0x90eac] <+28>: b      0x90eb0                   ; <+32> at pd_libSystem_compat.c:1309:9
+libSystem.B.dylib[0x90eb0] <+32>: stur   xzr, [x29, #-0x8]
+(lldb) disassemble --name fls --count 15
+libSystem.B.dylib`fls:
+libSystem.B.dylib[0x90e2c] <+0>:  sub    sp, sp, #0x10
+libSystem.B.dylib[0x90e30] <+4>:  str    w0, [sp, #0xc]
+libSystem.B.dylib[0x90e34] <+8>:  ldr    w8, [sp, #0xc]
+libSystem.B.dylib[0x90e38] <+12>: cbz    w8, 0x90e60               ; <+52> at pd_libSystem_compat.c
+libSystem.B.dylib[0x90e3c] <+16>: b      0x90e40                   ; <+20> at pd_libSystem_compat.c:1296:78
+libSystem.B.dylib[0x90e40] <+20>: ldr    w8, [sp, #0xc]
+libSystem.B.dylib[0x90e44] <+24>: clz    w8, w8
+libSystem.B.dylib[0x90e48] <+28>: mov    w8, w8
+libSystem.B.dylib[0x90e4c] <+32>: mov    x9, x8
+libSystem.B.dylib[0x90e50] <+36>: mov    x8, #0x20                 ; =32 
+libSystem.B.dylib[0x90e54] <+40>: subs   x8, x8, x9
+libSystem.B.dylib[0x90e58] <+44>: str    w8, [sp, #0x8]
+libSystem.B.dylib[0x90e5c] <+48>: b      0x90e6c                   ; <+64> at pd_libSystem_compat.c
+libSystem.B.dylib[0x90e60] <+52>: mov    w8, #0x0                  ; =0 
+libSystem.B.dylib[0x90e64] <+56>: str    w8, [sp, #0x8]
+(lldb) disassemble --name creat --count 15
+libSystem.B.dylib`_creat:
+libSystem.B.dylib[0x90940] <+0>:  sub    sp, sp, #0x30
+libSystem.B.dylib[0x90944] <+4>:  stp    x29, x30, [sp, #0x20]
+libSystem.B.dylib[0x90948] <+8>:  add    x29, sp, #0x20
+libSystem.B.dylib[0x9094c] <+12>: stur   x0, [x29, #-0x8]
+libSystem.B.dylib[0x90950] <+16>: sturh  w1, [x29, #-0xa]
+libSystem.B.dylib[0x90954] <+20>: ldur   x0, [x29, #-0x8]
+libSystem.B.dylib[0x90958] <+24>: ldurh  w10, [x29, #-0xa]
+libSystem.B.dylib[0x9095c] <+28>: mov    x9, sp
+libSystem.B.dylib[0x90960] <+32>: mov    x8, x10
+libSystem.B.dylib[0x90964] <+36>: str    x8, [x9]
+libSystem.B.dylib[0x90968] <+40>: mov    w1, #0x601                ; =1537 
+libSystem.B.dylib[0x9096c] <+44>: bl     0x982d0                   ; _open at open-base.c:86
+libSystem.B.dylib[0x90970] <+48>: ldp    x29, x30, [sp, #0x20]
+libSystem.B.dylib[0x90974] <+52>: add    sp, sp, #0x30
+libSystem.B.dylib[0x90978] <+56>: ret    
+(lldb) disassemble --name qsort_b --count 15
+libSystem.B.dylib`_qsort_b:
+libSystem.B.dylib[0x90da4] <+0>:  sub    sp, sp, #0x30
+libSystem.B.dylib[0x90da8] <+4>:  stp    x29, x30, [sp, #0x20]
+libSystem.B.dylib[0x90dac] <+8>:  add    x29, sp, #0x20
+libSystem.B.dylib[0x90db0] <+12>: stur   x0, [x29, #-0x8]
+libSystem.B.dylib[0x90db4] <+16>: str    x1, [sp, #0x10]
+libSystem.B.dylib[0x90db8] <+20>: str    x2, [sp, #0x8]
+libSystem.B.dylib[0x90dbc] <+24>: str    x3, [sp]
+libSystem.B.dylib[0x90dc0] <+28>: ldur   x0, [x29, #-0x8]
+libSystem.B.dylib[0x90dc4] <+32>: ldr    x1, [sp, #0x10]
+libSystem.B.dylib[0x90dc8] <+36>: ldr    x2, [sp, #0x8]
+libSystem.B.dylib[0x90dcc] <+40>: ldr    x3, [sp]
+libSystem.B.dylib[0x90dd0] <+44>: adrp   x4, 0
+libSystem.B.dylib[0x90dd4] <+48>: add    x4, x4, #0xde8            ; __pd_qsort_b_thunk at pd_libSystem_compat.c:1269
+libSystem.B.dylib[0x90dd8] <+52>: bl     0x10dad8                  ; qsort_r at qsort.c:315
+libSystem.B.dylib[0x90ddc] <+56>: ldp    x29, x30, [sp, #0x20]

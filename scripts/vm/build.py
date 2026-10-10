@@ -55,6 +55,8 @@ def prepare(args):
         shutil.copyfile(ROOT / "vm" / name, probe / name)
     shutil.copyfile(ROOT / "runtime/probes/runtime_probe.c", probe / "runtime_probe.c")
     shutil.copyfile(ROOT / "runtime/probes/bootstrap_probe.c", probe / "bootstrap_probe.c")
+    shutil.copyfile(ROOT / "runtime/probes/shutdown_probe.c", probe / "shutdown_probe.c")
+    shutil.copyfile(ROOT / "runtime/probes/loader_fixture.c", probe / "loader_fixture.c")
     cmake = source_copy / "src/Userspace/CMakeLists.txt"
     with cmake.open("a") as target:
         target.write("\nadd_subdirectory(blauos_probe)\n")

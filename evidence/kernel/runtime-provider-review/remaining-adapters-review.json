@@ -1,0 +1,216 @@
+{
+  "schema_version": 1,
+  "reviewer": "kernel_build agent",
+  "status": "source_and_actual_adapter_disassembly_review_complete",
+  "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+  "reviewed_library_sha256": "ffa494af817d36ffec4c1b4be5d150afc76df3c8f640119ba0afb80af2334294",
+  "all_28_definitions_assessed": true,
+  "adapter_disassembly": "evidence/kernel/runtime-provider-review/remaining-adapter-disassembly.log",
+  "remaining_definitions": [
+    {
+      "symbol": "_pause",
+      "present_in_actual_final_symbol_table": true,
+      "category": "required_genuine_weak_alias_adapters",
+      "assessment": "Thin calls to actual __pause/__waitpid libc implementations; their weak aliases are no-ops in this source profile. Disassembly confirms calls to distinct real functions, no reverse cycle. waitpid is required by dash/jobs.c, launchd.c/core.c, guest_probe.c and shutdown_probe.c.",
+      "source": "libc/gen/FreeBSD/pause.c:48, waitpid.c:53"
+    },
+    {
+      "symbol": "_waitpid",
+      "present_in_actual_final_symbol_table": true,
+      "category": "required_genuine_weak_alias_adapters",
+      "assessment": "Thin calls to actual __pause/__waitpid libc implementations; their weak aliases are no-ops in this source profile. Disassembly confirms calls to distinct real functions, no reverse cycle. waitpid is required by dash/jobs.c, launchd.c/core.c, guest_probe.c and shutdown_probe.c.",
+      "source": "libc/gen/FreeBSD/pause.c:48, waitpid.c:53"
+    },
+    {
+      "symbol": "_fdopen$DARWIN_EXTSN",
+      "present_in_actual_final_symbol_table": true,
+      "category": "ABI_alias_adapters",
+      "assessment": "Calls distinct selected plain fdopen/fopen/getgroups and realpath$DARWIN_EXTSN providers; compiled object undefined references and actual adapter instructions confirm no same-name recursion. Baseline stdio uses r/w modes implemented by genuine flags.c.",
+      "source": "stub/pd_libSystem_compat.c; libc/stdio/FreeBSD/{fdopen,fopen,flags}.c"
+    },
+    {
+      "symbol": "_fopen$DARWIN_EXTSN",
+      "present_in_actual_final_symbol_table": true,
+      "category": "ABI_alias_adapters",
+      "assessment": "Calls distinct selected plain fdopen/fopen/getgroups and realpath$DARWIN_EXTSN providers; compiled object undefined references and actual adapter instructions confirm no same-name recursion. Baseline stdio uses r/w modes implemented by genuine flags.c.",
+      "source": "stub/pd_libSystem_compat.c; libc/stdio/FreeBSD/{fdopen,fopen,flags}.c"
+    },
+    {
+      "symbol": "_getgroups$DARWIN_EXTSN",
+      "present_in_actual_final_symbol_table": true,
+      "category": "ABI_alias_adapters",
+      "assessment": "Calls distinct selected plain fdopen/fopen/getgroups and realpath$DARWIN_EXTSN providers; compiled object undefined references and actual adapter instructions confirm no same-name recursion. Baseline stdio uses r/w modes implemented by genuine flags.c.",
+      "source": "stub/pd_libSystem_compat.c; libc/stdio/FreeBSD/{fdopen,fopen,flags}.c"
+    },
+    {
+      "symbol": "_realpath",
+      "present_in_actual_final_symbol_table": true,
+      "category": "ABI_alias_adapters",
+      "assessment": "Calls distinct selected plain fdopen/fopen/getgroups and realpath$DARWIN_EXTSN providers; compiled object undefined references and actual adapter instructions confirm no same-name recursion. Baseline stdio uses r/w modes implemented by genuine flags.c.",
+      "source": "stub/pd_libSystem_compat.c; libc/stdio/FreeBSD/{fdopen,fopen,flags}.c"
+    },
+    {
+      "symbol": "_fmtcheck",
+      "present_in_actual_final_symbol_table": true,
+      "category": "genuine_algorithm_aliases",
+      "assessment": "fmtcheck calls selected __fmtcheck, index calls strchr, math aliases call real scalbn. ARM64 long double is double in this compiled profile; source s_scalbn.c intends these aliases but compatibility weak-reference macros emit none.",
+      "source": "libc/gen/FreeBSD/fmtcheck.c; libc/libm/openlibm/src/s_scalbn.c"
+    },
+    {
+      "symbol": "_ldexp",
+      "present_in_actual_final_symbol_table": true,
+      "category": "genuine_algorithm_aliases",
+      "assessment": "fmtcheck calls selected __fmtcheck, index calls strchr, math aliases call real scalbn. ARM64 long double is double in this compiled profile; source s_scalbn.c intends these aliases but compatibility weak-reference macros emit none.",
+      "source": "libc/gen/FreeBSD/fmtcheck.c; libc/libm/openlibm/src/s_scalbn.c"
+    },
+    {
+      "symbol": "_ldexpl",
+      "present_in_actual_final_symbol_table": true,
+      "category": "genuine_algorithm_aliases",
+      "assessment": "fmtcheck calls selected __fmtcheck, index calls strchr, math aliases call real scalbn. ARM64 long double is double in this compiled profile; source s_scalbn.c intends these aliases but compatibility weak-reference macros emit none.",
+      "source": "libc/gen/FreeBSD/fmtcheck.c; libc/libm/openlibm/src/s_scalbn.c"
+    },
+    {
+      "symbol": "_index",
+      "present_in_actual_final_symbol_table": true,
+      "category": "genuine_algorithm_aliases",
+      "assessment": "fmtcheck calls selected __fmtcheck, index calls strchr, math aliases call real scalbn. ARM64 long double is double in this compiled profile; source s_scalbn.c intends these aliases but compatibility weak-reference macros emit none.",
+      "source": "libc/gen/FreeBSD/fmtcheck.c; libc/libm/openlibm/src/s_scalbn.c"
+    },
+    {
+      "symbol": "_creat",
+      "present_in_actual_final_symbol_table": true,
+      "category": "direct_syscall_or_libc_adapters",
+      "assessment": "creat calls open with O_WRONLY|O_CREAT|O_TRUNC and forwards mode; _Exit calls real _exit. Actual disassembly has distinct imported callees.",
+      "source": "stub/pd_libSystem_compat.c"
+    },
+    {
+      "symbol": "__Exit",
+      "present_in_actual_final_symbol_table": true,
+      "category": "direct_syscall_or_libc_adapters",
+      "assessment": "creat calls open with O_WRONLY|O_CREAT|O_TRUNC and forwards mode; _Exit calls real _exit. Actual disassembly has distinct imported callees.",
+      "source": "stub/pd_libSystem_compat.c"
+    },
+    {
+      "symbol": "_fls",
+      "present_in_actual_final_symbol_table": true,
+      "category": "pure_or_actual_algorithm_adapters",
+      "assessment": "fls handles0 before unsigned clz and returns the highest set bit; qsort_b delegates genuine qsort_r using the correct ARM64 block invoke slot at offset16 and passes the block as hidden first argument.",
+      "source": "stub/pd_libSystem_compat.c:__pd_block_layout/__pd_qsort_b_thunk"
+    },
+    {
+      "symbol": "_qsort_b",
+      "present_in_actual_final_symbol_table": true,
+      "category": "pure_or_actual_algorithm_adapters",
+      "assessment": "fls handles0 before unsigned clz and returns the highest set bit; qsort_b delegates genuine qsort_r using the correct ARM64 block invoke slot at offset16 and passes the block as hidden first argument.",
+      "source": "stub/pd_libSystem_compat.c:__pd_block_layout/__pd_qsort_b_thunk"
+    },
+    {
+      "symbol": "__os_log_create",
+      "present_in_actual_final_symbol_table": true,
+      "category": "actual_logging_ABI_adapter",
+      "assessment": "Accepts SDK macro dso argument and forwards subsystem/category to real selected os_log_create. No fake log object or same-name reverse cycle.",
+      "source": "stub/pd_libSystem_compat.c:_os_log_create"
+    },
+    {
+      "symbol": "_sysdir_start_search_path_enumeration",
+      "present_in_actual_final_symbol_table": true,
+      "category": "limited_directory_service",
+      "assessment": "Implements known directories/domains; CFSystemDirectories.c delegates to it. State keeps directory bits nonzero after the last successful path, so the last result is not lost. Other directory enums yield an empty enumeration; full sysdir parity is unverified and baseline launchd scans explicit /System/Library/LaunchDaemons paths.",
+      "source": "CoreFoundation/Base.subproj/CFSystemDirectories.c:36-47; stub/pd_libSystem_compat.c"
+    },
+    {
+      "symbol": "_sysdir_get_next_search_path_enumeration",
+      "present_in_actual_final_symbol_table": true,
+      "category": "limited_directory_service",
+      "assessment": "Implements known directories/domains; CFSystemDirectories.c delegates to it. State keeps directory bits nonzero after the last successful path, so the last result is not lost. Other directory enums yield an empty enumeration; full sysdir parity is unverified and baseline launchd scans explicit /System/Library/LaunchDaemons paths.",
+      "source": "CoreFoundation/Base.subproj/CFSystemDirectories.c:36-47; stub/pd_libSystem_compat.c"
+    },
+    {
+      "symbol": "_getresuid",
+      "present_in_actual_final_symbol_table": true,
+      "category": "limited_non_Darwin_credential_compatibility",
+      "assessment": "Saved credentials represented as effective IDs; setres operations reject unsupported saved-ID changes and use actual setreuid/setregid. No call sites found in dash, required launchd/CF/IOKit, selected commands or guest probes. Full set-ID semantics are not asserted.",
+      "source": "stub/pd_libSystem_compat.c:35-125"
+    },
+    {
+      "symbol": "_getresgid",
+      "present_in_actual_final_symbol_table": true,
+      "category": "limited_non_Darwin_credential_compatibility",
+      "assessment": "Saved credentials represented as effective IDs; setres operations reject unsupported saved-ID changes and use actual setreuid/setregid. No call sites found in dash, required launchd/CF/IOKit, selected commands or guest probes. Full set-ID semantics are not asserted.",
+      "source": "stub/pd_libSystem_compat.c:35-125"
+    },
+    {
+      "symbol": "_setresuid",
+      "present_in_actual_final_symbol_table": true,
+      "category": "limited_non_Darwin_credential_compatibility",
+      "assessment": "Saved credentials represented as effective IDs; setres operations reject unsupported saved-ID changes and use actual setreuid/setregid. No call sites found in dash, required launchd/CF/IOKit, selected commands or guest probes. Full set-ID semantics are not asserted.",
+      "source": "stub/pd_libSystem_compat.c:35-125"
+    },
+    {
+      "symbol": "_setresgid",
+      "present_in_actual_final_symbol_table": true,
+      "category": "limited_non_Darwin_credential_compatibility",
+      "assessment": "Saved credentials represented as effective IDs; setres operations reject unsupported saved-ID changes and use actual setreuid/setregid. No call sites found in dash, required launchd/CF/IOKit, selected commands or guest probes. Full set-ID semantics are not asserted.",
+      "source": "stub/pd_libSystem_compat.c:35-125"
+    },
+    {
+      "symbol": "_popen$DARWIN_EXTSN",
+      "present_in_actual_final_symbol_table": true,
+      "category": "incomplete_broader_process_compatibility",
+      "assessment": "Uses actual pipe/fork/exec/fdopen, but does not register its child in the real pclose PID table. No required milestone call sites found in dash/launchd/CF/IOKit or guest probes; it is not accepted as full popen/pclose compatibility.",
+      "source": "stub/pd_libSystem_compat.c:__pd_popen_extsn"
+    },
+    {
+      "symbol": "_slot_name",
+      "present_in_actual_final_symbol_table": true,
+      "category": "limited_metadata_helpers",
+      "assessment": "CPU names cover x86 only and ARM reports unknown; fat helpers always byte-swap without honoring target byte order. No required milestone call sites found in dash/launchd/CF/IOKit or guest probes; they are not accepted as complete general metadata APIs.",
+      "source": "stub/pd_libSystem_compat.c"
+    },
+    {
+      "symbol": "_swap_fat_header",
+      "present_in_actual_final_symbol_table": true,
+      "category": "limited_metadata_helpers",
+      "assessment": "CPU names cover x86 only and ARM reports unknown; fat helpers always byte-swap without honoring target byte order. No required milestone call sites found in dash/launchd/CF/IOKit or guest probes; they are not accepted as complete general metadata APIs.",
+      "source": "stub/pd_libSystem_compat.c"
+    },
+    {
+      "symbol": "_swap_fat_arch",
+      "present_in_actual_final_symbol_table": true,
+      "category": "limited_metadata_helpers",
+      "assessment": "CPU names cover x86 only and ARM reports unknown; fat helpers always byte-swap without honoring target byte order. No required milestone call sites found in dash/launchd/CF/IOKit or guest probes; they are not accepted as complete general metadata APIs.",
+      "source": "stub/pd_libSystem_compat.c"
+    },
+    {
+      "symbol": "_swap_fat_arch_64",
+      "present_in_actual_final_symbol_table": true,
+      "category": "limited_metadata_helpers",
+      "assessment": "CPU names cover x86 only and ARM reports unknown; fat helpers always byte-swap without honoring target byte order. No required milestone call sites found in dash/launchd/CF/IOKit or guest probes; they are not accepted as complete general metadata APIs.",
+      "source": "stub/pd_libSystem_compat.c"
+    },
+    {
+      "symbol": "_rewinddir$INODE64",
+      "present_in_actual_final_symbol_table": false,
+      "category": "discarded_legacy_x86_aliases",
+      "assessment": "Not present in actual ARM64 final symbol table; ARM64 uses genuine plain rewinddir/select, including real DIR buffer/locking/telldir reset semantics.",
+      "source": "libc/gen/FreeBSD/rewinddir.c:47-71; stub/libSystem.arm64.exports"
+    },
+    {
+      "symbol": "_select$1050",
+      "present_in_actual_final_symbol_table": false,
+      "category": "discarded_legacy_x86_aliases",
+      "assessment": "Not present in actual ARM64 final symbol table; ARM64 uses genuine plain rewinddir/select, including real DIR buffer/locking/telldir reset semantics.",
+      "source": "libc/gen/FreeBSD/rewinddir.c:47-71; stub/libSystem.arm64.exports"
+    }
+  ],
+  "additional_required_milestone_blockers_found": [],
+  "atfork_integration_finding": {
+    "source": "libSystem/stub/pd_libSystem_init.c:113-140",
+    "defect": "Legacy _pthread_fork_prepare invokes registered client callbacks after malloc/dispatch locks are held; parent legacy wrapper invokes client callbacks before those locks are released",
+    "remediation": "Split handlers from genuine pthread internal locks: prepare handlers first/internal pthread last; parent internal pthread first/handlers last; child reset main dyld and System Mach state, then pthread/subsystems, handlers last",
+    "genuine_contract": "pthread/src/pthread_atfork.c:92-176 and dyld/upstream/src/dyldAPIs.cpp:1270-1294",
+    "status": "sent_to_runtime_owner"
+  },
+  "functional_guest_proof_pending": true
+}

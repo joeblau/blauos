@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-source/icu/source/configure",
+    "--disable-tests",
+    "--disable-samples",
+    "--disable-extras",
+    "--disable-icuio"
+  ],
+  "cwd": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-native",
+  "role": "host-only ICU generation tools, not copied into target root"
+}

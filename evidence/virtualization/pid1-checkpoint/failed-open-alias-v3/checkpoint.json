@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "source_root_mounted": true,
+  "source_pid1_exec_attempted": true,
+  "independent_userspace_passed": false,
+  "shell_passed": false,
+  "network_connectivity_passed": false,
+  "guest_shutdown_passed": false,
+  "core_bytes": 70991872,
+  "core_sha256": "a2bf2c845acc3e988439d777160131f9a0d9511397e629d3321885d1aa642a12",
+  "core_distribution": "ignored local artifact; debugger report and input hashes tracked",
+  "fault": {
+    "pc": "0x10344aaa0",
+    "far": "0x16c643ff0",
+    "symbol": "dyld _open",
+    "source": "pd_stubs.c:139",
+    "during": "infinite _open / _open$UNIX2003 recursion"
+  },
+  "full_exception_log_sha256": "b2c6f0aea7fa5cbd0d294e7b4a26963d2ed408accd2c040715735546ea9263c3"
+}

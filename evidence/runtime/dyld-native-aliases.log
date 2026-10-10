@@ -1,0 +1,105 @@
+(lldb) target create .blauos/build/runtime/root/usr/lib/dyld
+Current executable set to '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/dyld' (arm64).
+(lldb) image lookup -n _open
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/dyld:
+        Address: dyld[0x00000000000bf684] (dyld.__TEXT.__text + 779908)
+        Summary: dyld`_open at open-base.c:86
+(lldb) disassemble -n _open
+dyld`_open:
+dyld[0xbf684] <+0>:   sub    sp, sp, #0x50
+dyld[0xbf688] <+4>:   stp    x29, x30, [sp, #0x40]
+dyld[0xbf68c] <+8>:   add    x29, sp, #0x40
+dyld[0xbf690] <+12>:  stur   x0, [x29, #-0x10]
+dyld[0xbf694] <+16>:  stur   w1, [x29, #-0x14]
+dyld[0xbf698] <+20>:  stur   wzr, [x29, #-0x18]
+dyld[0xbf69c] <+24>:  sturh  wzr, [x29, #-0x1a]
+dyld[0xbf6a0] <+28>:  ldur   w8, [x29, #-0x14]
+dyld[0xbf6a4] <+32>:  tbz    w8, #0x9, 0xbf6d8         ; <+84> at open-base.c:98:27
+dyld[0xbf6a8] <+36>:  b      0xbf6ac                   ; <+40> at open-base.c
+dyld[0xbf6ac] <+40>:  add    x9, sp, #0x18
+dyld[0xbf6b0] <+44>:  add    x8, x29, #0x10
+dyld[0xbf6b4] <+48>:  str    x8, [x9]
+dyld[0xbf6b8] <+52>:  ldr    x9, [sp, #0x18]
+dyld[0xbf6bc] <+56>:  ldr    w8, [x9]
+dyld[0xbf6c0] <+60>:  add    x9, x9, #0x8
+dyld[0xbf6c4] <+64>:  str    x9, [sp, #0x18]
+dyld[0xbf6c8] <+68>:  str    w8, [sp, #0x14]
+dyld[0xbf6cc] <+72>:  ldr    w8, [sp, #0x14]
+dyld[0xbf6d0] <+76>:  sturh  w8, [x29, #-0x1a]
+dyld[0xbf6d4] <+80>:  b      0xbf6d8                   ; <+84> at open-base.c:98:27
+dyld[0xbf6d8] <+84>:  ldur   x0, [x29, #-0x10]
+dyld[0xbf6dc] <+88>:  ldur   w1, [x29, #-0x14]
+dyld[0xbf6e0] <+92>:  ldurh  w2, [x29, #-0x1a]
+dyld[0xbf6e4] <+96>:  bl     0x12fb68                  ; __open
+dyld[0xbf6e8] <+100>: stur   w0, [x29, #-0x18]
+dyld[0xbf6ec] <+104>: ldur   w8, [x29, #-0x18]
+dyld[0xbf6f0] <+108>: tbz    w8, #0x1f, 0xbf704        ; <+128> at open-base.c:107:6
+dyld[0xbf6f4] <+112>: b      0xbf6f8                   ; <+116> at open-base.c:103:10
+dyld[0xbf6f8] <+116>: ldur   w8, [x29, #-0x18]
+dyld[0xbf6fc] <+120>: stur   w8, [x29, #-0x4]
+dyld[0xbf700] <+124>: b      0xbf79c                   ; <+280> at open-base.c:120:1
+dyld[0xbf704] <+128>: adrp   x8, 169
+dyld[0xbf708] <+132>: add    x8, x8, #0xa10            ; system_version_compat_check_path_suffix
+dyld[0xbf70c] <+136>: ldr    x8, [x8]
+dyld[0xbf710] <+140>: cbnz   x8, 0xbf724               ; <+160> at open-base.c:112:7
+dyld[0xbf714] <+144>: b      0xbf718                   ; <+148> at open-base.c:108:10
+dyld[0xbf718] <+148>: ldur   w8, [x29, #-0x18]
+dyld[0xbf71c] <+152>: stur   w8, [x29, #-0x4]
+dyld[0xbf720] <+156>: b      0xbf79c                   ; <+280> at open-base.c:120:1
+dyld[0xbf724] <+160>: adrp   x8, 169
+dyld[0xbf728] <+164>: add    x8, x8, #0xa10            ; system_version_compat_check_path_suffix
+dyld[0xbf72c] <+168>: ldr    x8, [x8]
+dyld[0xbf730] <+172>: ldur   x0, [x29, #-0x10]
+dyld[0xbf734] <+176>: blr    x8
+dyld[0xbf738] <+180>: tbnz   w0, #0x0, 0xbf74c         ; <+200> at open-base.c:117:9
+dyld[0xbf73c] <+184>: b      0xbf740                   ; <+188> at open-base.c:113:10
+dyld[0xbf740] <+188>: ldur   w8, [x29, #-0x18]
+dyld[0xbf744] <+192>: stur   w8, [x29, #-0x4]
+dyld[0xbf748] <+196>: b      0xbf79c                   ; <+280> at open-base.c:120:1
+dyld[0xbf74c] <+200>: adrp   x8, 169
+dyld[0xbf750] <+204>: add    x8, x8, #0xa20            ; system_version_compat_open_shim
+dyld[0xbf754] <+208>: ldr    x8, [x8]
+dyld[0xbf758] <+212>: ldur   w0, [x29, #-0x18]
+dyld[0xbf75c] <+216>: ldur   x2, [x29, #-0x10]
+dyld[0xbf760] <+220>: ldur   w3, [x29, #-0x14]
+dyld[0xbf764] <+224>: ldurh  w4, [x29, #-0x1a]
+dyld[0xbf768] <+228>: mov    x10, sp
+dyld[0xbf76c] <+232>: adrp   x9, 112
+dyld[0xbf770] <+236>: add    x9, x9, #0x8c0            ; __fcntl
+dyld[0xbf774] <+240>: str    x9, [x10]
+dyld[0xbf778] <+244>: mov    w1, #-0x1                 ; =-1 
+dyld[0xbf77c] <+248>: adrp   x5, 113
+dyld[0xbf780] <+252>: add    x5, x5, #0x158            ; close
+dyld[0xbf784] <+256>: adrp   x6, 112
+dyld[0xbf788] <+260>: add    x6, x6, #0xb68            ; __open
+dyld[0xbf78c] <+264>: mov    x7, #0x0                  ; =0 
+dyld[0xbf790] <+268>: blr    x8
+dyld[0xbf794] <+272>: stur   w0, [x29, #-0x4]
+dyld[0xbf798] <+276>: b      0xbf79c                   ; <+280> at open-base.c:120:1
+dyld[0xbf79c] <+280>: ldur   w0, [x29, #-0x4]
+dyld[0xbf7a0] <+284>: ldp    x29, x30, [sp, #0x40]
+dyld[0xbf7a4] <+288>: add    sp, sp, #0x50
+dyld[0xbf7a8] <+292>: ret    
+(lldb) image lookup -n _getrlimit
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/dyld:
+        Address: dyld[0x00000000000c183c] (dyld.__TEXT.__text + 788540)
+        Summary: dyld`_getrlimit at getrlimit.c:41
+(lldb) image lookup -n _pthread_cond_wait
+2 matches found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/dyld:
+        Address: dyld[0x00000000000f5330] (dyld.__TEXT.__text + 1000240)
+        Summary: dyld`_pthread_cond_wait at pthread_cond.c:773
+        Address: dyld[0x00000000000fddf8] (dyld.__TEXT.__text + 1035768)
+        Summary: dyld`_pthread_cond_wait at pthread_cancelable.c:432
+(lldb) image lookup -n _pthread_rwlock_rdlock
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/dyld:
+        Address: dyld[0x00000000000fa40c] (dyld.__TEXT.__text + 1020940)
+        Summary: dyld`_pthread_rwlock_rdlock at pthread_rwlock.c:851
+(lldb) image lookup -n _pthread_set_self
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/dyld:
+        Address: dyld[0x00000000000ed77c] (dyld.__TEXT.__text + 968572)
+        Summary: dyld`_pthread_set_self at pthread.c:1532
+(lldb) image lookup -n _pthread_exit_if_canceled
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/dyld:
+        Address: dyld[0x00000000000fd390] (dyld.__TEXT.__text + 1033104)
+        Summary: dyld`_pthread_exit_if_canceled at pthread_cancelable.c:208
+(lldb) quit

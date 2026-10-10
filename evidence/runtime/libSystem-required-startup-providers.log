@@ -1,0 +1,11 @@
+(lldb) target create .blauos/build/runtime/root/usr/lib/libSystem.B.dylib
+Current executable set to '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib' (arm64).
+(lldb) image lookup -n vproc_swap_integer
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x0000000000089ae4] (libSystem.B.dylib.__TEXT.__text + 557636)
+        Summary: libSystem.B.dylib`vproc_swap_integer at libvproc.c:818
+(lldb) image lookup -n dispatch_once_f
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x00000000001991a4] (libSystem.B.dylib.__TEXT.__text + 1669380)
+        Summary: libSystem.B.dylib`dispatch_once_f at once.c:53
+(lldb) image lookup -n _Block_copy

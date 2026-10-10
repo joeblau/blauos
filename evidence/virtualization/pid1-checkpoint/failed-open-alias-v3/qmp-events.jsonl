@@ -1,0 +1,3 @@
+{"QMP": {"capabilities": ["oob"], "version": {"package": "", "qemu": {"major": 10, "micro": 4, "minor": 2}}}}
+{"id": "capabilities", "return": {}}
+{"data": {"guest": false, "reason": "host-signal"}, "event": "SHUTDOWN", "timestamp": {"microseconds": 493665, "seconds": 1791651401}}

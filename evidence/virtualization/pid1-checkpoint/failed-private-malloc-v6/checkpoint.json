@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "source_kernel_execution_observed": true,
+  "persistent_root_mounted": true,
+  "source_launchd_main_observed": true,
+  "source_launchctl_exec_observed": true,
+  "bootstrap_child_pid": 2,
+  "mach_post_fork_ping_observed": true,
+  "pid1_crashed": false,
+  "bootstrap_child_crashed": true,
+  "runtime_functional_tests_passed": false,
+  "shell_execution_passed": false,
+  "network_connectivity_passed": false,
+  "guest_shutdown_passed": false,
+  "acceptance_passed": false,
+  "blocker": "Source launchd forks, handles genuine Mach post-fork ping and executes source launchctl PID2. Child SIGSEGV PC0x1058906cc, FAR0xdeaddeaddeaddead; inferred libdyld default_zone_malloc dereferences upstream uninitialized malloc_zones. No child core was produced; actual exception trace and source instruction disassembly preserved.",
+  "image_manifest": "image-manifest.json",
+  "boot_result": "result.json",
+  "prior_startup": "failed-bootstrap-path-v5/checkpoint.json",
+  "core_extracted": false,
+  "core_extraction_failure": "Read-only debugfs reports /cores/core.2 absent"
+}

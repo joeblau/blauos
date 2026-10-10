@@ -1,0 +1,23 @@
+{
+  "argv": [
+    "cmake",
+    "--build",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/classic-protections-v3",
+    "--target",
+    "xnu",
+    "--parallel",
+    "8"
+  ],
+  "cwd": "/Users/joeblau/Developer/joeblau/src/blauos",
+  "exit_code": 0,
+  "raw_log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/classic-protections-v3/logs/build.log",
+  "raw_log_bytes": 224999895,
+  "raw_log_sha256": "65974bb18a854e0cdd1c3a1c59992da4cdacd8505617894215bb6edfecc5a8ff",
+  "errors": [
+    "       In file included from _/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/classic-protections-v3/source-overlay/src/Kernel/xnu/iokit/IOKit/IOService.hs y:***/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/classic-protections-v3/source-overlay/src/Kernel/xnu/osfmk/kern/turnstile.hx URrb |   44h_ ::",
+    "error:",
+    "t  775 |         TA tr_ _o /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/classic-protections-v3/source-overlay/src/Kernel/xnu/osfmk/mach/arm/_structs.htoRILQ_/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/classic-protections-v3/source-overlay/src/Kernel/xnu/EXTERNAL_HEADERS/stdatomic.h eof(_error:118| :9 E vCp)   :531:  n                                                                                 ^ona:    41: Htnote:   bA e*xpE  omic_warning: '_Atomic' is incompatible with C standards before C11 [-Wpre-c11-compat]p r)expanded from macro '_STRUCT_ARM_PAGEIN_STATE'C     o",
+    "f            ^error:9t",
+    "d}:l/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/classic-protections-v3/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/mach/mach_vm.h:464:4:fd256p   _t | :        ep_r_ re6t ft,:  i: s***tswarning: 6:iROidentifier '__Request__mach_vm_protect_t' is reserved because it starts with '__' [-Wreserved-identifier]u"
+  ]
+}

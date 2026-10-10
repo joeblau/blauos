@@ -1,0 +1,127 @@
+{
+  "status": "source_hook_built_and_real_guest_shutdown_verified",
+  "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+  "patch": {
+    "path": "vm/patches/pdarm-qemu-psci-shutdown.patch",
+    "sha256": "b153ed78a06dd06f41dcd6cd36dffb4b17d1ea792fed9ae08535d02c0694f201"
+  },
+  "required_profile": {
+    "machine": "virt-10.2",
+    "gic_version": 3,
+    "virtualization": false,
+    "accelerator": "tcg",
+    "cpu": "neoverse-n2",
+    "conduit": "HVC"
+  },
+  "source_findings": [
+    {
+      "path": "src/Kernel/Extensions/PDArmPlatformExpert/PDArmPlatformExpert.cpp",
+      "finding": "No haltRestart override in pinned source; superclass ultimately returns -1 without a configured PE_halt_restart callback"
+    },
+    {
+      "path": "src/Kernel/xnu/osfmk/arm/machine_routines.c",
+      "finding": "halt_all_cpus calls PEHaltRestart then spins forever if the platform fails to power off"
+    }
+  ],
+  "primary_references": [
+    {
+      "url": "https://gitlab.com/qemu-project/qemu/-/raw/v10.2.4/hw/arm/virt.c",
+      "lines": "2088-2104",
+      "finding": "With virtualization=false and secure=false, QEMU selects PSCI HVC; virtualization=true instead selects SMC"
+    },
+    {
+      "url": "https://gitlab.com/qemu-project/qemu/-/raw/v10.2.4/target/arm/tcg/psci.c",
+      "lines": "112-122",
+      "finding": "SYSTEM_OFF requests SHUTDOWN_CAUSE_GUEST_SHUTDOWN; SYSTEM_RESET requests the guest-reset cause"
+    },
+    {
+      "url": "https://gitlab.com/qemu-project/qemu/-/raw/v10.2.4/target/arm/kvm-consts.h",
+      "lines": "48-64",
+      "finding": "PSCI 0.2 function base is 0x84000000; SYSTEM_OFF and SYSTEM_RESET use offsets 8 and 9"
+    }
+  ],
+  "activation": "CMake PUREDARWIN_QEMU_PSCI_HVC defaults OFF and must be explicitly enabled; the built driver also requires exact qemuvirt-io loader marker",
+  "system_off_id": "0x84000008",
+  "system_reset_id": "0x84000009",
+  "guest_shutdown_verified": true,
+  "platform_build_evidence": "platform-result.json",
+  "compiled_hook_evidence": "platform-fast/compiled-hook-check.json",
+  "unsupported_profile_checks": "profile-rejections.json",
+  "full_build_evidence": "result.json",
+  "kext_inventory": "kext-inventory.json",
+  "guest_execution": {
+    "canonical_archive": "evidence/virtualization/pid1-checkpoint/guest-pass-v11",
+    "nonce": "5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8",
+    "emulator_profile": {
+      "machine": "virt-10.2",
+      "virtualization": false,
+      "gic_version": 3,
+      "accel": "tcg",
+      "cpu": "neoverse-n2"
+    },
+    "image_sha256": "7ffa519c3b31a46642dee528acd3f64e59cbea6823db773ebcc9eb78f42cf8b2",
+    "kernel_collection_sha256": "b247969e06107dda50fa48d2c0dc1ca3249f5eec83f3e39dbb178e51f066993b",
+    "actual_boot_passed": true,
+    "source_kernel": true,
+    "physical_boot_gate": false,
+    "stock_kernel_used": false,
+    "files": [
+      {
+        "path": "evidence/virtualization/pid1-checkpoint/guest-pass-v11/serial.log",
+        "sha256": "87601c54e2b3cfae134c8dee2db6209d5af603e6bc867ad9b6f9ec289955ba8d"
+      },
+      {
+        "path": "evidence/virtualization/pid1-checkpoint/guest-pass-v11/result.json",
+        "sha256": "a48b645c89a6ccf93e1d7ae88478ec78fc57638399428f7788574b6d600da031"
+      },
+      {
+        "path": "evidence/virtualization/pid1-checkpoint/guest-pass-v11/command.json",
+        "sha256": "3f0ba59a51a5607d515c74641efd8797f0c278d30f533522535648b3bee565ac"
+      },
+      {
+        "path": "evidence/virtualization/pid1-checkpoint/guest-pass-v11/image-manifest.json",
+        "sha256": "cbea505449991d1bf84a04cec96d9ce5723b775335e87d8d940fe617dfff3689"
+      },
+      {
+        "path": "evidence/virtualization/pid1-checkpoint/guest-pass-v11/qmp-events.jsonl",
+        "sha256": "c0c0243f4126fdf13aff92f384c714d3013479791a804045a5ba293fcf8328a4"
+      }
+    ],
+    "required_markers": [
+      "atfork_handlers",
+      "blocks_lifetime",
+      "clock",
+      "concurrent_once",
+      "dns",
+      "dynamic_loader",
+      "guest_to_host",
+      "host_to_guest",
+      "kernel",
+      "launchd",
+      "launchd_services",
+      "locale_conversions",
+      "mach_timer",
+      "network_service",
+      "runtime",
+      "shell",
+      "shutdown_child_reaped",
+      "shutdown_job_exit",
+      "shutdown_job_started",
+      "shutdown_requested"
+    ],
+    "missing_markers": [],
+    "qmp_guest_shutdown": {
+      "data": {
+        "guest": true,
+        "reason": "guest-shutdown"
+      },
+      "event": "SHUTDOWN",
+      "timestamp": {
+        "microseconds": 766249,
+        "seconds": 1791655131
+      }
+    },
+    "serial_hook_message": "PDArmPlatformExpert: QEMU PSCI HVC SYSTEM_OFF",
+    "launchd_shutdown": "Userspace shutdown finished; reboot(RB_HALT), disks synchronized and unmounted, driver disabled, PSCI SYSTEM_OFF"
+  }
+}

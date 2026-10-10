@@ -1,0 +1,73 @@
+diff --git a/lib/prelink.c b/lib/prelink.c
+index bb97824..e1cda30 100644
+--- a/lib/prelink.c
++++ b/lib/prelink.c
+@@ -17,6 +17,47 @@ static void put64(uint8_t *p, uint64_t v) {
+   put32(p, (uint32_t)v); put32(p + 4, (uint32_t)(v >> 32));
+ }
+ 
++/*
++ * Classic ARM64 caches have independently laid-out kext segments, rather
++ * than coalesced __PLK_TEXT_EXEC/__PLK_DATA_CONST segments. XNU uses the
++ * split-info command as a signal to skip per-kext VM protections. Once
++ * our linker has consumed relocation information, remove that signal so
++ * OSKext protects each segment according to its Mach-O initprot/maxprot.
++ * File offsets and all segment addresses remain unchanged.
++ */
++static int classic_arm64_individual_protections(LinkedKext *kext)
++{
++  if (kext->codeless)
++    return 0;
++  MachoView mv;
++  if (macho_view(kext->linked_data, kext->linked_size, &mv) != 0)
++    return -1;
++  if (mv.cputype != CPU_TYPE_ARM64 || !mv.is64)
++    return 0;
++  uint8_t *header = kext->linked_data;
++  uint32_t commands_size = *(uint32_t *)(header + 20);
++  if (commands_size > kext->linked_size - mv.hdrsize)
++    return -1;
++  size_t position = mv.hdrsize;
++  for (uint32_t i = 0; i < mv.ncmds; i++) {
++    struct load_command *lc = (struct load_command *)(header + position);
++    if (lc->cmdsize < sizeof(*lc) || position + lc->cmdsize > mv.hdrsize + commands_size)
++      return -1;
++    if (lc->cmd == 0x1e /* LC_SEGMENT_SPLIT_INFO */) {
++      uint32_t removed = lc->cmdsize;
++      size_t end = mv.hdrsize + commands_size;
++      memmove(header + position, header + position + removed, end - position - removed);
++      memset(header + end - removed, 0, removed);
++      *(uint32_t *)(header + 16) = mv.ncmds - 1;
++      *(uint32_t *)(header + 20) = commands_size - removed;
++      fprintf(stderr, "classic ARM64: individual segment protections for %s\n", kext->bundle_id);
++      return 0;
++    }
++    position += lc->cmdsize;
++  }
++  return 0;
++}
++
+ int prelink_assemble(const uint8_t *kernel_data, size_t kernel_size,
+                      LinkedKext *kexts, size_t num_kexts,
+                      uint8_t **out_data, size_t *out_size)
+@@ -27,6 +68,13 @@ int prelink_assemble(const uint8_t *kernel_data, size_t kernel_size,
+     return -1;
+   }
+ 
++  for (size_t i = 0; i < num_kexts; i++) {
++    if (classic_arm64_individual_protections(&kexts[i]) != 0) {
++      fprintf(stderr, "prelink: invalid ARM64 kext protection metadata\n");
++      return -1;
++    }
++  }
++
+   // Find highest kernel VM address for kext placement.
+   // Skip zero-size placeholder __PRELINK_TEXT (vmsize=0) segments.
+   uint64_t kernel_vm_end = 0;
+@@ -296,4 +344,4 @@ int prelink_assemble(const uint8_t *kernel_data, size_t kernel_size,
+   *out_data = out;
+   *out_size = total_size;
+   return 0;
+-}
+\ No newline at end of file
++}

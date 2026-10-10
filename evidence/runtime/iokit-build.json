@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "status": "source_build_pass",
+  "steps": [
+    {
+      "name": "configure",
+      "command": [
+        "cmake",
+        "-S",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay",
+        "-B",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay",
+        "-DPUREDARWIN_ENABLE_IOKITCF=ON",
+        "-DPUREDARWIN_COREFOUNDATION_PREFIX=/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/iokitcf-prefix"
+      ],
+      "exit_code": 0,
+      "log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/logs/iokit-configure.log"
+    },
+    {
+      "name": "archive",
+      "command": [
+        "cmake",
+        "--build",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay",
+        "--target",
+        "IOKitCF",
+        "--parallel",
+        "4"
+      ],
+      "exit_code": 0,
+      "log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/logs/iokit-archive.log"
+    },
+    {
+      "name": "link",
+      "command": [
+        "xcrun",
+        "clang",
+        "-arch",
+        "arm64",
+        "-mmacosx-version-min=11.0",
+        "-isysroot",
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+        "-dynamiclib",
+        "-nostdlib",
+        "-Wl,-Z",
+        "-L/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib",
+        "-Wl,-dylib_file,/usr/lib/system/libdyld.dylib:/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/system/libdyld.dylib",
+        "-Wl,-install_name,/usr/lib/libIOKitCF.dylib",
+        "-Wl,-platform_version,macos,11.0,11.5",
+        "-Wl,-fixup_chains",
+        "-Wl,-force_load,/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/IOKit/libIOKitCF.a",
+        "-lCoreFoundation",
+        "-lSystem",
+        "-o",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/iokitcf-prefix/libIOKitCF.dylib"
+      ],
+      "exit_code": 0,
+      "log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/logs/iokit-link.log"
+    }
+  ],
+  "errors": [],
+  "execution_verified": false,
+  "archive_sha256": "33c9491578f881c639b433adc32340f6af6924b60f050bd04c404be4901c2d7b",
+  "artifacts": [
+    {
+      "path": "/usr/lib/libIOKitCF.dylib",
+      "sha256": "ca1e53f46dc3679e29bdd9922c62e4fd7ab86cf6e750a1fd0ee1204104b09b35",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "build_amendments": [
+        {
+          "path": "scripts/build/iokit.py",
+          "sha256": "e2c8d92403e0aa15aa07a5981cbed966cfc32b4e0419c7c60579a1ce81f2cc8a"
+        },
+        {
+          "path": "runtime/compat/sdk27-dyld.patch",
+          "sha256": "28d745e5d0862f7034f57674ba2f3374310c8740732c2b11d1073d938ebb8a5e"
+        },
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        }
+      ]
+    }
+  ]
+}

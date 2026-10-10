@@ -1,0 +1,28 @@
+{
+  "status": "pass",
+  "result": "/build/native-image-v8/artifacts/runtime-audit.json",
+  "errors": []
+}
+{
+  "schema_version": 1,
+  "architecture": "arm64",
+  "runtime_audit_passed": true,
+  "runtime_audit_sha256": "bc26e70c6e5ca852b0c0698d2029661cea895c4119b5e7f9abf3a8a4eaec5dff",
+  "stock_kernel_used": false,
+  "guest_execution_observed": false,
+  "sha256": {
+    "image": "a55b57010db8f68548fce91d688bc0a7b04fe03911c1185208fa1c07d47c8dd3",
+    "firmware": "ff38109e82f343aac708df62e1d707c81ac42d3b7feaff375b87dcc1e846734b",
+    "vars_template": "b3b855c5a80310168051164986855692d1bdb06e67619856177965cd87c6774f",
+    "symbols": "b247969e06107dda50fa48d2c0dc1ca3249f5eec83f3e39dbb178e51f066993b"
+  },
+  "qemu_version": "QEMU emulator version 10.2.4",
+  "emulator_profile": {
+    "machine": "virt-10.2",
+    "virtualization": false,
+    "gic_version": 3,
+    "accel": "tcg",
+    "cpu": "neoverse-n2"
+  },
+  "source_lock_sha256": "8022bbbfb33204b56bb3297cd8cbb39fb6c08ea65c476492d99462f7edfe3657"
+}

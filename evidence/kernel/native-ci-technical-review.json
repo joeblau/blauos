@@ -1,0 +1,176 @@
+{
+  "reviewer": "kernel_build agent",
+  "scope": "Acceptance-critical clean native CI, source libc++, reviewed kernel/drivers and genuine virtual guest readiness/shutdown",
+  "status": "actionable_findings_fixed_and_independently_rechecked",
+  "inputs": [
+    {
+      "path": "scripts/vm/native_ci.py",
+      "sha256": "4948b75c552ed5b012259d677a4bf3fb94339d30507f40cd37520cc27b6340c7"
+    },
+    {
+      "path": "scripts/build/libcxx.py",
+      "sha256": "cb9070f4697418cf760fb5d8e401165a20b5c58c9b60508487c30de5f687ab8e"
+    },
+    {
+      "path": ".github/workflows/native-baseline.yml",
+      "sha256": "19a7af3535899df19463c798b488c833ccb02a16204f15ab6f4f7f3cf4584687"
+    },
+    {
+      "path": "scripts/build/xnu.py",
+      "sha256": "e6c10a45f38879187508650f21b0bcb958a0bc45e0c255b5a79d48e5e14b2cfe"
+    },
+    {
+      "path": "vm/patches/pdarm-qemu-psci-shutdown.patch",
+      "sha256": "b153ed78a06dd06f41dcd6cd36dffb4b17d1ea792fed9ae08535d02c0694f201"
+    }
+  ],
+  "findings": [
+    {
+      "id": "CI-REVIEW-1",
+      "status": "fixed_and_rechecked",
+      "path": "scripts/vm/native_ci.py",
+      "trigger": "Docker creates daemon-owned container before CLI failure/timeout",
+      "fix": "Cleanup ownership now begins before launch and final forced removal targets the unique owned name",
+      "actual_evidence": "evidence/ci/container-cleanup.json"
+    },
+    {
+      "id": "CI-REVIEW-2",
+      "status": "fixed_and_rechecked",
+      "paths": [
+        "scripts/vm/native_ci.py",
+        "scripts/build/libcxx.py"
+      ],
+      "trigger": "SDKROOT selects a different SDK in unqualified build lookup than explicit macosx preflight",
+      "actual_evidence": "evidence/kernel/native-ci-sdk-selection.json",
+      "requested_fix": "Use verified host.json SDK path, pass it explicitly to libcxx and constrain compiler selection",
+      "fix": "Use verified host.json macOS SDK and developer path, clear inherited DEVELOPER_DIR/SDK/compiler/header overrides before doctor, pass explicit SDK to each source builder including libc++, and select CC/CXX with explicit macosx lookup"
+    },
+    {
+      "id": "CI-REVIEW-3",
+      "status": "fixed_and_rechecked",
+      "paths": [
+        "scripts/vm/native_ci.py",
+        ".github/workflows/native-baseline.yml"
+      ],
+      "trigger": "SIGTERM/Actions deadline bypasses default Python finally and leaves daemon workload",
+      "requested_fix": "Handle termination with bounded process-group/container cleanup or provide named-container always cleanup",
+      "fix": "SIGINT/SIGTERM raises a handled failure, active child process group receives bounded TERM/KILL cleanup, atomic result.json records unique container ownership, and workflow always performs named forced cleanup"
+    }
+  ],
+  "checked": [
+    "Pipeline requires a fresh output directory and CI clean project before source builds",
+    "Source fetch uses exact manifest revisions; host preflight verifies tool executable hashes and complete SDK contents",
+    "Kernel uses fresh pinned isolated source with both reviewed classic protections and explicit PSCI HVC opt-in, builds 13 real drivers and supplies unstripped source kernel to collection",
+    "Independent relocation verification is performed on each fresh collection",
+    "libc++ compiles the 54 genuine source files with source C++ headers and links using nostdlib/-Z against source System/ABI/libdyld; target runtime closure audit rejects absent/unpinned providers",
+    "ICU/CF/IOKit/launchd provenance is merged and recursively audited before root composition and after assembly",
+    "Image/firmware/symbol hashes and explicit QEMU virt-10.2 virtualization=false profile bind final smoke inputs",
+    "Fresh nonce markers, both network directions and genuine guest=true guest-shutdown QMP event are required before pipeline success",
+    "Workflow artifacts include evidence, composed provenance, real target image/kernel symbols/serial output rather than SDK/header directories",
+    "Native CI now builds the pinned POSIX mDNSResponder through mdns.py with explicit verified SDK and runtime directory, stages source daemon/launch job, and requires recursive source closure before root composition"
+  ],
+  "limitations": [
+    "Full independently built virtual guest bootstrap, source runtime, networking, launchd service tests and actual guest shutdown passed; physical M-series bring-up is separate.",
+    "Final clean-checkout GitHub CI execution remains separate acceptance evidence."
+  ],
+  "independent_validation": {
+    "command": [
+      "python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_native_ci.py",
+      "-v"
+    ],
+    "passed": true,
+    "tests_run": 7,
+    "meaningful_cases": [
+      "actual sanitized subprocess environment",
+      "actual SIGTERM stops active child process group and retains failed log",
+      "actual subprocess failure",
+      "actual subprocess timeout",
+      "fresh output rejection",
+      "Nix trailing diagnostic parsing",
+      "incomplete Nix output rejection"
+    ],
+    "test_source_sha256": "9493222aba150f97c243138942201948d70bdba44048c5dbeee2d48f0d4cc7bb"
+  },
+  "recorded_virtual_guest_acceptance": {
+    "canonical_archive": "evidence/virtualization/pid1-checkpoint/guest-pass-v11",
+    "nonce": "5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8",
+    "emulator_profile": {
+      "machine": "virt-10.2",
+      "virtualization": false,
+      "gic_version": 3,
+      "accel": "tcg",
+      "cpu": "neoverse-n2"
+    },
+    "image_sha256": "7ffa519c3b31a46642dee528acd3f64e59cbea6823db773ebcc9eb78f42cf8b2",
+    "kernel_collection_sha256": "b247969e06107dda50fa48d2c0dc1ca3249f5eec83f3e39dbb178e51f066993b",
+    "actual_boot_passed": true,
+    "source_kernel": true,
+    "physical_boot_gate": false,
+    "stock_kernel_used": false,
+    "files": [
+      {
+        "path": "evidence/virtualization/pid1-checkpoint/guest-pass-v11/serial.log",
+        "sha256": "87601c54e2b3cfae134c8dee2db6209d5af603e6bc867ad9b6f9ec289955ba8d"
+      },
+      {
+        "path": "evidence/virtualization/pid1-checkpoint/guest-pass-v11/result.json",
+        "sha256": "a48b645c89a6ccf93e1d7ae88478ec78fc57638399428f7788574b6d600da031"
+      },
+      {
+        "path": "evidence/virtualization/pid1-checkpoint/guest-pass-v11/command.json",
+        "sha256": "3f0ba59a51a5607d515c74641efd8797f0c278d30f533522535648b3bee565ac"
+      },
+      {
+        "path": "evidence/virtualization/pid1-checkpoint/guest-pass-v11/image-manifest.json",
+        "sha256": "cbea505449991d1bf84a04cec96d9ce5723b775335e87d8d940fe617dfff3689"
+      },
+      {
+        "path": "evidence/virtualization/pid1-checkpoint/guest-pass-v11/qmp-events.jsonl",
+        "sha256": "c0c0243f4126fdf13aff92f384c714d3013479791a804045a5ba293fcf8328a4"
+      }
+    ],
+    "required_markers": [
+      "atfork_handlers",
+      "blocks_lifetime",
+      "clock",
+      "concurrent_once",
+      "dns",
+      "dynamic_loader",
+      "guest_to_host",
+      "host_to_guest",
+      "kernel",
+      "launchd",
+      "launchd_services",
+      "locale_conversions",
+      "mach_timer",
+      "network_service",
+      "runtime",
+      "shell",
+      "shutdown_child_reaped",
+      "shutdown_job_exit",
+      "shutdown_job_started",
+      "shutdown_requested"
+    ],
+    "missing_markers": [],
+    "qmp_guest_shutdown": {
+      "data": {
+        "guest": true,
+        "reason": "guest-shutdown"
+      },
+      "event": "SHUTDOWN",
+      "timestamp": {
+        "microseconds": 766249,
+        "seconds": 1791655131
+      }
+    },
+    "serial_hook_message": "PDArmPlatformExpert: QEMU PSCI HVC SYSTEM_OFF",
+    "launchd_shutdown": "Userspace shutdown finished; reboot(RB_HALT), disks synchronized and unmounted, driver disabled, PSCI SYSTEM_OFF"
+  }
+}

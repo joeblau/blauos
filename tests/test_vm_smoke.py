@@ -33,6 +33,15 @@ class VMReadinessTests(unittest.TestCase):
                         "dyld: Library not found: /usr/lib/libSystem.B.dylib"):
             self.assertTrue(smoke.FAILURE.search(message))
 
+    def test_only_guest_poweroff_can_satisfy_shutdown(self):
+        self.assertTrue(smoke.is_guest_shutdown({"event": "SHUTDOWN", "data": {"guest": True, "reason": "guest-shutdown"}}))
+        for data in ({"guest": False, "reason": "host-signal"},
+                     {"guest": True, "reason": "guest-reset"},
+                     {"guest": True, "reason": "guest-panic"},
+                     {"guest": True}, {}):
+            self.assertFalse(smoke.is_guest_shutdown({"event": "SHUTDOWN", "data": data}))
+        self.assertFalse(smoke.is_guest_shutdown({"event": "STOP"}))
+
     def test_runtime_audit_missing_rejects_image(self):
         with tempfile.TemporaryDirectory() as folder:
             path = Path(folder)

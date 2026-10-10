@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "source_root_mounted": true,
+  "source_pid1_exec_attempted": true,
+  "source_library_images_observed": 13,
+  "independent_userspace_passed": false,
+  "shell_passed": false,
+  "network_connectivity_passed": false,
+  "guest_shutdown_passed": false,
+  "core_bytes": 121716736,
+  "core_sha256": "40b9b72e56db44d45f92f97c0d042930b336104197adcc1ca35f273e77b0c89d",
+  "core_distribution": "ignored local artifact; debugger report and input hashes tracked",
+  "fault": {
+    "pc": "0x104e0c080",
+    "far": "0x16b213fd8",
+    "symbol": "libSystem.B.dylib strtoull",
+    "source": "strtoull.c:126",
+    "during": "infinite strtoull / strtoull_l recursion"
+  },
+  "full_exception_log_sha256": "da8184e005a03b9b3a6ed9eecff5c6a402cce87159989da12ac68041ff0be520"
+}

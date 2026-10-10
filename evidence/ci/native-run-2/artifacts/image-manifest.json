@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "architecture": "arm64",
+  "runtime_audit_passed": true,
+  "runtime_audit_sha256": "2d9e00f9aab91c269b631e7538b0964bd1d2c4890e24eede000934b713dcf1df",
+  "stock_kernel_used": false,
+  "guest_execution_observed": false,
+  "sha256": {
+    "image": "35208e014274d56e9cfbdac7f2802e2219d54ce2d7f743e75fc208eb870ff120",
+    "firmware": "ff38109e82f343aac708df62e1d707c81ac42d3b7feaff375b87dcc1e846734b",
+    "vars_template": "b3b855c5a80310168051164986855692d1bdb06e67619856177965cd87c6774f",
+    "symbols": "029818a9064f1a023e0a7beb87dc60f1c168b23263cbf0023bbe3806b22d6852"
+  },
+  "qemu_version": "QEMU emulator version 10.2.4",
+  "source_lock_sha256": "8022bbbfb33204b56bb3297cd8cbb39fb6c08ea65c476492d99462f7edfe3657"
+}

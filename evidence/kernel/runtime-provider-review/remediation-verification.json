@@ -1,0 +1,220 @@
+{
+  "schema_version": 1,
+  "reviewer": "kernel_build independent source/provider review",
+  "status": "source_provider_remediation_verified",
+  "compatibility_object_sha256": "fb191a5c773ddaa2281cf1d9f14b49ccc974cff718b26c272d32faed34c2e0b7",
+  "compatibility_definition_count": 27,
+  "selected_archive_count": 29,
+  "old_archive_shadows_count": 36,
+  "old_archive_shadows_still_present": [],
+  "compatibility_symbols_with_selected_archive_provider": {},
+  "old_libdyld_reexports_still_compatibility_defined": [],
+  "staged_artifacts": [
+    {
+      "path": "usr/lib/libSystem.B.dylib",
+      "sha256": "b3a30f416a30f1ce9fd74c0d51f576a4dc6381f6a9114b43c676b8bd62a28b75"
+    },
+    {
+      "path": "usr/lib/system/libdyld.dylib",
+      "sha256": "aee5e980fde762e4588b0af3aadc8370fb16bc87396601895d62b67e62e338a1"
+    },
+    {
+      "path": "usr/lib/dyld",
+      "sha256": "5ec46a3be638541ef7e6caf6801ac32bee24818f04c8117822d2c8673a28e5f5"
+    }
+  ],
+  "ordinary_libdyld_runtime_state_records": {
+    "_malloc_zones": [],
+    "_default_zone_malloc": [],
+    "___global_locale": [],
+    "___locale_key": [],
+    "_mach_task_self_": [
+      "                 U _mach_task_self_"
+    ],
+    "_vm_page_size": [
+      "                 U _vm_page_size"
+    ]
+  },
+  "ordinary_libdyld_dependencies": [
+    {
+      "path": "/usr/lib/libSystem.B.dylib",
+      "weak": false,
+      "reexport": false
+    }
+  ],
+  "ordinary_libdyld_imports": [
+    {
+      "name": "_mach_task_self_",
+      "weak": false,
+      "library_ordinal": 1
+    },
+    {
+      "name": "_malloc",
+      "weak": false,
+      "library_ordinal": 1
+    },
+    {
+      "name": "_malloc_size",
+      "weak": false,
+      "library_ordinal": 1
+    },
+    {
+      "name": "_pthread_cond_broadcast",
+      "weak": false,
+      "library_ordinal": 1
+    },
+    {
+      "name": "_pthread_cond_wait",
+      "weak": false,
+      "library_ordinal": 1
+    },
+    {
+      "name": "_pthread_getspecific",
+      "weak": false,
+      "library_ordinal": 1
+    },
+    {
+      "name": "_pthread_key_create",
+      "weak": false,
+      "library_ordinal": 1
+    },
+    {
+      "name": "_pthread_mach_thread_np",
+      "weak": false,
+      "library_ordinal": 1
+    },
+    {
+      "name": "_pthread_mutex_lock",
+      "weak": false,
+      "library_ordinal": 1
+    },
+    {
+      "name": "_pthread_mutex_unlock",
+      "weak": false,
+      "library_ordinal": 1
+    },
+    {
+      "name": "_pthread_self",
+      "weak": false,
+      "library_ordinal": 1
+    },
+    {
+      "name": "_pthread_setspecific",
+      "weak": false,
+      "library_ordinal": 1
+    },
+    {
+      "name": "_vm_page_size",
+      "weak": false,
+      "library_ordinal": 1
+    },
+    {
+      "name": "_vproc_swap_integer",
+      "weak": false,
+      "library_ordinal": 1
+    }
+  ],
+  "system_interface": {
+    "sha256": "4bdf6659c106db2690820b09502540879567e41ea4387bf007e740f04819a85a",
+    "declaration_only": true,
+    "staged_tbd_files": []
+  },
+  "source_inputs": [
+    {
+      "path": "scripts/build/runtime.py",
+      "sha256": "b0be02d523a562234016e365d36ee0a7100b34a32ac49c6c1e0dd1945a266bb8"
+    },
+    {
+      "path": "runtime/compat/sdk27-dyld.patch",
+      "sha256": "28d745e5d0862f7034f57674ba2f3374310c8740732c2b11d1073d938ebb8a5e"
+    },
+    {
+      "path": "runtime/compat/libdyld.exports",
+      "sha256": "4bec45e063b7da16164b30c0b07a62456d05b01cb56455029d8050186dbf1712"
+    },
+    {
+      "path": ".blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/stub/CMakeFiles/libSystem_B_stub.dir/link.txt",
+      "sha256": "cc75b1d6fc7bf529e91ca56b6f08e92e2bb917219f0c53c5374ea08801c9f548"
+    }
+  ],
+  "required_guest_execution_verified": true,
+  "limitations": [
+    "Actual required virtual guest runtime, shell, launchd supervision, DNS, traffic, and shutdown passed; physical M-series bring-up remains separate.",
+    "Remaining partial compatibility contracts are separately inventoried and do not claim general Darwin parity."
+  ],
+  "guest_execution": {
+    "canonical_archive": "evidence/virtualization/pid1-checkpoint/guest-pass-v11",
+    "nonce": "5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8",
+    "emulator_profile": {
+      "machine": "virt-10.2",
+      "virtualization": false,
+      "gic_version": 3,
+      "accel": "tcg",
+      "cpu": "neoverse-n2"
+    },
+    "image_sha256": "7ffa519c3b31a46642dee528acd3f64e59cbea6823db773ebcc9eb78f42cf8b2",
+    "kernel_collection_sha256": "b247969e06107dda50fa48d2c0dc1ca3249f5eec83f3e39dbb178e51f066993b",
+    "actual_boot_passed": true,
+    "source_kernel": true,
+    "physical_boot_gate": false,
+    "stock_kernel_used": false,
+    "files": [
+      {
+        "path": "evidence/virtualization/pid1-checkpoint/guest-pass-v11/serial.log",
+        "sha256": "87601c54e2b3cfae134c8dee2db6209d5af603e6bc867ad9b6f9ec289955ba8d"
+      },
+      {
+        "path": "evidence/virtualization/pid1-checkpoint/guest-pass-v11/result.json",
+        "sha256": "a48b645c89a6ccf93e1d7ae88478ec78fc57638399428f7788574b6d600da031"
+      },
+      {
+        "path": "evidence/virtualization/pid1-checkpoint/guest-pass-v11/command.json",
+        "sha256": "3f0ba59a51a5607d515c74641efd8797f0c278d30f533522535648b3bee565ac"
+      },
+      {
+        "path": "evidence/virtualization/pid1-checkpoint/guest-pass-v11/image-manifest.json",
+        "sha256": "cbea505449991d1bf84a04cec96d9ce5723b775335e87d8d940fe617dfff3689"
+      },
+      {
+        "path": "evidence/virtualization/pid1-checkpoint/guest-pass-v11/qmp-events.jsonl",
+        "sha256": "c0c0243f4126fdf13aff92f384c714d3013479791a804045a5ba293fcf8328a4"
+      }
+    ],
+    "required_markers": [
+      "atfork_handlers",
+      "blocks_lifetime",
+      "clock",
+      "concurrent_once",
+      "dns",
+      "dynamic_loader",
+      "guest_to_host",
+      "host_to_guest",
+      "kernel",
+      "launchd",
+      "launchd_services",
+      "locale_conversions",
+      "mach_timer",
+      "network_service",
+      "runtime",
+      "shell",
+      "shutdown_child_reaped",
+      "shutdown_job_exit",
+      "shutdown_job_started",
+      "shutdown_requested"
+    ],
+    "missing_markers": [],
+    "qmp_guest_shutdown": {
+      "data": {
+        "guest": true,
+        "reason": "guest-shutdown"
+      },
+      "event": "SHUTDOWN",
+      "timestamp": {
+        "microseconds": 766249,
+        "seconds": 1791655131
+      }
+    },
+    "serial_hook_message": "PDArmPlatformExpert: QEMU PSCI HVC SYSTEM_OFF",
+    "launchd_shutdown": "Userspace shutdown finished; reboot(RB_HALT), disks synchronized and unmounted, driver disabled, PSCI SYSTEM_OFF"
+  }
+}

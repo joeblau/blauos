@@ -117,6 +117,87 @@ class MachOValidationTests(unittest.TestCase):
         self.assertFalse(any("unexpected executable dynamic linker: /System/Library/Kernels" in e for e in report["errors"]))
         self.assertEqual(next(a for a in report["artifacts"] if a["path"].endswith("/kernel"))["artifact_kind"], "kernel")
 
+    def chained_import(self, weak=False):
+        names = b"_required_objc\0"
+        fixups = struct.pack("<7I", 0, 0, 28, 32, 1, 1, 0)
+        fixups += struct.pack("<I", 0xFE | (0x100 if weak else 0)) + names
+        command = struct.pack("<4I", 0x80000034, 16, 48, len(fixups))
+        return self.header(commands=command, count=1) + fixups
+
+    def test_parses_required_flat_import(self):
+        info = runtime.macho(self.write(self.chained_import()))
+        self.assertEqual(info["flat_namespace_imports"], [{"name": "_required_objc", "weak": False}])
+
+    def test_distinguishes_weak_flat_import(self):
+        info = runtime.macho(self.write(self.chained_import(weak=True)))
+        self.assertTrue(info["flat_namespace_imports"][0]["weak"])
+
+    def test_flat_import_requires_staged_provider(self):
+        root, provenance, lock = self.staged()
+        (root / "library").write_bytes(self.chained_import())
+        data = json.loads(provenance.read_text())
+        data["artifacts"][0]["sha256"] = runtime.digest(root / "library")
+        provenance.write_text(json.dumps(data))
+        report = runtime.inspect(root, provenance, lock)
+        self.assertTrue(any("required flat namespace import unresolved" in e for e in report["errors"]))
+
+    def provider_stage(self, dependency_kind=None):
+        root, provenance, lock = self.staged()
+        name = b"/provider\0"
+        dependency = b""
+        if dependency_kind:
+            length = (24 + len(name) + 7) & ~7
+            dependency = struct.pack("<6I", dependency_kind, length, 24, 0, 0, 0) + name
+            dependency += bytes(length - len(dependency))
+        names = b"_required_objc\0"
+        fixups = struct.pack("<7I", 0, 0, 28, 32, 1, 1, 0) + struct.pack("<I", 0xFE) + names
+        command = struct.pack("<4I", 0x80000034, 16, 48 + len(dependency), len(fixups))
+        (root / "library").write_bytes(self.header(commands=dependency + command,
+            count=2 if dependency else 1) + fixups)
+        strings = b"\0_required_objc\0"
+        symbols = struct.pack("<IBBHQ", 1, 0xF, 1, 0, 1)
+        symtab = struct.pack("<6I", 2, 24, 56, 1, 72, len(strings))
+        (root / "provider").write_bytes(self.header(commands=symtab, count=1) + symbols + strings)
+        data = json.loads(provenance.read_text())
+        data["flat_namespace_providers"] = ["/provider"]
+        data["artifacts"][0]["sha256"] = runtime.digest(root / "library")
+        data["artifacts"].append({"path": "/provider", "source": "upstream", "revision": "a" * 40,
+                                  "sha256": runtime.digest(root / "provider")})
+        provenance.write_text(json.dumps(data))
+        return root, provenance, lock
+
+    def test_declared_provider_without_load_dependency_fails(self):
+        report = runtime.inspect(*self.provider_stage())
+        self.assertTrue(any("provider is not loaded by dependency graph" in e for e in report["errors"]))
+
+    def test_weak_dependency_cannot_supply_required_flat_provider(self):
+        report = runtime.inspect(*self.provider_stage(dependency_kind=0x80000018))
+        self.assertTrue(any("provider is not loaded by dependency graph" in e for e in report["errors"]))
+
+    def test_strong_dependency_supplies_required_flat_provider(self):
+        report = runtime.inspect(*self.provider_stage(dependency_kind=0xC))
+        self.assertFalse(any("flat namespace" in e for e in report["errors"]))
+        artifact = next(entry for entry in report["artifacts"] if entry["path"] == "/library")
+        self.assertEqual(artifact["loaded_flat_namespace_providers"], ["/provider"])
+
+    def archive_stage(self, hash_override=None):
+        archive_hash = "b" * 64
+        root, provenance, lock = self.staged(source="archive-source", revision=archive_hash)
+        lock.write_text(json.dumps({"sources": [], "archives": [{"name": "archive-source", "sha256": archive_hash,
+            "upstream_revision": "a" * 40}]}))
+        data = json.loads(provenance.read_text())
+        data["artifacts"][0]["archive_sha256"] = hash_override or archive_hash
+        provenance.write_text(json.dumps(data))
+        return root, provenance, lock
+
+    def test_accepts_matching_source_archive_identity(self):
+        report = runtime.inspect(*self.archive_stage())
+        self.assertFalse(any("unpinned source revision" in e or "source archive hash" in e for e in report["errors"]))
+
+    def test_rejects_mismatched_source_archive_hash(self):
+        report = runtime.inspect(*self.archive_stage(hash_override="c" * 64))
+        self.assertTrue(any("source archive hash missing or mismatched" in e for e in report["errors"]))
+
 
 if __name__ == "__main__":
     unittest.main()

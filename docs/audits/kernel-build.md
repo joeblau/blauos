@@ -153,3 +153,112 @@ and UUID `677FAA24-7DF9-33E9-AB33-06B22D3208B6` for this repeat. The two kernels
 contain different build timestamps and absolute source paths; their bytes and
 sizes differ. This proves repeatable source compilation with pinned inputs,
 while deterministic release bytes remain additional work.
+
+The VM experiment subsequently executed this genuine kernel and printed its
+Darwin banner on the emulated ARM64 serial console. Packaging the independently
+built extensions exposed three separate defects in the pinned external KC tool:
+4 KiB synthetic segments for a 16 KiB kernel, unprocessed ARM64 dynamic pointer
+relocations, and split-segment metadata that suppressed individual extension
+memory protections. The VM wrapper replays the reviewed
+[page-layout patch](../../vm/patches/kc-tools-arm64-16k.patch),
+[relocation patch](../../patches/kc-tools/0002-arm64-dynamic-relocations.patch), and
+[protection patch](../../patches/kc-tools/0003-classic-arm64-protections.patch)
+against an isolated copy of the pinned tool. Original external checkouts stay
+unmodified.
+
+The [independent pointer audit](../../evidence/kernel/kc-relocations/pointer-verification.json)
+checks all 16,344 actual import/local pointer slots across thirteen source-built
+extensions against the kernel and preceding dependency exports. It also checks
+executable start/stop hooks, 16 KiB segment alignment, complete slide metadata,
+and absence of writable executable segments. The
+[malformed-input checks](../../evidence/kernel/kc-relocations/rejection-tests.json)
+reject unsupported relocation types, unresolved imports, unmapped targets and
+out-of-bounds tables without emitting a partial collection. These static checks
+do not substitute for the VM boot test.
+
+With the current host compiler, corecrypto additionally needs `-fno-stack-check`:
+the default compiler emits a macOS `___chkstk_darwin` import that the target
+kernel does not export. The
+[source rebuild](../../evidence/kernel/corecrypto-no-stack-check/result.json)
+removed that import while retaining the clean-repeat kernel's exact hash.
+`xnu.py --with-kexts` now records this C/C++ compilation setting explicitly.
+Kernel execution is established; a successful shell, PID 1 and networking must
+be demonstrated by their separate boot acceptance tests.
+
+The exact fourth VM collection also passes an independent
+[pointer verification](../../evidence/kernel/kc-relocations/v4-pointer-verification.json).
+Its real boot registered all thirteen extensions and started corecrypto and
+pthread. A later fault in corecrypto's `_cckprng_generate` came from
+`arm_vm_prot_finalize` replacing the classic cache's individually protected
+executable segments with a blanket nonexecutable mapping during lockdown.
+The reviewed [VIRT kernel patch](../../vm/patches/xnu-classic-arm64-protections.patch)
+preserves protections already installed by OSKext for this classic VIRT layout;
+coalesced caches and other hardware retain the original policy. It introduces
+no writable executable mapping or random-number fallback.
+
+A fresh isolated pinned-source overlay compiled that patch successfully:
+
+```sh
+python3 scripts/build/xnu.py --puredarwin --source-name puredarwin-vm-next \
+  --machine VIRT --build-root .blauos/build/kernel/classic-protections-v3 \
+  --evidence evidence/kernel/classic-protections-v3 \
+  --patch vm/patches/xnu-classic-arm64-protections.patch --jobs 8
+```
+
+The initial [build result](../../evidence/kernel/classic-protections-v2/result.json)
+records the source and patch hashes, commands and genuine kernel artifacts.
+The unstripped kernel used for extension linking has SHA-256
+`434d68fa3ffac5f3eedede65b34e0de2e28762ae41d03f1f9589a6958d65a0a6`.
+That first patch used an undefined platform macro, so the intended branch was
+excluded and the fifth VM boot reproduced the fault. The corrected patch uses
+the actual `QEMUVIRT` definition from the pinned platform header; its build uses
+a separate `classic-protections-v3` source overlay and evidence directory.
+The corrected [clean build](../../evidence/kernel/classic-protections-v3/result.json)
+completed successfully, with unstripped kernel SHA-256
+`9fa18b9912389d142e65a4625d01d19b1402585eac0a6428a28d9a1ec06f0f8c`.
+An [object disassembly comparison](../../evidence/kernel/classic-protections-v3/compiled-branch-check.json)
+verifies that the compiled function now contains the additional cache-layout
+comparison and branch over blanket RNX; the earlier object lacked that branch.
+The overlay excludes one unused upstream absolute symlink,
+`src/Libraries/libSystem/libc/gen/FreeBSD/result`, and records that exclusion;
+it never recreates a developer's absolute host path. Successful compilation
+does not establish that this patch reaches userspace; the VM evidence owns
+that execution result.
+
+The exact sixth collection passes the independent
+[pointer and segment check](../../evidence/kernel/kc-relocations/v6-pointer-verification.json)
+and the [source review](../../evidence/kernel/kc-relocations/review.json).
+Its recorded guest execution passes corecrypto lockdown, publishes the VirtIO
+disk and network device, and starts the essential drivers. A later full source
+image mounts the ext4 root filesystem and attempts PID 1; the captured PID 1
+fault is in dyld's bootstrap rather than kernel driver initialization.
+
+The pinned ARM platform driver also lacks a power-off callback: its inherited
+`haltRestart` returns `-1`, after which `halt_all_cpus` spins. The reviewed
+[platform patch](../../vm/patches/pdarm-qemu-psci-shutdown.patch) provides PSCI
+`SYSTEM_OFF` and `SYSTEM_RESET` through HVC for the explicitly selected QEMU
+`virt-10.2,virtualization=off` profile. It defaults off at build time and also
+checks the loader's exact `qemuvirt-io` marker before calling firmware. The
+[primary source findings](../../evidence/kernel/qemu-psci/platform-proof.json)
+record why this profile uses HVC and why a successful power-off must produce a
+guest-originated QMP shutdown event. A build result alone does not satisfy the
+guest shutdown acceptance criterion.
+
+The [fresh full build](../../evidence/kernel/qemu-psci/result.json) compiled
+the kernel and all thirteen extensions with both reviewed patches:
+
+```sh
+python3 scripts/build/xnu.py --puredarwin --source-name puredarwin-vm-next \
+  --machine VIRT --with-kexts --qemu-psci-hvc --jobs 8 \
+  --build-root .blauos/build/kernel/qemu-psci \
+  --evidence evidence/kernel/qemu-psci \
+  --patch vm/patches/xnu-classic-arm64-protections.patch \
+  --patch vm/patches/pdarm-qemu-psci-shutdown.patch
+```
+
+The platform extension is byte-identical to the independently compiled
+platform-only build. Its [decoded instructions](../../evidence/kernel/qemu-psci/platform-fast/compiled-hook-check.json)
+contain the board guard, one `HVC #0`, and the exact two PSCI function IDs.
+The [invalid profile checks](../../evidence/kernel/qemu-psci/profile-rejections.json)
+reject enabling this profile without the driver build or without the reviewed
+platform source patch before creating any build directory.

@@ -1,0 +1,184 @@
+{
+  "schema_version": 1,
+  "source": "kc-tools",
+  "source_revision": "802fbc70ef5431950f24e79b02f2d938385d91bd",
+  "source_archive_sha256": "9c94434af3da08e980dfd77d6260ef1dca85214ea8b9b907da254ddf83295eb6",
+  "kernel": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/classic-protections-v2/src/Kernel/xnu/xnu_sym/kernel.development.virt",
+  "kernel_sha256": "434d68fa3ffac5f3eedede65b34e0de2e28762ae41d03f1f9589a6958d65a0a6",
+  "kexts": [
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/IOPCIFamily/IOPCIFamily.kext",
+      "bundle_id": "com.apple.iokit.IOPCIFamily",
+      "plist_sha256": "9767825c4b6a338535098dd7530bca42dd1f3783d858a46cce3a97f4fdf98989",
+      "binary": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/IOPCIFamily/IOPCIFamily.kext/Contents/MacOS/IOPCIFamily",
+      "binary_sha256": "57330ef37ee8cba871fcff93ada7ae7b3ec293922ab133e5e4f0d40d0168dfd0"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/IOStorageFamily/IOStorageFamily.kext",
+      "bundle_id": "com.apple.iokit.IOStorageFamily",
+      "plist_sha256": "6dff081d0ad0586e940b54953f1c4fcdd6b325bf19de776f4f53543ff320b6c3",
+      "binary": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/IOStorageFamily/IOStorageFamily.kext/Contents/MacOS/IOStorageFamily",
+      "binary_sha256": "5d8af8431f1d2cc020c00c5dfc7411bef8bfcd7242e7b6589d07e97c0568626b"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/IONetworkingFamily/IONetworkingFamily.kext",
+      "bundle_id": "com.apple.iokit.IONetworkingFamily",
+      "plist_sha256": "9c99d150e5e23ce10fd316a575b636052be888f08bc3bb824f779b29556d888b",
+      "binary": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/IONetworkingFamily/IONetworkingFamily.kext/Contents/MacOS/IONetworkingFamily",
+      "binary_sha256": "226c635ef3feef20f46d2efc04f2a961a4254896079ec56e754f099449169283"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/IOVirtIOFamily/IOVirtIOFamily.kext",
+      "bundle_id": "org.puredarwin.iokit.IOVirtIOFamily",
+      "plist_sha256": "ac09e68897fafeb8b08c8f0d2b396a937a10f0706ffae49c6a9539d37956b4aa",
+      "binary": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/IOVirtIOFamily/IOVirtIOFamily.kext/Contents/MacOS/IOVirtIOFamily",
+      "binary_sha256": "34b05fc58230cef33d2f2b0494682cb080fcf7326949418040d1972a226f9dcf"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/PDArmPlatformExpert/PDArmPlatformExpert.kext",
+      "bundle_id": "org.puredarwin.kext.PDArmPlatformExpert",
+      "plist_sha256": "915b78bb6adbfcf211313912e9c025fe00b5ed902d203283ff80a568c6610c67",
+      "binary": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/PDArmPlatformExpert/PDArmPlatformExpert.kext/Contents/MacOS/PDArmPlatformExpert",
+      "binary_sha256": "8db6e5699882203b6e25f68b1e91feae92d5af34243233a4f22cabd277376ac9"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/PDArmPCI/PDArmPCI.kext",
+      "bundle_id": "org.puredarwin.driver.PDArmPCI",
+      "plist_sha256": "2ad7197ae877e6505235e1ec69e765dbe250b0602d15529880cf2a025c2913cf",
+      "binary": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/PDArmPCI/PDArmPCI.kext/Contents/MacOS/PDArmPCI",
+      "binary_sha256": "80e5953bfb534a0bfe0daeb5f98d90a73e6bc39c24ed788aab9cfaccb5a450a2"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/IOVirtIOBlock/IOVirtIOBlock.kext",
+      "bundle_id": "org.puredarwin.driver.IOVirtIOBlock",
+      "plist_sha256": "5f1ca6b0ca3777b68fd732b75d904a2702864ed58b9339ba71c5e2abae17d7a9",
+      "binary": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/IOVirtIOBlock/IOVirtIOBlock.kext/Contents/MacOS/IOVirtIOBlock",
+      "binary_sha256": "b540675888782f6e3b2e9c23e2f11686a8d6b1306a8c1eb192305b521af0e276"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/IOVirtIONet/IOVirtIONet.kext",
+      "bundle_id": "org.puredarwin.driver.IOVirtIONet",
+      "plist_sha256": "028465a8478fd9e61741ee00406e0a65ab074662c4a8c1e54e11772c20d09008",
+      "binary": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/IOVirtIONet/IOVirtIONet.kext/Contents/MacOS/IOVirtIONet",
+      "binary_sha256": "8135298ff043f76e6f8695124373c2cd0b6cb3786a5f4414afb3b4084e3be855"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/ext4/ext4.kext",
+      "bundle_id": "com.apple.filesystems.ext4",
+      "plist_sha256": "07841a12dab4824ac2b1cb6ed5442840508d0eb856ab4f94c0e40ac137139b7a",
+      "binary": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/ext4/ext4.kext/Contents/MacOS/ext4",
+      "binary_sha256": "ceaaaaa276b8148bddd28d3291b09b8394b08a40b2f247af9ea54b5ce58f4766"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/Ext4FileSystemDriver/Ext4FileSystemDriver.kext",
+      "bundle_id": "com.ravynos.driver.Ext4FileSystemDriver",
+      "plist_sha256": "5f32635fcfe19edd030128794639ad8177da11a578575a2d65c55b1df6ea2dee",
+      "binary": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/Ext4FileSystemDriver/Ext4FileSystemDriver.kext/Contents/MacOS/Ext4FileSystemDriver",
+      "binary_sha256": "cd61439dd1940d2b3a3e4deeda8ee148997d5ea46a217c04aa9b3d2b9f1bb798"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/AppleFileSystemDriver/AppleFileSystemDriver.kext",
+      "bundle_id": "com.apple.AppleFileSystemDriver",
+      "plist_sha256": "9b2ebba974c2840e375a123ba970c4ee769417b2f76fa3564ff279166e2bdb90",
+      "binary": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/AppleFileSystemDriver/AppleFileSystemDriver.kext/Contents/MacOS/AppleFileSystemDriver",
+      "binary_sha256": "22c7107147a922be9487bbf521f005f29583f3cdf3c3f06dd122376876b9ff09"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/reproducibility/src/Kernel/Extensions/corecrypto/corecrypto.kext",
+      "bundle_id": "com.apple.kec.corecrypto",
+      "plist_sha256": "6fe1e7a41ac0b0d009076a6a147bf63141d19af6c241657056e13b508b4bd828",
+      "binary": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/reproducibility/src/Kernel/Extensions/corecrypto/corecrypto.kext/Contents/MacOS/corecrypto",
+      "binary_sha256": "cbf256c272814f89393602d03b1202c79cd5746909d0ce442e9def29cc8b6b25"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/pthread/pthread.kext",
+      "bundle_id": "com.apple.kec.pthread",
+      "plist_sha256": "ee398010532dca5d6dab962a4151416296c4b299eed29c3e5bf4b5fbf9164b41",
+      "binary": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/pthread/pthread.kext/Contents/MacOS/pthread",
+      "binary_sha256": "0ffb73c73b4d38b4ec2ac559bd6cd2d1578fdd7099c79f4b3302a6e7528ac30b"
+    }
+  ],
+  "codeless": [
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/AppleNMI.kext",
+      "bundle_id": "com.apple.driver.AppleNMI",
+      "plist_sha256": "157020336b48dae760af4272acf147d5aa2afe9be89dd0453b45ca114bcedcee"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/ApplePlatformFamily.kext",
+      "bundle_id": "com.apple.iokit.ApplePlatformFamily",
+      "plist_sha256": "ba2847b07d10f456a2a5960e2dc172318cbe29d85fb702e2212bc43759f33202"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/BSDKernel.kext",
+      "bundle_id": "com.apple.kpi.bsd",
+      "plist_sha256": "53eb9bd5681defce85d977562f42c80c996dbd98e26f7c898d9490813f2b0273"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/IOKit.kext",
+      "bundle_id": "com.apple.kpi.iokit",
+      "plist_sha256": "0cdaa5af577e58908c73f07405d7f8551d1bf36d749bb29879425ea983923c48"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/IONVRAMFamily.kext",
+      "bundle_id": "com.apple.iokit.IONVRAMFamily",
+      "plist_sha256": "d5196359b383afeb8d52a44af9384cf452c0e067278ce8f9941e9a35f26889d8"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/IOSystemManagement.kext",
+      "bundle_id": "com.apple.iokit.IOSystemManagementFamily",
+      "plist_sha256": "2d022a4f4b6bab86af225873934cf93283ef68162a14239a41bea19ae698ed18"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/Kasan.kext",
+      "bundle_id": "com.apple.kpi.kasan",
+      "plist_sha256": "219d04e9f72f78bdf22897c37010b5c95edb23a9b1ede854a987374cbeceb6d1"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/Libkern.kext",
+      "bundle_id": "com.apple.kpi.libkern",
+      "plist_sha256": "2676b330ec3a36a29d80a0b66f8375b0d5ec0e0ce18215d20cc7ff8bf9dbfea1"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/MACFramework.kext",
+      "bundle_id": "com.apple.kpi.dsep",
+      "plist_sha256": "10639110cb38ba9612e0cb781a61ff00ba934b655d6b36886c758c4aff5c8285"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/Mach.kext",
+      "bundle_id": "com.apple.kpi.mach",
+      "plist_sha256": "da7ad80eeadd561ad7e496b1ced5c0b187d349129a29e3630b80c757a03d5039"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/Private.kext",
+      "bundle_id": "com.apple.kpi.private",
+      "plist_sha256": "761f38b5c09a4b1f8ea78a1b725dd2849057aa2d57bdc84d54eeddfa9ad5f897"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/Unsupported.kext",
+      "bundle_id": "com.apple.kpi.unsupported",
+      "plist_sha256": "9b73a58fdaf44de2d43c04553277d8f71a40dabc03d04e8fca2c961929b8d62e"
+    }
+  ],
+  "patches": [
+    {
+      "path": "vm/patches/kc-tools-arm64-16k.patch",
+      "sha256": "9c38800071e279fee5960c8d65b86056ae1eca6e6297dd61207cac3de2bc2651"
+    },
+    {
+      "path": "patches/kc-tools/0002-arm64-dynamic-relocations.patch",
+      "sha256": "9a74f638b591de8872b4de87b703ca28774bf89093a9f9fbc394e75d066611fd"
+    },
+    {
+      "path": "patches/kc-tools/0003-classic-arm64-protections.patch",
+      "sha256": "06678f055bf0537c67bfc827c6e83519833634fd788f025507c5d06af8c39b0a"
+    }
+  ],
+  "format": "classic prelinked",
+  "arm64_page_size": 16384,
+  "kext_vm_base": "0xfffffff004004000",
+  "built": true,
+  "guest_boot_verified": false,
+  "collection": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/vm/kc-relocations-v5/kernel.classic",
+  "collection_sha256": "db15e9f7c76e4f78b40355f7b90908f76825b7dbebdefab2726c3df00ed530a1"
+}

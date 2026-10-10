@@ -1,0 +1,209 @@
+{
+  "schema_version": 1,
+  "status": "source_registration_built_and_real_guest_network_verified",
+  "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+  "source_path": "src/Userspace/netsetup/netsetup.c",
+  "original_source_sha256": "90a3feedacf6b20f12aee0094d808c13fae0a05967725a29bf7432f402092878",
+  "patched_source_sha256": "1c4c225929fb86623bb5a68574322d81efdc30b1ce852d493e893f6869a048d5",
+  "patch": {
+    "path": "vm/patches/netsetup-interface-registration.patch",
+    "sha256": "d1b2177b70a01f7a963211b104e60b687951e35fbc19d4c135856ceb77034752"
+  },
+  "patch_apply": {
+    "command": [
+      "patch",
+      "--batch",
+      "--forward",
+      "-p1",
+      "-d",
+      "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/network-registration/replay-source",
+      "-i",
+      "/Users/joeblau/Developer/joeblau/src/blauos/vm/patches/netsetup-interface-registration.patch"
+    ],
+    "exit_code": 0
+  },
+  "build": {
+    "command": [
+      "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+      "-arch",
+      "arm64",
+      "-mmacosx-version-min=11.0",
+      "-isysroot",
+      "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.2.sdk",
+      "-O2",
+      "-g",
+      "-fno-builtin",
+      "-include",
+      "/Users/joeblau/Developer/joeblau/src/blauos/runtime/compat/sdk27_compile.h",
+      "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/network-registration/replay-source/src/Userspace/netsetup/netsetup.c",
+      "-nostdlib",
+      "-Wl,-Z",
+      "-L/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib",
+      "-Wl,-dylib_file,/usr/lib/system/libdyld.dylib:/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/system/libdyld.dylib",
+      "-Wl,-dylinker_install_name,/usr/lib/dyld",
+      "-Wl,-platform_version,macos,11.0,11.5",
+      "-Wl,-fixup_chains",
+      "-lIOKitCF",
+      "-lCoreFoundation",
+      "-lSystem",
+      "-o",
+      "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/network-registration/netsetup-replayed"
+    ],
+    "exit_code": 0,
+    "binary_sha256": "4500ca8fa1b6c9e43bf84a9baae32817a551753643e851a89998246b39454b36",
+    "metadata": {
+      "architecture": "arm64",
+      "cpu_subtype": 0,
+      "file_type": 2,
+      "flags": 2097285,
+      "dependencies": [
+        {
+          "path": "/usr/lib/libIOKitCF.dylib",
+          "weak": false,
+          "reexport": false
+        },
+        {
+          "path": "/usr/lib/libCoreFoundation.dylib",
+          "weak": false,
+          "reexport": false
+        },
+        {
+          "path": "/usr/lib/libSystem.B.dylib",
+          "weak": false,
+          "reexport": false
+        }
+      ],
+      "rpaths": [],
+      "dylinker": "/usr/lib/dyld",
+      "flat_namespace_imports": [],
+      "imports_count": 40,
+      "imports_sha256": "03ddadd5e73c894862802e05a96c4fe96d0696eccc0832554a33bd7472dd425f",
+      "defined_external_symbols_count": 2,
+      "defined_external_symbols_sha256": "9205ca1f7d650ae56f70ea0a1a309b189d3efcce628d59e105dd9d7d74fe82d4"
+    }
+  },
+  "link_inputs": [
+    {
+      "path": "usr/lib/libSystem.B.dylib",
+      "sha256": "c89ccf4efa50bf4be0cf741ec91a7e44b842adbdd129be6577ee10b311161bed"
+    },
+    {
+      "path": "usr/lib/system/libdyld.dylib",
+      "sha256": "7dc352822a56c035e262b709d7bd562ee448ce82d886cec22c76696d40a6f1ac"
+    },
+    {
+      "path": "usr/lib/libIOKitCF.dylib",
+      "sha256": "ca1e53f46dc3679e29bdd9922c62e4fd7ab86cf6e750a1fd0ee1204104b09b35"
+    },
+    {
+      "path": "usr/lib/libCoreFoundation.dylib",
+      "sha256": "b628929a337d4a0055a1fee1d00b7e5b1696c0ab9703db72c3e4910217b2bf0f"
+    }
+  ],
+  "native_source_contract": [
+    {
+      "path": "src/Kernel/Extensions/IONetworkingFamily/IONetworkStack.cpp",
+      "locations": [
+        "interfacePublished lines415-505",
+        "setProperties lines932-1051",
+        "registerAllNetworkInterfaces lines856-892"
+      ],
+      "sha256": "3ca1b3805f3cd27f93c9f9d10856524c2a2886e4b4d5b83e598e884e23032814"
+    },
+    {
+      "path": "src/Libraries/SystemConfiguration/Plugins/InterfaceNamer/ifnamer.c",
+      "locations": [
+        "IOServiceOpen lines3490-3495",
+        "IOConnectSetCFProperties lines1430-1450"
+      ],
+      "sha256": "5f9d3cc7f41ce68ee6e0dc6eced178bc5cc8161a6ede67afcd8e0fb446e0c0e3"
+    }
+  ],
+  "guest_bsd_interface_verified": true,
+  "guest_traffic_verified": true,
+  "acceptance": "Real native IOKit registration published BSD en0; IPv4 configuration, source DNS lookup, and bidirectional traffic passed in the independently built Darwin guest.",
+  "guest_execution": {
+    "canonical_archive": "evidence/virtualization/pid1-checkpoint/guest-pass-v11",
+    "nonce": "5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8",
+    "emulator_profile": {
+      "machine": "virt-10.2",
+      "virtualization": false,
+      "gic_version": 3,
+      "accel": "tcg",
+      "cpu": "neoverse-n2"
+    },
+    "image_sha256": "7ffa519c3b31a46642dee528acd3f64e59cbea6823db773ebcc9eb78f42cf8b2",
+    "kernel_collection_sha256": "b247969e06107dda50fa48d2c0dc1ca3249f5eec83f3e39dbb178e51f066993b",
+    "actual_boot_passed": true,
+    "source_kernel": true,
+    "physical_boot_gate": false,
+    "stock_kernel_used": false,
+    "files": [
+      {
+        "path": "evidence/virtualization/pid1-checkpoint/guest-pass-v11/serial.log",
+        "sha256": "87601c54e2b3cfae134c8dee2db6209d5af603e6bc867ad9b6f9ec289955ba8d"
+      },
+      {
+        "path": "evidence/virtualization/pid1-checkpoint/guest-pass-v11/result.json",
+        "sha256": "a48b645c89a6ccf93e1d7ae88478ec78fc57638399428f7788574b6d600da031"
+      },
+      {
+        "path": "evidence/virtualization/pid1-checkpoint/guest-pass-v11/command.json",
+        "sha256": "3f0ba59a51a5607d515c74641efd8797f0c278d30f533522535648b3bee565ac"
+      },
+      {
+        "path": "evidence/virtualization/pid1-checkpoint/guest-pass-v11/image-manifest.json",
+        "sha256": "cbea505449991d1bf84a04cec96d9ce5723b775335e87d8d940fe617dfff3689"
+      },
+      {
+        "path": "evidence/virtualization/pid1-checkpoint/guest-pass-v11/qmp-events.jsonl",
+        "sha256": "c0c0243f4126fdf13aff92f384c714d3013479791a804045a5ba293fcf8328a4"
+      }
+    ],
+    "required_markers": [
+      "atfork_handlers",
+      "blocks_lifetime",
+      "clock",
+      "concurrent_once",
+      "dns",
+      "dynamic_loader",
+      "guest_to_host",
+      "host_to_guest",
+      "kernel",
+      "launchd",
+      "launchd_services",
+      "locale_conversions",
+      "mach_timer",
+      "network_service",
+      "runtime",
+      "shell",
+      "shutdown_child_reaped",
+      "shutdown_job_exit",
+      "shutdown_job_started",
+      "shutdown_requested"
+    ],
+    "missing_markers": [],
+    "qmp_guest_shutdown": {
+      "data": {
+        "guest": true,
+        "reason": "guest-shutdown"
+      },
+      "event": "SHUTDOWN",
+      "timestamp": {
+        "microseconds": 766249,
+        "seconds": 1791655131
+      }
+    },
+    "serial_hook_message": "PDArmPlatformExpert: QEMU PSCI HVC SYSTEM_OFF",
+    "launchd_shutdown": "Userspace shutdown finished; reboot(RB_HALT), disks synchronized and unmounted, driver disabled, PSCI SYSTEM_OFF",
+    "interface": "en0",
+    "ipv4": "10.0.2.15",
+    "router": "10.0.2.2",
+    "nameserver": "10.0.2.3",
+    "bsd_registration_log": "PureDarwin network: en0 registered with BSD flags=0xffff8822",
+    "traffic_directions": [
+      "guest_to_host",
+      "host_to_guest"
+    ]
+  }
+}

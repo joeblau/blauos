@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "source_root_mounted": true,
+  "source_pid1_exec_attempted": true,
+  "independent_userspace_passed": false,
+  "shell_passed": false,
+  "network_connectivity_passed": false,
+  "guest_shutdown_passed": false,
+  "core_bytes": 70991872,
+  "core_sha256": "ea6d8b2cf5856997d2ff9e49b90a5a93e0bb225f26ec3f44e07d16c8ac58a2d3",
+  "core_distribution": "ignored local artifact; debugger report and input hashes tracked",
+  "fault": {
+    "pc": "0x1047f6844",
+    "far": "0x100000001651a8",
+    "symbol": "dyld strcmp",
+    "source": "_libc_funcptr.c:345",
+    "during": "dyld self rebasing"
+  },
+  "full_exception_log_sha256": "2b40403e69b7e2bfea9f1a6795c13534a94a96d009aeadc3509b9b9df14afbfe"
+}

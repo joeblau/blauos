@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "source_kernel_execution_observed": true,
+  "persistent_root_mounted": true,
+  "source_launchd_main_observed": true,
+  "launchd_startup_log": "*** launchd[1] has started up. ***",
+  "pid1_crashed": false,
+  "runtime_functional_tests_passed": false,
+  "shell_execution_passed": false,
+  "network_connectivity_passed": false,
+  "guest_shutdown_passed": false,
+  "acceptance_passed": false,
+  "blocker": "Launchd startup stays alive, but service bootstrap has not run; source requires /bin/launchctl while image has /usr/bin/launchctl. Required alias correction is being tested.",
+  "image_manifest": "image-manifest.json",
+  "boot_result": "result.json",
+  "prior_core_fault": "failed-locale-alias-v4/checkpoint.json"
+}

@@ -1,0 +1,21 @@
+{
+  "status": "pass",
+  "result": "/build/native-image-v3/audit/runtime-audit.json",
+  "errors": []
+}
+{
+  "schema_version": 1,
+  "architecture": "arm64",
+  "runtime_audit_passed": true,
+  "runtime_audit_sha256": "44b12ce672d589e03fde9bc39de996b7b53a61b22ad3756f735624c1cd1835c5",
+  "stock_kernel_used": false,
+  "guest_execution_observed": false,
+  "sha256": {
+    "image": "86a699ced71b1b093d981f9657ef3a22790d699adc29513a559fcc49513a8489",
+    "firmware": "ff38109e82f343aac708df62e1d707c81ac42d3b7feaff375b87dcc1e846734b",
+    "vars_template": "b3b855c5a80310168051164986855692d1bdb06e67619856177965cd87c6774f",
+    "symbols": "9fa18b9912389d142e65a4625d01d19b1402585eac0a6428a28d9a1ec06f0f8c"
+  },
+  "qemu_version": "QEMU emulator version 10.2.4",
+  "source_lock_sha256": "8022bbbfb33204b56bb3297cd8cbb39fb6c08ea65c476492d99462f7edfe3657"
+}

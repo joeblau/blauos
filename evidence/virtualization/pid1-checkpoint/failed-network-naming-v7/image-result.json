@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "assembled": true,
+  "guest_boot_passed": false,
+  "image": "/build/native-image-v7/blauos-arm64.img",
+  "image_sha256": "ad1445e5b42392f8d3b481177d5faaf1e5d924fce24eadab67edad20fae96863",
+  "kernel_sha256": "b247969e06107dda50fa48d2c0dc1ca3249f5eec83f3e39dbb178e51f066993b",
+  "loader_sha256": "ccfd54512db1e52229547c68b0caf9244cc1369de9de56816692f13aadb54d32",
+  "runtime_provenance_sha256": "9a72fdb5c8b6d87c8aa3a595765ba5deb1dbd242d3a82afb72dc8964e4f31b66",
+  "disk_uuid": "d0e9a2f2-c232-5f91-a135-b2588f54b65b",
+  "root_uuid": "20876848-9682-5166-b170-8dfa0d8b81c6",
+  "device_nodes": "Kernel mounts devfs; no Linux device-number substitution",
+  "fixture_sha256": {
+    "org.blauos.test.bootstrap.plist": "65c47f0a727fd11d07f10a0673083ff8fdf7c04b119cd739bb8ba8acdcf9b89e",
+    "org.blauos.test.exec-failure.plist": "44685b6f5346c662bc8ac544708747b6b5016d06f16755171aaf4ef078c62381",
+    "org.blauos.test.shutdown.plist": "08e55b2d118836b67fff209debcdc78de8c438c96856cf1b60f4f77e311fa117",
+    "launchd-test.sh": "b50f6b08b231636e5eea345d4ce1e5adf41623e0d8aec939bd60e1d574d8827a"
+  },
+  "bit_identical_rebuild_verified": false
+}

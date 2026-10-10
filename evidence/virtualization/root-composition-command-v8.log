@@ -1,0 +1,13 @@
+{
+  "status": "pass",
+  "result": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/vm/combined-root-v8/runtime-audit.json",
+  "errors": []
+}
+{
+  "schema_version": 1,
+  "root": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/vm/combined-root-v8/root",
+  "provenance": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/vm/combined-root-v8/provenance.json",
+  "runtime_audit": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/vm/combined-root-v8/runtime-audit.json",
+  "composed": true,
+  "guest_boot_verified": false
+}

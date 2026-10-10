@@ -1,0 +1,30 @@
+{
+  "status": "confirmed",
+  "scoped_override": {
+    "SDKROOT": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.2.sdk"
+  },
+  "host_environment_unchanged": true,
+  "lookups": [
+    {
+      "argv": [
+        "xcrun",
+        "--show-sdk-path"
+      ],
+      "exit_code": 0,
+      "sdk_path": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.2.sdk",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "xcrun",
+        "--sdk",
+        "macosx",
+        "--show-sdk-path"
+      ],
+      "exit_code": 0,
+      "sdk_path": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.2.sdk",
+      "stderr": ""
+    }
+  ],
+  "finding": "Unqualified build lookup can select a different SDK than the explicit macosx preflight"
+}

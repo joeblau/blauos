@@ -1,0 +1,475 @@
+{
+  "status": "source_build_pass",
+  "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+  "icu_archive_sha256": "dfacb46bfe4747410472ce3e1144bf28a102feeaa4e3875bac9b4c6cf30f4f3e",
+  "sdk": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+  "action": "all",
+  "steps": [
+    {
+      "name": "icu-native-configure",
+      "argv": [
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-source/icu/source/configure",
+        "--disable-tests",
+        "--disable-samples",
+        "--disable-extras",
+        "--disable-icuio"
+      ],
+      "cwd": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-native",
+      "env": {},
+      "exit_code": 0,
+      "raw_log_sha256": "fb043a83553013c8bd6edb5395910a5894c3d6eafd2419bd5f90117bc98a4a5c"
+    },
+    {
+      "name": "icu-native-build",
+      "argv": [
+        "make",
+        "-j4"
+      ],
+      "cwd": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-native",
+      "env": {},
+      "exit_code": 0,
+      "raw_log_sha256": "4bb1e1fab42500659e00187385e2dc859c925d09c59a45387a4ca3122fcf9f4f"
+    },
+    {
+      "name": "icu-target-configure",
+      "argv": [
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-source/icu/source/configure",
+        "--host=arm64-apple-darwin20.4",
+        "--with-cross-build=/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-native",
+        "--disable-renaming",
+        "--disable-tests",
+        "--disable-samples",
+        "--disable-extras",
+        "--disable-icuio",
+        "--disable-tools",
+        "--with-data-packaging=library"
+      ],
+      "cwd": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-target",
+      "env": {
+        "CC": "clang",
+        "CXX": "clang++",
+        "AR": "ar",
+        "RANLIB": "ranlib",
+        "CFLAGS": "-arch arm64 -isysroot /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -mmacosx-version-min=11.0 -include /Users/joeblau/Developer/joeblau/src/blauos/runtime/compat/sdk27_compile.h",
+        "CXXFLAGS": "-arch arm64 -isysroot /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -mmacosx-version-min=11.0 -include /Users/joeblau/Developer/joeblau/src/blauos/runtime/compat/sdk27_compile.h -nostdinc++ -I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libcxxabi/config -I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libcxx/include",
+        "LDFLAGS": "-nostdlib -Wl,-Z -L/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib -Wl,-dylib_file,/usr/lib/system/libdyld.dylib:/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/system/libdyld.dylib -Wl,-platform_version,macos,11.0,11.5 -Wl,-fixup_chains -Wl,-not_for_dyld_shared_cache -lSystem -lc++abi -lc++"
+      },
+      "exit_code": 0,
+      "raw_log_sha256": "7ca49d88abe626fbe6cbc67ae0c3dcba967c95736520977d3ce99dc9872d40dd"
+    },
+    {
+      "name": "icu-target-clean",
+      "argv": [
+        "make",
+        "clean"
+      ],
+      "cwd": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-target",
+      "env": {
+        "CC": "clang",
+        "CXX": "clang++",
+        "AR": "ar",
+        "RANLIB": "ranlib",
+        "CFLAGS": "-arch arm64 -isysroot /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -mmacosx-version-min=11.0 -include /Users/joeblau/Developer/joeblau/src/blauos/runtime/compat/sdk27_compile.h",
+        "CXXFLAGS": "-arch arm64 -isysroot /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -mmacosx-version-min=11.0 -include /Users/joeblau/Developer/joeblau/src/blauos/runtime/compat/sdk27_compile.h -nostdinc++ -I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libcxxabi/config -I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libcxx/include",
+        "LDFLAGS": "-nostdlib -Wl,-Z -L/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib -Wl,-dylib_file,/usr/lib/system/libdyld.dylib:/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/system/libdyld.dylib -Wl,-platform_version,macos,11.0,11.5 -Wl,-fixup_chains -Wl,-not_for_dyld_shared_cache -lSystem -lc++abi -lc++"
+      },
+      "exit_code": 0,
+      "raw_log_sha256": "bf7e0b387052b7a066db6163530019f36a8f27f244ab8901d0d1f704dc147ca8"
+    },
+    {
+      "name": "icu-target-build",
+      "argv": [
+        "make",
+        "-j4",
+        "DEFAULT_LIBS=-lSystem"
+      ],
+      "cwd": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-target",
+      "env": {
+        "CC": "clang",
+        "CXX": "clang++",
+        "AR": "ar",
+        "RANLIB": "ranlib",
+        "CFLAGS": "-arch arm64 -isysroot /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -mmacosx-version-min=11.0 -include /Users/joeblau/Developer/joeblau/src/blauos/runtime/compat/sdk27_compile.h",
+        "CXXFLAGS": "-arch arm64 -isysroot /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -mmacosx-version-min=11.0 -include /Users/joeblau/Developer/joeblau/src/blauos/runtime/compat/sdk27_compile.h -nostdinc++ -I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libcxxabi/config -I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libcxx/include",
+        "LDFLAGS": "-nostdlib -Wl,-Z -L/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib -Wl,-dylib_file,/usr/lib/system/libdyld.dylib:/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/system/libdyld.dylib -Wl,-platform_version,macos,11.0,11.5 -Wl,-fixup_chains -Wl,-not_for_dyld_shared_cache -lSystem -lc++abi -lc++"
+      },
+      "exit_code": 0,
+      "raw_log_sha256": "56cab5ae0987e9716b2b7c0ba1e1ab2c5430917825c5c04451010208efe2b44a"
+    },
+    {
+      "name": "icu-target-data",
+      "argv": [
+        "make",
+        "-C",
+        "data",
+        "-j4",
+        "DEFAULT_LIBS=-lSystem"
+      ],
+      "cwd": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-target",
+      "env": {
+        "CC": "clang",
+        "CXX": "clang++",
+        "AR": "ar",
+        "RANLIB": "ranlib",
+        "CFLAGS": "-arch arm64 -isysroot /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -mmacosx-version-min=11.0 -include /Users/joeblau/Developer/joeblau/src/blauos/runtime/compat/sdk27_compile.h",
+        "CXXFLAGS": "-arch arm64 -isysroot /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -mmacosx-version-min=11.0 -include /Users/joeblau/Developer/joeblau/src/blauos/runtime/compat/sdk27_compile.h -nostdinc++ -I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libcxxabi/config -I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libcxx/include",
+        "LDFLAGS": "-nostdlib -Wl,-Z -L/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib -Wl,-dylib_file,/usr/lib/system/libdyld.dylib:/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/system/libdyld.dylib -Wl,-platform_version,macos,11.0,11.5 -Wl,-fixup_chains -Wl,-not_for_dyld_shared_cache -lSystem -lc++abi -lc++"
+      },
+      "exit_code": 0,
+      "raw_log_sha256": "6ed0b1287ead439ab507786e93cd4e7f02fa46931ade1b4f1c8043630ccbeb6b"
+    },
+    {
+      "name": "icu-id-libicudata.76.1",
+      "argv": [
+        "xcrun",
+        "install_name_tool",
+        "-id",
+        "/usr/lib/libicudata.76.1.dylib",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-target/lib/libicudata.76.1.dylib"
+      ],
+      "cwd": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-target",
+      "env": {},
+      "exit_code": 0,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "icu-dep-libicudata.76.1-libicuuc.76.dylib",
+      "argv": [
+        "xcrun",
+        "install_name_tool",
+        "-change",
+        "libicuuc.76.dylib",
+        "/usr/lib/libicuuc.76.dylib",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-target/lib/libicudata.76.1.dylib"
+      ],
+      "cwd": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-target",
+      "env": {},
+      "exit_code": 0,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "icu-dep-libicudata.76.1-libicudata.76.dylib",
+      "argv": [
+        "xcrun",
+        "install_name_tool",
+        "-change",
+        "libicudata.76.dylib",
+        "/usr/lib/libicudata.76.dylib",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-target/lib/libicudata.76.1.dylib"
+      ],
+      "cwd": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-target",
+      "env": {},
+      "exit_code": 0,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "icu-dep-libicudata.76.1-libicui18n.76.dylib",
+      "argv": [
+        "xcrun",
+        "install_name_tool",
+        "-change",
+        "libicui18n.76.dylib",
+        "/usr/lib/libicui18n.76.dylib",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-target/lib/libicudata.76.1.dylib"
+      ],
+      "cwd": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-target",
+      "env": {},
+      "exit_code": 0,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "icu-id-libicui18n.76.1",
+      "argv": [
+        "xcrun",
+        "install_name_tool",
+        "-id",
+        "/usr/lib/libicui18n.76.1.dylib",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-target/lib/libicui18n.76.1.dylib"
+      ],
+      "cwd": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-target",
+      "env": {},
+      "exit_code": 0,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "icu-dep-libicui18n.76.1-libicuuc.76.dylib",
+      "argv": [
+        "xcrun",
+        "install_name_tool",
+        "-change",
+        "libicuuc.76.dylib",
+        "/usr/lib/libicuuc.76.dylib",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-target/lib/libicui18n.76.1.dylib"
+      ],
+      "cwd": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-target",
+      "env": {},
+      "exit_code": 0,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "icu-dep-libicui18n.76.1-libicudata.76.dylib",
+      "argv": [
+        "xcrun",
+        "install_name_tool",
+        "-change",
+        "libicudata.76.dylib",
+        "/usr/lib/libicudata.76.dylib",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-target/lib/libicui18n.76.1.dylib"
+      ],
+      "cwd": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-target",
+      "env": {},
+      "exit_code": 0,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "icu-dep-libicui18n.76.1-libicui18n.76.dylib",
+      "argv": [
+        "xcrun",
+        "install_name_tool",
+        "-change",
+        "libicui18n.76.dylib",
+        "/usr/lib/libicui18n.76.dylib",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-target/lib/libicui18n.76.1.dylib"
+      ],
+      "cwd": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-target",
+      "env": {},
+      "exit_code": 0,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "icu-id-libicuuc.76.1",
+      "argv": [
+        "xcrun",
+        "install_name_tool",
+        "-id",
+        "/usr/lib/libicuuc.76.1.dylib",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-target/lib/libicuuc.76.1.dylib"
+      ],
+      "cwd": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-target",
+      "env": {},
+      "exit_code": 0,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "icu-dep-libicuuc.76.1-libicuuc.76.dylib",
+      "argv": [
+        "xcrun",
+        "install_name_tool",
+        "-change",
+        "libicuuc.76.dylib",
+        "/usr/lib/libicuuc.76.dylib",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-target/lib/libicuuc.76.1.dylib"
+      ],
+      "cwd": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-target",
+      "env": {},
+      "exit_code": 0,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "icu-dep-libicuuc.76.1-libicudata.76.dylib",
+      "argv": [
+        "xcrun",
+        "install_name_tool",
+        "-change",
+        "libicudata.76.dylib",
+        "/usr/lib/libicudata.76.dylib",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-target/lib/libicuuc.76.1.dylib"
+      ],
+      "cwd": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-target",
+      "env": {},
+      "exit_code": 0,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "icu-dep-libicuuc.76.1-libicui18n.76.dylib",
+      "argv": [
+        "xcrun",
+        "install_name_tool",
+        "-change",
+        "libicui18n.76.dylib",
+        "/usr/lib/libicui18n.76.dylib",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-target/lib/libicuuc.76.1.dylib"
+      ],
+      "cwd": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-target",
+      "env": {},
+      "exit_code": 0,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "icu-reexport-compile",
+      "argv": [
+        "xcrun",
+        "clang",
+        "-arch",
+        "arm64",
+        "-isysroot",
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+        "-mmacosx-version-min=11.0",
+        "-c",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-target/reexport.c",
+        "-o",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-target/reexport.o"
+      ],
+      "cwd": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-target",
+      "env": {},
+      "exit_code": 0,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "icu-reexport-link",
+      "argv": [
+        "xcrun",
+        "clang",
+        "-arch",
+        "arm64",
+        "-isysroot",
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+        "-dynamiclib",
+        "-nostdlib",
+        "-Wl,-Z",
+        "-L/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib",
+        "-Wl,-dylib_file,/usr/lib/system/libdyld.dylib:/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/system/libdyld.dylib",
+        "-Wl,-platform_version,macos,11.0,11.5",
+        "-Wl,-fixup_chains",
+        "-Wl,-not_for_dyld_shared_cache",
+        "-Wl,-install_name,/usr/lib/libicucore.A.dylib",
+        "-lSystem",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-target/reexport.o",
+        "-Wl,-reexport_library,/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libicuuc.76.1.dylib",
+        "-Wl,-reexport_library,/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libicudata.76.1.dylib",
+        "-Wl,-reexport_library,/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libicui18n.76.1.dylib",
+        "-o",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-target/libicucore.A.dylib"
+      ],
+      "cwd": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/icu-target",
+      "env": {},
+      "exit_code": 0,
+      "raw_log_sha256": "5b2ff9e21287b6c87db6fddf2ed65807409ce79120813ac047fa759691c8093b"
+    },
+    {
+      "name": "cf-source-patch",
+      "argv": [
+        "patch",
+        "-p4",
+        "-i",
+        "/Users/joeblau/Developer/joeblau/src/blauos/runtime/compat/sdk27-corefoundation.patch"
+      ],
+      "cwd": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/corefoundation-source",
+      "env": {},
+      "exit_code": 0,
+      "raw_log_sha256": "01b0d4a889bb9ad52dc0bf63b234696618adcc9f584510d600e2f1b822ce022e"
+    },
+    {
+      "name": "cf-configure",
+      "argv": [
+        "cmake",
+        "-S",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/corefoundation-source",
+        "-B",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/corefoundation",
+        "-G",
+        "Unix Makefiles",
+        "-DCMAKE_POLICY_VERSION_MINIMUM=3.5",
+        "-DCMAKE_TRY_COMPILE_TARGET_TYPE=STATIC_LIBRARY",
+        "-DCMAKE_OSX_ARCHITECTURES=arm64",
+        "-DCMAKE_OSX_SYSROOT=/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+        "-DCMAKE_OSX_DEPLOYMENT_TARGET=11.0",
+        "-DBUILD_SHARED_LIBS=ON",
+        "-DCMAKE_C_FLAGS=-include /Users/joeblau/Developer/joeblau/src/blauos/runtime/compat/sdk27_compile.h -I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/include -I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/objc/include -I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libc/pd-compat-include -I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/corefoundation-support -DU_DISABLE_RENAMING=1 -DDEPLOYMENT_RUNTIME_OBJC=1 -DINCLUDE_OBJC=1 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0",
+        "-DCMAKE_OBJC_FLAGS=-include /Users/joeblau/Developer/joeblau/src/blauos/runtime/compat/sdk27_compile.h -I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/include -I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/objc/include -I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libc/pd-compat-include -I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/corefoundation-support -DU_DISABLE_RENAMING=1 -DDEPLOYMENT_RUNTIME_OBJC=1 -DINCLUDE_OBJC=1 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0 -fno-objc-arc",
+        "-DCMAKE_SHARED_LINKER_FLAGS=-nostdlib -Wl,-Z -L/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib -Wl,-dylib_file,/usr/lib/system/libdyld.dylib:/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/system/libdyld.dylib -Wl,-platform_version,macos,11.0,11.5 -Wl,-fixup_chains -Wl,-not_for_dyld_shared_cache -L/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/corefoundation-support/lib -lSystem -lobjc",
+        "-DCMAKE_INSTALL_NAME_DIR=/usr/lib",
+        "-DCMAKE_BUILD_WITH_INSTALL_NAME_DIR=ON"
+      ],
+      "cwd": "/Users/joeblau/Developer/joeblau/src/blauos",
+      "env": {},
+      "exit_code": 0,
+      "raw_log_sha256": "a7ea0dced388221f1e0ed2bd1e23cae9196a23d2a32c464a7dab6ca7d8a34a18"
+    },
+    {
+      "name": "cf-build",
+      "argv": [
+        "cmake",
+        "--build",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/corefoundation",
+        "--parallel",
+        "4"
+      ],
+      "cwd": "/Users/joeblau/Developer/joeblau/src/blauos",
+      "env": {},
+      "exit_code": 0,
+      "raw_log_sha256": "d715884c097262ac4d6605331187256d16f0caed888c969c39e73e4af194c3ae"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "/usr/lib/libicudata.76.1.dylib",
+      "sha256": "3497ce6b058da88a8b22a180be33dc919f85f2b852711bbaaa73188ca09ddb73",
+      "source": "icu4c-76.1",
+      "revision": "dfacb46bfe4747410472ce3e1144bf28a102feeaa4e3875bac9b4c6cf30f4f3e",
+      "build_amendments": [
+        {
+          "path": "scripts/build/corefoundation.py",
+          "sha256": "6172deacd3d742b8317e6e624cef1773d4c13e7054544219a6b936ebb82a854f"
+        }
+      ],
+      "archive_sha256": "dfacb46bfe4747410472ce3e1144bf28a102feeaa4e3875bac9b4c6cf30f4f3e"
+    },
+    {
+      "path": "/usr/lib/libicui18n.76.1.dylib",
+      "sha256": "1d0e61b98552c8f161c66b45cb159974db52d4c9abd0d84c8f6909bc232adcca",
+      "source": "icu4c-76.1",
+      "revision": "dfacb46bfe4747410472ce3e1144bf28a102feeaa4e3875bac9b4c6cf30f4f3e",
+      "build_amendments": [
+        {
+          "path": "scripts/build/corefoundation.py",
+          "sha256": "6172deacd3d742b8317e6e624cef1773d4c13e7054544219a6b936ebb82a854f"
+        }
+      ],
+      "archive_sha256": "dfacb46bfe4747410472ce3e1144bf28a102feeaa4e3875bac9b4c6cf30f4f3e"
+    },
+    {
+      "path": "/usr/lib/libicuuc.76.1.dylib",
+      "sha256": "5643557192c23999104b8194736944d4c9f4ed16c3746e8ecd5eb96a11c4bacf",
+      "source": "icu4c-76.1",
+      "revision": "dfacb46bfe4747410472ce3e1144bf28a102feeaa4e3875bac9b4c6cf30f4f3e",
+      "build_amendments": [
+        {
+          "path": "scripts/build/corefoundation.py",
+          "sha256": "6172deacd3d742b8317e6e624cef1773d4c13e7054544219a6b936ebb82a854f"
+        }
+      ],
+      "archive_sha256": "dfacb46bfe4747410472ce3e1144bf28a102feeaa4e3875bac9b4c6cf30f4f3e"
+    },
+    {
+      "path": "/usr/lib/libicucore.A.dylib",
+      "sha256": "ce28a905bec3d0bbce583ada276cd69330051d2fe39143c6fdc5a05a8a8f927f",
+      "source": "icu4c-76.1",
+      "revision": "dfacb46bfe4747410472ce3e1144bf28a102feeaa4e3875bac9b4c6cf30f4f3e",
+      "build_amendments": [
+        {
+          "path": "scripts/build/corefoundation.py",
+          "sha256": "6172deacd3d742b8317e6e624cef1773d4c13e7054544219a6b936ebb82a854f"
+        }
+      ],
+      "archive_sha256": "dfacb46bfe4747410472ce3e1144bf28a102feeaa4e3875bac9b4c6cf30f4f3e"
+    },
+    {
+      "path": "/usr/lib/libCoreFoundation.dylib",
+      "sha256": "b628929a337d4a0055a1fee1d00b7e5b1696c0ab9703db72c3e4910217b2bf0f",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "build_amendments": [
+        {
+          "path": "scripts/build/corefoundation.py",
+          "sha256": "6172deacd3d742b8317e6e624cef1773d4c13e7054544219a6b936ebb82a854f"
+        },
+        {
+          "path": "runtime/compat/sdk27-corefoundation.patch",
+          "sha256": "d726b76be5364692b5756ad8029225d7843800a2b7c7703c01273059d52717cc"
+        }
+      ]
+    }
+  ],
+  "execution_verified": false
+}

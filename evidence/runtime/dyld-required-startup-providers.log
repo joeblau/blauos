@@ -1,0 +1,34 @@
+(lldb) target create .blauos/build/runtime/root/usr/lib/dyld
+Current executable set to '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/dyld' (arm64).
+(lldb) image lookup -n _pthread_set_self
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/dyld:
+        Address: dyld[0x00000000000ee9a0] (dyld.__TEXT.__text + 973216)
+        Summary: dyld`_pthread_set_self at pthread.c:1532
+(lldb) image lookup -n _pthread_exit_if_canceled
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/dyld:
+        Address: dyld[0x00000000000fe5b4] (dyld.__TEXT.__text + 1037748)
+        Summary: dyld`_pthread_exit_if_canceled at pthread_cancelable.c:208
+(lldb) image lookup -n _Block_copy
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/dyld:
+        Address: dyld[0x00000000000bb074] (dyld.__TEXT.__text + 761972)
+        Summary: dyld`_Block_copy at runtime.c:505
+(lldb) image lookup -n _Block_object_assign
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/dyld:
+        Address: dyld[0x00000000000bb9f4] (dyld.__TEXT.__text + 764404)
+        Summary: dyld`_Block_object_assign at runtime.c:674
+(lldb) disassemble -n dispatch_once_f
+dyld`dispatch_once_f:
+dyld[0xba90c] <+0>:  sub    sp, sp, #0x30
+dyld[0xba910] <+4>:  stp    x29, x30, [sp, #0x20]
+dyld[0xba914] <+8>:  add    x29, sp, #0x20
+dyld[0xba918] <+12>: stur   x0, [x29, #-0x8]
+dyld[0xba91c] <+16>: str    x1, [sp, #0x10]
+dyld[0xba920] <+20>: str    x2, [sp, #0x8]
+dyld[0xba924] <+24>: ldur   x0, [x29, #-0x8]
+dyld[0xba928] <+28>: ldr    x1, [sp, #0x10]
+dyld[0xba92c] <+32>: ldr    x2, [sp, #0x8]
+dyld[0xba930] <+36>: bl     0xe9660                   ; _os_once at lock.c:1197
+dyld[0xba934] <+40>: ldp    x29, x30, [sp, #0x20]
+dyld[0xba938] <+44>: add    sp, sp, #0x30
+dyld[0xba93c] <+48>: ret    
+(lldb) quit

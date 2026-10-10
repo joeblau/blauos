@@ -1,0 +1,43 @@
+(lldb) target create .blauos/build/runtime/root/usr/lib/libSystem.B.dylib
+Current executable set to '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib' (arm64).
+(lldb) image lookup -n strtoull_l
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x0000000000114df4] (libSystem.B.dylib.__TEXT.__text + 1127764)
+        Summary: libSystem.B.dylib`strtoull_l at strtoull.c:52
+(lldb) image lookup -n strtoul_l
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x00000000001148b4] (libSystem.B.dylib.__TEXT.__text + 1126420)
+        Summary: libSystem.B.dylib`strtoul_l at strtoul.c:52
+(lldb) image lookup -n strtol_l
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x0000000000113adc] (libSystem.B.dylib.__TEXT.__text + 1122876)
+        Summary: libSystem.B.dylib`strtol_l at strtol.c:53
+(lldb) image lookup -n strtoll_l
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x0000000000114048] (libSystem.B.dylib.__TEXT.__text + 1124264)
+        Summary: libSystem.B.dylib`strtoll_l at strtoll.c:52
+(lldb) image lookup -n strtod_l
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x0000000000156cec] (libSystem.B.dylib.__TEXT.__text + 1397836)
+        Summary: libSystem.B.dylib`_strtod_l at gdtoa-strtod.c:69
+(lldb) image lookup -n strncasecmp_l
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x0000000000140484] (libSystem.B.dylib.__TEXT.__text + 1305572)
+        Summary: libSystem.B.dylib`strncasecmp_l at strcasecmp.c:70
+(lldb) image lookup -n snprintf_l
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x00000000001305e8] (libSystem.B.dylib.__TEXT.__text + 1240392)
+        Summary: libSystem.B.dylib`snprintf_l at snprintf.c:62
+(lldb) image lookup -n fprintf_l
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x00000000001300a4] (libSystem.B.dylib.__TEXT.__text + 1239044)
+        Summary: libSystem.B.dylib`fprintf_l at fprintf.c:58
+(lldb) image lookup -n _pthread_clear_qos_tsd
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x00000000000b44a0] (libSystem.B.dylib.__TEXT.__text + 732160)
+        Summary: libSystem.B.dylib`_pthread_clear_qos_tsd at pthread.c:1945
+(lldb) image lookup -n pthread_current_stack_contains_np
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x00000000000b43ac] (libSystem.B.dylib.__TEXT.__text + 731916)
+        Summary: libSystem.B.dylib`pthread_current_stack_contains_np at pthread.c:1925
+(lldb) quit

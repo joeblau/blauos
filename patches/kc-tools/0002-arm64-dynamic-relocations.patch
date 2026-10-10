@@ -1,0 +1,200 @@
+diff --git a/lib/linker.c b/lib/linker.c
+index 102e429..ae53bb1 100644
+--- a/lib/linker.c
++++ b/lib/linker.c
+@@ -913,6 +913,147 @@ static uint64_t find_defined_kmod_info(
+     return 0;
+ }
+ 
++/*
++ * ARM64 MH_KEXT_BUNDLE images use LC_DYSYMTAB pointer relocations rather
++ * than per-section object relocations. Bind their imports and rebase local
++ * pointers before packaging them. XNU's classic prelink loader rejects any
++ * remaining external relocations; retain all relocatable pointers as local
++ * UNSIGNED entries so a subsequent kernel slide remains possible.
++ *
++ * Deliberately accept only the pointer format supported by that loader.
++ * An unresolved import or unsupported relocation is a build failure.
++ */
++static int bind_arm64_kext_pointers(uint8_t **bufp, size_t *sizep,
++    const uint64_t *sym_addrs, uint32_t nsyms, uint64_t load_vmaddr)
++{
++  uint8_t *buf = *bufp;
++  size_t size = *sizep;
++  MachoView mv;
++  if (macho_view(buf, size, &mv) != 0)
++    return -1;
++  if (mv.cputype != CPU_TYPE_ARM64 || !mv.is64 ||
++      r32(buf + 12) != MH_KEXT_BUNDLE)
++    return 0;
++
++  size_t dysymoff = 0, linkeditoff = 0;
++  uint32_t section_count = 0;
++  for (MACHO_EACH_LC(&mv, lc)) {
++    if (r32(lc) == LC_DYSYMTAB) {
++      if (r32(lc + 4) < sizeof(struct dysymtab_command))
++        return -1;
++      dysymoff = (size_t)(lc - buf);
++    } else if (macho_is_segment(&mv, lc)) {
++      MachoSeg sg;
++      macho_seg_get(&mv, lc, &sg);
++      section_count += sg.nsects;
++      if (!strncmp(sg.segname, "__LINKEDIT", 16))
++        linkeditoff = (size_t)(lc - buf);
++    }
++  }
++  if (!dysymoff)
++    return 0;
++  struct dysymtab_command *dc = (struct dysymtab_command *)(buf + dysymoff);
++  uint32_t offsets[2] = {dc->locreloff, dc->extreloff};
++  uint32_t counts[2] = {dc->nlocrel, dc->nextrel};
++  uint64_t total = (uint64_t)counts[0] + counts[1];
++  if (!total)
++    return 0;
++  if (!linkeditoff || total > UINT32_MAX ||
++      total > (SIZE_MAX - size) / sizeof(struct relocation_info))
++    return -1;
++  for (unsigned pass = 0; pass < 2; pass++) {
++    if (offsets[pass] > size ||
++        counts[pass] > (size - offsets[pass]) / sizeof(struct relocation_info)) {
++      fprintf(stderr, "ARM64 kext: relocation table outside image\n");
++      return -1;
++    }
++  }
++
++  struct relocation_info *local = calloc((size_t)total, sizeof(*local));
++  if (!local)
++    return -1;
++  uint32_t nlocal = 0;
++  for (unsigned pass = 0; pass < 2; pass++) {
++    const uint8_t *table = buf + offsets[pass];
++    for (uint32_t i = 0; i < counts[pass]; i++) {
++      /* Decode the on-disk fields, independent of host bitfield layout. */
++      int32_t address = (int32_t)r32(table + (size_t)i * 8);
++      uint32_t word = r32(table + (size_t)i * 8 + 4);
++      uint32_t symbol = word & 0xffffff;
++      unsigned pcrel = (word >> 24) & 1, length = (word >> 25) & 3;
++      unsigned external = (word >> 27) & 1, type = word >> 28;
++      if (address < 0 || pcrel || length != 3 || type != 0 ||
++          external != pass || (!external && symbol > section_count)) {
++        fprintf(stderr, "ARM64 kext: unsupported dynamic relocation %u/%u\n", pass, i);
++        free(local);
++        return -1;
++      }
++      uint64_t va = load_vmaddr + (uint32_t)address;
++      uint64_t foff = va_to_foff(buf, size, va, 8);
++      if (va < load_vmaddr || foff == UINT64_MAX) {
++        fprintf(stderr, "ARM64 kext: relocation target outside mapped image\n");
++        free(local);
++        return -1;
++      }
++      if (external) {
++        if (symbol >= nsyms || !sym_addrs[symbol]) {
++          fprintf(stderr, "ARM64 kext: unresolved external relocation symbol %u\n", symbol);
++          free(local);
++          return -1;
++        }
++        w64(buf + foff, r64(buf + foff) + sym_addrs[symbol]);
++      } else {
++        /* R_ABS locals are absolute constants, so need no rebasing. */
++        if (!symbol)
++          continue;
++        w64(buf + foff, r64(buf + foff) + load_vmaddr);
++      }
++      /* XNU expects local absolute 64-bit pointers; it ignores symbolnum. */
++      w32((uint8_t *)&local[nlocal], (uint32_t)address);
++      w32((uint8_t *)&local[nlocal] + 4, 3u << 25);
++      nlocal++;
++    }
++  }
++
++  MachoSeg le;
++  macho_seg_get(&mv, buf + linkeditoff, &le);
++  /* Relayout can only retain appended data when it belongs to __LINKEDIT. */
++  if (le.fileoff > size || le.filesize != size - le.fileoff ||
++      size > UINT32_MAX || nlocal > (UINT32_MAX - size) / 8) {
++    fprintf(stderr, "ARM64 kext: unsupported linkedit file layout\n");
++    free(local);
++    return -1;
++  }
++  size_t extra = (size_t)nlocal * 8;
++  uint8_t *grown = realloc(buf, size + extra);
++  if (!grown) {
++    free(local);
++    return -1;
++  }
++  memcpy(grown + size, local, extra);
++  free(local);
++  *bufp = grown;
++  *sizep = size + extra;
++  /* Recreate the view after realloc; its base pointer must remain current. */
++  if (macho_view(grown, size + extra, &mv) != 0)
++    return -1;
++  dc = (struct dysymtab_command *)(grown + dysymoff);
++  dc->extreloff = 0;
++  dc->nextrel = 0;
++  dc->locreloff = (uint32_t)size;
++  dc->nlocrel = nlocal;
++  le.filesize += extra;
++  /* ARM64 Darwin kexts use 16 KiB pages, matching the VIRT kernel. */
++  uint64_t required = (le.filesize + 0x3fff) & ~UINT64_C(0x3fff);
++  if (required > le.vmsize)
++    le.vmsize = required;
++  macho_seg_set_addrs(&mv, grown + linkeditoff, le.vmaddr, le.vmsize,
++      le.fileoff, le.filesize);
++  fprintf(stderr, "ARM64 kext: bound %u imports, rebased %u locals; %u slide entries\n",
++      counts[1], counts[0], nlocal);
++  return 0;
++}
++
+ int link_kext(const uint8_t *kext_data, size_t kext_size,
+               const SymTable *kernel_syms,
+               uint64_t load_vmaddr,
+@@ -1403,6 +1544,13 @@ int link_kext(const uint8_t *kext_data, size_t kext_size,
+ 
+   uint64_t kmod_info_addr = find_defined_kmod_info(&mv, nl, nsyms, strtab, strtab_size, sym_addrs);
+ 
++  if (bind_arm64_kext_pointers(&buf, &sl, sym_addrs, nsyms, load_vmaddr) != 0) {
++    free(sym_addrs);
++    free(sec_refs);
++    free(buf);
++    return -1;
++  }
++
+   free(sym_addrs);
+   free(sec_refs);
+ 
+diff --git a/src/kc_builder.c b/src/kc_builder.c
+index d4e75ff..095199d 100644
+--- a/src/kc_builder.c
++++ b/src/kc_builder.c
+@@ -195,6 +195,11 @@ int main(int argc, char *argv[]) {
+       nkexts++;
+   }
+ 
++  if (nkexts != num_kext_paths) {
++    fprintf(stderr, "A requested kext could not be loaded; refusing partial collection\n");
++    return 1;
++  }
++
+   if (num_kext_paths > 0 && nkexts == 0) {
+     fprintf(stderr, "No kexts loaded\n");
+     return 1;
+@@ -226,11 +231,13 @@ int main(int argc, char *argv[]) {
+     lk->info_plist_len = kb->info_plist_len;
+ 
+     if (link_kext(kb->binary, kb->binary_size, &ksyms, vmcursor, lk) != 0) {
+-      fprintf(stderr, "link_kext failed for %s (skipping)\n", kb->id);
+-      continue;
++      fprintf(stderr, "link_kext failed for %s; refusing partial collection\n", kb->id);
++      return 1;
++    }
++    if (patch_kmod_info(lk) != 0 || symtab_merge_from_linked(&ksyms, lk) != 0) {
++      fprintf(stderr, "kext metadata failed for %s; refusing partial collection\n", kb->id);
++      return 1;
+     }
+-    patch_kmod_info(lk);
+-    symtab_merge_from_linked(&ksyms, lk);
+     // Space by what the kext occupies once mapped, not by its file size: a
+     // segment with vmsize > filesize (__bss, __LINKEDIT padding) runs past the
+     // end of the file image, so linked_size lets this kext's last segment

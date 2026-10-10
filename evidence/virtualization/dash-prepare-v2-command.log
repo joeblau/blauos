@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "source": "dash",
+  "revision": "1365bb36a92656eb52b64cb04d249c47a1d3c4cf",
+  "source_archive_sha256": "b3ff9dc17477cf187dd705339cda33783811c7ef346ad1e000bcc1619b82adb1",
+  "configure_sha256": "c85e4c917551453488a2f920bba3ab7f87103c5738845b6f491d15329629c6db",
+  "command": [
+    "autoreconf",
+    "-fiv"
+  ],
+  "autoreconf_version": "autoreconf (GNU Autoconf) 2.73",
+  "autoconf_version": "autoconf (GNU Autoconf) 2.73",
+  "automake_version": "automake (GNU automake) 1.18.1",
+  "guest_execution_verified": false
+}

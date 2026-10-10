@@ -1,0 +1,150 @@
+{
+  "schema_version": 1,
+  "reviewer": "kernel_build agent",
+  "status": "source_and_actual_linked_binary_review_passed",
+  "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+  "original_compatibility_source_sha256": "8d5d31764eb672a2cd668df1de8ee5622542fe48413bb4fa545c3159c1da159f",
+  "reviewed_overlay_patch": {
+    "path": "runtime/compat/sdk27-dyld.patch",
+    "sha256": "7dc6d436bc70a8c3b9c8b37fb48e6df71f4a91374fd8cddab2d7b915a49049a9"
+  },
+  "original_locale_forwarders": [
+    {
+      "function": "strtoul_l",
+      "direct_recursion_with_ordinary_api": true,
+      "genuine_source": "libc/stdlib/FreeBSD/strtoul.c",
+      "source_sha256": "4fe7c612a3dec5235a616586513046c4830089f6e03e123e1b1b667a925c1c5d",
+      "implementation_line": 50,
+      "ordinary_call_line": 127,
+      "finding": "Two-function recursion when the reverse compatibility definition overrides the real _l implementation"
+    },
+    {
+      "function": "strtol_l",
+      "direct_recursion_with_ordinary_api": true,
+      "genuine_source": "libc/stdlib/FreeBSD/strtol.c",
+      "source_sha256": "d5444a8d7263c6a8fe5538bd87e22b90246b8fe86e1fbfdd396e73f0021a5d79",
+      "implementation_line": 51,
+      "ordinary_call_line": 149,
+      "finding": "Two-function recursion when the reverse compatibility definition overrides the real _l implementation"
+    },
+    {
+      "function": "strtoll_l",
+      "direct_recursion_with_ordinary_api": true,
+      "genuine_source": "libc/stdlib/FreeBSD/strtoll.c",
+      "source_sha256": "13a119075beb10ec5324f3e094f872ecf42cf43c2f8525898244ee4357afef6e",
+      "implementation_line": 50,
+      "ordinary_call_line": 149,
+      "finding": "Two-function recursion when the reverse compatibility definition overrides the real _l implementation"
+    },
+    {
+      "function": "strtoull_l",
+      "direct_recursion_with_ordinary_api": true,
+      "genuine_source": "libc/stdlib/FreeBSD/strtoull.c",
+      "source_sha256": "c97709ae008196f152bbd4d988a751dce2981041f7a0e81119f39e8a20f042f7",
+      "implementation_line": 50,
+      "ordinary_call_line": 127,
+      "finding": "Two-function recursion when the reverse compatibility definition overrides the real _l implementation"
+    },
+    {
+      "function": "strtod_l",
+      "direct_recursion_with_ordinary_api": true,
+      "genuine_source": "libc/gdtoa/FreeBSD/gdtoa-strtod.c",
+      "source_sha256": "79d401af1dfd3158a0345ed28ff1683a0b2c3bac233b94d4c8faac88c4ce0b17",
+      "implementation_line": 63,
+      "ordinary_call_line": 1043,
+      "finding": "Two-function recursion when the reverse compatibility definition overrides the real _l implementation"
+    },
+    {
+      "function": "strncasecmp_l",
+      "direct_recursion_with_ordinary_api": true,
+      "genuine_source": "libc/string/FreeBSD/strcasecmp.c",
+      "source_sha256": "1bf4957892cb95744c8200df4cb86c235da65870f29aaa830c8c8cd680b7f0fa",
+      "implementation_line": 66,
+      "ordinary_call_line": 90,
+      "finding": "Two-function recursion when the reverse compatibility definition overrides the real _l implementation"
+    },
+    {
+      "function": "snprintf_l",
+      "direct_recursion_with_ordinary_api": false,
+      "genuine_source": "libc/stdio/FreeBSD/snprintf.c",
+      "source_sha256": "5f6a82205f61f7599c7abe299f987ec5b57aefc16392e184172bbb2ea0ed5568",
+      "implementation_line": 60,
+      "ordinary_call_line": 54,
+      "finding": "No direct cycle; reverse formatting wrapper discards caller locale and overrides a genuine implementation"
+    },
+    {
+      "function": "fprintf_l",
+      "direct_recursion_with_ordinary_api": false,
+      "genuine_source": "libc/stdio/FreeBSD/fprintf.c",
+      "source_sha256": "755eeef5f1edeb41caeb2c08f30e1c0f2e74540434d3018df1a0a7fe8b162025",
+      "implementation_line": 57,
+      "ordinary_call_line": 51,
+      "finding": "No direct cycle; reverse formatting wrapper discards caller locale and overrides a genuine implementation"
+    }
+  ],
+  "linked_library": {
+    "path": ".blauos/build/runtime/root/usr/lib/libSystem.B.dylib",
+    "sha256": "ffa494af817d36ffec4c1b4be5d150afc76df3c8f640119ba0afb80af2334294",
+    "lookup_command": [
+      "xcrun",
+      "lldb",
+      "--batch",
+      "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib",
+      "-o",
+      "image lookup -vn strtoul_l",
+      "-o",
+      "image lookup -vn strtol_l",
+      "-o",
+      "image lookup -vn strtoll_l",
+      "-o",
+      "image lookup -vn strtoull_l",
+      "-o",
+      "image lookup -vn strtod_l",
+      "-o",
+      "image lookup -vn strncasecmp_l",
+      "-o",
+      "image lookup -vn snprintf_l",
+      "-o",
+      "image lookup -vn fprintf_l",
+      "-o",
+      "disassemble --name strtoull_l --count 25"
+    ],
+    "lookup_exit_code": 0,
+    "log": "evidence/kernel/runtime-locale-review/genuine-linked-functions.log",
+    "log_sha256": "6b295ed6156922f8f7b70fe327e9238f96c21a23d994e441fae1661eb8cf5e42",
+    "all_eight_functions_mapped_to_genuine_sources": true
+  },
+  "actual_failed_guest_core": {
+    "path": ".blauos/build/vm/native-image-v4/core-extraction/core.1",
+    "sha256": "40b9b72e56db44d45f92f97c0d042930b336104197adcc1ca35f273e77b0c89d",
+    "command": [
+      "xcrun",
+      "lldb",
+      "--batch",
+      "-c",
+      "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/vm/native-image-v4/core-extraction/core.1",
+      "-o",
+      "thread backtrace -c 16",
+      "-o",
+      "target variable __global_locale.__lc_ctype __locale_key",
+      "-o",
+      "memory read --format x --size 8 --count 1 0x104f646b8"
+    ],
+    "log": "evidence/kernel/runtime-locale-review/actual-v4-core-locale-state.log",
+    "log_sha256": "c8d3562c28fadef35e5d7570c961674898d0f29dc9331449b2ef65488005fa85",
+    "diagnosis": "Stack exhaustion from strtoull -> compatibility strtoull_l -> strtoull while parsing apple stackguard string",
+    "system_locale_key": 10,
+    "system_global_locale_ctype_pointer": "0x104f68660",
+    "known_debug_limitations": "Final two comm-page segments are truncated; rebuilt shared object debug maps changed after this image snapshot. Saved thread PC, backtrace symbols and System locale key remain readable."
+  },
+  "locale_initialization": {
+    "initializer": "libc/sys/_libc_init.c:61 calls __xlocale_init before __guard_setup",
+    "key_initializer": "libc/locale/xlocale.c:491-496 sets reserved key and pthread_key_init_np",
+    "static_global": "libc/locale/xlocale.c:31-46 C_LOCALE_INITIALIZER points at _DefaultRuneXLocale",
+    "static_rune_table": "libc/locale/FreeBSD/table.c:251 contains the C rune tables",
+    "normalization": "libc/locale/xlocale_private.h:173 maps LC_C_LOCALE and LC_GLOBAL_LOCALE",
+    "initial_guard_requirements": "Initialized System pthread TSD plus statically relocated C-locale rune table; no external locale file or constructor is required for the initial integer conversion",
+    "pre_initializer_limit": "Non-simulator __current_locale assumes __xlocale_init has installed its TSD key. The dyld/System/libdyld copies are distinct; bootstrap must use its local non-locale string helpers before System initialization."
+  },
+  "independent_execution_verified": false
+}

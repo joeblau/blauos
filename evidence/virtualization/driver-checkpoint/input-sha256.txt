@@ -1,0 +1,4 @@
+cf5fc6e3e7edd3da5d7d5e7284092a0100eee5a1251d16e2d0c3959e55bf5b52  /build/kc-relocations-v6/kernel.classic
+ccfd54512db1e52229547c68b0caf9244cc1369de9de56816692f13aadb54d32  /nix/store/zcfwmvy7l1x4cxvs7l93hwjviw7j1dgi-xnu-loader-0.1/xnu-loader.efi
+ff38109e82f343aac708df62e1d707c81ac42d3b7feaff375b87dcc1e846734b  /nix/store/3lb36hqclb8p8z9p55vggpmgkkkk0x9r-OVMF-202602-fd/FV/AAVMF_CODE.fd
+b3b855c5a80310168051164986855692d1bdb06e67619856177965cd87c6774f  /nix/store/3lb36hqclb8p8z9p55vggpmgkkkk0x9r-OVMF-202602-fd/FV/AAVMF_VARS.fd

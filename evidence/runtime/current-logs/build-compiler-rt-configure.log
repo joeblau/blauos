@@ -1,0 +1,32 @@
+Raw log: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/logs/compiler-rt-configure.log
+SHA256: caea119d8306db38e897c0bb3136123ad3f2e47b3f933f2f53f82957569bde18
+Bytes: 2796
+
+$ ['cmake', '-S', '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/llvm-overlay/compiler-rt/lib/builtins', '-B', '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/compiler-rt-overlay', '-G', 'Unix Makefiles', '-DCMAKE_BUILD_TYPE=Release', '-DCMAKE_OSX_SYSROOT=/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk', '-DCMAKE_OSX_ARCHITECTURES=arm64', '-DCMAKE_OSX_DEPLOYMENT_TARGET=11.0', '-DCMAKE_C_COMPILER_TARGET=arm64-apple-macosx11.0', '-DCMAKE_CXX_COMPILER_TARGET=arm64-apple-macosx11.0', '-DCMAKE_ASM_COMPILER_TARGET=arm64-apple-macosx11.0', '-DLLVM_CMAKE_DIR=/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/llvm-overlay/llvm/cmake/modules', '-DDARWIN_osx_BUILTIN_ARCHS=arm64', '-DCOMPILER_RT_DEFAULT_TARGET_ONLY=ON', '-DCOMPILER_RT_INCLUDE_TESTS=OFF', '-DCOMPILER_RT_ENABLE_IOS=OFF', '-DCOMPILER_RT_ENABLE_WATCHOS=OFF', '-DCOMPILER_RT_ENABLE_TVOS=OFF', '-DCOMPILER_RT_ENABLE_MACCATALYST=OFF']
+-- Found OSX_SYSROOT: /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.2.sdk
+CMake Warning at /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/llvm-overlay/compiler-rt/cmake/Modules/CompilerRTUtils.cmake:328 (message):
+  LLVMXRay not found in LLVM_AVAILABLE_LIBS
+Call Stack (most recent call first):
+  CMakeLists.txt:29 (load_llvm_config)
+
+
+CMake Warning at /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/llvm-overlay/compiler-rt/cmake/Modules/CompilerRTUtils.cmake:335 (message):
+  LLVMTestingSupport not found in LLVM_AVAILABLE_LIBS
+Call Stack (most recent call first):
+  CMakeLists.txt:29 (load_llvm_config)
+
+
+-- LLVM_MAIN_SRC_DIR: "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/llvm-overlay/llvm"
+-- cmake c compiler target: arm64-apple-macosx11.0
+-- Found libtool - /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool
+-- Found arm64 support in /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.2.sdk/SDKSettings.plist
+-- Found arm64e support in /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.2.sdk/SDKSettings.plist
+-- Using cached valid architectures for osx.
+-- OSX supported builtin arches: arm64
+-- Builtin supported architectures: arm64
+-- AArch64 Apple SME ABI routines enabled
+-- For osx_arm64 builtins preferring aarch64/fp_mode.c to fp_mode.c
+-- For cc_kext_osx_arm64 builtins preferring aarch64/fp_mode.c to fp_mode.c
+-- Configuring done (1.1s)
+-- Generating done (0.1s)
+-- Build files have been written to: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/compiler-rt-overlay

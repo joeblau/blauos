@@ -1,0 +1,155 @@
+{
+  "schema_version": 1,
+  "artifacts": [
+    {
+      "path": "/bin/netsetup",
+      "sha256": "3c0453f04919bdef6cf70874bb94617fbcc2cdaa9bd4fbaf2090e4025ad564eb",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "source_path": "src/Userspace/netsetup/netsetup.c",
+      "source_file_sha256": "90a3feedacf6b20f12aee0094d808c13fae0a05967725a29bf7432f402092878"
+    },
+    {
+      "path": "/bin/uname",
+      "sha256": "42d178f5667716fcd5166e22454f5470406d2357bc396f0fb5c00ee4bb66ef8f",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "source_path": "src/Userspace/shell_cmds/uname.c",
+      "source_file_sha256": "5e57fa96b6ed90f48405df9e4ffd89605a995da886143d80d37db7d1e3318d17"
+    },
+    {
+      "path": "/bin/sleep",
+      "sha256": "32bc6c8ee8438b1d237e2ee3d9d2aa830faf567a1d8227fe8a03725b78ad55d7",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "source_path": "src/Userspace/shell_cmds/sleep.c",
+      "source_file_sha256": "535bae69a24d23c253050f9d72f86540e748c7abd65e6719eb8418f039c05986"
+    },
+    {
+      "path": "/bin/test",
+      "sha256": "8559c075344b48ccea5283023de10f210192db57b40e11f2318d704326e3ea4d",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "source_path": "src/Userspace/shell_cmds/test.c",
+      "source_file_sha256": "bf54b67c1f9428b7e3e7dcd2d38eb387159bec7c29eca070c00189a604ce0ffa"
+    },
+    {
+      "path": "/bin/true",
+      "sha256": "4e752d400a44a766f0b2b745e28769168ed83cb7661793fb2b1a6230cf00b3ec",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "source_path": "src/Userspace/shell_cmds/true.c",
+      "source_file_sha256": "a2fdf2ba35694c7d2369f3ea4e420cbe6cc9ca198cccca2bb95e7747bb6e3313"
+    },
+    {
+      "path": "/bin/false",
+      "sha256": "bd2b64d57a6be2f4f0a12a723120953be9eb9338dc652803f91a8b0ca7a8390e",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "source_path": "src/Userspace/shell_cmds/false.c",
+      "source_file_sha256": "03c627dece34818a231b4bdeb7ba1818eacf981900425ecc26382990a85d13f9"
+    },
+    {
+      "path": "/bin/echo",
+      "sha256": "aff9d07015737d184692a586650256de6ee8846ced46db59e1e7d517899cdd2c",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "source_path": "src/Userspace/shell_cmds/echo.c",
+      "source_file_sha256": "72e1a23f72fc2ed10ba5fdaebe7bbc0092ec71988a874cd067108f4a711e6f3a"
+    },
+    {
+      "path": "/sbin/reboot",
+      "sha256": "85608a465e81c09bcb14e5d1473e7e0aeda7e4fb29d13e22fde92b08492163f6",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "source_path": "src/Userspace/system_cmds/pd_shutdown.c",
+      "source_file_sha256": "440f5e050a0d0fec3c1bbea5d47edaebf7a812d9d2e18a5c52a600c3b09624e4"
+    },
+    {
+      "path": "/bin/blauos_guest_probe",
+      "sha256": "ab3fb5ea6ddbfa8568b213a9620b6910a5a22d982ea55d0d955c273c535a6a01",
+      "source": "blauos",
+      "revision": "workspace-sha256:475d50aae74361817d6683733e71eb76ddfd941a12b5ba4139f5e1f764f3fe18",
+      "source_path": "vm/guest_probe.c",
+      "source_file_sha256": "6fcaff8392ed4bc2dfe658512d97be8d8c98ff7ff3fad8eb38e4aea59b24e0b4",
+      "source_files": [
+        {
+          "path": "vm/guest_probe.c",
+          "sha256": "6fcaff8392ed4bc2dfe658512d97be8d8c98ff7ff3fad8eb38e4aea59b24e0b4"
+        },
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        }
+      ],
+      "workspace_revision": "d5304aff4caf9237aa8f74e13bb95d6d5e6505c3"
+    },
+    {
+      "path": "/bin/blauos_runtime_probe",
+      "sha256": "349166531f7ac6819d0a9e60f4d7f92905c1a2f1daa9997fa8653d6f35d0064e",
+      "source": "blauos",
+      "revision": "workspace-sha256:5724e25c0a2a939b3de1c472320499cb941c72ed64ac4b11d7eb352880fe8549",
+      "source_path": "runtime/probes/runtime_probe.c",
+      "source_file_sha256": "cb40195ab50d6a8c67b6afc408b1b3a0d254394c5828fe8d2497241741d7aa5f",
+      "source_files": [
+        {
+          "path": "runtime/probes/runtime_probe.c",
+          "sha256": "cb40195ab50d6a8c67b6afc408b1b3a0d254394c5828fe8d2497241741d7aa5f"
+        },
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        }
+      ],
+      "workspace_revision": "d5304aff4caf9237aa8f74e13bb95d6d5e6505c3"
+    },
+    {
+      "path": "/usr/libexec/blauos-bootstrap-probe",
+      "sha256": "db0027d9a6c60eec34177decc3587a8d79247a9f5b054d3d3983a069c6fa28bb",
+      "source": "blauos",
+      "revision": "workspace-sha256:3cf4cc6f0ae1857ce11500de190c0efe3cfb32c4b425c1294aaf9dac74d8b174",
+      "source_path": "runtime/probes/bootstrap_probe.c",
+      "source_file_sha256": "1fe5075c6bdfe734c0346461d8609112a619b1ed5bc59f78847254f7ceae5cf6",
+      "source_files": [
+        {
+          "path": "runtime/probes/bootstrap_probe.c",
+          "sha256": "1fe5075c6bdfe734c0346461d8609112a619b1ed5bc59f78847254f7ceae5cf6"
+        },
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        }
+      ],
+      "workspace_revision": "d5304aff4caf9237aa8f74e13bb95d6d5e6505c3"
+    },
+    {
+      "path": "/usr/libexec/blauos-shutdown-probe",
+      "sha256": "efff5fb1e66b7adb073bb87a8b98c9a52798f969916478f68562e6ad93bff9d3",
+      "source": "blauos",
+      "revision": "workspace-sha256:fdde1efa5514fb5a723beed7830ab8e65ab8cb55db3f61bedb842d8182b391ba",
+      "source_path": "runtime/probes/shutdown_probe.c",
+      "source_file_sha256": "01d02b9d5f32210a19361ea8cb86f9f761e0fb67d42d7e6ea12ae2d4d71fd3f8",
+      "source_files": [
+        {
+          "path": "runtime/probes/shutdown_probe.c",
+          "sha256": "01d02b9d5f32210a19361ea8cb86f9f761e0fb67d42d7e6ea12ae2d4d71fd3f8"
+        },
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        }
+      ],
+      "workspace_revision": "d5304aff4caf9237aa8f74e13bb95d6d5e6505c3"
+    }
+  ],
+  "sdk": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.2.sdk",
+  "built": true,
+  "errors": [],
+  "compiler_version": "Apple clang version 21.0.0 (clang-2100.3.34.2)",
+  "runtime_link_inputs": {
+    "usr/lib/libSystem.B.dylib": "402ea31939ef308477db672677dbecf915f55a64b59bb866e7ecdbb502b95a8d",
+    "usr/lib/system/libdyld.dylib": "d878002b176da4c2675d735f9946ce2f22bc94b7d9ebf20ec3aaa5b8ce9b2a42"
+  },
+  "stock_runtime_used": false,
+  "guest_execution_verified": false
+}

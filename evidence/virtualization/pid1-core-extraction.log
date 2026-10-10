@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "core_extracted": true,
+  "guest_boot_passed": false,
+  "disk_sha256": "3ba107c2c1812f39f781eb085cb16eafa2aaca561e71442082c825f9038a13eb",
+  "root_partition": {
+    "node": "/build/native-image-v2/boot/guest-writable.img2",
+    "start": 133120,
+    "size": 2097152,
+    "type": "0FC63DAF-8483-4772-8E79-3D69D8477DE4",
+    "uuid": "176775B3-8796-591A-806D-73BFF67A33C8",
+    "name": "Darwin ext4 Root"
+  },
+  "core_path": "/cores/core.1",
+  "core_bytes": 70991872,
+  "core_sha256": "ea6d8b2cf5856997d2ff9e49b90a5a93e0bb225f26ec3f44e07d16c8ac58a2d3",
+  "commands": [
+    [
+      "/nix/store/5n1nfsfsa610zwy06bnf0dkhxc6kakl8-e2fsprogs-1.47.4-bin/bin/debugfs",
+      "-R",
+      "stat /cores/core.1",
+      "/build/native-image-v2/core-extraction/root-after-crash.ext4"
+    ],
+    [
+      "/nix/store/5n1nfsfsa610zwy06bnf0dkhxc6kakl8-e2fsprogs-1.47.4-bin/bin/debugfs",
+      "-R",
+      "dump /cores/core.1 /build/native-image-v2/core-extraction/core.1",
+      "/build/native-image-v2/core-extraction/root-after-crash.ext4"
+    ]
+  ]
+}

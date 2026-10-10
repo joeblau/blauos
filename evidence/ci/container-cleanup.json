@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "daemon_owned_container_removed": true,
+  "already_removed_cleanup_passed": true,
+  "commands": [
+    {
+      "command": [
+        "docker",
+        "run",
+        "-d",
+        "--rm",
+        "--platform",
+        "linux/arm64",
+        "--name",
+        "blauos-ci-cleanup-test-d7ed1d9d4526",
+        "nixos/nix@sha256:a326ac1ed46069ead5cdcba3a3a1e7255ebf72300c8319bf2c12cacfe9ab2787",
+        "sleep",
+        "infinity"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "container",
+        "inspect",
+        "blauos-ci-cleanup-test-d7ed1d9d4526"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "rm",
+        "--force",
+        "blauos-ci-cleanup-test-d7ed1d9d4526"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "container",
+        "inspect",
+        "blauos-ci-cleanup-test-d7ed1d9d4526"
+      ],
+      "exit_code": 1
+    },
+    {
+      "command": [
+        "docker",
+        "rm",
+        "--force",
+        "blauos-ci-cleanup-test-d7ed1d9d4526"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "guest_boot_passed": false
+}

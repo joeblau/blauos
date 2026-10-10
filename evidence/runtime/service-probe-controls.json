@@ -1,0 +1,172 @@
+{
+  "schema_version": 1,
+  "host_diagnostic_only": true,
+  "independent_execution_verified": false,
+  "source_sha256": "262bc33658922292a640bb1dcea680fcf67b4420f64373c447dc629eb104a82f",
+  "fixture_source_sha256": "242c758f89b0b7ea225918fa3310419c93279a788174ebb3f78bf2035186cde0",
+  "fixture_build_command": [
+    "xcrun",
+    "clang",
+    "-dynamiclib",
+    "runtime/probes/loader_fixture.c",
+    "-o",
+    ".blauos/build/runtime/host-service-probe/libblauos-loader-fixture.dylib"
+  ],
+  "fixture_compile_exit": 0,
+  "tests": [
+    {
+      "name": "stock-runtime-control",
+      "expected_exit": 0,
+      "build_command": [
+        "xcrun",
+        "clang",
+        "-O2",
+        "-Wall",
+        "-Wextra",
+        "-fblocks",
+        "runtime/probes/runtime_probe.c",
+        "-o",
+        ".blauos/build/runtime/host-service-probe/stock-runtime-control"
+      ],
+      "compile_exit": 0,
+      "compiler_output": "",
+      "run_exit": 0,
+      "stdout_markers": "BLAUOS_RUNTIME allocation=pass\nBLAUOS_RUNTIME locale_conversions=pass\nBLAUOS_RUNTIME file_io=pass\nBLAUOS_RUNTIME syscall=pass\nBLAUOS_RUNTIME pthread=pass\nBLAUOS_RUNTIME concurrent_once=pass\nBLAUOS_RUNTIME blocks_lifetime=pass\nBLAUOS_RUNTIME mach_timer=pass\nBLAUOS_RUNTIME atfork_handlers=pass\nBLAUOS_RUNTIME process_exit=pass\nBLAUOS_RUNTIME dynamic_loader=pass\nBLAUOS_RUNTIME result=pass",
+      "stderr": "",
+      "raw_log": {
+        "path": ".blauos/build/runtime/host-service-probe/stock-runtime-control.log",
+        "sha256": "12a6c55c85c68f1d6d7b0fc9748904f991137c1e5527de3cf506c8f158358ba0",
+        "bytes": 5196
+      },
+      "passed": true
+    },
+    {
+      "name": "unsafe-once-rejection",
+      "expected_exit": 17,
+      "injected_control": {
+        "path": ".blauos/build/runtime/host-service-probe/unsafe-once.c",
+        "sha256": "d357dbe98c393afe6f68faba49744053da86c901b5163ae96316032975e147c0",
+        "content": "void dispatch_once_f(long *p, void *c, void (*f)(void *)) { if (*p == 0) { *p = 1; f(c); } }\n"
+      },
+      "build_command": [
+        "xcrun",
+        "clang",
+        "-O2",
+        "-Wall",
+        "-Wextra",
+        "-fblocks",
+        "runtime/probes/runtime_probe.c",
+        ".blauos/build/runtime/host-service-probe/unsafe-once.c",
+        "-o",
+        ".blauos/build/runtime/host-service-probe/unsafe-once-rejection"
+      ],
+      "compile_exit": 0,
+      "compiler_output": "",
+      "run_exit": 17,
+      "stdout_markers": "BLAUOS_RUNTIME allocation=pass\nBLAUOS_RUNTIME locale_conversions=pass\nBLAUOS_RUNTIME file_io=pass\nBLAUOS_RUNTIME syscall=pass\nBLAUOS_RUNTIME pthread=pass",
+      "stderr": "",
+      "raw_log": {
+        "path": ".blauos/build/runtime/host-service-probe/unsafe-once-rejection.log",
+        "sha256": "dd0bb62d07cad5405187adcd5d35673ff70f2ca2843a3a684aae55891dde8bc4",
+        "bytes": 154
+      },
+      "passed": true
+    },
+    {
+      "name": "dummy-timer-rejection",
+      "expected_exit": 20,
+      "injected_control": {
+        "path": ".blauos/build/runtime/host-service-probe/dummy-timer.c",
+        "sha256": "725002f01a0f510ba19292e8a2adc4d2ba8e25ae104c1f5bc46851800fe4d694",
+        "content": "#include <mach/mach.h>\nmach_port_name_t mk_timer_create(void) { return 1; }\n"
+      },
+      "build_command": [
+        "xcrun",
+        "clang",
+        "-O2",
+        "-Wall",
+        "-Wextra",
+        "-fblocks",
+        "runtime/probes/runtime_probe.c",
+        ".blauos/build/runtime/host-service-probe/dummy-timer.c",
+        "-o",
+        ".blauos/build/runtime/host-service-probe/dummy-timer-rejection"
+      ],
+      "compile_exit": 0,
+      "compiler_output": "",
+      "run_exit": 20,
+      "stdout_markers": "BLAUOS_RUNTIME allocation=pass\nBLAUOS_RUNTIME locale_conversions=pass\nBLAUOS_RUNTIME file_io=pass\nBLAUOS_RUNTIME syscall=pass\nBLAUOS_RUNTIME pthread=pass\nBLAUOS_RUNTIME concurrent_once=pass\nBLAUOS_RUNTIME blocks_lifetime=pass",
+      "stderr": "Mach timer probe failed at step 1\n",
+      "raw_log": {
+        "path": ".blauos/build/runtime/host-service-probe/dummy-timer-rejection.log",
+        "sha256": "62d94b3b263624be53733bffa8e5370f763792278dad0850bda4f78eabf11a5d",
+        "bytes": 260
+      },
+      "passed": true
+    },
+    {
+      "name": "dropped-atfork-rejection",
+      "expected_exit": 13,
+      "injected_control": {
+        "path": ".blauos/build/runtime/host-service-probe/dropped-atfork.c",
+        "sha256": "a575af998c8bdbf76db751aac64b4b349b39206c37f41948333636974c436280",
+        "content": "#include <pthread.h>\nint pthread_atfork(void (*p)(void), void (*a)(void), void (*c)(void)) { (void)p; (void)a; (void)c; return 0; }\n"
+      },
+      "build_command": [
+        "xcrun",
+        "clang",
+        "-O2",
+        "-Wall",
+        "-Wextra",
+        "-fblocks",
+        "runtime/probes/runtime_probe.c",
+        ".blauos/build/runtime/host-service-probe/dropped-atfork.c",
+        "-o",
+        ".blauos/build/runtime/host-service-probe/dropped-atfork-rejection"
+      ],
+      "compile_exit": 0,
+      "compiler_output": "",
+      "run_exit": 13,
+      "stdout_markers": "BLAUOS_RUNTIME allocation=pass\nBLAUOS_RUNTIME locale_conversions=pass\nBLAUOS_RUNTIME file_io=pass\nBLAUOS_RUNTIME syscall=pass\nBLAUOS_RUNTIME pthread=pass\nBLAUOS_RUNTIME concurrent_once=pass\nBLAUOS_RUNTIME blocks_lifetime=pass\nBLAUOS_RUNTIME mach_timer=pass",
+      "stderr": "",
+      "raw_log": {
+        "path": ".blauos/build/runtime/host-service-probe/dropped-atfork-rejection.log",
+        "sha256": "01f779269e9173be146017bd088f5e54c9e605ba21641aa69c6a16d1cbc87fc1",
+        "bytes": 257
+      },
+      "passed": true
+    },
+    {
+      "name": "missing-dlerror-rejection",
+      "expected_exit": 23,
+      "injected_control": {
+        "path": ".blauos/build/runtime/host-service-probe/missing-dlerror.c",
+        "sha256": "ed23b11ac286d3e47815f0af41bb13a4cf3c230a1b5cf75ce286550600e384ac",
+        "content": "char *dlerror(void) { return 0; }\n"
+      },
+      "build_command": [
+        "xcrun",
+        "clang",
+        "-O2",
+        "-Wall",
+        "-Wextra",
+        "-fblocks",
+        "runtime/probes/runtime_probe.c",
+        ".blauos/build/runtime/host-service-probe/missing-dlerror.c",
+        "-o",
+        ".blauos/build/runtime/host-service-probe/missing-dlerror-rejection"
+      ],
+      "compile_exit": 0,
+      "compiler_output": "",
+      "run_exit": 23,
+      "stdout_markers": "BLAUOS_RUNTIME allocation=pass\nBLAUOS_RUNTIME locale_conversions=pass\nBLAUOS_RUNTIME file_io=pass\nBLAUOS_RUNTIME syscall=pass\nBLAUOS_RUNTIME pthread=pass\nBLAUOS_RUNTIME concurrent_once=pass\nBLAUOS_RUNTIME blocks_lifetime=pass\nBLAUOS_RUNTIME mach_timer=pass\nBLAUOS_RUNTIME atfork_handlers=pass\nBLAUOS_RUNTIME process_exit=pass",
+      "stderr": "Dynamic loader probe failed at step 9\n",
+      "raw_log": {
+        "path": ".blauos/build/runtime/host-service-probe/missing-dlerror-rejection.log",
+        "sha256": "c593ff3142c9595a6038797d4dd6bea2c94d25ad699956bce46693fc566af56e",
+        "bytes": 364
+      },
+      "passed": true
+    }
+  ]
+}

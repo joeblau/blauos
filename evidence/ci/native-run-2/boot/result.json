@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "passed": false,
+  "nonce": "6bf7fdf1ecd3178db73deebc59839974bcacf32241bad718f885b0e80163966e",
+  "guest_challenge_seen": false,
+  "host_to_guest_passed": false,
+  "required_markers": [
+    "clock",
+    "dns",
+    "guest_to_host",
+    "host_to_guest",
+    "kernel",
+    "launchd",
+    "launchd_services",
+    "network_service",
+    "runtime",
+    "shell"
+  ],
+  "missing_markers": [
+    "clock",
+    "dns",
+    "guest_to_host",
+    "host_to_guest",
+    "kernel",
+    "launchd",
+    "launchd_services",
+    "network_service",
+    "runtime",
+    "shell"
+  ],
+  "readiness_passed": false,
+  "shutdown_required": false,
+  "shutdown_requested": false,
+  "guest_shutdown_passed": false,
+  "physical_boot_gate": false,
+  "stock_kernel_used": false,
+  "failure": "Guest panic, runtime loader failure or probe error"
+}

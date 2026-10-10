@@ -1,0 +1,22 @@
+(lldb) target create .blauos/build/runtime/root/usr/lib/system/libdyld.dylib
+Current executable set to '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/system/libdyld.dylib' (arm64).
+(lldb) image lookup -n vproc_swap_integer
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/system/libdyld.dylib:
+        Address: libdyld.dylib[0x00000000000b9d40] (libdyld.dylib.__TEXT.__text + 757960)
+        Summary: libdyld.dylib`vproc_swap_integer at libvproc.c:818
+(lldb) disassemble -n dispatch_once_f
+libdyld.dylib`dispatch_once_f:
+libdyld.dylib[0x57a04] <+0>:  sub    sp, sp, #0x30
+libdyld.dylib[0x57a08] <+4>:  stp    x29, x30, [sp, #0x20]
+libdyld.dylib[0x57a0c] <+8>:  add    x29, sp, #0x20
+libdyld.dylib[0x57a10] <+12>: stur   x0, [x29, #-0x8]
+libdyld.dylib[0x57a14] <+16>: str    x1, [sp, #0x10]
+libdyld.dylib[0x57a18] <+20>: str    x2, [sp, #0x8]
+libdyld.dylib[0x57a1c] <+24>: ldur   x0, [x29, #-0x8]
+libdyld.dylib[0x57a20] <+28>: ldr    x1, [sp, #0x10]
+libdyld.dylib[0x57a24] <+32>: ldr    x2, [sp, #0x8]
+libdyld.dylib[0x57a28] <+36>: bl     0x6240c                   ; _os_once at lock.c:1197
+libdyld.dylib[0x57a2c] <+40>: ldp    x29, x30, [sp, #0x20]
+libdyld.dylib[0x57a30] <+44>: add    sp, sp, #0x30
+libdyld.dylib[0x57a34] <+48>: ret    
+(lldb) quit

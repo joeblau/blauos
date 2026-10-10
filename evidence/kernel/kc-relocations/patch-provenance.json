@@ -1,0 +1,17 @@
+{
+  "kc_tools_revision": "802fbc70ef5431950f24e79b02f2d938385d91bd",
+  "patches": [
+    {
+      "path": "patches/kc-tools/0002-arm64-dynamic-relocations.patch",
+      "sha256": "9a74f638b591de8872b4de87b703ca28774bf89093a9f9fbc394e75d066611fd"
+    },
+    {
+      "path": "patches/kc-tools/0003-classic-arm64-protections.patch",
+      "sha256": "06678f055bf0537c67bfc827c6e83519833634fd788f025507c5d06af8c39b0a"
+    }
+  ],
+  "runtime_validation": "Real v6 QEMU boot passes corecrypto lockdown, starts all essential drivers, publishes disk0 and the VirtIO network MAC; full source image separately mounts ext4 and attempts PID 1",
+  "verification": "13 source kexts, 16344 pointer slots independently verified against exact v6 collection; executable hooks, 16 KiB alignment, complete normalized slide metadata and no writable executable segments",
+  "unsupported_input_policy": "fail without partial output",
+  "current_collection_sha256": "cf5fc6e3e7edd3da5d7d5e7284092a0100eee5a1251d16e2d0c3959e55bf5b52"
+}

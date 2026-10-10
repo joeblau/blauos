@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "artifacts": [
+    {
+      "path": "/bin/sh",
+      "sha256": "c567574a74d75d53160ab4b365a32ef668ce970be3f43def55aa66c1b514a448",
+      "source": "dash",
+      "revision": "1365bb36a92656eb52b64cb04d249c47a1d3c4cf",
+      "build_inputs": {
+        "schema_version": 1,
+        "source": "dash",
+        "revision": "1365bb36a92656eb52b64cb04d249c47a1d3c4cf",
+        "configure_sha256": "c85e4c917551453488a2f920bba3ab7f87103c5738845b6f491d15329629c6db",
+        "configure_command": [
+          "sh",
+          "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/vm/dash-v4/source/configure",
+          "--host=aarch64-apple-darwin20",
+          "--build=aarch64-apple-darwin25",
+          "--without-libedit",
+          "--prefix=/usr"
+        ],
+        "environment": {
+          "CC": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+          "CC_FOR_BUILD": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.2.sdk",
+          "CFLAGS": "-O2 -arch arm64 -isysroot /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.2.sdk -mmacosx-version-min=11.0 -fno-builtin -fno-stack-protector -include /Users/joeblau/Developer/joeblau/src/blauos/runtime/compat/sdk27_compile.h",
+          "LDFLAGS": "-arch arm64 -isysroot /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.2.sdk -mmacosx-version-min=11.0 -fno-builtin -fno-stack-protector -nostdlib -L/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib -Wl,-dylib_file,/usr/lib/system/libdyld.dylib:/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/system/libdyld.dylib -Wl,-dylinker_install_name,/usr/lib/dyld -Wl,-platform_version,macos,11.0,11.5 -Wl,-fixup_chains -lSystem",
+          "ac_cv_sizeof_intmax_t": "8",
+          "ac_cv_sizeof_long_long_int": "8"
+        },
+        "target_execute_during_configure": false,
+        "guest_execution_verified": false
+      },
+      "license": "BSD-3-Clause AND GPL-2.0-or-later (generated signal names)"
+    }
+  ],
+  "built": true,
+  "guest_execution_verified": false
+}

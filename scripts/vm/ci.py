@@ -38,7 +38,7 @@ def main():
         source = args.output / "image/source"
         outputs = json.loads((args.output / "image/outputs.json").read_text())
         image_output = Path(outputs[0]["outputs"]["out"])
-        expr = f'''let f=builtins.getFlake {json.dumps("path:" + str(source))}; p=import f.inputs.nixpkgs {{system=builtins.currentSystem;}}; in {{qemu=p.qemu;firmware=p.pkgsCross.aarch64-multiplatform.OVMF.fd;}}'''
+        expr = f'''let f=builtins.getFlake {json.dumps("path:" + str(source))}; p=import f.inputs.nixpkgs {{system=builtins.currentSystem;}}; in [p.qemu p.pkgsCross.aarch64-multiplatform.OVMF.fd]'''
         tools = subprocess.check_output(["nix", "--extra-experimental-features", "nix-command flakes", "build",
                                          "--impure", "--expr", expr, "--no-link", "--json"], text=True, timeout=900)
         (args.output / "vm-tool-outputs.json").write_text(tools)

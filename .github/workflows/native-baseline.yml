@@ -1,0 +1,52 @@
+name: Native ARM64 baseline
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  native-build-and-boot:
+    name: Clean source build, independent userspace, and virtual boot
+    runs-on: [self-hosted, macOS, ARM64, blauos-native-sdk]
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          clean: true
+      - name: Build and boot the pinned native profile
+        run: >-
+          python3 scripts/vm/native_ci.py
+          --output ".blauos/build/native-ci/actions-${{ github.run_id }}"
+          --require-clean-project
+      - name: Remove the run's container after success, failure, or cancellation
+        if: always()
+        run: >-
+          python3 scripts/vm/native_ci.py
+          --output ".blauos/build/native-ci/actions-${{ github.run_id }}"
+          --cleanup-only
+      - name: Archive source inputs, symbols, serial output, and results
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: native-arm64-baseline-evidence
+          if-no-files-found: error
+          path: |
+            .blauos/build/native-ci/actions-${{ github.run_id }}/result.json
+            .blauos/build/native-ci/actions-${{ github.run_id }}/host.json
+            .blauos/build/native-ci/actions-${{ github.run_id }}/source-inputs.json
+            .blauos/build/native-ci/actions-${{ github.run_id }}/archive-inputs.json
+            .blauos/build/native-ci/actions-${{ github.run_id }}/linux-tools.json
+            .blauos/build/native-ci/actions-${{ github.run_id }}/logs/**
+            .blauos/build/native-ci/actions-${{ github.run_id }}/evidence/**
+            .blauos/build/native-ci/actions-${{ github.run_id }}/runtime-closure.json
+            .blauos/build/native-ci/actions-${{ github.run_id }}/composed/runtime-audit.json
+            .blauos/build/native-ci/actions-${{ github.run_id }}/composed/provenance.json
+            .blauos/build/native-ci/actions-${{ github.run_id }}/collection/inputs.json
+            .blauos/build/native-ci/actions-${{ github.run_id }}/collection/result.json
+            .blauos/build/native-ci/actions-${{ github.run_id }}/image/result.json
+            .blauos/build/native-ci/actions-${{ github.run_id }}/image/assemble.log
+            .blauos/build/native-ci/actions-${{ github.run_id }}/artifacts/**
+            .blauos/build/native-ci/actions-${{ github.run_id }}/boot/**
+            .blauos/build/native-ci/actions-${{ github.run_id }}/kernel/src/Kernel/xnu/xnu_sym/kernel.development.virt

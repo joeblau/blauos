@@ -34,7 +34,8 @@ def assemble(args):
         raise ValueError("Use a new output directory; prior image evidence is preserved")
     required = ["sbin/launchd", "bin/sh", "bin/netsetup", "usr/lib/dyld", "usr/lib/libSystem.B.dylib",
                 "usr/lib/system/libdyld.dylib", "bin/blauos_guest_probe", "bin/blauos_runtime_probe",
-                "usr/libexec/blauos-bootstrap-probe", "usr/bin/launchctl"]
+                "usr/libexec/blauos-bootstrap-probe", "usr/libexec/blauos-shutdown-probe", "usr/bin/launchctl", "bin/launchctl",
+                "usr/lib/libblauos-loader-fixture.dylib"]
     for name in required:
         if not (args.root / name).is_file():
             raise ValueError(f"Missing source-built root artifact: /{name}")
@@ -47,18 +48,19 @@ def assemble(args):
         raise ValueError("Independent target dependency closure is incomplete")
     staging = args.output / "root-staging"
     shutil.copytree(args.root, staging, symlinks=True)
-    for name in ("dev", "etc", "etc/blauos-tests", "var/run", "var/log", "var/db", "var/root", "tmp", "var/tmp",
+    for name in ("dev", "cores", "etc", "etc/blauos-tests", "var/run", "var/log", "var/db", "var/root", "var/empty", "tmp", "var/tmp",
                  "System/Library/LaunchDaemons"):
         (staging / name).mkdir(parents=True, exist_ok=True)
     for name in ("tmp", "var/tmp"):
         (staging / name).chmod(0o1777)
     (staging / "var/root").chmod(0o700)
+    (staging / "cores").chmod(0o700)
     configs = {
         "hosts": "127.0.0.1 localhost blauos\n::1 localhost\n",
         "resolv.conf": "nameserver 10.0.2.3\n",
-        "passwd": "root:*:0:0:root:/var/root:/bin/sh\n",
-        "master.passwd": "root:*:0:0::0:0:root:/var/root:/bin/sh\n",
-        "group": "wheel:*:0:root\n",
+        "passwd": "root:*:0:0:root:/var/root:/bin/sh\nnobody:*:65534:65534:nobody:/var/empty:/bin/false\n",
+        "master.passwd": "root:*:0:0::0:0:root:/var/root:/bin/sh\nnobody:*:65534:65534::0:0:nobody:/var/empty:/bin/false\n",
+        "group": "wheel:*:0:root\nnobody:*:65534:\n",
         "shells": "/bin/sh\n",
         "ttys": "/dev/console /bin/sh -l\n",
         "profile": "export PATH=/bin:/usr/bin:/sbin:/usr/sbin\nexport TERM=xterm\n",
@@ -69,7 +71,8 @@ def assemble(args):
         if not path.exists():
             path.write_text(text)
             path.chmod(0o644)
-    for name in ("org.blauos.test.bootstrap.plist", "launchd-test.sh"):
+    fixture_names = ("org.blauos.test.bootstrap.plist", "org.blauos.test.exec-failure.plist", "org.blauos.test.shutdown.plist", "launchd-test.sh")
+    for name in fixture_names:
         shutil.copyfile(ROOT / "runtime/fixtures" / name, staging / "etc/blauos-tests" / name)
     shutil.copyfile(ROOT / "vm/org.blauos.smoke.plist", staging / "System/Library/LaunchDaemons/org.blauos.smoke.plist")
     image = args.output / "blauos-arm64.img"
@@ -111,6 +114,7 @@ def assemble(args):
               "image": str(image), "image_sha256": digest(image), "kernel_sha256": digest(args.kernel),
               "loader_sha256": digest(args.loader), "runtime_provenance_sha256": digest(args.provenance),
               "disk_uuid": disk_uuid, "root_uuid": root_uuid, "device_nodes": "Kernel mounts devfs; no Linux device-number substitution",
+              "fixture_sha256": {name: digest(staging / "etc/blauos-tests" / name) for name in fixture_names},
               "bit_identical_rebuild_verified": False}
     (args.output / "result.json").write_text(json.dumps(result, indent=2) + "\n")
     return result

@@ -1,0 +1,498 @@
+(lldb) target create "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib"
+Current executable set to '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib' (arm64).
+(lldb) image lookup -vn OSAtomicCompareAndSwap32Barrier
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x00000000000aff7c] (libSystem.B.dylib.__TEXT.__text + 715540)
+        Summary: libSystem.B.dylib`OSAtomicCompareAndSwap32Barrier at atomic.c:286
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/os/atomic.c", language = "c11"
+       Function: id = {0x40012f0000001115}, name = "OSAtomicCompareAndSwap32Barrier", range = [0x00000000000aff7c-0x00000000000b0018)
+       FuncType: id = {0x40012f0000001115}, byte-size = 0, decl = atomic.c:285, compiler_type = "_Bool (int32_t, int32_t, volatile int32_t *)"
+         Blocks: id = {0x40012f0000001115}, range = [0x000aff7c-0x000b0018)
+      LineEntry: [0x00000000000aff7c-0x00000000000aff8c): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/os/atomic.c:286
+         Symbol: id = {0x00004251}, range = [0x00000000000aff7c-0x00000000000b0018), name="OSAtomicCompareAndSwap32Barrier"
+       Variable: id = {0x40012f000000112f}, name = "o", type = "int32_t", valid ranges = <block>, location = DW_OP_fbreg +60, decl = atomic.c:285
+       Variable: id = {0x40012f000000113e}, name = "n", type = "int32_t", valid ranges = <block>, location = DW_OP_fbreg +56, decl = atomic.c:285
+       Variable: id = {0x40012f000000114d}, name = "p", type = "volatile int32_t *", valid ranges = <block>, location = DW_OP_fbreg +48, decl = atomic.c:285
+
+(lldb) image lookup -vn OSAtomicCompareAndSwapLongBarrier
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x00000000000b01ec] (libSystem.B.dylib.__TEXT.__text + 716164)
+        Summary: libSystem.B.dylib`OSAtomicCompareAndSwapLongBarrier at atomic.c:322
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/os/atomic.c", language = "c11"
+       Function: id = {0x40012f0000001487}, name = "OSAtomicCompareAndSwapLongBarrier", range = [0x00000000000b01ec-0x00000000000b0288)
+       FuncType: id = {0x40012f0000001487}, byte-size = 0, decl = atomic.c:321, compiler_type = "_Bool (long, long, volatile long *)"
+         Blocks: id = {0x40012f0000001487}, range = [0x000b01ec-0x000b0288)
+      LineEntry: [0x00000000000b01ec-0x00000000000b01fc): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/os/atomic.c:322
+         Symbol: id = {0x00004261}, range = [0x00000000000b01ec-0x00000000000b0288), name="OSAtomicCompareAndSwapLongBarrier"
+       Variable: id = {0x40012f00000014a1}, name = "o", type = "long", valid ranges = <block>, location = DW_OP_fbreg +88, decl = atomic.c:321
+       Variable: id = {0x40012f00000014b1}, name = "n", type = "long", valid ranges = <block>, location = DW_OP_fbreg +80, decl = atomic.c:321
+       Variable: id = {0x40012f00000014c1}, name = "p", type = "volatile long *", valid ranges = <block>, location = DW_OP_fbreg +72, decl = atomic.c:321
+
+(lldb) image lookup -vn OSAtomicCompareAndSwapPtrBarrier
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x00000000000b00b4] (libSystem.B.dylib.__TEXT.__text + 715852)
+        Summary: libSystem.B.dylib`OSAtomicCompareAndSwapPtrBarrier at atomic.c:298
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/os/atomic.c", language = "c11"
+       Function: id = {0x40012f000000123b}, name = "OSAtomicCompareAndSwapPtrBarrier", range = [0x00000000000b00b4-0x00000000000b0150)
+       FuncType: id = {0x40012f000000123b}, byte-size = 0, decl = atomic.c:297, compiler_type = "_Bool (void *, void *, void *volatile *)"
+         Blocks: id = {0x40012f000000123b}, range = [0x000b00b4-0x000b0150)
+      LineEntry: [0x00000000000b00b4-0x00000000000b00c4): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/os/atomic.c:298
+         Symbol: id = {0x00004259}, range = [0x00000000000b00b4-0x00000000000b0150), name="OSAtomicCompareAndSwapPtrBarrier"
+       Variable: id = {0x40012f0000001255}, name = "o", type = "void *", valid ranges = <block>, location = DW_OP_fbreg +88, decl = atomic.c:297
+       Variable: id = {0x40012f0000001265}, name = "n", type = "void *", valid ranges = <block>, location = DW_OP_fbreg +80, decl = atomic.c:297
+       Variable: id = {0x40012f0000001275}, name = "p", type = "void *volatile *", valid ranges = <block>, location = DW_OP_fbreg +72, decl = atomic.c:297
+
+(lldb) image lookup -vn OSAtomicDecrement32
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x00000000000afd0c] (libSystem.B.dylib.__TEXT.__text + 714916)
+        Summary: libSystem.B.dylib`OSAtomicDecrement32 at atomic.c:140
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/os/atomic.c", language = "c11"
+       Function: id = {0x40012f00000003ea}, name = "OSAtomicDecrement32", range = [0x00000000000afd0c-0x00000000000afd88)
+       FuncType: id = {0x40012f00000003ea}, byte-size = 0, decl = atomic.c:139, compiler_type = "int32_t (volatile int32_t *)"
+         Blocks: id = {0x40012f00000003ea}, range = [0x000afd0c-0x000afd88)
+      LineEntry: [0x00000000000afd0c-0x00000000000afd14): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/os/atomic.c:140
+         Symbol: id = {0x0000423d}, range = [0x00000000000afd0c-0x00000000000afd88), name="OSAtomicDecrement32"
+       Variable: id = {0x40012f0000000403}, name = "p", type = "volatile int32_t *", valid ranges = <block>, location = DW_OP_fbreg +56, decl = atomic.c:139
+       Variable: id = {0x40012f0000000411}, name = "r", type = "int32_t", valid ranges = <block>, location = DW_OP_fbreg +52, decl = atomic.c:141
+
+(lldb) image lookup -vn OSAtomicDecrement32Barrier
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x00000000000afd88] (libSystem.B.dylib.__TEXT.__text + 715040)
+        Summary: libSystem.B.dylib`OSAtomicDecrement32Barrier at atomic.c:147
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/os/atomic.c", language = "c11"
+       Function: id = {0x40012f0000000490}, name = "OSAtomicDecrement32Barrier", range = [0x00000000000afd88-0x00000000000afe04)
+       FuncType: id = {0x40012f0000000490}, byte-size = 0, decl = atomic.c:146, compiler_type = "int32_t (volatile int32_t *)"
+         Blocks: id = {0x40012f0000000490}, range = [0x000afd88-0x000afe04)
+      LineEntry: [0x00000000000afd88-0x00000000000afd90): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/os/atomic.c:147
+         Symbol: id = {0x00004241}, range = [0x00000000000afd88-0x00000000000afe04), name="OSAtomicDecrement32Barrier"
+       Variable: id = {0x40012f00000004a9}, name = "p", type = "volatile int32_t *", valid ranges = <block>, location = DW_OP_fbreg +56, decl = atomic.c:146
+       Variable: id = {0x40012f00000004b7}, name = "r", type = "int32_t", valid ranges = <block>, location = DW_OP_fbreg +52, decl = atomic.c:148
+
+(lldb) image lookup -vn OSAtomicIncrement32
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x00000000000afc14] (libSystem.B.dylib.__TEXT.__text + 714668)
+        Summary: libSystem.B.dylib`OSAtomicIncrement32 at atomic.c:126
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/os/atomic.c", language = "c11"
+       Function: id = {0x40012f000000029e}, name = "OSAtomicIncrement32", range = [0x00000000000afc14-0x00000000000afc90)
+       FuncType: id = {0x40012f000000029e}, byte-size = 0, decl = atomic.c:125, compiler_type = "int32_t (volatile int32_t *)"
+         Blocks: id = {0x40012f000000029e}, range = [0x000afc14-0x000afc90)
+      LineEntry: [0x00000000000afc14-0x00000000000afc1c): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/os/atomic.c:126
+         Symbol: id = {0x00004235}, range = [0x00000000000afc14-0x00000000000afc90), name="OSAtomicIncrement32"
+       Variable: id = {0x40012f00000002b7}, name = "p", type = "volatile int32_t *", valid ranges = <block>, location = DW_OP_fbreg +56, decl = atomic.c:125
+       Variable: id = {0x40012f00000002c5}, name = "r", type = "int32_t", valid ranges = <block>, location = DW_OP_fbreg +52, decl = atomic.c:127
+
+(lldb) image lookup -vn OSAtomicIncrement32Barrier
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x00000000000afc90] (libSystem.B.dylib.__TEXT.__text + 714792)
+        Summary: libSystem.B.dylib`OSAtomicIncrement32Barrier at atomic.c:133
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/os/atomic.c", language = "c11"
+       Function: id = {0x40012f0000000344}, name = "OSAtomicIncrement32Barrier", range = [0x00000000000afc90-0x00000000000afd0c)
+       FuncType: id = {0x40012f0000000344}, byte-size = 0, decl = atomic.c:132, compiler_type = "int32_t (volatile int32_t *)"
+         Blocks: id = {0x40012f0000000344}, range = [0x000afc90-0x000afd0c)
+      LineEntry: [0x00000000000afc90-0x00000000000afc98): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/os/atomic.c:133
+         Symbol: id = {0x00004239}, range = [0x00000000000afc90-0x00000000000afd0c), name="OSAtomicIncrement32Barrier"
+       Variable: id = {0x40012f000000035d}, name = "p", type = "volatile int32_t *", valid ranges = <block>, location = DW_OP_fbreg +56, decl = atomic.c:132
+       Variable: id = {0x40012f000000036b}, name = "r", type = "int32_t", valid ranges = <block>, location = DW_OP_fbreg +52, decl = atomic.c:134
+
+(lldb) image lookup -vn OSMemoryBarrier
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x00000000000b0624] (libSystem.B.dylib.__TEXT.__text + 717244)
+        Summary: libSystem.B.dylib`OSMemoryBarrier at atomic.c:446:2
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/os/atomic.c", language = "c11"
+       Function: id = {0x40012f0000001bb8}, name = "OSMemoryBarrier", range = [0x00000000000b0624-0x00000000000b062c)
+       FuncType: id = {0x40012f0000001bb8}, byte-size = 0, decl = atomic.c:444, compiler_type = "void (void)"
+         Blocks: id = {0x40012f0000001bb8}, range = [0x000b0624-0x000b062c)
+      LineEntry: [0x00000000000b0624-0x00000000000b0628): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/os/atomic.c:446:2
+         Symbol: id = {0x00004275}, range = [0x00000000000b0624-0x00000000000b062c), name="OSMemoryBarrier"
+
+(lldb) image lookup -vn OSSpinLockLock
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x00000000000adc14] (libSystem.B.dylib.__TEXT.__text + 706476)
+        Summary: libSystem.B.dylib`OSSpinLockLock at lock.c:281
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/os/lock.c", language = "c11"
+       Function: id = {0x4001290000000b75}, name = "OSSpinLockLock", range = [0x00000000000adc14-0x00000000000adcd0)
+       FuncType: id = {0x4001290000000b75}, byte-size = 0, decl = lock.c:280, compiler_type = "void (volatile OSSpinLock *)"
+         Blocks: id = {0x4001290000000b75}, range = [0x000adc14-0x000adcd0)
+      LineEntry: [0x00000000000adc14-0x00000000000adc24): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/os/lock.c:281
+         Symbol: id = {0x0000414e}, range = [0x00000000000adc14-0x00000000000adcd0), name="spin_lock"
+       Variable: id = {0x4001290000000b8b}, name = "l", type = "volatile OSSpinLock *", valid ranges = <block>, location = DW_OP_fbreg -8, decl = lock.c:280
+       Variable: id = {0x4001290000000b9a}, name = "r", type = "_Bool", valid ranges = <block>, location = DW_OP_fbreg -9, decl = lock.c:284
+
+(lldb) image lookup -vn OSSpinLockUnlock
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x00000000000add6c] (libSystem.B.dylib.__TEXT.__text + 706820)
+        Summary: libSystem.B.dylib`OSSpinLockUnlock at lock.c:305
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/os/lock.c", language = "c11"
+       Function: id = {0x4001290000000c9f}, name = "OSSpinLockUnlock", range = [0x00000000000add6c-0x00000000000add9c)
+       FuncType: id = {0x4001290000000c9f}, byte-size = 0, decl = lock.c:304, compiler_type = "void (volatile OSSpinLock *)"
+         Blocks: id = {0x4001290000000c9f}, range = [0x000add6c-0x000add9c)
+      LineEntry: [0x00000000000add6c-0x00000000000add74): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/os/lock.c:305
+         Symbol: id = {0x0000415e}, range = [0x00000000000add6c-0x00000000000add9c), name="spin_unlock"
+       Variable: id = {0x4001290000000cb5}, name = "l", type = "volatile OSSpinLock *", valid ranges = <block>, location = DW_OP_fbreg +24, decl = lock.c:304
+
+(lldb) image lookup -vn backtrace_symbols
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x00000000000fa79c] (libSystem.B.dylib.__TEXT.__text + 1020724)
+        Summary: libSystem.B.dylib`backtrace_symbols at backtrace.c:141
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libc/gen/backtrace.c", language = "c11"
+       Function: id = {0x4001d000000001d8}, name = "backtrace_symbols", range = [0x00000000000fa79c-0x00000000000fa978)
+       FuncType: id = {0x4001d000000001d8}, byte-size = 0, decl = backtrace.c:141, compiler_type = "char **(void *const *, int)"
+         Blocks: id = {0x4001d000000001d8}, range = [0x000fa79c-0x000fa978)
+      LineEntry: [0x00000000000fa79c-0x00000000000fa7b0): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libc/gen/backtrace.c:141
+         Symbol: id = {0x00005056}, range = [0x00000000000fa79c-0x00000000000fa978), name="backtrace_symbols"
+       Variable: id = {0x4001d000000001f1}, name = "buffer", type = "void *const *", valid ranges = <block>, location = DW_OP_fbreg -16, decl = backtrace.c:141
+       Variable: id = {0x4001d000000001ff}, name = "size", type = "int", valid ranges = <block>, location = DW_OP_fbreg -20, decl = backtrace.c:141
+       Variable: id = {0x4001d0000000020d}, name = "i", type = "int", valid ranges = <block>, location = DW_OP_fbreg -24, decl = backtrace.c:142
+       Variable: id = {0x4001d0000000021b}, name = "total_bytes", type = "size_t", valid ranges = <block>, location = DW_OP_fbreg -32, decl = backtrace.c:143
+       Variable: id = {0x4001d00000000229}, name = "result", type = "char **", valid ranges = <block>, location = DW_OP_breg31 WSP+40, decl = backtrace.c:144
+       Variable: id = {0x4001d00000000237}, name = "ptrs", type = "char **", valid ranges = <block>, location = DW_OP_breg31 WSP+32, decl = backtrace.c:145
+       Variable: id = {0x4001d00000000245}, name = "strs", type = "intptr_t", valid ranges = <block>, location = DW_OP_breg31 WSP+24, decl = backtrace.c:146
+       Variable: id = {0x4001d00000000253}, name = "end", type = "intptr_t", valid ranges = <block>, location = DW_OP_breg31 WSP+16, decl = backtrace.c:146
+       Variable: id = {0x4001d00000000261}, name = "info", type = "Dl_info *", valid ranges = <block>, location = DW_OP_breg31 WSP+8, decl = backtrace.c:147
+
+(lldb) image lookup -vn backtrace_symbols_fd
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x00000000000facb4] (libSystem.B.dylib.__TEXT.__text + 1022028)
+        Summary: libSystem.B.dylib`backtrace_symbols_fd at backtrace.c:195
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libc/gen/backtrace.c", language = "c11"
+       Function: id = {0x4001d000000003d8}, name = "backtrace_symbols_fd", range = [0x00000000000facb4-0x00000000000fadbc)
+       FuncType: id = {0x4001d000000003d8}, byte-size = 0, decl = backtrace.c:195, compiler_type = "void (void *const *, int, int)"
+         Blocks: id = {0x4001d000000003d8}, range = [0x000facb4-0x000fadbc)
+      LineEntry: [0x00000000000facb4-0x00000000000face0): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libc/gen/backtrace.c:195
+         Symbol: id = {0x00005062}, range = [0x00000000000facb4-0x00000000000fadbc), name="backtrace_symbols_fd"
+       Variable: id = {0x4001d000000003ed}, name = "buffer", type = "void *const *", valid ranges = <block>, location = DW_OP_breg31 WSP+64, decl = backtrace.c:195
+       Variable: id = {0x4001d000000003fc}, name = "size", type = "int", valid ranges = <block>, location = DW_OP_breg31 WSP+60, decl = backtrace.c:195
+       Variable: id = {0x4001d0000000040a}, name = "fd", type = "int", valid ranges = <block>, location = DW_OP_breg31 WSP+56, decl = backtrace.c:195
+       Variable: id = {0x4001d00000000418}, name = "i", type = "int", valid ranges = <block>, location = DW_OP_breg31 WSP+52, decl = backtrace.c:196
+       Variable: id = {0x4001d00000000426}, name = "buf", type = "char[1024]", valid ranges = <block>, location = DW_OP_breg31 WSP+104, decl = backtrace.c:197
+       Variable: id = {0x4001d00000000435}, name = "info", type = "Dl_info", valid ranges = <block>, location = DW_OP_breg31 WSP+16, decl = backtrace.c:198
+       Variable: id = {0x4001d00000000443}, name = "iov", type = "iovec[2]", valid ranges = <block>, location = DW_OP_breg31 WSP+72, decl = backtrace.c:199
+
+(lldb) image lookup -vn close$NOCANCEL
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x0000000000003724] (libSystem.B.dylib.__TEXT.__text + 8892)
+        Summary: libSystem.B.dylib`close$NOCANCEL
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib", arch = "arm64"
+         Symbol: id = {0x000081d1}, range = [0x0000000000003724-0x000000000000374c), name="close$NOCANCEL"
+
+(lldb) image lookup -vn issetugid
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x0000000000005240] (libSystem.B.dylib.__TEXT.__text + 15832)
+        Summary: libSystem.B.dylib`issetugid
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib", arch = "arm64"
+         Symbol: id = {0x00008340}, range = [0x0000000000005240-0x0000000000005268), name="issetugid"
+
+(lldb) image lookup -vn mach_vm_region
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x00000000000a4160] (libSystem.B.dylib.__TEXT.__text + 666872)
+        Summary: libSystem.B.dylib`mach_vm_region at mach_vm.c:2827
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libsystem_kernel/internal_include/mach/mach_vm.c", language = "c11"
+       Function: id = {0x40010a0000002713}, name = "mach_vm_region", range = [0x00000000000a4160-0x00000000000a43ec)
+       FuncType: id = {0x40010a0000002713}, byte-size = 0, decl = mach_vm.c:2817, compiler_type = "kern_return_t (vm_map_read_t, mach_vm_address_t *, mach_vm_size_t *, vm_region_flavor_t, vm_region_info_t, mach_msg_type_number_t *, mach_port_t *)"
+         Blocks: id = {0x40010a0000002713}, range = [0x000a4160-0x000a43ec)
+      LineEntry: [0x00000000000a4160-0x00000000000a418c): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libsystem_kernel/internal_include/mach/mach_vm.c:2827
+         Symbol: id = {0x00003e5a}, range = [0x00000000000a4160-0x00000000000a43ec), name="mach_vm_region"
+       Variable: id = {0x40010a000000272d}, name = "target_task", type = "vm_map_read_t", valid ranges = <block>, location = DW_OP_fbreg -8, decl = mach_vm.c:2819
+       Variable: id = {0x40010a000000273c}, name = "address", type = "mach_vm_address_t *", valid ranges = <block>, location = DW_OP_fbreg -16, decl = mach_vm.c:2820
+       Variable: id = {0x40010a000000274b}, name = "size", type = "mach_vm_size_t *", valid ranges = <block>, location = DW_OP_fbreg -24, decl = mach_vm.c:2821
+       Variable: id = {0x40010a000000275a}, name = "flavor", type = "vm_region_flavor_t", valid ranges = <block>, location = DW_OP_fbreg -28, decl = mach_vm.c:2822
+       Variable: id = {0x40010a0000002769}, name = "info", type = "vm_region_info_t", valid ranges = <block>, location = DW_OP_fbreg -40, decl = mach_vm.c:2823
+       Variable: id = {0x40010a0000002778}, name = "infoCnt", type = "mach_msg_type_number_t *", valid ranges = <block>, location = DW_OP_fbreg -48, decl = mach_vm.c:2824
+       Variable: id = {0x40010a0000002787}, name = "object_name", type = "mach_port_t *", valid ranges = <block>, location = DW_OP_fbreg -56, decl = mach_vm.c:2825
+       Variable: id = {0x40010a0000002796}, name = "Mess", type = "(unnamed union)", valid ranges = <block>, location = DW_OP_breg31 WSP+36, decl = mach_vm.c:2892
+       Variable: id = {0x40010a00000027a5}, name = "InP", type = "Request *", valid ranges = <block>, location = DW_OP_breg31 WSP+24, decl = mach_vm.c:2894
+       Variable: id = {0x40010a00000027b4}, name = "Out0P", type = "Reply *", valid ranges = <block>, location = DW_OP_breg31 WSP+16, decl = mach_vm.c:2895
+       Variable: id = {0x40010a00000027c3}, name = "msg_result", type = "mach_msg_return_t", valid ranges = <block>, location = DW_OP_breg31 WSP+12, decl = mach_vm.c:2897
+       Variable: id = {0x40010a00000027d2}, name = "check_result", type = "kern_return_t", valid ranges = <block>, location = DW_OP_breg31 WSP+8, decl = mach_vm.c:2900
+
+(lldb) image lookup -vn memset_pattern16
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x00000000000aada0] (libSystem.B.dylib.__TEXT.__text + 694584)
+        Summary: libSystem.B.dylib`memset_pattern16 at memset_pattern.c:99
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/string/generic/memset_pattern.c", language = "c11"
+       Function: id = {0x40011d00000001d2}, name = "memset_pattern16", range = [0x00000000000aada0-0x00000000000aadd4)
+       FuncType: id = {0x40011d00000001d2}, byte-size = 0, decl = memset_pattern.c:98, compiler_type = "void (void *, const void *, size_t)"
+         Blocks: id = {0x40011d00000001d2}, range = [0x000aada0-0x000aadd4)
+      LineEntry: [0x00000000000aada0-0x00000000000aadb8): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/string/generic/memset_pattern.c:99
+         Symbol: id = {0x0000402f}, range = [0x00000000000aada0-0x00000000000aadd4), name="memset_pattern16"
+       Variable: id = {0x40011d00000001e7}, name = "b", type = "void *", valid ranges = <block>, location = DW_OP_fbreg -8, decl = memset_pattern.c:98
+       Variable: id = {0x40011d00000001f5}, name = "pattern16", type = "const void *", valid ranges = <block>, location = DW_OP_breg31 WSP+16, decl = memset_pattern.c:98
+       Variable: id = {0x40011d0000000203}, name = "len", type = "size_t", valid ranges = <block>, location = DW_OP_breg31 WSP+8, decl = memset_pattern.c:98
+
+(lldb) image lookup -vn memset_pattern4
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x00000000000aabc8] (libSystem.B.dylib.__TEXT.__text + 694112)
+        Summary: libSystem.B.dylib`memset_pattern4 at memset_pattern.c:45
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/string/generic/memset_pattern.c", language = "c11"
+       Function: id = {0x40011d000000009a}, name = "memset_pattern4", range = [0x00000000000aabc8-0x00000000000aabfc)
+       FuncType: id = {0x40011d000000009a}, byte-size = 0, decl = memset_pattern.c:44, compiler_type = "void (void *, const void *, size_t)"
+         Blocks: id = {0x40011d000000009a}, range = [0x000aabc8-0x000aabfc)
+      LineEntry: [0x00000000000aabc8-0x00000000000aabe0): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/string/generic/memset_pattern.c:45
+         Symbol: id = {0x0000401f}, range = [0x00000000000aabc8-0x00000000000aabfc), name="memset_pattern4"
+       Variable: id = {0x40011d00000000af}, name = "b", type = "void *", valid ranges = <block>, location = DW_OP_fbreg -8, decl = memset_pattern.c:44
+       Variable: id = {0x40011d00000000bd}, name = "pattern4", type = "const void *", valid ranges = <block>, location = DW_OP_breg31 WSP+16, decl = memset_pattern.c:44
+       Variable: id = {0x40011d00000000cb}, name = "len", type = "size_t", valid ranges = <block>, location = DW_OP_breg31 WSP+8, decl = memset_pattern.c:44
+
+(lldb) image lookup -vn memset_pattern8
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x00000000000aacb4] (libSystem.B.dylib.__TEXT.__text + 694348)
+        Summary: libSystem.B.dylib`memset_pattern8 at memset_pattern.c:72
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/string/generic/memset_pattern.c", language = "c11"
+       Function: id = {0x40011d0000000136}, name = "memset_pattern8", range = [0x00000000000aacb4-0x00000000000aace8)
+       FuncType: id = {0x40011d0000000136}, byte-size = 0, decl = memset_pattern.c:71, compiler_type = "void (void *, const void *, size_t)"
+         Blocks: id = {0x40011d0000000136}, range = [0x000aacb4-0x000aace8)
+      LineEntry: [0x00000000000aacb4-0x00000000000aaccc): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/string/generic/memset_pattern.c:72
+         Symbol: id = {0x00004027}, range = [0x00000000000aacb4-0x00000000000aace8), name="memset_pattern8"
+       Variable: id = {0x40011d000000014b}, name = "b", type = "void *", valid ranges = <block>, location = DW_OP_fbreg -8, decl = memset_pattern.c:71
+       Variable: id = {0x40011d0000000159}, name = "pattern8", type = "const void *", valid ranges = <block>, location = DW_OP_breg31 WSP+16, decl = memset_pattern.c:71
+       Variable: id = {0x40011d0000000167}, name = "len", type = "size_t", valid ranges = <block>, location = DW_OP_breg31 WSP+8, decl = memset_pattern.c:71
+
+(lldb) image lookup -vn mk_timer_arm
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x0000000000001b88] (libSystem.B.dylib.__TEXT.__text + 1824)
+        Summary: libSystem.B.dylib`mk_timer_arm
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libsystem_kernel/mach/mach_traps.s", language = "<not loaded>"
+      LineEntry: [0x0000000000001b88-0x0000000000001b8c): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Kernel/xnu/osfmk/mach/syscall_sw.h:173
+         Symbol: id = {0x0000390d}, range = [0x0000000000001b88-0x0000000000001b94), name="mk_timer_arm"
+
+(lldb) image lookup -vn mk_timer_cancel
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x0000000000001b94] (libSystem.B.dylib.__TEXT.__text + 1836)
+        Summary: libSystem.B.dylib`mk_timer_cancel
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libsystem_kernel/mach/mach_traps.s", language = "<not loaded>"
+      LineEntry: [0x0000000000001b94-0x0000000000001b98): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Kernel/xnu/osfmk/mach/syscall_sw.h:178
+         Symbol: id = {0x00003911}, range = [0x0000000000001b94-0x0000000000001ba0), name="mk_timer_cancel"
+
+(lldb) image lookup -vn mk_timer_create
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x0000000000001b70] (libSystem.B.dylib.__TEXT.__text + 1800)
+        Summary: libSystem.B.dylib`mk_timer_create
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libsystem_kernel/mach/mach_traps.s", language = "<not loaded>"
+      LineEntry: [0x0000000000001b70-0x0000000000001b74): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Kernel/xnu/osfmk/mach/syscall_sw.h:168
+         Symbol: id = {0x00003905}, range = [0x0000000000001b70-0x0000000000001b7c), name="mk_timer_create"
+
+(lldb) image lookup -vn mk_timer_destroy
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x0000000000001b7c] (libSystem.B.dylib.__TEXT.__text + 1812)
+        Summary: libSystem.B.dylib`mk_timer_destroy
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libsystem_kernel/mach/mach_traps.s", language = "<not loaded>"
+      LineEntry: [0x0000000000001b7c-0x0000000000001b80): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Kernel/xnu/osfmk/mach/syscall_sw.h:169
+         Symbol: id = {0x00003909}, range = [0x0000000000001b7c-0x0000000000001b88), name="mk_timer_destroy"
+
+(lldb) image lookup -vn os_unfair_lock_lock
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x00000000000add9c] (libSystem.B.dylib.__TEXT.__text + 706868)
+        Summary: libSystem.B.dylib`os_unfair_lock_lock at lock.c:597
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/os/lock.c", language = "c11"
+       Function: id = {0x400129000000115c}, name = "os_unfair_lock_lock", range = [0x00000000000add9c-0x00000000000ade94)
+       FuncType: id = {0x400129000000115c}, byte-size = 0, decl = lock.c:596, compiler_type = "void (os_unfair_lock_t)"
+         Blocks: id = {0x400129000000115c}, range = [0x000add9c-0x000ade94)
+      LineEntry: [0x00000000000add9c-0x00000000000addac): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/os/lock.c:597
+         Symbol: id = {0x0000416a}, range = [0x00000000000add9c-0x00000000000ade94), name="os_unfair_lock_lock"
+       Variable: id = {0x4001290000001172}, name = "lock", type = "os_unfair_lock_t", valid ranges = <block>, location = DW_OP_fbreg -32, decl = lock.c:596
+       Variable: id = {0x4001290000001181}, name = "l", type = "_os_unfair_lock_t", valid ranges = <block>, location = DW_OP_fbreg -40, decl = lock.c:598
+       Variable: id = {0x4001290000001190}, name = "self", type = "os_lock_owner_t", valid ranges = <block>, location = DW_OP_fbreg -44, decl = lock.c:599
+       Variable: id = {0x400129000000119f}, name = "r", type = "_Bool", valid ranges = <block>, location = DW_OP_fbreg -45, decl = lock.c:600
+
+(lldb) image lookup -vn os_unfair_lock_unlock
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x00000000000ae390] (libSystem.B.dylib.__TEXT.__text + 708392)
+        Summary: libSystem.B.dylib`os_unfair_lock_unlock at lock.c:627
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/os/lock.c", language = "c11"
+       Function: id = {0x40012900000015dc}, name = "os_unfair_lock_unlock", range = [0x00000000000ae390-0x00000000000ae450)
+       FuncType: id = {0x40012900000015dc}, byte-size = 0, decl = lock.c:626, compiler_type = "void (os_unfair_lock_t)"
+         Blocks: id = {0x40012900000015dc}, range = [0x000ae390-0x000ae450)
+      LineEntry: [0x00000000000ae390-0x00000000000ae3a0): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libplatform/src/os/lock.c:627
+         Symbol: id = {0x0000417a}, range = [0x00000000000ae390-0x00000000000ae450), name="os_unfair_lock_unlock"
+       Variable: id = {0x40012900000015f2}, name = "lock", type = "os_unfair_lock_t", valid ranges = <block>, location = DW_OP_fbreg -32, decl = lock.c:626
+       Variable: id = {0x4001290000001601}, name = "l", type = "_os_unfair_lock_t", valid ranges = <block>, location = DW_OP_breg31 WSP+40, decl = lock.c:628
+       Variable: id = {0x4001290000001610}, name = "self", type = "os_lock_owner_t", valid ranges = <block>, location = DW_OP_breg31 WSP+36, decl = lock.c:629
+       Variable: id = {0x400129000000161f}, name = "current", type = "os_ulock_value_t", valid ranges = <block>, location = DW_OP_breg31 WSP+32, decl = lock.c:630
+
+(lldb) image lookup -vn pthread_atfork
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x00000000000c4f00] (libSystem.B.dylib.__TEXT.__text + 801432)
+        Summary: libSystem.B.dylib`pthread_atfork at pthread_atfork.c:32
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/pthread/src/pthread_atfork.c", language = "c11"
+       Function: id = {0x4001370000000691}, name = "pthread_atfork", range = [0x00000000000c4f00-0x00000000000c5210)
+       FuncType: id = {0x4001370000000691}, byte-size = 0, decl = pthread_atfork.c:31, compiler_type = "int (void (*)(void), void (*)(void), void (*)(void))"
+         Blocks: id = {0x4001370000000691}, range = [0x000c4f00-0x000c5210)
+      LineEntry: [0x00000000000c4f00-0x00000000000c4f18): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/pthread/src/pthread_atfork.c:32
+         Symbol: id = {0x00004644}, range = [0x00000000000c4f00-0x00000000000c5210), name="pthread_atfork"
+       Variable: id = {0x40013700000006aa}, name = "prepare", type = "void (*)()", valid ranges = <block>, location = DW_OP_fbreg -104, decl = pthread_atfork.c:31
+       Variable: id = {0x40013700000006b9}, name = "parent", type = "void (*)()", valid ranges = <block>, location = DW_OP_breg31 WSP+112, decl = pthread_atfork.c:31
+       Variable: id = {0x40013700000006c8}, name = "child", type = "void (*)()", valid ranges = <block>, location = DW_OP_breg31 WSP+104, decl = pthread_atfork.c:31
+       Variable: id = {0x40013700000006d7}, name = "res", type = "int", valid ranges = <block>, location = DW_OP_breg31 WSP+100, decl = pthread_atfork.c:33
+       Variable: id = {0x40013700000006e6}, name = "idx", type = "size_t", valid ranges = <block>, location = DW_OP_breg31 WSP+88, decl = pthread_atfork.c:34
+       Variable: id = {0x40013700000006f5}, name = "globals", type = "pthread_globals_t", valid ranges = <block>, location = DW_OP_breg31 WSP+80, decl = pthread_atfork.c:35
+
+(lldb) image lookup -vn pthread_getugid_np
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x00000000000039e8] (libSystem.B.dylib.__TEXT.__text + 9600)
+        Summary: libSystem.B.dylib`pthread_getugid_np
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib", arch = "arm64"
+         Symbol: id = {0x000084d2}, range = [0x00000000000039e8-0x0000000000003a10), name="pthread_getugid_np"
+
+(lldb) image lookup -vn qos_class_self
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x00000000000c5fb8] (libSystem.B.dylib.__TEXT.__text + 805712)
+        Summary: libSystem.B.dylib`qos_class_self at qos.c:191
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/pthread/src/qos.c", language = "c11"
+       Function: id = {0x40013a0000000eb0}, name = "qos_class_self", range = [0x00000000000c5fb8-0x00000000000c60b4)
+       FuncType: id = {0x40013a0000000eb0}, byte-size = 0, decl = qos.c:190, compiler_type = "qos_class_t (void)"
+         Blocks: id = {0x40013a0000000eb0}, range = [0x000c5fb8-0x000c60b4)
+      LineEntry: [0x00000000000c5fb8-0x00000000000c5fcc): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/pthread/src/qos.c:191
+         Symbol: id = {0x000046a0}, range = [0x00000000000c5fb8-0x00000000000c60b4), name="qos_class_self"
+       Variable: id = {0x40013a0000000ec9}, name = "pp", type = "pthread_priority_t", valid ranges = <block>, location = DW_OP_breg31 WSP+16, decl = qos.c:192
+
+(lldb) image lookup -vn sigaddset
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x0000000000113c70] (libSystem.B.dylib.__TEXT.__text + 1124360)
+        Summary: libSystem.B.dylib`sigaddset at sigsetops.c:86
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libc/gen/sigsetops.c", language = "c11"
+       Function: id = {0x40020000000000aa}, name = "sigaddset", range = [0x0000000000113c70-0x0000000000113d04)
+       FuncType: id = {0x40020000000000aa}, byte-size = 0, decl = sigsetops.c:83, compiler_type = "int (sigset_t *, int)"
+         Blocks: id = {0x40020000000000aa}, range = [0x00113c70-0x00113d04)
+      LineEntry: [0x0000000000113c70-0x0000000000113c84): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libc/gen/sigsetops.c:86
+         Symbol: id = {0x000053bd}, range = [0x0000000000113c70-0x0000000000113d04), name="sigaddset"
+       Variable: id = {0x40020000000000c3}, name = "set", type = "sigset_t *", valid ranges = <block>, location = DW_OP_breg31 WSP+16, decl = sigsetops.c:84
+       Variable: id = {0x40020000000000d1}, name = "signo", type = "int", valid ranges = <block>, location = DW_OP_breg31 WSP+12, decl = sigsetops.c:85
+
+(lldb) image lookup -vn sigemptyset
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x0000000000113c34] (libSystem.B.dylib.__TEXT.__text + 1124300)
+        Summary: libSystem.B.dylib`sigemptyset at sigsetops.c:69
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libc/gen/sigsetops.c", language = "c11"
+       Function: id = {0x400200000000005a}, name = "sigemptyset", range = [0x0000000000113c34-0x0000000000113c50)
+       FuncType: id = {0x400200000000005a}, byte-size = 0, decl = sigsetops.c:67, compiler_type = "int (sigset_t *)"
+         Blocks: id = {0x400200000000005a}, range = [0x00113c34-0x00113c50)
+      LineEntry: [0x0000000000113c34-0x0000000000113c3c): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libc/gen/sigsetops.c:69
+         Symbol: id = {0x000053b5}, range = [0x0000000000113c34-0x0000000000113c50), name="sigemptyset"
+       Variable: id = {0x4002000000000073}, name = "set", type = "sigset_t *", valid ranges = <block>, location = DW_OP_fbreg +8, decl = sigsetops.c:68
+
+(lldb) image lookup -vn sigfillset
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x0000000000113c50] (libSystem.B.dylib.__TEXT.__text + 1124328)
+        Summary: libSystem.B.dylib`sigfillset at sigsetops.c:77
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libc/gen/sigsetops.c", language = "c11"
+       Function: id = {0x4002000000000082}, name = "sigfillset", range = [0x0000000000113c50-0x0000000000113c70)
+       FuncType: id = {0x4002000000000082}, byte-size = 0, decl = sigsetops.c:75, compiler_type = "int (sigset_t *)"
+         Blocks: id = {0x4002000000000082}, range = [0x00113c50-0x00113c70)
+      LineEntry: [0x0000000000113c50-0x0000000000113c58): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libc/gen/sigsetops.c:77
+         Symbol: id = {0x000053b9}, range = [0x0000000000113c50-0x0000000000113c70), name="sigfillset"
+       Variable: id = {0x400200000000009b}, name = "set", type = "sigset_t *", valid ranges = <block>, location = DW_OP_fbreg +8, decl = sigsetops.c:76
+
+(lldb) image lookup -vn statvfs
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x0000000000111990] (libSystem.B.dylib.__TEXT.__text + 1115432)
+        Summary: libSystem.B.dylib`statvfs at statvfs.c:74
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libc/emulated/statvfs.c", language = "c11"
+       Function: id = {0x4001ee00000000e9}, name = "statvfs", range = [0x0000000000111990-0x0000000000111a1c)
+       FuncType: id = {0x4001ee00000000e9}, byte-size = 0, decl = statvfs.c:73, compiler_type = "int (const char *__restrict, struct statvfs *__restrict)"
+         Blocks: id = {0x4001ee00000000e9}, range = [0x00111990-0x00111a1c)
+      LineEntry: [0x0000000000111990-0x00000000001119b8): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libc/emulated/statvfs.c:74
+         Symbol: id = {0x00005279}, range = [0x0000000000111990-0x0000000000111a1c), name="statvfs"
+       Variable: id = {0x4001ee0000000102}, name = "path", type = "const char *__restrict", valid ranges = <block>, location = DW_OP_breg31 WSP+24, decl = statvfs.c:73
+       Variable: id = {0x4001ee0000000110}, name = "buf", type = "statvfs *__restrict", valid ranges = <block>, location = DW_OP_breg31 WSP+16, decl = statvfs.c:73
+       Variable: id = {0x4001ee000000011e}, name = "rv", type = "int", valid ranges = <block>, location = DW_OP_breg31 WSP+12, decl = statvfs.c:75
+       Variable: id = {0x4001ee000000012c}, name = "cvt", type = "statfs", valid ranges = <block>, location = DW_OP_breg31 WSP+32, decl = statvfs.c:76
+
+(lldb) image lookup -vn strxfrm
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x00000000000d3240] (libSystem.B.dylib.__TEXT.__text + 859608)
+        Summary: libSystem.B.dylib`strxfrm at strxfrm.c:143
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libc/string/FreeBSD/strxfrm.c", language = "c11"
+       Function: id = {0x4001780000000dfc}, name = "strxfrm", range = [0x00000000000d3240-0x00000000000d330c)
+       FuncType: id = {0x4001780000000dfc}, byte-size = 0, decl = strxfrm.c:142, compiler_type = "unsigned long (char *__restrict, const char *__restrict, size_t)"
+         Blocks: id = {0x4001780000000dfc}, range = [0x000d3240-0x000d330c)
+      LineEntry: [0x00000000000d3240-0x00000000000d3258): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/libc/string/FreeBSD/strxfrm.c:143
+         Symbol: id = {0x00004a15}, range = [0x00000000000d3240-0x00000000000d330c), name="strxfrm"
+       Variable: id = {0x4001780000000e15}, name = "dest", type = "char *__restrict", valid ranges = <block>, location = DW_OP_fbreg -40, decl = strxfrm.c:142
+       Variable: id = {0x4001780000000e23}, name = "src", type = "const char *__restrict", valid ranges = <block>, location = DW_OP_breg31 WSP+48, decl = strxfrm.c:142
+       Variable: id = {0x4001780000000e31}, name = "len", type = "size_t", valid ranges = <block>, location = DW_OP_breg31 WSP+40, decl = strxfrm.c:142
+
+(lldb) image lookup -vn task_threads
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x00000000000a485c] (libSystem.B.dylib.__TEXT.__text + 668660)
+        Summary: libSystem.B.dylib`task_threads at task.c:513
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libsystem_kernel/internal_include/mach/task.c", language = "c11"
+       Function: id = {0x40010b00000024b7}, name = "task_threads", range = [0x00000000000a485c-0x00000000000a49c8)
+       FuncType: id = {0x40010b00000024b7}, byte-size = 0, decl = task.c:507, compiler_type = "kern_return_t (task_inspect_t, thread_act_array_t *, mach_msg_type_number_t *)"
+         Blocks: id = {0x40010b00000024b7}, range = [0x000a485c-0x000a49c8)
+      LineEntry: [0x00000000000a485c-0x00000000000a4878): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libsystem_kernel/internal_include/mach/task.c:513
+         Symbol: id = {0x00003e6e}, range = [0x00000000000a485c-0x00000000000a49c8), name="task_threads"
+       Variable: id = {0x40010b00000024d1}, name = "target_task", type = "task_inspect_t", valid ranges = <block>, location = DW_OP_fbreg -8, decl = task.c:509
+       Variable: id = {0x40010b00000024e0}, name = "act_list", type = "thread_act_array_t *", valid ranges = <block>, location = DW_OP_fbreg -16, decl = task.c:510
+       Variable: id = {0x40010b00000024ef}, name = "act_listCnt", type = "mach_msg_type_number_t *", valid ranges = <block>, location = DW_OP_fbreg -24, decl = task.c:511
+       Variable: id = {0x40010b00000024fe}, name = "Mess", type = "(unnamed union)", valid ranges = <block>, location = DW_OP_breg31 WSP+40, decl = task.c:568
+       Variable: id = {0x40010b000000250d}, name = "InP", type = "Request *", valid ranges = <block>, location = DW_OP_breg31 WSP+32, decl = task.c:570
+       Variable: id = {0x40010b000000251c}, name = "Out0P", type = "Reply *", valid ranges = <block>, location = DW_OP_breg31 WSP+24, decl = task.c:571
+       Variable: id = {0x40010b000000252b}, name = "msg_result", type = "mach_msg_return_t", valid ranges = <block>, location = DW_OP_breg31 WSP+20, decl = task.c:573
+       Variable: id = {0x40010b000000253a}, name = "check_result", type = "kern_return_t", valid ranges = <block>, location = DW_OP_breg31 WSP+16, decl = task.c:576
+
+(lldb) image lookup -vn thread_resume
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x00000000000a7728] (libSystem.B.dylib.__TEXT.__text + 680640)
+        Summary: libSystem.B.dylib`thread_resume at thread_act.c:1078
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libsystem_kernel/internal_include/mach/thread_act.c", language = "c11"
+       Function: id = {0x40010c0000001db0}, name = "thread_resume", range = [0x00000000000a7728-0x00000000000a786c)
+       FuncType: id = {0x40010c0000001db0}, byte-size = 0, decl = thread_act.c:1074, compiler_type = "kern_return_t (thread_read_t)"
+         Blocks: id = {0x40010c0000001db0}, range = [0x000a7728-0x000a786c)
+      LineEntry: [0x00000000000a7728-0x00000000000a773c): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libsystem_kernel/internal_include/mach/thread_act.c:1078
+         Symbol: id = {0x00003ef2}, range = [0x00000000000a7728-0x00000000000a786c), name="thread_resume"
+       Variable: id = {0x40010c0000001dca}, name = "target_act", type = "thread_read_t", valid ranges = <block>, location = DW_OP_fbreg -8, decl = thread_act.c:1076
+       Variable: id = {0x40010c0000001dd9}, name = "Mess", type = "(unnamed union)", valid ranges = <block>, location = DW_OP_breg31 WSP+44, decl = thread_act.c:1125
+       Variable: id = {0x40010c0000001de8}, name = "InP", type = "Request *", valid ranges = <block>, location = DW_OP_breg31 WSP+32, decl = thread_act.c:1127
+       Variable: id = {0x40010c0000001df7}, name = "Out0P", type = "Reply *", valid ranges = <block>, location = DW_OP_breg31 WSP+24, decl = thread_act.c:1128
+       Variable: id = {0x40010c0000001e06}, name = "msg_result", type = "mach_msg_return_t", valid ranges = <block>, location = DW_OP_breg31 WSP+20, decl = thread_act.c:1130
+       Variable: id = {0x40010c0000001e15}, name = "check_result", type = "kern_return_t", valid ranges = <block>, location = DW_OP_breg31 WSP+16, decl = thread_act.c:1133
+
+(lldb) image lookup -vn thread_suspend
+1 match found in /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib:
+        Address: libSystem.B.dylib[0x00000000000a7534] (libSystem.B.dylib.__TEXT.__text + 680140)
+        Summary: libSystem.B.dylib`thread_suspend at thread_act.c:947
+         Module: file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/lib/libSystem.B.dylib", arch = "arm64"
+    CompileUnit: id = {0x00000000}, file = "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libsystem_kernel/internal_include/mach/thread_act.c", language = "c11"
+       Function: id = {0x40010c0000001c85}, name = "thread_suspend", range = [0x00000000000a7534-0x00000000000a7678)
+       FuncType: id = {0x40010c0000001c85}, byte-size = 0, decl = thread_act.c:943, compiler_type = "kern_return_t (thread_read_t)"
+         Blocks: id = {0x40010c0000001c85}, range = [0x000a7534-0x000a7678)
+      LineEntry: [0x00000000000a7534-0x00000000000a7548): /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libsystem_kernel/internal_include/mach/thread_act.c:947
+         Symbol: id = {0x00003eea}, range = [0x00000000000a7534-0x00000000000a7678), name="thread_suspend"
+       Variable: id = {0x40010c0000001c9f}, name = "target_act", type = "thread_read_t", valid ranges = <block>, location = DW_OP_fbreg -8, decl = thread_act.c:945
+       Variable: id = {0x40010c0000001cae}, name = "Mess", type = "(unnamed union)", valid ranges = <block>, location = DW_OP_breg31 WSP+44, decl = thread_act.c:994
+       Variable: id = {0x40010c0000001cbd}, name = "InP", type = "Request *", valid ranges = <block>, location = DW_OP_breg31 WSP+32, decl = thread_act.c:996
+       Variable: id = {0x40010c0000001ccc}, name = "Out0P", type = "Reply *", valid ranges = <block>, location = DW_OP_breg31 WSP+24, decl = thread_act.c:997
+       Variable: id = {0x40010c0000001cdb}, name = "msg_result", type = "mach_msg_return_t", valid ranges = <block>, location = DW_OP_breg31 WSP+20, decl = thread_act.c:999
+       Variable: id = {0x40010c0000001cea}, name = "check_result", type = "kern_return_t", valid ranges = <block>, location = DW_OP_breg31 WSP+16, decl = thread_act.c:1002
+

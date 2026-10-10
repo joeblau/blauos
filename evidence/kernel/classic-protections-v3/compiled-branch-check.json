@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "observations": [
+    {
+      "build": "v2",
+      "object_sha256": "5d0efbd51cf6c4650a166e326d52f7120abc2f15839a8c5b4311cf91cfc06c6f",
+      "argv": [
+        "xcrun",
+        "llvm-objdump",
+        "-dr",
+        "--disassemble-symbols=_arm_vm_prot_finalize",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/classic-protections-v2/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_VIRT/osfmk/DEVELOPMENT/arm_vm_init.o"
+      ],
+      "reads_of_segSizePLKTEXTEXEC": 1
+    },
+    {
+      "build": "v3",
+      "object_sha256": "0fb18b0ecb0ab9f86495235f2112038d4ad3438fe31dd0ea50c58bfc8cc5964c",
+      "argv": [
+        "xcrun",
+        "llvm-objdump",
+        "-dr",
+        "--disassemble-symbols=_arm_vm_prot_finalize",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/classic-protections-v3/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_VIRT/osfmk/DEVELOPMENT/arm_vm_init.o"
+      ],
+      "reads_of_segSizePLKTEXTEXEC": 2
+    }
+  ],
+  "explanation": "Corrected QEMUVIRT branch appears in actual object disassembly; v3 adds another cache-layout comparison and a conditional branch over blanket RNX"
+}

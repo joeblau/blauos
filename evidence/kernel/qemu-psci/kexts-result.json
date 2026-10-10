@@ -1,0 +1,29 @@
+{
+  "argv": [
+    "cmake",
+    "--build",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci",
+    "--target",
+    "PDArmPlatformExpert",
+    "PDArmPCI",
+    "IOPCIFamily",
+    "IOStorageFamily",
+    "ext4.kext",
+    "Ext4FileSystemDriver.kext",
+    "AppleFileSystemDriver.kext",
+    "corecrypto.kext",
+    "pthread.kext",
+    "IONetworkingFamily.kext",
+    "IOVirtIOFamily.kext",
+    "IOVirtIOBlock.kext",
+    "IOVirtIONet.kext",
+    "--parallel",
+    "8"
+  ],
+  "cwd": "/Users/joeblau/Developer/joeblau/src/blauos",
+  "exit_code": 0,
+  "raw_log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/logs/kexts.log",
+  "raw_log_bytes": 67770,
+  "raw_log_sha256": "b3ec7ac0429a21695b7327a74a4d3fc11035cd588da82243179e9b323a1bea24",
+  "errors": []
+}

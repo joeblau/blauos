@@ -1,0 +1,71 @@
+{
+  "status": "kernel-built-not-boot-validated",
+  "exit_code": 0,
+  "source": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/source-overlay",
+  "configuration": "DEVELOPMENT ARM64",
+  "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+  "source_amendments": [
+    {
+      "source_archive_sha256": "1c955560333a1e47a38f2018ead9fd90580eb4b9520f44435ebfa03afcd3c1f6",
+      "excluded_absolute_symlinks": [
+        "src/Libraries/libSystem/libc/gen/FreeBSD/result"
+      ]
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/vm/patches/xnu-classic-arm64-protections.patch",
+      "sha256": "371466a26ab5ecb68d7491566900c7239a6987cd7f52ddfdc9865ce81c29ba69"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/vm/patches/pdarm-qemu-psci-shutdown.patch",
+      "sha256": "b153ed78a06dd06f41dcd6cd36dffb4b17d1ea792fed9ae08535d02c0694f201"
+    }
+  ],
+  "manifest_sha256": "8022bbbfb33204b56bb3297cd8cbb39fb6c08ea65c476492d99462f7edfe3657",
+  "machine": "VIRT",
+  "sdk": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.2.sdk",
+  "artifacts": [
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/src/Kernel/xnu/xnu/System/Library/Kernels/kernel.development.virt",
+      "size": 12588112,
+      "sha256": "7bae7cc6fe8e7f69c2e6ddf0ddb728c3cd8035fe3d8dde96a6d3e645db94977f",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/src/Kernel/xnu/xnu/System/Library/Kernels/kernel.development.virt: Mach-O 64-bit executable arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_VIRT/kernel.development.virt",
+      "size": 12588112,
+      "sha256": "7bae7cc6fe8e7f69c2e6ddf0ddb728c3cd8035fe3d8dde96a6d3e645db94977f",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_VIRT/kernel.development.virt: Mach-O 64-bit executable arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_VIRT/kernel.development.virt.dSYM/Contents/Resources/DWARF/kernel.development.virt",
+      "size": 52537077,
+      "sha256": "de1c49ab9a6ef3064e9c747799b0af6a070c4be84fc05f7ea756229cbdd77ef0",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_VIRT/kernel.development.virt.dSYM/Contents/Resources/DWARF/kernel.development.virt: Mach-O 64-bit dSYM companion file arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_VIRT/kernel.development.virt.unstripped",
+      "size": 15395096,
+      "sha256": "39540dae1dbbf6af9cebcd3e142f56206b6967b6c03d2a29c6ba4b1c4c310422",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_VIRT/kernel.development.virt.unstripped: Mach-O 64-bit executable arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/src/Kernel/xnu/xnu_build/src/xnu-build/kernel.development.virt",
+      "size": 12588112,
+      "sha256": "7bae7cc6fe8e7f69c2e6ddf0ddb728c3cd8035fe3d8dde96a6d3e645db94977f",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/src/Kernel/xnu/xnu_build/src/xnu-build/kernel.development.virt: Mach-O 64-bit executable arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/src/Kernel/xnu/xnu_sym/kernel.development.virt",
+      "size": 15395096,
+      "sha256": "39540dae1dbbf6af9cebcd3e142f56206b6967b6c03d2a29c6ba4b1c4c310422",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/src/Kernel/xnu/xnu_sym/kernel.development.virt: Mach-O 64-bit executable arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/src/Kernel/xnu/xnu_sym/kernel.development.virt.dSYM/Contents/Resources/DWARF/kernel.development.virt",
+      "size": 52537077,
+      "sha256": "de1c49ab9a6ef3064e9c747799b0af6a070c4be84fc05f7ea756229cbdd77ef0",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/src/Kernel/xnu/xnu_sym/kernel.development.virt.dSYM/Contents/Resources/DWARF/kernel.development.virt: Mach-O 64-bit dSYM companion file arm64"
+    }
+  ],
+  "boot_validated": false
+}

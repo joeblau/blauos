@@ -1,0 +1,142 @@
+
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/classic-protections-v3/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_VIRT/osfmk/DEVELOPMENT/arm_vm_init.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000000e30 <_arm_vm_prot_finalize>:
+     e30: a9bc5ff8     	stp	x24, x23, [sp, #-0x40]!
+     e34: a90157f6     	stp	x22, x21, [sp, #0x10]
+     e38: a9024ff4     	stp	x20, x19, [sp, #0x20]
+     e3c: a9037bfd     	stp	x29, x30, [sp, #0x30]
+     e40: 9100c3fd     	add	x29, sp, #0x30
+     e44: 90000014     	adrp	x20, 0x0 <ltmp0>
+		0000000000000e44:  ARM64_RELOC_PAGE21	_gPhysBase
+     e48: f9400280     	ldr	x0, [x20]
+		0000000000000e48:  ARM64_RELOC_PAGEOFF12	_gPhysBase
+     e4c: 94000000     	bl	0xe4c <_arm_vm_prot_finalize+0x1c>
+		0000000000000e4c:  ARM64_RELOC_BRANCH26	_phystokv
+     e50: 90000008     	adrp	x8, 0x0 <ltmp0>
+		0000000000000e50:  ARM64_RELOC_PAGE21	_segLOWEST
+     e54: f9400108     	ldr	x8, [x8]
+		0000000000000e54:  ARM64_RELOC_PAGEOFF12	_segLOWEST
+     e58: 90000015     	adrp	x21, 0x0 <ltmp0>
+		0000000000000e58:  ARM64_RELOC_PAGE21	_gVirtBase
+     e5c: f94002a9     	ldr	x9, [x21]
+		0000000000000e5c:  ARM64_RELOC_PAGEOFF12	_gVirtBase
+     e60: cb090101     	sub	x1, x8, x9
+     e64: 94000000     	bl	0xe64 <_arm_vm_prot_finalize+0x34>
+		0000000000000e64:  ARM64_RELOC_BRANCH26	_ml_static_mfree
+     e68: 90000013     	adrp	x19, 0x0 <ltmp0>
+		0000000000000e68:  ARM64_RELOC_PAGE21	_segSizePLKDATACONST
+     e6c: f9400268     	ldr	x8, [x19]
+		0000000000000e6c:  ARM64_RELOC_PAGEOFF12	_segSizePLKDATACONST
+     e70: 90000017     	adrp	x23, 0x0 <ltmp0>
+		0000000000000e70:  ARM64_RELOC_PAGE21	_segSizePLKTEXTEXEC
+     e74: f94002e9     	ldr	x9, [x23]
+		0000000000000e74:  ARM64_RELOC_PAGEOFF12	_segSizePLKTEXTEXEC
+     e78: 90000018     	adrp	x24, 0x0 <ltmp0>
+		0000000000000e78:  ARM64_RELOC_PAGE21	_segSizePRELINKTEXT
+     e7c: f9400301     	ldr	x1, [x24]
+		0000000000000e7c:  ARM64_RELOC_PAGEOFF12	_segSizePRELINKTEXT
+     e80: f100011f     	cmp	x8, #0x0
+     e84: fa400920     	ccmp	x9, #0x0, #0x0, eq
+     e88: fa400824     	ccmp	x1, #0x0, #0x4, eq
+     e8c: 90000016     	adrp	x22, 0x0 <ltmp0>
+		0000000000000e8c:  ARM64_RELOC_PAGE21	_segPRELINKTEXTB
+     e90: 54000140     	b.eq	0xeb8 <_arm_vm_prot_finalize+0x88>
+     e94: f94002c8     	ldr	x8, [x22]
+		0000000000000e94:  ARM64_RELOC_PAGEOFF12	_segPRELINKTEXTB
+     e98: 90000009     	adrp	x9, 0x0 <ltmp0>
+		0000000000000e98:  ARM64_RELOC_PAGE21	_segTEXTB
+     e9c: f9400129     	ldr	x9, [x9]
+		0000000000000e9c:  ARM64_RELOC_PAGEOFF12	_segTEXTB
+     ea0: 8b010100     	add	x0, x8, x1
+     ea4: cb000121     	sub	x1, x9, x0
+     ea8: 94000000     	bl	0xea8 <_arm_vm_prot_finalize+0x78>
+		0000000000000ea8:  ARM64_RELOC_BRANCH26	_ml_static_mfree
+     eac: f9400268     	ldr	x8, [x19]
+		0000000000000eac:  ARM64_RELOC_PAGEOFF12	_segSizePLKDATACONST
+     eb0: f94002e9     	ldr	x9, [x23]
+		0000000000000eb0:  ARM64_RELOC_PAGEOFF12	_segSizePLKTEXTEXEC
+     eb4: f9400301     	ldr	x1, [x24]
+		0000000000000eb4:  ARM64_RELOC_PAGEOFF12	_segSizePRELINKTEXT
+     eb8: f100011f     	cmp	x8, #0x0
+     ebc: fa400920     	ccmp	x9, #0x0, #0x0, eq
+     ec0: fa400824     	ccmp	x1, #0x0, #0x4, eq
+     ec4: 54000141     	b.ne	0xeec <_arm_vm_prot_finalize+0xbc>
+     ec8: f94002c0     	ldr	x0, [x22]
+		0000000000000ec8:  ARM64_RELOC_PAGEOFF12	_segPRELINKTEXTB
+     ecc: d2800002     	mov	x2, #0x0                ; =0
+     ed0: 52800023     	mov	w3, #0x1                ; =1
+     ed4: 52800044     	mov	w4, #0x2                ; =2
+     ed8: 52800025     	mov	w5, #0x1                ; =1
+     edc: 52800026     	mov	w6, #0x1                ; =1
+     ee0: 94000000     	bl	0xee0 <_arm_vm_prot_finalize+0xb0>
+		0000000000000ee0:  ARM64_RELOC_BRANCH26	_arm_vm_page_granular_prot
+     ee4: f9400261     	ldr	x1, [x19]
+		0000000000000ee4:  ARM64_RELOC_PAGEOFF12	_segSizePLKDATACONST
+     ee8: 14000002     	b	0xef0 <_arm_vm_prot_finalize+0xc0>
+     eec: d2800001     	mov	x1, #0x0                ; =0
+     ef0: 90000008     	adrp	x8, 0x0 <ltmp0>
+		0000000000000ef0:  ARM64_RELOC_PAGE21	_segPLKDATACONSTB
+     ef4: f9400100     	ldr	x0, [x8]
+		0000000000000ef4:  ARM64_RELOC_PAGEOFF12	_segPLKDATACONSTB
+     ef8: d2800002     	mov	x2, #0x0                ; =0
+     efc: 52800023     	mov	w3, #0x1                ; =1
+     f00: 52800044     	mov	w4, #0x2                ; =2
+     f04: 52800025     	mov	w5, #0x1                ; =1
+     f08: 52800026     	mov	w6, #0x1                ; =1
+     f0c: 94000000     	bl	0xf0c <_arm_vm_prot_finalize+0xdc>
+		0000000000000f0c:  ARM64_RELOC_BRANCH26	_arm_vm_page_granular_prot
+     f10: 90000013     	adrp	x19, 0x0 <ltmp0>
+		0000000000000f10:  ARM64_RELOC_GOT_LOAD_PAGE21	_percpu_slot_cpu_data
+     f14: f9400273     	ldr	x19, [x19]
+		0000000000000f14:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_percpu_slot_cpu_data
+     f18: aa1303e0     	mov	x0, x19
+     f1c: 94000000     	bl	0xf1c <_arm_vm_prot_finalize+0xec>
+		0000000000000f1c:  ARM64_RELOC_BRANCH26	_cpu_stack_alloc
+     f20: aa1303e0     	mov	x0, x19
+     f24: 94000000     	bl	0xf24 <_arm_vm_prot_finalize+0xf4>
+		0000000000000f24:  ARM64_RELOC_BRANCH26	_arm64_replace_bootstack
+     f28: 90000008     	adrp	x8, 0x0 <ltmp0>
+		0000000000000f28:  ARM64_RELOC_PAGE21	_segBOOTDATAB
+     f2c: f9400108     	ldr	x8, [x8]
+		0000000000000f2c:  ARM64_RELOC_PAGEOFF12	_segBOOTDATAB
+     f30: f94002a9     	ldr	x9, [x21]
+		0000000000000f30:  ARM64_RELOC_PAGEOFF12	_gVirtBase
+     f34: cb090108     	sub	x8, x8, x9
+     f38: f9400289     	ldr	x9, [x20]
+		0000000000000f38:  ARM64_RELOC_PAGEOFF12	_gPhysBase
+     f3c: 8b090100     	add	x0, x8, x9
+     f40: 94000000     	bl	0xf40 <_arm_vm_prot_finalize+0x110>
+		0000000000000f40:  ARM64_RELOC_BRANCH26	_phystokv
+     f44: 90000008     	adrp	x8, 0x0 <ltmp0>
+		0000000000000f44:  ARM64_RELOC_PAGE21	_segSizeBOOTDATA
+     f48: f9400101     	ldr	x1, [x8]
+		0000000000000f48:  ARM64_RELOC_PAGEOFF12	_segSizeBOOTDATA
+     f4c: 94000000     	bl	0xf4c <_arm_vm_prot_finalize+0x11c>
+		0000000000000f4c:  ARM64_RELOC_BRANCH26	_ml_static_mfree
+     f50: 90000008     	adrp	x8, 0x0 <ltmp0>
+		0000000000000f50:  ARM64_RELOC_PAGE21	_segDATACONSTB
+     f54: f9400100     	ldr	x0, [x8]
+		0000000000000f54:  ARM64_RELOC_PAGEOFF12	_segDATACONSTB
+     f58: 90000008     	adrp	x8, 0x0 <ltmp0>
+		0000000000000f58:  ARM64_RELOC_PAGE21	_segSizeDATACONST
+     f5c: f9400101     	ldr	x1, [x8]
+		0000000000000f5c:  ARM64_RELOC_PAGEOFF12	_segSizeDATACONST
+     f60: d2800002     	mov	x2, #0x0                ; =0
+     f64: 52800023     	mov	w3, #0x1                ; =1
+     f68: 52800044     	mov	w4, #0x2                ; =2
+     f6c: 52800025     	mov	w5, #0x1                ; =1
+     f70: 52800026     	mov	w6, #0x1                ; =1
+     f74: 94000000     	bl	0xf74 <_arm_vm_prot_finalize+0x144>
+		0000000000000f74:  ARM64_RELOC_BRANCH26	_arm_vm_page_granular_prot
+     f78: d5033b9f     	dsb	ish
+     f7c: d508831f     	tlbi	vmalle1is
+     f80: d5033b9f     	dsb	ish
+     f84: d5033fdf     	isb
+     f88: a9437bfd     	ldp	x29, x30, [sp, #0x30]
+     f8c: a9424ff4     	ldp	x20, x19, [sp, #0x20]
+     f90: a94157f6     	ldp	x22, x21, [sp, #0x10]
+     f94: a8c45ff8     	ldp	x24, x23, [sp], #0x40
+     f98: d65f03c0     	ret

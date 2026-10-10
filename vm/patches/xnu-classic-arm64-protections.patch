@@ -1,0 +1,23 @@
+--- a/src/Kernel/xnu/osfmk/arm64/arm_vm_init.c
++++ b/src/Kernel/xnu/osfmk/arm64/arm_vm_init.c
+@@ -1592,7 +1592,20 @@
+ 	}
+ 
+ 	/* tighten permissions on kext read only data and code */
++#if defined(QEMUVIRT)
++	/*
++	 * VIRT classic caches contain individually mapped kext segments.
++	 * OSKext has already applied each segment's validated protections;
++	 * blanket RNX would revoke __TEXT_EXEC after corecrypto starts.
++	 * Gaps and unregistered images retain the initial RWNX mapping.
++	 * Coalesced caches continue to use the native protection policy.
++	 */
++	if (segSizePLKDATACONST || segSizePLKTEXTEXEC || !segSizePRELINKTEXT) {
++		arm_vm_page_granular_RNX(segPRELINKTEXTB, segSizePRELINKTEXT, ARM64_GRANULE_ALLOW_BLOCK);
++	}
++#else
+ 	arm_vm_page_granular_RNX(segPRELINKTEXTB, segSizePRELINKTEXT, ARM64_GRANULE_ALLOW_BLOCK);
++#endif
+ 	arm_vm_page_granular_RNX(segPLKDATACONSTB, segSizePLKDATACONST, ARM64_GRANULE_ALLOW_BLOCK);
+ 
+ 	cpu_stack_alloc(&BootCpuData);

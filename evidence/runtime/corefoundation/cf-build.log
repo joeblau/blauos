@@ -1,0 +1,47 @@
+[ 55%] Built target CoreFoundation_POPULATE_HEADERS
+[ 55%] Building C object CMakeFiles/CoreFoundation.dir/Locale.subproj/CFDateComponents.c.o
+[ 57%] Building C object CMakeFiles/CoreFoundation.dir/Locale.subproj/CFCalendar.c.o
+[ 57%] Building C object CMakeFiles/CoreFoundation.dir/Locale.subproj/CFCalendar_Enumerate.c.o
+[ 57%] Building C object CMakeFiles/CoreFoundation.dir/Locale.subproj/CFDateFormatter.c.o
+In file included from <built-in>:2:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/corefoundation-source/Base.subproj/CoreFoundation_Prefix.h:22:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/include/CoreFoundation/CFAvailability.h:14:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/include/CoreFoundation/TargetConditionals.h:119:9: warning: In file included from In file included from <built-in>:2:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/corefoundation-source/Base.subproj/CoreFoundation_Prefix.h:22<built-in>:2:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/corefoundation-source/Base.subproj/CoreFoundation_Prefix.h:22:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/include/CoreFoundation/CFAvailability.h:14:
+      |         ^
+In file included from <built-in>:2:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/corefoundation-source/Base.subproj/CoreFoundation_Prefix.h:22:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/include/CoreFoundation/CFAvailability.h:14:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/include/CoreFoundation/TargetConditionals.h:121:9: warning: 'TARGET_OS_OSX' macro redefined [-Wmacro-redefined]
+  121 | #define TARGET_OS_OSX          TARGET_OS_DARWIN
+      |         ^
+<built-in>:390:9: note: previous definition is here
+  390 | #define TARGET_OS_OSX 1
+      |         ^
+4 warnings generated.
+4 warnings generated.
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/corefoundation-source/String.subproj/CFStringTransform.c:20:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/corefoundation/CoreFoundation.framework/PrivateHeaders/CFInternal.h:160:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/include/CoreFoundation/ForFoundationOnly.h:529:58: warning: implicit conversion from 'unsigned long' to 'double' changes value from 18446744073709551615 to 18446744073709551616 [-Wimplicit-const-int-float-conversion]
+  529 |     const double fractional = (positive - positiveInt) * ULONG_MAX;
+      |                                                        ~ ^~~~~~~~~
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/21/include/limits.h:65:37: note: expanded from macro 'ULONG_MAX'
+   65 | #define ULONG_MAX (__LONG_MAX__ *2UL+1UL)
+      |                    ~~~~~~~~~~~~~~~~~^~~~
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/corefoundation-source/String.subproj/CFStringUtilities.c:11:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/corefoundation/CoreFoundation.framework/PrivateHeaders/CFInternal.h:160:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/root/usr/include/CoreFoundation/ForFoundationOnly.h:529:58: warning: implicit conversion from 'unsigned long' to 'double' changes value from 18446744073709551615 to 18446744073709551616 [-Wimplicit-const-int-float-conversion]
+  529 |     const double fractional = (positive - positiveInt) * ULONG_MAX;
+      |                                                        ~ ^~~~~~~~~
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/21/include/limits.h:65:37: note: expanded from macro 'ULONG_MAX'
+   65 | #define ULONG_MAX (__LONG_MAX__ *2UL+1UL)
+      |                    ~~~~~~~~~~~~~~~~~^~~~
+4 warnings generated.
+4 warnings generated.
+[ 61%] Linking C shared library CoreFoundation.framework/libCoreFoundation.dylib
+ld: warning: -dylib_file is deprecated. Use -F or -L to control where indirect dylibs are found
+ld: warning: ignoring duplicate libraries: '-ldispatch'
+ld: warning: REFERENCED_DYNAMICALLY flag on symbol '___crashreporter_info__' is deprecated
+[100%] Built target CoreFoundation

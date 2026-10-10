@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "source_kernel_execution_observed": true,
+  "persistent_root_mounted": true,
+  "source_launchd_main_observed": true,
+  "source_launchctl_exec_observed": true,
+  "mach_post_fork_ping_observed": true,
+  "source_launchd_job_exec_observed": true,
+  "guest_probe_pid": 4,
+  "source_mdnsd_exec_observed": true,
+  "mdnsd_pid": 5,
+  "pid1_crashed": false,
+  "bootstrap_child_crashed": false,
+  "runtime_functional_tests_passed": false,
+  "shell_execution_passed": false,
+  "network_connectivity_passed": false,
+  "guest_shutdown_passed": false,
+  "acceptance_passed": false,
+  "blocker": "Source netsetup waits30seconds for en0, only loopback exists. Driver requires actual IONetworkStack nativeIOKit naming/registration request; source client is being integrated.",
+  "image_manifest": "image-manifest.json",
+  "boot_result": "result.json"
+}
