@@ -1,0 +1,22 @@
+BLAUOS_SHELL_EXECUTED
+BLAUOS_GUEST_TEST shell=pass
+BLAUOS_RUNTIME allocation=pass
+BLAUOS_RUNTIME locale_conversions=pass
+BLAUOS_RUNTIME file_io=pass
+BLAUOS_RUNTIME syscall=pass
+BLAUOS_RUNTIME pthread=pass
+BLAUOS_RUNTIME concurrent_once=pass
+BLAUOS_RUNTIME blocks_lifetime=pass
+BLAUOS_RUNTIME mach_timer=pass
+BLAUOS_RUNTIME atfork_handlers=pass
+BLAUOS_RUNTIME process_exit=pass
+BLAUOS_RUNTIME dynamic_loader=pass
+BLAUOS_RUNTIME image=/bin/blauos_runtime_probe
+BLAUOS_RUNTIME image=/usr/lib/libobjc.A.dylib
+BLAUOS_RUNTIME image=/usr/lib/libSystem.B.dylib
+BLAUOS_RUNTIME image=/usr/lib/system/libdyld.dylib
+BLAUOS_RUNTIME image=/usr/lib/libc++abi.dylib
+BLAUOS_RUNTIME required_images=pass shared_cache=absent
+BLAUOS_RUNTIME result=pass
+BLAUOS_GUEST_TEST runtime=pass
+BLAUOS_LAUNCHD job_launch=pass bootstrap_registration=pass ipc_roundtrip=pass

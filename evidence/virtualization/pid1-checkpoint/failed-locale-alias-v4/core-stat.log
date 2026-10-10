@@ -1,0 +1,15 @@
+debugfs 1.47.4 (6-Mar-2025)
+Inode: 467   Type: regular    Mode:  0400   Flags: 0x80000
+Generation: 0    Version: 0x00000000:00000000
+User:     0   Group:     0   Project:     0   Size: 121716736
+File ACL: 0
+Links: 1   Blockcount: 122992
+Fragment:  Address: 0    Number: 0    Size: 0
+ ctime: 0x00000068:00000000 -- Thu Jan  1 00:01:44 1970
+ atime: 0x0000000b:00000000 -- Thu Jan  1 00:00:11 1970
+ mtime: 0x00000068:00000000 -- Thu Jan  1 00:01:44 1970
+crtime: 0x00000000:00000000 -- Thu Jan  1 00:00:00 1970
+Size of extra inode fields: 32
+Inode checksum: 0xec4401fe
+EXTENTS:
+(0-1):35062-35063, (4-13210):19561-32767, (13211-13331):32897-33017, (27672-29715):33018-35061

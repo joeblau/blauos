@@ -15,7 +15,7 @@ test_first=
 test_second=
 test_attempt=0
 while [ "$test_attempt" -lt 30 ]; do
-  test_first=$("$test_probe" --client 2>/dev/null) && break
+  test_first=$("$test_probe" --client) && break
   test_attempt=$((test_attempt + 1))
   sleep 1
 done
@@ -23,7 +23,7 @@ done
 echo "BLAUOS_LAUNCHD job_launch=pass bootstrap_registration=pass ipc_roundtrip=pass"
 test_attempt=0
 while [ "$test_attempt" -lt 30 ]; do
-  test_second=$("$test_probe" --client 2>/dev/null) && [ "$test_second" != "$test_first" ] && break
+  test_second=$("$test_probe" --client) && [ "$test_second" != "$test_first" ] && break
   test_attempt=$((test_attempt + 1))
   sleep 1
 done

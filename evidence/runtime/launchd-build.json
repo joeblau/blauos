@@ -121,10 +121,26 @@
     }
   ],
   "errors": [],
-  "guest_functional_tests_verified": false,
-  "shutdown_verified": false,
+  "guest_functional_tests_verified": true,
+  "shutdown_verified": true,
   "bootstrap_launchctl_alias": "/bin/launchctl -> ../usr/bin/launchctl",
-  "unmet_acceptance": [
-    "real guest job/bootstrap/supervision/error/shutdown tests remain unverified"
-  ]
+  "unmet_acceptance": [],
+  "post_build_guest_validation": {
+    "evidence": "evidence/runtime/guest-runtime-v11.json",
+    "evidence_sha256": "8d78f71da147dc6e396f5f320eaa5a5b046f3af6e6cb387ca3ec783d6b86ded8",
+    "source_provenance": {
+      "path": ".blauos/build/vm/combined-root-v13/provenance.json",
+      "sha256": "b785bd1b5465ffbe9b8c4daa67e1e56e2c9cebd8c25e4f376651c7b0baddb4a0",
+      "bytes": 34921
+    },
+    "source_closure": {
+      "path": ".blauos/build/vm/native-image-v11/runtime-audit.json",
+      "sha256": "d2dd5c51269ee456e90e46463fb093f842c11d6f6420427cc79810eba381b0a6",
+      "bytes": 3708745
+    },
+    "full_smoke_pass": true,
+    "guest_shutdown_passed": true,
+    "fresh_nonce_acceptance": true,
+    "fresh_clean_ci_replay_verified": false
+  }
 }

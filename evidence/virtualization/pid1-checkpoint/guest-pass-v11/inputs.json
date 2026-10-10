@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "image": ".blauos/build/vm/native-image-v11/blauos-arm64.img",
+  "kernel_collection": ".blauos/build/vm/kc-relocations-v7/kernel.classic",
+  "kernel_collection_sha256": "b247969e06107dda50fa48d2c0dc1ca3249f5eec83f3e39dbb178e51f066993b",
+  "kernel_collection_pointer_audit": "evidence/kernel/kc-relocations/v7-pointer-verification.json",
+  "root": ".blauos/build/vm/combined-root-v13/root",
+  "artifact_provenance": "runtime-provenance.json",
+  "runtime_audit_raw": ".blauos/build/vm/native-image-v11/artifacts/runtime-audit.json",
+  "runtime_audit_raw_sha256": "d2dd5c51269ee456e90e46463fb093f842c11d6f6420427cc79810eba381b0a6",
+  "local_sdk_input": ".blauos/inputs/MacOSX27.2.sdk.tar.xz",
+  "local_sdk_sha256": "8230e9c59a84f995731a7242a41303cc69a352d2e1e8a0be4cf1021e3c943ea7",
+  "workspace_revision": "b1b07bb5c604a52521fc4fffa6c3431d83842ba6",
+  "source_files_sha256": {
+    "sources.lock.json": "8022bbbfb33204b56bb3297cd8cbb39fb6c08ea65c476492d99462f7edfe3657",
+    "scripts/vm/build_userspace.py": "5c33913a9241282c0c67775d076f021d25f4153cf7ebcbd400835aebc7eb1b2f",
+    "scripts/vm/build_shell.py": "85accd023f29e2fa6f70a928c66a1651e451bb57b3bf1eb46e489fcc8369ff34",
+    "scripts/vm/compose_root.py": "ca17b49a45fdb746353cfcbe86948de1ea56e69b93d989e9e377c39037f283c5",
+    "scripts/vm/assemble.py": "04e75940334c515c4359362b71bda465af7e15afde4928e47bc85f25f52d3619",
+    "scripts/vm/finalize.py": "30d1c22737a4c47ab847cf69c6349381d029a2db5bf2ad4f2b05c2d997ebe060",
+    "scripts/vm/smoke.py": "2f31caffdfd9fb6f733bf280cef1cb05bdf43aa1ba7d1efc566c4cd38c4e5cac",
+    "scripts/build/runtime.py": "b0be02d523a562234016e365d36ee0a7100b34a32ac49c6c1e0dd1945a266bb8",
+    "vm/guest_probe.c": "cf6f97b226b4c39772ac265f98660b89f00377b19216694e8ffffb5012b6908b",
+    "vm/patches/netsetup-interface-registration.patch": "d1b2177b70a01f7a963211b104e60b687951e35fbc19d4c135856ceb77034752",
+    "vm/patches/pdarm-qemu-psci-shutdown.patch": "b153ed78a06dd06f41dcd6cd36dffb4b17d1ea792fed9ae08535d02c0694f201",
+    "vm/patches/xnu-classic-arm64-protections.patch": "371466a26ab5ecb68d7491566900c7239a6987cd7f52ddfdc9865ce81c29ba69",
+    "runtime/probes/runtime_probe.c": "262bc33658922292a640bb1dcea680fcf67b4420f64373c447dc629eb104a82f",
+    "runtime/probes/bootstrap_probe.c": "57b69b632f9d9a5315ab89a0df1ebf0fdda5f9719972449469fd75361dbec31f",
+    "runtime/probes/shutdown_probe.c": "01d02b9d5f32210a19361ea8cb86f9f761e0fb67d42d7e6ea12ae2d4d71fd3f8",
+    "runtime/probes/loader_fixture.c": "242c758f89b0b7ea225918fa3310419c93279a788174ebb3f78bf2035186cde0",
+    "runtime/fixtures/launchd-test.sh": "874be8521bd3b434fe8d21573f2898bbc276a71abc35eb45616a7ea528ab7024",
+    "runtime/fixtures/org.blauos.test.bootstrap.plist": "8e8a7d90d90bed488934eaada85ff831546442805cfbb80d75b3f0dc90e33c3e",
+    "runtime/fixtures/org.blauos.test.exec-failure.plist": "44685b6f5346c662bc8ac544708747b6b5016d06f16755171aaf4ef078c62381",
+    "runtime/fixtures/org.blauos.test.shutdown.plist": "08e55b2d118836b67fff209debcdc78de8c438c96856cf1b60f4f77e311fa117"
+  },
+  "scope": "native source-built ARM64 Darwin VIRT baseline; local build-only SDK is not distributed",
+  "vm_backend": "QEMU10.2.4 TCG in isolated Linux ARM64 container",
+  "container_image_id": "sha256:14d3ff6522877f922e115ec8cc3a12e77d7ab1a0f75806950368fc14d42f6ce0",
+  "container_pid1": [
+    "sleep",
+    "infinity"
+  ],
+  "emulator_profile": {
+    "machine": "virt-10.2",
+    "virtualization": false,
+    "gic_version": 3,
+    "accel": "tcg",
+    "cpu": "neoverse-n2"
+  }
+}

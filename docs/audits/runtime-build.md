@@ -9,6 +9,27 @@ staging pass (`source_build_pass`). Separate closure and independent execution
 fields stay explicit; compiled archives alone do not satisfy #17. The inspect
 command exits nonzero for an incomplete offline closure.
 
+The genuine ARM64 guest now passes the complete runtime, launchd service,
+network and clean shutdown tests. It runs the source shell and verifies
+allocation, locale conversion, file I/O, syscalls, threads, synchronized once,
+Blocks lifetime, Mach timers, atfork callbacks, process exit and dynamic
+loading. It identifies the independently built XNU 20.5.0 kernel, verifies the
+loaded source System/libdyld/ObjC images and rejects a dyld shared cache.
+Launchd loads a real MachService, restarts its failed server with a different
+PID, reaps the original child, unloads jobs and reports missing job/executable
+errors. DNS, both network directions and shutdown pass with a fresh host
+challenge. The shutdown job terminates and reaps its child; the host observes
+a genuine QMP guest shutdown. Captured source hashes and all observed output
+are in `evidence/runtime/guest-runtime-v11.json`. A complete fresh GitHub
+native CI replay remains required.
+
+The earlier runtime-only success remains in `guest-runtime-v8.json`. That
+experiment ended when the lab container's original two-hour sleep expired
+while the next service check was pending; no guest fault ended it. Tracked
+build reports now reference the later post-build validation. A new invocation
+of a build script still reports only compilation and requires its own guest
+execution evidence.
+
 Fetch the pinned inputs with the repository tooling, then replay:
 
 ```sh
@@ -54,11 +75,12 @@ The reviewed compatibility inputs are:
   registers and condition flags. The size-in-x9 ABI is captured from the
   selected compiler's actual assembly. This replaces PureDarwin's return-only
   helper and preserves stack guard faults; it is not a successful no-op.
-* `runtime/compat/libdyld.exports`: bounds the standalone source libdyld's
-  exports to loader, blocks and C++ ABI APIs. Embedded libc/syscall state stays
-  private. The link uses source archives and the real unwinder, with the SDK
-  System framework removed so SDK declarations cannot select runtime imports
-  ahead of the source implementation.
+* `runtime/compat/libdyld.exports`: bounds the source libdyld's exports to
+  loader, blocks and C++ ABI APIs. Ordinary libdyld imports the initialized
+  source System runtime; the bootstrap dyld executable retains its separate
+  early runtime. The links use source providers and the real unwinder, with
+  the SDK System framework removed so SDK declarations cannot select runtime
+  imports ahead of the source implementation.
 
 The runtime-only configuration does not configure the kernel header installer.
 The script generates the source libc headers and connects the build's
@@ -72,14 +94,13 @@ libunwind, and LLVM compiler-rt, plus linked source dyld, libdyld and libSystem
 and launchd/MIG archives. The base libraries stage under the ignored runtime
 `root/`; complete command and hash evidence is in `build.json`. Runtime CMake
 and the explicit ABI/unwind compiles now target macOS 11.0 instead of defaulting
-object deployment metadata to the host SDK version. The target filesystem,
-guest launchd tests and source-runtime execution remain required checks; even
-an offline symbol closure cannot validate initialization ordering or behavior
-of separately embedded runtime archives.
+object deployment metadata to the host SDK version. An offline symbol closure
+alone cannot validate initialization ordering or behavior. The captured guest
+proves the required runtime, launchd service and shutdown subsets.
 
 The actual Objective-C, full C++, ICU, C/ObjC CoreFoundation, IOKitCF and
-launchd/launchctl source compile/link recipes now pass. Independent execution
-is still a separate requirement. Replay the libraries in dependency order:
+launchd/launchctl source compile/link recipes now pass, followed by genuine
+independent execution. Replay the libraries in dependency order:
 
 ```sh
 python3 scripts/build/objc.py
@@ -124,7 +145,10 @@ The probe sources are real, independently inspectable programs:
   a bounded request/reply roundtrip, then exits with status 17 so KeepAlive
   supervision can be observed by a new server PID. Its `--reaped PID` mode
   verifies that an exited child has no remaining kernel process record;
-  zombies do not pass that check.
+  zombies do not pass that check. The fixture sets the supported one-second
+  rapid-exit throttle, and clients wait fifteen seconds. This avoids losing a
+  reply port before the normal ten-second launchd respawn throttle ends.
+  Console diagnostics retain exact Mach operation and error codes.
 * `runtime/probes/shutdown_probe.c` runs as a real launchd job, blocks SIGTERM
   before forking a child, then waits for the shutdown signal. It terminates and
   waits for its child, verifies that the child's process record disappeared,
@@ -187,8 +211,8 @@ KeepAlive restart, child reaping, unload, missing-plist errors and failed
 executable error reporting. The shutdown fixture and VM smoke require the
 fresh nonce-bound job start, child reap and job exit markers plus a real
 guest-triggered QMP shutdown event. Host process termination cannot satisfy
-that criterion. Until these
-checks and independent runtime execution pass, #17, #18 and #20 stay open.
+that criterion. The captured v11 run passes these tests and the real shutdown
+witness. Issue acceptance also requires the full clean replay.
 
 Two actual guest cores exposed bootstrap faults before PID 1 could initialize.
 The first reached `rebaseDyld` and called a libkernel string callback through
@@ -211,8 +235,8 @@ actual linked source locations are in
 `evidence/runtime/libSystem-locale-providers.log`. The runtime probe checks the
 captured stack-guard value, signed/unsigned conversion boundaries, overflow,
 end pointers, floating conversion, locale formatting and per-thread C locale.
-These library-load and core observations are progress evidence; they do not
-establish a working shell or PID 1 service baseline.
+These historical core observations precede the later passing shell/runtime
+experiment and explain why native provider selection matters.
 
 The next actual guest reached source launchd's main function. Installing the
 genuine `/bin/launchctl -> ../usr/bin/launchctl` convention allowed its System
@@ -225,8 +249,9 @@ records their hashes; it is absent from the staged root and cannot satisfy
 runtime closure. The standalone dyld executable retains its independently
 initialized early bootstrap runtime. The native libdyld initializer supplies
 recursive loader locks, per-thread error buffers, real launchd ownership RPC
-and TLV initialization. These corrections compile and link, but still require
-the next genuine guest run to establish functional acceptance.
+and TLV initialization. The later genuine runtime probe passes allocator
+identity, concurrent loader error isolation and the source dylib roundtrip;
+source launchctl now bootstraps actual jobs.
 
 The complete compatibility-provider review found 36 genuine archive providers
 and six genuine loader reexports shadowed by reduced wrappers. Those shadows

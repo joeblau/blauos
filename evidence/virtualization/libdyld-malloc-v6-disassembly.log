@@ -1,0 +1,32 @@
+(lldb) target create ".blauos/build/vm/combined-root-v9/root/usr/lib/system/libdyld.dylib"
+Current executable set to '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/vm/combined-root-v9/root/usr/lib/system/libdyld.dylib' (arm64).
+(lldb) disassemble -n default_zone_malloc
+libdyld.dylib`default_zone_malloc:
+libdyld.dylib[0x70690] <+0>:   sub    sp, sp, #0x30
+libdyld.dylib[0x70694] <+4>:   stp    x29, x30, [sp, #0x20]
+libdyld.dylib[0x70698] <+8>:   add    x29, sp, #0x20
+libdyld.dylib[0x7069c] <+12>:  stur   x0, [x29, #-0x8]
+libdyld.dylib[0x706a0] <+16>:  str    x1, [sp, #0x10]
+libdyld.dylib[0x706a4] <+20>:  adrp   x8, 121
+libdyld.dylib[0x706a8] <+24>:  ldr    x8, [x8, #0xea8]
+libdyld.dylib[0x706ac] <+28>:  cbz    x8, 0x706c4               ; <+52> [inlined] inline_malloc_default_zone at malloc.c:973:9
+libdyld.dylib[0x706b0] <+32>:  b      0x706b4                   ; <+36> [inlined] runtime_default_zone + 16 at malloc.c:400:23
+libdyld.dylib[0x706b4] <+36>:  adrp   x8, 121
+libdyld.dylib[0x706b8] <+40>:  ldr    x8, [x8, #0xea8]
+libdyld.dylib[0x706bc] <+44>:  str    x8, [sp, #0x8]
+libdyld.dylib[0x706c0] <+48>:  b      0x706d8                   ; <+72> at malloc.c
+libdyld.dylib[0x706c4] <+52>:  adrp   x8, 108
+libdyld.dylib[0x706c8] <+56>:  ldr    x8, [x8, #0x608]
+libdyld.dylib[0x706cc] <+60>:  ldr    x8, [x8]
+libdyld.dylib[0x706d0] <+64>:  str    x8, [sp, #0x8]
+libdyld.dylib[0x706d4] <+68>:  b      0x706d8                   ; <+72> at malloc.c
+libdyld.dylib[0x706d8] <+72>:  ldr    x8, [sp, #0x8]
+libdyld.dylib[0x706dc] <+76>:  stur   x8, [x29, #-0x8]
+libdyld.dylib[0x706e0] <+80>:  ldur   x8, [x29, #-0x8]
+libdyld.dylib[0x706e4] <+84>:  ldr    x8, [x8, #0x18]
+libdyld.dylib[0x706e8] <+88>:  ldur   x0, [x29, #-0x8]
+libdyld.dylib[0x706ec] <+92>:  ldr    x1, [sp, #0x10]
+libdyld.dylib[0x706f0] <+96>:  blr    x8
+libdyld.dylib[0x706f4] <+100>: ldp    x29, x30, [sp, #0x20]
+libdyld.dylib[0x706f8] <+104>: add    sp, sp, #0x30
+libdyld.dylib[0x706fc] <+108>: ret    

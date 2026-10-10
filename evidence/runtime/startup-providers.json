@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "execution_verified": false,
-  "guest_acceptance_pending": true,
+  "execution_verified": true,
+  "guest_acceptance_pending": false,
   "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
   "providers": [
     {
@@ -267,5 +267,11 @@
     "historical suffixed popen lacks native pclose child bookkeeping",
     "limited directory and CPU naming",
     "fat-header helpers assume byte swapping"
-  ]
+  ],
+  "independent_runtime_probe_verified": true,
+  "independent_runtime_evidence": "evidence/runtime/guest-runtime-v11.json",
+  "execution_scope_note": "Required runtime and real launchd service/shutdown subset passed in a genuine source XNU guest with fresh nonce checks. This inventory does not claim every excluded or optional API was exercised. A fresh complete GitHub CI replay remains separate.",
+  "service_subset_verified": true,
+  "system_shutdown_verified": true,
+  "execution_scope": "required runtime and launchd service/shutdown subset"
 }

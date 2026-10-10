@@ -1,0 +1,19 @@
+autoreconf: export WARNINGS=
+autoreconf: Entering directory '.'
+autoreconf: configure.ac: no obvious need to run autopoint
+autoreconf: running: aclocal --force 
+autoreconf: configure.ac: tracing
+autoreconf: configure.ac: not using Libtool
+autoreconf: configure.ac: not using Intltool
+autoreconf: configure.ac: not using Gtkdoc
+autoreconf: configure.ac: no need to run autopoint (confirmed)
+autoreconf: running: /nix/store/330z3y6wzylv0qvdgnmmmzar0i01291h-autoconf-2.73/bin/autoconf --force
+autoreconf: running: /nix/store/330z3y6wzylv0qvdgnmmmzar0i01291h-autoconf-2.73/bin/autoheader --force
+sh: line 1: sed: command not found
+autoreconf: running: automake --add-missing --copy --force-missing
+configure.ac:10: installing './compile'
+configure.ac:2: installing './install-sh'
+configure.ac:2: installing './missing'
+src/Makefile.am: installing './depcomp'
+autoreconf: configure.ac: not running make: --make not given
+autoreconf: Leaving directory '.'

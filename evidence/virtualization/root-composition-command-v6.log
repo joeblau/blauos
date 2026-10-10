@@ -1,0 +1,17 @@
+{
+  "status": "blocked",
+  "result": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/vm/combined-root-v6/runtime-audit.json",
+  "errors": [
+    "build amendment missing or mismatched: /sbin/launchd",
+    "build amendment missing or mismatched: /usr/bin/launchctl",
+    "build amendment missing or mismatched: /usr/lib/dyld",
+    "build amendment missing or mismatched: /usr/lib/libIOKitCF.dylib",
+    "build amendment missing or mismatched: /usr/lib/libSystem.B.dylib",
+    "build amendment missing or mismatched: /usr/lib/libSystem.dylib",
+    "build amendment missing or mismatched: /usr/lib/libc++abi.dylib",
+    "build amendment missing or mismatched: /usr/lib/libobjc.A.dylib",
+    "build amendment missing or mismatched: /usr/lib/libobjc.dylib",
+    "build amendment missing or mismatched: /usr/lib/system/libdyld.dylib"
+  ]
+}
+Command '['/opt/homebrew/opt/python@3.14/bin/python3.14', '/Users/joeblau/Developer/joeblau/src/blauos/scripts/build/runtime.py', 'inspect', '--root', '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/vm/combined-root-v6/root', '--provenance', '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/vm/combined-root-v6/provenance.json', '--manifest', '/Users/joeblau/Developer/joeblau/src/blauos/sources.lock.json', '--output', '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/vm/combined-root-v6/runtime-audit.json']' returned non-zero exit status 1.

@@ -4,6 +4,9 @@
   <key>Label</key><string>org.blauos.test.bootstrap</string>
   <key>ProgramArguments</key><array><string>/usr/libexec/blauos-bootstrap-probe</string><string>--server</string></array>
   <key>RunAtLoad</key><true/>
+  <key>ThrottleInterval</key><integer>1</integer>
+  <key>StandardOutPath</key><string>/dev/console</string>
+  <key>StandardErrorPath</key><string>/dev/console</string>
   <key>KeepAlive</key><dict><key>SuccessfulExit</key><false/></dict>
   <key>MachServices</key><dict><key>org.blauos.test.bootstrap</key><true/></dict>
 </dict></plist>

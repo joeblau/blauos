@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "passed": false,
+  "readiness_passed": false,
+  "host_interruption": true,
+  "host_interruption_reason": "Disposable lab container PID 1 sleep 7200 expired normally; docker state exited, OOMKilled=false, ExitCode=0. The smoke process was externally terminated before its result.json was written.",
+  "ordinary_smoke_completion": false,
+  "container_exit_code": 0,
+  "container_oom_killed": false,
+  "guest_runtime_probe_passed": true,
+  "guest_shell_passed": true,
+  "guest_launchd_service_subset_complete": false,
+  "guest_network_passed": false,
+  "guest_shutdown_passed": false,
+  "physical_boot_gate": false
+}

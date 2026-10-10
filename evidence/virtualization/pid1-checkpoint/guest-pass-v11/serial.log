@@ -1,0 +1,1336 @@
+UEFI firmware (version  built at 00:00:00 on Jan  1 1980)
+[2J[001;001H[=3h[2J[001;001H[2J[001;001H[8;031;100t[2J[001;001HBdsDxe: loading Boot0002 "UEFI Misc Device" from PciRoot(0x0)/Pci(0x1,0x0)
+BdsDxe: starting Boot0002 "UEFI Misc Device" from PciRoot(0x0)/Pci(0x1,0x0)
+XNU EFI loader start
+
+XNU EFI loader start
+
+loader image base=0x7ED05000 size=0x2B000
+
+loader image base=0x7ED05000 size=0x2B000
+
+kernel size: 17858560 bytes
+
+kernel size: 17858560 bytes
+
+Mach-O 64-bit
+
+Mach-O 64-bit
+
+  ncmds: 25
+
+  ncmds: 25
+
+  sizeofcmds: 4736
+
+  sizeofcmds: 4736
+
+  flags: 0x200001
+
+  flags: 0x200001
+
+segment           __TEXT vm=0xFFFFFFF007004000 vmsz=0xF8000 fileoff=0x0 filesz=0xF8000
+
+segment           __TEXT vm=0xFFFFFFF007004000 vmsz=0xF8000 fileoff=0x0 filesz=0xF8000
+
+segment     __DATA_CONST vm=0xFFFFFFF0070FC000 vmsz=0xF8000 fileoff=0xF8000 filesz=0xF8000
+
+segment     __DATA_CONST vm=0xFFFFFFF0070FC000 vmsz=0xF8000 fileoff=0xF8000 filesz=0xF8000
+
+segment __LASTDATA_CONST vm=0xFFFFFFF0071F4000 vmsz=0x4000 fileoff=0x1F0000 filesz=0x4000
+
+segment __LASTDATA_CONST vm=0xFFFFFFF0071F4000 vmsz=0x4000 fileoff=0x1F0000 filesz=0x4000
+
+segment __PLK_DATA_CONST vm=0xFFFFFFF0071F8000 vmsz=0x0 fileoff=0x1F4000 filesz=0x0
+
+segment __PLK_DATA_CONST vm=0xFFFFFFF0071F8000 vmsz=0x0 fileoff=0x1F4000 filesz=0x0
+
+segment      __TEXT_EXEC vm=0xFFFFFFF0071F8000 vmsz=0x660000 fileoff=0x1F4000 filesz=0x660000
+
+segment      __TEXT_EXEC vm=0xFFFFFFF0071F8000 vmsz=0x660000 fileoff=0x1F4000 filesz=0x660000
+
+segment           __LAST vm=0xFFFFFFF007858000 vmsz=0x0 fileoff=0x0 filesz=0x0
+
+segment           __LAST vm=0xFFFFFFF007858000 vmsz=0x0 fileoff=0x0 filesz=0x0
+
+segment  __PLK_TEXT_EXEC vm=0xFFFFFFF007858000 vmsz=0x0 fileoff=0x854000 filesz=0x0
+
+segment  __PLK_TEXT_EXEC vm=0xFFFFFFF007858000 vmsz=0x0 fileoff=0x854000 filesz=0x0
+
+segment            __KLD vm=0xFFFFFFF007858000 vmsz=0x4000 fileoff=0x854000 filesz=0x4000
+
+segment            __KLD vm=0xFFFFFFF007858000 vmsz=0x4000 fileoff=0x854000 filesz=0x4000
+
+segment           __DATA vm=0xFFFFFFF00785C000 vmsz=0xEC000 fileoff=0x858000 filesz=0x3C000
+
+segment           __DATA vm=0xFFFFFFF00785C000 vmsz=0xEC000 fileoff=0x858000 filesz=0x3C000
+
+segment   __PRELINK_DATA vm=0xFFFFFFF00424C000 vmsz=0x4000 fileoff=0x0 filesz=0x0
+
+segment   __PRELINK_DATA vm=0xFFFFFFF00424C000 vmsz=0x4000 fileoff=0x0 filesz=0x0
+
+segment       __BOOTDATA vm=0xFFFFFFF007948000 vmsz=0x3C000 fileoff=0x894000 filesz=0x3C000
+
+segment       __BOOTDATA vm=0xFFFFFFF007948000 vmsz=0x3C000 fileoff=0x894000 filesz=0x3C000
+
+segment        __KLDDATA vm=0xFFFFFFF007984000 vmsz=0x4000 fileoff=0x8D0000 filesz=0x4000
+
+segment        __KLDDATA vm=0xFFFFFFF007984000 vmsz=0x4000 fileoff=0x8D0000 filesz=0x4000
+
+segment       __LINKINFO vm=0xFFFFFFF007988000 vmsz=0x94000 fileoff=0x8D4000 filesz=0x94000
+
+segment       __LINKINFO vm=0xFFFFFFF007988000 vmsz=0x94000 fileoff=0x8D4000 filesz=0x94000
+
+segment   __PLK_LLVM_COV vm=0xFFFFFFF007A1C000 vmsz=0x0 fileoff=0x968000 filesz=0x0
+
+segment   __PLK_LLVM_COV vm=0xFFFFFFF007A1C000 vmsz=0x0 fileoff=0x968000 filesz=0x0
+
+segment   __PLK_LINKEDIT vm=0xFFFFFFF007A1C000 vmsz=0x0 fileoff=0x968000 filesz=0x0
+
+segment   __PLK_LINKEDIT vm=0xFFFFFFF007A1C000 vmsz=0x0 fileoff=0x968000 filesz=0x0
+
+segment   __PRELINK_INFO vm=0xFFFFFFF004250000 vmsz=0xC000 fileoff=0x10FC000 filesz=0xB766
+
+segment   __PRELINK_INFO vm=0xFFFFFFF004250000 vmsz=0xC000 fileoff=0x10FC000 filesz=0xB766
+
+segment   __PRELINK_TEXT vm=0xFFFFFFF004004000 vmsz=0x248000 fileoff=0xEB4000 filesz=0x248000
+
+segment   __PRELINK_TEXT vm=0xFFFFFFF004004000 vmsz=0x248000 fileoff=0xEB4000 filesz=0x248000
+
+segment       __LINKEDIT vm=0xFFFFFFF007A1C000 vmsz=0x54C000 fileoff=0x968000 filesz=0x54BD48
+
+segment       __LINKEDIT vm=0xFFFFFFF007A1C000 vmsz=0x54C000 fileoff=0x968000 filesz=0x54BD48
+
+KASLR: disabled, kslide=0
+
+KASLR: disabled, kslide=0
+
+phys_base=0x4004000 kslide=0x0 span=0x3F64000
+
+phys_base=0x4004000 kslide=0x0 span=0x3F64000
+
+kernel staging: 0x48004000 - 0x4BF68000 (16264 pages, low-RAM, virt_base rem 0x4000)
+
+kernel staging: 0x48004000 - 0x4BF68000 (16264 pages, low-RAM, virt_base rem 0x4000)
+
+arm64 trustcache page=0x48000000 (below kernel)
+
+arm64 trustcache page=0x48000000 (below kernel)
+
+arm64 bootinfo base=0x4BF68000 (after kernel image)
+
+arm64 bootinfo base=0x4BF68000 (after kernel image)
+
+boot-info guard: reserved 0x4BF68000 - 0x4BF88000
+
+boot-info guard: reserved 0x4BF68000 - 0x4BF88000
+
+loaded            __TEXT vm=0xFFFFFFF007004000 phys=0x4B004000 pages=248
+
+loaded            __TEXT vm=0xFFFFFFF007004000 phys=0x4B004000 pages=248
+
+loaded      __DATA_CONST vm=0xFFFFFFF0070FC000 phys=0x4B0FC000 pages=248
+
+loaded      __DATA_CONST vm=0xFFFFFFF0070FC000 phys=0x4B0FC000 pages=248
+
+loaded  __LASTDATA_CONST vm=0xFFFFFFF0071F4000 phys=0x4B1F4000 pages=4
+
+loaded  __LASTDATA_CONST vm=0xFFFFFFF0071F4000 phys=0x4B1F4000 pages=4
+
+loaded       __TEXT_EXEC vm=0xFFFFFFF0071F8000 phys=0x4B1F8000 pages=1632
+
+loaded       __TEXT_EXEC vm=0xFFFFFFF0071F8000 phys=0x4B1F8000 pages=1632
+
+loaded             __KLD vm=0xFFFFFFF007858000 phys=0x4B858000 pages=4
+
+loaded             __KLD vm=0xFFFFFFF007858000 phys=0x4B858000 pages=4
+
+loaded            __DATA vm=0xFFFFFFF00785C000 phys=0x4B85C000 pages=236
+
+loaded            __DATA vm=0xFFFFFFF00785C000 phys=0x4B85C000 pages=236
+
+loaded    __PRELINK_DATA vm=0xFFFFFFF00424C000 phys=0x4824C000 pages=4
+
+loaded    __PRELINK_DATA vm=0xFFFFFFF00424C000 phys=0x4824C000 pages=4
+
+loaded        __BOOTDATA vm=0xFFFFFFF007948000 phys=0x4B948000 pages=60
+
+loaded        __BOOTDATA vm=0xFFFFFFF007948000 phys=0x4B948000 pages=60
+
+loaded         __KLDDATA vm=0xFFFFFFF007984000 phys=0x4B984000 pages=4
+
+loaded         __KLDDATA vm=0xFFFFFFF007984000 phys=0x4B984000 pages=4
+
+loaded        __LINKINFO vm=0xFFFFFFF007988000 phys=0x4B988000 pages=148
+
+loaded        __LINKINFO vm=0xFFFFFFF007988000 phys=0x4B988000 pages=148
+
+loaded    __PRELINK_INFO vm=0xFFFFFFF004250000 phys=0x48250000 pages=12
+
+loaded    __PRELINK_INFO vm=0xFFFFFFF004250000 phys=0x48250000 pages=12
+
+loaded    __PRELINK_TEXT vm=0xFFFFFFF004004000 phys=0x48004000 pages=584
+
+loaded    __PRELINK_TEXT vm=0xFFFFFFF004004000 phys=0x48004000 pages=584
+
+loaded        __LINKEDIT vm=0xFFFFFFF007A1C000 phys=0x4BA1C000 pages=1356
+
+loaded        __LINKEDIT vm=0xFFFFFFF007A1C000 phys=0x4BA1C000 pages=1356
+
+loaded image phys_base=0x48004000 vm_low=0xFFFFFFF004004000 span=0x3F64000 segments=13
+
+loaded image phys_base=0x48004000 vm_low=0xFFFFFFF004004000 span=0x3F64000 segments=13
+
+entry is in segment __TEXT_EXEC, section __text, seg_off=0x176498 sec_off=0x176498
+
+entry is in segment __TEXT_EXEC, section __text, seg_off=0x176498 sec_off=0x176498
+
+failed to find section __HIB,__bootPT: Not Found
+
+failed to find section __HIB,__bootPT: Not Found
+
+entry bytes:entry bytes:
+
+  
+
+  F0 F0 06 06 00 00 14 14 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+
+  
+
+  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+
+
+
+entry vm=0xFFFFFFF00736E498 -> host=0x4B36E498
+
+entry vm=0xFFFFFFF00736E498 -> host=0x4B36E498
+
+boot-info guard: released for boot_build_args
+
+boot-info guard: released for boot_build_args
+
+boot-args.txt: using "-v debug=0x218 serial=3 keepsyms=1 no_interrupt_masked_debug=1 kextlog=0xfffffff pdtrace"
+
+boot-args.txt: using "-v debug=0x218 serial=3 keepsyms=1 no_interrupt_masked_debug=1 kextlog=0xfffffff pdtrace"
+
+EFI config table: 7 entries copied to 0x4BF69400
+
+EFI config table: 7 entries copied to 0x4BF69400
+
+EFI_SYSTEM_TABLE CRC32 recomputed: 0x17EAB0AA
+
+EFI_SYSTEM_TABLE CRC32 recomputed: 0x17EAB0AA
+
+EFI tables copied to 0x4BF69000 (st) / 0x4BF69200 (rt)
+
+EFI tables copied to 0x4BF69000 (st) / 0x4BF69200 (rt)
+
+DT: found ext4 boot UUID 20D4224D-60C4-572D-B83D-AA2D94C882F4 at GPT LBA 133120
+
+DT: found ext4 boot UUID 20D4224D-60C4-572D-B83D-AA2D94C882F4 at GPT LBA 133120
+
+DT: ext4 root found on boot disk
+
+DT: ext4 root found on boot disk
+
+DT: empty static TrustCache at 0x48000000
+
+DT: empty static TrustCache at 0x48000000
+
+TSC: initial=0x153D23E4 estimated frequency=62563600 Hz
+
+TSC: initial=0x153D23E4 estimated frequency=62563600 Hz
+
+DT: config-table loop (7 entries)
+
+DT: config-table loop (7 entries)
+
+DT: config-table done
+
+DT: config-table done
+
+DT: flattening into 8192-byte buffer
+
+DT: flattening into 8192-byte buffer
+
+DT: built 4584 bytes
+DT: built 4584 bytes
+MCFG: PCI base=0x4010000000 bus=0-255
+
+MCFG: PCI base=0x4010000000 bus=0-255
+
+boot_probe_video: 800x600 stride=3200 fb=0x7F600000 pixfmt=1
+
+boot_probe_video: 800x600 stride=3200 fb=0x7F600000 pixfmt=1
+
+sizeof(boot_args) = 0x1000
+
+sizeof(boot_args) = 0x1000
+
+boot_args low phys = 0x4BF68000
+
+boot_args low phys = 0x4BF68000
+
+device_tree low phys = 0x4BF6A000
+
+device_tree low phys = 0x4BF6A000
+
+memory_map ptr  = 0x7ED4C000
+
+memory_map ptr  = 0x7ED4C000
+
+memory_map phys = 0x7ED4C000
+
+memory_map phys = 0x7ED4C000
+
+boot_probe_video: 800x600 stride=3200 fb=0x7F600000 pixfmt=1
+
+boot_probe_video: 800x600 stride=3200 fb=0x7F600000 pixfmt=1
+
+arm64 boot_args @ 0x4BF6C000
+
+arm64 boot_args @ 0x4BF6C000
+
+  Revision: 2  Version: 2
+
+  Revision: 2  Version: 2
+
+  virtBase: 0xFFFFFFF004000000  physBase: 0x48000000
+
+  virtBase: 0xFFFFFFF004000000  physBase: 0x48000000
+
+  memSize: 0x37D00000  topOfKernelData: 0x4BF88000
+
+  memSize: 0x37D00000  topOfKernelData: 0x4BF88000
+
+  deviceTreeP: 0x4BF6A000  deviceTreeLength: 0x11E8
+
+  deviceTreeP: 0x4BF6A000  deviceTreeLength: 0x11E8
+
+  CommandLine: -v debug=0x218 serial=3 keepsyms=1 no_interrupt_masked_debug=1 kextlog=0xfffffff pdtrace
+
+  CommandLine: -v debug=0x218 serial=3 keepsyms=1 no_interrupt_masked_debug=1 kextlog=0xfffffff pdtrace
+
+[D] before exit_boot_services
+
+[D] before exit_boot_services
+
+boot_args phys = 0x4BF6C000
+
+boot_args phys = 0x4BF6C000
+
+handoff entry_vmaddr=0xFFFFFFF00736E498 host_entry=0x4B36E498 phys_entry=0x4B36E498
+
+handoff entry_vmaddr=0xFFFFFFF00736E498 host_entry=0x4B36E498 phys_entry=0x4B36E498
+
+handoff phys_real=0x48004000 vm_base=0xFFFFFFF004004000
+
+handoff phys_real=0x48004000 vm_base=0xFFFFFFF004004000
+
+handoff physBase=0x48000000 topOfKernelData=0x4BF88000
+
+handoff physBase=0x48000000 topOfKernelData=0x4BF88000
+
+stack_top = 0x7ED46FF0
+
+stack_top = 0x7ED46FF0
+
+entry     = 0x4B36E498
+
+entry     = 0x4B36E498
+
+[EBS] attempt 0 (irqs enabled)
+[EBS] ExitBootServices returned SUCCESS
+[EBS] SVAM va_base    0x3200000
+[EBS] SVAM va_cursor  0x73D1000
+[EBS] SVAM new_kend   0x7400000
+[EBS] SVAM ksize      0x7300000
+[EBS] calling SetVirtualAddressMap
+[EBS] SetVirtualAddressMap returned
+[EBS] exit_boot_services returned
+[EBS] mmap src    0x7ED4C000
+[EBS] mmap dst    0x4BF78000
+[EBS] mmap bytes  0x10E0
+[EBS] mmap dsz    0x30
+[EBS] mmap in     0x5A
+[EBS] mmap out    0xC
+[EBS] boot_args   0x4BF68000
+[EBS] entry       0x4B36E498
+[EBS] stack_top   0x7ED46FF0
+[EBS] jumping to kernel
+Darwin Kernel Version 20.5.0: Sat Oct 10 09:40:01 PDT 2026; joeblau:xnu-build/DEVELOPMENT_ARM64_VIRT
+pmap_startup() init/release time: 13001 microsec
+pmap_startup() delayed init/release of 0 pages
+vm_page_bootstrap: 52855 free pages, 4297 wired pages, (up to 0 of which are delayed free)
+"vm_compressor_mode" is 4
+zone_init: submap[0] 0xfffffff06a000000:0xfffffff203990000 (6553M)
+zone_init: submap[1] 0xfffffff2039a0000:0xfffffff536cc0000 (13107M)
+zone_init: submap[2] 0xfffffff536cd0000:0xfffffff869ff0000 (13107M)
+zone_init: metadata  0xfffffffad1074000:0xfffffffad307c000 (32800K)
+zone_init: metabits  0xfffffffad307c000:0xfffffffad3558000 (4976K)
+zone leak detection disabled
+oslog_init completed, 16 chunks, 8 io pages
+standard timeslicing quantum is 10000 us
+standard background quantum is 2500 us
+WQ[wql_init]: init linktable with max:262144 elements (8388608 bytes)
+WQ[wqp_init]: init prepost table with max:262144 elements (8388608 bytes)
+mig_table_max_displ = 53 mach_kobj_count = 369
+kdp_core zlib memory 0x8000
+Serial requested, consistent debug disabled or debug boot arg not present, configuring debugging over serial
+[    5.796158]: Telemetry: Sampling all tasks once per 1 second
+
+[    5.797437]: Scheduler: Default of clutch
+
+[    5.797492]: Setting scheduler priority decay band limit 18
+
+[    5.808485]: ATM subsystem is initialized
+
+[    5.808684]: BANK subsystem is initialized
+
+[    5.808773]: IPC_PTHREAD_PRIORITY subsystem is initialized
+
+[    5.817098]: Registered coredump handler for kernel
+
+[    5.817340]: Initializing serial KDP
+
+iBoot version: 
+[33m[4mKernel kext log filter 0xfffffff per kextlog boot arg.[0m
+[33mKext system initialized.[0m
+[36mKext __kernel__ registered class OSMetaClass.[0m
+[36mKext __kernel__ registered class OSObject.[0m
+[36mKext __kernel__ registered class OSArray.[0m
+[36mKext __kernel__ registered class OSBoolean.[0m
+[36mKext __kernel__ registered class OSCollection.[0m
+[36mKext __kernel__ registered class OSCollectionIterator.[0m
+[36mKext __kernel__ registered class OSData.[0m
+[36mKext __kernel__ registered class OSDictionary.[0m
+[36mKext __kernel__ registered class OSIterator.[0m
+[36mKext __kernel__ registered class OSKext.[0m
+[36mKext __kernel__ registered class OSKextSavedMutableSegment.[0m
+[36mKext __kernel__ registered class OSNumber.[0m
+[36mKext __kernel__ registered class OSOrderedSet.[0m
+[36mKext __kernel__ registered class OSSerialize.[0m
+[36mKext __kernel__ registered class OSSerializer.[0m
+[36mKext __kernel__ registered class OSSet.[0m
+[36mKext __kernel__ registered class OSString.[0m
+[36mKext __kernel__ registered class OSSymbol.[0m
+[36mKext __kernel__ registered class OSAction.[0m
+[36mKext __kernel__ registered class IODispatchSource.[0m
+[36mKext __kernel__ registered class IODispatchQueue.[0m
+[36mKext __kernel__ registered class IOInterruptDispatchSource.[0m
+[36mKext __kernel__ registered class IODataQueueDispatchSource.[0m
+[36mKext __kernel__ registered class IOServiceNotificationDispatchSource.[0m
+[36mKext __kernel__ registered class IOConditionLock.[0m
+[36mKext __kernel__ registered class IORegistryEntry.[0m
+[36mKext __kernel__ registered class IORegistryPlane.[0m
+[36mKext __kernel__ registered class IORegistryIterator.[0m
+[36mKext __kernel__ registered class IOService.[0m
+[33mKext __kernel__ has IOService subclass IOService; enabling autounload.[0m
+[36mKext __kernel__ registered class _IOServiceNotifier.[0m
+[36mKext __kernel__ registered class _IOServiceNullNotifier.[0m
+[36mKext __kernel__ registered class _IOServiceInterestNotifier.[0m
+[36mKext __kernel__ registered class _IOConfigThread.[0m
+[36mKext __kernel__ registered class _IOServiceJob.[0m
+[36mKext __kernel__ registered class IOResources.[0m
+[36mKext __kernel__ registered class IOUserResources.[0m
+[36mKext __kernel__ registered class _IOOpenServiceIterator.[0m
+[36mKext __kernel__ registered class IONotifier.[0m
+[36mKext __kernel__ registered class IOServiceCompatibility.[0m
+[36mKext __kernel__ registered class IOPMRequest.[0m
+[36mKext __kernel__ registered class IOPMRequestQueue.[0m
+[36mKext __kernel__ registered class IOPMWorkQueue.[0m
+[36mKext __kernel__ registered class IOPMCompletionQueue.[0m
+[36mKext __kernel__ registered class IOServicePM.[0m
+[36mKext __kernel__ registered class IOPMinformee.[0m
+[36mKext __kernel__ registered class IOPMinformeeList.[0m
+[36mKext __kernel__ registered class IOPMPowerStateQueue.[0m
+[36mKext __kernel__ registered class IOCatalogue.[0m
+[36mKext __kernel__ registered class IOPMPowerSource.[0m
+[36mKext __kernel__ registered class IOPMPowerSourceList.[0m
+[36mKext __kernel__ registered class IOPMGR.[0m
+[36mKext __kernel__ registered class IOPolledInterface.[0m
+[36mKext __kernel__ registered class IOPolledFilePollers.[0m
+[36mKext __kernel__ registered class IOWorkLoop.[0m
+[36mKext __kernel__ registered class IOEventSource.[0m
+[36mKext __kernel__ registered class IOInterruptEventSource.[0m
+[36mKext __kernel__ registered class IOCommandGate.[0m
+[36mKext __kernel__ registered class IOCommand.[0m
+[36mKext __kernel__ registered class IOCommandPool.[0m
+[36mKext __kernel__ registered class IODMAEventSource.[0m
+[36mKext __kernel__ registered class IOFilterInterruptEventSource.[0m
+[36mKext __kernel__ registered class IOTimerEventSource.[0m
+[36mKext __kernel__ registered class IOBufferMemoryDescriptor.[0m
+[36mKext __kernel__ registered class IODMACommand.[0m
+[36mKext __kernel__ registered class IOInterleavedMemoryDescriptor.[0m
+[36mKext __kernel__ registered class IOMapper.[0m
+[36mKext __kernel__ registered class IOMemoryCursor.[0m
+[36mKext __kernel__ registered class IONaturalMemoryCursor.[0m
+[36mKext __kernel__ registered class IOBigMemoryCursor.[0m
+[36mKext __kernel__ registered class IOLittleMemoryCursor.[0m
+[36mKext __kernel__ registered class IOMemoryDescriptor.[0m
+[36mKext __kernel__ registered class IOGeneralMemoryDescriptor.[0m
+[36mKext __kernel__ registered class IOMemoryMap.[0m
+[36mKext __kernel__ registered class IOMultiMemoryDescriptor.[0m
+[36mKext __kernel__ registered class IORangeAllocator.[0m
+[36mKext __kernel__ registered class IOSubMemoryDescriptor.[0m
+[36mKext __kernel__ registered class IOPlatformExpert.[0m
+[36mKext __kernel__ registered class IODTPlatformExpert.[0m
+[36mKext __kernel__ registered class IOPlatformExpertDevice.[0m
+[36mKext __kernel__ registered class IOPlatformDevice.[0m
+[36mKext __kernel__ registered class IOPanicPlatform.[0m
+[36mKext __kernel__ registered class IOPlatformIO.[0m
+[36mKext __kernel__ registered class IOCPU.[0m
+[36mKext __kernel__ registered class IOCPUInterruptController.[0m
+[36mKext __kernel__ registered class IODTNVRAM.[0m
+[36mKext __kernel__ registered class IODTNVRAMVariables.[0m
+[36mKext __kernel__ registered class IODMAController.[0m
+[36mKext __kernel__ registered class IOInterruptController.[0m
+[36mKext __kernel__ registered class IOSharedInterruptController.[0m
+[36mKext __kernel__ registered class PassthruInterruptController.[0m
+[36mKext __kernel__ registered class IOMachPort.[0m
+[36mKext __kernel__ registered class IOUserIterator.[0m
+[36mKext __kernel__ registered class IOUserNotification.[0m
+[36mKext __kernel__ registered class IOServiceUserNotification.[0m
+[36mKext __kernel__ registered class IOServiceMessageUserNotification.[0m
+[36mKext __kernel__ registered class IOUserClient.[0m
+[36mKext __kernel__ registered class IOKitDiagnostics.[0m
+[36mKext __kernel__ registered class IOKitDiagnosticsClient.[0m
+[36mKext __kernel__ registered class IODataQueue.[0m
+[36mKext __kernel__ registered class IOSharedDataQueue.[0m
+[36mKext __kernel__ registered class IOReporter.[0m
+[36mKext __kernel__ registered class IOSimpleReporter.[0m
+[36mKext __kernel__ registered class IOStateReporter.[0m
+[36mKext __kernel__ registered class IOHistogramReporter.[0m
+[36mKext __kernel__ registered class IOReportLegend.[0m
+[36mKext __kernel__ registered class IORTC.[0m
+[36mKext __kernel__ registered class OSUserMetaClass.[0m
+[36mKext __kernel__ registered class IOUserService.[0m
+[36mKext __kernel__ registered class IOUserServerCheckInToken.[0m
+[36mKext __kernel__ registered class IOUserServer.[0m
+[36mKext __kernel__ registered class IOUserUserClient.[0m
+[36mKext __kernel__ registered class RootDomainUserClient.[0m
+[36mKext __kernel__ registered class IOPowerConnection.[0m
+[36mKext __kernel__ registered class IOWatchDogTimer.[0m
+[36mKext __kernel__ registered class IOPerfControlClient.[0m
+[36mKext __kernel__ registered class IOPerfControlWorkContext.[0m
+[36mKext __kernel__ registered class IONVRAMController.[0m
+[36mKext __kernel__ registered class PMAssertionsTracker.[0m
+[36mKext __kernel__ registered class PMHaltWorker.[0m
+[36mKext __kernel__ registered class IOPMrootDomain.[0m
+[36mKext __kernel__ registered class IOPMServiceInterestNotifier.[0m
+[36mKext __kernel__ registered class PMTraceWorker.[0m
+[36mKext __kernel__ registered class PMSettingHandle.[0m
+[36mKext __kernel__ registered class PMSettingObject.[0m
+[36mKext __kernel__ registered class IORootParent.[0m
+[33mReading startup extensions.[0m
+[33mStarting from prelinked kernel.[0m
+[32mKext com.apple.iokit.IOPCIFamily, v2.9 registered and available for loading.[0m
+[32mKext com.apple.iokit.IOStorageFamily, v2.1 registered and available for loading.[0m
+[32mKext com.apple.iokit.IONetworkingFamily, v3.4 registered and available for loading.[0m
+[32mKext org.puredarwin.iokit.IOVirtIOFamily, v1.0 registered and available for loading.[0m
+[32mKext org.puredarwin.kext.PDArmPlatformExpert, v1.0 registered and available for loading.[0m
+[32mKext org.puredarwin.driver.PDArmPCI, v1.0 registered and available for loading.[0m
+[32mKext org.puredarwin.driver.IOVirtIOBlock, v1.0 registered and available for loading.[0m
+[32mKext org.puredarwin.driver.IOVirtIONet, v1.0 registered and available for loading.[0m
+[32mKext com.apple.filesystems.ext4, v1.0 registered and available for loading.[0m
+[32mKext com.ravynos.driver.Ext4FileSystemDriver, v1.0 registered and available for loading.[0m
+[32mKext com.apple.AppleFileSystemDriver, v3.0.1 registered and available for loading.[0m
+[32mKext com.apple.kec.corecrypto, v1.0 registered and available for loading.[0m
+[32mKext com.apple.kec.pthread, v1.0 registered and available for loading.[0m
+[32mKext com.apple.driver.AppleNMI, v20.5 registered and available for loading.[0m
+[32mKext com.apple.iokit.ApplePlatformFamily, v20.5 registered and available for loading.[0m
+[32mKext com.apple.kpi.bsd, v20.5 registered and available for loading.[0m
+[32mKext com.apple.kpi.iokit, v20.5 registered and available for loading.[0m
+[32mKext com.apple.iokit.IONVRAMFamily, v20.5 registered and available for loading.[0m
+[32mKext com.apple.iokit.IOSystemManagementFamily, v20.5 registered and available for loading.[0m
+[32mKext com.apple.kpi.kasan, v20.5 registered and available for loading.[0m
+[32mKext com.apple.kpi.libkern, v20.5 registered and available for loading.[0m
+[32mKext com.apple.kpi.dsep, v20.5 registered and available for loading.[0m
+[32mKext com.apple.kpi.mach, v20.5 registered and available for loading.[0m
+[32mKext com.apple.kpi.private, v20.5 registered and available for loading.[0m
+[32mKext com.apple.kpi.unsupported, v20.5 registered and available for loading.[0m
+[33m1 prelinked kexts[0m
+[31m[1mWARNING: did not find UUID in Primary KC![0m
+[32mRecorded kext com.apple.kpi.bsd as a candidate for inclusion in prelinked kernel.[0m
+[33mLoading kext com.apple.kpi.bsd.[0m
+[33mKext com.apple.kpi.bsd loaded.[0m
+[32mRecorded kext com.apple.kpi.dsep as a candidate for inclusion in prelinked kernel.[0m
+[33mLoading kext com.apple.kpi.dsep.[0m
+[33mKext com.apple.kpi.dsep loaded.[0m
+[32mRecorded kext com.apple.kpi.iokit as a candidate for inclusion in prelinked kernel.[0m
+[33mLoading kext com.apple.kpi.iokit.[0m
+[33mKext com.apple.kpi.iokit loaded.[0m
+[32mRecorded kext com.apple.kpi.kasan as a candidate for inclusion in prelinked kernel.[0m
+[33mLoading kext com.apple.kpi.kasan.[0m
+[33mKext com.apple.kpi.kasan loaded.[0m
+[32mRecorded kext com.apple.kpi.libkern as a candidate for inclusion in prelinked kernel.[0m
+[33mLoading kext com.apple.kpi.libkern.[0m
+[33mKext com.apple.kpi.libkern loaded.[0m
+[32mRecorded kext com.apple.kpi.mach as a candidate for inclusion in prelinked kernel.[0m
+[33mLoading kext com.apple.kpi.mach.[0m
+[33mKext com.apple.kpi.mach loaded.[0m
+[32mRecorded kext com.apple.kpi.private as a candidate for inclusion in prelinked kernel.[0m
+[33mLoading kext com.apple.kpi.private.[0m
+[33mKext com.apple.kpi.private loaded.[0m
+[32mRecorded kext com.apple.kpi.unsupported as a candidate for inclusion in prelinked kernel.[0m
+[33mLoading kext com.apple.kpi.unsupported.[0m
+[33mKext com.apple.kpi.unsupported loaded.[0m
+[32mRecorded kext com.apple.iokit.IONVRAMFamily as a candidate for inclusion in prelinked kernel.[0m
+[33mKext com.apple.iokit.IONVRAMFamily loaded.[0m
+[32mRecorded kext com.apple.driver.AppleNMI as a candidate for inclusion in prelinked kernel.[0m
+[33mKext com.apple.driver.AppleNMI loaded.[0m
+[32mRecorded kext com.apple.iokit.IOSystemManagementFamily as a candidate for inclusion in prelinked kernel.[0m
+[33mKext com.apple.iokit.IOSystemManagementFamily loaded.[0m
+[32mRecorded kext com.apple.iokit.ApplePlatformFamily as a candidate for inclusion in prelinked kernel.[0m
+[33mKext com.apple.iokit.ApplePlatformFamily loaded.[0m
+[32mLoading Kernel External Components.[0m
+[32mLoading kernel external component com.apple.kec.corecrypto.[0m
+[32mRecorded kext com.apple.kec.corecrypto as a candidate for inclusion in prelinked kernel.[0m
+[33mLoading kext com.apple.kec.corecrypto.[0m
+[32mKext com.apple.kec.corecrypto resolving dependencies.[0m
+[36mKext com.apple.kec.corecrypto added dependency com.apple.kpi.bsd.[0m
+[36mKext com.apple.kec.corecrypto added dependency com.apple.kpi.iokit.[0m
+[36mKext com.apple.kec.corecrypto added dependency com.apple.kpi.libkern.[0m
+[36mKext com.apple.kec.corecrypto added dependency com.apple.kpi.mach.[0m
+[36mKext com.apple.kec.corecrypto added dependency com.apple.kpi.private.[0m
+[36mKext com.apple.kec.corecrypto added dependency com.apple.kpi.unsupported.[0m
+[32mKext com.apple.kec.corecrypto successfully resolved dependencies.[0m
+[35mKext com.apple.kpi.bsd is already loaded.[0m
+[35mKext com.apple.kpi.iokit is already loaded.[0m
+[35mKext com.apple.kpi.libkern is already loaded.[0m
+[35mKext com.apple.kpi.mach is already loaded.[0m
+[35mKext com.apple.kpi.private is already loaded.[0m
+[35mKext com.apple.kpi.unsupported is already loaded.[0m
+[33mKext com.apple.kec.corecrypto executable loaded; 10 pages at 0xfffffff004208000 (load tag 9).[0m
+[36mKext com.apple.kec.corecrypto calling module start function.[0m
+corecrypto start
+corecrypto register ret=0
+corecrypto loaded
+[33mKext com.apple.kec.corecrypto is now started.[0m
+[33mKext com.apple.kec.corecrypto loaded.[0m
+[32mLoading kernel external component com.apple.kec.pthread.[0m
+[32mRecorded kext com.apple.kec.pthread as a candidate for inclusion in prelinked kernel.[0m
+[33mLoading kext com.apple.kec.pthread.[0m
+[32mKext com.apple.kec.pthread resolving dependencies.[0m
+[36mKext com.apple.kec.pthread added dependency com.apple.kpi.bsd.[0m
+[36mKext com.apple.kec.pthread added dependency com.apple.kpi.iokit.[0m
+[36mKext com.apple.kec.pthread added dependency com.apple.kpi.libkern.[0m
+[36mKext com.apple.kec.pthread added dependency com.apple.kpi.mach.[0m
+[36mKext com.apple.kec.pthread added dependency com.apple.kpi.private.[0m
+[36mKext com.apple.kec.pthread added dependency com.apple.kpi.unsupported.[0m
+[32mKext com.apple.kec.pthread successfully resolved dependencies.[0m
+[35mKext com.apple.kpi.bsd is already loaded.[0m
+[35mKext com.apple.kpi.iokit is already loaded.[0m
+[35mKext com.apple.kpi.libkern is already loaded.[0m
+[35mKext com.apple.kpi.mach is already loaded.[0m
+[35mKext com.apple.kpi.private is already loaded.[0m
+[35mKext com.apple.kpi.unsupported is already loaded.[0m
+[33mKext com.apple.kec.pthread executable loaded; 7 pages at 0xfffffff004230000 (load tag 10).[0m
+[36mKext com.apple.kec.pthread calling module start function.[0m
+[33mKext com.apple.kec.pthread is now started.[0m
+[33mKext com.apple.kec.pthread loaded.[0m
+[32mReading built-in kernel personalities for I/O Kit drivers.[0m
+[32mSending all eligible registered kexts' personalities to the IOCatalogue and starting matching.[0m
+[32m21 kext personalities sent to the IOCatalogue; matching started.[0m
+IONVRAM::getNVRAMSize:854 - NVRAM size is 8192 bytes
+[32mLoading security extensions.[0m
+1 external trust cache modules available.
+external trust cache module 0 with 0 entries
+[33mJettisoning kext bootstrap segments.[0m
+[33m[4mkeepsyms boot arg specified; keeping linkedit segment for symbols.[0m
+No POST boot-arg set.
+[32mRecorded kext org.puredarwin.kext.PDArmPlatformExpert as a candidate for inclusion in prelinked kernel.[0m
+[33mLoading kext org.puredarwin.kext.PDArmPlatformExpert.[0m
+[32mKext org.puredarwin.kext.PDArmPlatformExpert resolving dependencies.[0m
+[36mKext org.puredarwin.kext.PDArmPlatformExpert added dependency com.apple.kpi.iokit.[0m
+[36mKext org.puredarwin.kext.PDArmPlatformExpert added dependency com.apple.kpi.libkern.[0m
+[36mKext org.puredarwin.kext.PDArmPlatformExpert added dependency com.apple.kpi.private.[0m
+[36mKext org.puredarwin.kext.PDArmPlatformExpert added dependency com.apple.kpi.unsupported.[0m
+[32mKext org.puredarwin.kext.PDArmPlatformExpert successfully resolved dependencies.[0m
+[35mKext com.apple.kpi.iokit is already loaded.[0m
+[35mKext com.apple.kpi.libkern is already loaded.[0m
+[35mKext com.apple.kpi.private is already loaded.[0m
+[35mKext com.apple.kpi.unsupported is already loaded.[0m
+[33mKext org.puredarwin.kext.PDArmPlatformExpert executable loaded; 10 pages at 0xfffffff004134000 (load tag 11).[0m
+[36mKext org.puredarwin.kext.PDArmPlatformExpert calling module start function.[0m
+[36mKext org.puredarwin.kext.PDArmPlatformExpert registered class PDArmPlatformExpert.[0m
+[33mKext org.puredarwin.kext.PDArmPlatformExpert has IOService subclass PDArmPlatformExpert; enabling autounload.[0m
+[36mKext org.puredarwin.kext.PDArmPlatformExpert registered class PDAppleARMPlatformExpert.[0m
+[36mKext org.puredarwin.kext.PDArmPlatformExpert registered class PDArmCPU.[0m
+[36mKext org.puredarwin.kext.PDArmPlatformExpert registered class PDArmCPUInterruptController.[0m
+[36mKext org.puredarwin.kext.PDArmPlatformExpert registered class PDAppleAIC.[0m
+[36mKext org.puredarwin.kext.PDArmPlatformExpert registered class PDBcm2835IC.[0m
+[33mKext org.puredarwin.kext.PDArmPlatformExpert is now started.[0m
+[33mKext org.puredarwin.kext.PDArmPlatformExpert loaded.[0m
+[32mRecorded kext org.puredarwin.driver.PDArmPCI as a candidate for inclusion in prelinked kernel.[0m
+[33mLoading kext org.puredarwin.driver.PDArmPCI.[0m
+[32mKext org.puredarwin.driver.PDArmPCI resolving dependencies.[0m
+[36mKext com.apple.iokit.IOPCIFamily added dependency com.apple.kpi.iokit.[0m
+[36mKext com.apple.iokit.IOPCIFamily added dependency com.apple.kpi.libkern.[0m
+[36mKext com.apple.iokit.IOPCIFamily added dependency com.apple.kpi.mach.[0m
+[36mKext com.apple.iokit.IOPCIFamily added dependency com.apple.kpi.private.[0m
+[36mKext com.apple.iokit.IOPCIFamily added dependency com.apple.kpi.unsupported.[0m
+[36mKext org.puredarwin.driver.PDArmPCI added dependency com.apple.iokit.IOPCIFamily.[0m
+[36mKext org.puredarwin.driver.PDArmPCI added dependency com.apple.kpi.iokit.[0m
+[36mKext org.puredarwin.driver.PDArmPCI added dependency com.apple.kpi.libkern.[0m
+[32mKext org.puredarwin.driver.PDArmPCI successfully resolved dependencies.[0m
+[33mLoading kext com.apple.iokit.IOPCIFamily.[0m
+[35mKext com.apple.kpi.iokit is already loaded.[0m
+[35mKext com.apple.kpi.libkern is already loaded.[0m
+[35mKext com.apple.kpi.mach is already loaded.[0m
+[35mKext com.apple.kpi.private is already loaded.[0m
+[35mKext com.apple.kpi.unsupported is already loaded.[0m
+[33mKext com.apple.iokit.IOPCIFamily executable loaded; 20 pages at 0xfffffff004004000 (load tag 12).[0m
+[36mKext com.apple.iokit.IOPCIFamily calling module start function.[0m
+[36mKext com.apple.iokit.IOPCIFamily registered class IOPCIBridge.[0m
+[33mKext com.apple.iokit.IOPCIFamily has IOService subclass IOPCIBridge; enabling autounload.[0m
+[36mKext com.apple.iokit.IOPCIFamily registered class IOPCI2PCIBridge.[0m
+[36mKext com.apple.iokit.IOPCIFamily registered class IOPCIEventSource.[0m
+[36mKext com.apple.iokit.IOPCIFamily registered class IOPCIConfigurator.[0m
+[36mKext com.apple.iokit.IOPCIFamily registered class IOPCIDevice.[0m
+[36mKext com.apple.iokit.IOPCIFamily registered class IOAGPDevice.[0m
+[36mKext com.apple.iokit.IOPCIFamily registered class IOPCIMessagedInterruptController.[0m
+[33mKext com.apple.iokit.IOPCIFamily is now started.[0m
+[33mKext com.apple.iokit.IOPCIFamily loaded.[0m
+[35mKext com.apple.kpi.iokit is already loaded.[0m
+[35mKext com.apple.kpi.libkern is already loaded.[0m
+[33mKext org.puredarwin.driver.PDArmPCI executable loaded; 6 pages at 0xfffffff00415c000 (load tag 13).[0m
+[36mKext org.puredarwin.driver.PDArmPCI calling module start function.[0m
+[36mKext org.puredarwin.driver.PDArmPCI registered class PDArmPCI.[0m
+[33mKext org.puredarwin.driver.PDArmPCI has IOService subclass PDArmPCI; enabling autounload.[0m
+[33mKext org.puredarwin.driver.PDArmPCI is now started.[0m
+[33mKext org.puredarwin.driver.PDArmPCI loaded.[0m
+PureDarwin PDArmPCI: probe provider=pci
+PureDarwin PDArmPCI: probe result=0xfffffff536c139c0 score=90000
+PureDarwin PDArmPCI: start provider=pci
+PDArmGIC: up (GICD_CTLR=0x53 GICR_WAKER=0x0 timer PPI 27 Group1 enabled)
+Copyright (c) 1982, 1986, 1989, 1991, 1993
+	The Regents of the University of California. All rights reserved.
+
+MAC Framework successfully initialized
+PD: desiredvnodes=1024 sane_size=0x33d58000 mem_size=0x37d00000
+using 1061 buffer headers and 1061 cluster IO buffer headers
+mcache: 1 CPU(s), 64 bytes CPU cache line size
+mbinit: done [64 MB total pool size, (42/21) split]
+dlil_init: Waiting for all the create dlil kernel threads to get scheduled at least once.
+dlil_init: All the created dlil kernel threads have been scheduled at least once. Proceeding.
+pdcmode_aes_cbc_init
+ifnet_attach: All kernel threads created for interface lo0 have been scheduled at least once. Proceeding.
+[32mRecorded kext com.apple.iokit.IONetworkingFamily as a candidate for inclusion in prelinked kernel.[0m
+[33mLoading kext com.apple.iokit.IONetworkingFamily.[0m
+[32mKext com.apple.iokit.IONetworkingFamily resolving dependencies.[0m
+[36mKext com.apple.iokit.IONetworkingFamily added dependency com.apple.kpi.bsd.[0m
+[36mKext com.apple.iokit.IONetworkingFamily added dependency com.apple.kpi.iokit.[0m
+[36mKext com.apple.iokit.IONetworkingFamily added dependency com.apple.kpi.libkern.[0m
+[36mKext com.apple.iokit.IONetworkingFamily added dependency com.apple.kpi.mach.[0m
+[36mKext com.apple.iokit.IONetworkingFamily added dependency com.apple.kpi.private.[0m
+[36mKext com.apple.iokit.IONetworkingFamily added dependency com.apple.kpi.unsupported.[0m
+[32mKext com.apple.iokit.IONetworkingFamily successfully resolved dependencies.[0m
+[35mKext com.apple.kpi.bsd is already loaded.[0m
+[35mKext com.apple.kpi.iokit is already loaded.[0m
+[35mKext com.apple.kpi.libkern is already loaded.[0m
+[35mKext com.apple.kpi.mach is already loaded.[0m
+[35mKext com.apple.kpi.private is already loaded.[0m
+[35mKext com.apple.kpi.unsupported is already loaded.[0m
+[33mKext com.apple.iokit.IONetworkingFamily executable loaded; 25 pages at 0xfffffff0040b4000 (load tag 14).[0m
+[36mKext com.apple.iokit.IONetworkingFamily calling module start function.[0m
+[36mKext com.apple.iokit.IONetworkingFamily registered class IOEthernetController.[0m
+[33mKext com.apple.iokit.IONetworkingFamily has IOService subclass IOEthernetController; enabling autounload.[0m
+[36mKext com.apple.iokit.IONetworkingFamily registered class IOECStateNotifier.[0m
+[36mKext com.apple.iokit.IONetworkingFamily registered class IOECTimeSyncHandler.[0m
+[36mKext com.apple.iokit.IONetworkingFamily registered class IOEthernetInterface.[0m
+[36mKext com.apple.iokit.IONetworkingFamily registered class IOKDP.[0m
+[36mKext com.apple.iokit.IONetworkingFamily registered class IOKernelDebugger.[0m
+[36mKext com.apple.iokit.IONetworkingFamily registered class IOMbufMemoryCursor.[0m
+[36mKext com.apple.iokit.IONetworkingFamily registered class IOMbufNaturalMemoryCursor.[0m
+[36mKext com.apple.iokit.IONetworkingFamily registered class IOMbufBigMemoryCursor.[0m
+[36mKext com.apple.iokit.IONetworkingFamily registered class IOMbufLittleMemoryCursor.[0m
+[36mKext com.apple.iokit.IONetworkingFamily registered class IONetworkController.[0m
+[36mKext com.apple.iokit.IONetworkingFamily registered class IONetworkData.[0m
+[36mKext com.apple.iokit.IONetworkingFamily registered class IONetworkInterface.[0m
+[36mKext com.apple.iokit.IONetworkingFamily registered class IONetworkMedium.[0m
+[36mKext com.apple.iokit.IONetworkingFamily registered class IONetworkStack.[0m
+[36mKext com.apple.iokit.IONetworkingFamily registered class IONetworkStackUserClient.[0m
+[36mKext com.apple.iokit.IONetworkingFamily registered class IONetworkUserClient.[0m
+[36mKext com.apple.iokit.IONetworkingFamily registered class IOOutputQueue.[0m
+[36mKext com.apple.iokit.IONetworkingFamily registered class IOBasicOutputQueue.[0m
+[36mKext com.apple.iokit.IONetworkingFamily registered class IOGatedOutputQueue.[0m
+[36mKext com.apple.iokit.IONetworkingFamily registered class IOPacketQueue.[0m
+[33mKext com.apple.iokit.IONetworkingFamily is now started.[0m
+[33mKext com.apple.iokit.IONetworkingFamily loaded.[0m
+[32mRecorded kext com.apple.filesystems.ext4 as a candidate for inclusion in prelinked kernel.[0m
+[33mLoading kext com.apple.filesystems.ext4.[0m
+[32mKext com.apple.filesystems.ext4 resolving dependencies.[0m
+[36mKext com.apple.filesystems.ext4 added dependency com.apple.kpi.bsd.[0m
+[36mKext com.apple.filesystems.ext4 added dependency com.apple.kpi.iokit.[0m
+[36mKext com.apple.filesystems.ext4 added dependency com.apple.kpi.libkern.[0m
+[36mKext com.apple.filesystems.ext4 added dependency com.apple.kpi.mach.[0m
+[36mKext com.apple.filesystems.ext4 added dependency com.apple.kpi.unsupported.[0m
+[32mKext com.apple.filesystems.ext4 successfully resolved dependencies.[0m
+[35mKext com.apple.kpi.bsd is already loaded.[0m
+[35mKext com.apple.kpi.iokit is already loaded.[0m
+[35mKext com.apple.kpi.libkern is already loaded.[0m
+[35mKext com.apple.kpi.mach is already loaded.[0m
+[35mKext com.apple.kpi.unsupported is already loaded.[0m
+[33mKext com.apple.filesystems.ext4 executable loaded; 11 pages at 0xfffffff0041ac000 (load tag 15).[0m
+[36mKext com.apple.filesystems.ext4 calling module start function.[0m
+PureDarwin PDArmPCI: configure
+pci (build 08:52:18 Oct 10 2026), flags 0x20c3008
+[36mKext com.apple.filesystems.ext4 registered class com_ravynos_filesystems_ext4.[0m
+[33mKext com.apple.filesystems.ext4 has IOService subclass com_ravynos_filesystems_ext4; enabling autounload.[0m
+[33mKext com.apple.filesystems.ext4 is now started.[0m
+[33mKext com.apple.filesystems.ext4 loaded.[0m
+[ PCI configuration begin ]
+[ PCI configuration end, bridges 1, devices 4 ]
+[32mRecorded kext org.puredarwin.driver.IOVirtIOBlock as a candidate for inclusion in prelinked kernel.[0m
+[33mLoading kext org.puredarwin.driver.IOVirtIOBlock.[0m
+[32mKext org.puredarwin.driver.IOVirtIOBlock resolving dependencies.[0m
+[36mKext com.apple.iokit.IOStorageFamily added dependency com.apple.kpi.bsd.[0m
+[36mKext com.apple.iokit.IOStorageFamily added dependency com.apple.kpi.iokit.[0m
+[36mKext com.apple.iokit.IOStorageFamily added dependency com.apple.kpi.libkern.[0m
+[36mKext com.apple.iokit.IOStorageFamily added dependency com.apple.kpi.mach.[0m
+[36mKext com.apple.iokit.IOStorageFamily added dependency com.apple.kpi.private.[0m
+[36mKext com.apple.iokit.IOStorageFamily added dependency com.apple.kpi.unsupported.[0m
+[36mKext org.puredarwin.driver.IOVirtIOBlock added dependency com.apple.iokit.IOStorageFamily.[0m
+[36mKext org.puredarwin.driver.IOVirtIOBlock added dependency com.apple.iokit.IOPCIFamily.[0m
+[36mKext org.puredarwin.iokit.IOVirtIOFamily added dependency com.apple.iokit.IOPCIFamily.[0m
+[36mKext org.puredarwin.iokit.IOVirtIOFamily added dependency com.apple.kpi.iokit.[0m
+[36mKext org.puredarwin.iokit.IOVirtIOFamily added dependency com.apple.kpi.libkern.[0m
+[36mKext org.puredarwin.iokit.IOVirtIOFamily added dependency com.apple.kpi.mach.[0m
+[36mKext org.puredarwin.driver.IOVirtIOBlock added dependency org.puredarwin.iokit.IOVirtIOFamily.[0m
+[36mKext org.puredarwin.driver.IOVirtIOBlock added dependency com.apple.kpi.iokit.[0m
+[36mKext org.puredarwin.driver.IOVirtIOBlock added dependency com.apple.kpi.libkern.[0m
+[36mKext org.puredarwin.driver.IOVirtIOBlock added dependency com.apple.kpi.mach.[0m
+[36mKext org.puredarwin.driver.IOVirtIOBlock added dependency com.apple.kpi.bsd.[0m
+[32mKext org.puredarwin.driver.IOVirtIOBlock successfully resolved dependencies.[0m
+[33mLoading kext com.apple.iokit.IOStorageFamily.[0m
+[35mKext com.apple.kpi.bsd is already loaded.[0m
+[35mKext com.apple.kpi.iokit is already loaded.[0m
+[35mKext com.apple.kpi.libkern is already loaded.[0m
+[35mKext com.apple.kpi.mach is already loaded.[0m
+[35mKext com.apple.kpi.private is already loaded.[0m
+[35mKext com.apple.kpi.unsupported is already loaded.[0m
+[33mKext com.apple.iokit.IOStorageFamily executable loaded; 22 pages at 0xfffffff004054000 (load tag 16).[0m
+[36mKext com.apple.iokit.IOStorageFamily calling module start function.[0m
+IOMediaBSDClient: devsw major=18
+[36mKext com.apple.iokit.IOStorageFamily registered class IOAppleLabelScheme.[0m
+[33mKext com.apple.iokit.IOStorageFamily has IOService subclass IOAppleLabelScheme; enabling autounload.[0m
+[36mKext com.apple.iokit.IOStorageFamily registered class IOApplePartitionScheme.[0m
+[36mKext com.apple.iokit.IOStorageFamily registered class IOBlockStorageDevice.[0m
+[36mKext com.apple.iokit.IOStorageFamily registered class IOBlockStorageDriver.[0m
+[36mKext com.apple.iokit.IOStorageFamily registered class IODeblocker.[0m
+[36mKext com.apple.iokit.IOStorageFamily registered class IOBreaker.[0m
+[36mKext com.apple.iokit.IOStorageFamily registered class IOFDiskPartitionScheme.[0m
+[36mKext com.apple.iokit.IOStorageFamily registered class IOFilterScheme.[0m
+[36mKext com.apple.iokit.IOStorageFamily registered class IOGUIDPartitionScheme.[0m
+[36mKext com.apple.iokit.IOStorageFamily registered class IOMedia.[0m
+[36mKext com.apple.iokit.IOStorageFamily registered class IOMediaBSDClient.[0m
+[36mKext com.apple.iokit.IOStorageFamily registered class IOPartitionScheme.[0m
+[36mKext com.apple.iokit.IOStorageFamily registered class IOStorage.[0m
+[33mKext com.apple.iokit.IOStorageFamily is now started.[0m
+[33mKext com.apple.iokit.IOStorageFamily loaded.[0m
+[35mKext com.apple.iokit.IOPCIFamily is already loaded.[0m
+[33mLoading kext org.puredarwin.iokit.IOVirtIOFamily.[0m
+[35mKext com.apple.iokit.IOPCIFamily is already loaded.[0m
+[35mKext com.apple.kpi.iokit is already loaded.[0m
+[35mKext com.apple.kpi.libkern is already loaded.[0m
+[35mKext com.apple.kpi.mach is already loaded.[0m
+[33mKext org.puredarwin.iokit.IOVirtIOFamily executable loaded; 5 pages at 0xfffffff004120000 (load tag 17).[0m
+rooting via boot-uuid from /chosen: 20D4224D-60C4-572D-B83D-AA2D94C882F4
+Waiting on <dict ID="0"><key>IOProviderClass</key><string ID="1">IOResources</string><key>IOResourceMatch</key><string ID="2">boot-uuid-media</string></dict>
+[36mKext org.puredarwin.iokit.IOVirtIOFamily calling module start function.[0m
+[33mKext org.puredarwin.iokit.IOVirtIOFamily is now started.[0m
+[33mKext org.puredarwin.iokit.IOVirtIOFamily loaded.[0m
+[35mKext com.apple.kpi.iokit is already loaded.[0m
+[35mKext com.apple.kpi.libkern is already loaded.[0m
+[35mKext com.apple.kpi.mach is already loaded.[0m
+[35mKext com.apple.kpi.bsd is already loaded.[0m
+[33mKext org.puredarwin.driver.IOVirtIOBlock executable loaded; 7 pages at 0xfffffff004174000 (load tag 18).[0m
+[36mKext org.puredarwin.driver.IOVirtIOBlock calling module start function.[0m
+[36mKext org.puredarwin.driver.IOVirtIOBlock registered class IOVirtIOBlock.[0m
+[33mKext org.puredarwin.driver.IOVirtIOBlock has IOService subclass IOVirtIOBlock; enabling autounload.[0m
+[36mKext org.puredarwin.driver.IOVirtIOBlock registered class IOVirtIOBlockDisk.[0m
+[33mKext org.puredarwin.driver.IOVirtIOBlock is now started.[0m
+[33mKext org.puredarwin.driver.IOVirtIOBlock loaded.[0m
+IOVirtIOTransport: vendor cap #1 at off=0x84 type=5 bar=0 regoff=0x0
+IOVirtIOTransport: failed to map BAR0 for cap type=5
+IOVirtIOTransport: vendor cap #2 at off=0x70 type=2 bar=4 regoff=0x3000
+IOVirtIOTransport: vendor cap #3 at off=0x60 type=4 bar=4 regoff=0x2000
+IOVirtIOTransport: vendor cap #4 at off=0x50 type=3 bar=4 regoff=0x1000
+IOVirtIOTransport: vendor cap #5 at off=0x40 type=1 bar=4 regoff=0x0
+[32mRecorded kext org.puredarwin.driver.IOVirtIONet as a candidate for inclusion in prelinked kernel.[0m
+[33mLoading kext org.puredarwin.driver.IOVirtIONet.[0m
+[32mKext org.puredarwin.driver.IOVirtIONet resolving dependencies.[0m
+[36mKext org.puredarwin.driver.IOVirtIONet added dependency com.apple.iokit.IONetworkingFamily.[0m
+[36mKext org.puredarwin.driver.IOVirtIONet added dependency com.apple.iokit.IOPCIFamily.[0m
+[36mKext org.puredarwin.driver.IOVirtIONet added dependency org.puredarwin.iokit.IOVirtIOFamily.[0m
+[36mKext org.puredarwin.driver.IOVirtIONet added dependency com.apple.kpi.iokit.[0m
+[36mKext org.puredarwin.driver.IOVirtIONet added dependency com.apple.kpi.libkern.[0m
+[36mKext org.puredarwin.driver.IOVirtIONet added dependency com.apple.kpi.mach.[0m
+[36mKext org.puredarwin.driver.IOVirtIONet added dependency com.apple.kpi.bsd.[0m
+[32mKext org.puredarwin.driver.IOVirtIONet successfully resolved dependencies.[0m
+[35mKext com.apple.iokit.IONetworkingFamily is already loaded.[0m
+[35mKext com.apple.iokit.IOPCIFamily is already loaded.[0m
+[35mKext org.puredarwin.iokit.IOVirtIOFamily is already loaded.[0m
+[35mKext com.apple.kpi.iokit is already loaded.[0m
+[35mKext com.apple.kpi.libkern is already loaded.[0m
+[35mKext com.apple.kpi.mach is already loaded.[0m
+[35mKext com.apple.kpi.bsd is already loaded.[0m
+[33mKext org.puredarwin.driver.IOVirtIONet executable loaded; 7 pages at 0xfffffff004190000 (load tag 19).[0m
+[36mKext org.puredarwin.driver.IOVirtIONet calling module start function.[0m
+[36mKext org.puredarwin.driver.IOVirtIONet registered class IOVirtIONet.[0m
+[33mKext org.puredarwin.driver.IOVirtIONet has IOService subclass IOVirtIONet; enabling autounload.[0m
+[33mKext org.puredarwin.driver.IOVirtIONet is now started.[0m
+[33mKext org.puredarwin.driver.IOVirtIONet loaded.[0m
+IOVirtIONet: probe vendor=0x1af4 device=0x1000
+IOVirtIOTransport: vendor cap #1 at off=0x84 type=5 bar=0 regoff=0x0
+IOVirtIOTransport: failed to map BAR0 for cap type=5
+IOVirtIOTransport: vendor cap #2 at off=0x70 type=2 bar=4 regoff=0x3000
+IOVirtIOTransport: vendor cap #3 at off=0x60 type=4 bar=4 regoff=0x2000
+IOVirtIOTransport: vendor cap #4 at off=0x50 type=3 bar=4 regoff=0x1000
+IOVirtIOTransport: vendor cap #5 at off=0x40 type=1 bar=4 regoff=0x0
+IOVirtIONet: MAC 52:54:00:12:34:56
+IOVirtIOBlock: 2232320 blocks of 512 bytes (1090 MB), flush
+[32mRecorded kext com.apple.iokit.IOStorageFamily as a candidate for inclusion in prelinked kernel.[0m
+[35mKext com.apple.iokit.IOStorageFamily is already loaded.[0m
+[35mKext com.apple.iokit.IOStorageFamily is already loaded.[0m
+[35mKext com.apple.iokit.IOStorageFamily is already loaded.[0m
+[35mKext com.apple.iokit.IOStorageFamily is already loaded.[0m
+[35mKext com.apple.iokit.IOStorageFamily is already loaded.[0m
+[32mRecorded kext com.ravynos.driver.Ext4FileSystemDriver as a candidate for inclusion in prelinked kernel.[0m
+[33mLoading kext com.ravynos.driver.Ext4FileSystemDriver.[0m
+[32mKext com.ravynos.driver.Ext4FileSystemDriver resolving dependencies.[0m
+[36mKext com.ravynos.driver.Ext4FileSystemDriver added dependency com.apple.kpi.libkern.[0m
+[36mKext com.ravynos.driver.Ext4FileSystemDriver added dependency com.apple.kpi.iokit.[0m
+[36mKext com.ravynos.driver.Ext4FileSystemDriver added dependency com.apple.iokit.IOStorageFamily.[0m
+[32mKext com.ravynos.driver.Ext4FileSystemDriver successfully resolved dependencies.[0m
+[35mKext com.apple.kpi.libkern is already loaded.[0m
+[35mKext com.apple.kpi.iokit is already loaded.[0m
+[35mKext com.apple.iokit.IOStorageFamily is already loaded.[0m
+[33mKext com.ravynos.driver.Ext4FileSystemDriver executable loaded; 6 pages at 0xfffffff0041d8000 (load tag 20).[0m
+[36mKext com.ravynos.driver.Ext4FileSystemDriver calling module start function.[0m
+[36mKext com.ravynos.driver.Ext4FileSystemDriver registered class Ext4FileSystemDriver.[0m
+[33mKext com.ravynos.driver.Ext4FileSystemDriver has IOService subclass Ext4FileSystemDriver; enabling autounload.[0m
+[33mKext com.ravynos.driver.Ext4FileSystemDriver is now started.[0m
+[33mKext com.ravynos.driver.Ext4FileSystemDriver loaded.[0m
+[32mRecorded kext com.apple.AppleFileSystemDriver as a candidate for inclusion in prelinked kernel.[0m
+[33mLoading kext com.apple.AppleFileSystemDriver.[0m
+[32mKext com.apple.AppleFileSystemDriver resolving dependencies.[0m
+[36mKext com.apple.AppleFileSystemDriver added dependency com.apple.kpi.libkern.[0m
+[36mKext com.apple.AppleFileSystemDriver added dependency com.apple.kpi.iokit.[0m
+[36mKext com.apple.AppleFileSystemDriver added dependency com.apple.iokit.IOStorageFamily.[0m
+[32mKext com.apple.AppleFileSystemDriver successfully resolved dependencies.[0m
+[35mKext com.apple.kpi.libkern is already loaded.[0m
+[35mKext com.apple.kpi.iokit is already loaded.[0m
+[35mKext com.apple.iokit.IOStorageFamily is already loaded.[0m
+[33mKext com.apple.AppleFileSystemDriver executable loaded; 6 pages at 0xfffffff0041f0000 (load tag 21).[0m
+[36mKext com.apple.AppleFileSystemDriver calling module start function.[0m
+[36mKext com.apple.AppleFileSystemDriver registered class AppleFileSystemDriver.[0m
+[33mKext com.apple.AppleFileSystemDriver has IOService subclass AppleFileSystemDriver; enabling autounload.[0m
+[33mKext com.apple.AppleFileSystemDriver is now started.[0m
+[33mKext com.apple.AppleFileSystemDriver loaded.[0m
+IOFDiskPartitionScheme: scan found 1 partition(s)
+IOMediaBSDClient: start media=VirtIO Block Device Media whole=1 size=1142947840 block=512
+IOMediaBSDClient: published /dev/disk0 and /dev/rdisk0
+IOMediaBSDClient: media=VirtIO Block Device Media -> disk0 major=18 minor=0
+[35mKext com.apple.iokit.IOStorageFamily is already loaded.[0m
+IOMediaBSDClient: start media=EFI System Partition whole=0 size=67108864 block=512
+IOMediaBSDClient: published /dev/disk0s1 and /dev/rdisk0s1
+IOMediaBSDClient: media=EFI System Partition -> disk0s1 major=18 minor=1
+[35mKext com.apple.iokit.IOStorageFamily is already loaded.[0m
+IOMediaBSDClient: start media=Darwin ext4 Root whole=0 size=1073741824 block=512
+IOMediaBSDClient: published /dev/disk0s2 and /dev/rdisk0s2
+IOMediaBSDClient: media=Darwin ext4 Root -> disk0s2 major=18 minor=2
+Got boot device = IOService:/PDArmPlatformExpert/pci/PDArmPCI/scsi@1/IOVirtIOBlock/virtio-blk0@0/IOBlockStorageDriver/VirtIO Block Device Media/IOGUIDPartitionScheme/Darwin ext4 Root@2
+BSD root: disk0s2, major 18, minor 2
+Maximum number of VM swap files: 100
+VM Swap Subsystem is ON
+No POST boot-arg set.
+load_init_program: attempting to load /usr/appleinternal/sbin/launchd.development
+load_init_program: attempting to load /sbin/launchd
+dyld: setting comm page to 0x800000000
+
+com.apple.launchd                1        com.apple.launchd                                                1         *** launchd[1] has started up. ***
+
+com.apple.launchd                1        com.apple.launchd                                                1         *** Verbose boot, will log to /dev/console. ***
+
+com.apple.launchd                1        com.apple.launchd                                                1         *** Shutdown logging is enabled. ***
+
+PD-CORE: jobmgr_new(System): before init_session
+
+PD-CORE: jobmgr_new(System): after init_session bootstrapper=com.apple.launchctl.System
+
+PD-CORE: jobmgr_new(System): before dispatch com.apple.launchctl.System
+
+PD-CORE: job_start(com.apple.launchctl.System): begin
+
+PD-CORE: job_start(com.apple.launchctl.System): before runtime_fork
+
+PD-CORE: job_start(com.apple.launchctl.System): parent forked pid=2
+
+PD-CORE: job_uncork_fork(com.apple.launchctl.System): writing to fd 8
+
+PD-CORE: jobmgr_new(System): after dispatch com.apple.launchctl.System pid=2 active=PID is still valid
+
+PD-CORE: job_start(com.apple.launchctl.System): child after runtime_fork
+
+PD-CORE: job_start(com.apple.launchctl.System): child bootstrap_init
+
+PD-CORE: job_mig_post_fork_ping job=com.apple.launchctl.System pid=2 child_task=0x2903
+
+PD-CORE: job_start(com.apple.launchctl.System): child waiting for uncork
+
+PD-CORE: job_start(com.apple.launchctl.System): child uncorked
+
+PD-CORE: job_start_child(com.apple.launchctl.System): exec /bin/launchctl
+
+1970-01-01 00:00:14.-28 launchctl[2:186] CoreFoundation: failed to dynamically link symbol _CFSocketStreamCreatePair
+
+1970-01-01 00:00:15.-816 launchctl[2:186] CoreFoundation: failed to dynamically link symbol _CFErrorCreateWithStreamError
+
+1970-01-01 00:00:15.-806 launchctl[2:186] CoreFoundation: failed to dynamically link symbol _CFStreamErrorFromCFError
+
+PureDarwin: os_assumes failure (code 0x2)
+
+PureDarwin: os_assumes failure with context (code 0x0)
+
+PureDarwin: os_assumes failure with context (code 0x0)
+
+PD-CORE: job_start(org.blauos.smoke): begin
+
+PD-CORE: job_start(org.blauos.smoke): before runtime_fork
+
+PD-CORE: job_start(org.blauos.smoke): parent forked pid=4
+
+PD-CORE: job_uncork_fork(org.blauos.smoke): writing to fd 10
+
+PD-CORE: job_start(com.apple.mDNSResponder): begin
+
+PD-CORE: job_start(com.apple.mDNSResponder): before runtime_fork
+
+PD-CORE: job_start(com.apple.mDNSResponder): parent forked pid=5
+
+PD-CORE: job_uncork_fork(com.apple.mDNSResponder): writing to fd 10
+
+PD-CORE: job_start(com.apple.mDNSResponder): child after runtime_fork
+
+PD-CORE: job_start(com.apple.mDNSResponder): child bootstrap_init
+
+PD-CORE: job_start(org.blauos.smoke): child after runtime_fork
+
+PD-CORE: job_start(org.blauos.smoke): child bootstrap_init
+
+PD-CORE: job_mig_post_fork_ping job=com.apple.mDNSResponder pid=5 child_task=0x2907
+
+PD-CORE: job_mig_post_fork_ping job=org.blauos.smoke pid=4 child_task=0x290b
+
+PD-CORE: job_start(com.apple.mDNSResponder): child waiting for uncork
+
+PD-CORE: job_start(com.apple.mDNSResponder): child uncorked
+
+PD-CORE: job_start(org.blauos.smoke): child waiting for uncork
+
+PD-CORE: job_start(org.blauos.smoke): child uncorked
+
+PD-CORE: job_start_child(com.apple.mDNSResponder): exec /usr/sbin/mdnsd
+
+PD-CORE: job_start_child(org.blauos.smoke): exec /bin/blauos_guest_probe
+
+BLAUOS_GUEST_KERNEL Darwin Kernel Version 20.5.0: Sat Oct 10 09:40:01 PDT 2026; joeblau:xnu-build/DEVELOPMENT_ARM64_VIRT
+
+BLAUOS_SHELL_EXECUTED
+
+BLAUOS_GUEST_TEST shell=pass
+
+BLAUOS_RUNTIME allocation=pass
+
+BLAUOS_RUNTIME locale_conversions=pass
+
+BLAUOS_RUNTIME file_io=pass
+
+BLAUOS_RUNTIME syscall=pass
+
+BLAUOS_RUNTIME pthread=pass
+
+BLAUOS_RUNTIME concurrent_once=pass
+
+BLAUOS_RUNTIME blocks_lifetime=pass
+
+BLAUOS_RUNTIME mach_timer=pass
+
+BLAUOS_RUNTIME atfork_handlers=pass
+
+BLAUOS_RUNTIME process_exit=pass
+
+BLAUOS_RUNTIME dynamic_loader=pass
+
+BLAUOS_RUNTIME image=/bin/blauos_runtime_probe
+
+BLAUOS_RUNTIME image=/usr/lib/libobjc.A.dylib
+
+BLAUOS_RUNTIME image=/usr/lib/libSystem.B.dylib
+
+BLAUOS_RUNTIME image=/usr/lib/system/libdyld.dylib
+
+BLAUOS_RUNTIME image=/usr/lib/libc++abi.dylib
+
+BLAUOS_RUNTIME required_images=pass shared_cache=absent
+
+BLAUOS_RUNTIME result=pass
+
+BLAUOS_GUEST_TEST runtime=pass
+
+PureDarwin: os_assumes failure with context (code 0x0)
+
+Could not get location of job overrides database: ppid/bootstrap: 10/0x803
+
+PureDarwin: os_assumes failure with context (code 0x0)
+
+Could not obtain manager name: ppid/bootstrap: 10/0x803
+
+PureDarwin bootstrap found 1 jobs
+
+PureDarwin launchctl: submit_job_pass count=1
+
+PureDarwin launchctl: submit job[0]=org.blauos.test.bootstrap type=1
+
+PD-CORE: job_start(org.blauos.test.bootstrap): begin
+
+PD-CORE: job_start(org.blauos.test.bootstrap): before runtime_fork
+
+PD-CORE: job_start(org.blauos.test.bootstrap): parent forked pid=12
+
+PD-CORE: job_uncork_fork(org.blauos.test.bootstrap): writing to fd 13
+
+PD-CORE: job_start(org.blauos.test.bootstrap): child after runtime_fork
+
+PD-CORE: job_start(org.blauos.test.bootstrap): child bootstrap_init
+
+PD-CORE: job_mig_post_fork_ping job=org.blauos.test.bootstrap pid=12 child_task=0x2803
+
+PD-CORE: job_start(org.blauos.test.bootstrap): child waiting for uncork
+
+PD-CORE: job_start(org.blauos.test.bootstrap): child uncorked
+
+PD-CORE: job_start_child(org.blauos.test.bootstrap): exec /usr/libexec/blauos-bootstrap-probe
+
+BLAUOS_LAUNCHD_DIAGNOSTIC pid=12 reply_sent=1 intentional_exit=17
+
+PD-CORE: job_start(org.blauos.test.bootstrap): begin
+
+BLAUOS_LAUNCHD job_launch=pass bootstrap_registration=pass ipc_roundtrip=pass
+
+PD-CORE: job_start(org.blauos.test.bootstrap): begin
+
+PD-CORE: job_start(org.blauos.test.bootstrap): before runtime_fork
+
+PD-CORE: job_start(org.blauos.test.bootstrap): parent forked pid=15
+
+PD-CORE: job_uncork_fork(org.blauos.test.bootstrap): writing to fd 12
+
+PD-CORE: job_start(org.blauos.test.bootstrap): child after runtime_fork
+
+PD-CORE: job_start(org.blauos.test.bootstrap): child bootstrap_init
+
+PD-CORE: job_mig_post_fork_ping job=org.blauos.test.bootstrap pid=15 child_task=0x2807
+
+PD-CORE: job_start(org.blauos.test.bootstrap): child waiting for uncork
+
+PD-CORE: job_start(org.blauos.test.bootstrap): child uncorked
+
+PD-CORE: job_start_child(org.blauos.test.bootstrap): exec /usr/libexec/blauos-bootstrap-probe
+
+BLAUOS_LAUNCHD_DIAGNOSTIC pid=15 reply_sent=1 intentional_exit=17
+
+PD-CORE: job_start(org.blauos.test.bootstrap): begin
+
+BLAUOS_LAUNCHD supervision=pass first_pid=12 restarted_pid=15
+
+BLAUOS_LAUNCHD child_reaping=pass reaped_pid=12
+
+PureDarwin: os_assumes failure with context (code 0x0)
+
+Could not get location of job overrides database: ppid/bootstrap: 10/0x803
+
+PureDarwin: os_assumes failure with context (code 0x0)
+
+Could not obtain manager name: ppid/bootstrap: 10/0x803
+
+BLAUOS_LAUNCHD job_unload=pass
+
+PureDarwin: os_assumes failure with context (code 0x0)
+
+BLAUOS_LAUNCHD missing_job_error=pass
+
+PureDarwin: os_assumes failure with context (code 0x0)
+
+PureDarwin: os_assumes failure with context (code 0x0)
+
+PD-CORE: job_start(org.blauos.test.exec-failure): begin
+
+PD-CORE: job_start(org.blauos.test.exec-failure): before runtime_fork
+
+PD-CORE: job_start(org.blauos.test.exec-failure): parent forked pid=21
+
+PD-CORE: job_uncork_fork(org.blauos.test.exec-failure): writing to fd 11
+
+PD-CORE: job_start(org.blauos.test.exec-failure): child after runtime_fork
+
+PD-CORE: job_start(org.blauos.test.exec-failure): child bootstrap_init
+
+PD-CORE: job_mig_post_fork_ping job=org.blauos.test.exec-failure pid=21 child_task=0x2913
+
+PD-CORE: job_start(org.blauos.test.exec-failure): child waiting for uncork
+
+PD-CORE: job_start(org.blauos.test.exec-failure): child uncorked
+
+PD-CORE: job_start_child(org.blauos.test.exec-failure): exec /usr/libexec/blauos-intentionally-absent
+
+PD-CORE: job_start_child(org.blauos.test.exec-failure): exec failed errno=2
+
+PureDarwin: os_assumes failure with context (code 0x0)
+
+PureDarwin: os_assumes failure with context (code 0x0)
+
+BLAUOS_LAUNCHD failed_executable_error=pass behavior=reported
+
+BLAUOS_LAUNCHD result=service_subset_pass system_shutdown=unverified
+
+PureDarwin: os_assumes failure with context (code 0x0)
+
+PureDarwin: os_assumes failure with context (code 0x0)
+
+PureDarwin: os_assumes failure with context (code 0x0)
+
+PureDarwin: os_assumes failure with context (code 0x0)
+
+BLAUOS_GUEST_TEST launchd_services=pass
+
+PureDarwin network: configuring en0 addr=10.0.2.15 mask=255.255.255.0 router=10.0.2.2 dns=10.0.2.3
+
+PureDarwin network: lo0 inet 127.0.0.1 netmask 255.0.0.0 broadcast 127.255.255.255
+
+ifnet_attach: Waiting for all kernel threads created for interface en0 to get scheduled at least once.
+ifnet_attach: All kernel threads created for interface en0 have been scheduled at least once. Proceeding.
+PureDarwin network: en0 registered with BSD flags=0xffff8822
+
+IOVirtIONet: enable interface=0xfffffff536b648a0
+PureDarwin network: en0 inet 10.0.2.15 netmask 255.255.255.0 broadcast 10.0.2.255
+
+PureDarwin network: default route via 10.0.2.2
+
+PureDarwin network: resolver nameserver 10.0.2.3
+
+BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 guest_to_host
+
+BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 clock
+
+BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 kernel
+
+BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 launchd
+
+BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 shell
+
+BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 runtime
+
+BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 concurrent_once
+
+BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 blocks_lifetime
+
+BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 locale_conversions
+
+BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 mach_timer
+
+BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 atfork_handlers
+
+BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 dynamic_loader
+
+BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 launchd_services
+
+BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 dns
+
+PureDarwin: os_assumes failure with context (code 0x0)
+
+Could not get location of job overrides database: ppid/bootstrap: 4/0x803
+
+PureDarwin: os_assumes failure with context (code 0x0)
+
+Could not obtain manager name: ppid/bootstrap: 4/0x803
+
+PureDarwin bootstrap found 1 jobs
+
+PureDarwin launchctl: submit_job_pass count=1
+
+PureDarwin launchctl: submit job[0]=org.blauos.test.shutdown type=1
+
+PD-CORE: job_start(org.blauos.test.shutdown): begin
+
+PD-CORE: job_start(org.blauos.test.shutdown): before runtime_fork
+
+PD-CORE: job_start(org.blauos.test.shutdown): parent forked pid=28
+
+PD-CORE: job_uncork_fork(org.blauos.test.shutdown): writing to fd 11
+
+BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 network_service
+
+BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 host_to_guest
+
+PD-CORE: job_start(org.blauos.test.shutdown): child after runtime_fork
+
+PD-CORE: job_start(org.blauos.test.shutdown): child bootstrap_init
+
+PD-CORE: job_mig_post_fork_ping job=org.blauos.test.shutdown pid=28 child_task=0x2917
+
+PD-CORE: job_start(org.blauos.test.shutdown): child waiting for uncork
+
+PD-CORE: job_start(org.blauos.test.shutdown): child uncorked
+
+PD-CORE: job_start_child(org.blauos.test.shutdown): exec /usr/libexec/blauos-shutdown-probe
+
+BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 shutdown_job_started
+
+BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 shutdown_requested
+
+com.apple.launchd                1        com.apple.launchd                                                1         System: Userspace shutdown begun at: Sat Oct 10 17:58:51 2026
+
+com.apple.launchd                1        org.blauos.test.shutdown                                         28        Stopping job...
+
+com.apple.launchd                1        org.blauos.smoke                                                 4         Stopping job...
+
+com.apple.launchd                1        com.apple.mDNSResponder                                          5         Stopping job...
+
+com.apple.launchd                1        com.apple.launchctl.System                                       2         Stopping job...
+
+BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 shutdown_child_reaped
+
+BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 shutdown_job_exit
+
+com.apple.launchd                1        org.blauos.smoke                                                 0         Job was last to exit during shutdown of: System.
+
+com.apple.launchd                1        com.apple.launchd                                                1         System: Userspace shutdown finished at: Sat Oct 10 17:58:51 2026
+
+com.apple.launchd                1        com.apple.launchd                                                1         System: Userspace shutdown took approximately 0 seconds.
+
+com.apple.launchd                1        com.apple.launchd                                                1         System: About to call: reboot(RB_HALT).
+
+[33m[4mKext loading now disabled.[0m
+[33m[4mKext unloading now disabled.[0m
+[33m[4mKext autounloading now disabled.[0m
+syncing disks... Killing all processes 
+
+vfs_unmountall(nonsystem) start
+unmount(1) /dev
+unmount(1) /dev skipped
+unmount(1) / skipped
+vfs_unmountall(nonsystem) end
+IOServicePH::systemHalt took 0 ms
+Killing all processes 
+
+continuing
+vfs_unmountall(system) start
+unmount(0) /dev
+unmount(0) /
+done
+IOVirtIONet: disable interface=0xfffffff536b648a0
+CPU halted
+PDArmPlatformExpert: QEMU PSCI HVC SYSTEM_OFF

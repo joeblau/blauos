@@ -1,0 +1,78 @@
+Default: mDNSResponder (Engineering Build) (Oct 10 2026 10:40:04) starting
+mDNS: Interface not represented in list; marking active and retriggering queries - ifid: 1327094784, ifname: lo0, ifaddr: 127.0.0.1
+mDNS: Interface probe will be delayed - ifname: lo0, ifaddr: 127.0.0.1, probe delay: 512
+mDNS: Setting AnnounceOwner
+Default: RestartRecordGetZoneData: ResourceRecords
+Default: mDNS_AddDNSServer(1): Adding 10.0.2.3 for . interface <<NULL>> (0000000000000000), serviceID 0, scopeType 0, resGroupID 0, usableA, usableAAAA
+Default: uDNS_SetupWABQueries: No config change
+Default: uDNS_SetupDNSConfig: No configuration change
+Default:   6: Listening for incoming Unix Domain Socket client requests
+Default: mDNS_Register_internal: Adding to active record list    7 r._dns-sd._udp.local. PTR local.
+Default: RR Auth now using 1 objects
+Default: mDNS_Register_internal: Adding to active record list    7 b._dns-sd._udp.local. PTR local.
+Default: mDNS_AddDNSServer(2): Adding 10.0.2.3 for . interface <<NULL>> (0000000000000000), serviceID 0, scopeType 0, resGroupID 0, usableA, usableAAAA
+Default: mDNSPlatformSourceAddrForDest: connect 1.1.1.1 failed errno 51 (Network is unreachable)
+Default: mDNS_Execute: SendResponses didn't send all its responses; will try again in one second
+Default: UpdateAllSRVRecords 0
+Default: uDNS_RequestAddress: Setting retryGetAddr to future
+Default: uDNS_RequestAddress: Setting retryGetAddr to future
+mDNS: Last representative of InterfaceID deregistered; marking questions etc. dormant - ifid: 1327094784, ifname: lo0, ifaddr: 127.0.0.1
+Default: DeadvertiseInterface: Deadvertising randomized hostname on interface lo0
+mDNS: Interface not represented in list; marking active and retriggering queries - ifid: 1327109120, ifname: en0, ifaddr: 10.0.2.15
+mDNS: Interface probe will be delayed - ifname: en0, ifaddr: 10.0.2.15, probe delay: 512
+mDNS: Setting AnnounceOwner
+Default: RestartRecordGetZoneData: ResourceRecords
+Default: mDNS_Execute: SendResponses didn't send all its responses; will try again in one second
+Default: uDNS_RequestAddress: Setting retryGetAddr to future
+mDNS: Last representative of InterfaceID deregistered; marking questions etc. dormant - ifid: 1327109120, ifname: en0, ifaddr: 10.0.2.15
+Default: DeadvertiseInterface: Deadvertising randomized hostname on interface en0
+mDNS: Interface not represented in list; marking active and retriggering queries - ifid: 1327115776, ifname: en0, ifaddr: 10.0.2.15
+mDNS: Interface probe will be delayed - ifname: en0, ifaddr: 10.0.2.15, probe delay: 512
+mDNS: Setting AnnounceOwner
+Default: RestartRecordGetZoneData: ResourceRecords
+Default: uDNS_RequestAddress: Setting retryGetAddr to future
+Default: uDNS_RequestAddress: Setting retryGetAddr to future
+Default: uDNS_RequestAddress: Setting retryGetAddr to future
+Default: uDNS_RequestAddress: Setting retryGetAddr to future
+Default:   7: connect_callback: Adding FD for uid 0
+Default: uDNS_RequestAddress: Setting retryGetAddr to future
+Default: [R1] DNSServiceCreateConnection START PID[4](blauos_guest_pr)
+Default: uDNS_RequestAddress: Setting retryGetAddr to future
+Default: uDNS_RequestAddress: Setting retryGetAddr to future
+Default: [R2] DNSServiceQueryRecord(1D000, 0, example.com, Addr) START PID[4](blauos_guest_pr)
+Default: SetValidDNSServers: question example.com. (Addr) TargetQID 22282 InterfaceID 0000000000000000 ServiceID -1 -> bits 0x00000000000000000000000000000001
+Default: [Q22282] InitDNSConfig: Setting StopTime on the uDNS question 000000014F1A48B8 example.com. (Addr)
+Default: [R2->Q22282] GetServerForQuestion: 000000014F1A48B8 DNS server (000000014EE6C2F0) 10.0.2.3:53 (Penalty Time Left 0) (Scope None:0000000000000000:-1) for example.com. (Addr)
+Default: [R2->Q22282] InitDNSConfig: question 000000014F1A48B8 example.com. Addr Timeout 30, DNS Server 10.0.2.3:53
+Default: uDNS_RequestAddress: Setting retryGetAddr to future
+Default: mDNSPlatformSendUDP: sendto socket 3 -> 10.0.2.3:53 sent 29 bytes
+Default: uDNS_RequestAddress: Setting retryGetAddr to future
+Default: uDNS_RequestAddress: Setting retryGetAddr to future
+Default: SocketDataReady: skt 3 intf 0000000000000000 len 83 from 10.0.2.3:53 to 10.0.2.15:55409
+Default: [R2->Q22282] DNSServiceQueryRecord(example.com., Addr) RESULT ADD interface 0: (mortal)   4 example.com. Addr 104.20.23.154
+Default: [R2->Q22282] DNSServiceQueryRecord(example.com., Addr) RESULT ADD interface 0: (mortal)   4 example.com. Addr 172.66.147.243
+Default: uDNS_RequestAddress: Setting retryGetAddr to future
+Default: uDNS_RequestAddress: Setting retryGetAddr to future
+Default: uDNS_RequestAddress: Setting retryGetAddr to future
+Default: [R1] Cancel 00000000 00000001
+Default: [R2] DNSServiceQueryRecord(1D000, 0, example.com., Addr) STOP PID[4](blauos_guest_pr)
+Default: uDNS_RequestAddress: Setting retryGetAddr to future
+Default: uDNS_RequestAddress: Setting retryGetAddr to future
+Default: uDNS_RequestAddress: Setting retryGetAddr to future
+Default: mDNSResponder (Engineering Build) (Oct 10 2026 10:40:04) stopping
+Default: mDNS_StartExit
+Default: DeadvertiseInterface: Deadvertising randomized hostname on interface en0
+Default: mDNS_StartExit: Deregistering duplicate resource records
+Default: mDNS_StartExit: Deregistering resource records
+Default: mDNS_StartExit: No deregistering records remain
+Default: mDNS_StartExit: done
+Default: mDNS_FinalExit: mDNSPlatformClose
+mDNS: Last representative of InterfaceID deregistered; marking questions etc. dormant - ifid: 1327115776, ifname: en0, ifaddr: 10.0.2.15
+Default: DeadvertiseInterface: Deadvertising randomized hostname on interface en0
+Default: mDNS_FinalExit: done
+Default: [R1] DNSServiceCreateConnection STOP PID[4](blauos_guest_pr)
+Default: [R1] Removing FD 7
+Default: RemoveAuthRecord: removing auth record    7 b._dns-sd._udp.local. PTR local. from table
+Default: mDNS_Deregister_internal: callback with mStatus_MemFree for    7 b._dns-sd._udp.local. PTR local.
+Default: RemoveAuthRecord: removing auth record    7 r._dns-sd._udp.local. PTR local. from table
+Default: mDNS_Deregister_internal: callback with mStatus_MemFree for    7 r._dns-sd._udp.local. PTR local.

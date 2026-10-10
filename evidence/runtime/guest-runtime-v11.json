@@ -1,0 +1,517 @@
+{
+  "schema_version": 1,
+  "status": "independent_runtime_and_launchd_pass",
+  "architecture": "arm64",
+  "target": "QEMU virt",
+  "execution_verified": true,
+  "stock_kernel_used": false,
+  "physical_boot_gate": false,
+  "target_kernel_version": "20.5.0",
+  "runtime_checks": {
+    "allocation": "pass",
+    "locale_conversions": "pass",
+    "file_io": "pass",
+    "syscall": "pass",
+    "pthread": "pass",
+    "concurrent_once": "pass",
+    "blocks_lifetime": "pass",
+    "mach_timer": "pass",
+    "atfork_handlers": "pass",
+    "process_exit": "pass",
+    "dynamic_loader": "pass"
+  },
+  "shell_verified": true,
+  "loaded_source_images_verified": true,
+  "dyld_shared_cache_used": false,
+  "launchd_checks": {
+    "job_launch": "pass",
+    "bootstrap_registration": "pass",
+    "ipc_roundtrip": "pass",
+    "supervision": "pass",
+    "child_reaping": "pass",
+    "job_unload": "pass",
+    "missing_job_error": "pass",
+    "failed_executable_error": "pass"
+  },
+  "supervision": {
+    "first_pid": 12,
+    "restarted_pid": 15,
+    "first_child_fully_reaped": true
+  },
+  "system_shutdown_verified": true,
+  "network_verified": true,
+  "dns_verified": true,
+  "bidirectional_network_verified": true,
+  "fresh_nonce_acceptance": true,
+  "full_smoke_pass": true,
+  "fresh_clean_ci_replay_verified": false,
+  "remaining_acceptance": [
+    "complete fresh GitHub native CI replay"
+  ],
+  "smoke_result": {
+    "schema_version": 1,
+    "passed": true,
+    "nonce": "5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8",
+    "guest_challenge_seen": true,
+    "host_to_guest_passed": true,
+    "required_markers": [
+      "atfork_handlers",
+      "blocks_lifetime",
+      "clock",
+      "concurrent_once",
+      "dns",
+      "dynamic_loader",
+      "guest_to_host",
+      "host_to_guest",
+      "kernel",
+      "launchd",
+      "launchd_services",
+      "locale_conversions",
+      "mach_timer",
+      "network_service",
+      "runtime",
+      "shell",
+      "shutdown_child_reaped",
+      "shutdown_job_exit",
+      "shutdown_job_started",
+      "shutdown_requested"
+    ],
+    "missing_markers": [],
+    "readiness_passed": true,
+    "shutdown_required": true,
+    "shutdown_requested": true,
+    "guest_shutdown_passed": true,
+    "private_writable_disk": "/build/native-image-v11/boot/guest-writable.img",
+    "physical_boot_gate": false,
+    "stock_kernel_used": false
+  },
+  "guest_shutdown_event": {
+    "data": {
+      "guest": true,
+      "reason": "guest-shutdown"
+    },
+    "event": "SHUTDOWN",
+    "timestamp": {
+      "microseconds": 766249,
+      "seconds": 1791655131
+    }
+  },
+  "raw_serial": {
+    "path": ".blauos/build/vm/native-image-v11/boot/serial.log",
+    "sha256": "87601c54e2b3cfae134c8dee2db6209d5af603e6bc867ad9b6f9ec289955ba8d",
+    "bytes": 65180
+  },
+  "raw_qmp_events": {
+    "path": ".blauos/build/vm/native-image-v11/boot/qmp-events.jsonl",
+    "sha256": "c0c0243f4126fdf13aff92f384c714d3013479791a804045a5ba293fcf8328a4",
+    "bytes": 498
+  },
+  "source_closure": {
+    "path": ".blauos/build/vm/native-image-v11/runtime-audit.json",
+    "sha256": "d2dd5c51269ee456e90e46463fb093f842c11d6f6420427cc79810eba381b0a6",
+    "bytes": 3708745
+  },
+  "source_closure_status": "pass",
+  "image_manifest": {
+    "path": ".blauos/build/vm/native-image-v11/boot/image-manifest.json",
+    "sha256": "cbea505449991d1bf84a04cec96d9ce5723b775335e87d8d940fe617dfff3689",
+    "bytes": 896
+  },
+  "emulator_command": {
+    "path": ".blauos/build/vm/native-image-v11/boot/command.json",
+    "sha256": "3f0ba59a51a5607d515c74641efd8797f0c278d30f533522535648b3bee565ac",
+    "bytes": 1162
+  },
+  "source_provenance": {
+    "path": ".blauos/build/vm/combined-root-v13/provenance.json",
+    "sha256": "b785bd1b5465ffbe9b8c4daa67e1e56e2c9cebd8c25e4f376651c7b0baddb4a0",
+    "bytes": 34921
+  },
+  "assembly_result": {
+    "path": ".blauos/build/vm/native-image-v11/result.json",
+    "sha256": "33f5bf1281f2877cc8efc9f3fcb4a554cf6b67907c99db17d92b7a16f95d36d0",
+    "bytes": 1162
+  },
+  "fixture_sha256": {
+    "org.blauos.test.bootstrap.plist": "8e8a7d90d90bed488934eaada85ff831546442805cfbb80d75b3f0dc90e33c3e",
+    "org.blauos.test.exec-failure.plist": "44685b6f5346c662bc8ac544708747b6b5016d06f16755171aaf4ef078c62381",
+    "org.blauos.test.shutdown.plist": "08e55b2d118836b67fff209debcdc78de8c438c96856cf1b60f4f77e311fa117",
+    "launchd-test.sh": "874be8521bd3b434fe8d21573f2898bbc276a71abc35eb45616a7ea528ab7024"
+  },
+  "observed_output": [
+    "BLAUOS_GUEST_KERNEL Darwin Kernel Version 20.5.0: Sat Oct 10 09:40:01 PDT 2026; joeblau:xnu-build/DEVELOPMENT_ARM64_VIRT",
+    "BLAUOS_SHELL_EXECUTED",
+    "BLAUOS_GUEST_TEST shell=pass",
+    "BLAUOS_RUNTIME allocation=pass",
+    "BLAUOS_RUNTIME locale_conversions=pass",
+    "BLAUOS_RUNTIME file_io=pass",
+    "BLAUOS_RUNTIME syscall=pass",
+    "BLAUOS_RUNTIME pthread=pass",
+    "BLAUOS_RUNTIME concurrent_once=pass",
+    "BLAUOS_RUNTIME blocks_lifetime=pass",
+    "BLAUOS_RUNTIME mach_timer=pass",
+    "BLAUOS_RUNTIME atfork_handlers=pass",
+    "BLAUOS_RUNTIME process_exit=pass",
+    "BLAUOS_RUNTIME dynamic_loader=pass",
+    "BLAUOS_RUNTIME image=/bin/blauos_runtime_probe",
+    "BLAUOS_RUNTIME image=/usr/lib/libobjc.A.dylib",
+    "BLAUOS_RUNTIME image=/usr/lib/libSystem.B.dylib",
+    "BLAUOS_RUNTIME image=/usr/lib/system/libdyld.dylib",
+    "BLAUOS_RUNTIME image=/usr/lib/libc++abi.dylib",
+    "BLAUOS_RUNTIME required_images=pass shared_cache=absent",
+    "BLAUOS_RUNTIME result=pass",
+    "BLAUOS_GUEST_TEST runtime=pass",
+    "BLAUOS_LAUNCHD_DIAGNOSTIC pid=12 reply_sent=1 intentional_exit=17",
+    "BLAUOS_LAUNCHD job_launch=pass bootstrap_registration=pass ipc_roundtrip=pass",
+    "BLAUOS_LAUNCHD_DIAGNOSTIC pid=15 reply_sent=1 intentional_exit=17",
+    "BLAUOS_LAUNCHD supervision=pass first_pid=12 restarted_pid=15",
+    "BLAUOS_LAUNCHD child_reaping=pass reaped_pid=12",
+    "BLAUOS_LAUNCHD job_unload=pass",
+    "BLAUOS_LAUNCHD missing_job_error=pass",
+    "BLAUOS_LAUNCHD failed_executable_error=pass behavior=reported",
+    "BLAUOS_LAUNCHD result=service_subset_pass system_shutdown=unverified",
+    "BLAUOS_GUEST_TEST launchd_services=pass",
+    "BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 guest_to_host",
+    "BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 clock",
+    "BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 kernel",
+    "BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 launchd",
+    "BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 shell",
+    "BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 runtime",
+    "BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 concurrent_once",
+    "BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 blocks_lifetime",
+    "BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 locale_conversions",
+    "BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 mach_timer",
+    "BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 atfork_handlers",
+    "BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 dynamic_loader",
+    "BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 launchd_services",
+    "BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 dns",
+    "BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 network_service",
+    "BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 host_to_guest",
+    "BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 shutdown_job_started",
+    "BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 shutdown_requested",
+    "com.apple.launchd                1        com.apple.launchd                                                1         System: Userspace shutdown begun at: Sat Oct 10 17:58:51 2026",
+    "BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 shutdown_child_reaped",
+    "BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 shutdown_job_exit",
+    "com.apple.launchd                1        com.apple.launchd                                                1         System: Userspace shutdown finished at: Sat Oct 10 17:58:51 2026",
+    "com.apple.launchd                1        com.apple.launchd                                                1         System: Userspace shutdown took approximately 0 seconds.",
+    "com.apple.launchd                1        com.apple.launchd                                                1         System: About to call: reboot(RB_HALT).",
+    "PDArmPlatformExpert: QEMU PSCI HVC SYSTEM_OFF"
+  ],
+  "artifacts": [
+    {
+      "path": "/usr/sbin/mdnsd",
+      "sha256": "4d732c48ffe2161d567ca60cbe1723d826fe25c9e53f00b299d12c252266e691",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "build_amendments": [
+        {
+          "path": "scripts/build/mdns.py",
+          "sha256": "90e3f7c89003809f68c683e10c91f7186660923eb4669ba51f05f917a61c350f"
+        },
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        }
+      ]
+    },
+    {
+      "path": "/usr/lib/dyld",
+      "sha256": "5ec46a3be638541ef7e6caf6801ac32bee24818f04c8117822d2c8673a28e5f5",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "build_amendments": [
+        {
+          "path": "scripts/build/runtime.py",
+          "sha256": "b0be02d523a562234016e365d36ee0a7100b34a32ac49c6c1e0dd1945a266bb8"
+        },
+        {
+          "path": "runtime/compat/sdk27-dyld.patch",
+          "sha256": "28d745e5d0862f7034f57674ba2f3374310c8740732c2b11d1073d938ebb8a5e"
+        },
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        },
+        {
+          "path": "runtime/compat/arm64_stack_probe.S",
+          "sha256": "34a355f12dacb843fb879e350f0ffaf2343b27dce183202e6b99b743c7c3b62f"
+        },
+        {
+          "path": "runtime/compat/compiler-rt-exports.patch",
+          "sha256": "4eeed573e39f4655ac798fe9401d50aa5df592a7b51c8e4f1d6969daed3fff68"
+        },
+        {
+          "path": "runtime/compat/libdyld.exports",
+          "sha256": "4bec45e063b7da16164b30c0b07a62456d05b01cb56455029d8050186dbf1712"
+        }
+      ]
+    },
+    {
+      "path": "/usr/lib/libSystem.B.dylib",
+      "sha256": "c89ccf4efa50bf4be0cf741ec91a7e44b842adbdd129be6577ee10b311161bed",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "build_amendments": [
+        {
+          "path": "scripts/build/runtime.py",
+          "sha256": "b0be02d523a562234016e365d36ee0a7100b34a32ac49c6c1e0dd1945a266bb8"
+        },
+        {
+          "path": "runtime/compat/sdk27-dyld.patch",
+          "sha256": "28d745e5d0862f7034f57674ba2f3374310c8740732c2b11d1073d938ebb8a5e"
+        },
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        },
+        {
+          "path": "runtime/compat/arm64_stack_probe.S",
+          "sha256": "34a355f12dacb843fb879e350f0ffaf2343b27dce183202e6b99b743c7c3b62f"
+        },
+        {
+          "path": "runtime/compat/compiler-rt-exports.patch",
+          "sha256": "4eeed573e39f4655ac798fe9401d50aa5df592a7b51c8e4f1d6969daed3fff68"
+        },
+        {
+          "path": "runtime/compat/libdyld.exports",
+          "sha256": "4bec45e063b7da16164b30c0b07a62456d05b01cb56455029d8050186dbf1712"
+        },
+        {
+          "path": "scripts/build/objc.py",
+          "sha256": "4d6d8bd6db76136ce38d6e98cc6cfe58ccd1d9f950d604545a8c098620122f8c"
+        }
+      ]
+    },
+    {
+      "path": "/usr/lib/system/libdyld.dylib",
+      "sha256": "7dc352822a56c035e262b709d7bd562ee448ce82d886cec22c76696d40a6f1ac",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "build_amendments": [
+        {
+          "path": "scripts/build/runtime.py",
+          "sha256": "b0be02d523a562234016e365d36ee0a7100b34a32ac49c6c1e0dd1945a266bb8"
+        },
+        {
+          "path": "runtime/compat/sdk27-dyld.patch",
+          "sha256": "28d745e5d0862f7034f57674ba2f3374310c8740732c2b11d1073d938ebb8a5e"
+        },
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        },
+        {
+          "path": "runtime/compat/arm64_stack_probe.S",
+          "sha256": "34a355f12dacb843fb879e350f0ffaf2343b27dce183202e6b99b743c7c3b62f"
+        },
+        {
+          "path": "runtime/compat/compiler-rt-exports.patch",
+          "sha256": "4eeed573e39f4655ac798fe9401d50aa5df592a7b51c8e4f1d6969daed3fff68"
+        },
+        {
+          "path": "runtime/compat/libdyld.exports",
+          "sha256": "4bec45e063b7da16164b30c0b07a62456d05b01cb56455029d8050186dbf1712"
+        },
+        {
+          "path": "scripts/build/objc.py",
+          "sha256": "4d6d8bd6db76136ce38d6e98cc6cfe58ccd1d9f950d604545a8c098620122f8c"
+        }
+      ]
+    },
+    {
+      "path": "/usr/lib/libc++abi.dylib",
+      "sha256": "d2ca1af7052d80b3e351bf5213a4cb2012a7a89d45bdd66231f24edfc9e5535f",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "build_amendments": [
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        },
+        {
+          "path": "runtime/compat/sdk27-dyld.patch",
+          "sha256": "28d745e5d0862f7034f57674ba2f3374310c8740732c2b11d1073d938ebb8a5e"
+        },
+        {
+          "path": "scripts/build/objc.py",
+          "sha256": "4d6d8bd6db76136ce38d6e98cc6cfe58ccd1d9f950d604545a8c098620122f8c"
+        }
+      ]
+    },
+    {
+      "path": "/usr/lib/libobjc.A.dylib",
+      "sha256": "a21780b1a05f88aee6c51d5655d278e159780db88617127adcf4b49fbb2cff28",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "build_amendments": [
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        },
+        {
+          "path": "runtime/compat/sdk27-dyld.patch",
+          "sha256": "28d745e5d0862f7034f57674ba2f3374310c8740732c2b11d1073d938ebb8a5e"
+        },
+        {
+          "path": "scripts/build/objc.py",
+          "sha256": "4d6d8bd6db76136ce38d6e98cc6cfe58ccd1d9f950d604545a8c098620122f8c"
+        }
+      ]
+    },
+    {
+      "path": "/sbin/launchd",
+      "sha256": "b2db74edfeec4a4acbe58f45ac54122fce2fdfb20083a2d4016cbdd9d041070f",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "build_amendments": [
+        {
+          "path": "scripts/build/launchd.py",
+          "sha256": "d841e9548a6b784c200a81883b0aef5af3d198bf47c7ff08c04cd9d5dc17506a"
+        },
+        {
+          "path": "runtime/compat/sdk27-dyld.patch",
+          "sha256": "28d745e5d0862f7034f57674ba2f3374310c8740732c2b11d1073d938ebb8a5e"
+        },
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        }
+      ]
+    },
+    {
+      "path": "/usr/bin/launchctl",
+      "sha256": "91812d6bae89bc2c2d9fbc73c27605655eac2989bd8201bcff6f5841974e2b67",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "build_amendments": [
+        {
+          "path": "scripts/build/launchd.py",
+          "sha256": "d841e9548a6b784c200a81883b0aef5af3d198bf47c7ff08c04cd9d5dc17506a"
+        },
+        {
+          "path": "runtime/compat/sdk27-dyld.patch",
+          "sha256": "28d745e5d0862f7034f57674ba2f3374310c8740732c2b11d1073d938ebb8a5e"
+        },
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        }
+      ]
+    },
+    {
+      "path": "/bin/netsetup",
+      "sha256": "9022764b9db6f7a89f9b82eb8760771ea874dba9f90a1459fd4d3074b051a94d",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "source_path": "src/Userspace/netsetup/netsetup.c",
+      "source_file_sha256": "1c4c225929fb86623bb5a68574322d81efdc30b1ce852d493e893f6869a048d5",
+      "build_amendments": [
+        {
+          "path": "vm/patches/netsetup-interface-registration.patch",
+          "sha256": "d1b2177b70a01f7a963211b104e60b687951e35fbc19d4c135856ceb77034752"
+        },
+        {
+          "path": "scripts/vm/build_userspace.py",
+          "sha256": "5c33913a9241282c0c67775d076f021d25f4153cf7ebcbd400835aebc7eb1b2f"
+        }
+      ]
+    },
+    {
+      "path": "/bin/blauos_guest_probe",
+      "sha256": "fc456e67f1e7367ff7a8f438873b1b53363256f32aa7d7e363812aedc204aad7",
+      "source": "blauos",
+      "revision": "workspace-sha256:e2ede716ace2bec8ece0379f9725ccbbc2311836ea744be3f944a678f3f91276",
+      "source_files": [
+        {
+          "path": "vm/guest_probe.c",
+          "sha256": "cf6f97b226b4c39772ac265f98660b89f00377b19216694e8ffffb5012b6908b"
+        },
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        }
+      ],
+      "source_path": "vm/guest_probe.c",
+      "source_file_sha256": "cf6f97b226b4c39772ac265f98660b89f00377b19216694e8ffffb5012b6908b"
+    },
+    {
+      "path": "/bin/blauos_runtime_probe",
+      "sha256": "0334a17dc7527657530fcebaa502a7d2a038bbcee0312352b98bd024c4af661e",
+      "source": "blauos",
+      "revision": "workspace-sha256:2a70d31a76e27b56431659a2ad21c2e536389ee0492eab3e26aeaea1fd3f5254",
+      "source_files": [
+        {
+          "path": "runtime/probes/runtime_probe.c",
+          "sha256": "262bc33658922292a640bb1dcea680fcf67b4420f64373c447dc629eb104a82f"
+        },
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        }
+      ],
+      "source_path": "runtime/probes/runtime_probe.c",
+      "source_file_sha256": "262bc33658922292a640bb1dcea680fcf67b4420f64373c447dc629eb104a82f"
+    },
+    {
+      "path": "/usr/libexec/blauos-bootstrap-probe",
+      "sha256": "1de32668943899f01e0ff9a9a6bfa2518fbd7419ad64f4850f4c81f27959ac73",
+      "source": "blauos",
+      "revision": "workspace-sha256:123ffc0f3fbf6305d5ff3db55a772f3c698ef1a2317f1d7f009d4cbb3d00935e",
+      "source_files": [
+        {
+          "path": "runtime/probes/bootstrap_probe.c",
+          "sha256": "57b69b632f9d9a5315ab89a0df1ebf0fdda5f9719972449469fd75361dbec31f"
+        },
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        }
+      ],
+      "source_path": "runtime/probes/bootstrap_probe.c",
+      "source_file_sha256": "57b69b632f9d9a5315ab89a0df1ebf0fdda5f9719972449469fd75361dbec31f"
+    },
+    {
+      "path": "/usr/libexec/blauos-shutdown-probe",
+      "sha256": "efff5fb1e66b7adb073bb87a8b98c9a52798f969916478f68562e6ad93bff9d3",
+      "source": "blauos",
+      "revision": "workspace-sha256:fdde1efa5514fb5a723beed7830ab8e65ab8cb55db3f61bedb842d8182b391ba",
+      "source_files": [
+        {
+          "path": "runtime/probes/shutdown_probe.c",
+          "sha256": "01d02b9d5f32210a19361ea8cb86f9f761e0fb67d42d7e6ea12ae2d4d71fd3f8"
+        },
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        }
+      ],
+      "source_path": "runtime/probes/shutdown_probe.c",
+      "source_file_sha256": "01d02b9d5f32210a19361ea8cb86f9f761e0fb67d42d7e6ea12ae2d4d71fd3f8"
+    },
+    {
+      "path": "/usr/lib/libblauos-loader-fixture.dylib",
+      "sha256": "0ec6d89e36f274aac88eb8b2d9e310a370cefd196a64b6c6f6996044278a0843",
+      "source": "blauos",
+      "revision": "workspace-sha256:3aee9ffbec581589ba7e05af3e26e8d77132785c2e8a03150d839f7520daaecd",
+      "source_files": [
+        {
+          "path": "runtime/probes/loader_fixture.c",
+          "sha256": "242c758f89b0b7ea225918fa3310419c93279a788174ebb3f78bf2035186cde0"
+        },
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        }
+      ],
+      "source_path": "runtime/probes/loader_fixture.c",
+      "source_file_sha256": "242c758f89b0b7ea225918fa3310419c93279a788174ebb3f78bf2035186cde0"
+    },
+    {
+      "path": "/bin/sh",
+      "sha256": "c567574a74d75d53160ab4b365a32ef668ce970be3f43def55aa66c1b514a448",
+      "source": "dash",
+      "revision": "1365bb36a92656eb52b64cb04d249c47a1d3c4cf"
+    }
+  ],
+  "scope_note": "Required source runtime and real launchd service/shutdown behaviors passed under independently built XNU in QEMU. No stock runtime or shared cache is used. Broader Darwin APIs and physical Apple Silicon boot are separate scopes. The full clean GitHub native CI replay remains a separate requirement."
+}

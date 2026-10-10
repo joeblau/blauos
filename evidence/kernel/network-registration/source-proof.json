@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "source_registration_path_built",
+  "status": "source_registration_built_and_real_guest_network_verified",
   "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
   "source_path": "src/Userspace/netsetup/netsetup.c",
   "original_source_sha256": "90a3feedacf6b20f12aee0094d808c13fae0a05967725a29bf7432f402092878",
@@ -119,7 +119,91 @@
       "sha256": "5f9d3cc7f41ce68ee6e0dc6eced178bc5cc8161a6ede67afcd8e0fb446e0c0e3"
     }
   ],
-  "guest_bsd_interface_verified": false,
-  "guest_traffic_verified": false,
-  "acceptance": "Native IOKit registration is followed by actual SIOCGIFFLAGS verification; real guest en0 and network traffic remain required."
+  "guest_bsd_interface_verified": true,
+  "guest_traffic_verified": true,
+  "acceptance": "Real native IOKit registration published BSD en0; IPv4 configuration, source DNS lookup, and bidirectional traffic passed in the independently built Darwin guest.",
+  "guest_execution": {
+    "canonical_archive": "evidence/virtualization/pid1-checkpoint/guest-pass-v11",
+    "nonce": "5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8",
+    "emulator_profile": {
+      "machine": "virt-10.2",
+      "virtualization": false,
+      "gic_version": 3,
+      "accel": "tcg",
+      "cpu": "neoverse-n2"
+    },
+    "image_sha256": "7ffa519c3b31a46642dee528acd3f64e59cbea6823db773ebcc9eb78f42cf8b2",
+    "kernel_collection_sha256": "b247969e06107dda50fa48d2c0dc1ca3249f5eec83f3e39dbb178e51f066993b",
+    "actual_boot_passed": true,
+    "source_kernel": true,
+    "physical_boot_gate": false,
+    "stock_kernel_used": false,
+    "files": [
+      {
+        "path": "evidence/virtualization/pid1-checkpoint/guest-pass-v11/serial.log",
+        "sha256": "87601c54e2b3cfae134c8dee2db6209d5af603e6bc867ad9b6f9ec289955ba8d"
+      },
+      {
+        "path": "evidence/virtualization/pid1-checkpoint/guest-pass-v11/result.json",
+        "sha256": "a48b645c89a6ccf93e1d7ae88478ec78fc57638399428f7788574b6d600da031"
+      },
+      {
+        "path": "evidence/virtualization/pid1-checkpoint/guest-pass-v11/command.json",
+        "sha256": "3f0ba59a51a5607d515c74641efd8797f0c278d30f533522535648b3bee565ac"
+      },
+      {
+        "path": "evidence/virtualization/pid1-checkpoint/guest-pass-v11/image-manifest.json",
+        "sha256": "cbea505449991d1bf84a04cec96d9ce5723b775335e87d8d940fe617dfff3689"
+      },
+      {
+        "path": "evidence/virtualization/pid1-checkpoint/guest-pass-v11/qmp-events.jsonl",
+        "sha256": "c0c0243f4126fdf13aff92f384c714d3013479791a804045a5ba293fcf8328a4"
+      }
+    ],
+    "required_markers": [
+      "atfork_handlers",
+      "blocks_lifetime",
+      "clock",
+      "concurrent_once",
+      "dns",
+      "dynamic_loader",
+      "guest_to_host",
+      "host_to_guest",
+      "kernel",
+      "launchd",
+      "launchd_services",
+      "locale_conversions",
+      "mach_timer",
+      "network_service",
+      "runtime",
+      "shell",
+      "shutdown_child_reaped",
+      "shutdown_job_exit",
+      "shutdown_job_started",
+      "shutdown_requested"
+    ],
+    "missing_markers": [],
+    "qmp_guest_shutdown": {
+      "data": {
+        "guest": true,
+        "reason": "guest-shutdown"
+      },
+      "event": "SHUTDOWN",
+      "timestamp": {
+        "microseconds": 766249,
+        "seconds": 1791655131
+      }
+    },
+    "serial_hook_message": "PDArmPlatformExpert: QEMU PSCI HVC SYSTEM_OFF",
+    "launchd_shutdown": "Userspace shutdown finished; reboot(RB_HALT), disks synchronized and unmounted, driver disabled, PSCI SYSTEM_OFF",
+    "interface": "en0",
+    "ipv4": "10.0.2.15",
+    "router": "10.0.2.2",
+    "nameserver": "10.0.2.3",
+    "bsd_registration_log": "PureDarwin network: en0 registered with BSD flags=0xffff8822",
+    "traffic_directions": [
+      "guest_to_host",
+      "host_to_guest"
+    ]
+  }
 }

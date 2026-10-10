@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "read_only_image_extraction": true,
+  "guest_log": "/var/log/mdnsd.log",
+  "guest_log_bytes": 6153,
+  "guest_log_sha256": "8c865b705bb732d73e07c672e92f266d23dc598659347b55a479b901758fcd14",
+  "guest_disk": "/build/native-image-v11/boot/guest-writable.img",
+  "root_partition": {
+    "node": "/build/native-image-v11/boot/guest-writable.img2",
+    "start": 133120,
+    "size": 2097152,
+    "type": "0FC63DAF-8483-4772-8E79-3D69D8477DE4",
+    "uuid": "20D4224D-60C4-572D-B83D-AA2D94C882F4",
+    "name": "Darwin ext4 Root"
+  },
+  "command": [
+    "/nix/store/5n1nfsfsa610zwy06bnf0dkhxc6kakl8-e2fsprogs-1.47.4-bin/sbin/debugfs",
+    "-R",
+    "dump \"/var/log/mdnsd.log\" \"/build/native-image-v11/dns-log/mdnsd.log\"",
+    "/build/native-image-v11/dns-log/root-after-shutdown.ext4"
+  ]
+}

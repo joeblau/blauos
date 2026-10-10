@@ -1,0 +1,2 @@
+{"QMP": {"capabilities": ["oob"], "version": {"package": "", "qemu": {"major": 10, "micro": 4, "minor": 2}}}}
+{"id": "capabilities", "return": {}}

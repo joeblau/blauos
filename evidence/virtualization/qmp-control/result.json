@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "qmp_subscription_passed": true,
+  "host_shutdown_observed": true,
+  "host_shutdown_rejected_as_guest": true,
+  "guest_boot_passed": false,
+  "command": [
+    "/nix/store/ar5rdnaaj4idh6642cwxjfjbv5ykccba-qemu-10.2.4/bin/qemu-system-aarch64",
+    "-machine",
+    "virt-10.2",
+    "-accel",
+    "tcg",
+    "-cpu",
+    "neoverse-n2",
+    "-S",
+    "-nodefaults",
+    "-nographic",
+    "-monitor",
+    "none",
+    "-serial",
+    "none",
+    "-qmp",
+    "unix:/tmp/blauos-qmp-control-q8vc8ckl/events.sock,server=on,wait=off"
+  ],
+  "messages": [
+    {
+      "return": {},
+      "id": "capabilities"
+    },
+    {
+      "timestamp": {
+        "seconds": 1791650646,
+        "microseconds": 880810
+      },
+      "event": "SHUTDOWN",
+      "data": {
+        "guest": false,
+        "reason": "host-signal"
+      }
+    },
+    {
+      "qmp_error": "QMP connection closed"
+    }
+  ]
+}

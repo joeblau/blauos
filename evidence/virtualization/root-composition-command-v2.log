@@ -1,0 +1,22 @@
+{
+  "status": "blocked",
+  "result": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/vm/combined-root-v2/runtime-audit.json",
+  "errors": [
+    "dependency absent from staged root: /usr/lib/libicui18n.76.1.dylib: /usr/lib/libicudata.76.dylib",
+    "dependency absent from staged root: /usr/lib/libicui18n.76.dylib: /usr/lib/libicudata.76.dylib",
+    "dependency absent from staged root: /usr/lib/libicui18n.dylib: /usr/lib/libicudata.76.dylib",
+    "dependency absent from staged root: /usr/lib/libicuuc.76.1.dylib: /usr/lib/libicudata.76.dylib",
+    "dependency absent from staged root: /usr/lib/libicuuc.76.dylib: /usr/lib/libicudata.76.dylib",
+    "dependency absent from staged root: /usr/lib/libicuuc.dylib: /usr/lib/libicudata.76.dylib",
+    "required dependency symbol unresolved: /usr/lib/libicuuc.76.1.dylib: /usr/lib/libicudata.76.dylib: _icudt76_dat",
+    "required dependency symbol unresolved: /usr/lib/libicuuc.76.dylib: /usr/lib/libicudata.76.dylib: _icudt76_dat",
+    "required dependency symbol unresolved: /usr/lib/libicuuc.dylib: /usr/lib/libicudata.76.dylib: _icudt76_dat",
+    "unknown or unpinned source revision: /usr/lib/libicui18n.76.1.dylib",
+    "unknown or unpinned source revision: /usr/lib/libicui18n.76.dylib",
+    "unknown or unpinned source revision: /usr/lib/libicui18n.dylib",
+    "unknown or unpinned source revision: /usr/lib/libicuuc.76.1.dylib",
+    "unknown or unpinned source revision: /usr/lib/libicuuc.76.dylib",
+    "unknown or unpinned source revision: /usr/lib/libicuuc.dylib"
+  ]
+}
+Command '['/opt/homebrew/opt/python@3.14/bin/python3.14', '/Users/joeblau/Developer/joeblau/src/blauos/scripts/build/runtime.py', 'inspect', '--root', '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/vm/combined-root-v2/root', '--provenance', '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/vm/combined-root-v2/provenance.json', '--manifest', '/Users/joeblau/Developer/joeblau/src/blauos/sources.lock.json', '--output', '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/vm/combined-root-v2/runtime-audit.json']' returned non-zero exit status 1.

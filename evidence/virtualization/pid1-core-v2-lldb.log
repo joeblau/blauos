@@ -1,0 +1,76 @@
+(lldb) target create --core ".blauos/build/vm/native-image-v2/boot/core.1"
+warning: (arm64) /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/vm/native-image-v2/boot/core.1 load command 11 LC_SEGMENT_64 has a fileoff + filesize (0x00000000443b4000) that extends beyond the end of the file (0x00000000043b4000), the segment will be truncated to match
+warning: (arm64) /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/vm/native-image-v2/boot/core.1 load command 12 LC_SEGMENT_64 has a fileoff (0x00000000443b4000) that extends beyond the end of the file (0x00000000043b4000), ignoring this section
+Core file '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/vm/native-image-v2/boot/core.1' (arm64) was loaded.
+(lldb) register read
+General Purpose Registers:
+        x0 = 0x0000000104710028  
+        x1 = 0x0000000104858139  "__TEXT"
+        x2 = 0x000000016ba0fa07
+        x3 = 0x000000016ba0fc70
+        x4 = 0x0000000000000000
+        x5 = 0x0000000000000000
+        x6 = 0x0000000000000000
+        x7 = 0x0000000000000000
+        x8 = 0x0010000000165168
+        x9 = 0x00000000000c0000
+       x10 = 0x0000000000000000
+       x11 = 0x0000000000000000
+       x12 = 0x000000016ba0fcd0
+       x13 = 0x000000016ba0faa8
+       x14 = 0x0000000000000000
+       x15 = 0x0000000000000000
+       x16 = 0x0000000000000000
+       x17 = 0x0000000000000000
+       x18 = 0x0000000000000000
+       x19 = 0x0000000000000000
+       x20 = 0x0000000000000000
+       x21 = 0x0000000000000000
+       x22 = 0x0000000000000000
+       x23 = 0x0000000000000000
+       x24 = 0x0000000000000000
+       x25 = 0x0000000000000000
+       x26 = 0x0000000000000000
+       x27 = 0x0000000000000000
+       x28 = 0x000000016ba0fdd8
+        fp = 0x000000016ba0f800
+        lr = 0x00000001047bed60  dyld`invocation function for block in dyld3::MachOLoaded::getLayoutInfo(dyld3::MachOLoaded::LayoutInfo&) const + 68 at MachOLoaded.cpp:215:45
+        sp = 0x000000016ba0f7f0
+        pc = 0x00000001047f6844  dyld`strcmp + 28 at _libc_funcptr.c:345:9
+      cpsr = 0x40000000
+
+(lldb) image list
+[  0] 58829082-21AA-35B6-A69A-AB08109004CB 0x0000000104710000 /usr/lib/dyld (0x0000000104710000)
+(lldb) bt
+* thread #1, stop reason = ESR_EC_DABORT_EL0 (fault address: 0x100000001651a8)
+   * frame #0: 0x00000001047f6844 dyld`strcmp(s1="__TEXT", s2="__TEXT") at _libc_funcptr.c:345:9
+     frame #1: 0x00000001047bed60 dyld`invocation function for block in dyld3::MachOLoaded::getLayoutInfo(.block_descriptor=0x000000016ba0faf0, info=0x000000016ba0f8e0, stop=0x000000016ba0fa07) const at MachOLoaded.cpp:215:14
+     frame #2: 0x00000001047bcc7c dyld`invocation function for block in dyld3::MachOFile::forEachSegment(.block_descriptor=0x000000016ba0fa60, cmd=0x0000000104710020, stop=0x000000016ba0fa07) const at MachOFile.cpp:1055:13
+     frame #3: 0x00000001047bbafc dyld`dyld3::MachOFile::forEachLoadCommand(this=0x0000000104710000, diag=0x000000016ba0fac8, callback=0x00000001047bca70) const at MachOFile.cpp:805:9
+     frame #4: 0x00000001047bca14 dyld`dyld3::MachOFile::forEachSegment(this=0x0000000104710000, callback=0x00000001047bed1c) const at MachOFile.cpp:1029:5
+     frame #5: 0x00000001047bebf8 dyld`dyld3::MachOLoaded::getLayoutInfo(this=0x0000000104710000, result=0x000000016ba0fbc8) const at MachOLoaded.cpp:214:5
+     frame #6: 0x00000001047beb8c dyld`dyld3::MachOLoaded::getLinkEditPointers(this=0x0000000104710000, diag=0x000000016ba0fcd0, result=0x000000016ba0fb80) const at MachOLoaded.cpp:192:9
+     frame #7: 0x00000001047b2724 dyld`dyld3::MachOAnalyzer::withChainStarts(this=0x0000000104710000, diag=0x000000016ba0fcd0, startsStructOffsetHint=0, callback=0x000000010473d1e8) const at MachOAnalyzer.cpp:4066:5
+     frame #8: 0x000000010473d0dc dyld`dyldbootstrap::rebaseDyld(dyldMH=0x0000000104710000) at dyldInitialization.cpp:204:9
+     frame #9: 0x000000010473cf7c dyld`dyldbootstrap::start(appsMachHeader=0x00000001043f0000, argc=1, argv=0x000000016ba0fde8, dyldsMachHeader=0x0000000104710000, startGlue=0x000000016ba0fdb0) at dyldInitialization.cpp:256:5
+     frame #10: 0x00000001047ca7b0 dyld`_dyld_start at dyldStartup.s:241
+(lldb) disassemble --start-address 0x1047f6820 --count 16
+dyld`strchr:
+    0x1047f6820 <+48>: add    sp, sp, #0x20
+    0x1047f6824 <+52>: ret    
+
+dyld`strcmp:
+    0x1047f6828 <+0>:  sub    sp, sp, #0x20
+    0x1047f682c <+4>:  stp    x29, x30, [sp, #0x10]
+    0x1047f6830 <+8>:  add    x29, sp, #0x10
+    0x1047f6834 <+12>: str    x0, [sp, #0x8]
+    0x1047f6838 <+16>: str    x1, [sp]
+    0x1047f683c <+20>: adrp   x8, 130
+    0x1047f6840 <+24>: ldr    x8, [x8, #0x8f0]
+->  0x1047f6844 <+28>: ldr    x8, [x8, #0x40]
+    0x1047f6848 <+32>: ldr    x0, [sp, #0x8]
+    0x1047f684c <+36>: ldr    x1, [sp]
+    0x1047f6850 <+40>: blr    x8
+    0x1047f6854 <+44>: ldp    x29, x30, [sp, #0x10]
+    0x1047f6858 <+48>: add    sp, sp, #0x20
+    0x1047f685c <+52>: ret    

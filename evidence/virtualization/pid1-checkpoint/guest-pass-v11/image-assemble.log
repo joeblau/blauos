@@ -1,0 +1,13 @@
+$ ['sgdisk', '-U', 'e2b1ed17-3d99-514a-b664-276eda2f9f05', '-n', '1:2048:+64M', '-t', '1:EF00', '-u', '1:9fd435d4-767d-5e90-805e-6072d1b36e85', '-c', '1:EFI System Partition', '-n', '2:0:+1024M', '-t', '2:8300', '-u', '2:20d4224d-60c4-572d-b83d-aa2d94c882f4', '-c', '2:Darwin ext4 Root', '/build/native-image-v11/blauos-arm64.img']
+Creating new GPT entries in memory.
+Warning: The kernel is still using the old partition table.
+The new table will be used at the next reboot or after you
+run partprobe(8) or kpartx(8)
+The operation has completed successfully.
+$ ['mkfs.fat', '-F', '32', '-n', 'BLAUOS_EFI', '/build/native-image-v11/esp.img']
+mkfs.fat 4.2 (2021-01-31)
+$ ['mmd', '-i', '/build/native-image-v11/esp.img', '::/EFI', '::/EFI/BOOT']
+$ ['mcopy', '-i', '/build/native-image-v11/esp.img', '/nix/store/zcfwmvy7l1x4cxvs7l93hwjviw7j1dgi-xnu-loader-0.1/xnu-loader.efi', '::/EFI/BOOT/BOOTAA64.EFI']
+$ ['mcopy', '-i', '/build/native-image-v11/esp.img', '/build/kc-relocations-v7/kernel.classic', '::/EFI/BOOT/kernel']
+$ ['mcopy', '-i', '/build/native-image-v11/esp.img', '/build/native-image-v11/boot-args.txt', '::/EFI/BOOT/boot-args.txt']
+$ ['fakeroot', 'sh', '-c', 'chown -R 0:0 "$1"; exec mke2fs -q -F -t ext4 -b 4096 -O ^orphan_file -U "$2" -L blauos-root -d "$1" "$3" "$4"', 'blauos-format-root', '/build/native-image-v11/root-staging', '20d4224d-60c4-572d-b83d-aa2d94c882f4', '/build/native-image-v11/root.ext4', '262144']

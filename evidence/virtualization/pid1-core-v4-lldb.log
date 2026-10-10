@@ -1,0 +1,88 @@
+(lldb) target create --core ".blauos/build/vm/native-image-v4/core-extraction/core.1"
+warning: (arm64) /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/vm/native-image-v4/core-extraction/core.1 load command 58 LC_SEGMENT_64 has a fileoff + filesize (0x0000000047414000) that extends beyond the end of the file (0x0000000007414000), the segment will be truncated to match
+warning: (arm64) /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/vm/native-image-v4/core-extraction/core.1 load command 59 LC_SEGMENT_64 has a fileoff (0x0000000047414000) that extends beyond the end of the file (0x0000000007414000), ignoring this section
+warning: failed to set breakpoint site at 0x10473e8ac for breakpoint -1.1: error: mach-o-core does not support enabling breakpoints
+Core file '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/vm/native-image-v4/core-extraction/core.1' (arm64) was loaded.
+(lldb) register read
+General Purpose Registers:
+        x0 = 0x000000016ba0d5bc
+        x1 = 0x0000000000000000
+        x2 = 0x0000000000000000
+        x3 = 0x0000000104f640f0  __global_locale
+        x4 = 0x0000000000000807
+        x5 = 0x0000000000000000
+        x6 = 0x0000000000000000
+        x7 = 0x0000000000000000
+        x8 = 0x0000000104f640f0  __global_locale
+        x9 = 0x000000000000000a
+       x10 = 0x000000016ba0d5cf
+       x11 = 0x0000000104f73a08  libSystem.B.dylib`__pthread_tsd_lock
+       x12 = 0x0000000000000001
+       x13 = 0x0000000104f257a8  libSystem.B.dylib`_pthread_attr_default
+       x14 = 0x0000000000000000
+       x15 = 0x0000000000000000
+       x16 = 0xffffffffffffffee
+       x17 = 0x0000000000000000
+       x18 = 0x0000000000000000
+       x19 = 0x0000000000000000
+       x20 = 0x0000000000000000
+       x21 = 0x0000000000000000
+       x22 = 0x0000000000000000
+       x23 = 0x0000000000000000
+       x24 = 0x0000000000000000
+       x25 = 0x0000000000000000
+       x26 = 0x0000000000000000
+       x27 = 0x0000000000000000
+       x28 = 0x000000016ba0fdd8
+        fp = 0x000000016b214000
+        lr = 0x0000000104d88780  libSystem.B.dylib`strtoull_l + 44 at pd_libSystem_compat.c:957:5
+        sp = 0x000000016b213fb0
+        pc = 0x0000000104e0c080  libSystem.B.dylib`strtoull + 12 at strtoull.c:126
+      cpsr = 0x80000000
+
+(lldb) image list
+[  0] 7D479689-E682-3404-830E-622A74263A90 0x00000001043f0000 /sbin/launchd (0x00000001043f0000)
+[  1] D8C8C42A-8131-3419-86C4-3E95DA53E8C9 0x0000000104710000 /usr/lib/dyld (0x0000000104710000)
+[  2] 277F4512-A841-3CFF-AE6E-6DE263655EA3 0x00000001044e0000 /usr/lib/libobjc.A.dylib (0x00000001044e0000)
+[  3] 2907D664-A187-385D-B30F-829195C92E24 0x00000001049dc000 /usr/lib/libCoreFoundation.dylib (0x00000001049dc000)
+[  4] 89D163B6-18AB-355B-A0DF-7E94A4E62286 0x0000000104554000 /usr/lib/libIOKitCF.dylib (0x0000000104554000)
+[  5] 964DDE11-BB41-391F-8C93-8A5C0484B658 0x0000000104cf8000 /usr/lib/libSystem.B.dylib (0x0000000104cf8000)
+[  6] 20DB7ADB-65C2-3704-AFAB-F442486E7763 0x00000001044d0000 /usr/lib/libicucore.A.dylib (0x00000001044d0000)
+[  7] C446F60B-5D76-3C98-ACAA-69E3E9F62FA9 0x0000000105088000 /usr/lib/libicui18n.76.1.dylib (0x0000000105088000)
+[  8] 595A4987-221A-305D-AA70-1ECB5364EE8C 0x000000010554c000 /usr/lib/libicuuc.76.1.dylib (0x000000010554c000)
+[  9] 2046258F-6350-3549-B820-9D94D78FF084 0x0000000105800000 /usr/lib/system/libdyld.dylib (0x0000000105800000)
+[ 10] ECE26A39-3F21-3ADF-8579-00FD5732DE95 0x0000000104590000 /usr/lib/libc++abi.dylib (0x0000000104590000)
+[ 11] 4F1E1557-8E53-3D2C-8496-F9C0C05FA45C 0x0000000105990000 /usr/lib/libicudata.76.1.dylib (0x0000000105990000)
+[ 12] 481B9FFE-5BE3-3AC6-8BC7-C54EAE653292 0x00000001045dc000 /usr/lib/libc++.1.dylib (0x00000001045dc000)
+(lldb) bt -c 30
+* thread #1, stop reason = ESR_EC_DABORT_EL0 (fault address: 0x16b213fd8)
+   * frame #0: 0x0000000104e0c080 libSystem.B.dylib`strtoull(nptr=0x0000000000000000, endptr=0x0000000000000000, base=0) at strtoull.c:126
+     frame #1: 0x0000000104d88780 libSystem.B.dylib`strtoull_l(nptr="0xc7815537c05600d3", endptr=0x0000000000000000, base=0, loc=0x0000000104f640f0) at pd_libSystem_compat.c:957:12
+     frame #2: 0x0000000104e0c134 libSystem.B.dylib`strtoull(nptr="0xc7815537c05600d3", endptr=0x0000000000000000, base=0) at strtoull.c:127:9
+     frame #3: 0x0000000104d88780 libSystem.B.dylib`strtoull_l(nptr="0xc7815537c05600d3", endptr=0x0000000000000000, base=0, loc=0x0000000104f640f0) at pd_libSystem_compat.c:957:12
+     frame #4: 0x0000000104e0c134 libSystem.B.dylib`strtoull(nptr="0xc7815537c05600d3", endptr=0x0000000000000000, base=0) at strtoull.c:127:9
+     frame #5: 0x0000000104d88780 libSystem.B.dylib`strtoull_l(nptr="0xc7815537c05600d3", endptr=0x0000000000000000, base=0, loc=0x0000000104f640f0) at pd_libSystem_compat.c:957:12
+     frame #6: 0x0000000104e0c134 libSystem.B.dylib`strtoull(nptr="0xc7815537c05600d3", endptr=0x0000000000000000, base=0) at strtoull.c:127:9
+     frame #7: 0x0000000104d88780 libSystem.B.dylib`strtoull_l(nptr="0xc7815537c05600d3", endptr=0x0000000000000000, base=0, loc=0x0000000104f640f0) at pd_libSystem_compat.c:957:12
+     frame #8: 0x0000000104e0c134 libSystem.B.dylib`strtoull(nptr="0xc7815537c05600d3", endptr=0x0000000000000000, base=0) at strtoull.c:127:9
+     frame #9: 0x0000000104d88780 libSystem.B.dylib`strtoull_l(nptr="0xc7815537c05600d3", endptr=0x0000000000000000, base=0, loc=0x0000000104f640f0) at pd_libSystem_compat.c:957:12
+     frame #10: 0x0000000104e0c134 libSystem.B.dylib`strtoull(nptr="0xc7815537c05600d3", endptr=0x0000000000000000, base=0) at strtoull.c:127:9
+     frame #11: 0x0000000104d88780 libSystem.B.dylib`strtoull_l(nptr="0xc7815537c05600d3", endptr=0x0000000000000000, base=0, loc=0x0000000104f640f0) at pd_libSystem_compat.c:957:12
+     frame #12: 0x0000000104e0c134 libSystem.B.dylib`strtoull(nptr="0xc7815537c05600d3", endptr=0x0000000000000000, base=0) at strtoull.c:127:9
+     frame #13: 0x0000000104d88780 libSystem.B.dylib`strtoull_l(nptr="0xc7815537c05600d3", endptr=0x0000000000000000, base=0, loc=0x0000000104f640f0) at pd_libSystem_compat.c:957:12
+     frame #14: 0x0000000104e0c134 libSystem.B.dylib`strtoull(nptr="0xc7815537c05600d3", endptr=0x0000000000000000, base=0) at strtoull.c:127:9
+     frame #15: 0x0000000104d88780 libSystem.B.dylib`strtoull_l(nptr="0xc7815537c05600d3", endptr=0x0000000000000000, base=0, loc=0x0000000104f640f0) at pd_libSystem_compat.c:957:12
+     frame #16: 0x0000000104e0c134 libSystem.B.dylib`strtoull(nptr="0xc7815537c05600d3", endptr=0x0000000000000000, base=0) at strtoull.c:127:9
+     frame #17: 0x0000000104d88780 libSystem.B.dylib`strtoull_l(nptr="0xc7815537c05600d3", endptr=0x0000000000000000, base=0, loc=0x0000000104f640f0) at pd_libSystem_compat.c:957:12
+     frame #18: 0x0000000104e0c134 libSystem.B.dylib`strtoull(nptr="0xc7815537c05600d3", endptr=0x0000000000000000, base=0) at strtoull.c:127:9
+     frame #19: 0x0000000104d88780 libSystem.B.dylib`strtoull_l(nptr="0xc7815537c05600d3", endptr=0x0000000000000000, base=0, loc=0x0000000104f640f0) at pd_libSystem_compat.c:957:12
+     frame #20: 0x0000000104e0c134 libSystem.B.dylib`strtoull(nptr="0xc7815537c05600d3", endptr=0x0000000000000000, base=0) at strtoull.c:127:9
+     frame #21: 0x0000000104d88780 libSystem.B.dylib`strtoull_l(nptr="0xc7815537c05600d3", endptr=0x0000000000000000, base=0, loc=0x0000000104f640f0) at pd_libSystem_compat.c:957:12
+     frame #22: 0x0000000104e0c134 libSystem.B.dylib`strtoull(nptr="0xc7815537c05600d3", endptr=0x0000000000000000, base=0) at strtoull.c:127:9
+     frame #23: 0x0000000104d88780 libSystem.B.dylib`strtoull_l(nptr="0xc7815537c05600d3", endptr=0x0000000000000000, base=0, loc=0x0000000104f640f0) at pd_libSystem_compat.c:957:12
+     frame #24: 0x0000000104e0c134 libSystem.B.dylib`strtoull(nptr="0xc7815537c05600d3", endptr=0x0000000000000000, base=0) at strtoull.c:127:9
+     frame #25: 0x0000000104d88780 libSystem.B.dylib`strtoull_l(nptr="0xc7815537c05600d3", endptr=0x0000000000000000, base=0, loc=0x0000000104f640f0) at pd_libSystem_compat.c:957:12
+     frame #26: 0x0000000104e0c134 libSystem.B.dylib`strtoull(nptr="0xc7815537c05600d3", endptr=0x0000000000000000, base=0) at strtoull.c:127:9
+     frame #27: 0x0000000104d88780 libSystem.B.dylib`strtoull_l(nptr="0xc7815537c05600d3", endptr=0x0000000000000000, base=0, loc=0x0000000104f640f0) at pd_libSystem_compat.c:957:12
+     frame #28: 0x0000000104e0c134 libSystem.B.dylib`strtoull(nptr="0xc7815537c05600d3", endptr=0x0000000000000000, base=0) at strtoull.c:127:9
+     frame #29: 0x0000000104d88780 libSystem.B.dylib`strtoull_l(nptr="0xc7815537c05600d3", endptr=0x0000000000000000, base=0, loc=0x0000000104f640f0) at pd_libSystem_compat.c:957:12

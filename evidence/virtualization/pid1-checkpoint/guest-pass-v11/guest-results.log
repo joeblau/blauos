@@ -1,0 +1,62 @@
+ifnet_attach: All kernel threads created for interface lo0 have been scheduled at least once. Proceeding.
+BLAUOS_GUEST_KERNEL Darwin Kernel Version 20.5.0: Sat Oct 10 09:40:01 PDT 2026; joeblau:xnu-build/DEVELOPMENT_ARM64_VIRT
+BLAUOS_SHELL_EXECUTED
+BLAUOS_GUEST_TEST shell=pass
+BLAUOS_RUNTIME allocation=pass
+BLAUOS_RUNTIME locale_conversions=pass
+BLAUOS_RUNTIME file_io=pass
+BLAUOS_RUNTIME syscall=pass
+BLAUOS_RUNTIME pthread=pass
+BLAUOS_RUNTIME concurrent_once=pass
+BLAUOS_RUNTIME blocks_lifetime=pass
+BLAUOS_RUNTIME mach_timer=pass
+BLAUOS_RUNTIME atfork_handlers=pass
+BLAUOS_RUNTIME process_exit=pass
+BLAUOS_RUNTIME dynamic_loader=pass
+BLAUOS_RUNTIME image=/bin/blauos_runtime_probe
+BLAUOS_RUNTIME image=/usr/lib/libobjc.A.dylib
+BLAUOS_RUNTIME image=/usr/lib/libSystem.B.dylib
+BLAUOS_RUNTIME image=/usr/lib/system/libdyld.dylib
+BLAUOS_RUNTIME image=/usr/lib/libc++abi.dylib
+BLAUOS_RUNTIME required_images=pass shared_cache=absent
+BLAUOS_RUNTIME result=pass
+BLAUOS_GUEST_TEST runtime=pass
+BLAUOS_LAUNCHD_DIAGNOSTIC pid=12 reply_sent=1 intentional_exit=17
+BLAUOS_LAUNCHD job_launch=pass bootstrap_registration=pass ipc_roundtrip=pass
+BLAUOS_LAUNCHD_DIAGNOSTIC pid=15 reply_sent=1 intentional_exit=17
+BLAUOS_LAUNCHD supervision=pass first_pid=12 restarted_pid=15
+BLAUOS_LAUNCHD child_reaping=pass reaped_pid=12
+BLAUOS_LAUNCHD job_unload=pass
+BLAUOS_LAUNCHD missing_job_error=pass
+BLAUOS_LAUNCHD failed_executable_error=pass behavior=reported
+BLAUOS_LAUNCHD result=service_subset_pass system_shutdown=unverified
+BLAUOS_GUEST_TEST launchd_services=pass
+PureDarwin network: configuring en0 addr=10.0.2.15 mask=255.255.255.0 router=10.0.2.2 dns=10.0.2.3
+PureDarwin network: lo0 inet 127.0.0.1 netmask 255.0.0.0 broadcast 127.255.255.255
+ifnet_attach: Waiting for all kernel threads created for interface en0 to get scheduled at least once.
+ifnet_attach: All kernel threads created for interface en0 have been scheduled at least once. Proceeding.
+PureDarwin network: en0 registered with BSD flags=0xffff8822
+PureDarwin network: en0 inet 10.0.2.15 netmask 255.255.255.0 broadcast 10.0.2.255
+PureDarwin network: default route via 10.0.2.2
+PureDarwin network: resolver nameserver 10.0.2.3
+BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 guest_to_host
+BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 clock
+BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 kernel
+BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 launchd
+BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 shell
+BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 runtime
+BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 concurrent_once
+BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 blocks_lifetime
+BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 locale_conversions
+BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 mach_timer
+BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 atfork_handlers
+BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 dynamic_loader
+BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 launchd_services
+BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 dns
+BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 network_service
+BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 host_to_guest
+BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 shutdown_job_started
+BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 shutdown_requested
+BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 shutdown_child_reaped
+BLAUOS_SMOKE 5c15ee688059007c10639840d7ef9633242bac90878f75afcc658077a6093fa8 shutdown_job_exit
+PDArmPlatformExpert: QEMU PSCI HVC SYSTEM_OFF

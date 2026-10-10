@@ -1,0 +1,518 @@
+UEFI firmware (version  built at 00:00:00 on Jan  1 1980)
+[2J[001;001H[=3h[2J[001;001H[2J[001;001H[8;031;100t[2J[001;001HBdsDxe: loading Boot0002 "UEFI Non-Block Boot Device" from PciRoot(0x0)/Pci(0x2,0x0)
+BdsDxe: starting Boot0002 "UEFI Non-Block Boot Device" from PciRoot(0x0)/Pci(0x2,0x0)
+XNU EFI loader start
+XNU EFI loader start
+loader image base=0x7ED41000 size=0x2B000
+loader image base=0x7ED41000 size=0x2B000
+kernel size: 17825792 bytes
+kernel size: 17825792 bytes
+Mach-O 64-bit
+Mach-O 64-bit
+  ncmds: 25
+  ncmds: 25
+  sizeofcmds: 4736
+  sizeofcmds: 4736
+  flags: 0x200001
+  flags: 0x200001
+segment           __TEXT vm=0xFFFFFFF007004000 vmsz=0xF4000 fileoff=0x0 filesz=0xF4000
+segment           __TEXT vm=0xFFFFFFF007004000 vmsz=0xF4000 fileoff=0x0 filesz=0xF4000
+segment     __DATA_CONST vm=0xFFFFFFF0070F8000 vmsz=0xF8000 fileoff=0xF4000 filesz=0xF8000
+segment     __DATA_CONST vm=0xFFFFFFF0070F8000 vmsz=0xF8000 fileoff=0xF4000 filesz=0xF8000
+segment __LASTDATA_CONST vm=0xFFFFFFF0071F0000 vmsz=0x4000 fileoff=0x1EC000 filesz=0x4000
+segment __LASTDATA_CONST vm=0xFFFFFFF0071F0000 vmsz=0x4000 fileoff=0x1EC000 filesz=0x4000
+segment __PLK_DATA_CONST vm=0xFFFFFFF0071F4000 vmsz=0x0 fileoff=0x1F0000 filesz=0x0
+segment __PLK_DATA_CONST vm=0xFFFFFFF0071F4000 vmsz=0x0 fileoff=0x1F0000 filesz=0x0
+segment      __TEXT_EXEC vm=0xFFFFFFF0071F4000 vmsz=0x660000 fileoff=0x1F0000 filesz=0x660000
+segment      __TEXT_EXEC vm=0xFFFFFFF0071F4000 vmsz=0x660000 fileoff=0x1F0000 filesz=0x660000
+segment           __LAST vm=0xFFFFFFF007854000 vmsz=0x0 fileoff=0x0 filesz=0x0
+segment           __LAST vm=0xFFFFFFF007854000 vmsz=0x0 fileoff=0x0 filesz=0x0
+segment  __PLK_TEXT_EXEC vm=0xFFFFFFF007854000 vmsz=0x0 fileoff=0x850000 filesz=0x0
+segment  __PLK_TEXT_EXEC vm=0xFFFFFFF007854000 vmsz=0x0 fileoff=0x850000 filesz=0x0
+segment            __KLD vm=0xFFFFFFF007854000 vmsz=0x4000 fileoff=0x850000 filesz=0x4000
+segment            __KLD vm=0xFFFFFFF007854000 vmsz=0x4000 fileoff=0x850000 filesz=0x4000
+segment           __DATA vm=0xFFFFFFF007858000 vmsz=0xEC000 fileoff=0x854000 filesz=0x3C000
+segment           __DATA vm=0xFFFFFFF007858000 vmsz=0xEC000 fileoff=0x854000 filesz=0x3C000
+segment   __PRELINK_DATA vm=0xFFFFFFF00424C000 vmsz=0x4000 fileoff=0x0 filesz=0x0
+segment   __PRELINK_DATA vm=0xFFFFFFF00424C000 vmsz=0x4000 fileoff=0x0 filesz=0x0
+segment       __BOOTDATA vm=0xFFFFFFF007944000 vmsz=0x3C000 fileoff=0x890000 filesz=0x3C000
+segment       __BOOTDATA vm=0xFFFFFFF007944000 vmsz=0x3C000 fileoff=0x890000 filesz=0x3C000
+segment        __KLDDATA vm=0xFFFFFFF007980000 vmsz=0x4000 fileoff=0x8CC000 filesz=0x4000
+segment        __KLDDATA vm=0xFFFFFFF007980000 vmsz=0x4000 fileoff=0x8CC000 filesz=0x4000
+segment       __LINKINFO vm=0xFFFFFFF007984000 vmsz=0x94000 fileoff=0x8D0000 filesz=0x94000
+segment       __LINKINFO vm=0xFFFFFFF007984000 vmsz=0x94000 fileoff=0x8D0000 filesz=0x94000
+segment   __PLK_LLVM_COV vm=0xFFFFFFF007A18000 vmsz=0x0 fileoff=0x964000 filesz=0x0
+segment   __PLK_LLVM_COV vm=0xFFFFFFF007A18000 vmsz=0x0 fileoff=0x964000 filesz=0x0
+segment   __PLK_LINKEDIT vm=0xFFFFFFF007A18000 vmsz=0x0 fileoff=0x964000 filesz=0x0
+segment   __PLK_LINKEDIT vm=0xFFFFFFF007A18000 vmsz=0x0 fileoff=0x964000 filesz=0x0
+segment   __PRELINK_INFO vm=0xFFFFFFF004250000 vmsz=0xC000 fileoff=0x10F4000 filesz=0xB766
+segment   __PRELINK_INFO vm=0xFFFFFFF004250000 vmsz=0xC000 fileoff=0x10F4000 filesz=0xB766
+segment   __PRELINK_TEXT vm=0xFFFFFFF004004000 vmsz=0x248000 fileoff=0xEAC000 filesz=0x248000
+segment   __PRELINK_TEXT vm=0xFFFFFFF004004000 vmsz=0x248000 fileoff=0xEAC000 filesz=0x248000
+segment       __LINKEDIT vm=0xFFFFFFF007A18000 vmsz=0x548000 fileoff=0x964000 filesz=0x544AC8
+segment       __LINKEDIT vm=0xFFFFFFF007A18000 vmsz=0x548000 fileoff=0x964000 filesz=0x544AC8
+KASLR: disabled, kslide=0
+KASLR: disabled, kslide=0
+phys_base=0x4004000 kslide=0x0 span=0x3F5C000
+phys_base=0x4004000 kslide=0x0 span=0x3F5C000
+kernel staging: 0x48004000 - 0x4BF60000 (16256 pages, low-RAM, virt_base rem 0x4000)
+kernel staging: 0x48004000 - 0x4BF60000 (16256 pages, low-RAM, virt_base rem 0x4000)
+arm64 trustcache page=0x48000000 (below kernel)
+arm64 trustcache page=0x48000000 (below kernel)
+arm64 bootinfo base=0x4BF60000 (after kernel image)
+arm64 bootinfo base=0x4BF60000 (after kernel image)
+boot-info guard: reserved 0x4BF60000 - 0x4BF80000
+boot-info guard: reserved 0x4BF60000 - 0x4BF80000
+loaded            __TEXT vm=0xFFFFFFF007004000 phys=0x4B004000 pages=244
+loaded            __TEXT vm=0xFFFFFFF007004000 phys=0x4B004000 pages=244
+loaded      __DATA_CONST vm=0xFFFFFFF0070F8000 phys=0x4B0F8000 pages=248
+loaded      __DATA_CONST vm=0xFFFFFFF0070F8000 phys=0x4B0F8000 pages=248
+loaded  __LASTDATA_CONST vm=0xFFFFFFF0071F0000 phys=0x4B1F0000 pages=4
+loaded  __LASTDATA_CONST vm=0xFFFFFFF0071F0000 phys=0x4B1F0000 pages=4
+loaded       __TEXT_EXEC vm=0xFFFFFFF0071F4000 phys=0x4B1F4000 pages=1632
+loaded       __TEXT_EXEC vm=0xFFFFFFF0071F4000 phys=0x4B1F4000 pages=1632
+loaded             __KLD vm=0xFFFFFFF007854000 phys=0x4B854000 pages=4
+loaded             __KLD vm=0xFFFFFFF007854000 phys=0x4B854000 pages=4
+loaded            __DATA vm=0xFFFFFFF007858000 phys=0x4B858000 pages=236
+loaded            __DATA vm=0xFFFFFFF007858000 phys=0x4B858000 pages=236
+loaded    __PRELINK_DATA vm=0xFFFFFFF00424C000 phys=0x4824C000 pages=4
+loaded    __PRELINK_DATA vm=0xFFFFFFF00424C000 phys=0x4824C000 pages=4
+loaded        __BOOTDATA vm=0xFFFFFFF007944000 phys=0x4B944000 pages=60
+loaded        __BOOTDATA vm=0xFFFFFFF007944000 phys=0x4B944000 pages=60
+loaded         __KLDDATA vm=0xFFFFFFF007980000 phys=0x4B980000 pages=4
+loaded         __KLDDATA vm=0xFFFFFFF007980000 phys=0x4B980000 pages=4
+loaded        __LINKINFO vm=0xFFFFFFF007984000 phys=0x4B984000 pages=148
+loaded        __LINKINFO vm=0xFFFFFFF007984000 phys=0x4B984000 pages=148
+loaded    __PRELINK_INFO vm=0xFFFFFFF004250000 phys=0x48250000 pages=12
+loaded    __PRELINK_INFO vm=0xFFFFFFF004250000 phys=0x48250000 pages=12
+loaded    __PRELINK_TEXT vm=0xFFFFFFF004004000 phys=0x48004000 pages=584
+loaded    __PRELINK_TEXT vm=0xFFFFFFF004004000 phys=0x48004000 pages=584
+loaded        __LINKEDIT vm=0xFFFFFFF007A18000 phys=0x4BA18000 pages=1352
+loaded        __LINKEDIT vm=0xFFFFFFF007A18000 phys=0x4BA18000 pages=1352
+loaded image phys_base=0x48004000 vm_low=0xFFFFFFF004004000 span=0x3F5C000 segments=13
+loaded image phys_base=0x48004000 vm_low=0xFFFFFFF004004000 span=0x3F5C000 segments=13
+entry is in segment __TEXT_EXEC, section __text, seg_off=0x176498 sec_off=0x176498
+entry is in segment __TEXT_EXEC, section __text, seg_off=0x176498 sec_off=0x176498
+failed to find section __HIB,__bootPT: Not Found
+failed to find section __HIB,__bootPT: Not Found
+entry bytes:entry bytes:
+  
+  F0 F0 06 06 00 00 14 14 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+  
+  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+
+entry vm=0xFFFFFFF00736A498 -> host=0x4B36A498
+entry vm=0xFFFFFFF00736A498 -> host=0x4B36A498
+boot-info guard: released for boot_build_args
+boot-info guard: released for boot_build_args
+boot-args.txt: using "-v debug=0x218 serial=3 keepsyms=1 no_interrupt_masked_debug=1 kextlog=0xfffffff io=0x3"
+boot-args.txt: using "-v debug=0x218 serial=3 keepsyms=1 no_interrupt_masked_debug=1 kextlog=0xfffffff io=0x3"
+EFI config table: 7 entries copied to 0x4BF61400
+EFI config table: 7 entries copied to 0x4BF61400
+EFI_SYSTEM_TABLE CRC32 recomputed: 0x81CC2BDC
+EFI_SYSTEM_TABLE CRC32 recomputed: 0x81CC2BDC
+EFI tables copied to 0x4BF61000 (st) / 0x4BF61200 (rt)
+EFI tables copied to 0x4BF61000 (st) / 0x4BF61200 (rt)
+DT: empty static TrustCache at 0x48000000
+DT: empty static TrustCache at 0x48000000
+TSC: initial=0x192D1F06 estimated frequency=62647100 Hz
+TSC: initial=0x192D1F06 estimated frequency=62647100 Hz
+DT: config-table loop (7 entries)
+DT: config-table loop (7 entries)
+DT: config-table done
+DT: config-table done
+DT: flattening into 8192-byte buffer
+DT: flattening into 8192-byte buffer
+DT: built 4496 bytes
+DT: built 4496 bytes
+MCFG: PCI base=0x4010000000 bus=0-255
+MCFG: PCI base=0x4010000000 bus=0-255
+boot_probe_video: 800x600 stride=3200 fb=0x7F600000 pixfmt=1
+boot_probe_video: 800x600 stride=3200 fb=0x7F600000 pixfmt=1
+sizeof(boot_args) = 0x1000
+sizeof(boot_args) = 0x1000
+boot_args low phys = 0x4BF60000
+boot_args low phys = 0x4BF60000
+device_tree low phys = 0x4BF62000
+device_tree low phys = 0x4BF62000
+memory_map ptr  = 0x7ED89000
+memory_map ptr  = 0x7ED89000
+memory_map phys = 0x7ED89000
+memory_map phys = 0x7ED89000
+boot_probe_video: 800x600 stride=3200 fb=0x7F600000 pixfmt=1
+boot_probe_video: 800x600 stride=3200 fb=0x7F600000 pixfmt=1
+arm64 boot_args @ 0x4BF64000
+arm64 boot_args @ 0x4BF64000
+  Revision: 2  Version: 2
+  Revision: 2  Version: 2
+  virtBase: 0xFFFFFFF004000000  physBase: 0x48000000
+  virtBase: 0xFFFFFFF004000000  physBase: 0x48000000
+  memSize: 0x37D00000  topOfKernelData: 0x4BF80000
+  memSize: 0x37D00000  topOfKernelData: 0x4BF80000
+  deviceTreeP: 0x4BF62000  deviceTreeLength: 0x1190
+  deviceTreeP: 0x4BF62000  deviceTreeLength: 0x1190
+  CommandLine: -v debug=0x218 serial=3 keepsyms=1 no_interrupt_masked_debug=1 kextlog=0xfffffff io=0x3
+  CommandLine: -v debug=0x218 serial=3 keepsyms=1 no_interrupt_masked_debug=1 kextlog=0xfffffff io=0x3
+[D] before exit_boot_services
+[D] before exit_boot_services
+boot_args phys = 0x4BF64000
+boot_args phys = 0x4BF64000
+handoff entry_vmaddr=0xFFFFFFF00736A498 host_entry=0x4B36A498 phys_entry=0x4B36A498
+handoff entry_vmaddr=0xFFFFFFF00736A498 host_entry=0x4B36A498 phys_entry=0x4B36A498
+handoff phys_real=0x48004000 vm_base=0xFFFFFFF004004000
+handoff phys_real=0x48004000 vm_base=0xFFFFFFF004004000
+handoff physBase=0x48000000 topOfKernelData=0x4BF80000
+handoff physBase=0x48000000 topOfKernelData=0x4BF80000
+stack_top = 0x7ED84FF0
+stack_top = 0x7ED84FF0
+entry     = 0x4B36A498
+entry     = 0x4B36A498
+[EBS] attempt 0 (irqs enabled)
+[EBS] ExitBootServices returned SUCCESS
+[EBS] SVAM va_base    0x3200000
+[EBS] SVAM va_cursor  0x73D1000
+[EBS] SVAM new_kend   0x7400000
+[EBS] SVAM ksize      0x7300000
+[EBS] calling SetVirtualAddressMap
+[EBS] SetVirtualAddressMap returned
+[EBS] exit_boot_services returned
+[EBS] mmap src    0x7ED89000
+[EBS] mmap dst    0x4BF70000
+[EBS] mmap bytes  0x10B0
+[EBS] mmap dsz    0x30
+[EBS] mmap in     0x59
+[EBS] mmap out    0xC
+[EBS] boot_args   0x4BF60000
+[EBS] entry       0x4B36A498
+[EBS] stack_top   0x7ED84FF0
+[EBS] jumping to kernel
+Darwin Kernel Version 20.5.0: Sat Oct 10 08:46:32 PDT 2026; joeblau:xnu-build/DEVELOPMENT_ARM64_VIRT
+pmap_startup() init/release time: 5589 microsec
+pmap_startup() delayed init/release of 0 pages
+vm_page_bootstrap: 52857 free pages, 4295 wired pages, (up to 0 of which are delayed free)
+"vm_compressor_mode" is 4
+zone_init: submap[0] 0xfffffff05e000000:0xfffffff1f7990000 (6553M)
+zone_init: submap[1] 0xfffffff1f79a0000:0xfffffff52acc0000 (13107M)
+zone_init: submap[2] 0xfffffff52acd0000:0xfffffff85dff0000 (13107M)
+zone_init: metadata  0xfffffffbf0cd8000:0xfffffffbf2ce0000 (32800K)
+zone_init: metabits  0xfffffffbf2ce0000:0xfffffffbf31c0000 (4992K)
+zone leak detection disabled
+oslog_init completed, 16 chunks, 8 io pages
+standard timeslicing quantum is 10000 us
+standard background quantum is 2500 us
+WQ[wql_init]: init linktable with max:262144 elements (8388608 bytes)
+WQ[wqp_init]: init prepost table with max:262144 elements (8388608 bytes)
+mig_table_max_displ = 53 mach_kobj_count = 369
+kdp_core zlib memory 0x8000
+Serial requested, consistent debug disabled or debug boot arg not present, configuring debugging over serial
+[    7.117030]: Telemetry: Sampling all tasks once per 1 second
+[    7.118456]: Scheduler: Default of clutch
+[    7.118509]: Setting scheduler priority decay band limit 18
+[    7.148448]: ATM subsystem is initialized
+[    7.148698]: BANK subsystem is initialized
+[    7.148805]: IPC_PTHREAD_PRIORITY subsystem is initialized
+[    7.159175]: Registered coredump handler for kernel
+[    7.166596]: Initializing serial KDP
+iBoot version: 
+[33m[4mKernel kext log filter 0xfffffff per kextlog boot arg.[0m
+[33mKext system initialized.[0m
+[36mKext __kernel__ registered class OSMetaClass.[0m
+[36mKext __kernel__ registered class OSObject.[0m
+[36mKext __kernel__ registered class OSArray.[0m
+[36mKext __kernel__ registered class OSBoolean.[0m
+[36mKext __kernel__ registered class OSCollection.[0m
+[36mKext __kernel__ registered class OSCollectionIterator.[0m
+[36mKext __kernel__ registered class OSData.[0m
+[36mKext __kernel__ registered class OSDictionary.[0m
+[36mKext __kernel__ registered class OSIterator.[0m
+[36mKext __kernel__ registered class OSKext.[0m
+[36mKext __kernel__ registered class OSKextSavedMutableSegment.[0m
+[36mKext __kernel__ registered class OSNumber.[0m
+[36mKext __kernel__ registered class OSOrderedSet.[0m
+[36mKext __kernel__ registered class OSSerialize.[0m
+[36mKext __kernel__ registered class OSSerializer.[0m
+[36mKext __kernel__ registered class OSSet.[0m
+[36mKext __kernel__ registered class OSString.[0m
+[36mKext __kernel__ registered class OSSymbol.[0m
+[36mKext __kernel__ registered class OSAction.[0m
+[36mKext __kernel__ registered class IODispatchSource.[0m
+[36mKext __kernel__ registered class IODispatchQueue.[0m
+[36mKext __kernel__ registered class IOInterruptDispatchSource.[0m
+[36mKext __kernel__ registered class IODataQueueDispatchSource.[0m
+[36mKext __kernel__ registered class IOServiceNotificationDispatchSource.[0m
+[36mKext __kernel__ registered class IOConditionLock.[0m
+[36mKext __kernel__ registered class IORegistryEntry.[0m
+[36mKext __kernel__ registered class IORegistryPlane.[0m
+[36mKext __kernel__ registered class IORegistryIterator.[0m
+[36mKext __kernel__ registered class IOService.[0m
+[33mKext __kernel__ has IOService subclass IOService; enabling autounload.[0m
+[36mKext __kernel__ registered class _IOServiceNotifier.[0m
+[36mKext __kernel__ registered class _IOServiceNullNotifier.[0m
+[36mKext __kernel__ registered class _IOServiceInterestNotifier.[0m
+[36mKext __kernel__ registered class _IOConfigThread.[0m
+[36mKext __kernel__ registered class _IOServiceJob.[0m
+[36mKext __kernel__ registered class IOResources.[0m
+[36mKext __kernel__ registered class IOUserResources.[0m
+[36mKext __kernel__ registered class _IOOpenServiceIterator.[0m
+[36mKext __kernel__ registered class IONotifier.[0m
+[36mKext __kernel__ registered class IOServiceCompatibility.[0m
+[36mKext __kernel__ registered class IOPMRequest.[0m
+[36mKext __kernel__ registered class IOPMRequestQueue.[0m
+[36mKext __kernel__ registered class IOPMWorkQueue.[0m
+[36mKext __kernel__ registered class IOPMCompletionQueue.[0m
+[36mKext __kernel__ registered class IOServicePM.[0m
+[36mKext __kernel__ registered class IOPMinformee.[0m
+[36mKext __kernel__ registered class IOPMinformeeList.[0m
+[36mKext __kernel__ registered class IOPMPowerStateQueue.[0m
+[36mKext __kernel__ registered class IOCatalogue.[0m
+[36mKext __kernel__ registered class IOPMPowerSource.[0m
+[36mKext __kernel__ registered class IOPMPowerSourceList.[0m
+[36mKext __kernel__ registered class IOPMGR.[0m
+[36mKext __kernel__ registered class IOPolledInterface.[0m
+[36mKext __kernel__ registered class IOPolledFilePollers.[0m
+[36mKext __kernel__ registered class IOWorkLoop.[0m
+[36mKext __kernel__ registered class IOEventSource.[0m
+[36mKext __kernel__ registered class IOInterruptEventSource.[0m
+[36mKext __kernel__ registered class IOCommandGate.[0m
+[36mKext __kernel__ registered class IOCommand.[0m
+[36mKext __kernel__ registered class IOCommandPool.[0m
+[36mKext __kernel__ registered class IODMAEventSource.[0m
+[36mKext __kernel__ registered class IOFilterInterruptEventSource.[0m
+[36mKext __kernel__ registered class IOTimerEventSource.[0m
+[36mKext __kernel__ registered class IOBufferMemoryDescriptor.[0m
+[36mKext __kernel__ registered class IODMACommand.[0m
+[36mKext __kernel__ registered class IOInterleavedMemoryDescriptor.[0m
+[36mKext __kernel__ registered class IOMapper.[0m
+[36mKext __kernel__ registered class IOMemoryCursor.[0m
+[36mKext __kernel__ registered class IONaturalMemoryCursor.[0m
+[36mKext __kernel__ registered class IOBigMemoryCursor.[0m
+[36mKext __kernel__ registered class IOLittleMemoryCursor.[0m
+[36mKext __kernel__ registered class IOMemoryDescriptor.[0m
+[36mKext __kernel__ registered class IOGeneralMemoryDescriptor.[0m
+[36mKext __kernel__ registered class IOMemoryMap.[0m
+[36mKext __kernel__ registered class IOMultiMemoryDescriptor.[0m
+[36mKext __kernel__ registered class IORangeAllocator.[0m
+[36mKext __kernel__ registered class IOSubMemoryDescriptor.[0m
+[36mKext __kernel__ registered class IOPlatformExpert.[0m
+[36mKext __kernel__ registered class IODTPlatformExpert.[0m
+[36mKext __kernel__ registered class IOPlatformExpertDevice.[0m
+[36mKext __kernel__ registered class IOPlatformDevice.[0m
+[36mKext __kernel__ registered class IOPanicPlatform.[0m
+[36mKext __kernel__ registered class IOPlatformIO.[0m
+[36mKext __kernel__ registered class IOCPU.[0m
+[36mKext __kernel__ registered class IOCPUInterruptController.[0m
+[36mKext __kernel__ registered class IODTNVRAM.[0m
+[36mKext __kernel__ registered class IODTNVRAMVariables.[0m
+[36mKext __kernel__ registered class IODMAController.[0m
+[36mKext __kernel__ registered class IOInterruptController.[0m
+[36mKext __kernel__ registered class IOSharedInterruptController.[0m
+[36mKext __kernel__ registered class PassthruInterruptController.[0m
+[36mKext __kernel__ registered class IOMachPort.[0m
+[36mKext __kernel__ registered class IOUserIterator.[0m
+[36mKext __kernel__ registered class IOUserNotification.[0m
+[36mKext __kernel__ registered class IOServiceUserNotification.[0m
+[36mKext __kernel__ registered class IOServiceMessageUserNotification.[0m
+[36mKext __kernel__ registered class IOUserClient.[0m
+[36mKext __kernel__ registered class IOKitDiagnostics.[0m
+[36mKext __kernel__ registered class IOKitDiagnosticsClient.[0m
+[36mKext __kernel__ registered class IODataQueue.[0m
+[36mKext __kernel__ registered class IOSharedDataQueue.[0m
+[36mKext __kernel__ registered class IOReporter.[0m
+[36mKext __kernel__ registered class IOSimpleReporter.[0m
+[36mKext __kernel__ registered class IOStateReporter.[0m
+[36mKext __kernel__ registered class IOHistogramReporter.[0m
+[36mKext __kernel__ registered class IOReportLegend.[0m
+[36mKext __kernel__ registered class IORTC.[0m
+[36mKext __kernel__ registered class OSUserMetaClass.[0m
+[36mKext __kernel__ registered class IOUserService.[0m
+[36mKext __kernel__ registered class IOUserServerCheckInToken.[0m
+[36mKext __kernel__ registered class IOUserServer.[0m
+[36mKext __kernel__ registered class IOUserUserClient.[0m
+[36mKext __kernel__ registered class RootDomainUserClient.[0m
+[36mKext __kernel__ registered class IOPowerConnection.[0m
+[36mKext __kernel__ registered class IOWatchDogTimer.[0m
+[36mKext __kernel__ registered class IOPerfControlClient.[0m
+[36mKext __kernel__ registered class IOPerfControlWorkContext.[0m
+[36mKext __kernel__ registered class IONVRAMController.[0m
+[36mKext __kernel__ registered class PMAssertionsTracker.[0m
+[36mKext __kernel__ registered class PMHaltWorker.[0m
+[36mKext __kernel__ registered class IOPMrootDomain.[0m
+[36mKext __kernel__ registered class IOPMServiceInterestNotifier.[0m
+[36mKext __kernel__ registered class PMTraceWorker.[0m
+[36mKext __kernel__ registered class PMSettingHandle.[0m
+[36mKext __kernel__ registered class PMSettingObject.[0m
+[36mKext __kernel__ registered class IORootParent.[0m
+[33mReading startup extensions.[0m
+[33mStarting from prelinked kernel.[0m
+[32mKext com.apple.iokit.IOPCIFamily, v2.9 registered and available for loading.[0m
+[32mKext com.apple.iokit.IOStorageFamily, v2.1 registered and available for loading.[0m
+[32mKext com.apple.iokit.IONetworkingFamily, v3.4 registered and available for loading.[0m
+[32mKext org.puredarwin.iokit.IOVirtIOFamily, v1.0 registered and available for loading.[0m
+[32mKext org.puredarwin.kext.PDArmPlatformExpert, v1.0 registered and available for loading.[0m
+[32mKext org.puredarwin.driver.PDArmPCI, v1.0 registered and available for loading.[0m
+[32mKext org.puredarwin.driver.IOVirtIOBlock, v1.0 registered and available for loading.[0m
+[32mKext org.puredarwin.driver.IOVirtIONet, v1.0 registered and available for loading.[0m
+[32mKext com.apple.filesystems.ext4, v1.0 registered and available for loading.[0m
+[32mKext com.ravynos.driver.Ext4FileSystemDriver, v1.0 registered and available for loading.[0m
+[32mKext com.apple.AppleFileSystemDriver, v3.0.1 registered and available for loading.[0m
+[32mKext com.apple.kec.corecrypto, v1.0 registered and available for loading.[0m
+[32mKext com.apple.kec.pthread, v1.0 registered and available for loading.[0m
+[32mKext com.apple.driver.AppleNMI, v20.5 registered and available for loading.[0m
+[32mKext com.apple.iokit.ApplePlatformFamily, v20.5 registered and available for loading.[0m
+[32mKext com.apple.kpi.bsd, v20.5 registered and available for loading.[0m
+[32mKext com.apple.kpi.iokit, v20.5 registered and available for loading.[0m
+[32mKext com.apple.iokit.IONVRAMFamily, v20.5 registered and available for loading.[0m
+[32mKext com.apple.iokit.IOSystemManagementFamily, v20.5 registered and available for loading.[0m
+[32mKext com.apple.kpi.kasan, v20.5 registered and available for loading.[0m
+[32mKext com.apple.kpi.libkern, v20.5 registered and available for loading.[0m
+[32mKext com.apple.kpi.dsep, v20.5 registered and available for loading.[0m
+[32mKext com.apple.kpi.mach, v20.5 registered and available for loading.[0m
+[32mKext com.apple.kpi.private, v20.5 registered and available for loading.[0m
+[32mKext com.apple.kpi.unsupported, v20.5 registered and available for loading.[0m
+[33m1 prelinked kexts[0m
+[31m[1mWARNING: did not find UUID in Primary KC![0m
+[32mRecorded kext com.apple.kpi.bsd as a candidate for inclusion in prelinked kernel.[0m
+[33mLoading kext com.apple.kpi.bsd.[0m
+[33mKext com.apple.kpi.bsd loaded.[0m
+[32mRecorded kext com.apple.kpi.dsep as a candidate for inclusion in prelinked kernel.[0m
+[33mLoading kext com.apple.kpi.dsep.[0m
+[33mKext com.apple.kpi.dsep loaded.[0m
+[32mRecorded kext com.apple.kpi.iokit as a candidate for inclusion in prelinked kernel.[0m
+[33mLoading kext com.apple.kpi.iokit.[0m
+[33mKext com.apple.kpi.iokit loaded.[0m
+[32mRecorded kext com.apple.kpi.kasan as a candidate for inclusion in prelinked kernel.[0m
+[33mLoading kext com.apple.kpi.kasan.[0m
+[33mKext com.apple.kpi.kasan loaded.[0m
+[32mRecorded kext com.apple.kpi.libkern as a candidate for inclusion in prelinked kernel.[0m
+[33mLoading kext com.apple.kpi.libkern.[0m
+[33mKext com.apple.kpi.libkern loaded.[0m
+[32mRecorded kext com.apple.kpi.mach as a candidate for inclusion in prelinked kernel.[0m
+[33mLoading kext com.apple.kpi.mach.[0m
+[33mKext com.apple.kpi.mach loaded.[0m
+[32mRecorded kext com.apple.kpi.private as a candidate for inclusion in prelinked kernel.[0m
+[33mLoading kext com.apple.kpi.private.[0m
+[33mKext com.apple.kpi.private loaded.[0m
+[32mRecorded kext com.apple.kpi.unsupported as a candidate for inclusion in prelinked kernel.[0m
+[33mLoading kext com.apple.kpi.unsupported.[0m
+[33mKext com.apple.kpi.unsupported loaded.[0m
+[32mRecorded kext com.apple.iokit.IONVRAMFamily as a candidate for inclusion in prelinked kernel.[0m
+[33mKext com.apple.iokit.IONVRAMFamily loaded.[0m
+[32mRecorded kext com.apple.driver.AppleNMI as a candidate for inclusion in prelinked kernel.[0m
+[33mKext com.apple.driver.AppleNMI loaded.[0m
+[32mRecorded kext com.apple.iokit.IOSystemManagementFamily as a candidate for inclusion in prelinked kernel.[0m
+[33mKext com.apple.iokit.IOSystemManagementFamily loaded.[0m
+[32mRecorded kext com.apple.iokit.ApplePlatformFamily as a candidate for inclusion in prelinked kernel.[0m
+[33mKext com.apple.iokit.ApplePlatformFamily loaded.[0m
+[32mLoading Kernel External Components.[0m
+[32mLoading kernel external component com.apple.kec.corecrypto.[0m
+[32mRecorded kext com.apple.kec.corecrypto as a candidate for inclusion in prelinked kernel.[0m
+[33mLoading kext com.apple.kec.corecrypto.[0m
+[32mKext com.apple.kec.corecrypto resolving dependencies.[0m
+[36mKext com.apple.kec.corecrypto added dependency com.apple.kpi.bsd.[0m
+[36mKext com.apple.kec.corecrypto added dependency com.apple.kpi.iokit.[0m
+[36mKext com.apple.kec.corecrypto added dependency com.apple.kpi.libkern.[0m
+[36mKext com.apple.kec.corecrypto added dependency com.apple.kpi.mach.[0m
+[36mKext com.apple.kec.corecrypto added dependency com.apple.kpi.private.[0m
+[36mKext com.apple.kec.corecrypto added dependency com.apple.kpi.unsupported.[0m
+[32mKext com.apple.kec.corecrypto successfully resolved dependencies.[0m
+[35mKext com.apple.kpi.bsd is already loaded.[0m
+[35mKext com.apple.kpi.iokit is already loaded.[0m
+[35mKext com.apple.kpi.libkern is already loaded.[0m
+[35mKext com.apple.kpi.mach is already loaded.[0m
+[35mKext com.apple.kpi.private is already loaded.[0m
+[35mKext com.apple.kpi.unsupported is already loaded.[0m
+[33mKext com.apple.kec.corecrypto executable loaded; 10 pages at 0xfffffff004208000 (load tag 9).[0m
+[36mKext com.apple.kec.corecrypto calling module start function.[0m
+corecrypto start
+corecrypto register ret=0
+corecrypto loaded
+[33mKext com.apple.kec.corecrypto is now started.[0m
+[33mKext com.apple.kec.corecrypto loaded.[0m
+[32mLoading kernel external component com.apple.kec.pthread.[0m
+[32mRecorded kext com.apple.kec.pthread as a candidate for inclusion in prelinked kernel.[0m
+[33mLoading kext com.apple.kec.pthread.[0m
+[32mKext com.apple.kec.pthread resolving dependencies.[0m
+[36mKext com.apple.kec.pthread added dependency com.apple.kpi.bsd.[0m
+[36mKext com.apple.kec.pthread added dependency com.apple.kpi.iokit.[0m
+[36mKext com.apple.kec.pthread added dependency com.apple.kpi.libkern.[0m
+[36mKext com.apple.kec.pthread added dependency com.apple.kpi.mach.[0m
+[36mKext com.apple.kec.pthread added dependency com.apple.kpi.private.[0m
+[36mKext com.apple.kec.pthread added dependency com.apple.kpi.unsupported.[0m
+[32mKext com.apple.kec.pthread successfully resolved dependencies.[0m
+[35mKext com.apple.kpi.bsd is already loaded.[0m
+[35mKext com.apple.kpi.iokit is already loaded.[0m
+[35mKext com.apple.kpi.libkern is already loaded.[0m
+[35mKext com.apple.kpi.mach is already loaded.[0m
+[35mKext com.apple.kpi.private is already loaded.[0m
+[35mKext com.apple.kpi.unsupported is already loaded.[0m
+[33mKext com.apple.kec.pthread executable loaded; 7 pages at 0xfffffff004230000 (load tag 10).[0m
+[36mKext com.apple.kec.pthread calling module start function.[0m
+[33mKext com.apple.kec.pthread is now started.[0m
+[33mKext com.apple.kec.pthread loaded.[0m
+[32mReading built-in kernel personalities for I/O Kit drivers.[0m
+[32mSending all eligible registered kexts' personalities to the IOCatalogue and starting matching.[0m
+[32m21 kext personalities sent to the IOCatalogue; matching started.[0m
+IONVRAM::getNVRAMSize:854 - NVRAM size is 8192 bytes
+[32mLoading security extensions.[0m
+1 external trust cache modules available.
+external trust cache module 0 with 0 entries
+[33mJettisoning kext bootstrap segments.[0m
+[33m[4mkeepsyms boot arg specified; keeping linkedit segment for symbols.[0m
+panic(cpu 0 caller 0xfffffff0078254ac): Kernel instruction fetch abort at pc 0xfffffff00420d9c8, lr 0xfffffff0073451c4 (saved state: 0xfffffff003eeb870)
+	  x0: 0xfffffff004224140  x1:  0x0000000000000000  x2:  0x0000000000000008  x3:  0xfffffff003eebbd8
+	  x4: 0x0000000000000000  x5:  0x0000000000000000  x6:  0x000000000000000c  x7:  0xfffffff003eebbb8
+	  x8: 0xfffffff007890bd0  x9:  0xfffffff003eebc58  x10: 0x00000000ffcfffff  x11: 0x0000000000000001
+	  x12: 0x0000000000420000 x13: 0x00000000004a0000  x14: 0x00000000ffdfffff  x15: 0x0000000000000000
+	  x16: 0x00000000000001bc x17: 0x0000000000000000  x18: 0x0000000003004000  x19: 0xfffffff004224140
+	  x20: 0xfffffff00420d9c8 x21: 0x0000000000000000  x22: 0x0000000000000000  x23: 0x0000000000004000
+	  x24: 0x0000000000000000 x25: 0x0000000000000001  x26: 0xfffffff05c259ef0  x27: 0x0000000000000001
+	  x28: 0x0000000000000000 fp:  0xfffffff003eebbf0  lr:  0xfffffff0073451c4  sp:  0xfffffff003eebbc0
+	  pc:  0xfffffff00420d9c8 cpsr: 0x40400a04         esr: 0x8600000f          far: 0xfffffff00420d9c8
+
+Debugger message: panic
+Memory ID: 0x0
+OS release type: Not set yet
+OS version: Not set yet
+Kernel version: Darwin Kernel Version 20.5.0: Sat Oct 10 08:46:32 PDT 2026; joeblau:xnu-build/DEVELOPMENT_ARM64_VIRT
+Kernel UUID: 24B6DB58-FF3D-33AC-8F0B-9E1E2A3EA5EA
+iBoot version: 
+secure boot?: YES
+Paniclog version: 13
+Kernel text base:  0xfffffff007004000
+mach_absolute_time: 0x224771f9
+Epoch Time:        sec       usec
+  Boot    : 0x00000000 0x00000000
+  Sleep   : 0x00000000 0x00000000
+  Wake    : 0x00000000 0x00000000
+  Calendar: 0x00000000 0x00000000
+
+Panicked task 0xfffffff1f79d8648: 325 pages, 10 threads: NULL bsd_info pointer
+unknown task
+Panicked thread: 0xfffffff0079121a8, backtrace: 0xfffffff003eeb020, tid: 101
+		  lr: 0xfffffff007229600  fp: 0xfffffff003eeb0b0
+		  lr: 0xfffffff007376064  fp: 0xfffffff003eeb0d0
+		  lr: 0xfffffff007368278  fp: 0xfffffff003eeb1b0
+		  lr: 0xfffffff0073675ac  fp: 0xfffffff003eeb1c0
+		  lr: 0xfffffff007228e90  fp: 0xfffffff003eeb570
+		  lr: 0xfffffff007229ab8  fp: 0xfffffff003eeb5e0
+		  lr: 0xfffffff0077f96e0  fp: 0xfffffff003eeb600
+		  lr: 0xfffffff0078254ac  fp: 0xfffffff003eeb770
+		  lr: 0xfffffff007368000  fp: 0xfffffff003eeb850
+		  lr: 0xfffffff0073675ac  fp: 0xfffffff003eeb860
+		  lr: 0xfffffff0073451c4  fp: 0xfffffff003eebbf0
+		  lr: 0xfffffff007285fe8  fp: 0xfffffff003eebc10
+		  lr: 0xfffffff007285cec  fp: 0xfffffff003eebcb0
+		  lr: 0xfffffff007287014  fp: 0xfffffff003eebd00
+		  lr: 0xfffffff007770518  fp: 0xfffffff003eebd20
+		  lr: 0xfffffff0077706f0  fp: 0xfffffff003eebd50
+		  lr: 0xfffffff00776dc44  fp: 0xfffffff003eebd70
+		  lr: 0xfffffff00776dcf4  fp: 0xfffffff003eebd90
+		  lr: 0xfffffff007789268  fp: 0xfffffff003eebdb0
+		  lr: 0xfffffff00773dc94  fp: 0xfffffff003eebdc0
+		  lr: 0xfffffff007800240  fp: 0xfffffff003eebf00
+		  lr: 0xfffffff00736c4c8  fp: 0x0000000000000000
+
+
+** Stackshot Incomplete ** Bytes Filled 240 **
+Attempting system restart...
+MACH Reboot
