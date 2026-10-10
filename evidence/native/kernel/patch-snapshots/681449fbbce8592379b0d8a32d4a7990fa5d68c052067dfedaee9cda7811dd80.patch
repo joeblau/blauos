@@ -1,0 +1,16 @@
+diff --git a/src/Kernel/xnu/osfmk/arm64/amcc_rorgn.c b/src/Kernel/xnu/osfmk/arm64/amcc_rorgn.c
+index 35128d5..b6e7fba 100644
+--- a/src/Kernel/xnu/osfmk/arm64/amcc_rorgn.c
++++ b/src/Kernel/xnu/osfmk/arm64/amcc_rorgn.c
+@@ -42,7 +42,11 @@
+ #include <arm/pmap.h>
+ #include <arm64/tlb.h>
+ #include <arm64/amcc_rorgn.h>
++/* This source uses no declarations from the private iBoot header.
++ * Compile the genuine T8103 CTRR implementation from its public inputs. */
++#if !defined(ARM64_BOARD_CONFIG_T8103)
+ #include <memmap_types.h>
++#endif
+ 
+ #if HIBERNATION
+ #include <arm64/pal_hibernate.h>

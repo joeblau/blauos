@@ -1,0 +1,297 @@
+1: [  0%] Building C object tools/unifdef/CMakeFiles/unifdef.dir/unifdef.c.o
+2: [  0%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/begin.c.o
+3: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/allocate.c.o
+4: [  0%] Building C object tools/cctools/libmacho/CMakeFiles/host_libmacho.dir/arch.c.o
+5: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/apple_version.c.o
+6: [  0%] Linking C executable unifdef
+7: [  0%] Linking C static library libmacho.a
+8: [  0%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/clscook.c.o
+9: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/arch_usage.c.o
+10: [  0%] Built target unifdef
+11: [  0%] Built target host_libmacho
+12: [  0%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/clscook_ELF64.c.o
+13: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/arch.c.o
+14: [  0%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_create.c.o
+15: [  0%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_abbrev.c.o
+16: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/args.c.o
+17: [ 10%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/cntl.c.o
+18: [ 10%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_decl.c.o
+19: [ 10%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_addr_finder.c.o
+20: [ 10%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/cook.c.o
+21: [ 10%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/best_arch.c.o
+22: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_alloc.c.o
+23: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_error.c.o
+24: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/data.c.o
+25: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/breakout.c.o
+26: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_hash.c.o
+27: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_arange.c.o
+28: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/end.c.o
+29: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_labels.c.o
+30: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/bytesex.c.o
+31: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_die_deliv.c.o
+32: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/error.c.o
+33: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_lib.c.o
+34: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_error.c.o
+35: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/gelf.c.o
+36: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/checkout.c.o
+37: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_form.c.o
+38: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_lookup.c.o
+39: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getdata.c.o
+40: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/coff_bytesex.c.o
+41: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_frame.c.o
+42: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_open.c.o
+43: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getehdr.c.o
+44: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/crc32.c.o
+45: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getident.c.o
+46: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_frame2.c.o
+47: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_subr.c.o
+48: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/dylib_table.c.o
+49: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getscn.c.o
+50: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_frame3.c.o
+51: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_types.c.o
+52: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getshdr.c.o
+53: [ 30%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/dylib_roots.c.o
+54: [ 30%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_funcs.c.o
+55: [ 30%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_util.c.o
+56: [ 30%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getshstrndx.c.o
+57: [ 30%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_global.c.o
+58: [ 40%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/errors.c.o
+59: [ 40%] Linking C static library libctf.a
+60: [ 40%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/input.c.o
+9858:      INSTALLHDR copyout_shim.h
+9859:      INSTALLHDR IOStatistics.h
+9860:      INSTALLHDR _u_int.h
+9861: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr/source-overlay/src/Kernel/xnu/osfmk/arm64/amcc_rorgn.c:512:34: error: use of undeclared identifier 'ARM64_REG_CTRR_LOCK_EL1'
+9862:   512 |         ctrr_lock = __builtin_arm_rsr64(CTRR_LOCK_MSR);
+9863:       |                                         ^~~~~~~~~~~~~
+9864: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr/source-overlay/src/Kernel/xnu/osfmk/arm64/amcc_rorgn.c:124:23: note: expanded from macro 'CTRR_LOCK_MSR'
+9865:   124 | #define CTRR_LOCK_MSR ARM64_REG_CTRR_LOCK_EL1
+9866:       |                       ^~~~~~~~~~~~~~~~~~~~~~~
+9867:      INSTALLHDR sixxlowpan.h
+9868:      INSTALLHDR bpf.h
+9869: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr/source-overlay/src/Kernel/xnu/osfmk/arm64/amcc_rorgn.c:588:22: error: use of undeclared identifier 'ARM64_REG_CTRR_A_LWR_EL1'
+9870:   588 |         __builtin_arm_wsr64(ARM64_REG_CTRR_A_LWR_EL1, begin);
+9871:       |                             ^~~~~~~~~~~~~~~~~~~~~~~~
+9872:      INSTALLHDR vm_map.defs
+9873:      INSTALLHDR thread_act.defs
+9874:      INSTALLHDR udp_var.h
+9875:      INSTALLHDR mach_filter.h
+9876:      INSTALLHDR IOStatisticsPrivate.h
+9877: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr/source-overlay/src/Kernel/xnu/osfmk/arm64/amcc_rorgn.c:589:22: error: use of undeclared identifier 'ARM64_REG_CTRR_A_UPR_EL1'
+9878:   589 |         __builtin_arm_wsr64(ARM64_REG_CTRR_A_UPR_EL1, end);
+9879:       |                             ^~~~~~~~~~~~~~~~~~~~~~~~
+9880:      INSTALLHDR _u_int16_t.h
+9881:      INSTALLHDR bpf_compat.h
+9882:              CC caches.o
+9883:              CC raw_cb.o
+9884: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr/source-overlay/src/Kernel/xnu/osfmk/arm64/amcc_rorgn.c:597:22: error: use of undeclared identifier 'ARM64_REG_CTRR_CTL_EL1'
+9885:   597 |         __builtin_arm_wsr64(ARM64_REG_CTRR_CTL_EL1, CTRR_CTL_EL1_A_PXN | CTRR_CTL_EL1_A_MMUON_WRPROTECT);
+9886:       |                             ^~~~~~~~~~~~~~~~~~~~~~
+9887: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr/source-overlay/src/Kernel/xnu/osfmk/arm64/amcc_rorgn.c:597:46: error: use of undeclared identifier 'CTRR_CTL_EL1_A_PXN'
+9888:   597 |         __builtin_arm_wsr64(ARM64_REG_CTRR_CTL_EL1, CTRR_CTL_EL1_A_PXN | CTRR_CTL_EL1_A_MMUON_WRPROTECT);
+9889:       |                                                     ^~~~~~~~~~~~~~~~~~
+9890:      INSTALLHDR clock.h
+9891:      INSTALLHDR clock_priv.h
+9892: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr/source-overlay/src/Kernel/xnu/osfmk/arm64/amcc_rorgn.c:597:67: error: use of undeclared identifier 'CTRR_CTL_EL1_A_MMUON_WRPROTECT'
+9893:   597 |         __builtin_arm_wsr64(ARM64_REG_CTRR_CTL_EL1, CTRR_CTL_EL1_A_PXN | CTRR_CTL_EL1_A_MMUON_WRPROTECT);
+9894:       |                                                                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+9895:      INSTALLHDR host_priv.h
+9896:      INSTALLHDR _u_int32_t.h
+9897:      INSTALLHDR IOSubMemoryDescriptor.h
+9898:      INSTALLHDR bpfdesc.h
+9899:             C++ IONVRAM.cpo
+9900: 1 warning generated.
+9901: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr/source-overlay/src/Kernel/xnu/osfmk/arm64/amcc_rorgn.c:598:22: error: use of undeclared identifier 'ARM64_REG_CTRR_LOCK_EL1'
+9902:   598 |         __builtin_arm_wsr64(ARM64_REG_CTRR_LOCK_EL1, 1ULL);
+9903:       |                             ^~~~~~~~~~~~~~~~~~~~~~~
+9904:              CC copyio.o
+9905: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr/source-overlay/src/Kernel/xnu/osfmk/arm64/amcc_rorgn.c:604:23: error: use of undeclared identifier 'ACC_CTRR_A_LWR_EL2'
+9906:   604 |                 __builtin_arm_wsr64(ACC_CTRR_A_LWR_EL2, begin);
+9907:       |                                     ^~~~~~~~~~~~~~~~~~
+9908:             C++ IODMAController.cpo
+9909: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr/source-overlay/src/Kernel/xnu/bsd/net/ndrv.c:67:
+9910: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr/source-overlay/src/Kernel/xnu/bsd/net/ndrv.h:33:
+9916: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr/source-overlay/src/Kernel/xnu/bsd/net/pktsched/pktsched.h:126:12: warning: implicit conversion changes signedness: 'int' to 'pktsched_bitmap_t' (aka 'unsigned int') [-Wsign-conversion]
+9917:   126 |         *pData &= ~(1 << ix);
+9918:       |                ~~ ^~~~~~~~~~
+9919: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr/source-overlay/src/Kernel/xnu/osfmk/arm64/amcc_rorgn.c:605:23: error: use of undeclared identifier 'ACC_CTRR_A_UPR_EL2'
+9920:   605 |                 __builtin_arm_wsr64(ACC_CTRR_A_UPR_EL2, end);
+9921:       |                                     ^~~~~~~~~~~~~~~~~~
+9922: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr/source-overlay/src/Kernel/xnu/osfmk/arm64/amcc_rorgn.c:606:23: error: use of undeclared identifier 'ACC_CTRR_CTL_EL2'
+9923:   606 |                 __builtin_arm_wsr64(ACC_CTRR_CTL_EL2, CTRR_CTL_EL1_A_PXN | CTRR_CTL_EL1_A_MMUON_WRPROTECT);
+9924:       |                                     ^~~~~~~~~~~~~~~~
+9925: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr/source-overlay/src/Kernel/xnu/bsd/net/ndrv.c:500:34: warning: implicit conversion changes signedness: 'int' to 'size_t' (aka 'unsigned long') [-Wsign-conversion]
+9926:   500 |         MALLOC(*nam, struct sockaddr *, len, M_SONAME, M_WAITOK);
+9927:       |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~
+9934: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr/source-overlay/src/Kernel/xnu/bsd/sys/malloc.h:155:27: note: expanded from macro 'MALLOC'
+9935:   155 |         (space) = (cast)__MALLOC(size, type, flags, &site); })
+9936:       |                         ~~~~~~~~ ^~~~
+9937: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr/source-overlay/src/Kernel/xnu/osfmk/arm64/amcc_rorgn.c:606:41: error: use of undeclared identifier 'CTRR_CTL_EL1_A_PXN'
+9938:   606 |                 __builtin_arm_wsr64(ACC_CTRR_CTL_EL2, CTRR_CTL_EL1_A_PXN | CTRR_CTL_EL1_A_MMUON_WRPROTECT);
+9939:       |                                                       ^~~~~~~~~~~~~~~~~~
+9940:      INSTALLHDR host_security.h
+9941:      INSTALLHDR ktrace_background.h
+9942:      INSTALLHDR lock_set.h
+9943:      INSTALLHDR IOSyncer.h
+9944:      INSTALLHDR _u_int64_t.h
+9945:      INSTALLHDR content_filter.h
+9946: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr/source-overlay/src/Kernel/xnu/osfmk/arm64/amcc_rorgn.c:606:62: error: use of undeclared identifier 'CTRR_CTL_EL1_A_MMUON_WRPROTECT'
+9947:   606 |                 __builtin_arm_wsr64(ACC_CTRR_CTL_EL2, CTRR_CTL_EL1_A_PXN | CTRR_CTL_EL1_A_MMUON_WRPROTECT);
+9948:       |                                                                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+9949: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr/source-overlay/src/Kernel/xnu/osfmk/arm64/amcc_rorgn.c:607:23: error: use of undeclared identifier 'ACC_CTRR_LOCK_EL2'
+9950:   607 |                 __builtin_arm_wsr64(ACC_CTRR_LOCK_EL2, 1ULL);
+9951:       |                                     ^~~~~~~~~~~~~~~~~
+9952: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr/source-overlay/src/Kernel/xnu/osfmk/arm64/amcc_rorgn.c:703:24: warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
+9953:   703 |         cdp->cpu_cluster_id = ml_get_cluster_number_local();
+9954:       |                             ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+9955: 1 warning and 13 errors generated.
+9956: make[11]: *** [amcc_rorgn.o] Error 1
+9957: make[11]: *** Waiting for unfinished jobs....
+9958:              CC raw_usrreq.o
+9959: 3 warnings generated.
+9960:      INSTALLHDR mach_host.h
+9961:      INSTALLHDR mach_port.h
+9962:      INSTALLHDR IOTimerEventSource.h
+10070: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr/source-overlay/src/Kernel/xnu/iokit/Kernel/IONVRAM.cpp:289:3: note: first non-designated initializer is here
+10071:   289 |         {"acc-cm-override-count", .p.Bits.KernelOnly = 1},
+10072:       |          ^~~~~~~~~~~~~~~~~~~~~~~
+10073: make[10]: *** [build_all] Error 2
+10074:             C++ PassthruInterruptController.cpo
+10075: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr/source-overlay/src/Kernel/xnu/iokit/Kernel/IONVRAM.cpp:290:25: warning: nested designators are a C99 extension [-Wc99-designator]
+10076:   290 |         {"acc-mb-ld-lifetime", .p.Bits.KernelOnly = 1},
+10077:       |                                ^~~~~~~~~~~~~~~~~~
+10078: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr/source-overlay/src/Kernel/xnu/iokit/Kernel/IONVRAM.cpp:290:25: warning: mixture of designated and non-designated initializers in the same initializer list is a C99 extension [-Wc99-designator]
+10079:   290 |         {"acc-mb-ld-lifetime", .p.Bits.KernelOnlmake[9]: *** [do_all] Error 2
+10080: y = 1},
+10081:       |                                ^~~~~~~~~~~~~~~~~~~~~~
+10082: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr/source-overlay/src/Kernel/xnu/iokit/Kernel/IONVRAM.cpp:290:3: note: first non-designated initializer is here
+10083:   290 |         {"acc-mb-ld-lifetime", .p.Bits.KernelOnly = 1},
+10084:       |          ^~~~~~~~~~~~~~~~~~~~
+10089:   291 |         {"backlight-level", .p.Bits.UserWrite = 1},
+10090:       |                             ^~~~~~~~~~~~~~~~~~~~~
+10091: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr/source-overlay/src/Kernel/xnu/iokit/Kernel/IONVRAM.cpp:291:3: note: first non-designated initializer is here
+10092:   291 |         {"backlimake[8]: *** [build_all] Error 2
+10093: ght-level", .p.Bits.UserWrite = 1},
+10094:       |          ^~~~~~~~~~~~~~~~~
+10095: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr/source-overlay/src/Kernel/xnu/iokit/Kernel/IONVRAM.cpp:292:21: warning: nested designators are a C99 extension [-Wc99-designator]
+10096:   292 |         {"backlight-nits", .p.Bits.UserWrite = 1},
+10097:       |                            ^~~~~~~~~~~~~~~~~
+10105:   293 |         {"com.apple.System.boot-nonce", .p.Bits.KernelOnly = 1},
+10106:       |                                         ^~~~~~~~~~~~~~~~~~
+10107: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr/source-overlay/src/Kernel/xnu/iokit/Kernel/IONVRAM.cpp:293:34: warning: mixture of designated and non-designated initializers in the same initializer list is a C99 extension [-Wc99-designator]
+10108:   293 |         {"com.apple.System.boot-nonce", .p.Bits.KernelOnly = make[7]: *** [build_all_recurse_into_conf] Error 2
+10109: 1},
+10110:       |                                         ^~~~~~~~~~~~~~~~~~~~~~
+10111: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr/source-overlay/src/Kernel/xnu/iokit/Kernel/IONVRAM.cpp:293:3: note: first non-designated initializer is here
+10112:   293 |         {"com.apple.System.boot-nonce", .p.Bits.KernelOnly = 1},
+10113:       |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+10125:       |                      ^~~~~~~~~~~~~~~~~
+10126: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr/source-overlay/src/Kernel/xnu/iokit/Kernel/IONVRAM.cpp:295:15: warning: mixture of designated and non-designated initializers in the same initializer list is a C99 extension [-Wc99-designator]
+10127:   295 |         {"darkboot", .p.Bits.UserWrite = 1},
+10128:       |                      ^~~~~~~~~~~~~~~~~~~~~make[6]: *** [build_all_recurse_into_osfmk] Error 2
+10129: make[6]: *** Waiting for unfinished jobs....
+10130:      INSTALLHDR _uintptr_t.h
+10131: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr/source-overlay/src/Kernel/xnu/bsd/net/raw_usrreq.c:118:6: warning: variable 'sockets' set but not used [-Wunused-but-set-variable]
+10132:   118 |         int sockets = 0;
+10133:       |             ^
+10134: 
+30452:      INSTALLHDR stat.h
+30453:      INSTALLHDR sysctl.h
+30454:      INSTALLHDR syslimits.h
+30455:      INSTALLHDR syslog.h
+30456:      INSTALLHDR systm.h
+30457:      INSTALLHDR sys_domain.h
+30458:      INSTALLHDR time.h
+30459:      INSTALLHDR types.h
+30460:      INSTALLHDR ucontext.h
+30461:      INSTALLHDR ubc.h
+30462:      INSTALLHDR ucred.h
+30463:      INSTALLHDR uio.h
+30464:      INSTALLHDR un.h
+30465:      INSTALLHDR unistd.h
+30466:      INSTALLHDR unpcb.h
+30467:      INSTALLHDR utfconv.h
+30468:      INSTALLHDR unicode.h
+30469:      INSTALLHDR vm.h
+30470:      INSTALLHDR vmparam.h
+30471:      INSTALLHDR vnode.h
+30472:      INSTALLHDR vnode_if.h
+30473:      INSTALLHDR vsock.h
+30474:      INSTALLHDR xattr.h
+30475:      INSTALLHDR _select.h
+30476:      INSTALLHDR _types.h
+30477:      INSTALLHDR _structs.h
+30478:      INSTALLHDR _endian.h
+30479:      INSTALLHDR protosw.h
+30480:      INSTALLHDR domain.h
+30481:      INSTALLHDR kpi_mbuf.h
+30482:      INSTALLHDR kpi_socketfilter.h
+30483:      INSTALLHDR kpi_socket.h
+30484:      INSTALLHDR ttycom.h
+30485:      INSTALLHDR termios.h
+30486:      INSTALLHDR spawn.h
+30487:      INSTALLHDR msg.h
+30488:      INSTALLHDR wait.h
+30489:      INSTALLHDR timex.h
+30490:      INSTALLHDR commpage.h
+30491:      INSTALLHDR codesign.h
+30492:      INSTALLHDR content_protection.h
+30493:      INSTALLHDR cprotect.h
+30494:      INSTALLHDR csr.h
+30495:      INSTALLHDR decmpfs.h
+30496:      INSTALLHDR disktab.h
+30497:      INSTALLHDR eventhandler.h
+30498:      INSTALLHDR fileport.h
+30499:      INSTALLHDR fbt.h
+30500:      INSTALLHDR fsctl.h
+30501:      INSTALLHDR fslog.h
+30502:      INSTALLHDR kasl.h
+30503:      INSTALLHDR kern_memorystatus.h
+30504:      INSTALLHDR kern_memorystatus_freeze.h
+30505:      INSTALLHDR kern_memorystatus_notify.h
+30506:      INSTALLHDR kpi_private.h
+30507:      INSTALLHDR ktrace.h
+30508:      INSTALLHDR mach_swapon.h
+30509:      INSTALLHDR linker_set.h
+30510:      INSTALLHDR monotonic.h
+30511:      INSTALLHDR msgbuf.h
+30512:      INSTALLHDR eventvar.h
+30513:      INSTALLHDR persona.h
+30514:      INSTALLHDR proc_info.h
+30515:      INSTALLHDR pthread_shims.h
+30516: 19 warnings generated.
+30517:      INSTALLHDR quota.h
+30518:      INSTALLHDR sem_internal.h
+30519:      INSTALLHDR reboot.h
+30520:      INSTALLHDR stackshot.h
+30521:      INSTALLHDR shm_internal.h
+30522:      INSTALLHDR signalvar.h
+30523:      INSTALLHDR tty.h
+30524:      INSTALLHDR ttychars.h
+30525:      INSTALLHDR ttydefaults.h
+30526:      INSTALLHDR user.h
+30527:      INSTALLHDR ttydev.h
+30528:      INSTALLHDR vfs_context.h
+30529:      INSTALLHDR vmmeter.h
+30530:      INSTALLHDR reason.h
+30531:      INSTALLHDR spawn_internal.h
+30532:      INSTALLHDR priv.h
+30533:      INSTALLHDR pgo.h
+30534:      INSTALLHDR memory_maintenance.h
+30535:      INSTALLHDR doc_tombstone.h
+30536:      INSTALLHDR fsevents.h
+30537:      INSTALLHDR work_interval.h
+30538:      INSTALLHDR kern_sysctl.h
+30539:      INSTALLHDR vsock_transport.h
+30540:      INSTALLHDR sys__types.modulemap
+30541:      INSTALLHDR sysproto.h
+30542:      INSTALLHDR sys_types.modulemap
+30543:      INSTALLHDR sys_cdefs.modulemap
+30544: 2 warnings generated.
+30545:      LDFILELIST bsd
+30546: make[5]: *** [build_all_bootstrap_DEVELOPMENT^ARM64^T8103] Error 2
+30547: make[4]: *** [install] Error 2
+30548: make[3]: *** [src/Kernel/xnu/xnu_build/src/xnu-stamp/xnu-build] Error 2
+30549: make[2]: *** [src/Kernel/xnu/CMakeFiles/xnu.dir/all] Error 2
+30550: make[1]: *** [src/Kernel/xnu/CMakeFiles/xnu.dir/rule] Error 2
+30551: make: *** [xnu] Error 2

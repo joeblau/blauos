@@ -1,0 +1,204 @@
+{
+  "schema_version": 1,
+  "status": "source_audit_complete_native_assets_unproven",
+  "target": {
+    "model": "Macmini9,1",
+    "board": "J274AP",
+    "soc": "T8103"
+  },
+  "source_lock_sha256": "8022bbbfb33204b56bb3297cd8cbb39fb6c08ea65c476492d99462f7edfe3657",
+  "profiles": [
+    {
+      "name": "xnu",
+      "revision": "ac9718fb1af618d5ce8678d0dc6e8a58f252216f",
+      "tree": "cba06fba7c9d041633c55cfa3e3130fc367a5a1b",
+      "source_tag": "xnu-12377.121.6",
+      "master_version": null,
+      "supported_arm64_targets": [
+        "T6000",
+        "T6020",
+        "T6030",
+        "T6031",
+        "T6041",
+        "T6050",
+        "T8101",
+        "T8103",
+        "T8112",
+        "T8122",
+        "T8132",
+        "T8142",
+        "VMAPPLE"
+      ],
+      "t8103_build_target_declared": true,
+      "t8103_board_definition_present": true,
+      "t8103_flags": "MACHINE_FLAGS_ARM64_T8103 = -DARM64_BOARD_CONFIG_T8103                  -mcpu=apple-a14",
+      "boot_args_source_profile": {
+        "source_revision": "ac9718fb1af618d5ce8678d0dc6e8a58f252216f",
+        "header_sha256": "479a74f100116358a0e425d8deefc62c5bcbee72e49e69721c9e2d9c53465cd3",
+        "command_line_bytes": 1024,
+        "compatibility_with_target_iboot_measured": false
+      },
+      "source_files": [
+        {
+          "path": "makedefs/MakeInc.def",
+          "sha256": "36f6f4ed246da4d26bb4ffb6935de6160a276561c87a7cb8e19aaacc494eb29f"
+        },
+        {
+          "path": "pexpert/pexpert/arm64/board_config.h",
+          "sha256": "147ea1c2e2e23b7844dcebe3ae099f1443505997acb8063da309827b2fb299be"
+        },
+        {
+          "path": "pexpert/pexpert/arm64/H13.h",
+          "sha256": "ef9f9f76a94596de56d84b6cc0602608063bf6cf0de741538bae8326f593f614"
+        },
+        {
+          "path": "pexpert/pexpert/arm64/boot.h",
+          "sha256": "479a74f100116358a0e425d8deefc62c5bcbee72e49e69721c9e2d9c53465cd3"
+        },
+        {
+          "path": "osfmk/arm64/start.s",
+          "sha256": "a5c1a95b087f62f9e548bed7a0274cf420af1d69bfd656c1481d629093e2b07a"
+        },
+        {
+          "path": "osfmk/arm/arm_init.c",
+          "sha256": "14006b33b9b508d3579010ec2d3427c3d9255b8d59917cfa8b7826d3b71c60c0"
+        },
+        {
+          "path": "pexpert/arm/pe_init.c",
+          "sha256": "e8dc60fafb6bcf407ceaf3ec8a6ed6237d5d927d57b87827a09136a67d6482eb"
+        }
+      ]
+    },
+    {
+      "name": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "tree": "ed2345d7f3c11dad2e7f6ffeeb377adc789b12b8",
+      "source_tag": "next snapshot",
+      "master_version": "20.5.0\n\n# The first line of this file contains the master version number for the kernel.\n# All other instances of the kernel version in xnu are derived from this file.\n#\n# The format of the version number must conform to the version resource format\n# as described in TN1132: http://developer.apple.com/technotes/tn/tn1132.html\n#\n# In particular, the string is formatted as: J[.N[.R[S[L]]]], where:\n#  J represents the kernel major version number (integer)\n#  N represents the kernel minor version number (integer)\n#  R represents the kernel revision number (integer)\n#  S represents the kernel build stage (one of \"d\", \"a\", \"b\", or \"r\")\n#  L represents the kernel pre-release level (integer)\n#\n# The correct way to make use of the kernel version within kernel code or a\n# kext is to include libkern/verison.h.  version.h contains defines that can\n# be used for build-time version logic and prototypes for variables that can\n# be used for run-time version logic.",
+      "supported_arm64_targets": [
+        "BCM2837",
+        "S8000",
+        "S8001",
+        "T7000",
+        "T7001",
+        "T8010",
+        "T8011",
+        "VIRT"
+      ],
+      "t8103_build_target_declared": false,
+      "t8103_board_definition_present": true,
+      "t8103_flags": null,
+      "boot_args_source_profile": {
+        "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+        "header_sha256": "fb031e88ca57453a9cd0732937f7afa7784f02c4030acd7082ee455ddad48707",
+        "command_line_bytes": 608,
+        "compatibility_with_target_iboot_measured": false
+      },
+      "source_files": [
+        {
+          "path": "cmake/MakeInc.def.in",
+          "sha256": "b1c5be0009cc121888d30a77b3f8806ce85d19b712b1d96d690401bd91b89851"
+        },
+        {
+          "path": "pexpert/pexpert/arm64/board_config.h",
+          "sha256": "f3fc35e3e8d84366bd2a7672c49c7a780a415f04e71c6d1e833025e0617b3f41"
+        },
+        {
+          "path": "pexpert/pexpert/arm64/H13.h",
+          "sha256": "e8b7609eb8416fd3b269bcca6f6f9706691e45be7bc2895562ecb6b5d328c6da"
+        },
+        {
+          "path": "pexpert/pexpert/arm64/boot.h",
+          "sha256": "fb031e88ca57453a9cd0732937f7afa7784f02c4030acd7082ee455ddad48707"
+        },
+        {
+          "path": "osfmk/arm64/start.s",
+          "sha256": "30c6945de0d8195209165f99851820bc7b1146bddbb87c60156c0752aeeb4f29"
+        },
+        {
+          "path": "osfmk/arm/arm_init.c",
+          "sha256": "b9fa5858204376d84954f2e1c202eac0a69b9dadeb57e6c5a721879d5edf2d55"
+        },
+        {
+          "path": "pexpert/arm/pe_init.c",
+          "sha256": "7b656b12e21353443af6d636d578d78d823c5fe1c8eca420854c4a2a8b3b1a83"
+        }
+      ]
+    }
+  ],
+  "selected_source_profile": "xnu",
+  "installed_kdk_paths": [],
+  "selected_collection_format": {
+    "architecture": "arm64e",
+    "filetype": "MH_FILESET",
+    "kernel_entry_id": "com.apple.kernel",
+    "kind": "boot",
+    "format_is_source_documented_not_target_tested": true,
+    "source": "https://github.com/apple-oss-distributions/xnu/blob/ac9718fb1af618d5ce8678d0dc6e8a58f252216f/README.md"
+  },
+  "required_inputs": [
+    "Genuine linked DEVELOPMENT T8103 kernel and its UUID/symbols",
+    "Matching Xcode/SDK and KDK; KDK KernelSupport/libT8103.os.DEVELOPMENT.a",
+    "CoreEntitlements, TrustCache and CodeSignature build interfaces",
+    "Target-machine firmware/OS and its actual required driver inventory",
+    "Every included driver binary/plist, dependency, UUID, origin and hash",
+    "Target-local BootKC generation and local authorization/signing evidence",
+    "Source-profile-matched boot_args, Apple device tree and memory handoff"
+  ],
+  "proprietary_dependencies": [
+    "Apple host SDK build headers",
+    "KDK platform support archive and unpublished security interfaces",
+    "Apple-paired firmware and native platform driver inventory, not yet captured"
+  ],
+  "platform_driver_findings": {
+    "path": "src/Kernel/Extensions/PDArmPlatformExpert/PDArmPlatformExpert.cpp",
+    "sha256": "1d1bf7ada114d22974e826f4b0016abad34d537c43cbb87ad3e4b3e690f4029c",
+    "apple_aic_dispatch_integrated": true,
+    "observation": "PDAppleARMPlatformExpert overrides interrupt hooks and calls PDAppleAIC_init",
+    "limits": [
+      "Native controller register behavior has not been exercised on T8103",
+      "PDArmCPU initializes one interrupt-controller CPU; startCPU returns KERN_FAILURE",
+      "PDAppleAIC dispatch ignores non-external event types; timer/IPI paths need separate review",
+      "AIC initialization failure only logs a warning in the Apple platform late hook"
+    ],
+    "related_sources": [
+      {
+        "path": "src/Kernel/Extensions/PDArmPlatformExpert/PDAppleAIC.cpp",
+        "sha256": "5b49f84b2ae86c5f64f54b267f535cea551b9d43475bb71d66f5f6ad9821797a"
+      },
+      {
+        "path": "src/Kernel/Extensions/PDArmPlatformExpert/PDArmCPU.cpp",
+        "sha256": "f36a9a612bede50e8b7762d4bb151574efc2aad223fa3b800265c6fe4f4ce432"
+      },
+      {
+        "path": "src/Kernel/Extensions/PDArmPlatformExpert/Info.plist",
+        "sha256": "915b78bb6adbfcf211313912e9c025fe00b5ed902d203283ff80a568c6610c67"
+      },
+      {
+        "path": "src/Kernel/Extensions/PDArmPlatformExpert/CMakeLists.txt",
+        "sha256": "aff6bcf50c2fa100d73bbbd31342741955ca4037b9e826d44c085c11de8e829e"
+      }
+    ]
+  },
+  "local_signing_steps_executed": [],
+  "packaged_native_assets": [],
+  "native_boot_assets_ready": false,
+  "physical_execution_verified": false,
+  "path_a_result": "not_executed",
+  "fallback_activated": false,
+  "primary_references": [
+    "https://asahilinux.org/docs/hw/devices/device-list/",
+    "https://support.apple.com/guide/security/sec7d92dc49f/web",
+    "https://support.apple.com/guide/security/secac71d5623/web"
+  ],
+  "build_experiment": {
+    "path": "evidence/native/kernel/apple-t8103-platform/result.json",
+    "sha256": "d003d4be25ece84a6040792fbb3fc15d81c591317930cc7499ea7d1e4ce00500",
+    "status": "blocked",
+    "exit_code": 2,
+    "artifact_count": 0,
+    "source_revision": "ac9718fb1af618d5ce8678d0dc6e8a58f252216f",
+    "machine": "T8103",
+    "sdk": ".blauos/build/native/kernel/headers/MacOSX.sdk"
+  }
+}

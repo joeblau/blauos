@@ -1,6 +1,8 @@
 # Pinned build inputs and experiments
 
-Use Python 3 and Git for source validation/fetching. The macOS experiment profile
+Use Python 3.12 or newer and Git 2.41 or newer for source validation/fetching.
+Sparse-source validation uses Git's `sparse-checkout check-rules` command.
+The macOS experiment profile
 records the exact host, Apple compiler/linker/MIG tool hashes, and SDK content in
 `toolchain.lock.json`. The Linux virtual-build route uses the pinned PureDarwin
 flake and container inputs documented in [virtualization](virtualization.md).

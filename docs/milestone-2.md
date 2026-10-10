@@ -20,11 +20,28 @@ Two pinned source families are under actual T8103 build investigation. Modern
 Apple XNU reaches compilation but requires unavailable TrustCache and
 CoreEntitlements interfaces. The older PureDarwin source has H13/T8103 board
 definitions and an Apple AIC integration; a separate narrow native build
-profile reaches ARM64e compilation but has not linked a kernel. The
+profile now completes a fresh ARM64e KER00 DEVELOPMENT kernel build.
+It produces a raw executable and debug symbols; target-compatible boot assets
+and physical execution remain unverified. The
 [native source/build audit](audits/native-kernel-build.md) and
 [raw experiment receipts](../evidence/native/kernel/) record actual commands,
 tool/SDK identities, patch hashes, failures and artifact counts. No VIRT
 kernel was relabeled or packaged as a native candidate.
+
+The [native platform extension experiment](audits/native-aic.md) compiles and
+links the actual AppleARM/AIC module with matching ARM64e KER00 objects. A
+reviewed source change re-arms enabled hardware IRQs after the AIC event read
+automatically masks them. The linked extension's kernel imports remain to be
+resolved against the independent native kernel; real interrupt delivery,
+affinity, IPIs and storm behavior remain untested.
+
+The [P0 source audit](audits/native-platform-gaps.md) identifies remaining
+implementation work as well as physical tests. The platform module does not
+register processors or finalize the native CPU count, and its secondary
+startup returns failure. Runtime resource bounds, initialization failure
+propagation, controller naming/affinity and timer discovery also need work
+against the captured target handoff. A linked kernel does not resolve those
+interfaces or establish a functioning native platform.
 
 Read-only lab inventory, bounded UART collection, explicit-source boot-argument
 decoding, Apple device-tree parsing and reservation validation are implemented.
@@ -33,8 +50,17 @@ both use Version 2 / Revision 2 but have different sizes. Synthetic malformed
 inputs and PTYs test software behavior only. The
 [physical evidence validator](../scripts/platform/physical_evidence.py)
 binds artifacts, source inputs and captures for offline review. It always
-leaves hardware attestation and Gate 2 false. The proposed native kernel
-checkpoint emitter is still outstanding.
+leaves hardware attestation and Gate 2 false. A separate
+[partial early diagnostic hook](platform/m1-early-diagnostics.md) now compiles
+as a real T8103 ARM64e kernel object and reads the live PC, kernel UUID and
+architectural MMU/timer registers through the existing `kprintf` path. Its
+13 tests exercise the pinned boot-argument parser and nonce validation. It
+does not implement the full physical checkpoint protocol or establish a
+functioning native UART, delivered interrupts, timer callbacks or SMP.
+
+The repository, runtime and handoff suites pass 146 tests. Four source-bound
+ARM64/ARM64e ABI compile assertions also pass. Those checks establish software
+behavior and compilation; physical boot acceptance remains unverified.
 
 ## Task status
 
@@ -42,15 +68,15 @@ checkpoint emitter is still outstanding.
 | --- | --- | --- |
 | #25 M1 lab | [Inventory and recovery/UART runbook](platform/m1-lab.md), actual wrong-host rejection | Dedicated target access, complete hardware inventory, assigned operators, verified backup/Recovery/known-good boot and capture |
 | #26 Native policy | [Apple/Asahi policy research and exact host-tool observations](platform/native-boot.md) | Tested target OS/firmware/recovery/tool matrix and reversal |
-| #27 Native boot assets | [T8103 build experiments and conservative Mach-O inspection](audits/native-kernel-build.md) | Genuine linked native kernel, complete driver/firmware inventory, actual package/signing/authorization evidence |
+| #27 Native boot assets | [Fresh source-built T8103 kernel, symbols and conservative Mach-O inspection](audits/native-kernel-build.md) | Target-compatible BootKC, complete driver/firmware inventory, actual package/signing/authorization evidence |
 | #28 Path A boot | [Experiment and artifact/session contract](platform/native-boot.md) | Physical authorization attempt, actual kernel entry or a precise observed target blocker, recovery result |
-| #29 UART | Bounded raw-byte collection and [proposed source checkpoint protocol](platform/m1-checkpoint.md) | Integrated native early logging, source identity/checkpoint/panic output from independent XNU |
+| #29 UART | Bounded raw-byte collection, [compiled partial early diagnostics](platform/m1-early-diagnostics.md) and [proposed full checkpoint protocol](platform/m1-checkpoint.md) | Working native polling UART and source identity/checkpoint/panic output from independent physical XNU |
 | #30 Discovery and memory | [Explicit ABI, bounded Apple ADT and reservation parser](platform/m1-handoff.md) | Captured M1 handoff/RAM/carveouts and essential device resources; safe native initialization |
-| #31 MMU | Source layout/register assumptions and offline range checks | Actual entry EL/granule/registers, mappings, permissions, cache/TLB transition and physical diagnostics |
-| #32 Exceptions | Source startup observations and evidence fields | Real controlled exception, ESR/FAR/registers/symbolication and defined outcome |
-| #33 Timers | Evidence contract distinguishes counter progress and delivered callback | Actual one-shot/periodic delivery, monotonicity, drift, IRQ/FIQ routing and CPU behavior |
-| #34 AIC | Existing AppleARM/AIC dispatch identified and source limitations recorded | Native discovery, masks/acknowledgment/routing/affinity/IPI and real normal/spurious/storm tests |
-| #35 CPU startup | Existing platform CPU startup gap identified | Supported P/E secondary startup, per-CPU state, IPIs/scheduling/synchronization and repeated boots |
+| #31 MMU | Reviewed public PPL/CTRR/PAC restoration, actual native objects/link and offline range checks | Actual entry EL/granule/registers, mappings, permissions, cache/TLB transition and physical diagnostics |
+| #32 Exceptions | Compiled native vectors, protected entry/return and authenticated saved-state paths | Real controlled exception, ESR/FAR/registers/symbolication and defined outcome |
+| #33 Timers | Source-bound architectural timer/FIQ audit and compiled register diagnostics | Native timer discovery/failure handling; actual one-shot/periodic delivery, monotonicity, drift, IRQ/FIQ routing and CPU behavior |
+| #34 AIC | [Reviewed IRQ re-arm fix and actual ARM64e KER00 platform extension build](audits/native-aic.md) | Native kernel import resolution, discovery, routing/affinity/IPI and real normal/spurious/storm tests |
+| #35 CPU startup | [Source-bound processor registration/count/startup gaps](audits/native-platform-gaps.md) | Native processor registration/count completion, supported P/E secondary startup, per-CPU state, IPIs/scheduling/synchronization and repeated boots |
 | #36 m1n1 design | Fallback remains conditional | Activate only for an observed native-path blocker or concrete debugging need, then evaluate pin/build/state/translation/licensing |
 | #37 Translation layer | Not activated | Reviewed fallback implementation and actual compatible XNU entry when required |
 | #38 Fallback boot | Not activated | Actual fallback checkpoint, firmware matrix and recovery when required |
@@ -61,8 +87,9 @@ checkpoint emitter is still outstanding.
 ## Resume the physical experiment
 
 Select the dedicated M1 target and obtain usable SSH/local access plus a
-physical recovery/capture operator. Complete the lab verifications, resolve
-the recorded native source-build failures and inspect a genuine candidate.
+physical recovery/capture operator. Complete the lab verifications, resolve the remaining platform initialization
+and CPU-registration interfaces, and prepare target-compatible boot assets
+from the reviewed native candidate.
 Then attempt Path A in the target's paired recoveryOS and capture execution
 separately from boot-object authorization. The
 [lab](platform/m1-lab.md), [native boot](platform/native-boot.md),

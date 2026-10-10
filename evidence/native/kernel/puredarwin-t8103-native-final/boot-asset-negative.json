@@ -1,0 +1,254 @@
+{
+  "schema_version": 1,
+  "status": "inspected",
+  "target": {
+    "model": "Macmini9,1",
+    "board": "J274AP",
+    "soc": "T8103"
+  },
+  "source_profile": "puredarwin-vm-next",
+  "path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/src/Kernel/xnu/xnu/System/Library/Kernels/kernel.development.t8103",
+  "sha256": "173b449882f760161120a9885b51381c322075afda50ffc091b9bad0843bff62",
+  "size": 15095024,
+  "header": {
+    "header_offset": 0,
+    "cpu_subtype": "0xc0000002",
+    "architecture": "arm64e",
+    "filetype": "MH_EXECUTE",
+    "flags": "0x200001",
+    "uuid": "E3ED90E4-1CB3-314B-BAA7-344D3AF6DF0B",
+    "segments": [
+      {
+        "name": "__TEXT",
+        "vmaddr": "0xfffffe0007004000",
+        "vmsize": 1048576,
+        "fileoff": 0,
+        "filesize": 1048576,
+        "initial_protection": 5,
+        "max_protection": 5
+      },
+      {
+        "name": "__DATA_CONST",
+        "vmaddr": "0xfffffe0007104000",
+        "vmsize": 1343488,
+        "fileoff": 1048576,
+        "filesize": 1343488,
+        "initial_protection": 1,
+        "max_protection": 1
+      },
+      {
+        "name": "__LASTDATA_CONST",
+        "vmaddr": "0xfffffe000724c000",
+        "vmsize": 16384,
+        "fileoff": 2392064,
+        "filesize": 16384,
+        "initial_protection": 3,
+        "max_protection": 3
+      },
+      {
+        "name": "__PLK_DATA_CONST",
+        "vmaddr": "0xfffffe0007250000",
+        "vmsize": 0,
+        "fileoff": 2408448,
+        "filesize": 0,
+        "initial_protection": 3,
+        "max_protection": 3
+      },
+      {
+        "name": "__TEXT_EXEC",
+        "vmaddr": "0xfffffe0007250000",
+        "vmsize": 7749632,
+        "fileoff": 2408448,
+        "filesize": 7749632,
+        "initial_protection": 5,
+        "max_protection": 5
+      },
+      {
+        "name": "__LAST",
+        "vmaddr": "0xfffffe00079b4000",
+        "vmsize": 16384,
+        "fileoff": 10158080,
+        "filesize": 16384,
+        "initial_protection": 3,
+        "max_protection": 3
+      },
+      {
+        "name": "__PLK_TEXT_EXEC",
+        "vmaddr": "0xfffffe00079b8000",
+        "vmsize": 0,
+        "fileoff": 10174464,
+        "filesize": 0,
+        "initial_protection": 3,
+        "max_protection": 3
+      },
+      {
+        "name": "__KLD",
+        "vmaddr": "0xfffffe00079b8000",
+        "vmsize": 16384,
+        "fileoff": 10174464,
+        "filesize": 16384,
+        "initial_protection": 3,
+        "max_protection": 3
+      },
+      {
+        "name": "__DATA",
+        "vmaddr": "0xfffffe00079bc000",
+        "vmsize": 1048576,
+        "fileoff": 10190848,
+        "filesize": 262144,
+        "initial_protection": 3,
+        "max_protection": 3
+      },
+      {
+        "name": "__PRELINK_DATA",
+        "vmaddr": "0xfffffe0007abc000",
+        "vmsize": 0,
+        "fileoff": 10452992,
+        "filesize": 0,
+        "initial_protection": 3,
+        "max_protection": 3
+      },
+      {
+        "name": "__BOOTDATA",
+        "vmaddr": "0xfffffe0007abc000",
+        "vmsize": 245760,
+        "fileoff": 10452992,
+        "filesize": 245760,
+        "initial_protection": 3,
+        "max_protection": 3
+      },
+      {
+        "name": "__KLDDATA",
+        "vmaddr": "0xfffffe0007af8000",
+        "vmsize": 16384,
+        "fileoff": 10698752,
+        "filesize": 16384,
+        "initial_protection": 3,
+        "max_protection": 3
+      },
+      {
+        "name": "__LINKINFO",
+        "vmaddr": "0xfffffe0007afc000",
+        "vmsize": 606208,
+        "fileoff": 10715136,
+        "filesize": 606208,
+        "initial_protection": 1,
+        "max_protection": 1
+      },
+      {
+        "name": "__PLK_LLVM_COV",
+        "vmaddr": "0xfffffe0007b90000",
+        "vmsize": 0,
+        "fileoff": 11321344,
+        "filesize": 0,
+        "initial_protection": 3,
+        "max_protection": 3
+      },
+      {
+        "name": "__PLK_LINKEDIT",
+        "vmaddr": "0xfffffe0007b90000",
+        "vmsize": 0,
+        "fileoff": 11321344,
+        "filesize": 0,
+        "initial_protection": 3,
+        "max_protection": 3
+      },
+      {
+        "name": "__PRELINK_INFO",
+        "vmaddr": "0xfffffe0007b90000",
+        "vmsize": 0,
+        "fileoff": 11321344,
+        "filesize": 0,
+        "initial_protection": 3,
+        "max_protection": 3
+      },
+      {
+        "name": "__PPLTEXT",
+        "vmaddr": "0xfffffe0007b90000",
+        "vmsize": 65536,
+        "fileoff": 11321344,
+        "filesize": 65536,
+        "initial_protection": 3,
+        "max_protection": 3
+      },
+      {
+        "name": "__PPLDATA",
+        "vmaddr": "0xfffffe0007ba0000",
+        "vmsize": 16384,
+        "fileoff": 11386880,
+        "filesize": 16384,
+        "initial_protection": 3,
+        "max_protection": 3
+      },
+      {
+        "name": "__PPLTRAMP",
+        "vmaddr": "0xfffffe0007ba4000",
+        "vmsize": 65536,
+        "fileoff": 11403264,
+        "filesize": 65536,
+        "initial_protection": 3,
+        "max_protection": 3
+      },
+      {
+        "name": "__PRELINK_TEXT",
+        "vmaddr": "0xfffffe0004004000",
+        "vmsize": 0,
+        "fileoff": 11468800,
+        "filesize": 0,
+        "initial_protection": 5,
+        "max_protection": 5
+      },
+      {
+        "name": "__LINKEDIT",
+        "vmaddr": "0xfffffe0007bb4000",
+        "vmsize": 3626224,
+        "fileoff": 11468800,
+        "filesize": 3626224,
+        "initial_protection": 1,
+        "max_protection": 1
+      }
+    ],
+    "fileset_entries": [],
+    "entry_pc": "0xfffffe00073e8530",
+    "load_commands": [
+      "0x19",
+      "0x19",
+      "0x19",
+      "0x19",
+      "0x19",
+      "0x19",
+      "0x19",
+      "0x19",
+      "0x19",
+      "0x19",
+      "0x19",
+      "0x19",
+      "0x19",
+      "0x19",
+      "0x19",
+      "0x19",
+      "0x19",
+      "0x19",
+      "0x19",
+      "0x19",
+      "0x19",
+      "0x2",
+      "0xb",
+      "0x1b",
+      "0x32",
+      "0x2a",
+      "0x5",
+      "0x1e",
+      "0x26"
+    ]
+  },
+  "kernel_header": null,
+  "native_source_provenance_verified": true,
+  "candidate_check_errors": [
+    "Input is not the selected native MH_FILESET BootKC"
+  ],
+  "native_boot_assets_ready": false,
+  "physical_execution_verified": false,
+  "local_authorization_verified": false,
+  "limitation": "Mach-O metadata inspection does not validate local signing, firmware ABI or execution"
+}

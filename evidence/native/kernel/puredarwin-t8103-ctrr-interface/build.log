@@ -1,0 +1,453 @@
+1: [  0%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/begin.c.o
+2: [  0%] Building C object tools/cctools/libmacho/CMakeFiles/host_libmacho.dir/arch.c.o
+3: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/allocate.c.o
+4: [  0%] Building C object tools/unifdef/CMakeFiles/unifdef.dir/unifdef.c.o
+5: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/apple_version.c.o
+6: [  0%] Linking C executable unifdef
+7: [  0%] Linking C static library libmacho.a
+8: [  0%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/clscook.c.o
+9: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/arch_usage.c.o
+10: [  0%] Built target unifdef
+11: [  0%] Built target host_libmacho
+12: [  0%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/clscook_ELF64.c.o
+13: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/arch.c.o
+14: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/args.c.o
+15: [  0%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_create.c.o
+16: [ 10%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/cntl.c.o
+17: [ 10%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/best_arch.c.o
+18: [ 10%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_decl.c.o
+19: [ 10%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_abbrev.c.o
+20: [ 10%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/cook.c.o
+21: [ 10%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/breakout.c.o
+22: [ 10%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_addr_finder.c.o
+23: [ 10%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_error.c.o
+24: [ 10%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/data.c.o
+25: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_hash.c.o
+26: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_alloc.c.o
+27: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/bytesex.c.o
+28: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/end.c.o
+29: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_labels.c.o
+30: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_arange.c.o
+31: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/error.c.o
+32: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/checkout.c.o
+33: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_die_deliv.c.o
+34: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_lib.c.o
+35: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/gelf.c.o
+36: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_error.c.o
+37: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/coff_bytesex.c.o
+38: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_lookup.c.o
+39: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getdata.c.o
+40: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_form.c.o
+41: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getehdr.c.o
+42: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/crc32.c.o
+43: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_open.c.o
+44: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/dylib_table.c.o
+45: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getident.c.o
+46: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_frame.c.o
+47: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_subr.c.o
+48: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getscn.c.o
+49: [ 30%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_frame2.c.o
+50: [ 30%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/dylib_roots.c.o
+51: [ 30%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_types.c.o
+52: [ 30%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getshdr.c.o
+53: [ 30%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_frame3.c.o
+54: [ 30%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/errors.c.o
+55: [ 30%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_util.c.o
+56: [ 30%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getshstrndx.c.o
+57: [ 30%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_funcs.c.o
+58: [ 40%] Linking C static library libctf.a
+59: [ 40%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/execute.c.o
+60: [ 40%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/input.c.o
+33172: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/bsd/nfs/nfs_vnops.c:7925:19: warning: variable 'plinfo' set but not used [-Wunused-but-set-variable]
+33173:  7925 |         upl_page_info_t *plinfo;
+33174:       |                          ^
+33175: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:2493:3: error: use of undeclared identifier 'PMAP_IS_TRUST_CACHE_LOADED_INDEX'
+33176:  2493 |         [PMAP_IS_TRUST_CACHE_LOADED_INDEX] = pmap_is_trust_cache_loaded_internal,
+33177:       |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+33178:              AS WKdmData.o
+33179:              AS lz4_decode_arm64.o
+33180:              CC gss_krb5_mech.o
+33181: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:2568:51: error: call to undeclared function 'xprr_perm_to_pte'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+33182:  2568 |                             ARM_PTE_ATTRINDX(CACHE_ATTRINDX_DEFAULT) | xprr_perm_to_pte(XPRR_PPL_RW_PERM);
+33183:       |                                                                        ^
+33184:      INSTALLHDR vsock.h
+33185: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:2568:68: error: use of undeclared identifier 'XPRR_PPL_RW_PERM'
+33186:  2568 |                             ARM_PTE_ATTRINDX(CACHE_ATTRINDX_DEFAULT) | xprr_perm_to_pte(XPRR_PPL_RW_PERM);
+33187:       |                                                                                         ^~~~~~~~~~~~~~~~
+33188: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:2572:4: warning: cast to smaller integer type 'unsigned int' from 'pt_entry_t *' (aka 'unsigned long long *') [-Wpointer-to-int-cast]
+33189:  2572 |                         WRITE_PTE(pte_p, template);
+33190:       |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~
+33195:  1767 |                 if (((unsigned)(pte_p)) & 0x1f) {                                       \
+33196:       |                      ^~~~~~~~~~~~~~~~~
+33197:              AS lz4_encode_arm64.o
+33198: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:2742:18: error: use of undeclared identifier 'XPRR_MAX_PERM'
+33199:  2742 |         if ((new_perm > XPRR_MAX_PERM) || (expected_perm > XPRR_MAX_PERM)) {
+33200:       |                         ^~~~~~~~~~~~~
+33201: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:2742:53: error: use of undeclared identifier 'XPRR_MAX_PERM'
+33202:  2742 |         if ((new_perm > XPRR_MAX_PERM) || (expec             CC ccrypto.o
+33203: ted_perm > XPRR_MAX_PERM)) {
+33204:       |                                                            ^~~~~~~~~~~~~
+33205: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:2818:9: error: call to undeclared function 'pte_to_xprr_perm'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+33206:  2818 |                                 if (pte_to_xprr_perm(cpte) != expected_perm) {
+33207:       |                                     ^
+33208: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:2822:10: warning: format specifies type 'unsigned long long' but the argument has type 'int' [-Wformat]
+33209:  2819 |                                         panic("%s: perm=%llu does not match expected_perm, cpte=0x%llx, "
+33210:       |                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+33219: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/kern/debug.h:530:27: note: expanded from macro 'panic'
+33220:   530 |                 (panic)(# ex, ## __VA_ARGS__); \
+33221:       |                         ~~~~     ^~~~~~~~~~~
+33222: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:2827:18: error: use of undeclared identifier 'ARM_PTE_XPRR_MASK'
+33223:  2827 |                                 template &= ~ARM_PTE_XPRR_MASK;
+33224:       |                                              ^~~~~~~~~~~~~~~~~
+33225: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:2828:17: error: call to undeclared function 'xprr_perm_to_pte'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+33226:  2828 |                                 template |= xprr_perm_to_pte(new_perm);
+33227:       |                                             ^
+33228: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:2830:5: warning: cast to smaller integer type 'unsigned int' from 'pt_entry_t *' (aka 'unsigned long long *') [-Wpointer-to-int-cast]
+33229:  2830 |                                 WRITE_PTE_STRONG(cpte_p, template);
+33230:       |                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+33241:              AS bcopy.o
+33242:      INSTALLHDR vstat.h
+33243: 1 warning generated.
+33244: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:3094:26: error: use of undeclared identifier 'XPRR_KERN_RW_PERM'
+33245:  3094 |         pmap_set_xprr_perm(kva, XPRR_KERN_RW_PERM, XPRR_PPL_RW_PERM);
+33246:       |                                 ^~~~~~~~~~~~~~~~~
+33247:              AS bzero.o
+33248: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:3094:45: error: use of undeclared identifier 'XPRR_PPL_RW_PERM'
+33249:  3094 |         pmap_set_xprr_perm(kva, XPRR_KERN_RW_PERM, XPRR_PPL_RW_PERM);
+33250:       |                                                    ^~~~~~~~~~~~~~~~
+33251:              CC netboot.o
+33252: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:3127:26: error: use of undeclared identifier 'XPRR_PPL_RW_PERM'
+33253:  3127 |         pmap_set_xprr_perm(kva, XPRR_PPL_RW_PERM, XPRR_KERN_RW_PERM);
+33254:       |                                 ^~~~~~~~~~~~~~~~
+33255:              AS caches_asm.o
+33256:              AS data.o
+33257: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:3127:44: error: use of undeclared identifier 'XPRR_KERN_RW_PERM'
+33258:  3127 |         pmap_set_xprr_perm(kva, XPRR_PPL_RW_PERM, XPRR_KERN_RW_PERM);
+33259:       |                                                   ^~~~~~~~~~~~~~~~~
+33260: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:3538:18: warning: implicit conversion loses integer precision: 'int' to 'uint16_t' (aka 'unsigned short') [-Wimplicit-int-conversion]
+33261:  3538 |         hw_asid = vasid % asid_chunk_size;
+33262:       |                 ~ ~~~~~~^~~~~~~~~~~~~~~~~
+33289:       |                      ^~~~~~~~~~~~~~~~~
+33290:              AS locore.o
+33291:      INSTALLHDR wait.h
+33292: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:5084:59: error: use of undeclared identifier 'XPRR_KERN_RW_PERM'
+33293:  5084 |         pa_set_range_xprr_perm(monitor_start_pa, monitor_end_pa, XPRR_KERN_RW_PERM, XPRR_KERN_RO_PERM);
+33294:       |                                                                  ^~~~~~~~~~~~~~~~~
+33295: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:5084:78: error: use of undeclared identifier 'XPRR_KERN_RO_PERM'
+33296:  5084 |         pa_set_range_xprr_perm(monitor_start_pa, monitor_end_pa, XPRR_KERN_RW_PERM, XPRR_KERN_RO_PERM);
+33297:       |                                                                                     ^~~~~~~~~~~~~~~~~
+33298: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:5095:59: error: use of undeclared identifier 'XPRR_KERN_RW_PERM'
+33299:  5095 |         pa_set_range_xprr_perm(monitor_start_pa, monitor_end_pa, XPRR_KERN_RW_PERM, XPRR_PPL_RW_PERM);
+33300:       |                                                                  ^~~~~~~~~~~~~~~~~
+33301: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/bsd/nfs/gss/gss_krb5_mech.c:483:32: warning: variable length array used [-Wvla]
+33302:   483 |                         uint8_t *nptr = NULL, block[blocksize];
+33303:       |                                                     ^~~~~~~~~
+33310: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/bsd/nfs/gss/gss_krb5_mech.c:693:17: warning: variable length array used [-Wvla]
+33311:   693 |                 uint8_t block[ccmode->block_size];
+33312:       |                               ^~~~~~~~~~~~~~~~~~
+33313: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:5095:78: error: use of undeclared identifier 'XPRR_PPL_RW_PERM'
+33314:  5095 |         pa_set_r/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/bsd/nfs/gss/gss_krb5_mech.c:719:21: warning: variable length array used [-Wvla]
+33315:   719 |                 uint8_t pad_block[ctx->mpad];
+33316:       |                                   ^~~~~~~~~
+33317: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/bsd/nfs/gss/gss_krb5_mech.c:738:23: warning: variable length array used [-Wvla]
+33318:   738 |         an        uint8_t gcts_pad[2 * ccmode->block_size];
+33352: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/bsd/nfs/gss/gss_krb5_mech.c:1487:15: warning: variable length array used [-Wvla]
+33353:  1487 |                 uint8_t pad[cctx->mpad];
+33354:       |                             ^~~~~~~~~~
+33355: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:5116:59: error: use of undeclared identifier 'XPRR_KERN_RW_PERM'
+33356: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/bsd/nfs/gss/gss_krb5_mech.c:1513:18: warning: variable length array used [-Wvla]
+33357:  5116 |         pa_ 1513 |                 uint8_t digesset_range_xpt[ccrtx->digest_size];
+33358:       |                                ^~~~~~~~~~~~~~~~~
+33359: r_perm(monitor_start_pa, monitor_end_pa, XPRR_KERN_RW_PERM, XPRR_PPL_RW_PERM);
+33360:       |                                                                  ^~~~~~~~~~~~~~~~~
+33395: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/bsd/nfs/gss/gss_krb5_mech.c:2028:18: warning: variable length array used [-Wvla]
+33396:  2028 |         uint8_t hashval[cctx->digest_size];
+33397:       |                         ^~~~~~~~~~~~~~~~~
+33398: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:5116:78: error: use of undeclared identifier 'XPRR_PPL_RW_PERM'
+33399:  5116 |         pa_set_range_xprr_perm(monitor_start_pa, monitor_end_pa, XPRR_KERN_RW_PERM, XPRR_PPL_RW_PERM);
+33400:       |                                                                                     ^~~~~~~~~~~~~~~~
+33401: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/bsd/nfs/gss/gss_krb5_mech.c:2071:21: warning: variable length array used [-Wvla]
+33402:  2071 |         uint8_t confounder[ccmode->block_size];
+33403:       |                            ^~~~~~~~~~~~~~~~~~
+33412:       |                         ~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+33413:              CC dtrace.o
+33414:              AS start.o
+33415: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:5122:59: error: use of undeclared identifier 'XPRR_KERN_RX_PERM'
+33416:  5122 |         pa_set_range_xprr_perm(monitor_start_pa, monitor_end_pa, XPRR_             AS pinst.o
+33417: KERN_RX_PERM, XPRR_PPL_RX_PERM);
+33418:       |                                                                  ^~~~~~~~~~~~~~~~~
+33419: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:5122:78: error: use of undeclared identifier 'XPRR_PPL_RX_PERM'
+33420:  5122 |         pa_set_range_xprr_perm(monitor_start_pa, monitor_end_pa, XPRR_KERN_RX_PERM, XPRR_PPL_RX_PERM);
+33421:       |                                                                                     ^~~~~~~~~~~~~~~~
+33422: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm64/locore.s:61:2: error: "XPRR configuration error"
+33423:    61 | #error "XPRR configuration error"
+33424:       |  ^
+33425: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm64/locore.s:1245:2: error: "XPRR configuration error"
+33426:  1245 | #error "XPRR configuration error"
+33427:       |  ^
+33428: 2 errors generated.
+33429:              AS cswitch.o
+33430: make[11]: *** [locore.o] Error 1
+33431: make[11]: *** Waiting for unfinished jobs....
+33432: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:5134:62: error: use of undeclared identifier 'XPRR_PPL_RW_PERM'
+33433:  5134 |                 pmap_set_range_xprr_perm(monitor_start_va, monitor_end_va, XPRR_PPL_RW_PERM, XPRR_KERN_RW_PERM);
+33434:       |                                                                            ^~~~~~~~~~~~~~~~
+33435:      INSTALLHDR xattr.h
+33436:              CC lockprof.o
+33437: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:5134:80: error: use of undeclared identifier 'XPRR_KERN_RW_PERM'
+33438:  5134 |                 pmap_set_range_xprr_perm(monitor_start_va, monitor_end_va, XPRR_PPL_RW_PERM, XPRR_KERN_RW_PERM);
+33439:       |                                                                                              ^~~~~~~~~~~~~~~~~
+33440: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:5142:60: error: use of undeclared identifier 'XPRR_KERN_RO_PERM'
+33441:  5142 |                 pa_set_range_xprr_perm(monitor_start_pa, monitor_end_pa, XPRR_KERN_RO_PERM, XPRR_KERN_RO_PERM);
+33442:       |                                                                          ^~~~~~~~~~~~~~~~~
+33443: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:5142:79: error: use of undeclared identifier 'XPRR_KERN_RO_PERM'
+33444:  5142 |                 pa_set_range_xprr_perm(monitor_start_pa, monitor_end_pa, XPRR_KERN_RO_PERM, XPRR_KERN_RO_PERM);
+33445:       |                                                                                             ^~~~~~~~~~~~~~~~~
+33446: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:5149:67: error: use of undeclared identifier 'XPRR_PPL_RW_PERM'
+33447:  5149 |         pa_set_range_xprr_perm(pmap_stacks_start_pa, pmap_stacks_end_pa, XPRR_PPL_RW_PERM, XPRR_KERN_RO_PERM);
+33448:       |                                                                          ^~~~~~~~~~~~~~~~
+33449: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:5149:85: error: use of undeclared identifier 'XPRR_KERN_RO_PERM'
+33450:  5149 |         pa_set_range_xprr_perm(pmap_stacks_start_pa, pmap_stacks_end_pa, XPRR_PPL_RW_PERM, XPRR_KERN_RO_PERM);
+33451:       |                                                                                            ^~~~~~~~~~~~~~~~~
+33452: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:5161:2: error: "XPRR configuration error"
+33453:  5161 | #error "XPRR configuration error"
+33454:       |  ^
+33455: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:5631:52: error: use of undeclared identifier 'XPRR_PPL_RW_PERM'
+33456:  5631 |                 pa_set_range_xprr_perm(paddr, paddr + PAGE_SIZE, XPRR_PPL_RW_PERM, XPRR_KERN_RW_PERM);
+33457:       |                                                                  ^~~~~~~~~~~~~~~~
+33458: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:5631:70: error: use of undeclared identifier 'XPRR_KERN_RW_PERM'
+33459:  5631 |                 pa_set_range_xprr_perm(paddr, paddr + PAGE_SIZE, XPRR_PPL_RW_PERM, XPRR_KERN_RW_PERM);
+33460:       |                                                                                    ^~~~~~~~~~~~~~~~~
+33461: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:6782:2: warning: cast to smaller integer type 'unsigned int' from 'pt_entry_t *' (aka 'unsigned long long *') [-Wpointer-to-int-cast]
+33462:  6782 |         WRITE_PTE_STRONG(pte_p, tmplate);
+33463:       |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+33473: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:1767:15: note: expanded from macro 'WRITE_PTE_FAST'
+33474:  1767 |                 if (((unsigned)(pte_p)) & 0x1f) {                                       \
+33475:       |                      ^~~~~~~~~~~~~~~~~
+33476: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:6999:10: error: call to undeclared function 'pte_to_xprr_perm'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+33477:  6999 |                                     (pte_to_xprr_perm(spte) != XPRR_KERN_RO_PERM) && !pmap_ppl_disable)) {
+33478:       |                                      ^
+33479:      INSTALLHDR _select.h
+33480: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:6999:36: error: use of undeclared identifier 'XPRR_KERN_RO_PERM'
+33481:  6999 |                                     (pte_to_xprr_perm(spte) != XPRR_KERN_RO_PERM) && !pmap_ppl_disable)) {
+33482:       |                                                                ^~~~~~~~~~~~~~~~~
+33483: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:7037:4: warning: cast to smaller integer type 'unsigned int' from 'pt_entry_t *' (aka 'unsigned long long *') [-Wpointer-to-int-cast]
+33484:  7037 |                         WRITE_PTE_FAST(cpte, ARM_PTE_TYPE_FAULT);
+33485:       |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+33543: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:1767:15: note: expanded from macro 'WRITE_PTE_FAST'
+33544:  1767 |                 if (((unsigned)(pte_p)) & 0x1f) {                                       \
+33545:       |                      ^~~~~~~~~~~~~~~~~
+33546: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:9077:25: error: call to undeclared function 'pte_to_xprr_perm'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+33547:  9077 |                         uint64_t xprr_perm = pte_to_xprr_perm(pte);
+33548:       |                                              ^
+33549: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/bsd/dev/dtrace/dtrace.c:2189:10: warning: variable 'rval' set but not used [-Wunused-but-set-variable]
+33550:  2189 |                         void *rval;
+33551:       |                               ^
+33552: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:9079:9: error: use of undeclared identifier 'XPRR_KERN_RO_PERM'
+33553:  9079 |                         case XPRR_KERN_RO_PERM:
+33554:       |                              ^~~~~~~~~~~~~~~~~
+33555: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/bsd/dev/dtrace/dtrace.c:3135:11: warning: variable 'rv' set but not used [-Wunused-but-set-variable]
+33556:  3135 |         uint32_t rv;
+33557:       |                  ^
+33558: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:9081:9: error: use of undeclared identifier 'XPRR_KERN_RW_PERM'
+33559:  9081 |                         case XPRR_KERN_RW_PERM:
+33560:       |                              ^~~~~~~~~~~~~~~~~
+33561:      INSTALLHDR _types.h
+33562: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/bsd/dev/dtrace/dtrace.c:5284:9: warning: variable 'base' set but not used [-Wunused-but-set-variable]
+33563:  5284 |                 char *base, *end;
+33565: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/bsd/dev/dtrace/dtrace.c:5675:12: warning: variable length array used [-Wvla]
+33566:  5675 |                 char buf[size];
+33567:       |                          ^~~~
+33568: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:9082:13: error: use of undeclared identifier 'ARM_PTE_XPRR_MASK'
+33569:  9082 |                                 pte &= ~ARM_PTE_XPRR_MASK;
+33570:       |                                         ^~~~~~~~~~~~~~~~~
+33571: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:9083:12: error: call to undeclared function 'xprr_perm_to_pte'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+33572:  9083 |                                 pte |= xprr_perm_to_pte(XPRR_PPL_RW_PERM);
+33573:       |                                        ^
+33574: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/bsd/dev/dtrace/dtrace.c:6941:19: warning: variable 'c' may be uninitialized when used here [-Wconditional-uninitialized]
+33575:  6941 |                             valoffs++, c);
+33576:       |                                        ^
+33578:  6928 |                 uint8_t c;
+33579:       |                          ^
+33580:       |                           = '\0'
+33581: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:9083:29: error: use of undeclared identifier 'XPRR_PPL_RW_PERM'
+33582:  9083 |                                 pte |= xprr_perm_to_pte(XPRR_PPL_RW_PERM);
+33583:       |                                                         ^~~~~~~~~~~~~~~~
+33584:              CC dtrace_subr.o
+33585:      INSTALLHDR _endian.h
+33586:      INSTALLHDR domain.h
+33637: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/bsd/dev/dtrace/dtrace.c:10665:8: warning: variable 'np' set but not used [-Wunused-but-set-variable]
+33638:  10665 |                 int *np = NULL;
+33639:        |                      ^
+33640: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:10738:7: error: call to undeclared function 'is_pte_xprr_protected'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+33641:  10738 |                 if (is_pte_xprr_protected(pmap, spte)) {
+33642:        |                     ^
+33643: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:10739:8: error: call to undeclared function 'pte_to_xprr_perm'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+33644:  10739 |                         if (pte_to_xprr_perm(spte) != pte_to_xprr_perm(tmplate)) {
+33645:        |                             ^
+33646: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:10750:5: warning: cast to smaller integer type 'unsigned int' from 'pt_entry_t *' (aka 'unsigned long long *') [-Wpointer-to-int-cast]
+33647:  10750 |                                 WRITE_PTE_FAST(pte_p, tmplate);
+33648:        |                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+33658: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:1767:15: note: expanded from macro 'WRITE_PTE_FAST'
+33659:  1767 |                 if (((unsigned)(pte_p)) & 0x1f) {                                       \
+33660:       |                      ^~~~~~~~~~~~~~~~~
+33661: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:10946:7: error: call to undeclared function 'is_pte_xprr_protected'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+33662:  10946 |                 if (is_pte_xprr_protected(pmap, spte)) {
+33663:        |                     ^
+33664: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:10947:8: error: call to undeclared function 'pte_to_xprr_perm'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+33665:  10947 |                         if (pte_to_xprr_perm(spte) != pte_to_xprr_perm(tmplate)) {
+33666:        |                             ^
+33667: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:10958:5: warning: cast to smaller integer type 'unsigned int' from 'pt_entry_t *' (aka 'unsigned long long *') [-Wpointer-to-int-cast]
+33668:  10958 |                                 WRITE_PTE_STRONG(pte_p, tmplate);
+33669:        |                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+33701: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/bsd/dev/dtrace/dtrace.c:15083:7: warning: variable 'rval' set but not used [-Wunused-but-set-variable]
+33702:  15083 |                 int rval;
+33703:        |                     ^
+33704: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:12073:6: error: address argument to atomic operation must be a pointer to a non address discriminated type ('volatile __ptrauth(2,1,32103) _Atomic(struct pmap *) *' invalid)
+33705:  12073 |         if (os_atomic_cmpxchg(&grand->nested_pmap, PMAP_NULL, subord_addr, relaxed)) {
+33706:        |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+33707: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/libkern/os/atomic_private.h:652:2: note: expanded from macro 'os_atomic_cmpxchg'
+33708:   652 |         os_atomic_basetypeof(p) _r = (e); int _b; \
+33709:       |         ^~~~~~~~~~~~~~~~~~~~~~~
+33713: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/EXTERNAL_HEADERS/stdatomic.h:138:29: note: expanded from macro 'atomic_load'
+33714:   138 | #define atomic_load(object) __c11_atomic_load(object, __ATOMIC_SEQ_CST)
+33715:       |                             ^                 ~~~~~~
+33716: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:12073:6: error: address argument to atomic operation must be a pointer to a non address discriminated type ('volatile __ptrauth(2,1,32103) _Atomic(struct pmap *) *' invalid)
+33717:  12073 |         if (os_atomic_cmpxchg(&grand->nested_pmap, PMAP_NULL, subord_addr, relaxed)) {
+33718:        |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+33719: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/libkern/os/atomic_private.h:656:6: note: expanded from macro 'os_atomic_cmpxchg'
+33720:   656 |             /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/bsd/dev/dtrace/dtrace.c:17253:26: warning: cast from 'int (*)(cpu_setup_t, processorid_t)' (aka 'int (*)(cpu_setup_t, int)') to 'cpu_setup_func_t *' (aka 'int (*)(cpu_setup_t, int, void *)') converts to incompatible function type [-Wcast-function-type-mismatch]
+33721:  17253 |         register_cpu_setup_func((     INSTALLHDR protosw.h
+33793:       |                                  ^~~~~~~~~~~~~~~~~~~~~~~
+33794:      INSTALLHDR timex.h
+33795: 8 warnings generated.
+33796: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:12971:41: error: use of undeclared identifier 'ARM_PTE_XPRR_MASK'
+33797:  12971 |         tmplate |= (wimg_to_pte(attributes) & ~ARM_PTE_XPRR_MASK);
+33798:        |                                                ^~~~~~~~~~~~~~~~~
+33799: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:12981:2: warning: cast to smaller integer type 'unsigned int' from 'pt_entry_t *' (aka 'unsigned long long *') [-Wpointer-to-int-cast]
+33800:  12981 |         WRITE_PTE_STRONG(pte_p, tmplate);
+33801:        |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+33875: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-ctrr-interface/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:15619:17: note: cast one or both operands to int to silence this warning
+33876: 30 warnings and 44 errors generated.
+33877: 7 warnings generated.
+33878: make[11]: *** [pmap.o] Error 1
+33879:              CC fbt_blacklist.o
+33880:      INSTALLHDR _posix_availability.h
+33881:              CC sdt.o
+33882:              CC sdt_subr.o
+33883:              CC systrace.o
+34112:      INSTALLHDR filio.h
+34113:      INSTALLHDR ioccom.h
+34114: 9 warnings generated.
+34115: make[10]: *** [build_all] Error 2
+34116:      INSTALLHDR ioctl.h
+34117: make[9]: *** [do_all] Error 2
+34118: make[8]: *** [build_all] Error 2
+34119: make[7]: *** [build_all_recurse_into_conf] Error 2
+34120: make[6]: *** [build_all_recurse_into_osfmk] Error 2
+34121: make[6]: *** Waiting for unfinished jobs....
+34122:      INSTALLHDR ipc.h
+34123:      INSTALLHDR ioctl_compat.h
+34124:      INSTALLHDR kernel.h
+34125:      INSTALLHDR kernel_types.h
+34126:      INSTALLHDR kern_event.h
+34507:      INSTALLHDR stdio.h
+34508:      INSTALLHDR syslimits.h
+34509:      INSTALLHDR syslog.h
+34510:      INSTALLHDR systm.h
+34511:      INSTALLHDR sys_domain.h
+34512:      INSTALLHDR time.h
+34513:      INSTALLHDR types.h
+34514:      INSTALLHDR ucontext.h
+34515:      INSTALLHDR ucred.h
+34516:      INSTALLHDR ubc.h
+34517:      INSTALLHDR uio.h
+34518:      INSTALLHDR unistd.h
+34519:      INSTALLHDR un.h
+34520:      INSTALLHDR utfconv.h
+34521:      INSTALLHDR unpcb.h
+34522:      INSTALLHDR unicode.h
+34523:      INSTALLHDR vm.h
+34524:      INSTALLHDR vmparam.h
+34525:      INSTALLHDR vnode.h
+34526:      INSTALLHDR vnode_if.h
+34527:      INSTALLHDR vsock.h
+34528: 19 warnings generated.
+34529:      INSTALLHDR _select.h
+34530:      INSTALLHDR _endian.h
+34531:      INSTALLHDR _types.h
+34532:      INSTALLHDR xattr.h
+34533:      INSTALLHDR _structs.h
+34534:      INSTALLHDR protosw.h
+34535:      INSTALLHDR domain.h
+34536:      INSTALLHDR kpi_mbuf.h
+34537:      INSTALLHDR ttycom.h
+34538:      INSTALLHDR kpi_socketfilter.h
+34539:      INSTALLHDR kpi_socket.h
+34540:      INSTALLHDR termios.h
+34541:      INSTALLHDR msg.h
+34542:      INSTALLHDR wait.h
+34543: 2 warnings generated.
+34544:      INSTALLHDR spawn.h
+34545:      INSTALLHDR timex.h
+34546:      INSTALLHDR codesign.h
+34547:      INSTALLHDR commpage.h
+34548:      LDFILELIST bsd
+34549:      INSTALLHDR cprotect.h
+34550:      INSTALLHDR content_protection.h
+34551:      INSTALLHDR csr.h
+34552:      INSTALLHDR decmpfs.h
+34553:      INSTALLHDR eventhandler.h
+34554:      INSTALLHDR disktab.h
+34555:      INSTALLHDR fbt.h
+34556:      INSTALLHDR fileport.h
+34557:      INSTALLHDR fsctl.h
+34558:      INSTALLHDR fslog.h
+34559:      INSTALLHDR kern_memorystatus.h
+34560:      INSTALLHDR kasl.h
+34561:      INSTALLHDR kern_memorystatus_freeze.h
+34562:      INSTALLHDR kern_memorystatus_notify.h
+34563:      INSTALLHDR kpi_private.h
+34564:      INSTALLHDR mach_swapon.h
+34565:      INSTALLHDR linker_set.h
+34566:      INSTALLHDR monotonic.h
+34567:      INSTALLHDR ktrace.h
+34568:      INSTALLHDR msgbuf.h
+34569:      INSTALLHDR eventvar.h
+34570:      INSTALLHDR proc_info.h
+34571:      INSTALLHDR persona.h
+34572:      INSTALLHDR pthread_shims.h
+34573:      INSTALLHDR quota.h
+34574:      INSTALLHDR reboot.h
+34575:      INSTALLHDR sem_internal.h
+34576:      INSTALLHDR signalvar.h
+34577:      INSTALLHDR shm_internal.h
+34578:      INSTALLHDR stackshot.h
+34579:      INSTALLHDR tty.h
+34580:      INSTALLHDR vfs_context.h
+34581:      INSTALLHDR ttydefaults.h
+34582:      INSTALLHDR ttydev.h
+34583:      INSTALLHDR ttychars.h
+34584:      INSTALLHDR user.h
+34585:      INSTALLHDR vmmeter.h
+34586:      INSTALLHDR reason.h
+34587:      INSTALLHDR spawn_internal.h
+34588: make[5]: *** [build_all_bootstrap_DEVELOPMENT^ARM64^T8103] Error 2
+34589: make[5]: *** Waiting for unfinished jobs....
+34590:      INSTALLHDR priv.h
+34591:      INSTALLHDR memory_maintenance.h
+34592:      INSTALLHDR pgo.h
+34593:      INSTALLHDR doc_tombstone.h
+34594:      INSTALLHDR fsevents.h
+34595:      INSTALLHDR work_interval.h
+34596:      INSTALLHDR vsock_transport.h
+34597:      INSTALLHDR kern_sysctl.h
+34598:      INSTALLHDR sysproto.h
+34599:      INSTALLHDR sys__types.modulemap
+34600:      INSTALLHDR sys_cdefs.modulemap
+34601:      INSTALLHDR sys_types.modulemap
+34602: make[4]: *** [install] Error 2
+34603: make[3]: *** [src/Kernel/xnu/xnu_build/src/xnu-stamp/xnu-build] Error 2
+34604: make[2]: *** [src/Kernel/xnu/CMakeFiles/xnu.dir/all] Error 2
+34605: make[1]: *** [src/Kernel/xnu/CMakeFiles/xnu.dir/rule] Error 2
+34606: make: *** [xnu] Error 2

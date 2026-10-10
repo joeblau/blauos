@@ -1,0 +1,159 @@
+{
+  "status": "blocked",
+  "exit_code": 2,
+  "source": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-platform/source-overlay",
+  "configuration": "DEVELOPMENT ARM64",
+  "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+  "source_amendments": [
+    {
+      "source_archive_sha256": "1c955560333a1e47a38f2018ead9fd90580eb4b9520f44435ebfa03afcd3c1f6",
+      "excluded_absolute_symlinks": [
+        "src/Libraries/libSystem/libc/gen/FreeBSD/result"
+      ]
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0001-puredarwin-t8103-build-profile.patch",
+      "sha256": "76e05e5e7de0f9b5cdac6347e771007067bb19fdb34f4897c70628c72dbc4d65"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0002-t8103-public-register-encodings.patch",
+      "sha256": "0480c7f6299844af5c6cdd6eb7fb23b76c0f32025cc0a2cf07f429f9bf9a685b"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0003-t8103-current-clang-diagnostics.patch",
+      "sha256": "2752fa9c0cd7364f467b825140579c80fefc2e3c005f8e417d57d50e9e978e0f"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0004-t8103-public-platform-sources.patch",
+      "sha256": "cd1a6e6281fdda5775f1002d1a26433eb5f3e05d822e1cee0d2b23cb6915a04e"
+    }
+  ],
+  "manifest_sha256": "8022bbbfb33204b56bb3297cd8cbb39fb6c08ea65c476492d99462f7edfe3657",
+  "machine": "T8103",
+  "sdk": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+  "artifacts": [],
+  "qemu_psci_hvc_profile": false,
+  "recipe": {
+    "schema_version": 1,
+    "build_system": "puredarwin_cmake",
+    "manifest_sha256": "8022bbbfb33204b56bb3297cd8cbb39fb6c08ea65c476492d99462f7edfe3657",
+    "source_name": "puredarwin-vm-next",
+    "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+    "source_tree": "ed2345d7f3c11dad2e7f6ffeeb377adc789b12b8",
+    "machine": "T8103",
+    "architecture_config": "ARM64",
+    "kernel_config": "DEVELOPMENT",
+    "original_source": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next",
+    "effective_source": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-platform/source-overlay",
+    "sdk": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+    "kdk": null,
+    "darwin_version": "25.5.0",
+    "make_settings": {},
+    "source_amendments": [
+      {
+        "source_archive_sha256": "1c955560333a1e47a38f2018ead9fd90580eb4b9520f44435ebfa03afcd3c1f6",
+        "excluded_absolute_symlinks": [
+          "src/Libraries/libSystem/libc/gen/FreeBSD/result"
+        ]
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0001-puredarwin-t8103-build-profile.patch",
+        "sha256": "76e05e5e7de0f9b5cdac6347e771007067bb19fdb34f4897c70628c72dbc4d65"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0002-t8103-public-register-encodings.patch",
+        "sha256": "0480c7f6299844af5c6cdd6eb7fb23b76c0f32025cc0a2cf07f429f9bf9a685b"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0003-t8103-current-clang-diagnostics.patch",
+        "sha256": "2752fa9c0cd7364f467b825140579c80fefc2e3c005f8e417d57d50e9e978e0f"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0004-t8103-public-platform-sources.patch",
+        "sha256": "cd1a6e6281fdda5775f1002d1a26433eb5f3e05d822e1cee0d2b23cb6915a04e"
+      }
+    ],
+    "commands": [
+      {
+        "argv": [
+          "cmake",
+          "-S",
+          "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-platform/source-overlay",
+          "-B",
+          "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-platform",
+          "-G",
+          "Unix Makefiles",
+          "-DCMAKE_POLICY_VERSION_MINIMUM=3.5",
+          "-DPUREDARWIN_ARCH=arm64",
+          "-DCMAKE_OSX_ARCHITECTURES=arm64",
+          "-DCMAKE_OSX_SYSROOT=/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+          "-DCMAKE_C_COMPILER=/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+          "-DCMAKE_CXX_COMPILER=/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++",
+          "-DPUREDARWIN_ARM64_MACHINE_CONFIG=T8103",
+          "-DPUREDARWIN_XNU_KERNEL_CONFIG=DEVELOPMENT",
+          "-DPUREDARWIN_ENABLE_KERNEL=ON",
+          "-DPUREDARWIN_ENABLE_LIBRARIES=ON",
+          "-DPUREDARWIN_ENABLE_TOOLS=ON",
+          "-DPUREDARWIN_ENABLE_USERSPACE=OFF",
+          "-DPUREDARWIN_ENABLE_PROJECTS=OFF"
+        ],
+        "cwd": "/Users/joeblau/Developer/joeblau/src/blauos",
+        "exit_code": 0,
+        "raw_log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-platform/logs/configure.log",
+        "raw_log_bytes": 2167,
+        "raw_log_sha256": "182391141f57582baf4f26338660b4ef65ae598f8ffa6e95b618f76eaa5dbe02",
+        "errors": []
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-platform",
+          "--target",
+          "xnu",
+          "--parallel",
+          "4"
+        ],
+        "cwd": "/Users/joeblau/Developer/joeblau/src/blauos",
+        "exit_code": 2,
+        "raw_log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-platform/logs/build.log",
+        "raw_log_bytes": 3094970,
+        "raw_log_sha256": "d704e16e74b6c5c9e61d4687e23141f39f875064e6d330669d0b068fed68bf24",
+        "errors": [
+          "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-platform/source-overlay/src/Kernel/xnu/osfmk/arm64/amcc_rorgn.c:45:10: fatal error: 'memmap_types.h' file not found",
+          "make[11]: *** [amcc_rorgn.o] Error 1",
+          "make[11]: *** Waiting for unfinished jobs....",
+          "make[10]: *** [build_all] Error 2",
+          "make[9]: *** [do_all] Error 2",
+          "make[8]: *** [build_all] Error 2",
+          "make[7]: *** [build_all_recurse_into_conf] Error 2",
+          "make[6]: *** [build_all_recurse_into_osfmk] Error 2",
+          "make[6]: *** Waiting for unfinished jobs....",
+          "make[5]: *** [build_all_bootstrap_DEVELOPMENT^ARM64^T8103] Error 2",
+          "make[4]: *** [install] Error 2",
+          "make[3]: *** [src/Kernel/xnu/xnu_build/src/xnu-stamp/xnu-build] Error 2",
+          "make[2]: *** [src/Kernel/xnu/CMakeFiles/xnu.dir/all] Error 2",
+          "make[1]: *** [src/Kernel/xnu/CMakeFiles/xnu.dir/rule] Error 2",
+          "make: *** [xnu] Error 2"
+        ]
+      }
+    ],
+    "tool_environment": {
+      "CC": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+      "CXX": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++",
+      "DEVELOPER_DIR": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer",
+      "HOME": "/Users/joeblau",
+      "LANG": "en_US.UTF-8",
+      "LC_ALL": "en_US.UTF-8",
+      "LOGNAME": "joeblau",
+      "PATH": "/Users/joeblau/.codex/packages/app-server-daemon/releases/0.162.1-aarch64-apple-darwin/codex-path:/Users/joeblau/.kimi-code/bin:/Users/joeblau/.cargo/bin:/Users/joeblau/.grok/bin:/opt/homebrew/opt/openjdk/bin:/Users/joeblau/.local/share/solana/install/active_release/bin:/Users/joeblau/.local/share/solana/install/active_release/bin:/Users/joeblau/.antigravity/antigravity/bin:/Users/joeblau/.local/bin:/Users/joeblau/.local/share/solana/install/active_release/bin:/Users/joeblau/.bun/bin:/Users/joeblau/.codeium/windsurf/bin:/Users/joeblau/.nvm/versions/node/v24.10.0/bin:/Users/joeblau/.local/share/solana/install/active_release/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/Users/joeblau/.codex/tmp/arg0/codex-arg0pob7j3:/Users/joeblau/.codex/packages/app-server-daemon/releases/0.162.1-aarch64-apple-darwin/codex-path:/Users/joeblau/.codex/tmp/arg0/codex-arg0LkDzuY:/Users/joeblau/.bun/install/global/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/codex-path:/Users/joeblau/.kimi-code/bin:/Users/joeblau/.cargo/bin:/Users/joeblau/.grok/bin:/opt/homebrew/opt/openjdk/bin:/Users/joeblau/.local/share/solana/install/active_release/bin:/Users/joeblau/.antigravity/antigravity/bin:/Users/joeblau/.local/bin:/Users/joeblau/.bun/bin:/Users/joeblau/.codeium/windsurf/bin:/Users/joeblau/Library/pnpm:/Users/joeblau/.nvm/versions/node/v24.10.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/joeblau/.foundry/bin:/Users/joeblau/.foundry/bin",
+      "SDKROOT": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+      "SHELL": "/bin/zsh",
+      "TMPDIR": "/var/folders/_k/883vgjk55hg79qfxf60d9lzh0000gn/T/",
+      "USER": "joeblau"
+    }
+  },
+  "recipe_sha256": "9157e52cc83dd25fc709e04f1597991fe074ef28d920b20aef8991bac104b57e",
+  "build_wrapper_sha256": "858a5bc4ccb775bfaf7227066449d46b60734125b27d172e3108d56d4fd2347f",
+  "boot_validated": false
+}

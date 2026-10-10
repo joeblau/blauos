@@ -1,0 +1,12 @@
+{
+  "argv": [
+    "cmake",
+    "--build",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-final",
+    "--target",
+    "xnu",
+    "--parallel",
+    "6"
+  ],
+  "cwd": "/Users/joeblau/Developer/joeblau/src/blauos"
+}

@@ -1,0 +1,146 @@
+{
+  "status": "blocked",
+  "exit_code": 2,
+  "source": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/source-overlay",
+  "configuration": "DEVELOPMENT ARM64",
+  "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+  "source_amendments": [
+    {
+      "source_archive_sha256": "1c955560333a1e47a38f2018ead9fd90580eb4b9520f44435ebfa03afcd3c1f6",
+      "excluded_absolute_symlinks": [
+        "src/Libraries/libSystem/libc/gen/FreeBSD/result"
+      ]
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0001-puredarwin-t8103-build-profile.patch",
+      "sha256": "76e05e5e7de0f9b5cdac6347e771007067bb19fdb34f4897c70628c72dbc4d65"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0002-t8103-public-register-encodings.patch",
+      "sha256": "04a0fd151cfcb82a3b387fa0980348907eb5c76ec76c7b6ec1192881bb5a463b"
+    }
+  ],
+  "manifest_sha256": "8022bbbfb33204b56bb3297cd8cbb39fb6c08ea65c476492d99462f7edfe3657",
+  "machine": "T8103",
+  "sdk": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+  "artifacts": [],
+  "qemu_psci_hvc_profile": false,
+  "recipe": {
+    "schema_version": 1,
+    "build_system": "puredarwin_cmake",
+    "manifest_sha256": "8022bbbfb33204b56bb3297cd8cbb39fb6c08ea65c476492d99462f7edfe3657",
+    "source_name": "puredarwin-vm-next",
+    "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+    "source_tree": "ed2345d7f3c11dad2e7f6ffeeb377adc789b12b8",
+    "machine": "T8103",
+    "architecture_config": "ARM64",
+    "kernel_config": "DEVELOPMENT",
+    "original_source": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next",
+    "effective_source": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/source-overlay",
+    "sdk": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+    "kdk": null,
+    "darwin_version": "25.5.0",
+    "make_settings": {},
+    "source_amendments": [
+      {
+        "source_archive_sha256": "1c955560333a1e47a38f2018ead9fd90580eb4b9520f44435ebfa03afcd3c1f6",
+        "excluded_absolute_symlinks": [
+          "src/Libraries/libSystem/libc/gen/FreeBSD/result"
+        ]
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0001-puredarwin-t8103-build-profile.patch",
+        "sha256": "76e05e5e7de0f9b5cdac6347e771007067bb19fdb34f4897c70628c72dbc4d65"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0002-t8103-public-register-encodings.patch",
+        "sha256": "04a0fd151cfcb82a3b387fa0980348907eb5c76ec76c7b6ec1192881bb5a463b"
+      }
+    ],
+    "commands": [
+      {
+        "argv": [
+          "cmake",
+          "-S",
+          "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/source-overlay",
+          "-B",
+          "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2",
+          "-G",
+          "Unix Makefiles",
+          "-DCMAKE_POLICY_VERSION_MINIMUM=3.5",
+          "-DPUREDARWIN_ARCH=arm64",
+          "-DCMAKE_OSX_ARCHITECTURES=arm64",
+          "-DCMAKE_OSX_SYSROOT=/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+          "-DCMAKE_C_COMPILER=/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+          "-DCMAKE_CXX_COMPILER=/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++",
+          "-DPUREDARWIN_ARM64_MACHINE_CONFIG=T8103",
+          "-DPUREDARWIN_XNU_KERNEL_CONFIG=DEVELOPMENT",
+          "-DPUREDARWIN_ENABLE_KERNEL=ON",
+          "-DPUREDARWIN_ENABLE_LIBRARIES=ON",
+          "-DPUREDARWIN_ENABLE_TOOLS=ON",
+          "-DPUREDARWIN_ENABLE_USERSPACE=OFF",
+          "-DPUREDARWIN_ENABLE_PROJECTS=OFF"
+        ],
+        "cwd": "/Users/joeblau/Developer/joeblau/src/blauos",
+        "exit_code": 0,
+        "raw_log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/logs/configure.log",
+        "raw_log_bytes": 2164,
+        "raw_log_sha256": "ed307a65355f24048050196b9ccf78343884d681408bc0d1d87feee9426910a3",
+        "errors": []
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2",
+          "--target",
+          "xnu",
+          "--parallel",
+          "4"
+        ],
+        "cwd": "/Users/joeblau/Developer/joeblau/src/blauos",
+        "exit_code": 2,
+        "raw_log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/logs/build.log",
+        "raw_log_bytes": 243215210,
+        "raw_log_sha256": "d7a59df3f13936513924ff8ead027c48c0e852549931546c4d3a70246ab38b1a",
+        "errors": [
+          "  534 |         int __pagein_error:z/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/mach/task.h:1627:4)oA",
+          "txAGE ***\\n\",",
+          "s       tpo_ e b  /ys    et6_.tq u  y _   _0t,_ pat ecn    o o em|  e a   ***n _osu                                    ^ f/ s ( ",
+          "re_a  d  : _txadd_o_tva_Aer roerror:  ",
+          "_/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/mach/mach_traps.h:707:22: warning: emake[11]: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/bsd/sys/sysproto.hlpac| c:f*** [platform_tests_asm.o] Error 1l identifier '_kernelrpc_mach_vm_purgable_control_trap' is reserved because it starts with '_' at global scope [-Wreserved-identifier]4t_qu:red {",
+          "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/source-overlay/src/Kernel/xnu/bsd/sys/eventvar.he::i| r a make[11]:  In file included from      n        ^ n2341*** Waiting for unfinished jobs....",
+          "_ at   utTt*** [build_all] Error 2722rne}",
+          "_Oe i_buNlvi/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-registers-v2/source-overlay/src/Kernel/xnu/bsd/arm/_types.h | uei nrt:Tn32R17lt_R, xmake[9]: tt (t6 _te v4Go:v amepe ee *** [do_all] Error 2id __",
+          "A Rp   n erip_Tcn(*17lr |  n_y(  _maau_c h_nu  tm_MA_yk,make[8]: _eemlspL*** [build_all] Error 2",
+          "tti*** [build_all_recurse_into_conf] Error 2urn_Mt/,      (| mt_                 ^\"u L;b ",
+          "rite_*** [build_all_recurse_into_osfmk] Error 2| 18e:f          ^",
+          "  183 |  Tp tnr_*** Waiting for unfinished jobs....Tc_      uR_s ak :exs_NU236L_mtc_ti",
+          "make[5]: *** [build_all_bootstrap_DEVELOPMENT^ARM64^T8103] Error 2",
+          "make[4]: *** [install] Error 2",
+          "make[3]: *** [src/Kernel/xnu/xnu_build/src/xnu-stamp/xnu-build] Error 2",
+          "make[2]: *** [src/Kernel/xnu/CMakeFiles/xnu.dir/all] Error 2",
+          "make[1]: *** [src/Kernel/xnu/CMakeFiles/xnu.dir/rule] Error 2",
+          "make: *** [xnu] Error 2"
+        ]
+      }
+    ],
+    "tool_environment": {
+      "CC": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+      "CXX": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++",
+      "DEVELOPER_DIR": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer",
+      "HOME": "/Users/joeblau",
+      "LANG": "en_US.UTF-8",
+      "LC_ALL": "en_US.UTF-8",
+      "LOGNAME": "joeblau",
+      "PATH": "/Users/joeblau/.codex/packages/app-server-daemon/releases/0.162.1-aarch64-apple-darwin/codex-path:/Users/joeblau/.kimi-code/bin:/Users/joeblau/.cargo/bin:/Users/joeblau/.grok/bin:/opt/homebrew/opt/openjdk/bin:/Users/joeblau/.local/share/solana/install/active_release/bin:/Users/joeblau/.local/share/solana/install/active_release/bin:/Users/joeblau/.antigravity/antigravity/bin:/Users/joeblau/.local/bin:/Users/joeblau/.local/share/solana/install/active_release/bin:/Users/joeblau/.bun/bin:/Users/joeblau/.codeium/windsurf/bin:/Users/joeblau/.nvm/versions/node/v24.10.0/bin:/Users/joeblau/.local/share/solana/install/active_release/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/Users/joeblau/.codex/tmp/arg0/codex-arg0pob7j3:/Users/joeblau/.codex/packages/app-server-daemon/releases/0.162.1-aarch64-apple-darwin/codex-path:/Users/joeblau/.codex/tmp/arg0/codex-arg0LkDzuY:/Users/joeblau/.bun/install/global/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/codex-path:/Users/joeblau/.kimi-code/bin:/Users/joeblau/.cargo/bin:/Users/joeblau/.grok/bin:/opt/homebrew/opt/openjdk/bin:/Users/joeblau/.local/share/solana/install/active_release/bin:/Users/joeblau/.antigravity/antigravity/bin:/Users/joeblau/.local/bin:/Users/joeblau/.bun/bin:/Users/joeblau/.codeium/windsurf/bin:/Users/joeblau/Library/pnpm:/Users/joeblau/.nvm/versions/node/v24.10.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/joeblau/.foundry/bin:/Users/joeblau/.foundry/bin",
+      "SDKROOT": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+      "SHELL": "/bin/zsh",
+      "TMPDIR": "/var/folders/_k/883vgjk55hg79qfxf60d9lzh0000gn/T/",
+      "USER": "joeblau"
+    }
+  },
+  "recipe_sha256": "6c086a0d4a1a239f595d439cf11aa0925d3fbc3ef7652fabf864091fec466241",
+  "build_wrapper_sha256": "858a5bc4ccb775bfaf7227066449d46b60734125b27d172e3108d56d4fd2347f",
+  "boot_validated": false
+}

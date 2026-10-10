@@ -1,0 +1,8 @@
+SUPPORTED_ARM64_MACHINE_CONFIGS = T7000 T7001 S8000 S8001 T8010 T8011 T8103 BCM2837 VIRT
+MACHINE_FLAGS_ARM64_T8103 = -DARM64_BOARD_CONFIG_T8103 -mcpu=apple-a14
+ifeq ($(CURRENT_MACHINE_CONFIG),T8103)
+WARNFLAGS_STD := $(WERROR) -Wall -Wextra -Wno-missing-include-dirs
+ifeq ($(CURRENT_MACHINE_CONFIG),T8103)
+			-momit-leaf-frame-pointer -fno-strict-aliasing -D__API__=v4 \
+ifeq ($(CURRENT_MACHINE_CONFIG),T8103)
+			$(LARGE_MEMORY_DEFINE) -momit-leaf-frame-pointer -fno-strict-aliasing -D__API__=v4 -mkernel

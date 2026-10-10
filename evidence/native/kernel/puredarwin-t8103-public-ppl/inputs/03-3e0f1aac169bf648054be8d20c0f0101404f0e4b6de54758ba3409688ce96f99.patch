@@ -1,0 +1,17 @@
+diff --git a/src/Kernel/xnu/cmake/MakeInc.def.in b/src/Kernel/xnu/cmake/MakeInc.def.in
+index 3d26a12..2447858 100644
+--- a/src/Kernel/xnu/cmake/MakeInc.def.in
++++ b/src/Kernel/xnu/cmake/MakeInc.def.in
+@@ -206,6 +206,12 @@ WARNFLAGS_STD := $(WARNFLAGS_STD) \
+ 	-Wno-sign-compare \
+ 	-Wno-sign-conversion
+ 
++# Clang 21 adds millions of reserved-identifier/pre-C11 diagnostics to this older tree.
++# Keep ordinary diagnostics for the native experiment; BUILD_WERROR remains unchanged.
++ifeq ($(CURRENT_MACHINE_CONFIG),T8103)
++WARNFLAGS_STD := $(WERROR) -Wall -Wextra -Wno-missing-include-dirs
++endif
++
+ CWARNFLAGS_STD = \
+ 	$(WARNFLAGS_STD)
+ 

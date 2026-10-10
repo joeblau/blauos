@@ -1,0 +1,11 @@
+0001-puredarwin-t8103-build-profile.patch
+0002-t8103-public-register-encodings.patch
+0003-t8103-current-clang-diagnostics.patch
+0004-t8103-public-platform-sources.patch
+0005-t8103-public-ctrr-interface.patch
+0006-t8103-early-diagnostics.patch
+0007-t8103-aic-rearm-and-driver-abi.patch
+0008-t8103-public-ppl-port.patch
+0009-t8103-pac-atomic-storage.patch
+0010-t8103-machine-register-encodings.patch
+0011-t8103-public-native-pac.patch

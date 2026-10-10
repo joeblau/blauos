@@ -1,0 +1,14 @@
+{
+  "status": "blocked",
+  "exit_code": 2,
+  "source": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu",
+  "configuration": "DEVELOPMENT ARM64",
+  "source_revision": "ac9718fb1af618d5ce8678d0dc6e8a58f252216f",
+  "source_amendments": [],
+  "manifest_sha256": "8022bbbfb33204b56bb3297cd8cbb39fb6c08ea65c476492d99462f7edfe3657",
+  "machine": "T8103",
+  "sdk": ".blauos/build/native/kernel/headers/MacOSX.sdk",
+  "artifacts": [],
+  "qemu_psci_hvc_profile": false,
+  "boot_validated": false
+}

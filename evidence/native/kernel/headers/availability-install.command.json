@@ -1,0 +1,12 @@
+{
+  "argv": [
+    "cmake",
+    "--build",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/headers/availability/obj",
+    "--target",
+    "install",
+    "--parallel",
+    "4"
+  ],
+  "cwd": "/Users/joeblau/Developer/joeblau/src/blauos"
+}

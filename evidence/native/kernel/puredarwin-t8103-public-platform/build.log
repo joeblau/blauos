@@ -1,0 +1,190 @@
+1: [  0%] Building C object tools/cctools/libmacho/CMakeFiles/host_libmacho.dir/arch.c.o
+2: [  0%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/begin.c.o
+3: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/allocate.c.o
+4: [  0%] Building C object tools/unifdef/CMakeFiles/unifdef.dir/unifdef.c.o
+5: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/apple_version.c.o
+6: [  0%] Linking C executable unifdef
+7: [  0%] Linking C static library libmacho.a
+8: [  0%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/clscook.c.o
+9: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/arch_usage.c.o
+10: [  0%] Built target unifdef
+11: [  0%] Built target host_libmacho
+12: [  0%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/clscook_ELF64.c.o
+13: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/arch.c.o
+14: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/args.c.o
+15: [  0%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_create.c.o
+16: [ 10%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/cntl.c.o
+17: [ 10%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/best_arch.c.o
+18: [ 10%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_abbrev.c.o
+19: [ 10%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_decl.c.o
+20: [ 10%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/cook.c.o
+21: [ 10%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/breakout.c.o
+22: [ 10%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_addr_finder.c.o
+23: [ 10%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_error.c.o
+24: [ 10%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/data.c.o
+25: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_alloc.c.o
+26: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/bytesex.c.o
+27: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_hash.c.o
+28: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/end.c.o
+29: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_arange.c.o
+30: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_labels.c.o
+31: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/error.c.o
+32: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_die_deliv.c.o
+33: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/checkout.c.o
+34: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_lib.c.o
+35: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/gelf.c.o
+36: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_error.c.o
+37: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/coff_bytesex.c.o
+38: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_lookup.c.o
+39: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getdata.c.o
+40: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_form.c.o
+41: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/crc32.c.o
+42: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_open.c.o
+43: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getehdr.c.o
+44: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/dylib_table.c.o
+45: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_frame.c.o
+46: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getident.c.o
+47: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_subr.c.o
+48: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_frame2.c.o
+49: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getscn.c.o
+50: [ 30%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/dylib_roots.c.o
+51: [ 30%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_types.c.o
+52: [ 30%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getshdr.c.o
+53: [ 30%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_frame3.c.o
+54: [ 30%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/errors.c.o
+55: [ 30%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_util.c.o
+56: [ 30%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getshstrndx.c.o
+57: [ 30%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_funcs.c.o
+58: [ 40%] Linking C static library libctf.a
+59: [ 40%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/execute.c.o
+60: [ 40%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/input.c.o
+10223:              CC if_low_power_mode.o
+10224:              CC copyio.o
+10225:      INSTALLHDR _key_t.h
+10226: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-platform/source-overlay/src/Kernel/xnu/osfmk/arm64/amcc_rorgn.c:45:10: fatal error: 'memmap_types.h' file not found
+10227:    45 | #include <memmap_types.h>
+10228:       |          ^~~~~~~~~~~~~~~~
+10229: 1 error generated.
+10230: make[11]: *** [amcc_rorgn.o] Error 1
+10231: make[11]: *** Waiting for unfinished jobs....
+10232: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-platform/source-overlay/src/Kernel/xnu/bsd/net/if_ports_used.c:46:
+10233: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-platform/source-overlay/src/Kernel/xnu/bsd/net/if_var.h:945:
+10234: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-platform/source-overlay/src/Kernel/xnu/bsd/net/classq/if_classq.h:201:
+10235: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-platform/source-overlay/src/Kernel/xnu/bsd/net/pktsched/pktsched_fq_codel.h:38:
+10236: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-platform/source-overlay/src/Kernel/xnu/bsd/net/pktsched/pktsched.h:126:12: warning: implicit conversion changes signedness: 'int' to 'pktsched_bitmap_t' (aka 'unsigned int') [-Wsign-conversion]
+10274:      INSTALLHDR processor.defs
+10275:      INSTALLHDR IOTimeStamp.h
+10276:      INSTALLHDR netsrc.h
+10277: make[10]: *** [build_all] Error 2
+10278:      INSTALLHDR remote_time.h
+10279: make[9]: *** [do_all] Error 2
+10280: make[8]: *** [build_all] Error 2
+10281:      INSTALLHDR _mode_t.h
+10282: make[7]: *** [build_all_recurse_into_conf] Error 2
+10283: make[6]: *** [build_all_recurse_into_osfmk] Error 2
+10284: make[6]: *** Waiting for unfinished jobs....
+10285:              CC if_utun.o
+10286:             C++ PassthruInterruptController.cpo
+10287:      INSTALLHDR processor_set.defs
+10288:      INSTALLHDR network_agent.h
+10289:      INSTALLHDR IOTypes.h
+30409:      INSTALLHDR stdio.h
+30410:      INSTALLHDR sysctl.h
+30411:      INSTALLHDR syslimits.h
+30412:      INSTALLHDR systm.h
+30413:      INSTALLHDR syslog.h
+30414:      INSTALLHDR time.h
+30415:      INSTALLHDR types.h
+30416:      INSTALLHDR sys_domain.h
+30417:      INSTALLHDR ubc.h
+30418:      INSTALLHDR ucontext.h
+30419:      INSTALLHDR ucred.h
+30420:      INSTALLHDR uio.h
+30421:      INSTALLHDR un.h
+30422:      INSTALLHDR unpcb.h
+30423:      INSTALLHDR unistd.h
+30424:      INSTALLHDR utfconv.h
+30425:      INSTALLHDR unicode.h
+30426:      INSTALLHDR vm.h
+30427:      INSTALLHDR vmparam.h
+30428:      INSTALLHDR vnode.h
+30429:      INSTALLHDR vnode_if.h
+30430:      INSTALLHDR vsock.h
+30431:      INSTALLHDR xattr.h
+30432:      INSTALLHDR _select.h
+30433:      INSTALLHDR _structs.h
+30434:      INSTALLHDR _types.h
+30435:      INSTALLHDR _endian.h
+30436:      INSTALLHDR protosw.h
+30437:      INSTALLHDR domain.h
+30438:      INSTALLHDR kpi_mbuf.h
+30439:      INSTALLHDR kpi_socket.h
+30440:      INSTALLHDR kpi_socketfilter.h
+30441:      INSTALLHDR termios.h
+30442:      INSTALLHDR ttycom.h
+30443:      INSTALLHDR msg.h
+30444:      INSTALLHDR spawn.h
+30445:      INSTALLHDR timex.h
+30446:      INSTALLHDR wait.h
+30447:      INSTALLHDR commpage.h
+30448:      INSTALLHDR codesign.h
+30449:      INSTALLHDR csr.h
+30450:      INSTALLHDR cprotect.h
+30451:      INSTALLHDR content_protection.h
+30452:      INSTALLHDR decmpfs.h
+30453:      INSTALLHDR disktab.h
+30454:      INSTALLHDR eventhandler.h
+30455:      INSTALLHDR fbt.h
+30456:      INSTALLHDR fileport.h
+30457:      INSTALLHDR fslog.h
+30458:      INSTALLHDR fsctl.h
+30459:      INSTALLHDR kasl.h
+30460:      INSTALLHDR kern_memorystatus.h
+30461:      INSTALLHDR kern_memorystatus_notify.h
+30462:      INSTALLHDR kern_memorystatus_freeze.h
+30463:      INSTALLHDR kpi_private.h
+30464:      INSTALLHDR linker_set.h
+30465:      INSTALLHDR ktrace.h
+30466:      INSTALLHDR mach_swapon.h
+30467:      INSTALLHDR monotonic.h
+30468:      INSTALLHDR msgbuf.h
+30469:      INSTALLHDR eventvar.h
+30470:      INSTALLHDR persona.h
+30471:      INSTALLHDR proc_info.h
+30472:      INSTALLHDR pthread_shims.h
+30473:      INSTALLHDR quota.h
+30474:      INSTALLHDR reboot.h
+30475:      INSTALLHDR sem_internal.h
+30476:      INSTALLHDR shm_internal.h
+30477:      INSTALLHDR signalvar.h
+30478:      INSTALLHDR ttychars.h
+30479:      INSTALLHDR tty.h
+30480:      INSTALLHDR stackshot.h
+30481:      INSTALLHDR ttydefaults.h
+30482:      INSTALLHDR ttydev.h
+30483:      INSTALLHDR user.h
+30484:      INSTALLHDR vfs_context.h
+30485:      INSTALLHDR vmmeter.h
+30486:      INSTALLHDR reason.h
+30487:      INSTALLHDR spawn_internal.h
+30488:      INSTALLHDR priv.h
+30489:      INSTALLHDR pgo.h
+30490:      INSTALLHDR work_interval.h
+30491:      INSTALLHDR fsevents.h
+30492:      INSTALLHDR doc_tombstone.h
+30493:      INSTALLHDR memory_maintenance.h
+30494:      INSTALLHDR kern_sysctl.h
+30495:      INSTALLHDR vsock_transport.h
+30496:      INSTALLHDR sys_cdefs.modulemap
+30497:      INSTALLHDR sysproto.h
+30498:      INSTALLHDR sys__types.modulemap
+30499:      INSTALLHDR sys_types.modulemap
+30500: 19 warnings generated.
+30501: 2 warnings generated.
+30502:      LDFILELIST bsd
+30503: make[5]: *** [build_all_bootstrap_DEVELOPMENT^ARM64^T8103] Error 2
+30504: make[4]: *** [install] Error 2
+30505: make[3]: *** [src/Kernel/xnu/xnu_build/src/xnu-stamp/xnu-build] Error 2
+30506: make[2]: *** [src/Kernel/xnu/CMakeFiles/xnu.dir/all] Error 2
+30507: make[1]: *** [src/Kernel/xnu/CMakeFiles/xnu.dir/rule] Error 2
+30508: make: *** [xnu] Error 2

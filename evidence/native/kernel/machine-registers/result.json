@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "status": "compile_decode_pass",
+  "fixture_kind": "synthetic_register_encoding_probe",
+  "patch": "patches/native/0010-t8103-machine-register-encodings.patch",
+  "patch_sha256": "c2b10d8513de1abdd8b2c06228b26e23f583a3410959cd0a6fd743be7b9565e3",
+  "source_sha256": "126b628802cfa611ae10f403699f246563c1aa6b2e65e7d4a004e9d16c2269fd",
+  "included_header_sha256": "4838351a807b55bfe23605540d74ed7507591ead04e55b71a6196cc4edd9e8b5",
+  "compile_command": [
+    "/usr/bin/xcrun",
+    "--sdk",
+    "macosx",
+    "clang",
+    "-arch",
+    "arm64e",
+    "-mcpu=apple-a14",
+    "-mkernel",
+    "-c",
+    ".blauos/build/native/kernel/machine-registers-probe/probe.S",
+    "-o",
+    ".blauos/build/native/kernel/machine-registers-probe/probe.o"
+  ],
+  "compile_exit_code": 0,
+  "artifact": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/machine-registers-probe/probe.o",
+  "artifact_sha256": "0efab7beb75f8dc167fce7256c8cb3e38608dfde215fe8989969bfd0f71e04ca",
+  "text_sha256": "413a91b6cb7c874242de30c0e6e35971d4c089cc81d8c23d7655e97660a3d9ef",
+  "cpu_subtype": "0xc0000002",
+  "decoded_instructions": [
+    {
+      "register": "CPU_CFG",
+      "direction": "mrs",
+      "word": "0xd53df400",
+      "decoded_tuple": [
+        3,
+        5,
+        15,
+        4,
+        0
+      ]
+    },
+    {
+      "register": "CPU_CFG",
+      "direction": "msr",
+      "word": "0xd51df400",
+      "decoded_tuple": [
+        3,
+        5,
+        15,
+        4,
+        0
+      ]
+    },
+    {
+      "register": "HID13",
+      "direction": "mrs",
+      "word": "0xd538fe00",
+      "decoded_tuple": [
+        3,
+        0,
+        15,
+        14,
+        0
+      ]
+    },
+    {
+      "register": "HID13",
+      "direction": "msr",
+      "word": "0xd518fe00",
+      "decoded_tuple": [
+        3,
+        0,
+        15,
+        14,
+        0
+      ]
+    },
+    {
+      "register": "HID14",
+      "direction": "mrs",
+      "word": "0xd538ff00",
+      "decoded_tuple": [
+        3,
+        0,
+        15,
+        15,
+        0
+      ]
+    },
+    {
+      "register": "HID14",
+      "direction": "msr",
+      "word": "0xd518ff00",
+      "decoded_tuple": [
+        3,
+        0,
+        15,
+        15,
+        0
+      ]
+    },
+    {
+      "register": "VMSA_LOCK_EL1",
+      "direction": "mrs",
+      "word": "0xd53cf140",
+      "decoded_tuple": [
+        3,
+        4,
+        15,
+        1,
+        2
+      ]
+    },
+    {
+      "register": "VMSA_LOCK_EL1",
+      "direction": "msr",
+      "word": "0xd51cf140",
+      "decoded_tuple": [
+        3,
+        4,
+        15,
+        1,
+        2
+      ]
+    }
+  ],
+  "primary_sources": [
+    {
+      "revision": "7f208771b1352cde2dbce37a866ad46caca978ac",
+      "path": "src/cpu_regs.h",
+      "sha256": "28bdf735344ec058555415e00d4a99f23e93b1e771727a585a77bd75cf9eec51"
+    },
+    {
+      "revision": "0d1f8917fa88745d62a4c05d802c4a7298c8616b",
+      "path": "docs/hw/cpu/system-registers.md",
+      "sha256": "9c6edb865ecab6191bc335827f53e8509095470700cbca31751ba53140cc8d84"
+    },
+    {
+      "revision": "7b2ba25aedc454f0e199924154eb174361dfce9c",
+      "path": "_data/registers.yaml",
+      "sha256": "e92c98d41da76f1e37731c2e40b99a48d1b13b8fe487b10cf7ff78f2218fb141"
+    }
+  ],
+  "register_meanings_or_operations_changed": false,
+  "physical_execution_verified": false
+}

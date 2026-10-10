@@ -1,0 +1,246 @@
+1:        GENERATE kasan-denylist-x86_64
+2:              CC externs.o
+3:        GENERATE bsd/sys/_posix_availability.h
+4:        GENERATE kcov-denylist-x86_64
+5:        GENERATE bsd/sys/_symbol_aliasing.h
+6:        GENERATE kasan-denylist-arm64
+7:        GENERATE kcov-denylist-arm64
+8:           BISON parser.c
+9:              CC openp.o
+10:              CC searchp.o
+11:              CC kextsymboltool.o
+12:            FLEX lexer.yy.c
+13:              CC setsegname.o
+14:              CC parser.o
+15:              LD setsegname
+16:              CC main.o
+17:              LD kextsymboltool
+18:              CC mkheaders.o
+19:        CODESIGN kextsymboltool
+20:        CODESIGN setsegname
+21:              CC mkioconf.o
+22:              CC mkmakefile.o
+23: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/SETUP/config/mkmakefile.c:720:6: warning: variable 'lpos' set but not used [-Wunused-but-set-variable]
+24:   720 |         int lpos, len = 0; /* dvw: init to 0 */
+25:       |             ^
+26: 1 warning generated.
+27:              CC lexer.yy.o
+28:              CC decomment.o
+29:              LD config
+30:              CC installfile.o
+31:              LD decomment
+32:        CODESIGN config
+33:              LD installfile
+34:        CODESIGN decomment
+35:        CODESIGN installfile
+36:              CC replacecontents.o
+37:              LD replacecontents
+38:        CODESIGN replacecontents
+39:        GENERATE xnuVersion with version "25.5.0"
+40:             MIG clock.h
+41:             MIG clock_priv.h
+42:             MIG host_priv.h
+43:             MIG host_security.h
+44:             MIG ktrace_background.h
+45:             MIG mach_host.h
+46:             MIG mach_port.h
+47:             IIG IOBufferMemoryDescriptor.h
+48:             MIG mach_vm.h
+49:             IIG IODataQueueDispatchSource.h
+50:             IIG IODispatchQueue.h
+51:             IIG IODispatchSource.h
+52:             IIG IODMACommand.h
+53:             MIG mach_voucher.h
+54:             IIG IOEventLink.h
+55:             IIG IOExtensiblePaniclog.h
+56:             IIG IOInterruptDispatchSource.h
+57:             IIG IOMemoryDescriptor.h
+58:             MIG mach_voucher_attr_control.h
+59:             IIG IOMemoryMap.h
+60:             IIG IOService.h
+1611: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/bsd/sys/ubc_internal.h:48:
+1612: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/bsd/sys/code_signing.h:126:
+1613: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/bsd/sys/code_signing_internal.h:39:
+1614: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/apple-t8103-platform/obj/EXPORT_HDRS/osfmk/vm/pmap_cs.h:82:10: fatal error: 'TrustCache/API.h' file not found
+1615:    82 | #include <TrustCache/API.h>
+1616:       |          ^~~~~~~~~~~~~~~~~~
+1617: ic _KALLOC_TYPE_DEFINE(kt_view_var, type,       \
+1618:       |                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1619:   403 |            KT_SHARED_ACCT);                                 \
+1674:  2417 |         IOFreeType(ivars, IODispatchQueue_IVars);
+1675:       |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1676: make[7]: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/iokit/IOKit/IOLib.h:402:9: note: expanded from macro 'IOFreeType'
+1677:   402 | *** [vfs_bio.o] Error 1
+1678:         static _KALLOC_TYPE_DEFINE(kt_view_var, type,       \
+1679:       |                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1680:   403 |            KT_SHARED_ACCT);        make[6]: *** [build_all] Error 2
+1681:                          \
+1682:       |            ~~~~~~~~~~~~~~~
+1683: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/apple-t8103-platform/obj/EXPORT_HDRS/osfmk/kern/kalloc.h:1675:22: note: expanded from macro '_KALLOC_TYPE_DEFINE'
+1684:  1675 |             .kt_signature = KALLOC_TYPE_EMIT_SIG(type),             make[5]:     \
+1685:       |             ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~
+1686: *** [do_all] Error 2/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/apple-t8103-platform/obj/EXPORT_HDRS/osfmk/kern/kalloc.h:1649:2: note: expanded from macro 'KALLOC_TYPE_EMIT_SIG'
+1687: 
+1688:  1649 |         (KALLOC_TYPE_CHECK(KT_SUMMARY_MASK_DATA, sig_type, ##__VA_ARGS__) || make[4]: *** [build_all] Error 2
+1689: \
+1690:       |         ^
+1691: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/iokit/Kernel/IOUserServer.cpp:2417:2: note: previous initialization for field 'kt_size' is here
+1692:  2417 |         IOFreeType(ivars, IODispatchQueue_IVars);
+1693:       |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1694: make[3]: *** [build_all_recurse_into_conf] Error 2
+1695: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/iokit/IOKit/IOLib.h:402:9: note: expanded from macro 'IOFreeType'
+1696:   402 |         static _KALLOC_TYPE_DEFINE(kt_make[2]: v             CC mac_sysv_shm.o
+1697: iew_var, type,       \
+1698:       |                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1699:   403 |            KT_SHARED_ACCT);                             *** [build_all_recurse_into_bsd] Error 2
+1700:     \
+1701:       |            ~~~~~~~~~~~~~~~make[2]: *** Waiting for unfinished jobs....
+1702: 
+1703: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/apple-t8103-platform/obj/EXPORT_HDRS/osfmk/kern/kalloc.h:1674:17: note: expanded from macro '_KALLOC_TYPE_DEFINE'
+1704:  1674 |             .kt_size = sizeof(type),                                    \
+1705:       |                        ^~~~~~~~~~~~
+1706: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/iokit/Kernel/IOUserServer.cpp:3027:27: warning: ISO C++ requires field designators to be specified in declaration order; field 'kt_flags' will be initialized after field 'kt_size_type' [-Wreorder-init-list]
+3759:  1635 | #define KALLOC_TYPE_CAST_FLAGS(flags) static_cast<kalloc_type_flags_t>(flags)
+3760:       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+3761: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/iokit/bsddev/IOKitBSDInit.cpp:40:
+3762: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/apple-t8103-platform/obj/EXPORT_HDRS/libkern/libkern/amfi/amfi.h:35:10: fatal error: 'CoreEntitlements/V2/API.h' file not found
+3763:    35 | #include <CoreEntitlements/V2/API.h>
+3764:       |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+3765: 16 warnings and 1 error generated.
+3766: make[7]: *** [IOKitBSDInit.cpo] Error 1
+3767: make[6]: *** [build_all] Error 2
+3768: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/security/mac_file.c:48:
+3769: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/apple-t8103-platform/obj/EXPORT_HDRS/security/security/mac_internal.h:90:
+3770: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/apple-t8103-platform/obj/EXPORT_HDRS/bsd/sys/socketvar.h:882:2: warning: unknown warning group '-Wxnu-typed-allocators', ignored [-Wunknown-warning-option]
+3771:   882 |         __typed_allocators_ignore_push
+3772:       |         ^
+3776: <scratch space>:156:27: note: expanded from here
+3777:   156 |  clang diagnostic ignored "-Wxnu-typed-allocators"
+3778:       |                           ^
+3779: make[5]: *** [do_all] Error 2
+3780: make[4]: *** [build_all] Error 2
+3781: make[3]: *** [build_all_recurse_into_conf] Error 2
+3782: make[2]: *** [build_all_recurse_into_iokit] Error 2
+3783: 1 warning generated.
+3784:              CC mac_priv.o
+3785:             MIG kextd_mach.c
+3786:             MIG resource_notify_user.c
+3787: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/security/mac_priv.c:68:
+4121: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/osfmk/kern/kern_stackshot.c:34:
+4122: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/apple-t8103-platform/obj/EXPORT_HDRS/bsd/sys/code_signing.h:126:
+4123: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/apple-t8103-platform/obj/EXPORT_HDRS/bsd/sys/code_signing_internal.h:39:
+4124: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/osfmk/vm/pmap_cs.h:82:10: fatal error: 'TrustCache/API.h' file not found
+4125:    82 | #include <TrustCache/API.h>
+4126:       |          ^~~~~~~~~~~~~~~~~~
+4127: 5 warnings generated.
+4128:              CC kdp_common.o
+4129:              CC kdp_udp.o
+4130:              CC kdp_core.o
+4131: 1 error generated.
+4132: make[7]: *** [kern_stackshot.o] Error 1
+4133: make[7]: *** Waiting for unfinished jobs....
+4134: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/osfmk/kdp/kdp_common.c:330:17: warning: implicit conversion changes signedness: 'int' to 'uint64_t' (aka 'unsigned long long') [-Wsign-conversion]
+4135:   330 |                         valid_from = i;
+4136:       |                                    ~ ^
+4137: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/osfmk/kdp/kdp_common.c:331:57: warning: implicit conversion changes signedness: 'int' to 'uint64_t' (aka 'unsigned long long') [-Wsign-conversion]
+4138:   331 |                         phys_src = (*find_phys_fn)(map, (vm_offset_t)(addr + i), fault_flags, context);
+4226:       |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+4227: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/osfmk/kdp/kdp_udp.c:1571:21: warning: implicit conversion changes signedness: '__uint16_t' (aka 'unsigned short') to 'short' [-Wsign-conversion]
+4228:  1571 |         coreh->th_opcode = htons((u_short)request);
+4229:       |                          ~ ^~~~~~~~~~~~~~~~~~~~~~~
+4230: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/osfmk/kdp/kdp_udp.h:64:28: note: expanded from macro 'htons'
+4231:    64 | #define htons(x)           OSSwapHostToBigInt16(x)
+4232:       |                            ^~~~~~~~~~~~~~~~~~~~~~~
+4233: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/apple-t8103-platform/obj/EXPORT_HDRS/libkern/libkern/OSByteOrder.h:273:33: note: expanded from macro 'OSSwapHostToBigInt16'
+4234:   273 | #define OSSwapHostToBigInt16(x) OSSwapInt16(x)
+4235:       |                                 ^~~~~~~~~~~~~~
+4236: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/apple-t8103-platform/obj/EXPORT_HDRS/libkern/libkern/OSByteOrder.h:66:25: note: expanded from macro 'OSSwapInt16'
+4237:    66 | #define OSSwapInt16(x)  __DARWIN_OSSwapInt16(x)
+4238:       |                         ^~~~~~~~~~~~~~~~~~~~~~~
+4239: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/apple-t8103-platform/obj/EXPORT_HDRS/libkern/libkern/_OSByteOrder.h:67:6: note: expanded from macro '__DARWIN_OSSwapInt16'
+4240:    67 |     ((__uint16_t)(__builtin_constant_p(x) ? __DARWIN_OSSwapConstInt16(x) : _OSSwapInt16(x)))
+4241:       |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+4242: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/osfmk/kdp/kdp_udp.c:1584:18: warning: comparison of integers of different signs: 'int' and 'size_t' (aka 'unsigned long') [-Wsign-compare]
+4243:  1584 |                 } else if (len >= length_remaining) {
+4244:       |                            ~~~ ^  ~~~~~~~~~~~~~~~~
+4245: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/osfmk/kdp/kdp_udp.c:1722:44: warning: implicit conversion changes signedness: 'intptr_t' (aka 'long') to 'uintptr_t' (aka 'unsigned long') [-Wsign-conversion]
+4246:  1722 |                                 uint64_t resid = length - (next_page - (intptr_t) panic_data);
+4247:       |                                                                      ~ ^~~~~~~~~~~~~~~~~~~~~
+4248: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/osfmk/kdp/kdp_udp.c:1750:34: warning: implicit conversion changes signedness: 'short' to '__uint16_t' (aka 'unsigned short') [-Wsign-conversion]
+4249:  1750 |                         uint16_t opcode64 = ntohs(th->th_opcode);
+4250:       |                                             ~~~~~~~~~~^~~~~~~~~~
+4251: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/osfmk/kdp/kdp_udp.h:62:49: note: expanded from macro 'ntohs'
+4252:    62 | #define ntohs(x)           OSSwapBigToHostInt16(x)
+4253:       |                            ~~~~~~~~~~~~~~~~~~~~~^~
+4254: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/apple-t8103-platform/obj/EXPORT_HDRS/libkern/libkern/OSByteOrder.h:297:45: note: expanded from macro 'OSSwapBigToHostInt16'
+4255:   297 | #define OSSwapBigToHostInt16(x) OSSwapInt16(x)
+4256:       |                                 ~~~~~~~~~~~~^~
+4257: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/apple-t8103-platform/obj/EXPORT_HDRS/libkern/libkern/OSByteOrder.h:66:46: note: expanded from macro 'OSSwapInt16'8 warnings generated.
+4258: 
+4259:    66 | #define OSSwapInt16(x)  __DARWIN_OSSwapInt16(x)
+4260:       |                         ~~~~~~~~~~~~~~~~~~~~~^~
+4261: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/apple-t8103-platform/obj/EXPORT_HDRS/libkern/libkern/_OSByteOrder.h:67:89: note: expanded from macro '__DARWIN_OSSwapInt16'
+4262:    67 |     ((__uint16_t)(__builtin_constant_p(x) ? __DARWIN_OSSwapConstInt16(x) : _OSSwapInt16(x)))
+4263:       |                                                                            ~~~~~~~~~~~~ ^
+4264: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/osfmk/kdp/kdp_core.c:1149:8: warning: variable 'coredump_log_start' set but not used [-Wunused-but-set-variable]
+4265:  1149 |         char *coredump_log_start = NULL, *buf = NULL;
+4266:       |               ^
+4267: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/osfmk/kdp/kdp_udp.c:1764:17: warning: implicit conversion changes signedness: 'short' to '__uint16_t' (aka 'unsigned short') [-Wsign-conversion]
+4268:  1764 |                 if (ntohs(th->th_opcode) == KDP_ACK && ntohl(th->th_block) == panic_block) {
+4269:       |                     ~~~~~~~~~~^~~~~~~~~~
+4270: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/osfmk/kdp/kdp_udp.h:62:49: note: expanded from macro 'ntohs'
+4271:    62 | #define ntohs(x)           OSSwapBigToHostInt16(x)
+4272:       |                            ~~~~~~~~~~~~~~~~~~~~~^~
+4273: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/apple-t8103-platform/obj/EXPORT_HDRS/libkern/libkern/OSByteOrder.h:297:45: note: expanded from macro 'OSSwapBigToHostInt16'
+4274:   297 | #define OSSwapBigToHostInt16(x) OSSwapInt16(x)
+4275:       |                                 ~~~~~~~~~~~~^~
+4276: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/apple-t8103-platform/obj/EXPORT_HDRS/libkern/libkern/OSByteOrder.h:66:46: note: expanded from macro 'OSSwapInt16'
+4277:    66 | #define OSSwapInt16(x)  __DARWIN_OSSwapInt16(x)
+4278:       |                         ~~~~~~~~~~~~~~~~~~~~~^~
+4279: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/apple-t8103-platform/obj/EXPORT_HDRS/libkern/libkern/_OSByteOrder.h:67:89: note: expanded from macro '__DARWIN_OSSwapInt16'
+4280:    67 |     ((__uint16_t)(__builtin_constant_p(x) ? __DARWIN_OSSwapConstInt16(x) : _OSSwapInt16(x)))
+4281:       |                                                                            ~~~~~~~~~~~~ ^
+4282: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/osfmk/kdp/kdp_udp.c:1766:18: warning: implicit conversion changes signedness: 'short' to '__uint16_t' (aka 'unsigned short') [-Wsign-conversion]
+4283:  1766 |                         if (ntohs(th->th_opcode) == KDP_ERROR) {
+4284:       |                             ~~~~~~~~~~^~~~~~~~~~
+4285: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/osfmk/kdp/kdp_udp.h:62:49: note: expanded from macro 'ntohs'
+4286:    62 | #define ntohs(x)           OSSwapBigToHostInt16(x)
+4287:       |                            ~~~~~~~~~~~~~~~~~~~~~^~
+4288: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/apple-t8103-platform/obj/EXPORT_HDRS/libkern/libkern/OSByteOrder.h:297:45: note: expanded from macro 'OSSwapBigToHostInt16'
+4289:   297 | #define OSSwapBigToHostInt16(x) OSSwapInt16(x)
+4290:       |                                 ~~~~~~~~~~~~^~
+4291: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/apple-t8103-platform/obj/EXPORT_HDRS/libkern/libkern/OSByteOrder.h:66:46: note: expanded from macro 'OSSwapInt16'
+4292:    66 | #define OSSwapInt16(x)  __DARWIN_OSSwapInt16(x)
+4293:       |                         ~~~~~~~~~~~~~~~~~~~~~^~
+4294: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/apple-t8103-platform/obj/EXPORT_HDRS/libkern/libkern/_OSByteOrder.h:67:89: note: expanded from macro '__DARWIN_OSSwapInt16'
+4295:    67 |     ((__uint16_t)(__builtin_constant_p(x) ? __DARWIN_OSSwapConstInt16(x) : _OSSwapInt16(x)))
+4296:       |                                                                            ~~~~~~~~~~~~ ^
+4297: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/osfmk/kdp/kdp_udp.c:1787:31: warning: implicit conversion changes signedness: 'unsigned int' to 'int' [-Wsign-conversion]
+4298:  1787 |                         kdp_us_spin((tretries % 4) * panic_timeout);        /* capped linear backoff */
+4299:       |                         ~~~~~~~~~~~ ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~
+4300: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/osfmk/kdp/kdp_udp.c:1787:26: warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+4301:  1787 |                         kdp_us_spin((tretries % 4) * panic_timeout);        /* capped linear backoff */
+4302:       |                                      ~~~~~~~~~^~~  ~
+4303: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/osfmk/kdp/kdp_udp.c:2092:21: warning: implicit conversion changes signedness: 'long' to 'uint64_t' (aka 'unsigned long long') [-Wsign-conversion]
+4304:  2091 |                 kdp_send_crashdump_data(KDP_DATA, corename_str,
+4305:       |                 ~~~~~~~~~~~~~~~~~~~~~~~
+4306:  2092 |                     debug_buf_ptr - debug_buf_base,
+4307:       |                     ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~
+4308: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/osfmk/kdp/kdp_udp.c:2107:52: warning: implicit conversion changes signedness: 'long' to 'uint64_t' (aka 'unsigned long long') [-Wsign-conversion]
+4309:  2107 |                         kdp_send_crashdump_data(KDP_DATA, corename_str, len,
+4310:       |                         ~~~~~~~~~~~~~~~~~~~~~~~                         ^~~
+4311: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/osfmk/kdp/kdp_udp.c:2110:42: warning: implicit conversion changes signedness: 'long' to 'uint64_t' (aka 'unsigned long long') [-Wsign-conversion]
+4312:  2110 |                         kdp_send_crashdump_seek(corename_str, len);
+4313:       |                         ~~~~~~~~~~~~~~~~~~~~~~~               ^~~
+4314: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/osfmk/kdp/kdp_udp.c:2116:52: warning: implicit conversion changes signedness: 'long' to 'uint64_t' (aka 'unsigned long long') [-Wsign-conversion]
+4315:  2116 |                         kdp_send_crashdump_data(KDP_DATA, corename_str, len,
+4316:       |                         ~~~~~~~~~~~~~~~~~~~~~~~                         ^~~
+4317: 1 warning generated.
+4318: 19 warnings generated.
+4319: make[6]: *** [build_all] Error 2
+4320: make[5]: *** [do_all] Error 2
+4321: make[4]: *** [build_all] Error 2
+4322: make[3]: *** [build_all_recurse_into_conf] Error 2
+4323: make[2]: *** [build_all_recurse_into_osfmk] Error 2
+4324: make[1]: *** [build_all_bootstrap_DEVELOPMENT^ARM64^T8103] Error 2
+4325: make: *** [all] Error 2

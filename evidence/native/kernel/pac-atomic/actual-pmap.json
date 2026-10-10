@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "status": "actual_linked_native_code_verified",
+  "object": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl-v4/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_T8103/osfmk/DEVELOPMENT/pmap.o",
+  "object_sha256": "72720b824fb5d8b27f435f4d6a55708289a11a9e594376dc42aebf5cf9c262d2",
+  "kernel_sha256": "49ea4fd093d0bf7fa2cfc94accb92c72b64ef8705c8d86c108247eef5928b5ee",
+  "build_receipt": "evidence/native/kernel/puredarwin-t8103-public-ppl-v4/result.json",
+  "build_receipt_sha256": "d2bc0fdda45a26cd6d12e58448514e4c4a7d948da8f251717ba471f1b1fb5b88",
+  "pmap_source_sha256": "843f52578863f104897e0f8e3410b0c181e74686f58f190385b3125820428086",
+  "operation": "_pmap_nest_internal signed-field compare/store and authenticated read",
+  "field_offset": 160,
+  "discriminator": 32103,
+  "word_alignment": 8,
+  "disassembly_command": [
+    "/usr/bin/xcrun",
+    "lldb",
+    "--no-lldbinit",
+    "--batch",
+    "-o",
+    "target create .blauos/build/native/kernel/puredarwin-t8103-public-ppl-v4/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_T8103/kernel.development.t8103.unstripped",
+    "-o",
+    "disassemble -n pmap_nest_internal"
+  ],
+  "disassembly_exit_code": 0,
+  "full_raw_log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl-v4/pmap-nest.disassembly.txt",
+  "full_raw_log_sha256": "d94d727ed4ec546ffd8bd21880578e5c5c85988e676d84f45f1812326962bfd8",
+  "excerpt_sha256": "24891444e635d8fdabc30e73fd137f58c2961fa2ac5052dd4a489f3af3244eac",
+  "evidence_level": "compiled_and_linked_code_only",
+  "full_native_kernel_link_passed": true,
+  "physical_execution_verified": false
+}

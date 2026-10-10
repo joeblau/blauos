@@ -1,0 +1,36 @@
+{
+  "argv": [
+    "cmake",
+    "--build",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl-v2",
+    "--target",
+    "xnu",
+    "--parallel",
+    "6"
+  ],
+  "cwd": "/Users/joeblau/Developer/joeblau/src/blauos",
+  "exit_code": 2,
+  "raw_log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl-v2/logs/build.log",
+  "raw_log_bytes": 3460247,
+  "raw_log_sha256": "958afd97881fe2bfd9f431d86b67c6dcb007ddceeec944b7f43f97855bae3d86",
+  "errors": [
+    "<instantiation>:42:6: error: expected absolute expression",
+    "   67 | #def<instantiation>:42:6: error: expected absolute expression",
+    "<instantiation>:42:6: error: expected absolute expression",
+    ":42:6: error: expected absolute expression",
+    "make[11]: *** [locore.o] Error 1",
+    "make[11]: *** Waiting for unfinished jobs....",
+    "make[10]: *** [build_all] Error 2",
+    "make[9]: *** [do_all] Error 2",
+    "make[8]: *** [build_all] Error 2",
+    "make[7]: *** [build_all_recurse_into_conf] Error 2",
+    "make[6]: *** [build_all_recurse_into_osfmk] Error 2",
+    "make[6]: *** Waiting for unfinished jobs....",
+    "make[5]: *** [build_all_bootstrap_DEVELOPMENT^ARM64^T8103] Error 2",
+    "make[4]: *** [install] Error 2",
+    "make[3]: *** [src/Kernel/xnu/xnu_build/src/xnu-stamp/xnu-build] Error 2",
+    "make[2]: *** [src/Kernel/xnu/CMakeFiles/xnu.dir/all] Error 2",
+    "make[1]: *** [src/Kernel/xnu/CMakeFiles/xnu.dir/rule] Error 2",
+    "make: *** [xnu] Error 2"
+  ]
+}

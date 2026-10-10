@@ -1,0 +1,12 @@
+.blauos/build/native/kernel/machine-registers-probe/probe.o:
+(__TEXT,__text) section
+_native_machine_register_probe:
+0000000000000000	mrs	x0, S3_5_C15_C4_0
+0000000000000004	msr	S3_5_C15_C4_0, x0
+0000000000000008	mrs	x0, S3_0_C15_C14_0
+000000000000000c	msr	S3_0_C15_C14_0, x0
+0000000000000010	mrs	x0, S3_0_C15_C15_0
+0000000000000014	msr	S3_0_C15_C15_0, x0
+0000000000000018	mrs	x0, S3_4_C15_C1_2
+000000000000001c	msr	S3_4_C15_C1_2, x0
+0000000000000020	ret

@@ -8,8 +8,9 @@
       "profile": "apple-xnu-12377",
       "architecture": "arm64",
       "command": [
-        "xcrun",
-        "clang",
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+        "-isysroot",
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
         "-arch",
         "arm64",
         "-mmacosx-version-min=11.0",
@@ -17,8 +18,8 @@
         "-Wall",
         "-Wextra",
         "-Werror",
-        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native-handoff-layout/irrelevant-header-shims",
-        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native-handoff-layout/apple-xnu-12377.c"
+        "-I.blauos/build/native-handoff-layout-current/irrelevant-header-shims",
+        ".blauos/build/native-handoff-layout-current/apple-xnu-12377.c"
       ],
       "exit_code": 0,
       "diagnostics": "",
@@ -28,8 +29,9 @@
       "profile": "apple-xnu-12377",
       "architecture": "arm64e",
       "command": [
-        "xcrun",
-        "clang",
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+        "-isysroot",
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
         "-arch",
         "arm64e",
         "-mmacosx-version-min=11.0",
@@ -37,8 +39,8 @@
         "-Wall",
         "-Wextra",
         "-Werror",
-        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native-handoff-layout/irrelevant-header-shims",
-        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native-handoff-layout/apple-xnu-12377.c"
+        "-I.blauos/build/native-handoff-layout-current/irrelevant-header-shims",
+        ".blauos/build/native-handoff-layout-current/apple-xnu-12377.c"
       ],
       "exit_code": 0,
       "diagnostics": "",
@@ -48,8 +50,9 @@
       "profile": "puredarwin-xnu-7195",
       "architecture": "arm64",
       "command": [
-        "xcrun",
-        "clang",
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+        "-isysroot",
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
         "-arch",
         "arm64",
         "-mmacosx-version-min=11.0",
@@ -57,8 +60,8 @@
         "-Wall",
         "-Wextra",
         "-Werror",
-        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native-handoff-layout/irrelevant-header-shims",
-        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native-handoff-layout/puredarwin-xnu-7195.c"
+        "-I.blauos/build/native-handoff-layout-current/irrelevant-header-shims",
+        ".blauos/build/native-handoff-layout-current/puredarwin-xnu-7195.c"
       ],
       "exit_code": 0,
       "diagnostics": "",
@@ -68,8 +71,9 @@
       "profile": "puredarwin-xnu-7195",
       "architecture": "arm64e",
       "command": [
-        "xcrun",
-        "clang",
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+        "-isysroot",
+        "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
         "-arch",
         "arm64e",
         "-mmacosx-version-min=11.0",
@@ -77,8 +81,8 @@
         "-Wall",
         "-Wextra",
         "-Werror",
-        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native-handoff-layout/irrelevant-header-shims",
-        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native-handoff-layout/puredarwin-xnu-7195.c"
+        "-I.blauos/build/native-handoff-layout-current/irrelevant-header-shims",
+        ".blauos/build/native-handoff-layout-current/puredarwin-xnu-7195.c"
       ],
       "exit_code": 0,
       "diagnostics": "",
@@ -229,5 +233,9 @@
     }
   ],
   "source_contract_sha256": "3ce67d69cd920c2310a7b908bab5b4d00389f3a1f5a8c3ad704126ea736e6ad9",
+  "verifier_sha256": "00bcf5d2aeaed6dc404d3fa77f0be9b889e288a0f4b2ced09d6303d8b51587a8",
+  "compiler_path": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+  "compiler_sha256": "0993175af320361435e566fa638ad3f0852efe3599bf026da08d9d82be8275fa",
+  "sdk_path": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
   "compiler_version": "Apple clang version 21.0.0 (clang-2100.3.34.2)\nTarget: arm64-apple-darwin27.2.0\nThread model: posix\nInstalledDir: /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin\n"
 }

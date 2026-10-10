@@ -1,0 +1,63 @@
+diff --git a/src/Kernel/Extensions/PDArmPlatformExpert/CMakeLists.txt b/src/Kernel/Extensions/PDArmPlatformExpert/CMakeLists.txt
+index 0a57334..25bdd2a 100644
+--- a/src/Kernel/Extensions/PDArmPlatformExpert/CMakeLists.txt
++++ b/src/Kernel/Extensions/PDArmPlatformExpert/CMakeLists.txt
+@@ -10,3 +10,9 @@ target_sources(PDArmPlatformExpert PRIVATE
+ )
+ 
+ install(TARGETS PDArmPlatformExpert DESTINATION System/Library/Extensions COMPONENT BaseSystem)
++
++# The T8103 kernel and its platform extension share the authenticated kernel ABI.
++if(PUREDARWIN_ARM64_MACHINE_CONFIG STREQUAL "T8103")
++    set_property(TARGET PDArmPlatformExpert PROPERTY OSX_ARCHITECTURES arm64e)
++    target_compile_options(PDArmPlatformExpert PRIVATE -mcpu=apple-a14 -mkernel -fno-stack-check)
++endif()
+diff --git a/src/Kernel/Extensions/PDArmPlatformExpert/PDAppleAIC.cpp b/src/Kernel/Extensions/PDArmPlatformExpert/PDAppleAIC.cpp
+index 890ff07..6c14d4a 100644
+--- a/src/Kernel/Extensions/PDArmPlatformExpert/PDAppleAIC.cpp
++++ b/src/Kernel/Extensions/PDArmPlatformExpert/PDAppleAIC.cpp
+@@ -240,15 +240,30 @@ PDAppleAIC::handleInterrupt(void * /*refCon*/, IOService * /*nub*/, int /*source
+ 
+ 		IOInterruptVector *vector = &vectors[irq];
+ 		vector->interruptActive = 1;
++		OSMemoryBarrier();
+ 
++		/* Order the acknowledging device read before handler memory accesses. */
++		OSSynchronizeIO();
+ 		if (!vector->interruptDisabledSoft && vector->interruptRegistered) {
+ 			vector->handler(vector->target, vector->refCon,
+ 			    vector->nub, vector->source);
++		}
++
++		/* AIC event reads automatically mask the source. Recheck after the
++		 * callback: it may have disabled or unregistered this interrupt.
++		 * Source: AsahiLinux/docs 0d1f8917fa88745d62a4c05d802c4a7298c8616b,
++		 * docs/hw/soc/aic.md, hardware IRQ flow. */
++		if (vector->interruptRegistered && !vector->interruptDisabledSoft) {
++			vector->interruptDisabledHard = 0;
++			/* Complete the handler's device acknowledgment before unmasking. */
++			OSSynchronizeIO();
++			enableVector(irq, vector);
+ 		} else {
+ 			vector->interruptDisabledHard = 1;
+ 			disableVectorHard(irq, vector);
+ 		}
+ 
++		OSMemoryBarrier();
+ 		vector->interruptActive = 0;
+ 	}
+ 
+diff --git a/src/Kernel/libkmod/CMakeLists.txt b/src/Kernel/libkmod/CMakeLists.txt
+index 7b462b4..85302d5 100644
+--- a/src/Kernel/libkmod/CMakeLists.txt
++++ b/src/Kernel/libkmod/CMakeLists.txt
+@@ -5,3 +5,9 @@ target_link_libraries(libkmod PRIVATE xnu_kernel_headers AvailabilityHeaders)
+ target_compile_definitions(libkmod PRIVATE TARGET_OS_OSX)
+ 
+ # cplus_start.c and cplus_stop.c are empty, thus no libkmodc++.
++
++# Match the native platform extension's architecture and pointer-authentication ABI.
++if(PUREDARWIN_ARM64_MACHINE_CONFIG STREQUAL "T8103")
++    set_property(TARGET libkmod PROPERTY OSX_ARCHITECTURES arm64e)
++    target_compile_options(libkmod PRIVATE -mcpu=apple-a14 -mkernel -fno-stack-check)
++endif()

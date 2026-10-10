@@ -1,0 +1,169 @@
+1: [  0%] Building C object tools/unifdef/CMakeFiles/unifdef.dir/unifdef.c.o
+2: [  0%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/begin.c.o
+3: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/allocate.c.o
+4: [  0%] Building C object tools/cctools/libmacho/CMakeFiles/host_libmacho.dir/arch.c.o
+5: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/apple_version.c.o
+6: [  0%] Linking C static library libmacho.a
+7: [  0%] Linking C executable unifdef
+8: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/arch_usage.c.o
+9: [  0%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/clscook.c.o
+10: [  0%] Built target unifdef
+11: [  0%] Built target host_libmacho
+12: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/arch.c.o
+13: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/args.c.o
+14: [  0%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/clscook_ELF64.c.o
+15: [  0%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_create.c.o
+16: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/best_arch.c.o
+17: [ 10%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/cntl.c.o
+18: [ 10%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_abbrev.c.o
+19: [ 10%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_decl.c.o
+20: [ 10%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/cook.c.o
+21: [ 10%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/breakout.c.o
+22: [ 10%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_addr_finder.c.o
+23: [ 10%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_error.c.o
+24: [ 10%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/data.c.o
+25: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_alloc.c.o
+26: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_hash.c.o
+27: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/bytesex.c.o
+28: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/end.c.o
+29: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_arange.c.o
+30: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_labels.c.o
+31: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/error.c.o
+32: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/checkout.c.o
+33: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_die_deliv.c.o
+34: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_lib.c.o
+35: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/gelf.c.o
+36: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_error.c.o
+37: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/coff_bytesex.c.o
+38: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_lookup.c.o
+39: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getdata.c.o
+40: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_form.c.o
+41: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_open.c.o
+42: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/crc32.c.o
+43: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_frame.c.o
+44: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getehdr.c.o
+45: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/dylib_table.c.o
+46: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_subr.c.o
+47: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getident.c.o
+48: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_frame2.c.o
+49: [ 30%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/dylib_roots.c.o
+50: [ 30%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_types.c.o
+51: [ 30%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getscn.c.o
+52: [ 30%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_frame3.c.o
+53: [ 30%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getshdr.c.o
+54: [ 30%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/errors.c.o
+55: [ 30%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_util.c.o
+56: [ 30%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_funcs.c.o
+57: [ 30%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getshstrndx.c.o
+58: [ 30%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/execute.c.o
+59: [ 40%] Linking C static library libctf.a
+60: [ 40%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_global.c.o
+34194:              LD kernel.development.t8103.unstripped
+34195: ld: warning: -new_linker is obsolete
+34196: ld: warning: ignoring file '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-final/src/Kernel/libfirehose_kernel/libfirehose_kernel.a(firehose_buffer.c.o)': found architecture 'arm64', required architecture 'arm64e.kernel'
+34197: Undefined symbols for architecture arm64e.kernel:
+34198:   "_Idle_context", referenced from:
+34199:       _machine_idle in machine_routines.o
+34200:   "_Idle_load_context", referenced from:
+34201:       _cpu_idle in cpu.o
+34202:       _cpu_idle_exit in cpu.o
+34981:   "_pmap_unlock_phys_page", referenced from:
+34982:       _memory_object_control_uiomove in bsd_vm.o
+34983:       _vm_fault_page in vm_fault.o
+34984:       _vm_fault_page in vm_fault.o
+34985:       _vm_fault_page in vm_fault.o
+34986:       _vm_fault_enter_prepare in vm_fault.o
+34987:       _vm_fault_enter_prepare in vm_fault.o
+34988:       _vm_fault_enter_prepare in vm_fault.o
+34989:       ...
+34990:   "_pmap_unmap_compressor_page", referenced from:
+34991:       _vm_compressor_get in vm_compressor.o
+34992:       _vm_compressor_put in vm_compressor.o
+34993:   "_pmap_unmap_cpu_windows_copy", referenced from:
+34994:       _bcopy_phys_internal in loose_ends.o
+34995:       _bcopy_phys_internal in loose_ends.o
+34996:       _bzero_phys in loose_ends.o
+34997:       _bzero_phys in loose_ends.o
+34998:       _ml_phys_read_data in loose_ends.o
+34999:       _ml_phys_write_data in loose_ends.o
+35000:   "_pmap_unnest", referenced from:
+35001:       _vm_map_clip_unnest in vm_map.o
+35002:       _vm_map_copy_overwrite_nested in vm_map.o
+35003:   "_pmap_unnest_options", referenced from:
+35004:       _vm_map_delete in vm_map.o
+35005:   "_pmap_valid_address", referenced from:
+35006:       _bcopy_phys_internal in loose_ends.o
+35007:       _bcopy_phys_internal in loose_ends.o
+35008:       _bzero_phys in loose_ends.o
+35009:       _bzero_phys in loose_ends.o
+35010:       _ml_phys_read_data in loose_ends.o
+35011:       _ml_phys_write_data in loose_ends.o
+35012:       _apply_func_phys in loose_ends.o
+35013:       ...
+35014:   "_pmap_valid_page", referenced from:
+35015:       _kdp_find_phys in kern_stackshot.o
+35016:       _kdp_find_phys in kern_stackshot.o
+35017:       _kdp_copyin_string in kern_stackshot.o
+35018:       _pmap_traverse_present_mappings in kdp_core.o
+35019:       _dtrace_load8 in dtrace.o
+35020:       _dtrace_load16 in dtrace.o
+35021:       _dtrace_load32 in dtrace.o
+35022:       ...
+35023:   "_pmap_virtual_region", referenced from:
+35024:       _kmem_init in vm_kern.o
+35025:       _kmem_init in vm_kern.o
+35026:   "_pmap_virtual_space", referenced from:
+35027:       _pmap_steal_memory_internal in vm_resident.o
+35028:   "_pmap_zero_page", referenced from:
+35029:       _vm_fault_unwire in vm_fault.o
+35030:       _vm_object_deactivate_pages in vm_object.o
+35031:       _vm_page_zero_fill in vm_resident.o
+35032:       _vm_page_zero_fill in vm_resident.o
+35033:       _vm_page_alloc_list in vm_resident.o
+35034:   "_pmap_zero_part_page", referenced from:
+35035:       _vm_page_part_zero_fill in vm_resident.o
+35036:       _vm_page_part_zero_fill in vm_resident.o
+35037:   "_resume_idle_cpu", referenced from:
+35038:       _cpu_machine_idle_init in cpu.o
+35039:   "_rorgn_lockdown", referenced from:
+35040:       _machine_lockdown in machine_routines.o
+35041:   "_rorgn_stash_range", referenced from:
+35042:       _ml_lockdown_init in machine_routines.o
+35043:   "_set_bp_ret", referenced from:
+35044:       _arm_init in arm_init.o
+35045:   "_set_mmu_ttb", referenced from:
+35046:       _arm_vm_init in arm_vm_init.o
+35047:   "_set_mmu_ttb_alternate", referenced from:
+35048:       _arm_vm_init in arm_vm_init.o
+35049:   "_set_tcr", referenced from:
+35050:       _arm_vm_init in arm_vm_init.o
+35051:   "_start_cpu", referenced from:
+35052:       _cpu_machine_idle_init in cpu.o
+35053:   "_thread_bootstrap_return", referenced from:
+35054:       _task_wait_to_return in task.o
+35055:       _thread_create in thread.o
+35056:       _thread_create_pinned in thread.o
+35057:       _thread_create_immovable in thread.o
+35058:       _thread_create_from_user in thread.o
+35059:       _thread_create_running_internal2 in thread.o
+35060:       _pthread_bootstrap_return in pthread_shims.o
+35061:       ...
+35062:   "_vm_first_phys", referenced from:
+35063:       _patch_low_glo_static_region in lowmem_vectors.o
+35064:   "_vm_footprint_suspend_allowed", referenced from:
+35065:       _sysctl_vm_footprint_suspend in vm_unix.o
+35066:       _sysctl__vm_footprint_suspend_allowed in vm_unix.o
+35067:   "_vm_last_phys", referenced from:
+35068:       _patch_low_glo_static_region in lowmem_vectors.o
+35069:   "_vmsa_lock", referenced from:
+35070:       _arm_vm_init in arm_vm_init.o
+35071: ld: symbol(s) not found for architecture arm64e.kernel
+35072: clang++: error: linker command failed with exit code 1 (use -v to see invocation)
+35073: make[7]: *** [/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-final/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_T8103//kernel.development.t8103.unstripped] Error 1
+35074: make[6]: *** [build_all] Error 2
+35075: make[5]: *** [build_all_bootstrap_DEVELOPMENT^ARM64^T8103] Error 2
+35076: make[4]: *** [install] Error 2
+35077: make[3]: *** [src/Kernel/xnu/xnu_build/src/xnu-stamp/xnu-build] Error 2
+35078: make[2]: *** [src/Kernel/xnu/CMakeFiles/xnu.dir/all] Error 2
+35079: make[1]: *** [src/Kernel/xnu/CMakeFiles/xnu.dir/rule] Error 2
+35080: make: *** [xnu] Error 2

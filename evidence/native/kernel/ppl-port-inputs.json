@@ -1,0 +1,199 @@
+{
+  "schema_version": 1,
+  "status": "experimental_port_not_boot_validated",
+  "port_source": {
+    "url": "https://github.com/apple-oss-distributions/xnu",
+    "tag": "xnu-7195.60.75",
+    "revision": "b967469df23b10bc70788727627457ebdfe3653f",
+    "tree": "2fd24b44e4468b7a60261620cccca97bdc7262fa"
+  },
+  "base_source": "puredarwin-vm-next@1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+  "blocks": [
+    {
+      "path": "osfmk/arm/pmap.c",
+      "line": 10672,
+      "line_count": 18,
+      "sha256": "a65ed795a3d1777b57ae7d0c6715ce0d62b160cb1f0cc729dfb124e2d082992f",
+      "purpose": "published APRR/PPL block restoration"
+    },
+    {
+      "path": "osfmk/arm/pmap.c",
+      "line": 7874,
+      "line_count": 24,
+      "sha256": "befe0163110fc8295ac8ffe4887374105bacf1fefb5f4b17ce3936354a3e8722",
+      "purpose": "published APRR/PPL block restoration"
+    },
+    {
+      "path": "osfmk/arm/pmap.c",
+      "line": 7472,
+      "line_count": 24,
+      "sha256": "1796c5f1cdc90677edb6688ce3ef52e0f85d056c14a503bb1e05215bd302ca8c",
+      "purpose": "published APRR/PPL block restoration"
+    },
+    {
+      "path": "osfmk/arm/pmap.c",
+      "line": 5061,
+      "line_count": 4,
+      "sha256": "c67176aec20ac92a3eb61d7078e99f20644970f2a2a0b4b555bb8c9b96e65d8f",
+      "purpose": "published APRR/PPL block restoration"
+    },
+    {
+      "path": "osfmk/arm/pmap.c",
+      "line": 5038,
+      "line_count": 10,
+      "sha256": "01bd7a671462dbaa91104f39f2b36d7a24d008db0f5f9c1a36c66305d2d07948",
+      "purpose": "published APRR/PPL block restoration"
+    },
+    {
+      "path": "osfmk/arm/pmap.c",
+      "line": 4715,
+      "line_count": 15,
+      "sha256": "428ad9da3417511e9fa6891c82bbbe5c4a3fb13666c86f9fd326708e504f1a6c",
+      "purpose": "published APRR/PPL block restoration"
+    },
+    {
+      "path": "osfmk/arm/pmap.c",
+      "line": 4137,
+      "line_count": 65,
+      "sha256": "7758d775df180b1c2cc83e611f8d573a23cb40dd3e0ad95578caab8c1a09fbeb",
+      "purpose": "published APRR/PPL block restoration"
+    },
+    {
+      "path": "osfmk/arm/pmap.c",
+      "line": 4125,
+      "line_count": 11,
+      "sha256": "f70b2f4a24303a80934853e1b3ad19717264cf58dc00d006e4c2dfc494b10402",
+      "purpose": "published APRR/PPL block restoration"
+    },
+    {
+      "path": "osfmk/arm/pmap.c",
+      "line": 4097,
+      "line_count": 26,
+      "sha256": "d8be4117af144b1fdc2569f3284b79faa45ba6df2016d9b28846075901e33f03",
+      "purpose": "published APRR/PPL block restoration"
+    },
+    {
+      "path": "osfmk/arm/pmap.c",
+      "line": 1946,
+      "line_count": 4,
+      "sha256": "880d1a0704d2f54d1a3d599afb748d74f7a2b8eafb2d8580246081ac37ecc9f1",
+      "purpose": "published APRR/PPL block restoration"
+    },
+    {
+      "path": "osfmk/arm/pmap.c",
+      "line": 694,
+      "line_count": 6,
+      "sha256": "9b5d5c4ac41a4702bf861d4ab8916a333d4563c14bf66722d69d75b4fc33a00a",
+      "purpose": "published APRR/PPL block restoration"
+    },
+    {
+      "path": "osfmk/arm64/pinst.s",
+      "line": 126,
+      "line_count": 43,
+      "sha256": "7c813a4e8ca08e31e6baf1a8f072dc0ce9269ea3be8c830fbb61b0faf521ab5b",
+      "purpose": "published APRR/PPL block restoration"
+    },
+    {
+      "path": "osfmk/arm64/proc_reg.h",
+      "line": 1739,
+      "line_count": 224,
+      "sha256": "dfb1cdd7782ed9e4a2b3b6679f2f4cff8929ec91ae68cc9af0cfd7debfd0b2aa",
+      "purpose": "genuine published APRR permission map"
+    },
+    {
+      "path": "osfmk/arm64/start.s",
+      "line": 43,
+      "line_count": 28,
+      "sha256": "dc6f2c09034b273d41f7287b538163837e6393ffe2f247fdf69cb2873140a015",
+      "purpose": "protected APRR write macros"
+    },
+    {
+      "path": "osfmk/arm64/start.s",
+      "line": 610,
+      "line_count": 24,
+      "sha256": "993bf008fc6c58ce9761fdceaf4d3e0717134eeae8ee67efbf4a9dd51be33dbd",
+      "purpose": "boot CPU APRR initialization"
+    },
+    {
+      "path": "osfmk/arm64/start.s",
+      "line": 166,
+      "line_count": 20,
+      "sha256": "8381fbf77d366c221f4cfbaf1150b21e4cfd0df1f74668caa71413b88b0b429b",
+      "purpose": "native reset APRR initialization"
+    },
+    {
+      "path": "osfmk/arm64/start.s",
+      "line": 252,
+      "line_count": 56,
+      "sha256": "2853267606914ec3464cd7c4b01434bea7deee32929f60eb5ad5a7fac4d339bf",
+      "purpose": "native secondary/reset CTRR lock programming"
+    },
+    {
+      "path": "osfmk/arm64/locore.s",
+      "line": 45,
+      "line_count": 174,
+      "sha256": "fae2d92cfc448268518bcf618b124833e1d181f14510657349c510344ab6fc02",
+      "purpose": "complete protected PPL transition region"
+    },
+    {
+      "path": "osfmk/arm64/locore.s",
+      "line": 646,
+      "line_count": 7,
+      "sha256": "3f52a993b923cb534f5db2745b203a3f0b0d5cc54393e5a670c939765f6fa01a",
+      "purpose": "PPL-aware exception vector entry"
+    },
+    {
+      "path": "osfmk/arm64/locore.s",
+      "line": 524,
+      "line_count": 4,
+      "sha256": "91620fcccb9febb2a1089afead4b8b719ab13c27044ca24c54c1d17ea22f8069",
+      "purpose": "PPL-aware exception vector entry"
+    },
+    {
+      "path": "osfmk/arm64/locore.s",
+      "line": 513,
+      "line_count": 4,
+      "sha256": "df9e3b3f72da8908e0157bc7f0193753121e75bda9d738a28103a8f085ad751d",
+      "purpose": "PPL-aware exception vector entry"
+    },
+    {
+      "path": "osfmk/arm64/locore.s",
+      "line": 501,
+      "line_count": 4,
+      "sha256": "580b3ea938d3f7dec3d897134c02de25bef05e8d9e4004a1f0ae0e61861a8369",
+      "purpose": "PPL-aware exception vector entry"
+    },
+    {
+      "path": "osfmk/arm64/locore.s",
+      "line": 477,
+      "line_count": 8,
+      "sha256": "dbfd53e04327d033d14b72579ace26360087a13638cc4a2b0042ef1c5fb5a10f",
+      "purpose": "PPL-aware exception vector entry"
+    },
+    {
+      "path": "osfmk/arm64/locore.s",
+      "line": 1409,
+      "line_count": 522,
+      "sha256": "8f9d73d2f9c048f76a2a73ad67aa5cc2dcc14750e18ea87678138810ca15f6f1",
+      "purpose": "complete published APRR enter/dispatch/return with PAC"
+    },
+    {
+      "path": "osfmk/arm/pmap.c",
+      "line": 10654,
+      "line_count": 12,
+      "sha256": "b62c556ae734d1072a6fe3e53144ca10f8ce53d123c98b8bae853f5bf2de9331",
+      "purpose": "protected fast-fault PTE recheck while holding PVH lock"
+    }
+  ],
+  "adaptations": [
+    {
+      "path": "osfmk/arm64/locore.s",
+      "original": "SPILL_REGISTERS PPL_MODE",
+      "replacement": "SPILL_REGISTERS KERNEL_MODE",
+      "reason": "Donor publishes no PPL_MODE definition. Selected macro only checks mode != HIBERNATE_MODE, so existing KERNEL_MODE retains normal PAC saved-state signing; no unsigned hibernation path."
+    }
+  ],
+  "patch_sha256": "f718eae67d8b703dff21d63ac54da1a29d29fa35b900d7f25a69460e3766183f",
+  "private_driver_dispatch_abi_verified": false,
+  "physical_execution_verified": false
+}

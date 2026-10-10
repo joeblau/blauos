@@ -7,8 +7,8 @@ Milestone 1 is complete: a clean pinned source build boots an independent ARM64
 XNU guest to launchd and a shell, with networking, runtime/service tests and clean
 shutdown. [GitHub CI](https://github.com/joeblau/blauos/actions/runs/38074322304)
 and the [Gate 1 decision](evidence/gate-1.json) preserve the evidence and limits.
-Milestone 2 is in progress: native T8103 build experiments and physical lab,
-handoff and capture tools are available. Physical M1 kernel execution and
+Milestone 2 is in progress: a fresh experimental T8103 ARM64e kernel and
+platform extension build from source. Lab, handoff and capture tools are available. Physical M1 kernel execution and
 driver acceptance remain unverified.
 
 - [Release scope and evidence gates](docs/scope.md)

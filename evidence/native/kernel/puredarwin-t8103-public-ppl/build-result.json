@@ -1,0 +1,36 @@
+{
+  "argv": [
+    "cmake",
+    "--build",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl",
+    "--target",
+    "xnu",
+    "--parallel",
+    "6"
+  ],
+  "cwd": "/Users/joeblau/Developer/joeblau/src/blauos",
+  "exit_code": 2,
+  "raw_log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl/logs/build.log",
+  "raw_log_bytes": 3437711,
+  "raw_log_sha256": "9e108371aa1ad1c7ea3c5965b6e47e62e35138800a75f4f7eb231d56771cfdd9",
+  "errors": [
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:2407:22: error: expected ')'",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:2408:22: error: expected ')'",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:12326:6: error: address argument to atomic operation must be a pointer to a non address discriminated type ('volatile __ptrauth(2,1,32103) _Atomic(struct pmap *) *' invalid)",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c:12326:6: error: address argument to atomic operation must be a pointer to a non address discriminated type ('volatile __ptrauth(2,1,32103) _Atomic(struct pmap *) *' invalid)",
+    "make[11]: *** [pmap.o] Error 1",
+    "make[11]: *** Waiting for unfinished jobs....",
+    "make[10]: *** [build_all] Error 2",
+    "make[9]: *** [do_all] Error 2",
+    "make[8]: *** [build_all] Error 2",
+    "make[7]: *** [build_all_recurse_into_conf] Error 2",
+    "make[6]: *** [build_all_recurse_into_osfmk] Error 2",
+    "make[6]: *** Waiting for unfinished jobs....",
+    "make[5]: *** [build_all_bootstrap_DEVELOPMENT^ARM64^T8103] Error 2",
+    "make[4]: *** [install] Error 2",
+    "make[3]: *** [src/Kernel/xnu/xnu_build/src/xnu-stamp/xnu-build] Error 2",
+    "make[2]: *** [src/Kernel/xnu/CMakeFiles/xnu.dir/all] Error 2",
+    "make[1]: *** [src/Kernel/xnu/CMakeFiles/xnu.dir/rule] Error 2",
+    "make: *** [xnu] Error 2"
+  ]
+}

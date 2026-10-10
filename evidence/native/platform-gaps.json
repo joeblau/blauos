@@ -1,0 +1,572 @@
+{
+  "schema_version": 1,
+  "status": "source_audited_physical_acceptance_unverified",
+  "reviewer": "runtime_build",
+  "review_date": "2026-10-10",
+  "target": "Macmini9,1 / J274AP / T8103 (required target; no physical logs)",
+  "source_lock_sha256": "8022bbbfb33204b56bb3297cd8cbb39fb6c08ea65c476492d99462f7edfe3657",
+  "profiles": {
+    "selected_native_experiment": {
+      "source": "PureDarwin/PureDarwin",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "tree": "ed2345d7f3c11dad2e7f6ffeeb377adc789b12b8",
+      "family": "XNU7195 / Darwin20.5",
+      "configuration": "DEVELOPMENT ARM64e T8103"
+    },
+    "modern_native_audit": {
+      "source": "apple-oss-distributions/xnu",
+      "revision": "ac9718fb1af618d5ce8678d0dc6e8a58f252216f",
+      "family": "XNU12377.121.6",
+      "status": "required matching security/KDK interfaces unavailable"
+    },
+    "virtual_baseline": {
+      "status": "previous independently booted VIRT kernel/runtime proof, separate source profile",
+      "physical_m1_evidence": false
+    }
+  },
+  "software_evidence": {
+    "whole_native_kernel_link_verified": true,
+    "candidate_artifact": {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-final/src/Kernel/xnu/xnu/System/Library/Kernels/kernel.development.t8103",
+      "size": 15095024,
+      "sha256": "173b449882f760161120a9885b51381c322075afda50ffc091b9bad0843bff62",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-final/src/Kernel/xnu/xnu/System/Library/Kernels/kernel.development.t8103: Mach-O 64-bit executable arm64e"
+    },
+    "authorized_bootkc_verified": false,
+    "candidate_target_execution_verified": false,
+    "source_files": {
+      "pe_serial": {
+        "source_path": "src/Kernel/xnu/pexpert/arm/pe_serial.c",
+        "pinned_sha256": "1e9f38f8391dd679f56cb75e24878dcd74d6d89b004e937286c7868142394add",
+        "effective_path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/source-overlay/src/Kernel/xnu/pexpert/arm/pe_serial.c",
+        "effective_sha256": "1e9f38f8391dd679f56cb75e24878dcd74d6d89b004e937286c7868142394add",
+        "effective_bytes": 28884
+      },
+      "pe_kprintf": {
+        "source_path": "src/Kernel/xnu/pexpert/arm/pe_kprintf.c",
+        "pinned_sha256": "e1c55ff29c883f816593ec75ec01668a419e5551d90b2451aebf9cbec2bd830c",
+        "effective_path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/source-overlay/src/Kernel/xnu/pexpert/arm/pe_kprintf.c",
+        "effective_sha256": "e1c55ff29c883f816593ec75ec01668a419e5551d90b2451aebf9cbec2bd830c",
+        "effective_bytes": 4616
+      },
+      "pe_init": {
+        "source_path": "src/Kernel/xnu/pexpert/arm/pe_init.c",
+        "pinned_sha256": "7b656b12e21353443af6d636d578d78d823c5fe1c8eca420854c4a2a8b3b1a83",
+        "effective_path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/source-overlay/src/Kernel/xnu/pexpert/arm/pe_init.c",
+        "effective_sha256": "7b656b12e21353443af6d636d578d78d823c5fe1c8eca420854c4a2a8b3b1a83",
+        "effective_bytes": 24458
+      },
+      "pe_identify": {
+        "source_path": "src/Kernel/xnu/pexpert/arm/pe_identify_machine.c",
+        "pinned_sha256": "7196156a5ab814ee9edfcb8b1a4fda3f75fc20548978316dc074577b1fb2b621",
+        "effective_path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/source-overlay/src/Kernel/xnu/pexpert/arm/pe_identify_machine.c",
+        "effective_sha256": "7196156a5ab814ee9edfcb8b1a4fda3f75fc20548978316dc074577b1fb2b621",
+        "effective_bytes": 28626
+      },
+      "board": {
+        "source_path": "src/Kernel/xnu/pexpert/pexpert/arm64/board_config.h",
+        "pinned_sha256": "f3fc35e3e8d84366bd2a7672c49c7a780a415f04e71c6d1e833025e0617b3f41",
+        "effective_path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/source-overlay/src/Kernel/xnu/pexpert/pexpert/arm64/board_config.h",
+        "effective_sha256": "f3fc35e3e8d84366bd2a7672c49c7a780a415f04e71c6d1e833025e0617b3f41",
+        "effective_bytes": 8858
+      },
+      "h13": {
+        "source_path": "src/Kernel/xnu/pexpert/pexpert/arm64/H13.h",
+        "pinned_sha256": "e8b7609eb8416fd3b269bcca6f6f9706691e45be7bc2895562ecb6b5d328c6da",
+        "effective_path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/source-overlay/src/Kernel/xnu/pexpert/pexpert/arm64/H13.h",
+        "effective_sha256": "23b81d851ba92a1893f67d95b3ddfb237ac7dbdf0fc77a666737bfed090fd7c5",
+        "effective_bytes": 4136
+      },
+      "apple_common": {
+        "source_path": "src/Kernel/xnu/pexpert/pexpert/arm64/apple_arm64_common.h",
+        "pinned_sha256": "6b1d1c90f08bec2d807bd39a7f8cb67f33adc56e20252356d79717666ffbb4da",
+        "effective_path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/source-overlay/src/Kernel/xnu/pexpert/pexpert/arm64/apple_arm64_common.h",
+        "effective_sha256": "fef50e6584802b3cc1f6a1d449d14f722a2dfe102abdbb3c2f7615cb384edb27",
+        "effective_bytes": 3957
+      },
+      "apple_regs": {
+        "source_path": "src/Kernel/xnu/pexpert/pexpert/arm64/apple_arm64_regs.h",
+        "pinned_sha256": "6b68d6ff2a06c6ae68ce8bc574fa43baecc48d8f5ce857985b3102e1c70f53f0",
+        "effective_path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/source-overlay/src/Kernel/xnu/pexpert/pexpert/arm64/apple_arm64_regs.h",
+        "effective_sha256": "4c1fe2722caf99587950adbba7d824b85516fcd06859e429b5945844fa6bbe01",
+        "effective_bytes": 16854
+      },
+      "boot_args": {
+        "source_path": "src/Kernel/xnu/pexpert/pexpert/arm/boot.h",
+        "pinned_sha256": "2d7894d2dec88a382fb1a164982a67bbebedd60b064a53eedfc4218ad3dd1715",
+        "effective_path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/source-overlay/src/Kernel/xnu/pexpert/pexpert/arm/boot.h",
+        "effective_sha256": "2d7894d2dec88a382fb1a164982a67bbebedd60b064a53eedfc4218ad3dd1715",
+        "effective_bytes": 2684
+      },
+      "device_tree": {
+        "source_path": "src/Kernel/xnu/pexpert/pexpert/device_tree.h",
+        "pinned_sha256": "37771844b786a54de9e85de2f1158315bf956514cb01a8a936fd312d3fe075a0",
+        "effective_path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/source-overlay/src/Kernel/xnu/pexpert/pexpert/device_tree.h",
+        "effective_sha256": "37771844b786a54de9e85de2f1158315bf956514cb01a8a936fd312d3fe075a0",
+        "effective_bytes": 10229
+      },
+      "start": {
+        "source_path": "src/Kernel/xnu/osfmk/arm64/start.s",
+        "pinned_sha256": "30c6945de0d8195209165f99851820bc7b1146bddbb87c60156c0752aeeb4f29",
+        "effective_path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/source-overlay/src/Kernel/xnu/osfmk/arm64/start.s",
+        "effective_sha256": "db9389ab24b9b6ac5ff72159c4448c664ff37b40e6bf0688a3e01a01835ceaa8",
+        "effective_bytes": 44070
+      },
+      "arm_vm_init": {
+        "source_path": "src/Kernel/xnu/osfmk/arm64/arm_vm_init.c",
+        "pinned_sha256": "28dbf29d7f47ec18fada23c6fafc551254c9fcb23b687b5bd4e382d8c5266771",
+        "effective_path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/source-overlay/src/Kernel/xnu/osfmk/arm64/arm_vm_init.c",
+        "effective_sha256": "28dbf29d7f47ec18fada23c6fafc551254c9fcb23b687b5bd4e382d8c5266771",
+        "effective_bytes": 87672
+      },
+      "arm_init": {
+        "source_path": "src/Kernel/xnu/osfmk/arm/arm_init.c",
+        "pinned_sha256": "b9fa5858204376d84954f2e1c202eac0a69b9dadeb57e6c5a721879d5edf2d55",
+        "effective_path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/source-overlay/src/Kernel/xnu/osfmk/arm/arm_init.c",
+        "effective_sha256": "a995ede64748aed1e50e1a0a745a5ddeb7ccbab519cd9b6f42c2af33c835bfc7",
+        "effective_bytes": 44776
+      },
+      "pmap": {
+        "source_path": "src/Kernel/xnu/osfmk/arm/pmap.c",
+        "pinned_sha256": "92fa6cc848ed7a7e7adf014a0cb5491032187de5a3a8a640b15e58b678f8e748",
+        "effective_path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.c",
+        "effective_sha256": "843f52578863f104897e0f8e3410b0c181e74686f58f190385b3125820428086",
+        "effective_bytes": 453989
+      },
+      "pmap_h": {
+        "source_path": "src/Kernel/xnu/osfmk/arm/pmap.h",
+        "pinned_sha256": "c5cdebe50c26a80151edd999bca54d914f36665cb689620c8015cd4086c2f176",
+        "effective_path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/source-overlay/src/Kernel/xnu/osfmk/arm/pmap.h",
+        "effective_sha256": "21e79d2993bbee6099c42fbaea79192226a9f749c6b8f266231372a714b6a68e",
+        "effective_bytes": 27463
+      },
+      "locore": {
+        "source_path": "src/Kernel/xnu/osfmk/arm64/locore.s",
+        "pinned_sha256": "75f25689e78d08d17edbce54cdac0fabc1462a98bc2bec5946de5143ecfd4851",
+        "effective_path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/source-overlay/src/Kernel/xnu/osfmk/arm64/locore.s",
+        "effective_sha256": "308c0860fb21699269beb8406528f1d93d537e93706a12d49c5dbf1db197e33c",
+        "effective_bytes": 63830
+      },
+      "exceptions": {
+        "source_path": "src/Kernel/xnu/osfmk/arm64/exception_asm.h",
+        "pinned_sha256": "1da7dca1f1edf8343c9c4a2b78099a948a760ddccf970d97f5838faf6a407f10",
+        "effective_path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/source-overlay/src/Kernel/xnu/osfmk/arm64/exception_asm.h",
+        "effective_sha256": "869a42b5dfd11630bf071584b91f5b116a1dbd8fdf1e1745771bdf491c143a8d",
+        "effective_bytes": 8599
+      },
+      "sleh": {
+        "source_path": "src/Kernel/xnu/osfmk/arm64/sleh.c",
+        "pinned_sha256": "da2389178740f519407eecad40f9d0776d5690e42b848edd097e05ad94de3622",
+        "effective_path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/source-overlay/src/Kernel/xnu/osfmk/arm64/sleh.c",
+        "effective_sha256": "36ce601e6aad51626285533959333349b704d7116f52bfbdbb9d54b4937743bf",
+        "effective_bytes": 61499
+      },
+      "machine": {
+        "source_path": "src/Kernel/xnu/osfmk/arm64/machine_routines.c",
+        "pinned_sha256": "0f7acc11b8b84e62f94f280ef540566276671ec4d5f920ec5670cc40e8897905",
+        "effective_path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/source-overlay/src/Kernel/xnu/osfmk/arm64/machine_routines.c",
+        "effective_sha256": "2a58308f4c813f98a1da4e74f3b96f7101a290c53801f35b82e5eb9ab363a068",
+        "effective_bytes": 72551
+      },
+      "machine_asm": {
+        "source_path": "src/Kernel/xnu/osfmk/arm64/machine_routines_asm.s",
+        "pinned_sha256": "58af91ffbdcda0d17d917c3a15829280942b149b21a2f81050bf7687146c7b23",
+        "effective_path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/source-overlay/src/Kernel/xnu/osfmk/arm64/machine_routines_asm.s",
+        "effective_sha256": "b1855f9c94e8e5bbc066f08103660f0f8d24ae417b1ccb5aaee969e534413370",
+        "effective_bytes": 34647
+      },
+      "pac_asm": {
+        "source_path": "src/Kernel/xnu/osfmk/arm64/pac_asm.h",
+        "pinned_sha256": "f77ca14583aed6c44769149d078acbfb028090149d8a8fa4e5cdbb0cbf0556e9",
+        "effective_path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/source-overlay/src/Kernel/xnu/osfmk/arm64/pac_asm.h",
+        "effective_sha256": "57ef2fd99dd267c1745189628772b35340cf810d6749df40c1609fb685844c23",
+        "effective_bytes": 7754
+      },
+      "cswitch": {
+        "source_path": "src/Kernel/xnu/osfmk/arm64/cswitch.s",
+        "pinned_sha256": "dc608fd81c8c317f315c3c43dd3409fad8cc66d8d0f2981af0cf72f7d71a9022",
+        "effective_path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/source-overlay/src/Kernel/xnu/osfmk/arm64/cswitch.s",
+        "effective_sha256": "12b5b67cda15f6f7e32246801f16abe8d475c96cbf2dd6defa6b9cfd41e873e5",
+        "effective_bytes": 11327
+      },
+      "proc_reg": {
+        "source_path": "src/Kernel/xnu/osfmk/arm64/proc_reg.h",
+        "pinned_sha256": "3ac93c4b9287ca3c804396c97a4bd845ce1db9803939a1f628cabfc363781205",
+        "effective_path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/source-overlay/src/Kernel/xnu/osfmk/arm64/proc_reg.h",
+        "effective_sha256": "25bc560630835f5f4fb90fd2bb8142989ef63ba8b0f3dfbf9be72bad5e16ccfd",
+        "effective_bytes": 86409
+      },
+      "cpu": {
+        "source_path": "src/Kernel/xnu/osfmk/arm/cpu.c",
+        "pinned_sha256": "d5e410362e61271a4671a9ad64492d567d2db19d9d76a0641b1253f4ea9f9f95",
+        "effective_path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/source-overlay/src/Kernel/xnu/osfmk/arm/cpu.c",
+        "effective_sha256": "d5e410362e61271a4671a9ad64492d567d2db19d9d76a0641b1253f4ea9f9f95",
+        "effective_bytes": 19290
+      },
+      "cpu64": {
+        "source_path": "src/Kernel/xnu/osfmk/arm64/cpu.c",
+        "pinned_sha256": "938478568ba5e8b21ed24358b5f18a8e9d616c9556155209c5e5d997f836dd65",
+        "effective_path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/source-overlay/src/Kernel/xnu/osfmk/arm64/cpu.c",
+        "effective_sha256": "938478568ba5e8b21ed24358b5f18a8e9d616c9556155209c5e5d997f836dd65",
+        "effective_bytes": 32507
+      },
+      "iocpu": {
+        "source_path": "src/Kernel/xnu/iokit/Kernel/IOCPU.cpp",
+        "pinned_sha256": "e6736f9ecddaae41acb538345ca31270d926550ef75adb4177cbdba39e79395d",
+        "effective_path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/source-overlay/src/Kernel/xnu/iokit/Kernel/IOCPU.cpp",
+        "effective_sha256": "e6736f9ecddaae41acb538345ca31270d926550ef75adb4177cbdba39e79395d",
+        "effective_bytes": 18853
+      },
+      "kperf": {
+        "source_path": "src/Kernel/xnu/osfmk/kperf/kperf.c",
+        "pinned_sha256": "2d564f6ebb5c2c0af0030b508a625bb066126d545566b5d8e5f827829a3c07cb",
+        "effective_path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/source-overlay/src/Kernel/xnu/osfmk/kperf/kperf.c",
+        "effective_sha256": "2d564f6ebb5c2c0af0030b508a625bb066126d545566b5d8e5f827829a3c07cb",
+        "effective_bytes": 7461
+      },
+      "platform": {
+        "source_path": "src/Kernel/Extensions/PDArmPlatformExpert/PDArmPlatformExpert.cpp",
+        "pinned_sha256": "1d1bf7ada114d22974e826f4b0016abad34d537c43cbb87ad3e4b3e690f4029c",
+        "effective_path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/source-overlay/src/Kernel/Extensions/PDArmPlatformExpert/PDArmPlatformExpert.cpp",
+        "effective_sha256": "1d1bf7ada114d22974e826f4b0016abad34d537c43cbb87ad3e4b3e690f4029c",
+        "effective_bytes": 7949
+      },
+      "platform_cpu": {
+        "source_path": "src/Kernel/Extensions/PDArmPlatformExpert/PDArmCPU.cpp",
+        "pinned_sha256": "f36a9a612bede50e8b7762d4bb151574efc2aad223fa3b800265c6fe4f4ce432",
+        "effective_path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/source-overlay/src/Kernel/Extensions/PDArmPlatformExpert/PDArmCPU.cpp",
+        "effective_sha256": "f36a9a612bede50e8b7762d4bb151574efc2aad223fa3b800265c6fe4f4ce432",
+        "effective_bytes": 1772
+      },
+      "platform_aic": {
+        "source_path": "src/Kernel/Extensions/PDArmPlatformExpert/PDAppleAIC.cpp",
+        "pinned_sha256": "5b49f84b2ae86c5f64f54b267f535cea551b9d43475bb71d66f5f6ad9821797a",
+        "effective_path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/source-overlay/src/Kernel/Extensions/PDArmPlatformExpert/PDAppleAIC.cpp",
+        "effective_sha256": "2f32b6f37efb06ab1b6587a479c0676e806488666a3b17aa303c5eab1d3ff24d",
+        "effective_bytes": 9466
+      },
+      "platform_personalities": {
+        "source_path": "src/Kernel/Extensions/PDArmPlatformExpert/Info.plist",
+        "pinned_sha256": "915b78bb6adbfcf211313912e9c025fe00b5ed902d203283ff80a568c6610c67",
+        "effective_path": ".blauos/build/native/kernel/puredarwin-t8103-native-final/source-overlay/src/Kernel/Extensions/PDArmPlatformExpert/Info.plist",
+        "effective_sha256": "915b78bb6adbfcf211313912e9c025fe00b5ed902d203283ff80a568c6610c67",
+        "effective_bytes": 2716
+      }
+    },
+    "modern_source_files": [
+      {
+        "source_path": "pexpert/pexpert/arm64/boot.h",
+        "sha256": "479a74f100116358a0e425d8deefc62c5bcbee72e49e69721c9e2d9c53465cd3"
+      },
+      {
+        "source_path": "pexpert/pexpert/arm/boot.h",
+        "sha256": "2d7894d2dec88a382fb1a164982a67bbebedd60b064a53eedfc4218ad3dd1715"
+      },
+      {
+        "source_path": "pexpert/pexpert/arm64/board_config.h",
+        "sha256": "147ea1c2e2e23b7844dcebe3ae099f1443505997acb8063da309827b2fb299be"
+      },
+      {
+        "source_path": "osfmk/arm64/start.s",
+        "sha256": "a5c1a95b087f62f9e548bed7a0274cf420af1d69bfd656c1481d629093e2b07a"
+      },
+      {
+        "source_path": "osfmk/arm64/arm_vm_init.c",
+        "sha256": "9e17da181e72144d27df4ce256988226bfef0e41c0744fc9ef6466f0844c2a32"
+      }
+    ],
+    "native_patches": [
+      {
+        "path": "patches/native/0001-puredarwin-t8103-build-profile.patch",
+        "sha256": "76e05e5e7de0f9b5cdac6347e771007067bb19fdb34f4897c70628c72dbc4d65"
+      },
+      {
+        "path": "patches/native/0002-t8103-public-register-encodings.patch",
+        "sha256": "0480c7f6299844af5c6cdd6eb7fb23b76c0f32025cc0a2cf07f429f9bf9a685b"
+      },
+      {
+        "path": "patches/native/0003-t8103-current-clang-diagnostics.patch",
+        "sha256": "3e0f1aac169bf648054be8d20c0f0101404f0e4b6de54758ba3409688ce96f99"
+      },
+      {
+        "path": "patches/native/0004-t8103-public-platform-sources.patch",
+        "sha256": "cd1a6e6281fdda5775f1002d1a26433eb5f3e05d822e1cee0d2b23cb6915a04e"
+      },
+      {
+        "path": "patches/native/0005-t8103-public-ctrr-interface.patch",
+        "sha256": "45300148900c5b448f5a019e0c4f31145ee566f31c7259193faaa0b6f3352919"
+      },
+      {
+        "path": "patches/native/0006-t8103-early-diagnostics.patch",
+        "sha256": "f49d0c2456d54222d1c149cf84750204ae4281199d8156fa9b0748d09ae9894e"
+      },
+      {
+        "path": "patches/native/0007-t8103-aic-rearm-and-driver-abi.patch",
+        "sha256": "ec38272928a3bcf0d41e977dab316a02d255e15db483b64d82e0535a5bdbffca"
+      },
+      {
+        "path": "patches/native/0008-t8103-public-ppl-port.patch",
+        "sha256": "f718eae67d8b703dff21d63ac54da1a29d29fa35b900d7f25a69460e3766183f"
+      },
+      {
+        "path": "patches/native/0009-t8103-pac-atomic-storage.patch",
+        "sha256": "74b9880d6e9bd42285aec5d951efb24d78c0f036cfb7e71dfb63c570a58adf3e"
+      },
+      {
+        "path": "patches/native/0010-t8103-machine-register-encodings.patch",
+        "sha256": "c2b10d8513de1abdd8b2c06228b26e23f583a3410959cd0a6fd743be7b9565e3"
+      },
+      {
+        "path": "patches/native/0011-t8103-public-native-pac.patch",
+        "sha256": "b241ac693020cfeb0c614938f1d43789682bab65f17d6c5530614b9bae194dd4"
+      }
+    ],
+    "receipts": [
+      {
+        "path": "evidence/native/kernel/puredarwin-t8103-native-final/result.json",
+        "sha256": "d8479f6e6e24c8f76cdef80bef3e84c4962be828a4d22ceb781d50f4bb17053b"
+      },
+      {
+        "path": "evidence/native/native-pac/result.json",
+        "sha256": "0264f8f3f9e12bda0613de129345bcd5b1843667e391fe732137ba252f36afd7"
+      },
+      {
+        "path": "evidence/native/native-pac/inputs.json",
+        "sha256": "80799a08726fa9e53de56004bf0cbe643b78111fbadb8299570b92f490d6a41d"
+      },
+      {
+        "path": "evidence/native/early-diagnostics/result.json",
+        "sha256": "0875d9876ea8906929d98f913ae5ddca2a6464b7b86506295c0e15bddade34dc"
+      },
+      {
+        "path": "evidence/native/aic/native-final/result.json",
+        "sha256": "f3a3e4993ac70d2f7f289fbc27576d734c4188e30de72b5de30e29a1e4444716"
+      },
+      {
+        "path": "evidence/native/handoff/abi-layout.json",
+        "sha256": "4591112f6c310fd21a4452e377e672d0697f20de4d59682074e91840af240638"
+      },
+      {
+        "path": "platform/apple-m1/handoff/contract.json",
+        "sha256": "3ce67d69cd920c2310a7b908bab5b4d00389f3a1f5a8c3ad704126ea736e6ad9"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "issue": 29,
+      "subsystem": "UART and early diagnostics",
+      "source_refs": [
+        "h13",
+        "apple_common",
+        "pe_serial",
+        "pe_kprintf",
+        "arm_init"
+      ],
+      "implemented_source": [
+        "Apple S3c and dock-channel UART interfaces; ADT UART discovery, register mapping, clock/divider configuration and polling output.",
+        "KPRINTF startup chooses serial or console fallback; 0006 emits bounded partial nonce-bound identity/UUID/PC and live MMU/timer register snapshots."
+      ],
+      "missing_or_limited_interfaces": [
+        "Some legacy DT property status/size and mapped-range bounds are unchecked.",
+        "Transmit-ready wait is unbounded; output selection/DEVELOPMENT boot arguments and actual transport remain to be qualified.",
+        "Partial emitter does not implement the full proposed physical checkpoint protocol."
+      ],
+      "physical_acceptance_required": [
+        "Native polling UART transport and actual source/UUID/checkpoint bytes.",
+        "Captured defined panic/stop and target recovery."
+      ],
+      "implementation_status": "partial_source_implementation",
+      "physical_acceptance_verified": false,
+      "issue_acceptance_met": false
+    },
+    {
+      "issue": 30,
+      "subsystem": "Device discovery and memory map",
+      "source_refs": [
+        "boot_args",
+        "device_tree",
+        "pe_init",
+        "pe_identify",
+        "pe_serial",
+        "platform_aic",
+        "arm_init",
+        "arm_vm_init"
+      ],
+      "implemented_source": [
+        "Boot-argument/ADT handoff consumption, ARM64 physical-pointer conversion, SecureDT initialization and SoC/clock discovery.",
+        "Offline source-profile ADT/boot-argument parsing and memory reservation checks are implemented separately."
+      ],
+      "missing_or_limited_interfaces": [
+        "Runtime discovery assumes expected trusted firmware schema; some ranges/reg pointers lack size/status checks.",
+        "AIC child-address addition and mapped register spans lack complete overflow/window validation.",
+        "PE_init_platform discards interrupt initialization failure.",
+        "Explicit older 736 / modern 1152-byte ABI profiles cannot establish target handoff compatibility."
+      ],
+      "physical_acceptance_required": [
+        "Captured M1 boot arguments and ADT with essential UART/AIC/timer/CPU resources.",
+        "Actual RAM banks, boot assets, firmware/carveouts, stacks and page-table reservations reconciled before allocator use."
+      ],
+      "implementation_status": "partial_source_implementation",
+      "physical_acceptance_verified": false,
+      "issue_acceptance_met": false
+    },
+    {
+      "issue": 31,
+      "subsystem": "MMU and protected execution",
+      "source_refs": [
+        "board",
+        "h13",
+        "start",
+        "arm_vm_init",
+        "pmap",
+        "pmap_h",
+        "proc_reg",
+        "apple_regs",
+        "pac_asm",
+        "machine_asm",
+        "cswitch"
+      ],
+      "implemented_source": [
+        "T8103 H13 selects 16 KiB/PAC/CTRR/PPL/locks; real source startup and VM mapping/protection operations exist.",
+        "0008 restores 25 published APRR/PPL blocks, original selectors 0..76 and three explicitly local selectors 77..79.",
+        "0009 retains PAC-qualified nested_pmap and CASes already signed bits with real compiled PAC/CAS/authentication.",
+        "0011 restores genuine native startup/control/default/helper/context/exception PAC code including runtime fast/slow selection."
+      ],
+      "missing_or_limited_interfaces": [
+        "Modern Apple XNU requires missing matching security/KDK interfaces.",
+        "Older public source port and local PPL dispatch additions do not assert proprietary driver ABI or target firmware/BootKC compatibility.",
+        "Published static PAC diversifiers and master-key-valid hardware/firmware state require target review."
+      ],
+      "physical_acceptance_required": [
+        "Actual entry EL, granule/register agreement, bounded mappings and RO/RW/XN faults.",
+        "Cache/TLB transitions, CTRR/PPL lockdown and native PAC context/exception transitions."
+      ],
+      "implementation_status": "partial_source_implementation",
+      "physical_acceptance_verified": false,
+      "issue_acceptance_met": false
+    },
+    {
+      "issue": 32,
+      "subsystem": "Exceptions",
+      "source_refs": [
+        "locore",
+        "exceptions",
+        "sleh",
+        "start",
+        "pac_asm"
+      ],
+      "implemented_source": [
+        "Real SP0/SP1/user vector, GPR/NEON/register save and syndrome/fault triage/panic routes.",
+        "Native PPL exceptions and authenticated return paths restored; slow native PAC kernel keys restore before saved-state signing."
+      ],
+      "missing_or_limited_interfaces": [
+        "No controlled source-matched physical exception fixture has executed.",
+        "Earlier actual VIRT crash/core proof applies to a different platform profile."
+      ],
+      "physical_acceptance_required": [
+        "Actual controlled fault ESR/FAR/ELR/CPU/register capture and exact candidate symbolication.",
+        "Defined handled outcome or bounded panic/recovery."
+      ],
+      "implementation_status": "partial_source_implementation",
+      "physical_acceptance_verified": false,
+      "issue_acceptance_met": false
+    },
+    {
+      "issue": 33,
+      "subsystem": "Timers",
+      "source_refs": [
+        "machine",
+        "pe_identify",
+        "sleh"
+      ],
+      "implemented_source": [
+        "ISB+CNTVCT reads; architectural CNTV_TVAL decrementer and CNTV_CTL pending fallback.",
+        "ARM64 timebase setup and native FIQ classification for fast IPI, PMU and timer; rtclock interrupt route."
+      ],
+      "missing_or_limited_interfaces": [
+        "Native initialization requires and maps a DT timer reg node; actual M1 handoff compatibility is unobserved.",
+        "Unclassified non-IPI/non-PMU FIQs fall through to rtclock_intr; standard AIC IRQ and VIRT timer-PPI routes are separate.",
+        "Counter readings are not callback/delivery proof."
+      ],
+      "physical_acceptance_required": [
+        "Actual one-shot and periodic callback delivery, monotonicity/drift and correct IRQ/FIQ acknowledgment.",
+        "Sustained timer progress on supported P/E CPUs."
+      ],
+      "implementation_status": "partial_source_implementation",
+      "physical_acceptance_verified": false,
+      "issue_acceptance_met": false
+    },
+    {
+      "issue": 34,
+      "subsystem": "Apple AIC",
+      "source_refs": [
+        "platform",
+        "platform_aic",
+        "platform_personalities",
+        "platform_cpu",
+        "sleh"
+      ],
+      "implemented_source": [
+        "AppleARM personality selects native AIC; discovery/uncached mapping, initial mask/drain, external-event dispatch and primary IOKit registration.",
+        "0007 implements post-read rearm only if vector remains registered/enabled, hard-mask when disabled and completion ordering; actual matching driver links."
+      ],
+      "missing_or_limited_interfaces": [
+        "Only default controller name registered; commented per-phandle controller alias is absent.",
+        "All sources target CPU 0; no implemented affinity policy or proven multiple CPU delivery.",
+        "Unbounded event loop and incomplete MMIO resource-bound checks.",
+        "Apple expert logs late AIC init failure without failing startup."
+      ],
+      "physical_acceptance_required": [
+        "Exact native kernel import resolution and genuine device discovery.",
+        "Normal/spurious/storm, enable/disable/rearm, routing/affinity/IPI tests."
+      ],
+      "implementation_status": "partial_source_implementation",
+      "physical_acceptance_verified": false,
+      "issue_acceptance_met": false
+    },
+    {
+      "issue": 35,
+      "subsystem": "Processor registration and SMP",
+      "source_refs": [
+        "platform",
+        "platform_cpu",
+        "iocpu",
+        "cpu",
+        "cpu64",
+        "machine",
+        "kperf",
+        "pe_init",
+        "start",
+        "board",
+        "h13"
+      ],
+      "implemented_source": [
+        "One boot CPU object and single CPU interrupt vector; generic reset/secondary entry, per-CPU data and native fast IPI source exist."
+      ],
+      "missing_or_limited_interfaces": [
+        "PDArmCPU::startCPU returns KERN_FAILURE; quiesce/halt empty.",
+        "No ml_processor_register/ml_set_max_cpus call in platform module; boot startCommon bypasses ordinary IOCPU::start group/provider setup.",
+        "Generic cpu_start discards PE_cpu_start failure and returns success.",
+        "VIRT/BCM count-finalization shortcut excludes T8103; ml_wait_max_cpus consumers can wait for absent completion.",
+        "Compile-time maximum 8 CPUs / 2 clusters is not online topology."
+      ],
+      "physical_acceptance_required": [
+        "Real supported P/E processor registration/count completion and secondary power/reset handoff.",
+        "Per-CPU stacks/MMU/PAC/timer state, IPIs/scheduling/synchronization.",
+        "Repeated actual cold/warm boot observations."
+      ],
+      "implementation_status": "partial_source_implementation",
+      "physical_acceptance_verified": false,
+      "issue_acceptance_met": false
+    }
+  ],
+  "global_prerequisites_remaining": [
+    "Dedicated verified M1 target, recovery/capture operators and actual UART transport.",
+    "Matched targetOS/firmware/handoff/kernel/driver inventory.",
+    "Authorized BootKC/assets and actual independent kernel execution."
+  ],
+  "physical_execution_verified": false,
+  "hardware_attestation_verified": false,
+  "gate_2_passed": false
+}

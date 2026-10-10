@@ -1,0 +1,21 @@
+{
+  "argv": [
+    "make",
+    "-j4",
+    "SDKROOT=/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/headers/MacOSX.sdk",
+    "SDKROOT_RESOLVED=/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/headers/MacOSX.sdk",
+    "SDKVERSION=27.2",
+    "PLATFORMPATH=/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform",
+    "ARCH_CONFIGS=ARM64",
+    "KERNEL_CONFIGS=DEVELOPMENT",
+    "MACHINE_CONFIGS=T8103",
+    "RC_DARWIN_KERNEL_VERSION=25.5.0",
+    "OBJROOT=/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/apple-t8103-platform/obj",
+    "SYMROOT=/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/apple-t8103-platform/sym",
+    "DSTROOT=/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/apple-t8103-platform/dst",
+    "CONCISE=1",
+    "PLATFORM=MacOSX",
+    "WARNFLAGS_STD=-Wall -Wextra -Wno-missing-include-dirs"
+  ],
+  "cwd": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu"
+}

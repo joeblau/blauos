@@ -1,0 +1,160 @@
+1: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/allocate.c.o
+2: [  0%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/begin.c.o
+3: [  0%] Building C object tools/cctools/libmacho/CMakeFiles/host_libmacho.dir/arch.c.o
+4: [  0%] Building C object tools/unifdef/CMakeFiles/unifdef.dir/unifdef.c.o
+5: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/apple_version.c.o
+6: [  0%] Linking C executable unifdef
+7: [  0%] Linking C static library libmacho.a
+8: [  0%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/clscook.c.o
+9: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/arch_usage.c.o
+10: [  0%] Built target host_libmacho
+11: [  0%] Built target unifdef
+12: [  0%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/clscook_ELF64.c.o
+13: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/arch.c.o
+14: [  0%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_create.c.o
+15: [  0%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_abbrev.c.o
+16: [ 11%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/cntl.c.o
+17: [ 11%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/args.c.o
+18: [ 11%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_addr_finder.c.o
+19: [ 11%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_decl.c.o
+20: [ 11%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/cook.c.o
+21: [ 22%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_alloc.c.o
+22: [ 22%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/best_arch.c.o
+23: [ 22%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_error.c.o
+24: [ 22%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/data.c.o
+25: [ 22%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_arange.c.o
+26: [ 22%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_hash.c.o
+27: [ 22%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/breakout.c.o
+28: [ 22%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/end.c.o
+29: [ 22%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_die_deliv.c.o
+30: [ 22%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_labels.c.o
+31: [ 22%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/bytesex.c.o
+32: [ 22%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/error.c.o
+33: [ 22%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_error.c.o
+34: [ 22%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_lib.c.o
+35: [ 22%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/gelf.c.o
+36: [ 22%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_form.c.o
+37: [ 22%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_lookup.c.o
+38: [ 22%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/checkout.c.o
+39: [ 22%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getdata.c.o
+40: [ 22%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_frame.c.o
+41: [ 22%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_open.c.o
+42: [ 22%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/coff_bytesex.c.o
+43: [ 22%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getehdr.c.o
+44: [ 22%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_frame2.c.o
+45: [ 22%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getident.c.o
+46: [ 22%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/crc32.c.o
+47: [ 22%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_subr.c.o
+48: [ 22%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/dylib_table.c.o
+49: [ 22%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getscn.c.o
+50: [ 22%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_types.c.o
+51: [ 22%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_frame3.c.o
+52: [ 22%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getshdr.c.o
+53: [ 22%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_funcs.c.o
+54: [ 22%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_util.c.o
+55: [ 33%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/dylib_roots.c.o
+56: [ 33%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getshstrndx.c.o
+57: [ 33%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_global.c.o
+58: [ 44%] Linking C static library libctf.a
+59: [ 44%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/errors.c.o
+60: [ 44%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/input.c.o
+3359:      INSTALLHDR domain.h
+3360:      INSTALLHDR protosw.h
+3361:      INSTALLHDR _endian.h
+3362:      INSTALLHDR kpi_mbuf.h
+3363:      INSTALLHDR kpi_socket.h
+3364:      INSTALLHDR ttycom.h
+3365:      INSTALLHDR kpi_socketfilter.h
+3366:      INSTALLHDR msg.h
+3367:      INSTALLHDR wait.h
+3368:      INSTALLHDR spawn.h
+3369:      INSTALLHDR termios.h
+3370:      INSTALLHDR timex.h
+3371:      INSTALLHDR commpage.h
+3372:      INSTALLHDR codesign.h
+3373:      INSTALLHDR cprotect.h
+3374:      INSTALLHDR content_protection.h
+3375:      INSTALLHDR csr.h
+3376:      INSTALLHDR decmpfs.h
+3377:      INSTALLHDR eventhandler.h
+3378:      INSTALLHDR disktab.h
+3379:      INSTALLHDR fileport.h
+3380:      INSTALLHDR fsctl.h
+3381:      INSTALLHDR fbt.h
+3382:      INSTALLHDR fslog.h
+3383:      INSTALLHDR kasl.h
+3384:      INSTALLHDR kern_memorystatus.h
+3385:      INSTALLHDR kern_memorystatus_freeze.h
+3386:      INSTALLHDR kpi_private.h
+3387:      INSTALLHDR ktrace.h
+3388:      INSTALLHDR kern_memorystatus_notify.h
+3389:      INSTALLHDR linker_set.h
+3390:      INSTALLHDR mach_swapon.h
+3391:      INSTALLHDR monotonic.h
+3392:      INSTALLHDR msgbuf.h
+3393:      INSTALLHDR eventvar.h
+3394:      INSTALLHDR persona.h
+3395:      INSTALLHDR proc_info.h
+3396:      INSTALLHDR pthread_shims.h
+3397:      INSTALLHDR quota.h
+3398:      INSTALLHDR reboot.h
+3399:      INSTALLHDR sem_internal.h
+3400:      INSTALLHDR shm_internal.h
+3401:      INSTALLHDR stackshot.h
+3402:      INSTALLHDR signalvar.h
+3403:      INSTALLHDR ttychars.h
+3404:      INSTALLHDR tty.h
+3405:      INSTALLHDR ttydefaults.h
+3406:      INSTALLHDR ttydev.h
+3407:      INSTALLHDR user.h
+3408:      INSTALLHDR vfs_context.h
+3409:      INSTALLHDR vmmeter.h
+3410:      INSTALLHDR spawn_internal.h
+3411:      INSTALLHDR reason.h
+3412:      INSTALLHDR priv.h
+3413:      INSTALLHDR pgo.h
+3414:      INSTALLHDR doc_tombstone.h
+3415:      INSTALLHDR memory_maintenance.h
+3416:      INSTALLHDR fsevents.h
+3417:      INSTALLHDR work_interval.h
+3418:      INSTALLHDR kern_sysctl.h
+3419:      INSTALLHDR vsock_transport.h
+3420:      INSTALLHDR sysproto.h
+3421:      INSTALLHDR sys__types.modulemap
+3422:      INSTALLHDR sys_types.modulemap
+3423:      INSTALLHDR sys_cdefs.modulemap
+3424:      INSTALLHDR _symbol_aliasing.h
+3425: [100%] No install step for 'xnu_headers.extproj'
+3426: [100%] Completed 'xnu_headers.extproj'
+3427: [100%] Built target xnu_headers.extproj
+3428: [100%] Building C object src/Kernel/libkmod/CMakeFiles/libkmod.dir/c_start.c.o
+3429: [100%] Building C object src/Kernel/libkmod/CMakeFiles/libkmod.dir/c_stop.c.o
+3430: [100%] Linking C static library libkmod.a
+3431: [100%] Built target libkmod
+3432: [100%] Building CXX object src/Kernel/Extensions/PDArmPlatformExpert/CMakeFiles/PDArmPlatformExpert.dir/PDArmCPU.cpp.o
+3433: [100%] Building C object src/Kernel/Extensions/PDArmPlatformExpert/CMakeFiles/PDArmPlatformExpert.dir/kmod_info.c.o
+3434: [100%] Building CXX object src/Kernel/Extensions/PDArmPlatformExpert/CMakeFiles/PDArmPlatformExpert.dir/PDArmGIC.cpp.o
+3435: [100%] Building CXX object src/Kernel/Extensions/PDArmPlatformExpert/CMakeFiles/PDArmPlatformExpert.dir/PDArmPlatformExpert.cpp.o
+3436: [100%] Building CXX object src/Kernel/Extensions/PDArmPlatformExpert/CMakeFiles/PDArmPlatformExpert.dir/PDAppleAIC.cpp.o
+3437: [100%] Building CXX object src/Kernel/Extensions/PDArmPlatformExpert/CMakeFiles/PDArmPlatformExpert.dir/PDBcm2835IC.cpp.o
+3438: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/aic/native-final/source-overlay/src/Kernel/Extensions/PDArmPlatformExpert/PDAppleAIC.cpp:261:17: warning: implicit conversion changes signedness: 'uint32_t' (aka 'unsigned int') to 'IOInterruptVectorNumber' (aka 'int') [-Wsign-conversion]
+3439:   261 |                         enableVector(irq, vector);
+3440:       |                         ~~~~~~~~~~~~ ^~~
+3441: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/aic/native-final/source-overlay/src/Kernel/Extensions/PDArmPlatformExpert/PDAppleAIC.cpp:264:22: warning: implicit conversion changes signedness: 'uint32_t' (aka 'unsigned int') to 'IOInterruptVectorNumber' (aka 'int') [-Wsign-conversion]
+3442:   264 |                         disableVectorHard(irq, vector);
+3443:       |                         ~~~~~~~~~~~~~~~~~ ^~~
+3444: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/aic/native-final/source-overlay/src/Kernel/Extensions/PDArmPlatformExpert/PDAppleAIC.cpp:293:10: warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
+3445:   293 |         write32(kAICIntMaskSet(vectorNumber / 32), 1u << (vectorNumber % 32));
+3446:       |         ~~~~~~~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+3447: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/aic/native-final/source-overlay/src/Kernel/Extensions/PDArmPlatformExpert/PDAppleAIC.cpp:22:42: note: expanded from macro 'kAICIntMaskSet'
+3448:    22 | #define kAICIntMaskSet(n)        (0x4100 + (n) * 4)
+3449:       |                                   ~~~~~~~^~~~~~~~~
+3450: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/aic/native-final/source-overlay/src/Kernel/Extensions/PDArmPlatformExpert/PDAppleAIC.cpp:300:10: warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
+3451:   300 |         write32(kAICIntMaskClr(vectorNumber / 32), 1u << (vectorNumber % 32));
+3452:       |         ~~~~~~~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+3453: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/aic/native-final/source-overlay/src/Kernel/Extensions/PDArmPlatformExpert/PDAppleAIC.cpp:23:42: note: expanded from macro 'kAICIntMaskClr'
+3454:    23 | #define kAICIntMaskClr(n)        (0x4180 + (n) * 4)
+3455:       |                                   ~~~~~~~^~~~~~~~~
+3456: 4 warnings generated.
+3457: [100%] Linking CXX CFBundle shared module PDArmPlatformExpert.kext/Contents/MacOS/PDArmPlatformExpert
+3458: [100%] Built target PDArmPlatformExpert

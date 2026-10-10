@@ -5,8 +5,11 @@ Tracks [#28](https://github.com/joeblau/blauos/issues/28) and
 been captured. [physical_evidence.py](../../scripts/platform/physical_evidence.py)
 checks evidence files offline; it does not authorize boot objects, install
 images, change policy, reset hardware or approve Gate 2. The currently
-proposed kernel instrumentation is **not implemented**. A source build,
-passive serial collector and unit tests do not complete the hardware tasks.
+full checkpoint protocol below is **not implemented**. A separate
+[partial early diagnostic hook](m1-early-diagnostics.md) has compiled as a
+native kernel object, but emits a different protocol and lacks the required
+hardware tests and bindings. A source build, passive serial collector and
+unit tests do not complete the hardware tasks.
 
 The dedicated target is Macmini9,1, Apple M1/T8103, J274AP. Those identifiers
 refer to the 2020 M1 Mac mini in the

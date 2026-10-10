@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "status": "compile_only_pass",
+  "fixture_kind": "synthetic_pointer_signing_atomic_probe",
+  "patch": "patches/native/0009-t8103-pac-atomic-storage.patch",
+  "patch_sha256": "74b9880d6e9bd42285aec5d951efb24d78c0f036cfb7e71dfb63c570a58adf3e",
+  "source_sha256": "dd9d8c5a7b112ca4f906cba06a8fb6b051dcd39498849734288abb510d5d21a9",
+  "artifact_sha256": "967bdd58c134501fe0b75f1fe4c89a5319003d2c0ca482bc1c3f2a6daae2ab2e",
+  "artifact": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/pac-atomic-fixture/pac-atomic.o",
+  "mach_header": {
+    "cpu_type": 16777228,
+    "cpu_subtype": "0xc0000002",
+    "file_type": 1
+  },
+  "compiler": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+  "compiler_sha256": "0993175af320361435e566fa638ad3f0852efe3599bf026da08d9d82be8275fa",
+  "compile_command": [
+    "/usr/bin/xcrun",
+    "--sdk",
+    "macosx",
+    "clang",
+    "-arch",
+    "arm64e",
+    "-mcpu=apple-a14",
+    "-mkernel",
+    "-O2",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-c",
+    ".blauos/build/native/kernel/pac-atomic-fixture/pac-atomic.c",
+    "-o",
+    ".blauos/build/native/kernel/pac-atomic-fixture/pac-atomic.o"
+  ],
+  "compile_exit_code": 0,
+  "disassembly_command": [
+    "/usr/bin/xcrun",
+    "otool",
+    "-tv",
+    ".blauos/build/native/kernel/pac-atomic-fixture/pac-atomic.o"
+  ],
+  "disassembly_sha256": "639c0a49ba80ce409f8fd70567701e6b8a9822df978299a683ac9802b3a8c0c9",
+  "verified_instructions": {
+    "sign": "pacda x17,x16",
+    "store": "cas x8,x17,[x0]",
+    "discriminator": 32103,
+    "read": "autda x16,x17",
+    "authentication_failure": "brk #0xc472"
+  },
+  "field_pac_qualifier_removed": false,
+  "physical_execution_verified": false,
+  "documentation": "https://clang.llvm.org/docs/PointerAuthentication.html"
+}

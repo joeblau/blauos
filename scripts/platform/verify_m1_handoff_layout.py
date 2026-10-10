@@ -3,11 +3,14 @@
 import argparse
 import hashlib
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / "scripts/build"))
+from headers import locked_source
 
 
 def main():
@@ -18,13 +21,27 @@ def main():
     args = parser.parse_args()
     contract_path = ROOT / "platform/apple-m1/handoff/contract.json"
     contract = json.loads(contract_path.read_text())
+    environment = {name: value for name, value in os.environ.items() if name in
+                   {"PATH", "HOME", "TMPDIR", "TMP", "TEMP", "USER", "LOGNAME",
+                    "SHELL", "LANG", "LC_ALL", "DEVELOPER_DIR"}}
+    compiler = Path(subprocess.check_output(
+        ["/usr/bin/xcrun", "--sdk", "macosx", "--find", "clang"],
+        env=environment, text=True).strip()).resolve()
+    sdk = Path(subprocess.check_output(
+        ["/usr/bin/xcrun", "--sdk", "macosx", "--show-sdk-path"],
+        env=environment, text=True).strip()).resolve()
     pins = {source["name"]: source["revision"] for source in
             json.loads((ROOT / "sources.lock.json").read_text())["sources"]}
     result = {"schema_version": 1, "status": "failed", "compile_only": True,
               "physical_execution_verified": False, "steps": [], "errors": [],
               "verified_source_files": [],
               "source_contract_sha256": hashlib.sha256(contract_path.read_bytes()).hexdigest(),
-              "compiler_version": subprocess.check_output(["xcrun", "clang", "--version"], text=True)}
+              "verifier_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+              "compiler_path": str(compiler),
+              "compiler_sha256": hashlib.sha256(compiler.read_bytes()).hexdigest(),
+              "sdk_path": str(sdk),
+              "compiler_version": subprocess.check_output([str(compiler), "--version"],
+                                                          env=environment, text=True)}
     args.output_dir.mkdir(parents=True, exist_ok=True)
     shim = args.output_dir / "irrelevant-header-shims/pexpert/arm"
     shim.mkdir(parents=True, exist_ok=True)
@@ -34,8 +51,8 @@ def main():
         (shim / name).write_text("/* Compile-only irrelevant include shim; no runtime code. */\n")
     for profile, record in contract["profiles"].items():
         source = record["sources"][0]
-        checkout = args.sources_dir / source["source"]
-        revision = subprocess.check_output(["git", "-C", str(checkout), "rev-parse", "HEAD"], text=True).strip()
+        checkout = locked_source(ROOT / "sources.lock.json", source["source"], args.sources_dir)
+        revision = pins[source["source"]]
         header = checkout / source["path"]
         mismatch = False
         for bound_source in record["sources"]:
@@ -58,9 +75,10 @@ def main():
         probe = args.output_dir / (profile + ".c")
         probe.write_text("\n".join(code) + "\n")
         for architecture in ("arm64", "arm64e"):
-            command = ["xcrun", "clang", "-arch", architecture, "-mmacosx-version-min=11.0", "-fsyntax-only",
+            command = [str(compiler), "-isysroot", str(sdk), "-arch", architecture,
+                       "-mmacosx-version-min=11.0", "-fsyntax-only",
                        "-Wall", "-Wextra", "-Werror", "-I" + str(shim.parents[1]), str(probe)]
-            process = subprocess.run(command, capture_output=True, text=True)
+            process = subprocess.run(command, env=environment, capture_output=True, text=True)
             result["steps"].append({"profile": profile, "architecture": architecture, "command": command,
                                     "exit_code": process.returncode, "diagnostics": process.stdout + process.stderr,
                                     "header_sha256": source["sha256"]})

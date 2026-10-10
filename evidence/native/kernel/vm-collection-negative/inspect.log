@@ -1,0 +1,2 @@
+1: No variant specified, falling back to release
+2: An error occurred while loading boot kernel collection: Prelink info section has no _PrelinkKCID

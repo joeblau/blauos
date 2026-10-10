@@ -1,0 +1,14 @@
+{
+  "status": "headers-generated",
+  "base_sdk": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+  "sdk_overlay": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/headers/MacOSX.sdk",
+  "darwin_version": "25.5.0",
+  "manifest_sha256": "8022bbbfb33204b56bb3297cd8cbb39fb6c08ea65c476492d99462f7edfe3657",
+  "installed_file_count": 3426,
+  "installed_inventory_sha256": "ed4aaa10c6c67190479be3b352afeb4e62d51290dbac94b958dc52fe9861a697",
+  "raw_receipt": ".blauos/build/native/kernel/headers/result.full.json",
+  "raw_receipt_sha256": "1bc560af54facd4f5784e6edfc360a19a0a96cc54c3544fd6f8cb725ee99ad89",
+  "independent_baseline_receipt": "evidence/kernel/headers/result.json",
+  "independent_baseline_receipt_sha256": "6537417785b1ecf45b26556f2a91cae1798a40ef6ffb88993765223a59e268a1",
+  "installed_files_equal_independent_baseline": true
+}

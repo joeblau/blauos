@@ -1,0 +1,4 @@
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/aic/driver-final/src/Kernel/Extensions/PDArmPlatformExpert/PDArmPlatformExpert.kext/Contents/MacOS/PDArmPlatformExpert:
+Mach header
+      magic  cputype cpusubtype  caps    filetype ncmds sizeofcmds      flags
+MH_MAGIC_64    ARM64          E KER00  KEXTBUNDLE    11       1416   NOUNDEFS DYLDLINK TWOLEVEL

@@ -1,0 +1,1657 @@
+diff --git a/src/Kernel/xnu/osfmk/arm/pmap.c b/src/Kernel/xnu/osfmk/arm/pmap.c
+index e46129d..b04cde6 100644
+--- a/src/Kernel/xnu/osfmk/arm/pmap.c
++++ b/src/Kernel/xnu/osfmk/arm/pmap.c
+@@ -694,6 +694,14 @@ extern vm_offset_t   segPPLDATAB;
+ extern unsigned long segSizePPLDATA;
+ extern vm_offset_t   segPPLTEXTB;
+ extern unsigned long segSizePPLTEXT;
++#if defined(ARM64_BOARD_CONFIG_T8103)
++#if __APRR_SUPPORTED__
++extern vm_offset_t   segPPLTRAMPB;
++extern unsigned long segSizePPLTRAMP;
++extern void ppl_trampoline_start;
++extern void ppl_trampoline_end;
++#endif
++#endif /* T8103 public PPL port */
+ extern vm_offset_t   segPPLDATACONSTB;
+ extern unsigned long segSizePPLDATACONST;
+ 
+@@ -2003,6 +2011,12 @@ static void pmap_unpin_kernel_pages(vm_offset_t kva, size_t nbytes);
+ static void pmap_trim_self(pmap_t pmap);
+ static void pmap_trim_subord(pmap_t subord);
+ 
++#if defined(ARM64_BOARD_CONFIG_T8103)
++#if __APRR_SUPPORTED__
++static uint64_t pte_to_xprr_perm(pt_entry_t pte);
++static pt_entry_t xprr_perm_to_pte(uint64_t perm);
++#endif /* __APRR_SUPPORTED__*/
++#endif /* T8103 public PPL port */
+ 
+ /*
+  * Temporary prototypes, while we wait for pmap_enter to move to taking an
+@@ -2377,6 +2391,34 @@ PMAP_SUPPORT_PROTOTYPES(
+ 	PMAP_LEDGER_FREE_INDEX);
+ #endif
+ 
++#if defined(ARM64_BOARD_CONFIG_T8103)
++#if __APRR_SUPPORTED__
++/*
++ * Indicates whether the given PTE has special restrictions due to the current
++ * APRR settings.
++ */
++static boolean_t
++is_pte_aprr_protected(pt_entry_t pte)
++{
++	uint64_t aprr_el0_value;
++	uint64_t aprr_el1_value;
++	uint64_t aprr_index;
++
++	MRS(aprr_el0_value, APRR_EL0);
++	MRS(aprr_el1_value, APRR_EL1);
++	aprr_index = PTE_TO_APRR_INDEX(pte);
++
++	/* Check to see if this mapping had APRR restrictions. */
++	if ((APRR_EXTRACT_IDX_ATTR(aprr_el0_value, aprr_index) != APRR_EXTRACT_IDX_ATTR(APRR_EL0_RESET, aprr_index)) ||
++	    (APRR_EXTRACT_IDX_ATTR(aprr_el1_value, aprr_index) != APRR_EXTRACT_IDX_ATTR(APRR_EL1_RESET, aprr_index))
++	    ) {
++		return TRUE;
++	}
++
++	return FALSE;
++}
++#endif /* __APRR_SUPPORTED__ */
++#endif /* T8103 public PPL port */
+ 
+ 
+ 
+@@ -4227,7 +4269,87 @@ pmap_pte(
+ 
+ 
+ 
++#if defined(ARM64_BOARD_CONFIG_T8103)
++#if __APRR_SUPPORTED__
++static boolean_t
++is_pte_xprr_protected(pmap_t pmap __unused, pt_entry_t pte)
++{
++#if __APRR_SUPPORTED__
++	return is_pte_aprr_protected(pte);
++#else /* __APRR_SUPPORTED__ */
++#error "XPRR configuration error"
++#endif /* __APRR_SUPPORTED__ */
++}
++#endif /* __APRR_SUPPORTED__*/
++#endif /* T8103 public PPL port */
++
++#if defined(ARM64_BOARD_CONFIG_T8103)
++#if __APRR_SUPPORTED__
++static uint64_t
++__unused pte_to_xprr_perm(pt_entry_t pte)
++{
++#if   __APRR_SUPPORTED__
++	switch (PTE_TO_APRR_INDEX(pte)) {
++	case APRR_FIRM_RX_INDEX:  return XPRR_FIRM_RX_PERM;
++	case APRR_FIRM_RO_INDEX:  return XPRR_FIRM_RO_PERM;
++	case APRR_PPL_RW_INDEX:   return XPRR_PPL_RW_PERM;
++	case APRR_KERN_RW_INDEX:  return XPRR_KERN_RW_PERM;
++	case APRR_FIRM_RW_INDEX:  return XPRR_FIRM_RW_PERM;
++	case APRR_KERN0_RW_INDEX: return XPRR_KERN0_RW_PERM;
++	case APRR_USER_JIT_INDEX: return XPRR_USER_JIT_PERM;
++	case APRR_USER_RW_INDEX:  return XPRR_USER_RW_PERM;
++	case APRR_PPL_RX_INDEX:   return XPRR_PPL_RX_PERM;
++	case APRR_KERN_RX_INDEX:  return XPRR_KERN_RX_PERM;
++	case APRR_USER_XO_INDEX:  return XPRR_USER_XO_PERM;
++	case APRR_KERN_RO_INDEX:  return XPRR_KERN_RO_PERM;
++	case APRR_KERN0_RX_INDEX: return XPRR_KERN0_RO_PERM;
++	case APRR_KERN0_RO_INDEX: return XPRR_KERN0_RO_PERM;
++	case APRR_USER_RX_INDEX:  return XPRR_USER_RX_PERM;
++	case APRR_USER_RO_INDEX:  return XPRR_USER_RO_PERM;
++	default:                  return XPRR_MAX_PERM;
++	}
++#else
++#error "XPRR configuration error"
++#endif /**/
++}
+ 
++#if __APRR_SUPPORTED__
++static uint64_t
++xprr_perm_to_aprr_index(uint64_t perm)
++{
++	switch (perm) {
++	case XPRR_FIRM_RX_PERM:  return APRR_FIRM_RX_INDEX;
++	case XPRR_FIRM_RO_PERM:  return APRR_FIRM_RO_INDEX;
++	case XPRR_PPL_RW_PERM:   return APRR_PPL_RW_INDEX;
++	case XPRR_KERN_RW_PERM:  return APRR_KERN_RW_INDEX;
++	case XPRR_FIRM_RW_PERM:  return APRR_FIRM_RW_INDEX;
++	case XPRR_KERN0_RW_PERM: return APRR_KERN0_RW_INDEX;
++	case XPRR_USER_JIT_PERM: return APRR_USER_JIT_INDEX;
++	case XPRR_USER_RW_PERM:  return APRR_USER_RW_INDEX;
++	case XPRR_PPL_RX_PERM:   return APRR_PPL_RX_INDEX;
++	case XPRR_KERN_RX_PERM:  return APRR_KERN_RX_INDEX;
++	case XPRR_USER_XO_PERM:  return APRR_USER_XO_INDEX;
++	case XPRR_KERN_RO_PERM:  return APRR_KERN_RO_INDEX;
++	case XPRR_KERN0_RX_PERM: return APRR_KERN0_RO_INDEX;
++	case XPRR_KERN0_RO_PERM: return APRR_KERN0_RO_INDEX;
++	case XPRR_USER_RX_PERM:  return APRR_USER_RX_INDEX;
++	case XPRR_USER_RO_PERM:  return APRR_USER_RO_INDEX;
++	default:                 return APRR_MAX_INDEX;
++	}
++}
++#endif /* __APRR_SUPPORTED__ */
++
++static pt_entry_t
++__unused xprr_perm_to_pte(uint64_t perm)
++{
++#if   __APRR_SUPPORTED__
++	return APRR_INDEX_TO_PTE(xprr_perm_to_aprr_index(perm));
++#else
++#error "XPRR configuration error"
++#endif /**/
++}
++#endif /* __APRR_SUPPORTED__*/
++#endif /* T8103 public PPL port */
+ 
+ 
+ /*
+@@ -4762,6 +4884,23 @@ pmap_bootstrap(
+ 	}
+ #endif /* CONFIG_CSR_FROM_DT */
+ 
++#if defined(ARM64_BOARD_CONFIG_T8103)
++#if __APRR_SUPPORTED__
++	if (((uintptr_t)(&ppl_trampoline_start)) % PAGE_SIZE) {
++		panic("%s: ppl_trampoline_start is not page aligned, "
++		    "vstart=%#lx",
++		    __FUNCTION__,
++		    vstart);
++	}
++
++	if (((uintptr_t)(&ppl_trampoline_end)) % PAGE_SIZE) {
++		panic("%s: ppl_trampoline_end is not page aligned, "
++		    "vstart=%#lx",
++		    __FUNCTION__,
++		    vstart);
++	}
++#endif /* __APRR_SUPPORTED__ */
++#endif /* T8103 public PPL port */
+ #endif /* XNU_MONITOR */
+ 
+ #if DEVELOPMENT || DEBUG
+@@ -5121,6 +5260,18 @@ pmap_static_allocations_done(void)
+ 	/* PPL text is RX for the PPL, RO for the kernel. */
+ 	pa_set_range_xprr_perm(monitor_start_pa, monitor_end_pa, XPRR_KERN_RX_PERM, XPRR_PPL_RX_PERM);
+ 
++#if defined(ARM64_BOARD_CONFIG_T8103)
++#if __APRR_SUPPORTED__
++	monitor_start_pa = kvtophys(segPPLTRAMPB);
++	monitor_end_pa = monitor_start_pa + segSizePPLTRAMP;
++
++	/*
++	 * The PPLTRAMP pages will be a mix of PPL RX/kernel RO and
++	 * PPL RX/kernel RX.  However, all of these pages belong to the PPL.
++	 */
++	pa_set_range_monitor(monitor_start_pa, monitor_end_pa);
++#endif
++#endif /* T8103 public PPL port */
+ 
+ 	/*
+ 	 * In order to support DTrace, the save areas for the PPL must be
+@@ -5134,6 +5285,12 @@ pmap_static_allocations_done(void)
+ 		pmap_set_range_xprr_perm(monitor_start_va, monitor_end_va, XPRR_PPL_RW_PERM, XPRR_KERN_RW_PERM);
+ 	}
+ 
++#if defined(ARM64_BOARD_CONFIG_T8103)
++#if __APRR_SUPPORTED__
++	/* The trampoline must also be specially protected. */
++	pmap_set_range_xprr_perm((vm_offset_t)&ppl_trampoline_start, (vm_offset_t)&ppl_trampoline_end, XPRR_KERN_RX_PERM, XPRR_PPL_RX_PERM);
++#endif
++#endif /* T8103 public PPL port */
+ 
+ 	if (segSizePPLDATACONST > 0) {
+ 		monitor_start_pa = kvtophys(segPPLDATACONSTB);
+@@ -5158,7 +5315,13 @@ pmap_lockdown_ppl(void)
+ {
+ 	/* Mark the PPL as being locked down. */
+ 
++#if defined(ARM64_BOARD_CONFIG_T8103)
++	pmap_ppl_locked_down = TRUE;
++	/* Enter the protected context so APRR_EL1 is updated on return. */
++	pmap_return(FALSE, FALSE);
++#else
+ #error "XPRR configuration error"
++#endif
+ 
+ }
+ #endif /* XNU_MONITOR */
+@@ -7769,6 +7932,32 @@ pmap_page_protect_options_with_flush_range(
+ 				tmplate |= pt_attr_leaf_xn(pt_attr);
+ 			}
+ 
++#if defined(ARM64_BOARD_CONFIG_T8103)
++#if __APRR_SUPPORTED__
++			/**
++			 * Enforce the policy that PPL xPRR mappings can't have their permissions changed after the fact.
++			 *
++			 * Certain userspace applications (e.g., CrashReporter and debuggers) have a need to remap JIT mappings to
++			 * RO/RX, so we explicitly allow that. This doesn't compromise the security of the PPL since this only
++			 * affects userspace mappings, so allow reducing permissions on JIT mappings to RO/RX. This is similar for
++			 * user execute-only mappings.
++			 */
++			if (__improbable(is_pte_xprr_protected(pmap, spte) && (pte_to_xprr_perm(spte) != XPRR_USER_JIT_PERM)
++			    && (pte_to_xprr_perm(spte) != XPRR_USER_XO_PERM))) {
++				panic("%s: modifying an xPRR mapping pte_p=%p pmap=%p prot=%d options=%u, pv_h=%p, pveh_p=%p, pve_p=%p, pte=0x%llx, tmplate=0x%llx, va=0x%llx ppnum: 0x%x",
++				    __func__, pte_p, pmap, prot, options, pv_h, pveh_p, pve_p, (uint64_t)spte, (uint64_t)tmplate, (uint64_t)va, ppnum);
++			}
++
++			/**
++			 * Enforce the policy that we can't create a new PPL protected mapping here except for user execute-only
++			 * mappings (which doesn't compromise the security of the PPL since it's userspace-specific).
++			 */
++			if (__improbable(is_pte_xprr_protected(pmap, tmplate) && (pte_to_xprr_perm(tmplate) != XPRR_USER_XO_PERM))) {
++				panic("%s: creating an xPRR mapping pte_p=%p pmap=%p prot=%d options=%u, pv_h=%p, pveh_p=%p, pve_p=%p, pte=0x%llx, tmplate=0x%llx, va=0x%llx ppnum: 0x%x",
++				    __func__, pte_p, pmap, prot, options, pv_h, pveh_p, pve_p, (uint64_t)spte, (uint64_t)tmplate, (uint64_t)va, ppnum);
++			}
++#endif /* __APRR_SUPPORTED__*/
++#endif /* T8103 public PPL port */
+ 
+ 			if (*pte_p != ARM_PTE_TYPE_FAULT &&
+ 			    !ARM_PTE_IS_COMPRESSED(*pte_p, pte_p) &&
+@@ -8183,6 +8372,32 @@ pmap_protect_options_internal(
+ 			/* We do not expect to write fast fault the entry. */
+ 			pte_set_was_writeable(tmplate, false);
+ 
++#if defined(ARM64_BOARD_CONFIG_T8103)
++#if __APRR_SUPPORTED__
++			/**
++			 * Enforce the policy that PPL xPRR mappings can't have their permissions changed after the fact.
++			 *
++			 * Certain userspace applications (e.g., CrashReporter and debuggers) have a need to remap JIT mappings to
++			 * RO/RX, so we explicitly allow that. This doesn't compromise the security of the PPL since this only
++			 * affects userspace mappings, so allow reducing permissions on JIT mappings to RO/RX/XO. This is similar
++			 * for user execute-only mappings.
++			 */
++			if (__improbable(is_pte_xprr_protected(pmap, spte) && (pte_to_xprr_perm(spte) != XPRR_USER_JIT_PERM)
++			    && (pte_to_xprr_perm(spte) != XPRR_USER_XO_PERM))) {
++				panic("%s: modifying a PPL mapping pte_p=%p pmap=%p prot=%d options=%u, pte=0x%llx, tmplate=0x%llx",
++				    __func__, pte_p, pmap, prot, options, (uint64_t)spte, (uint64_t)tmplate);
++			}
++
++			/**
++			 * Enforce the policy that we can't create a new PPL protected mapping here except for user execute-only
++			 * mappings (which doesn't compromise the security of the PPL since it's userspace-specific).
++			 */
++			if (__improbable(is_pte_xprr_protected(pmap, tmplate) && (pte_to_xprr_perm(tmplate) != XPRR_USER_XO_PERM))) {
++				panic("%s: creating an xPRR mapping pte_p=%p pmap=%p prot=%d options=%u, pte=0x%llx, tmplate=0x%llx",
++				    __func__, pte_p, pmap, prot, options, (uint64_t)spte, (uint64_t)tmplate);
++			}
++#endif /* __APRR_SUPPORTED__*/
++#endif /* T8103 public PPL port */
+ 			WRITE_PTE_FAST(pte_p, tmplate);
+ 
+ 			if (managed) {
+@@ -11040,13 +11255,48 @@ arm_fast_fault_internal(
+ 			}
+ 			pai = (int)pa_index(pa);
+ 			LOCK_PVH(pai);
++#if defined(ARM64_BOARD_CONFIG_T8103)
++#if __APRR_SUPPORTED__
++			if (*ptep == spte) {
++				/*
++				 * Double-check the spte value, as we care
++				 * about the AF bit.
++				 */
++				break;
++			}
++			UNLOCK_PVH(pai);
++#else /* !(__APRR_SUPPORTED__*/
+ 			break;
++#endif /* !(__APRR_SUPPORTED__*/
++#else
++			break;
++#endif /* T8103 protected fault recheck */
+ 		}
+ 	} else {
+ 		pmap_unlock_ro(pmap);
+ 		return result;
+ 	}
+ 
++#if defined(ARM64_BOARD_CONFIG_T8103)
++#if __APRR_SUPPORTED__
++	/* Check to see if this mapping had APRR restrictions. */
++	if (is_pte_xprr_protected(pmap, spte)) {
++		/*
++		 * We have faulted on an XPRR managed mapping; decide if the access should be
++		 * reattempted or if it should cause an exception. Now that all JIT entitled
++		 * task threads always have MPRR enabled we're only here because of
++		 * an AF fault or an actual permission fault. AF faults will have result
++		 * changed to KERN_SUCCESS below upon arm_clear_fast_fault return.
++		 */
++		if (was_af_fault && (spte & ARM_PTE_AF)) {
++			result = KERN_SUCCESS;
++			goto out;
++		} else {
++			result = KERN_PROTECTION_FAILURE;
++		}
++	}
++#endif /* __APRR_SUPPORTED__*/
++#endif /* T8103 public PPL port */
+ 
+ 	if ((result != KERN_SUCCESS) &&
+ 	    ((IS_REFFAULT_PAGE(pai)) || ((fault_type & VM_PROT_WRITE) && IS_MODFAULT_PAGE(pai)))) {
+@@ -11108,6 +11358,9 @@ arm_fast_fault_internal(
+ 		}
+ 	}
+ 
++#if defined(ARM64_BOARD_CONFIG_T8103) && __APRR_SUPPORTED__
++out:
++#endif
+ 	UNLOCK_PVH(pai);
+ 	pmap_unlock_ro(pmap);
+ 	return result;
+diff --git a/src/Kernel/xnu/osfmk/arm/pmap.h b/src/Kernel/xnu/osfmk/arm/pmap.h
+index c4ba1b8..335ee2a 100644
+--- a/src/Kernel/xnu/osfmk/arm/pmap.h
++++ b/src/Kernel/xnu/osfmk/arm/pmap.h
+@@ -647,7 +647,17 @@ pmap_disable_user_jop(pmap_t pmap);
+ #define PMAP_TEST_TEXT_CORRUPTION_INDEX 76
+ #endif /* DEVELOPMENT || DEBUG */
+ 
++#if defined(ARM64_BOARD_CONFIG_T8103)
++/* BlauOS source-local PPL ABI: append unpublished selectors without guessing stock IDs.
++ * The generated source wrappers and handler table share this header. Private platform
++ * drivers have not been verified against this experimental source-local contract. */
++#define PMAP_IS_TRUST_CACHE_LOADED_INDEX 77
++#define PMAP_LOOKUP_IN_STATIC_TRUST_CACHE_INDEX 78
++#define PMAP_LOOKUP_IN_LOADED_TRUST_CACHES_INDEX 79
++#define PMAP_COUNT 80
++#else
+ #define PMAP_COUNT 77
++#endif
+ 
+ #define PMAP_INVALID_CPU_NUM (~0U)
+ 
+diff --git a/src/Kernel/xnu/osfmk/arm64/locore.s b/src/Kernel/xnu/osfmk/arm64/locore.s
+index f2c360a..7c1c26b 100644
+--- a/src/Kernel/xnu/osfmk/arm64/locore.s
++++ b/src/Kernel/xnu/osfmk/arm64/locore.s
+@@ -42,6 +42,182 @@
+ #include <arm/pmap.h>
+ #endif
+ 
++#if defined(ARM64_BOARD_CONFIG_T8103)
++#if XNU_MONITOR
++/*
++ * CHECK_EXCEPTION_RETURN_DISPATCH_PPL
++ *
++ * Checks if an exception was taken from the PPL, and if so, trampolines back
++ * into the PPL.
++ *   x26 - 0 if the exception was taken while in the kernel, 1 if the
++ *         exception was taken while in the PPL.
++ */
++.macro CHECK_EXCEPTION_RETURN_DISPATCH_PPL
++	cmp		x26, xzr
++	b.eq		1f
++
++	/* Return to the PPL. */
++	mov		x15, #0
++	mov		w10, #PPL_STATE_EXCEPTION
++#if __APRR_SUPPORTED__
++	b		Ldisable_aif_and_enter_ppl
++#else
++#error "XPRR configuration error"
++#endif /* __APRR_SUPPORTED__ */
++1:
++.endmacro
++
++#if __APRR_SUPPORTED__
++/*
++ * EL1_SP0_VECTOR_PPL_CHECK
++ *
++ * Check to see if the exception was taken by the kernel or the PPL.  Falls
++ * through if kernel, hands off to the given label if PPL.  Expects to run on
++ * SP1.
++ *   arg0 - Label to go to if this was a PPL exception.
++ */
++.macro EL1_SP0_VECTOR_PPL_CHECK
++	sub		sp, sp, ARM_CONTEXT_SIZE
++	stp		x0, x1, [sp, SS64_X0]
++	mrs		x0, APRR_EL1
++	MOV64		x1, APRR_EL1_DEFAULT
++	cmp		x0, x1
++	b.ne		$0
++	ldp		x0, x1, [sp, SS64_X0]
++	add		sp, sp, ARM_CONTEXT_SIZE
++.endmacro
++
++#define STAY_ON_SP1 0
++#define SWITCH_TO_SP0 1
++
++#define INVOKE_PREFLIGHT 0
++#define NO_INVOKE_PREFLIGHT 1
++
++/*
++ * EL1_SP0_VECTOR_NOT_IN_KERNEL_MODE
++ *
++ * Verify whether an exception came from the PPL or from the kernel.  If it came
++ * from the PPL, save off the PPL state and transition out of the PPL.
++ *   arg0 - Label to go to if this was a kernel exception
++ *   arg1 - Label to go to (after leaving the PPL) if this was a PPL exception
++ *   arg2 - Indicates if this should switch back to SP0
++ *   x0   - xPRR_EL1_BR1 read by EL1_SP0_VECTOR_PPL_CHECK
++ */
++.macro EL1_SP0_VECTOR_NOT_IN_KERNEL_MODE
++	/* Spill some more registers. */
++	stp		x2, x3, [sp, SS64_X2]
++
++	/*
++	 * Check if the PPL is locked down; if not, we can treat this as a
++	 * kernel execption.
++	 */
++	adrp	x1, EXT(pmap_ppl_locked_down)@page
++	ldr		w1, [x1, #EXT(pmap_ppl_locked_down)@pageoff]
++	cbz		x1, 2f
++
++	/* Ensure that APRR_EL1 is actually in PPL mode. */
++	MOV64		x1, APRR_EL1_PPL
++	cmp		x0, x1
++	b.ne		.
++
++	/*
++	 * Check if the CPU is in the PPL; if not we can treat this as a
++	 * kernel exception.
++	 */
++	GET_PMAP_CPU_DATA	x3, x1, x2
++	ldr		w1, [x3, PMAP_CPU_DATA_PPL_STATE]
++	cmp		x1, #PPL_STATE_KERNEL
++	b.eq		2f
++
++	/* Ensure that the CPU is in the expected PPL state. */
++	cmp		x1, #PPL_STATE_DISPATCH
++	b.ne		.
++
++	/* Mark the CPU as dealing with an exception. */
++	mov		x1, #PPL_STATE_EXCEPTION
++	str		w1, [x3, PMAP_CPU_DATA_PPL_STATE]
++
++	/* Load the bounds of the PPL trampoline. */
++	adrp	x0, EXT(ppl_no_exception_start)@page
++	add		x0, x0, EXT(ppl_no_exception_start)@pageoff
++	adrp	x1, EXT(ppl_no_exception_end)@page
++	add		x1, x1, EXT(ppl_no_exception_end)@pageoff
++
++	/*
++	 * Ensure that the exception did not occur in the trampoline.  If it
++	 * did, we are either being attacked or our state machine is
++	 * horrifically broken.
++	 */
++	mrs		x2, ELR_EL1
++	cmp		x2, x0
++	b.lo		1f
++	cmp		x2, x1
++	b.hi		1f
++
++	/* We might be under attack; spin. */
++	b		.
++
++1:
++	/* Get the PPL save area. */
++	mov		x1, x3
++	ldr		x0, [x3, PMAP_CPU_DATA_SAVE_AREA]
++
++	/* Save our x0, x1 state. */
++	ldp		x2, x3, [sp, SS64_X0]
++	stp		x2, x3, [x0, SS64_X0]
++
++	/* Restore SP1 to its original state. */
++	mov		x3, sp
++	add		sp, sp, ARM_CONTEXT_SIZE
++
++	.if $2 == SWITCH_TO_SP0
++	/* Switch back to SP0. */
++	msr		SPSel, #0
++	mov		x2, sp
++	.else
++	/* Load the SP0 value. */
++	mrs		x2, SP_EL0
++	.endif
++
++	/* Save off the stack pointer. */
++	str		x2, [x0, SS64_SP]
++
++	INIT_SAVED_STATE_FLAVORS x0, w1, w2
++
++	/* Save the context that was interrupted. */ 
++	ldp		x2, x3, [x3, SS64_X2]
++	SPILL_REGISTERS PPL_MODE
++
++	/*
++	 * Stash the function we wish to be invoked to deal with the exception;
++	 * usually this is some preflight function for the fleh_* handler.
++	 */
++	adrp		x25, $1@page
++	add		x25, x25, $1@pageoff
++
++	/*
++	 * Indicate that this is a PPL exception, and that we should return to
++	 * the PPL.
++	 */
++	mov		x26, #1
++
++	/* Transition back to kernel mode. */
++	mov		x15, #PPL_EXIT_EXCEPTION
++	b		ppl_return_to_kernel_mode
++2:
++	/* Restore SP1 state. */
++	ldp		x2, x3, [sp, SS64_X2]
++	ldp		x0, x1, [sp, SS64_X0]
++	add		sp, sp, ARM_CONTEXT_SIZE
++
++	/* Go to the specified label (usually the original exception vector). */
++	b		$0
++.endmacro
++#endif /* __APRR_SUPPORTED__ */
++
++#endif /* XNU_MONITOR */
++
++#else
+ #if XNU_MONITOR
+ /*
+  * CHECK_EXCEPTION_RETURN_DISPATCH_PPL
+@@ -65,6 +241,7 @@
+ 
+ #endif /* XNU_MONITOR */
+ 
++#endif /* T8103 PPL transition */
+ #define	CBF_DISABLE	0
+ #define	CBF_ENABLE	1
+ 
+@@ -333,6 +510,16 @@ Lel0_serror_vector_64:
+ .endmacro
+ 
+ el1_sp0_synchronous_vector_long:
++#if defined(ARM64_BOARD_CONFIG_T8103)
++#if XNU_MONITOR && __APRR_SUPPORTED__
++	/*
++	 * We do not have enough space for new instructions in this vector, so
++	 * jump to outside code to check if this exception was taken in the PPL.
++	 */
++	b		el1_sp0_synchronous_vector_ppl_check
++Lel1_sp0_synchronous_vector_kernel:
++#endif
++#endif /* T8103 public PPL port */
+ 	stp		x0, x1, [sp, #-16]!				// Save x0 and x1 to the exception stack
+ 	mrs		x1, ESR_EL1							// Get the exception syndrome
+ 	/* If the stack pointer is corrupt, it will manifest either as a data abort
+@@ -349,6 +536,12 @@ Lkernel_stack_valid:
+ 	b		fleh_dispatch64
+ 
+ el1_sp0_irq_vector_long:
++#if defined(ARM64_BOARD_CONFIG_T8103)
++#if XNU_MONITOR && __APRR_SUPPORTED__
++	EL1_SP0_VECTOR_PPL_CHECK el1_sp0_irq_vector_not_in_kernel_mode
++Lel1_sp0_irq_vector_kernel:
++#endif
++#endif /* T8103 public PPL port */
+ 	EL1_SP0_VECTOR
+ 	SWITCH_TO_INT_STACK
+ 	adrp	x1, EXT(fleh_irq)@page					// Load address for fleh
+@@ -357,6 +550,12 @@ el1_sp0_irq_vector_long:
+ 
+ el1_sp0_fiq_vector_long:
+ 	// ARM64_TODO write optimized decrementer
++#if defined(ARM64_BOARD_CONFIG_T8103)
++#if XNU_MONITOR && __APRR_SUPPORTED__
++	EL1_SP0_VECTOR_PPL_CHECK el1_sp0_fiq_vector_not_in_kernel_mode
++Lel1_sp0_fiq_vector_kernel:
++#endif
++#endif /* T8103 public PPL port */
+ 	EL1_SP0_VECTOR
+ 	SWITCH_TO_INT_STACK
+ 	adrp	x1, EXT(fleh_fiq)@page					// Load address for fleh
+@@ -364,6 +563,12 @@ el1_sp0_fiq_vector_long:
+ 	b		fleh_dispatch64
+ 
+ el1_sp0_serror_vector_long:
++#if defined(ARM64_BOARD_CONFIG_T8103)
++#if XNU_MONITOR && __APRR_SUPPORTED__
++	EL1_SP0_VECTOR_PPL_CHECK el1_sp0_serror_vector_not_in_kernel_mode
++Lel1_sp0_serror_vector_kernel:
++#endif
++#endif /* T8103 public PPL port */
+ 	EL1_SP0_VECTOR
+ 	adrp	x1, EXT(fleh_serror)@page				// Load address for fleh
+ 	add		x1, x1, EXT(fleh_serror)@pageoff
+@@ -459,6 +664,15 @@ el0_serror_vector_64_long:
+ 	add		x1, x1, EXT(fleh_serror)@pageoff
+ 	b		fleh_dispatch64
+ 
++#if defined(ARM64_BOARD_CONFIG_T8103)
++#if XNU_MONITOR && __APRR_SUPPORTED__
++el1_sp0_synchronous_vector_ppl_check:
++	EL1_SP0_VECTOR_PPL_CHECK el1_sp0_synchronous_vector_not_in_kernel_mode
++
++	/* Jump back to the primary exception vector if we fell through. */
++	b		Lel1_sp0_synchronous_vector_kernel
++#endif
++#endif /* T8103 public PPL port */
+ 
+ /*
+  * check_exception_stack
+@@ -1158,6 +1372,530 @@ tmp_alloc_count_nozero:
+ LEXT(ExceptionVectorsEnd)
+ #endif /* __ARM_KERNEL_PROTECT__ */
+ 
++#if defined(ARM64_BOARD_CONFIG_T8103)
++#if XNU_MONITOR
++#if __APRR_SUPPORTED__
++	.text
++	.align 2
++el1_sp0_synchronous_vector_not_in_kernel_mode:
++	EL1_SP0_VECTOR_NOT_IN_KERNEL_MODE Lel1_sp0_synchronous_vector_kernel, fleh_synchronous_from_ppl, STAY_ON_SP1
++
++	.text
++	.align 2
++el1_sp0_fiq_vector_not_in_kernel_mode:
++	EL1_SP0_VECTOR_NOT_IN_KERNEL_MODE Lel1_sp0_fiq_vector_kernel, fleh_fiq_from_ppl, SWITCH_TO_SP0
++
++	.text
++	.align 2
++el1_sp0_irq_vector_not_in_kernel_mode:
++	EL1_SP0_VECTOR_NOT_IN_KERNEL_MODE Lel1_sp0_irq_vector_kernel, fleh_irq_from_ppl, SWITCH_TO_SP0
++
++	.text
++	.align 2
++el1_sp0_serror_vector_not_in_kernel_mode:
++	EL1_SP0_VECTOR_NOT_IN_KERNEL_MODE Lel1_sp0_serror_vector_kernel, fleh_serror_from_ppl, SWITCH_TO_SP0
++#endif /* __APRR_SUPPORTED__ */
++
++/*
++ * Functions to preflight the fleh handlers when the PPL has taken an exception;
++ * mostly concerned with setting up state for the normal fleh code.
++ */
++fleh_synchronous_from_ppl:
++	/* Save x0. */
++	mov		x15, x0
++
++	/* Grab the ESR. */
++	mrs		x1, ESR_EL1							// Get the exception syndrome
++
++	/* If the stack pointer is corrupt, it will manifest either as a data abort
++	 * (syndrome 0x25) or a misaligned pointer (syndrome 0x26). We can check
++	 * these quickly by testing bit 5 of the exception class.
++	 */
++	tbz		x1, #(5 + ESR_EC_SHIFT), Lvalid_ppl_stack
++	mrs		x0, SP_EL0							// Get SP_EL0
++
++	/* Perform high level checks for stack corruption. */
++	and		x1, x1, #ESR_EC_MASK				// Mask the exception class
++	mov		x2, #(ESR_EC_SP_ALIGN << ESR_EC_SHIFT)
++	cmp		x1, x2								// If we have a stack alignment exception
++	b.eq	Lcorrupt_ppl_stack						// ...the stack is definitely corrupted
++	mov		x2, #(ESR_EC_DABORT_EL1 << ESR_EC_SHIFT)
++	cmp		x1, x2								// If we have a data abort, we need to
++	b.ne	Lvalid_ppl_stack						// ...validate the stack pointer
++
++Ltest_pstack:
++	/* Bounds check the PPL stack. */
++	adrp	x10, EXT(pmap_stacks_start)@page
++	ldr		x10, [x10, #EXT(pmap_stacks_start)@pageoff]
++	adrp	x11, EXT(pmap_stacks_end)@page
++	ldr		x11, [x11, #EXT(pmap_stacks_end)@pageoff]
++	cmp		x0, x10
++	b.lo	Lcorrupt_ppl_stack
++	cmp		x0, x11
++	b.hi	Lcorrupt_ppl_stack
++
++Lvalid_ppl_stack:
++	/* Restore x0. */
++	mov		x0, x15
++
++	/* Switch back to the kernel stack. */
++	msr		SPSel, #0
++	GET_PMAP_CPU_DATA x5, x6, x7
++	ldr		x6, [x5, PMAP_CPU_DATA_KERN_SAVED_SP]
++	mov		sp, x6
++
++	/* Hand off to the synch handler. */
++	b		EXT(fleh_synchronous)
++
++Lcorrupt_ppl_stack:
++	/* Restore x0. */
++	mov		x0, x15
++
++	/* Hand off to the invalid stack handler. */
++	b		fleh_invalid_stack
++
++fleh_fiq_from_ppl:
++	SWITCH_TO_INT_STACK
++	b		EXT(fleh_fiq)
++
++fleh_irq_from_ppl:
++	SWITCH_TO_INT_STACK
++	b		EXT(fleh_irq)
++
++fleh_serror_from_ppl:
++	GET_PMAP_CPU_DATA x5, x6, x7
++	ldr		x6, [x5, PMAP_CPU_DATA_KERN_SAVED_SP]
++	mov		sp, x6
++	b		EXT(fleh_serror)
++
++
++#if XNU_MONITOR && __APRR_SUPPORTED__
++/*
++ * aprr_ppl_enter
++ *
++ * Invokes the PPL
++ *   x15 - The index of the requested PPL function.
++ */
++	.text
++	.align 2
++	.globl EXT(aprr_ppl_enter)
++LEXT(aprr_ppl_enter)
++	/* Push a frame. */
++	ARM64_STACK_PROLOG
++	stp		x20, x21, [sp, #-0x20]!
++	stp		x29, x30, [sp, #0x10]
++	add		x29, sp, #0x10
++
++	/* Increase the preemption count. */
++	mrs		x10, TPIDR_EL1
++	ldr		w12, [x10, ACT_PREEMPT_CNT]
++	add		w12, w12, #1
++	str		w12, [x10, ACT_PREEMPT_CNT]
++
++	/* Is the PPL currently locked down? */
++	adrp		x13, EXT(pmap_ppl_locked_down)@page
++	add		x13, x13, EXT(pmap_ppl_locked_down)@pageoff
++	ldr		w14, [x13]
++	cmp		w14, wzr
++
++	/* If not, just perform the call in the current context. */
++	b.eq		EXT(ppl_bootstrap_dispatch)
++
++	mov		w10, #PPL_STATE_KERNEL
++	b		Ldisable_aif_and_enter_ppl
++
++	/* We align this to land the next few instructions on their own page. */
++	.section __PPLTRAMP,__text,regular,pure_instructions
++	.align 14
++	.space (16*1024)-(4*8) // 8 insns
++
++	/*
++	 * This label is used by exception handlers that are trying to return
++	 * to the PPL.
++	 */
++Ldisable_aif_and_enter_ppl:
++	/* We must trampoline to the PPL context; disable AIF. */
++	mrs		x20, DAIF
++	msr		DAIFSet, #(DAIFSC_ASYNCF | DAIFSC_IRQF | DAIFSC_FIQF)
++
++	.globl EXT(ppl_no_exception_start)
++LEXT(ppl_no_exception_start)
++	/* Switch APRR_EL1 to PPL mode. */
++	MOV64	x14, APRR_EL1_PPL
++	msr		APRR_EL1, x14
++
++	/* This ISB should be the last instruction on a page. */
++	// TODO: can we static assert this?
++	isb
++#endif /* XNU_MONITOR && __APRR_SUPPORTED__ */
++
++
++	// x15: ppl call number
++	// w10: ppl_state
++	// x20: gxf_enter caller's DAIF
++	.globl EXT(ppl_trampoline_start)
++LEXT(ppl_trampoline_start)
++
++#if __APRR_SUPPORTED__
++	/* Squash AIF AGAIN, because someone may have attacked us. */
++	msr		DAIFSet, #(DAIFSC_ASYNCF | DAIFSC_IRQF | DAIFSC_FIQF)
++#endif /* __APRR_SUPPORTED__ */
++
++#if __APRR_SUPPORTED__
++	/* Verify the state of APRR_EL1. */
++	MOV64	x14, APRR_EL1_PPL
++	mrs		x21, APRR_EL1
++#else /* __APRR_SUPPORTED__ */
++#error "XPRR configuration error"
++#endif /* __APRR_SUPPORTED__ */
++	cmp		x14, x21
++	b.ne	Lppl_fail_dispatch
++
++	/* Verify the request ID. */
++	cmp		x15, PMAP_COUNT
++	b.hs	Lppl_fail_dispatch
++
++	GET_PMAP_CPU_DATA	x12, x13, x14
++
++	/* Mark this CPU as being in the PPL. */
++	ldr		w9, [x12, PMAP_CPU_DATA_PPL_STATE]
++
++	cmp		w9, #PPL_STATE_KERNEL
++	b.eq		Lppl_mark_cpu_as_dispatching
++
++	/* Check to see if we are trying to trap from within the PPL. */
++	cmp		w9, #PPL_STATE_DISPATCH
++	b.eq		Lppl_fail_dispatch_ppl
++
++
++	/* Ensure that we are returning from an exception. */
++	cmp		w9, #PPL_STATE_EXCEPTION
++	b.ne		Lppl_fail_dispatch
++
++	// where is w10 set?
++	// in CHECK_EXCEPTION_RETURN_DISPATCH_PPL
++	cmp		w10, #PPL_STATE_EXCEPTION
++	b.ne		Lppl_fail_dispatch
++
++	/* This is an exception return; set the CPU to the dispatching state. */
++	mov		w9, #PPL_STATE_DISPATCH
++	str		w9, [x12, PMAP_CPU_DATA_PPL_STATE]
++
++	/* Find the save area, and return to the saved PPL context. */
++	ldr		x0, [x12, PMAP_CPU_DATA_SAVE_AREA]
++	mov		sp, x0
++#if __APRR_SUPPORTED__
++	b		Lexception_return_restore_registers
++#else
++	b		EXT(return_to_ppl)
++#endif /* __APRR_SUPPORTED__ */
++
++Lppl_mark_cpu_as_dispatching:
++	cmp		w10, #PPL_STATE_KERNEL
++	b.ne		Lppl_fail_dispatch
++
++	/* Mark the CPU as dispatching. */
++	mov		w13, #PPL_STATE_DISPATCH
++	str		w13, [x12, PMAP_CPU_DATA_PPL_STATE]
++
++	/* Switch to the regular PPL stack. */
++	// TODO: switch to PPL_STACK earlier in gxf_ppl_entry_handler
++	ldr		x9, [x12, PMAP_CPU_DATA_PPL_STACK]
++
++	// SP0 is thread stack here
++	mov		x21, sp
++	// SP0 is now PPL stack
++	mov		sp, x9
++
++	/* Save the old stack pointer off in case we need it. */
++	str		x21, [x12, PMAP_CPU_DATA_KERN_SAVED_SP]
++
++	/* Get the handler for the request */
++	adrp	x9, EXT(ppl_handler_table)@page
++	add		x9, x9, EXT(ppl_handler_table)@pageoff
++	add		x9, x9, x15, lsl #3
++	ldr		x10, [x9]
++
++	/* Branch to the code that will invoke the PPL request. */
++	b		EXT(ppl_dispatch)
++
++Lppl_fail_dispatch_ppl:
++	/* Switch back to the kernel stack. */
++	ldr		x10, [x12, PMAP_CPU_DATA_KERN_SAVED_SP]
++	mov		sp, x10
++
++Lppl_fail_dispatch:
++	/* Indicate that we failed. */
++	mov		x15, #PPL_EXIT_BAD_CALL
++
++	/* Move the DAIF bits into the expected register. */
++	mov		x10, x20
++
++	/* Return to kernel mode. */
++	b		ppl_return_to_kernel_mode
++
++Lppl_dispatch_exit:
++	/* Indicate that we are cleanly exiting the PPL. */
++	mov		x15, #PPL_EXIT_DISPATCH
++
++	/* Switch back to the original (kernel thread) stack. */
++	mov		sp, x21
++
++	/* Move the saved DAIF bits. */
++	mov		x10, x20
++
++	/* Clear the old stack pointer. */
++	str		xzr, [x12, PMAP_CPU_DATA_KERN_SAVED_SP]
++
++	/*
++	 * Mark the CPU as no longer being in the PPL.  We spin if our state
++	 * machine is broken.
++	 */
++	ldr		w9, [x12, PMAP_CPU_DATA_PPL_STATE]
++	cmp		w9, #PPL_STATE_DISPATCH
++	b.ne		.
++	mov		w9, #PPL_STATE_KERNEL
++	str		w9, [x12, PMAP_CPU_DATA_PPL_STATE]
++
++	/* Return to the kernel. */
++	b ppl_return_to_kernel_mode
++
++#if __APRR_SUPPORTED__
++	/* We align this to land the next few instructions on their own page. */
++	.align 14
++	.space (16*1024)-(4*5) // 5 insns
++
++ppl_return_to_kernel_mode:
++	/* Switch APRR_EL1 back to the kernel mode. */
++	// must be 5 instructions
++	MOV64	x14, APRR_EL1_DEFAULT
++	msr		APRR_EL1, x14
++
++	.globl EXT(ppl_trampoline_end)
++LEXT(ppl_trampoline_end)
++
++	/* This should be the first instruction on a page. */
++	isb
++
++	.globl EXT(ppl_no_exception_end)
++LEXT(ppl_no_exception_end)
++	b ppl_exit
++#endif /* __APRR_SUPPORTED__ */
++
++
++	.text
++ppl_exit:
++	/*
++	 * If we are dealing with an exception, hand off to the first level
++	 * exception handler.
++	 */
++	cmp		x15, #PPL_EXIT_EXCEPTION
++	b.eq	Ljump_to_fleh_handler
++
++	/* Restore the original AIF state. */
++	REENABLE_DAIF	x10
++
++	/* If this was a panic call from the PPL, reinvoke panic. */
++	cmp		x15, #PPL_EXIT_PANIC_CALL
++	b.eq	Ljump_to_panic_trap_to_debugger
++
++	/* Load the preemption count. */
++	mrs		x10, TPIDR_EL1
++	ldr		w12, [x10, ACT_PREEMPT_CNT]
++
++	/* Detect underflow */
++	cbnz	w12, Lno_preempt_underflow
++	b		preempt_underflow
++Lno_preempt_underflow:
++
++	/* Lower the preemption count. */
++	sub		w12, w12, #1
++	str		w12, [x10, ACT_PREEMPT_CNT]
++
++	/* Skip ASTs if the peemption count is not zero. */
++	cbnz	x12, Lppl_skip_ast_taken
++
++	/* Skip the AST check if interrupts are disabled. */
++	mrs		x1, DAIF
++	tst	x1, #DAIF_IRQF
++	b.ne	Lppl_skip_ast_taken
++
++	/* Disable interrupts. */
++	msr		DAIFSet, #(DAIFSC_IRQF | DAIFSC_FIQF)
++
++	/* IF there is no urgent AST, skip the AST. */
++	ldr		x12, [x10, ACT_CPUDATAP]
++	ldr		x14, [x12, CPU_PENDING_AST]
++	tst		x14, AST_URGENT
++	b.eq	Lppl_defer_ast_taken
++
++	/* Stash our return value and return reason. */
++	mov		x20, x0
++	mov		x21, x15
++
++	/* Handle the AST. */
++	bl		EXT(ast_taken_kernel)
++
++	/* Restore the return value and the return reason. */
++	mov		x15, x21
++	mov		x0, x20
++
++Lppl_defer_ast_taken:
++	/* Reenable interrupts. */
++	msr		DAIFClr, #(DAIFSC_IRQF | DAIFSC_FIQF)
++
++Lppl_skip_ast_taken:
++	/* Pop the stack frame. */
++	ldp		x29, x30, [sp, #0x10]
++	ldp		x20, x21, [sp], #0x20
++
++	/* Check to see if this was a bad request. */
++	cmp		x15, #PPL_EXIT_BAD_CALL
++	b.eq	Lppl_bad_call
++
++	/* Return. */
++	ARM64_STACK_EPILOG
++
++	.align 2
++Ljump_to_fleh_handler:
++	br	x25
++
++	.align 2
++Ljump_to_panic_trap_to_debugger:
++	b		EXT(panic_trap_to_debugger)
++
++Lppl_bad_call:
++	/* Panic. */
++	adrp	x0, Lppl_bad_call_panic_str@page
++	add		x0, x0, Lppl_bad_call_panic_str@pageoff
++	b		EXT(panic)
++
++	.text
++	.align 2
++	.globl EXT(ppl_dispatch)
++LEXT(ppl_dispatch)
++	/*
++	 * Save a couple of important registers (implementation detail; x12 has
++	 * the PPL per-CPU data address; x13 is not actually interesting).
++	 */
++	stp		x12, x13, [sp, #-0x10]!
++
++	/* Restore the original AIF state. */
++	REENABLE_DAIF	x20
++
++	/*
++	 * Note that if the method is NULL, we'll blow up with a prefetch abort,
++	 * but the exception vectors will deal with this properly.
++	 */
++
++	/* Invoke the PPL method. */
++#ifdef HAS_APPLE_PAC
++	blraa		x10, x9
++#else
++	blr		x10
++#endif
++
++	/* Disable AIF. */
++	msr		DAIFSet, #(DAIFSC_ASYNCF | DAIFSC_IRQF | DAIFSC_FIQF)
++
++	/* Restore those important registers. */
++	ldp		x12, x13, [sp], #0x10
++
++	/* Mark this as a regular return, and hand off to the return path. */
++	b		Lppl_dispatch_exit
++
++	.text
++	.align 2
++	.globl EXT(ppl_bootstrap_dispatch)
++LEXT(ppl_bootstrap_dispatch)
++	/* Verify the PPL request. */
++	cmp		x15, PMAP_COUNT
++	b.hs	Lppl_fail_bootstrap_dispatch
++
++	/* Get the requested PPL routine. */
++	adrp	x9, EXT(ppl_handler_table)@page
++	add		x9, x9, EXT(ppl_handler_table)@pageoff
++	add		x9, x9, x15, lsl #3
++	ldr		x10, [x9]
++
++	/* Invoke the requested PPL routine. */
++#ifdef HAS_APPLE_PAC
++	blraa		x10, x9
++#else
++	blr		x10
++#endif
++	/* Stash off the return value */
++	mov		x20, x0
++	/* Drop the preemption count */
++	bl		EXT(_enable_preemption)
++	mov		x0, x20
++
++	/* Pop the stack frame. */
++	ldp		x29, x30, [sp, #0x10]
++	ldp		x20, x21, [sp], #0x20
++#if __has_feature(ptrauth_returns)
++	retab
++#else
++	ret
++#endif
++
++Lppl_fail_bootstrap_dispatch:
++	/* Pop our stack frame and panic. */
++	ldp		x29, x30, [sp, #0x10]
++	ldp		x20, x21, [sp], #0x20
++#if __has_feature(ptrauth_returns)
++	autibsp
++#endif
++	adrp	x0, Lppl_bad_call_panic_str@page
++	add		x0, x0, Lppl_bad_call_panic_str@pageoff
++	b		EXT(panic)
++
++	.text
++	.align 2
++	.globl EXT(ml_panic_trap_to_debugger)
++LEXT(ml_panic_trap_to_debugger)
++	mrs		x10, DAIF
++	msr		DAIFSet, #(DAIFSC_ASYNCF | DAIFSC_IRQF | DAIFSC_FIQF)
++
++	adrp		x12, EXT(pmap_ppl_locked_down)@page
++	ldr		w12, [x12, #EXT(pmap_ppl_locked_down)@pageoff]
++	cbz		w12, Lnot_in_ppl_dispatch
++
++	LOAD_PMAP_CPU_DATA	x11, x12, x13
++
++	ldr		w12, [x11, PMAP_CPU_DATA_PPL_STATE]
++	cmp		w12, #PPL_STATE_DISPATCH
++	b.ne		Lnot_in_ppl_dispatch
++
++	/* Indicate (for the PPL->kernel transition) that we are panicking. */
++	mov		x15, #PPL_EXIT_PANIC_CALL
++
++	/* Restore the old stack pointer as we can't push onto PPL stack after we exit PPL */
++	ldr		x12, [x11, PMAP_CPU_DATA_KERN_SAVED_SP]
++	mov		sp, x12
++
++	mrs		x10, DAIF
++	mov		w13, #PPL_STATE_PANIC
++	str		w13, [x11, PMAP_CPU_DATA_PPL_STATE]
++
++	/* Now we are ready to exit the PPL. */
++	b		ppl_return_to_kernel_mode
++Lnot_in_ppl_dispatch:
++	REENABLE_DAIF	x10
++	ret
++
++	.data
++Lppl_bad_call_panic_str:
++	.asciz "ppl_dispatch: failed due to bad arguments/state"
++#else /* XNU_MONITOR */
++	.text
++	.align 2
++	.globl EXT(ml_panic_trap_to_debugger)
++LEXT(ml_panic_trap_to_debugger)
++	ret
++#endif /* XNU_MONITOR */
++
++#else
+ #if XNU_MONITOR
+ 
+ /*
+@@ -1565,6 +2303,7 @@ LEXT(ml_panic_trap_to_debugger)
+ 	ret
+ #endif /* XNU_MONITOR */
+ 
++#endif /* T8103 protected PPL implementation */
+ /* ARM64_TODO Is globals_asm.h needed? */
+ //#include	"globals_asm.h"
+ 
+diff --git a/src/Kernel/xnu/osfmk/arm64/pinst.s b/src/Kernel/xnu/osfmk/arm64/pinst.s
+index 868ff8d..3bcaa82 100644
+--- a/src/Kernel/xnu/osfmk/arm64/pinst.s
++++ b/src/Kernel/xnu/osfmk/arm64/pinst.s
+@@ -123,5 +123,50 @@ _pinst_spsel_1:
+ 	check_instruction x2, x3, __pinst_spsel_1, 0xd65f03c0d50041bf
+ 	b __pinst_spsel_1
+ 
++#if defined(ARM64_BOARD_CONFIG_T8103)
++#if __APRR_SUPPORTED__
++
++/*
++ * APRR registers aren't covered by VMSA lockdown, so we'll keep these
++ * gadgets in pinst for protection against undesired execution. 
++ */
++
++	.text
++	.section	__LAST,__pinst
++	.align 2
++
++__pinst_set_aprr_el0:
++	msr		APRR_EL0, x0
++	ret
++
++__pinst_set_aprr_el1:
++	msr		APRR_EL1, x0
++	ret
++
++__pinst_set_aprr_shadow_mask_en_el1:
++	msr		APRR_SHADOW_MASK_EN_EL1, x0
++
++	ret
++
++	.text
++	.section	__TEXT_EXEC,__text
++	.align 2
++
++	.globl _pinst_set_aprr_el0
++_pinst_set_aprr_el0:
++	check_instruction x2, x3, __pinst_set_aprr_el0, 0xd65f03c0d51cf200
++	b __pinst_set_aprr_el0
++
++	.globl _pinst_set_aprr_el1
++_pinst_set_aprr_el1:
++	check_instruction x2, x3, __pinst_set_aprr_el1, 0xd65f03c0d51cf220
++	b __pinst_set_aprr_el1
++
++	.globl _pinst_set_aprr_shadow_mask_en_el1
++_pinst_set_aprr_shadow_mask_en_el1:
++	check_instruction x2, x3, __pinst_set_aprr_shadow_mask_en_el1, 0xd65f03c0d51cf2c0
++	b __pinst_set_aprr_shadow_mask_en_el1
++#endif /* __APRR_SUPPORTED__ */
++#endif /* T8103 public PPL port */
+ #endif /* defined(KERNEL_INTEGRITY_KTRR) || defined(KERNEL_INTEGRITY_CTRR) */
+ 
+diff --git a/src/Kernel/xnu/osfmk/arm64/proc_reg.h b/src/Kernel/xnu/osfmk/arm64/proc_reg.h
+index 0f20f78..775f0f7 100644
+--- a/src/Kernel/xnu/osfmk/arm64/proc_reg.h
++++ b/src/Kernel/xnu/osfmk/arm64/proc_reg.h
+@@ -1744,6 +1744,235 @@ typedef enum {
+ #define CORESIGHT_REGIONS   4
+ #define CORESIGHT_SIZE      0x1000
+ 
++#if defined(ARM64_BOARD_CONFIG_T8103)
++/* Public Apple XNU b967469df23b10bc70788727627457ebdfe3653f APRR/PPL map. */
++#define __APRR_SUPPORTED__ 1
++#if __APRR_SUPPORTED__
++/*
++ * APRR_EL0/APRR_EL1
++ *
++ *  63                 0
++ * +--------------------+
++ * | Attr[15:0]RWX[3:0] |
++ * +--------------------+
++ *
++ * These registers consist of 16 4-bit fields.
++ *
++ * The attribute index consists of the access protection
++ * and execution protections on a mapping.  The index
++ * for a given mapping type is constructed as follows.
++ *
++ * Attribute Index
++ *
++ *     3       2      1     0
++ * +-------+-------+-----+----+
++ * | AP[1] | AP[0] | PXN | XN |
++ * +-------+-------+-----+----+
++ *
++ * The attribute for a given index determines what
++ * protections are disabled for that mappings type
++ * (protections beyond the scope of the standard ARM
++ * protections for a mapping cannot be granted via
++ * APRR).
++ *
++ * Attribute
++ *
++ *       3      2   1   0
++ * +----------+---+---+---+
++ * | Reserved | R | W | X |
++ * +----------+---+---+---+
++ *
++ * Where:
++ *   R: Read is allowed.
++ *   W: Write is allowed.
++ *   X: Execute is allowed.
++ */
++
++#define APRR_IDX_XN  (1ULL)
++#define APRR_IDX_PXN (2ULL)
++
++
++#define APRR_IDX_XN_SHIFT (0ULL)
++#define APRR_IDX_PXN_SHIFT  (1ULL)
++#define APRR_IDX_APSHIFT   (2ULL)
++
++#endif /* __APRR_SUPPORTED__ */
++
++
++#if __APRR_SUPPORTED__
++
++#define APRR_ATTR_X (1ULL)
++#define APRR_ATTR_W (2ULL)
++#define APRR_ATTR_R (4ULL)
++
++#define APRR_ATTR_WX  (APRR_ATTR_W | APRR_ATTR_X)
++#define APRR_ATTR_RX  (APRR_ATTR_R | APRR_ATTR_X)
++#define APRR_ATTR_RWX (APRR_ATTR_R | APRR_ATTR_W | APRR_ATTR_X)
++
++#define APRR_ATTR_NONE (0ULL)
++#define APRR_ATTR_MASK (APRR_ATTR_RWX)
++
++#define APRR_RESERVED_MASK (0x8888888888888888ULL)
++#endif /* __APRR_SUPPORTED__ */
++
++#if __APRR_SUPPORTED__
++#define XPRR_FIRM_RX_PERM  (0ULL)
++#define XPRR_PPL_RW_PERM   (1ULL)
++#define XPRR_FIRM_RO_PERM  (2ULL)
++#define XPRR_KERN_RW_PERM  (3ULL)
++#define XPRR_FIRM_RW_PERM  (4ULL)
++#define XPRR_USER_JIT_PERM (5ULL)
++#define XPRR_KERN0_RW_PERM (6ULL)
++#define XPRR_USER_RW_PERM  (7ULL)
++#define XPRR_PPL_RX_PERM   (8ULL)
++#define XPRR_USER_XO_PERM  (9ULL)
++#define XPRR_KERN_RX_PERM  (10ULL)
++#define XPRR_KERN_RO_PERM  (11ULL)
++#define XPRR_KERN0_RX_PERM (12ULL)
++#define XPRR_USER_RX_PERM  (13ULL)
++#define XPRR_KERN0_RO_PERM (14ULL)
++#define XPRR_USER_RO_PERM  (15ULL)
++#define XPRR_MAX_PERM      (15ULL)
++
++#define XPRR_VERSION_NONE    (0ULL)
++#define XPRR_VERSION_APRR    (1ULL)
++
++
++#endif /* __APRR_SUPPORTED__*/
++
++#if __APRR_SUPPORTED__
++/* Indices for attributes, named based on how we intend to use them. */
++#define APRR_FIRM_RX_INDEX  (0ULL)  /* AP_RWNA, PX, X */
++#define APRR_FIRM_RO_INDEX  (1ULL)  /* AP_RWNA, PX, XN */
++#define APRR_PPL_RW_INDEX   (2ULL)  /* AP_RWNA, PXN, X */
++#define APRR_KERN_RW_INDEX  (3ULL)  /* AP_RWNA, PXN, XN */
++#define APRR_FIRM_RW_INDEX  (4ULL)  /* AP_RWRW, PX, X */
++#define APRR_KERN0_RW_INDEX (5ULL)  /* AP_RWRW, PX, XN */
++#define APRR_USER_JIT_INDEX (6ULL)  /* AP_RWRW, PXN, X */
++#define APRR_USER_RW_INDEX  (7ULL)  /* AP_RWRW, PXN, XN */
++#define APRR_PPL_RX_INDEX   (8ULL)  /* AP_RONA, PX, X */
++#define APRR_KERN_RX_INDEX  (9ULL)  /* AP_RONA, PX, XN */
++#define APRR_USER_XO_INDEX  (10ULL) /* AP_RONA, PXN, X */
++#define APRR_KERN_RO_INDEX  (11ULL) /* AP_RONA, PXN, XN */
++#define APRR_KERN0_RX_INDEX (12ULL) /* AP_RORO, PX, X */
++#define APRR_KERN0_RO_INDEX (13ULL) /* AP_RORO, PX, XN */
++#define APRR_USER_RX_INDEX  (14ULL) /* AP_RORO, PXN, X */
++#define APRR_USER_RO_INDEX  (15ULL) /* AP_RORO, PXN, XN */
++#define APRR_MAX_INDEX      (15ULL) /* For sanity checking index values */
++#endif /* __APRR_SUPPORTED */
++
++
++#if __APRR_SUPPORTED__
++#define APRR_SHIFT_FOR_IDX(x) \
++	((x) << 2ULL)
++
++/* Shifts for attributes, named based on how we intend to use them. */
++#define APRR_FIRM_RX_SHIFT  (0ULL)  /* AP_RWNA, PX, X */
++#define APRR_FIRM_RO_SHIFT  (4ULL)  /* AP_RWNA, PX, XN */
++#define APRR_PPL_RW_SHIFT   (8ULL)  /* AP_RWNA, PXN, X */
++#define APRR_KERN_RW_SHIFT  (12ULL) /* AP_RWNA, PXN, XN */
++#define APRR_FIRM_RW_SHIFT  (16ULL) /* AP_RWRW, PX, X */
++#define APRR_KERN0_RW_SHIFT (20ULL) /* AP_RWRW, PX, XN */
++#define APRR_USER_JIT_SHIFT (24ULL) /* AP_RWRW, PXN, X */
++#define APRR_USER_RW_SHIFT  (28ULL) /* AP_RWRW, PXN, XN */
++#define APRR_PPL_RX_SHIFT   (32ULL) /* AP_RONA, PX, X */
++#define APRR_KERN_RX_SHIFT  (36ULL) /* AP_RONA, PX, XN */
++#define APRR_USER_XO_SHIFT  (40ULL) /* AP_RONA, PXN, X */
++#define APRR_KERN_RO_SHIFT  (44ULL) /* AP_RONA, PXN, XN */
++#define APRR_KERN0_RX_SHIFT (48ULL) /* AP_RORO, PX, X */
++#define APRR_KERN0_RO_SHIFT (52ULL) /* AP_RORO, PX, XN */
++#define APRR_USER_RX_SHIFT  (56ULL) /* AP_RORO, PXN, X */
++#define APRR_USER_RO_SHIFT  (60ULL) /* AP_RORO, PXN, XN */
++
++#define ARM_PTE_APRR_MASK \
++	(ARM_PTE_APMASK | ARM_PTE_PNXMASK | ARM_PTE_NXMASK)
++
++#define ARM_PTE_XPRR_MASK ARM_PTE_APRR_MASK
++
++#define APRR_INDEX_TO_PTE(x) \
++	((pt_entry_t) \
++	 (((x) & 0x8) ? ARM_PTE_AP(0x2) : 0) | \
++	 (((x) & 0x4) ? ARM_PTE_AP(0x1) : 0) | \
++	 (((x) & 0x2) ? ARM_PTE_PNX : 0) | \
++	 (((x) & 0x1) ? ARM_PTE_NX : 0))
++
++#define PTE_TO_APRR_INDEX(x) \
++	((ARM_PTE_EXTRACT_AP(x) << APRR_IDX_APSHIFT) | \
++	(((x) & ARM_PTE_PNXMASK) ? APRR_IDX_PXN : 0) | \
++	(((x) & ARM_PTE_NXMASK) ? APRR_IDX_XN : 0))
++
++#endif /* __APRR_SUPPORTED__ */
++
++#if __APRR_SUPPORTED__
++
++#define APRR_EXTRACT_IDX_ATTR(_aprr_value, _idx) \
++	(((_aprr_value) >> APRR_SHIFT_FOR_IDX(_idx)) & APRR_ATTR_MASK)
++
++#define APRR_REMOVE(x) (~(x))
++
++#define APRR_EL1_UNRESTRICTED (0x4455445566666677ULL)
++
++#define APRR_EL1_RESET \
++	APRR_EL1_UNRESTRICTED
++
++/*
++ * XO mappings bypass PAN protection (rdar://58360875)
++ * Revoke ALL kernel access permissions for XO mappings.
++ */
++#define APRR_EL1_BASE \
++	(APRR_EL1_UNRESTRICTED & \
++	APRR_REMOVE(APRR_ATTR_R << APRR_USER_XO_SHIFT))
++
++#if XNU_MONITOR
++#define APRR_EL1_DEFAULT \
++	(APRR_EL1_BASE & \
++	 (APRR_REMOVE((APRR_ATTR_WX << APRR_PPL_RW_SHIFT) | \
++	 (APRR_ATTR_WX << APRR_USER_XO_SHIFT) | \
++	 (APRR_ATTR_WX << APRR_PPL_RX_SHIFT))))
++
++#define APRR_EL1_PPL \
++	(APRR_EL1_BASE & \
++	 (APRR_REMOVE((APRR_ATTR_X << APRR_PPL_RW_SHIFT) | \
++	 (APRR_ATTR_WX << APRR_USER_XO_SHIFT) | \
++	 (APRR_ATTR_W << APRR_PPL_RX_SHIFT))))
++#else
++#define APRR_EL1_DEFAULT \
++	APRR_EL1_BASE
++#endif
++
++#define APRR_EL0_UNRESTRICTED (0x4545010167670101ULL)
++
++#define APRR_EL0_RESET \
++	APRR_EL0_UNRESTRICTED
++
++#if XNU_MONITOR
++#define APRR_EL0_BASE \
++	(APRR_EL0_UNRESTRICTED & \
++	 (APRR_REMOVE((APRR_ATTR_RWX << APRR_PPL_RW_SHIFT) | \
++	 (APRR_ATTR_RWX << APRR_PPL_RX_SHIFT) | \
++	 (APRR_ATTR_RWX << APRR_USER_XO_SHIFT))))
++#else
++#define APRR_EL0_BASE \
++	APRR_EL0_UNRESTRICTED
++#endif
++
++#define APRR_EL0_JIT_RW \
++	(APRR_EL0_BASE & APRR_REMOVE(APRR_ATTR_X << APRR_USER_JIT_SHIFT))
++
++#define APRR_EL0_JIT_RX \
++	(APRR_EL0_BASE & APRR_REMOVE(APRR_ATTR_W << APRR_USER_JIT_SHIFT))
++
++#define APRR_EL0_JIT_RWX \
++	APRR_EL0_BASE
++
++#define APRR_EL0_DEFAULT \
++	APRR_EL0_BASE
++
++#endif /* __APRR_SUPPORTED__ */
++
++
++#endif /* T8103 public PPL map */
++
+ 
+ 
+ 
+diff --git a/src/Kernel/xnu/osfmk/arm64/start.s b/src/Kernel/xnu/osfmk/arm64/start.s
+index e6ccfa6..91e8310 100644
+--- a/src/Kernel/xnu/osfmk/arm64/start.s
++++ b/src/Kernel/xnu/osfmk/arm64/start.s
+@@ -40,6 +40,36 @@
+ #endif /* __ARM_KERNEL_PROTECT__ */
+ 
+ 
++#if defined(ARM64_BOARD_CONFIG_T8103)
++#if __APRR_SUPPORTED__
++
++.macro MSR_APRR_EL1_X0
++#if defined(KERNEL_INTEGRITY_KTRR) || defined(KERNEL_INTEGRITY_CTRR)
++	bl		EXT(pinst_set_aprr_el1)
++#else
++	msr		APRR_EL1, x0
++#endif
++.endmacro
++
++.macro MSR_APRR_EL0_X0
++#if defined(KERNEL_INTEGRITY_KTRR) || defined(KERNEL_INTEGRITY_CTRR)
++	bl		EXT(pinst_set_aprr_el0)
++#else
++	msr		APRR_EL0, x0
++#endif
++.endmacro
++
++.macro MSR_APRR_SHADOW_MASK_EN_EL1_X0
++#if defined(KERNEL_INTEGRITY_KTRR) || defined(KERNEL_INTEGRITY_CTRR)
++	bl		EXT(pinst_set_aprr_shadow_mask_en_el1)
++#else
++	msr		APRR_SHADOW_MASK_EN_EL1, x0
++#endif
++.endmacro
++
++#endif /* __APRR_SUPPORTED__ */
++
++#endif /* T8103 public PPL port */
+ .macro MSR_VBAR_EL1_X0
+ #if defined(KERNEL_INTEGRITY_KTRR)
+ 	mov	x1, lr
+@@ -207,6 +237,29 @@ LEXT(reset_vector)
+ 	msr     VBAR_EL1, x0
+ #endif
+ 
++#if defined(ARM64_BOARD_CONFIG_T8103)
++#if __APRR_SUPPORTED__
++	MOV64	x0, APRR_EL1_DEFAULT
++#if XNU_MONITOR
++	adrp	x4, EXT(pmap_ppl_locked_down)@page
++	ldrb	w5, [x4, #EXT(pmap_ppl_locked_down)@pageoff]
++	cmp		w5, #0
++	b.ne	1f
++
++	// If the PPL is not locked down, we start in PPL mode.
++	MOV64	x0, APRR_EL1_PPL
++1:
++#endif /* XNU_MONITOR */
++
++	MSR_APRR_EL1_X0
++
++	// Load up the default APRR_EL0 value.
++	MOV64	x0, APRR_EL0_DEFAULT
++	MSR_APRR_EL0_X0
++#endif /* __APRR_SUPPORTED__ */
++
++#endif /* T8103 public PPL port */
++
+ 
+ 
+ 	// Process reset handlers
+@@ -232,6 +285,64 @@ Lnext_cpu_data_entry:
+ 	b.eq	Lskip_cpu_reset_handler				// Not found
+ 	b		Lcheck_cpu_data_entry	// loop
+ Lfound_cpu_data_entry:
++#if defined(ARM64_BOARD_CONFIG_T8103)
++#if defined(KERNEL_INTEGRITY_CTRR)
++	/*
++	 * Program and lock CTRR if this CPU is non-boot cluster master. boot cluster will be locked
++	 * in machine_lockdown. pinst insns protected by VMSA_LOCK
++	 * A_PXN and A_MMUON_WRPROTECT options provides something close to KTRR behavior
++	 */
++
++	/* refuse to boot if machine_lockdown() hasn't completed */
++	adrp	x17, EXT(lockdown_done)@page
++	ldr	w17, [x17, EXT(lockdown_done)@pageoff]
++	cbz	w17, .
++
++	// load stashed rorgn_begin
++	adrp	x17, EXT(ctrr_begin)@page
++	add		x17, x17, EXT(ctrr_begin)@pageoff
++	ldr		x17, [x17]
++#if DEBUG || DEVELOPMENT || CONFIG_DTRACE
++	// if rorgn_begin is zero, we're debugging. skip enabling ctrr
++	cbz		x17, Lskip_ctrr
++#else
++	cbz		x17, .
++#endif
++
++	// load stashed rorgn_end
++	adrp	x19, EXT(ctrr_end)@page
++	add		x19, x19, EXT(ctrr_end)@pageoff
++	ldr		x19, [x19]
++#if DEBUG || DEVELOPMENT || CONFIG_DTRACE
++	cbz		x19, Lskip_ctrr
++#else
++	cbz		x19, .
++#endif
++
++	mrs		x18, ARM64_REG_CTRR_LOCK_EL1
++	cbnz	x18, Lskip_ctrr  /* don't touch if already locked */
++	msr		ARM64_REG_CTRR_A_LWR_EL1, x17
++	msr		ARM64_REG_CTRR_A_UPR_EL1, x19
++	mov		x18, #(CTRR_CTL_EL1_A_PXN | CTRR_CTL_EL1_A_MMUON_WRPROTECT)
++	msr		ARM64_REG_CTRR_CTL_EL1, x18
++	mov		x18, #1
++	msr		ARM64_REG_CTRR_LOCK_EL1, x18
++
++
++	isb
++	tlbi 	vmalle1
++	dsb 	ish
++	isb
++Lspin_ctrr_unlocked:
++	/* we shouldn't ever be here as cpu start is serialized by cluster in cpu_start(),
++	 * and first core started in cluster is designated cluster master and locks
++	 * both core and cluster. subsequent cores in same cluster will run locked from
++	 * from reset vector */
++	mrs		x18, ARM64_REG_CTRR_LOCK_EL1
++	cbz		x18, Lspin_ctrr_unlocked
++Lskip_ctrr:
++#endif
++#endif /* T8103 public PPL port */
+ 	adrp	x20, EXT(const_boot_args)@page
+ 	add		x20, x20, EXT(const_boot_args)@pageoff
+ 	ldr		x0, [x21, CPU_RESET_HANDLER]		// Call CPU reset handler
+@@ -595,6 +706,32 @@ LEXT(start_first_cpu)
+ 	EARLY_FB_BAND 1, 0x00ff0000
+ #endif
+ 
++#if defined(ARM64_BOARD_CONFIG_T8103)
++#if __APRR_SUPPORTED__
++	// Save the LR
++	mov		x1, lr
++
++#if XNU_MONITOR
++	// If the PPL is supported, we start out in PPL mode.
++	MOV64	x0, APRR_EL1_PPL
++#else
++	// Otherwise, we start out in default mode.
++	MOV64	x0, APRR_EL1_DEFAULT
++#endif
++
++	// Set the APRR state for EL1.
++	MSR_APRR_EL1_X0
++
++	// Set the APRR state for EL0.
++	MOV64	x0, APRR_EL0_DEFAULT
++	MSR_APRR_EL0_X0
++
++
++	// Restore the LR.
++	mov	lr, x1
++#endif /* __APRR_SUPPORTED__ */
++
++#endif /* T8103 public PPL port */
+ 	// Get the kernel memory parameters from the boot args
+ 	ldr		x22, [x20, BA_VIRT_BASE]			// Get the kernel virt base
+ 	ldr		x23, [x20, BA_PHYS_BASE]			// Get the kernel phys base
+diff --git a/src/Kernel/xnu/pexpert/pexpert/arm64/apple_arm64_regs.h b/src/Kernel/xnu/pexpert/pexpert/arm64/apple_arm64_regs.h
+index de24d34..843d600 100644
+--- a/src/Kernel/xnu/pexpert/pexpert/arm64/apple_arm64_regs.h
++++ b/src/Kernel/xnu/pexpert/pexpert/arm64/apple_arm64_regs.h
+@@ -15,6 +15,10 @@
+ #ifdef APPLE_ARM64_ARCH_FAMILY
+ 
+ #if defined(ARM64_BOARD_CONFIG_T8103)
++/* APRR encodings preserve the published Apple protected transition instructions. */
++#define APRR_EL0 S3_4_C15_C2_0
++#define APRR_EL1 S3_4_C15_C2_1
++#define APRR_SHADOW_MASK_EN_EL1 S3_4_C15_C2_6
+ /* M1 CTRR: AsahiLinux/docs 0d1f8917fa88745d62a4c05d802c4a7298c8616b,
+  * docs/hw/cpu/system-registers.md register map and CTRR control bits.
+  * Preserve the source's EL1/EL2 writes, lock sequence and protection mask. */

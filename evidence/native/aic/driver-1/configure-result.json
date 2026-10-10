@@ -1,0 +1,30 @@
+{
+  "argv": [
+    "cmake",
+    "-S",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/aic/driver-1/source-overlay",
+    "-B",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/aic/driver-1",
+    "-G",
+    "Unix Makefiles",
+    "-DCMAKE_POLICY_VERSION_MINIMUM=3.5",
+    "-DPUREDARWIN_ARCH=arm64",
+    "-DCMAKE_OSX_ARCHITECTURES=arm64",
+    "-DCMAKE_OSX_SYSROOT=/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+    "-DCMAKE_C_COMPILER=/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+    "-DCMAKE_CXX_COMPILER=/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++",
+    "-DPUREDARWIN_ARM64_MACHINE_CONFIG=T8103",
+    "-DPUREDARWIN_XNU_KERNEL_CONFIG=DEVELOPMENT",
+    "-DPUREDARWIN_ENABLE_KERNEL=ON",
+    "-DPUREDARWIN_ENABLE_LIBRARIES=ON",
+    "-DPUREDARWIN_ENABLE_TOOLS=ON",
+    "-DPUREDARWIN_ENABLE_USERSPACE=OFF",
+    "-DPUREDARWIN_ENABLE_PROJECTS=OFF"
+  ],
+  "cwd": "/Users/joeblau/Developer/joeblau/src/blauos",
+  "exit_code": 0,
+  "raw_log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/aic/driver-1/logs/configure.log",
+  "raw_log_bytes": 2140,
+  "raw_log_sha256": "87dcde0aa5e09a2b0cca3d6cd41f12bc707385e986b0d6fd11f78420913ebf63",
+  "errors": []
+}

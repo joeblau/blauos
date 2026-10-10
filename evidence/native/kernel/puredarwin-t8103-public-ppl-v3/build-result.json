@@ -1,0 +1,41 @@
+{
+  "argv": [
+    "cmake",
+    "--build",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl-v3",
+    "--target",
+    "xnu",
+    "--parallel",
+    "6"
+  ],
+  "cwd": "/Users/joeblau/Developer/joeblau/src/blauos",
+  "exit_code": 2,
+  "raw_log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl-v3/logs/build.log",
+  "raw_log_bytes": 3461296,
+  "raw_log_sha256": "2c88a1ccfca43ce764d0fec7b807e675c096a658152230507f5b23693758a94e",
+  "errors": [
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl-v3/source-overlay/src/Kernel/xnu/osfmk/arm64/machine_routines_asm.s:95:11: error: expected readable system register",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl-v3/source-overlay/src/Kernel/xnu/osfmk/arm64/machine_routines_asm.s:99:6: error: expected writable system register or pstate",
+    "<instantiation>:1:10: error: expected readable system register",
+    "<instantiation>:4:5: error: expected writable system register or pstate",
+    "<instantiation>:1:10: error: expected readable system register",
+    "<instantiation>:3:5: error: expected writable system register or pstate",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl-v3/source-overlay/src/Kernel/xnu/osfmk/arm64/machine_routines_asm.s:232:10: error: expected readable system register",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl-v3/source-overlay/src/Kernel/xnu/osfmk/arm64/machine_routines_asm.s:307:6: error: expected writable system register or pstate",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-public-ppl-v3/source-overlay/src/Kernel/xnu/osfmk/arm64/machine_routines_asm.s:335:10: error: expected readable system register",
+    "  923 |                     ((intptr_t)buf + cp-make[11]: *** [machine_routines_asm.o] Error 1",
+    "make[11]: *** Waiting for unfinished jobs....",
+    "make[10]: *** [build_all] Error 2",
+    "make[9]: *** [do_all] Error 2",
+    "make[8]: *** [build_all] Error 2",
+    "make[7]: *** [build_all_recurse_into_conf] Error 2",
+    "make[6]: *** [build_all_recurse_into_osfmk] Error 2",
+    "make[6]: *** Waiting for unfinished jobs....",
+    "make[5]: *** [build_all_bootstrap_DEVELOPMENT^ARM64^T8103] Error 2",
+    "make[4]: *** [install] Error 2",
+    "make[3]: *** [src/Kernel/xnu/xnu_build/src/xnu-stamp/xnu-build] Error 2",
+    "make[2]: *** [src/Kernel/xnu/CMakeFiles/xnu.dir/all] Error 2",
+    "make[1]: *** [src/Kernel/xnu/CMakeFiles/xnu.dir/rule] Error 2",
+    "make: *** [xnu] Error 2"
+  ]
+}
