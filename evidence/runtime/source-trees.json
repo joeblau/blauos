@@ -1,0 +1,50 @@
+{
+  "source": "puredarwin-vm-next",
+  "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+  "trees": [
+    {
+      "path": "src/Libraries/dyld",
+      "tree": "d1fc6d234d65c1309a519b9e1bd857766b98e94d"
+    },
+    {
+      "path": "src/Libraries/libSystem",
+      "tree": "8ac621c8c126960906db99e6278b522732a6e47c"
+    },
+    {
+      "path": "src/Libraries/XPC",
+      "tree": "218d63c3caa435568d3672f2860e203c03098664"
+    },
+    {
+      "path": "src/Libraries/libcxx",
+      "tree": "f29795eb1fbcc36d0b40234c901c54a201e60101"
+    },
+    {
+      "path": "src/Libraries/libcxxabi",
+      "tree": "747c1f2c9d21907fb43d73b75831360a9b4e0984"
+    },
+    {
+      "path": "src/Libraries/libunwind",
+      "tree": "4389d2f6835bb1a69c41e5981426eb38be5722e1"
+    },
+    {
+      "path": "src/Libraries/IOKit",
+      "tree": "746bbdbdcdbf37b1f065adbd35188f24fb1e16c1"
+    },
+    {
+      "path": "src/Libraries/DiskArbitration",
+      "tree": "cd12a64cf876a9360506cb615dc435147ada591c"
+    },
+    {
+      "path": "src/Libraries/CommonCrypto",
+      "tree": "28fb04862789fbf87ee06b790fd80ccd2cf65a6a"
+    },
+    {
+      "path": "tools",
+      "tree": "dcc2f9e3c86475d7b96d948230f4def8100212ac"
+    },
+    {
+      "path": "cmake",
+      "tree": "15906e969c129ba315c8ed10b700d96ca56fce38"
+    }
+  ]
+}

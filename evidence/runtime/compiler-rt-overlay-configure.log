@@ -1,0 +1,117 @@
+-- The C compiler identification is AppleClang 21.0.0.21000334
+-- The CXX compiler identification is AppleClang 21.0.0.21000334
+-- The ASM compiler identification is AppleClang
+-- Found assembler: /usr/bin/cc
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Looking for unwind.h
+-- Looking for unwind.h - found
+-- Looking for rpc/xdr.h
+-- Looking for rpc/xdr.h - found
+-- Found OSX_SYSROOT: /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.2.sdk
+-- Checking DARWIN_iphoneos_SYSROOT - '/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.2.sdk'
+CMake Warning at /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/llvm-overlay/compiler-rt/cmake/Modules/CompilerRTUtils.cmake:328 (message):
+  LLVMXRay not found in LLVM_AVAILABLE_LIBS
+Call Stack (most recent call first):
+  CMakeLists.txt:29 (load_llvm_config)
+
+
+CMake Warning at /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/llvm-overlay/compiler-rt/cmake/Modules/CompilerRTUtils.cmake:335 (message):
+  LLVMTestingSupport not found in LLVM_AVAILABLE_LIBS
+Call Stack (most recent call first):
+  CMakeLists.txt:29 (load_llvm_config)
+
+
+-- LLVM_MAIN_SRC_DIR: "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/llvm-overlay/llvm"
+-- cmake c compiler target: arm64-apple-macosx11.0
+-- Found libtool - /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool
+-- Performing Test COMPILER_RT_HAS_FPIC_FLAG
+-- Performing Test COMPILER_RT_HAS_FPIC_FLAG - Success
+-- Performing Test COMPILER_RT_HAS_FPIE_FLAG
+-- Performing Test COMPILER_RT_HAS_FPIE_FLAG - Success
+-- Performing Test COMPILER_RT_HAS_FNO_BUILTIN_FLAG
+-- Performing Test COMPILER_RT_HAS_FNO_BUILTIN_FLAG - Success
+-- Performing Test COMPILER_RT_HAS_STD_C11_FLAG
+-- Performing Test COMPILER_RT_HAS_STD_C11_FLAG - Success
+-- Performing Test COMPILER_RT_HAS_OMIT_FRAME_POINTER_FLAG
+-- Performing Test COMPILER_RT_HAS_OMIT_FRAME_POINTER_FLAG - Success
+-- Performing Test COMPILER_RT_HAS_FFREESTANDING_FLAG
+-- Performing Test COMPILER_RT_HAS_FFREESTANDING_FLAG - Success
+-- Performing Test COMPILER_RT_HAS_XRAY_COMPILER_FLAG
+-- Performing Test COMPILER_RT_HAS_XRAY_COMPILER_FLAG - Success
+-- Performing Test COMPILER_RT_HAS_FNO_LTO_FLAG
+-- Performing Test COMPILER_RT_HAS_FNO_LTO_FLAG - Success
+-- Performing Test COMPILER_RT_HAS_FNO_PROFILE_GENERATE_FLAG
+-- Performing Test COMPILER_RT_HAS_FNO_PROFILE_GENERATE_FLAG - Success
+-- Performing Test COMPILER_RT_HAS_FNO_PROFILE_INSTR_GENERATE_FLAG
+-- Performing Test COMPILER_RT_HAS_FNO_PROFILE_INSTR_GENERATE_FLAG - Success
+-- Performing Test COMPILER_RT_HAS_FNO_PROFILE_INSTR_USE_FLAG
+-- Performing Test COMPILER_RT_HAS_FNO_PROFILE_INSTR_USE_FLAG - Success
+-- Performing Test COMPILER_RT_HAS_WNO_PEDANTIC
+-- Performing Test COMPILER_RT_HAS_WNO_PEDANTIC - Success
+-- Performing Test COMPILER_RT_HAS_NOGPULIB_FLAG
+-- Performing Test COMPILER_RT_HAS_NOGPULIB_FLAG - Success
+-- Performing Test COMPILER_RT_HAS_FLTO_FLAG
+-- Performing Test COMPILER_RT_HAS_FLTO_FLAG - Success
+-- Performing Test COMPILER_RT_HAS_FCONVERGENT_FUNCTIONS_FLAG
+-- Performing Test COMPILER_RT_HAS_FCONVERGENT_FUNCTIONS_FLAG - Success
+-- Performing Test COMPILER_RT_HAS_CODE_OBJECT_VERSION_FLAG
+-- Performing Test COMPILER_RT_HAS_CODE_OBJECT_VERSION_FLAG - Success
+-- Performing Test COMPILER_RT_HAS_WBUILTIN_DECLARATION_MISMATCH_FLAG
+-- Performing Test COMPILER_RT_HAS_WBUILTIN_DECLARATION_MISMATCH_FLAG - Failed
+-- Performing Test COMPILER_RT_HAS_ZL_FLAG
+-- Performing Test COMPILER_RT_HAS_ZL_FLAG - Failed
+-- Performing Test COMPILER_RT_HAS_FCF_PROTECTION_FLAG
+-- Performing Test COMPILER_RT_HAS_FCF_PROTECTION_FLAG - Failed
+-- Performing Test COMPILER_RT_HAS_NOSTDINCXX_FLAG
+-- Performing Test COMPILER_RT_HAS_NOSTDINCXX_FLAG - Success
+-- Performing Test COMPILER_RT_HAS_ATOMIC_KEYWORD
+-- Performing Test COMPILER_RT_HAS_ATOMIC_KEYWORD - Success
+-- Performing Test COMPILER_RT_HAS_ASM_LSE
+-- Performing Test COMPILER_RT_HAS_ASM_LSE - Success
+-- Performing Test COMPILER_RT_HAS_AARCH64_SME
+-- Performing Test COMPILER_RT_HAS_AARCH64_SME - Success
+-- Performing Test COMPILER_RT_HAS_ARM_UNALIGNED
+-- Performing Test COMPILER_RT_HAS_ARM_UNALIGNED - Success
+-- Performing Test COMPILER_RT_HAS_ARM_FP
+-- Performing Test COMPILER_RT_HAS_ARM_FP - Success
+-- Looking for include file sys/auxv.h
+-- Looking for include file sys/auxv.h - not found
+-- Checking DARWIN_macosx_SYSROOT - '/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.2.sdk'
+-- Checking DARWIN_iphonesimulator_SYSROOT - '/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.2.sdk'
+-- Checking DARWIN_watchsimulator_SYSROOT - '/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/WatchSimulator.platform/Developer/SDKs/WatchSimulator27.2.sdk'
+-- Checking DARWIN_watchos_SYSROOT - '/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/WatchOS.platform/Developer/SDKs/WatchOS27.2.sdk'
+-- Checking DARWIN_appletvsimulator_SYSROOT - '/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/AppleTVSimulator.platform/Developer/SDKs/AppleTVSimulator27.2.sdk'
+-- Checking DARWIN_appletvos_SYSROOT - '/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS27.2.sdk'
+-- Checking DARWIN_xrsimulator_SYSROOT - '/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/XRSimulator.platform/Developer/SDKs/XRSimulator27.2.sdk'
+-- Checking DARWIN_xros_SYSROOT - '/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/XROS.platform/Developer/SDKs/XROS27.2.sdk'
+-- Found arm64 support in /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.2.sdk/SDKSettings.plist
+-- Found arm64e support in /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.2.sdk/SDKSettings.plist
+-- Using cached valid architectures for osx.
+-- OSX supported builtin arches: arm64
+-- Builtin supported architectures: arm64
+-- AArch64 Apple SME ABI routines enabled
+-- Performing Test COMPILER_RT_HAS_arm64_FLOAT16
+-- Performing Test COMPILER_RT_HAS_arm64_FLOAT16 - Success
+-- Performing Test COMPILER_RT_HAS_arm64_BFLOAT16
+-- Performing Test COMPILER_RT_HAS_arm64_BFLOAT16 - Success
+-- For osx_arm64 builtins preferring aarch64/fp_mode.c to fp_mode.c
+-- For cc_kext_osx_arm64 builtins preferring aarch64/fp_mode.c to fp_mode.c
+-- Configuring done (15.7s)
+-- Generating done (0.1s)
+CMake Warning (unused-cli):
+  Manually-specified variables were not used by the project:
+
+    COMPILER_RT_HAS_VISIBILITY_HIDDEN_FLAG
+    DARWIN_osx_ARCHS
+
+
+-- Build files have been written to: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/compiler-rt-overlay

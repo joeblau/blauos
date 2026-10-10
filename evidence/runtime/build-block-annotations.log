@@ -1,0 +1,117 @@
+Full log: .blauos/build/runtime/raw-experiments/build-block-annotations.log
+SHA256: ea9635cf575539fec92f1aedc3ec28d46cc357b6e8abb0c8fcaa761782cfa5b8
+Bytes: 1163019
+
+[  0%] Built target libc_headers_gen_script
+[  0%] Built target generate_dyld_headers
+[  0%] Building C object src/Libraries/CrashReporterClient/CMakeFiles/CrashReporterClient.dir/CrashReporterClient.c.o
+[  0%] Building C object tools/mig/CMakeFiles/migcom.dir/error.c.o
+[  0%] Built target libunwind_static_build
+[  1%] Built target libcxxabi_static_build
+[  1%] Linking C static library libCrashReporterClient.a
+[  1%] Building C object tools/mig/CMakeFiles/migcom.dir/global.c.o
+[  3%] Built target libcxx_static_build
+[  3%] Building C object tools/mig/CMakeFiles/migcom.dir/header.c.o
+[  3%] Building C object tools/mig/CMakeFiles/migcom.dir/mig.c.o
+[  3%] Building C object tools/mig/CMakeFiles/migcom.dir/routine.c.o
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/min.h:16:
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/initializer_list:109:
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cstddef:45:5: error: <cstddef> tried including <stddef.h> but didn't find libc++'s <stddef.h> header.           This usually means that your header search paths are not configured properly.           The header search paths should contain the C++ Standard Library headers before           any C Standard Library, and you are probably using compiler flags that make that           not be the case.
+   45 | #   error <cstddef> tried including <stddef.h> but didn't find libc++'s <stddef.h> header. \
+      |     ^
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Libraries/dyld/upstream/src/dyldInitialization.cpp:31:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Libraries/dyld/compat-include/mach/mach.h:4:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Libraries/dyld/compat-include/mach/mach.h:4:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Libraries/dyld/compat-include/mach/../../../libSystem/libsystem_kernel/mach/mach/mach.h:69:
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/mach/mach_init.h:80:8: error: unknown type name '__swift_nonisolated_unsafe'
+   80 | extern __swift_nonisolated_unsafe mach_port_t      mach_task_self_;
+      |        ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/mach/mach_init.h:80:46: error: expected ';' after top level declarator
+   80 | extern __swift_nonisolated_unIn file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Libraries/dyld/upstream/src/dyldNew.cpp:29:
+   80 | extern __swift_nonisolated_unsafe mach_port_t      mach_task_self_;
+      |        ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/mach/mach_init.h:80:46: error: expected ';' after top level declarator
+   80 | extern __swift_nonisolated_unIn file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Libraries/dyld/upstream/src/dyldNew.cpp:29:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Libraries/dyld/compat-include/mach/mach.h:4:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Libraries/dyld/compat-include/mach/../../../libSystem/libsystem_kernel/mach/mach/mach.h:69:
+safe mach_/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/mach/mach_init.h:80:8: error: unknown type name '__swift_nonisolated_unsafe'
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Libraries/dyld/compat-include/mach/mach.h:4:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Libraries/dyld/compat-include/mach/../../../libSystem/libsystem_kernel/mach/mach/mach.h:69:
+safe mach_/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/mach/mach_init.h:80:8: error: unknown type name '__swift_nonisolated_unsafe'
+port_t      mach_task_self_;
+         80 | extern __swi|                                              ^
+ft_nonisolated_unsafe mach_port_t      mach_task_self_;
+      |        ^
+ft_nonisolated_unsafe mach_port_t      mach_task_self_;
+      |        ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/mach/mach_init.h:80:46: error: expected ';' after top level declarator
+   80 | extern __swift_nonisolated_unsafe mach_port_t      mach_task_self_;
+      |                                              ^
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Libraries/dyld/upstream/src/dyld2.cpp:36:
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/mach/mach_init.h:80:8: error: unknown type name '__swift_nonisolated_unsafe'
+      |                                              ^
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Libraries/dyld/upstream/src/dyld2.cpp:36:
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/mach/mach_init.h:80:8: error: unknown type name '__swift_nonisolated_unsafe'
+   80 | extern __swift_nonisolated_unsafe mach_port_t      mach_task_self_;
+      |        ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/mach/mach_init.h:80:46: error: expected ';' after top level declarator
+   80 | extern __swift_nonisolated_unsafe mach_port_t      mach_task_self_;
+   80 | extern __swift_nonisolated_unsafe mach_port_t      mach_task_self_;
+      |        ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/mach/mach_init.h:80:46: error: expected ';' after top level declarator
+   80 | extern __swift_nonisolated_unsafe mach_port_t      mach_task_self_;
+      |                                              ^
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Libraries/dyld/upstream/src/dyldAPIs.cpp:39:
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/vector:312:
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cwchar:116:
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cwctype:56:
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cctype:45:5: error: <cctype> tried including <ctype.h> but didn't find libc++'s <ctype.h> header.           This usually means that your header search paths are not configured properly.            The header search paths should contain the C++ Standard Library headers before           any C Standard Library.
+   45 | #   error <cctype> tried including <ctype.h> but didn't find libc++'s <ctype.h> header. \
+      |     ^
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Libraries/dyld/upstream/src/dyldAPIs.cpp:39:
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/vector:312:
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/lexicographical_compare.h:30:
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cwchar:116:
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cwctype:61:5: error: <cwctype> tried including <wctype.h> but didn't find libc++'s <wctype.h> header.           This usually means that your header search paths are not configured properly.           The header search paths should contain the C++ Standard Library headers before           any C Standard Library, and you are probably using compiler flags that make that           not be the case.
+   61 | #   error <cwctype> tried including <wctype.h> but didn't find libc++'s <wctype.h> header. \
+      |     ^
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Libraries/dyld/upstream/src/dyldAPIs.cpp:39:
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/vector:312:
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__vector/comparison.h:13:
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/lexicographical_compare.h:30:
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cwchar:121:5: error: <cwchar> tried including <wchar.h> but didn't find libc++'s <wchar.h> header.           This usually means that your header search paths are not configured properly.           The header search paths should contain the C++ Standard Library headers before           any C Standard Library, and you are probably using compiler flags that make that           not be the case.
+  121 | #   error <cwchar> tried including <wchar.h> but didn't find libc++'s <wchar.h> header. \
+      |     ^
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Libraries/dyld/upstream/src/dyldNew.cpp:34:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Libraries/dyld/upstream/src/dyld2.h:31:
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__atomic/atomic.h:12/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cstring:69:5::
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__atomic/atomic_sync.h:12:
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__atomic/atomic_waitable_traits.h error: <cstring> tried including <string.h> but didn't find libc++'s <string.h> header.           This usually means that your header search paths are not configured properly.           The header search paths should contain the C++ Standard Library headers before           any C Standard Library, and you are probably using compiler flags that make that           not be the case.
+:21:
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cstring:69:   69 | #   error <cstring> trie5: error: <cstring> tried including <string.h> but didn't find libc++'s <string.h> header.           This usually means that your header search paths are not configured properly.           The header search paths should contain the C++ Standard Library headers before           any C Standard Library, and you are probably using compiler flags that make that           not be the case.
+   69d in | #   error <ccluding <stristring.hng> tried including <string.h> but didn't find libc> ++'s <string.h> hbut didn't find libc++'s <string.h>eader. \
+      |     ^
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__atomic/atomic_waitable_traits.h error: <cstring> tried including <string.h> but didn't find libc++'s <string.h> header.           This usually means that your header search paths are not configured properly.           The header search paths should contain the C++ Standard Library headers before           any C Standard Library, and you are probably using compiler flags that make that           not be the case.
+:21:
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cstring:69:   69 | #   error <cstring> trie5: error: <cstring> tried including <string.h> but didn't find libc++'s <string.h> header.           This usually means that your header search paths are not configured properly.           The header search paths should contain the C++ Standard Library headers before           any C Standard Library, and you are probably using compiler flags that make that           not be the case.
+   69d in | #   error <ccluding <stristring.hng> tried including <string.h> but didn't find libc> ++'s <string.h> hbut didn't find libc++'s <string.h>eader. \
+      |     ^
+ header. \
+      |     ^
+--- final output ---
+      | ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Libraries/dyld/upstream/src/dyld2.cpp:218:1: error: no template named '__vector_base'; did you mean '__iterator_base'?
+  218 | VECTOR_NEVER_DESTRUCTED(dyld::RegisteredDOF);
+      | ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Libraries/dyld/upstream/src/ImageLoader.h:109:3: note: expanded from macro 'VECTOR_NEVER_DESTRUCTED'
+  109 |                 __vector_base<type, std::allocator<type> >::~__vector_base() { } \
+      |                 ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/iterator.h:40:1: note: '__iterator_base' declared here
+   40 | using __iterator_base _LIBCPP_NODEBUG = iterator<_Category, _Tp, _Distance, _Pointer, _Reference>;
+      | ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+1 warning and 20 errors generated.
+make[3]: *** [src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/src/dyld2.cpp.o] Error 1
+make[2]: *** [src/Libraries/dyld/CMakeFiles/dyld.dir/all] Error 2
+make[1]: *** [src/Libraries/dyld/CMakeFiles/dyld.dir/rule] Error 2
+make: *** [dyld] Error 2

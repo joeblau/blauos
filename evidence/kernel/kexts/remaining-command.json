@@ -1,0 +1,16 @@
+[
+  "cmake",
+  "--build",
+  "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin",
+  "--target",
+  "Ext4FileSystemDriver.kext",
+  "AppleFileSystemDriver.kext",
+  "corecrypto.kext",
+  "pthread.kext",
+  "IONetworkingFamily.kext",
+  "IOVirtIOFamily.kext",
+  "IOVirtIOBlock.kext",
+  "IOVirtIONet.kext",
+  "--parallel",
+  "4"
+]

@@ -1,0 +1,126 @@
+diff --git a/src/Libraries/XPC/libinfo/mdns_module.c b/src/Libraries/XPC/libinfo/mdns_module.c
+index f5b4d30b..f9bc7c7f 100644
+--- a/src/Libraries/XPC/libinfo/mdns_module.c
++++ b/src/Libraries/XPC/libinfo/mdns_module.c
+@@ -99,7 +99,7 @@
+ #include <dnsinfo.h>
+ #include <errno.h>
+ #include <ifaddrs.h>
+-#include <nameser.h>
++#include "../../libresolv/nameser.h"
+ #include <notify.h>
+ #include <pthread.h>
+ #include <resolv.h>
+diff --git a/src/Libraries/XPC/notify/CMakeLists.txt b/src/Libraries/XPC/notify/CMakeLists.txt
+index 98b05716..3a216d4c 100644
+--- a/src/Libraries/XPC/notify/CMakeLists.txt
++++ b/src/Libraries/XPC/notify/CMakeLists.txt
+@@ -150,3 +150,6 @@ add_dependencies(notifyd
+ 
+ install(TARGETS notifyd DESTINATION usr/sbin COMPONENT BaseSystem OPTIONAL)
+ install(FILES com.apple.notifyd.plist DESTINATION System/Library/LaunchDaemons COMPONENT BaseSystem OPTIONAL)
++
++# Ensure generated MIG declarations exist before compiling their consumer.
++add_dependencies(XPC_notify_client_static XPC_notifyd_mig_static)
+diff --git a/src/Libraries/dyld/CMakeLists.txt b/src/Libraries/dyld/CMakeLists.txt
+index 35e55820..70d2e86a 100644
+--- a/src/Libraries/dyld/CMakeLists.txt
++++ b/src/Libraries/dyld/CMakeLists.txt
+@@ -221,3 +221,8 @@ if(PUREDARWIN_USE_LD64_LLD)
+ endif()
+ 
+ install(TARGETS dyld RUNTIME DESTINATION usr/lib COMPONENT BaseSystem)
++
++# BlauOS SDK27 profile: C++ shims must precede C headers.
++target_include_directories(dyld BEFORE PRIVATE ${BLAUOS_CXX_HEADERS})
++target_compile_options(dyld PRIVATE $<$<COMPILE_LANGUAGE:CXX>:-nostdinc++>)
++target_sources(dyld PRIVATE ${BLAUOS_STACK_PROBE})
+diff --git a/src/Libraries/dyld/upstream/src/ImageLoader.h b/src/Libraries/dyld/upstream/src/ImageLoader.h
+index 60dd9a88..d09e66ca 100644
+--- a/src/Libraries/dyld/upstream/src/ImageLoader.h
++++ b/src/Libraries/dyld/upstream/src/ImageLoader.h
+@@ -106,17 +106,17 @@
+ #define VECTOR_NEVER_DESTRUCTED(type) \
+ 	namespace std { \
+ 		template <> \
+-		__vector_base<type, std::allocator<type> >::~__vector_base() { } \
++		vector<type, std::allocator<type> >::~vector() { } \
+ 	}
+ #define VECTOR_NEVER_DESTRUCTED_EXTERN(type) \
+        namespace std { \
+                template <> \
+-               __vector_base<type, std::allocator<type> >::~__vector_base(); \
++               vector<type, std::allocator<type> >::~vector(); \
+        }
+ #define VECTOR_NEVER_DESTRUCTED_IMPL(type) \
+        namespace std { \
+                template <> \
+-               __vector_base<type, std::allocator<type> >::~__vector_base() { } \
++               vector<type, std::allocator<type> >::~vector() { } \
+        }
+ 
+ // utilities
+diff --git a/src/Libraries/libSystem/libdispatch/CMakeLists.txt b/src/Libraries/libSystem/libdispatch/CMakeLists.txt
+index 2743bfa7..617dd352 100644
+--- a/src/Libraries/libSystem/libdispatch/CMakeLists.txt
++++ b/src/Libraries/libSystem/libdispatch/CMakeLists.txt
+@@ -134,3 +134,7 @@ target_include_directories(libdispatch_static PRIVATE
+ target_include_directories(libdispatch_static PRIVATE
+     ${CMAKE_BINARY_DIR}/generated-headers/dlfcn)
+ 
++
++# BlauOS SDK27 profile: C++ standard wrappers precede C header directories.
++target_include_directories(libdispatch_static BEFORE PRIVATE $<$<COMPILE_LANGUAGE:CXX>:${BLAUOS_CXX_HEADERS}>)
++target_compile_options(libdispatch_static PRIVATE $<$<COMPILE_LANGUAGE:CXX>:-nostdinc++>)
+diff --git a/src/Libraries/libSystem/libdyld/CMakeLists.txt b/src/Libraries/libSystem/libdyld/CMakeLists.txt
+index 1cd6939b..1c6a770b 100644
+--- a/src/Libraries/libSystem/libdyld/CMakeLists.txt
++++ b/src/Libraries/libSystem/libdyld/CMakeLists.txt
+@@ -193,3 +193,7 @@ else()
+ endif()
+ 
+ install(TARGETS libdyld LIBRARY DESTINATION usr/lib/system COMPONENT BaseSystem)
++
++# BlauOS SDK27 profile: matching generated Mach declarations and C++ wrappers.
++target_include_directories(libdyld BEFORE PRIVATE ${BLAUOS_CXX_HEADERS} ${CMAKE_BINARY_DIR}/src/Libraries/libSystem/libsystem_kernel/public_include)
++target_compile_options(libdyld PRIVATE $<$<COMPILE_LANGUAGE:CXX>:-nostdinc++>)
+diff --git a/src/Libraries/libSystem/stub/CMakeLists.txt b/src/Libraries/libSystem/stub/CMakeLists.txt
+index ca88c328..a155128e 100644
+--- a/src/Libraries/libSystem/stub/CMakeLists.txt
++++ b/src/Libraries/libSystem/stub/CMakeLists.txt
+@@ -26,7 +26,7 @@ target_sources(libSystem_B_stub PRIVATE
+     empty.c
+     pd_libSystem_init.c
+     pd_libSystem_compat.c
+-    pd_chkstk_darwin.s
++    ${BLAUOS_STACK_PROBE}
+     ${CMAKE_SOURCE_DIR}/src/Libraries/dyld/pd_libc_common_storage.c
+     ${CMAKE_SOURCE_DIR}/src/Libraries/XPC/launchd/pd_sandbox_check.c
+     # mach-o getsection helpers (getsectiondata/getsegmentdata/... ) that
+@@ -286,3 +286,6 @@ install(TARGETS libSystem_B_stub LIBRARY DESTINATION usr/lib COMPONENT BaseSyste
+ install_symlink(usr/lib/libSystem.dylib libSystem.B.dylib COMPONENT BaseSystem)
+ install_symlink(usr/lib/libc.dylib libSystem.B.dylib COMPONENT BaseSystem)
+ install_symlink(usr/lib/libm.dylib libSystem.B.dylib COMPONENT BaseSystem)
++
++# This independent experimental dylib is not an Apple shared-cache candidate.
++target_link_options(libSystem_B_stub PRIVATE -Wl,-not_for_dyld_shared_cache)
+diff --git a/src/Libraries/libSystem/stub/pd_libSystem_compat.c b/src/Libraries/libSystem/stub/pd_libSystem_compat.c
+index 26c6b4ad..9c60f464 100644
+--- a/src/Libraries/libSystem/stub/pd_libSystem_compat.c
++++ b/src/Libraries/libSystem/stub/pd_libSystem_compat.c
+@@ -427,6 +427,7 @@ __pd_popen_extsn(const char *command, const char *type)
+  * otherwise the header rename would apply here too and we would just be
+  * redefining _sigwait$UNIX2003.
+  */
++#if defined(__i386__) || defined(__x86_64__)
+ extern int __pd_sigwait_unix2003(const sigset_t *set, int *sig)
+     __asm("_sigwait$UNIX2003");
+ extern int __pd_sigwait(const sigset_t *set, int *sig) __asm("_sigwait");
+@@ -436,6 +437,7 @@ __pd_sigwait(const sigset_t *set, int *sig)
+ {
+     return __pd_sigwait_unix2003(set, sig);
+ }
++#endif
+ 
+ /*
+  * select$1050: xterm's SDK <sys/select.h> asm-renames select to the 10.5

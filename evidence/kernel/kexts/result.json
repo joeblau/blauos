@@ -1,0 +1,215 @@
+{
+  "status": "built-not-boot-validated",
+  "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+  "configuration": "DEVELOPMENT ARM64 VIRT",
+  "bundles": [
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/AppleFileSystemDriver/AppleFileSystemDriver.kext",
+      "bundle_id": "com.apple.AppleFileSystemDriver",
+      "version": "3.0.1",
+      "libraries": {
+        "com.apple.kpi.libkern": "10.0.0d1",
+        "com.apple.kpi.iokit": "10.0.0d1",
+        "com.apple.iokit.IOStorageFamily": "1.6"
+      },
+      "binary": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/AppleFileSystemDriver/AppleFileSystemDriver.kext/Contents/MacOS/AppleFileSystemDriver",
+      "binary_sha256": "22c7107147a922be9487bbf521f005f29583f3cdf3c3f06dd122376876b9ff09",
+      "plist_sha256": "9b2ebba974c2840e375a123ba970c4ee769417b2f76fa3564ff279166e2bdb90",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/AppleFileSystemDriver/AppleFileSystemDriver.kext/Contents/MacOS/AppleFileSystemDriver: Mach-O 64-bit kext bundle arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/Ext4FileSystemDriver/Ext4FileSystemDriver.kext",
+      "bundle_id": "com.ravynos.driver.Ext4FileSystemDriver",
+      "version": "1.0.0",
+      "libraries": {
+        "com.apple.kpi.libkern": "8.0.0",
+        "com.apple.kpi.iokit": "8.0.0",
+        "com.apple.iokit.IOStorageFamily": "1.6"
+      },
+      "binary": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/Ext4FileSystemDriver/Ext4FileSystemDriver.kext/Contents/MacOS/Ext4FileSystemDriver",
+      "binary_sha256": "cd61439dd1940d2b3a3e4deeda8ee148997d5ea46a217c04aa9b3d2b9f1bb798",
+      "plist_sha256": "5f32635fcfe19edd030128794639ad8177da11a578575a2d65c55b1df6ea2dee",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/Ext4FileSystemDriver/Ext4FileSystemDriver.kext/Contents/MacOS/Ext4FileSystemDriver: Mach-O 64-bit kext bundle arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/IONetworkingFamily/IONetworkingFamily.kext",
+      "bundle_id": "com.apple.iokit.IONetworkingFamily",
+      "version": "3.4",
+      "libraries": {
+        "com.apple.kpi.bsd": "10.0.0d1",
+        "com.apple.kpi.iokit": "10.0.0d1",
+        "com.apple.kpi.libkern": "10.0.0d1",
+        "com.apple.kpi.mach": "10.0.0d1",
+        "com.apple.kpi.private": "10.0.0d1",
+        "com.apple.kpi.unsupported": "10.0.0d1"
+      },
+      "binary": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/IONetworkingFamily/IONetworkingFamily.kext/Contents/MacOS/IONetworkingFamily",
+      "binary_sha256": "226c635ef3feef20f46d2efc04f2a961a4254896079ec56e754f099449169283",
+      "plist_sha256": "9c99d150e5e23ce10fd316a575b636052be888f08bc3bb824f779b29556d888b",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/IONetworkingFamily/IONetworkingFamily.kext/Contents/MacOS/IONetworkingFamily: Mach-O 64-bit kext bundle arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/IOPCIFamily/IOPCIFamily.kext",
+      "bundle_id": "com.apple.iokit.IOPCIFamily",
+      "version": "2.9",
+      "libraries": {
+        "com.apple.kpi.iokit": "8.0",
+        "com.apple.kpi.libkern": "8.0",
+        "com.apple.kpi.mach": "8.0",
+        "com.apple.kpi.private": "8.0",
+        "com.apple.kpi.unsupported": "8.0"
+      },
+      "binary": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/IOPCIFamily/IOPCIFamily.kext/Contents/MacOS/IOPCIFamily",
+      "binary_sha256": "57330ef37ee8cba871fcff93ada7ae7b3ec293922ab133e5e4f0d40d0168dfd0",
+      "plist_sha256": "9767825c4b6a338535098dd7530bca42dd1f3783d858a46cce3a97f4fdf98989",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/IOPCIFamily/IOPCIFamily.kext/Contents/MacOS/IOPCIFamily: Mach-O 64-bit kext bundle arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/IOStorageFamily/IOStorageFamily.kext",
+      "bundle_id": "com.apple.iokit.IOStorageFamily",
+      "version": "2.1",
+      "libraries": {
+        "com.apple.kpi.bsd": "8.0",
+        "com.apple.kpi.iokit": "8.0",
+        "com.apple.kpi.libkern": "8.0",
+        "com.apple.kpi.mach": "8.0",
+        "com.apple.kpi.private": "8.0",
+        "com.apple.kpi.unsupported": "8.0"
+      },
+      "binary": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/IOStorageFamily/IOStorageFamily.kext/Contents/MacOS/IOStorageFamily",
+      "binary_sha256": "5d8af8431f1d2cc020c00c5dfc7411bef8bfcd7242e7b6589d07e97c0568626b",
+      "plist_sha256": "6dff081d0ad0586e940b54953f1c4fcdd6b325bf19de776f4f53543ff320b6c3",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/IOStorageFamily/IOStorageFamily.kext/Contents/MacOS/IOStorageFamily: Mach-O 64-bit kext bundle arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/IOVirtIOBlock/IOVirtIOBlock.kext",
+      "bundle_id": "org.puredarwin.driver.IOVirtIOBlock",
+      "version": "1.0.0",
+      "libraries": {
+        "com.apple.iokit.IOStorageFamily": "2.1",
+        "com.apple.iokit.IOPCIFamily": "2.9",
+        "org.puredarwin.iokit.IOVirtIOFamily": "1.0.0",
+        "com.apple.kpi.iokit": "10.0.0d1",
+        "com.apple.kpi.libkern": "10.0.0d1",
+        "com.apple.kpi.mach": "10.0.0d1",
+        "com.apple.kpi.bsd": "10.0.0d1"
+      },
+      "binary": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/IOVirtIOBlock/IOVirtIOBlock.kext/Contents/MacOS/IOVirtIOBlock",
+      "binary_sha256": "b540675888782f6e3b2e9c23e2f11686a8d6b1306a8c1eb192305b521af0e276",
+      "plist_sha256": "5f1ca6b0ca3777b68fd732b75d904a2702864ed58b9339ba71c5e2abae17d7a9",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/IOVirtIOBlock/IOVirtIOBlock.kext/Contents/MacOS/IOVirtIOBlock: Mach-O 64-bit kext bundle arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/IOVirtIOFamily/IOVirtIOFamily.kext",
+      "bundle_id": "org.puredarwin.iokit.IOVirtIOFamily",
+      "version": "1.0.0",
+      "libraries": {
+        "com.apple.iokit.IOPCIFamily": "2.9",
+        "com.apple.kpi.iokit": "10.0.0d1",
+        "com.apple.kpi.libkern": "10.0.0d1",
+        "com.apple.kpi.mach": "10.0.0d1"
+      },
+      "binary": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/IOVirtIOFamily/IOVirtIOFamily.kext/Contents/MacOS/IOVirtIOFamily",
+      "binary_sha256": "34b05fc58230cef33d2f2b0494682cb080fcf7326949418040d1972a226f9dcf",
+      "plist_sha256": "ac09e68897fafeb8b08c8f0d2b396a937a10f0706ffae49c6a9539d37956b4aa",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/IOVirtIOFamily/IOVirtIOFamily.kext/Contents/MacOS/IOVirtIOFamily: Mach-O 64-bit kext bundle arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/IOVirtIONet/IOVirtIONet.kext",
+      "bundle_id": "org.puredarwin.driver.IOVirtIONet",
+      "version": "1.0.0",
+      "libraries": {
+        "com.apple.iokit.IONetworkingFamily": "3.4",
+        "com.apple.iokit.IOPCIFamily": "2.9",
+        "org.puredarwin.iokit.IOVirtIOFamily": "1.0.0",
+        "com.apple.kpi.iokit": "10.0.0d1",
+        "com.apple.kpi.libkern": "10.0.0d1",
+        "com.apple.kpi.mach": "10.0.0d1",
+        "com.apple.kpi.bsd": "10.0.0d1"
+      },
+      "binary": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/IOVirtIONet/IOVirtIONet.kext/Contents/MacOS/IOVirtIONet",
+      "binary_sha256": "8135298ff043f76e6f8695124373c2cd0b6cb3786a5f4414afb3b4084e3be855",
+      "plist_sha256": "028465a8478fd9e61741ee00406e0a65ab074662c4a8c1e54e11772c20d09008",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/IOVirtIONet/IOVirtIONet.kext/Contents/MacOS/IOVirtIONet: Mach-O 64-bit kext bundle arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/PDArmPCI/PDArmPCI.kext",
+      "bundle_id": "org.puredarwin.driver.PDArmPCI",
+      "version": "1.0",
+      "libraries": {
+        "com.apple.iokit.IOPCIFamily": "1.1",
+        "com.apple.kpi.iokit": "8.0.0",
+        "com.apple.kpi.libkern": "8.0.0"
+      },
+      "binary": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/PDArmPCI/PDArmPCI.kext/Contents/MacOS/PDArmPCI",
+      "binary_sha256": "80e5953bfb534a0bfe0daeb5f98d90a73e6bc39c24ed788aab9cfaccb5a450a2",
+      "plist_sha256": "2ad7197ae877e6505235e1ec69e765dbe250b0602d15529880cf2a025c2913cf",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/PDArmPCI/PDArmPCI.kext/Contents/MacOS/PDArmPCI: Mach-O 64-bit kext bundle arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/PDArmPlatformExpert/PDArmPlatformExpert.kext",
+      "bundle_id": "org.puredarwin.kext.PDArmPlatformExpert",
+      "version": "1",
+      "libraries": {
+        "com.apple.kpi.iokit": "7.0",
+        "com.apple.kpi.libkern": "8.0.0d0",
+        "com.apple.kpi.private": "8.0.0b1",
+        "com.apple.kpi.unsupported": "8.0.0b1"
+      },
+      "binary": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/PDArmPlatformExpert/PDArmPlatformExpert.kext/Contents/MacOS/PDArmPlatformExpert",
+      "binary_sha256": "8db6e5699882203b6e25f68b1e91feae92d5af34243233a4f22cabd277376ac9",
+      "plist_sha256": "915b78bb6adbfcf211313912e9c025fe00b5ed902d203283ff80a568c6610c67",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/PDArmPlatformExpert/PDArmPlatformExpert.kext/Contents/MacOS/PDArmPlatformExpert: Mach-O 64-bit kext bundle arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/corecrypto/corecrypto.kext",
+      "bundle_id": "com.apple.kec.corecrypto",
+      "version": "1",
+      "libraries": {
+        "com.apple.kpi.bsd": "12.0",
+        "com.apple.kpi.iokit": "8.0",
+        "com.apple.kpi.libkern": "11.2",
+        "com.apple.kpi.mach": "11.2",
+        "com.apple.kpi.private": "11.2",
+        "com.apple.kpi.unsupported": "11.2"
+      },
+      "binary": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/corecrypto/corecrypto.kext/Contents/MacOS/corecrypto",
+      "binary_sha256": "eb23f1d96e86d1d3f46775c4dc19dbe900d5886938e1bb3c5df5c7718f75b30f",
+      "plist_sha256": "6fe1e7a41ac0b0d009076a6a147bf63141d19af6c241657056e13b508b4bd828",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/corecrypto/corecrypto.kext/Contents/MacOS/corecrypto: Mach-O 64-bit kext bundle arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/ext4/ext4.kext",
+      "bundle_id": "com.apple.filesystems.ext4",
+      "version": "1",
+      "libraries": {
+        "com.apple.kpi.bsd": "12.0",
+        "com.apple.kpi.iokit": "11.2",
+        "com.apple.kpi.libkern": "11.2",
+        "com.apple.kpi.mach": "11.2",
+        "com.apple.kpi.unsupported": "11.2"
+      },
+      "binary": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/ext4/ext4.kext/Contents/MacOS/ext4",
+      "binary_sha256": "ceaaaaa276b8148bddd28d3291b09b8394b08a40b2f247af9ea54b5ce58f4766",
+      "plist_sha256": "07841a12dab4824ac2b1cb6ed5442840508d0eb856ab4f94c0e40ac137139b7a",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/ext4/ext4.kext/Contents/MacOS/ext4: Mach-O 64-bit kext bundle arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/pthread/pthread.kext",
+      "bundle_id": "com.apple.kec.pthread",
+      "version": "1",
+      "libraries": {
+        "com.apple.kpi.bsd": "12.0",
+        "com.apple.kpi.iokit": "13.0.0",
+        "com.apple.kpi.libkern": "11.2",
+        "com.apple.kpi.mach": "11.2",
+        "com.apple.kpi.private": "11.2",
+        "com.apple.kpi.unsupported": "11.2"
+      },
+      "binary": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/pthread/pthread.kext/Contents/MacOS/pthread",
+      "binary_sha256": "0ffb73c73b4d38b4ec2ac559bd6cd2d1578fdd7099c79f4b3302a6e7528ac30b",
+      "plist_sha256": "ee398010532dca5d6dab962a4151416296c4b299eed29c3e5bf4b5fbf9164b41",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/Extensions/pthread/pthread.kext/Contents/MacOS/pthread: Mach-O 64-bit kext bundle arm64"
+    }
+  ]
+}

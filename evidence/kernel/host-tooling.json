@@ -1,0 +1,73 @@
+{
+  "clang": {
+    "available": true,
+    "path": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+    "error": ""
+  },
+  "clang++": {
+    "available": true,
+    "path": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++",
+    "error": ""
+  },
+  "ld": {
+    "available": true,
+    "path": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld",
+    "error": ""
+  },
+  "mig": {
+    "available": true,
+    "path": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/mig",
+    "error": ""
+  },
+  "migcom": {
+    "available": true,
+    "path": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/libexec/migcom",
+    "error": ""
+  },
+  "iig": {
+    "available": true,
+    "path": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/iig",
+    "error": ""
+  },
+  "unifdef": {
+    "available": true,
+    "path": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/unifdef",
+    "error": ""
+  },
+  "dsymutil": {
+    "available": true,
+    "path": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dsymutil",
+    "error": ""
+  },
+  "ctfconvert": {
+    "available": false,
+    "path": "",
+    "error": "xcrun: error: sh -c '/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find ctfconvert 2> /dev/null' failed with exit code 17664: (null) (errno=Undefined error: 0)\nxcrun: error: unable to find utility \"ctfconvert\", not a developer tool or in PATH"
+  },
+  "ctfmerge": {
+    "available": false,
+    "path": "",
+    "error": "xcrun: error: sh -c '/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find ctfmerge 2> /dev/null' failed with exit code 17664: (null) (errno=Undefined error: 0)\nxcrun: error: unable to find utility \"ctfmerge\", not a developer tool or in PATH"
+  },
+  "ctf_insert": {
+    "available": true,
+    "path": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ctf_insert",
+    "error": ""
+  },
+  "cmake": {
+    "available": true,
+    "path": "/opt/homebrew/bin/cmake",
+    "error": ""
+  },
+  "ninja": {
+    "available": false,
+    "path": "",
+    "error": "xcrun: error: sh -c '/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find ninja 2> /dev/null' failed with exit code 17664: (null) (errno=Undefined error: 0)\nxcrun: error: unable to find utility \"ninja\", not a developer tool or in PATH"
+  },
+  "host": "ProductName:\t\tmacOS\nProductVersion:\t\t27.2\nBuildVersion:\t\t26B5101f",
+  "kernel": "Darwin Joes-MacBook-Pro.local 27.2.0 Darwin Kernel Version 27.2.0: Tue Sep 29 21:48:00 PDT 2026; root:xnu-13432.40.177.0.3~56/RELEASE_ARM64_T6031 arm64",
+  "compiler": "Apple clang version 21.0.0 (clang-2100.3.34.2)\nTarget: arm64-apple-darwin27.2.0\nThread model: posix\nInstalledDir: /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin",
+  "sdk": "27.2",
+  "sdk_path": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+  "kdk_present": false
+}

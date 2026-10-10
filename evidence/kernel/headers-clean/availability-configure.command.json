@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "cmake",
+    "-S",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/availabilityversions",
+    "-B",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers-clean/availability/obj",
+    "-DSRCROOT=/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/availabilityversions",
+    "-DOBJROOT=/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers-clean/availability/obj",
+    "-DDSTROOT=/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers-clean/availability/dst",
+    "-DSYMROOT=/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers-clean/availability/sym",
+    "-DINSTALL_KERNEL_HEADERS=1",
+    "-DDRIVERKIT=0",
+    "-DAV_VERSION=AvailabilityVersions-157.2"
+  ],
+  "cwd": "/Users/joeblau/Developer/joeblau/src/blauos"
+}

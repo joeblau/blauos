@@ -1,0 +1,320 @@
+[  0%] Built target unifdef
+[  0%] Built target host_libmacho
+[ 11%] Built target libelf.host
+[ 33%] Built target host_libstuff
+[ 44%] Built target libctf.host
+[ 66%] Built target libdwarf.host
+[ 66%] Built target migcom
+[ 66%] Built target host_lipo
+[ 66%] Built target host_nm
+[ 66%] Built target host_strip
+[ 66%] Built target host_libtool
+[ 66%] Built target host_codesign_allocate
+[ 66%] Built target host_ctf_insert
+[ 66%] Built target host_nmedit
+[ 77%] Built target host_ctfconvert
+[ 88%] Built target host_ctfmerge
+[100%] Built target xnu_headers.extproj
+[100%] Built target libkmod
+[100%] Building C object src/Kernel/Extensions/Ext4FileSystemDriver/CMakeFiles/Ext4FileSystemDriver.kext.dir/kmod_info.c.o
+[100%] Building CXX object src/Kernel/Extensions/Ext4FileSystemDriver/CMakeFiles/Ext4FileSystemDriver.kext.dir/Ext4FileSystemDriver.cpp.o
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/Ext4FileSystemDriver/Ext4FileSystemDriver.cpp:110:55: warning: variable 'media' may be uninitialized when used here [-Wconditional-uninitialized]
+  110 |         IOService::publishResource(kBootUUIDMediaKey, media);
+      |                                                       ^~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/Ext4FileSystemDriver/Ext4FileSystemDriver.cpp:83:32: note: initialize the variable 'media' to silence this warning
+   83 |     IOMedia              *media;
+      |                                ^
+      |                                 = nullptr
+1 warning generated.
+[100%] Linking CXX CFBundle shared module Ext4FileSystemDriver.kext/Contents/MacOS/Ext4FileSystemDriver
+[100%] Built target Ext4FileSystemDriver.kext
+[  0%] Built target unifdef
+[  0%] Built target host_libmacho
+[ 11%] Built target libelf.host
+[ 33%] Built target host_libstuff
+[ 44%] Built target libctf.host
+[ 66%] Built target libdwarf.host
+[ 66%] Built target host_lipo
+[ 66%] Built target migcom
+[ 66%] Built target host_nm
+[ 66%] Built target host_libtool
+[ 66%] Built target host_codesign_allocate
+[ 66%] Built target host_strip
+[ 66%] Built target host_nmedit
+[ 66%] Built target host_ctf_insert
+[ 77%] Built target host_ctfconvert
+[ 88%] Built target host_ctfmerge
+[100%] Built target xnu_headers.extproj
+[100%] Built target libkmod
+[100%] Building C object src/Kernel/Extensions/AppleFileSystemDriver/CMakeFiles/AppleFileSystemDriver.kext.dir/kmod_info.c.o
+[100%] Building CXX object src/Kernel/Extensions/AppleFileSystemDriver/CMakeFiles/AppleFileSystemDriver.kext.dir/AppleFileSystemDriver.cpp.o
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/AppleFileSystemDriver/AppleFileSystemDriver.cpp:24:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/AppleFileSystemDriver/AppleFileSystemDriver.h:52:18: warning: 'start' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+   52 |     virtual bool start(IOService * provider);
+      |                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu_header_install/System/Library/Frameworks/Kernel.framework/Versions/A/PrivateHeaders/IOKit/IOService.h:590:15: note: overridden virtual function is here
+  590 |         virtual bool start( IOService * provider );
+      |                      ^
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/AppleFileSystemDriver/AppleFileSystemDriver.cpp:24:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/AppleFileSystemDriver/AppleFileSystemDriver.h:54:18: warning: 'free' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+   54 |     virtual void free();
+      |                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu_header_install/System/Library/Frameworks/Kernel.framework/Versions/A/PrivateHeaders/IOKit/IOService.h:686:15: note: overridden virtual function is here
+  686 |         virtual void free( void ) APPLE_KEXT_OVERRIDE;
+      |                      ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/AppleFileSystemDriver/AppleFileSystemDriver.cpp:345:17: warning: address of array 'fs->_uuid' will always evaluate to 'true' [-Wpointer-bool-conversion]
+  345 |         if (fs->_uuid) {
+      |         ~~  ~~~~^~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/AppleFileSystemDriver/AppleFileSystemDriver.cpp:366:56: warning: variable 'media' may be uninitialized when used here [-Wconditional-uninitialized]
+  366 |         IOService::publishResource( kBootUUIDMediaKey, media );
+      |                                                        ^~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/AppleFileSystemDriver/AppleFileSystemDriver.cpp:248:37: note: initialize the variable 'media' to silence this warning
+  248 |     IOMedia *                  media;
+      |                                     ^
+      |                                      = nullptr
+4 warnings generated.
+[100%] Linking CXX CFBundle shared module AppleFileSystemDriver.kext/Contents/MacOS/AppleFileSystemDriver
+[100%] Built target AppleFileSystemDriver.kext
+[  0%] Built target unifdef
+[  0%] Built target host_libmacho
+[ 10%] Built target libelf.host
+[ 30%] Built target host_libstuff
+[ 40%] Built target libctf.host
+[ 60%] Built target libdwarf.host
+[ 60%] Built target migcom
+[ 60%] Built target host_lipo
+[ 60%] Built target host_nm
+[ 60%] Built target host_libtool
+[ 60%] Built target host_codesign_allocate
+[ 60%] Built target host_strip
+[ 60%] Built target host_ctf_insert
+[ 60%] Built target host_nmedit
+[ 80%] Built target host_ctfmerge
+[ 80%] Built target host_ctfconvert
+[ 90%] Built target xnu_headers.extproj
+[ 90%] Built target libkmod
+[ 90%] Building C object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/cc_debug.c.o
+[ 90%] Building C object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/cc_cmp_safe.c.o
+[ 90%] Building C object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/kmod_info.c.o
+[ 90%] Building C object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/cc_clear.c.o
+[ 90%] Building C object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/cc_digest.c.o
+[ 90%] Building C object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/algorithms/aes_cbc.c.o
+[ 90%] Building C object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/algorithms/aes128.c.o
+[ 90%] Building C object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/algorithms/aes_ecb.c.o
+[ 90%] Building C object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/algorithms/cckprng.c.o
+[ 90%] Building CXX object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/algorithms/md5_impl.cc.o
+[ 90%] Building C object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/algorithms/md5.c.o
+[ 90%] Building C object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/algorithms/pdcrypto_digest_final.c.o
+[ 90%] Building C object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/algorithms/pdcrypto_digest_init.c.o
+[ 90%] Building C object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/algorithms/pdcrypto_digest_update.c.o
+[ 90%] Building C object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/algorithms/pdcrypto_dummy.c.o
+[ 90%] Building C object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/algorithms/sha1.c.o
+[ 90%] Building CXX object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/algorithms/sha1_impl.cc.o
+[ 90%] Building CXX object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/algorithms/sha256.cc.o
+[ 90%] Building CXX object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/algorithms/sha512.cc.o
+[100%] Building C object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/algorithms/yarrow/comp.c.o
+[100%] Building C object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/algorithms/yarrow/prng.c.o
+[100%] Building C object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/algorithms/yarrow/sha1mod.c.o
+[100%] Building C object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/algorithms/yarrow/smf.c.o
+[100%] Building C object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/algorithms/yarrow/yarrowUtils.c.o
+[100%] Building C object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/kext/cc_functions.c.o
+[100%] Building C object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/kext/cc_kext_main.c.o
+[100%] Linking CXX CFBundle shared module corecrypto.kext/Contents/MacOS/corecrypto
+[100%] Built target corecrypto.kext
+[  0%] Built target host_libmacho
+[  0%] Built target unifdef
+[ 10%] Built target libelf.host
+[ 30%] Built target host_libstuff
+[ 40%] Built target libctf.host
+[ 60%] Built target libdwarf.host
+[ 60%] Built target migcom
+[ 60%] Built target host_lipo
+[ 60%] Built target host_nm
+[ 60%] Built target host_strip
+[ 60%] Built target host_libtool
+[ 60%] Built target host_codesign_allocate
+[ 60%] Built target host_ctf_insert
+[ 60%] Built target host_nmedit
+[ 70%] Built target host_ctfconvert
+[ 80%] Built target host_ctfmerge
+[ 90%] Built target xnu_headers.extproj
+[ 90%] Built target libkmod
+[100%] Building C object src/Kernel/Extensions/pthread/CMakeFiles/pthread.kext.dir/kmod_info.c.o
+[100%] Building C object src/Kernel/Extensions/pthread/CMakeFiles/pthread.kext.dir/kern_synch.c.o
+[100%] Building C object src/Kernel/Extensions/pthread/CMakeFiles/pthread.kext.dir/kern_init.c.o
+[100%] Building C object src/Kernel/Extensions/pthread/CMakeFiles/pthread.kext.dir/kern_support.c.o
+[100%] Linking C CFBundle shared module pthread.kext/Contents/MacOS/pthread
+[100%] Built target pthread.kext
+[  0%] Built target host_libmacho
+[  0%] Built target unifdef
+[ 10%] Built target libelf.host
+[ 30%] Built target host_libstuff
+[ 40%] Built target libctf.host
+[ 60%] Built target libdwarf.host
+[ 60%] Built target host_lipo
+[ 60%] Built target migcom
+[ 60%] Built target host_nm
+[ 60%] Built target host_libtool
+[ 60%] Built target host_strip
+[ 60%] Built target host_codesign_allocate
+[ 60%] Built target host_ctf_insert
+[ 60%] Built target host_nmedit
+[ 70%] Built target host_ctfconvert
+[ 80%] Built target host_ctfmerge
+[ 90%] Built target xnu_headers.extproj
+[ 90%] Built target libkmod
+[100%] Building C object src/Kernel/Extensions/IONetworkingFamily/CMakeFiles/IONetworkingFamily.kext.dir/kmod_info.c.o
+[100%] Building CXX object src/Kernel/Extensions/IONetworkingFamily/CMakeFiles/IONetworkingFamily.kext.dir/IOEthernetController.cpp.o
+[100%] Building CXX object src/Kernel/Extensions/IONetworkingFamily/CMakeFiles/IONetworkingFamily.kext.dir/IOKernelDebugger.cpp.o
+[100%] Building CXX object src/Kernel/Extensions/IONetworkingFamily/CMakeFiles/IONetworkingFamily.kext.dir/IOEthernetInterface.cpp.o
+[100%] Building CXX object src/Kernel/Extensions/IONetworkingFamily/CMakeFiles/IONetworkingFamily.kext.dir/IOMbufMemoryCursor.cpp.o
+[100%] Building CXX object src/Kernel/Extensions/IONetworkingFamily/CMakeFiles/IONetworkingFamily.kext.dir/IONetworkController.cpp.o
+[100%] Building CXX object src/Kernel/Extensions/IONetworkingFamily/CMakeFiles/IONetworkingFamily.kext.dir/IONetworkData.cpp.o
+[100%] Building CXX object src/Kernel/Extensions/IONetworkingFamily/CMakeFiles/IONetworkingFamily.kext.dir/IONetworkInterface.cpp.o
+[100%] Building CXX object src/Kernel/Extensions/IONetworkingFamily/CMakeFiles/IONetworkingFamily.kext.dir/IONetworkMedium.cpp.o
+[100%] Building CXX object src/Kernel/Extensions/IONetworkingFamily/CMakeFiles/IONetworkingFamily.kext.dir/IONetworkStack.cpp.o
+[100%] Building CXX object src/Kernel/Extensions/IONetworkingFamily/CMakeFiles/IONetworkingFamily.kext.dir/IONetworkUserClient.cpp.o
+[100%] Building CXX object src/Kernel/Extensions/IONetworkingFamily/CMakeFiles/IONetworkingFamily.kext.dir/IOOutputQueue.cpp.o
+[100%] Building CXX object src/Kernel/Extensions/IONetworkingFamily/CMakeFiles/IONetworkingFamily.kext.dir/IOPacketQueue.cpp.o
+[100%] Linking CXX CFBundle shared module IONetworkingFamily.kext/Contents/MacOS/IONetworkingFamily
+[100%] Built target IONetworkingFamily.kext
+[  0%] Built target unifdef
+[  0%] Built target host_libmacho
+[ 11%] Built target libelf.host
+[ 33%] Built target host_libstuff
+[ 44%] Built target libctf.host
+[ 44%] Built target migcom
+[ 66%] Built target libdwarf.host
+[ 66%] Built target host_lipo
+[ 66%] Built target host_nm
+[ 66%] Built target host_libtool
+[ 66%] Built target host_strip
+[ 66%] Built target host_codesign_allocate
+[ 66%] Built target host_ctf_insert
+[ 66%] Built target host_nmedit
+[ 77%] Built target host_ctfconvert
+[ 88%] Built target host_ctfmerge
+[100%] Built target xnu_headers.extproj
+[100%] Built target libkmod
+[100%] Building CXX object src/Kernel/Extensions/IOVirtIOFamily/CMakeFiles/IOVirtIOFamily.kext.dir/IOVirtIOTransport.cpp.o
+[100%] Building C object src/Kernel/Extensions/IOVirtIOFamily/CMakeFiles/IOVirtIOFamily.kext.dir/kmod_info.c.o
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOVirtIOFamily/IOVirtIOTransport.cpp:1:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOVirtIOFamily/IOVirtIOTransport.h:5:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOVirtIOFamily/../IOPCIFamily/include/IOKit/pci/IOPCIDevice.h:383:18: warning: 'handleOpen' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  383 |     virtual bool handleOpen(IOService * forClient, IOOptionBits options, void * arg);
+      |                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu_header_install/System/Library/Frameworks/Kernel.framework/Versions/A/PrivateHeaders/IOKit/IOService.h:636:15: note: overridden virtual function is here
+  636 |         virtual bool handleOpen(    IOService *   forClient,
+      |                      ^
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOVirtIOFamily/IOVirtIOTransport.cpp:1:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOVirtIOFamily/IOVirtIOTransport.h:5:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOVirtIOFamily/../IOPCIFamily/include/IOKit/pci/IOPCIDevice.h:384:18: warning: 'handleClose' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  384 |     virtual void handleClose(IOService * forClient, IOOptionBits options);
+      |                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu_header_install/System/Library/Frameworks/Kernel.framework/Versions/A/PrivateHeaders/IOKit/IOService.h:646:15: note: overridden virtual function is here
+  646 |         virtual void handleClose(   IOService *       forClient,
+      |                      ^
+2 warnings generated.
+[100%] Linking CXX CFBundle shared module IOVirtIOFamily.kext/Contents/MacOS/IOVirtIOFamily
+[100%] Built target IOVirtIOFamily.kext
+[  0%] Built target unifdef
+[  0%] Built target host_libmacho
+[ 11%] Built target libelf.host
+[ 33%] Built target host_libstuff
+[ 44%] Built target libctf.host
+[ 66%] Built target libdwarf.host
+[ 66%] Built target migcom
+[ 66%] Built target host_lipo
+[ 66%] Built target host_nm
+[ 66%] Built target host_libtool
+[ 66%] Built target host_codesign_allocate
+[ 66%] Built target host_strip
+[ 66%] Built target host_ctf_insert
+[ 66%] Built target host_nmedit
+[ 77%] Built target host_ctfconvert
+[ 88%] Built target host_ctfmerge
+[100%] Built target xnu_headers.extproj
+[100%] Built target libkmod
+[100%] Built target IOVirtIOFamily.kext
+[100%] Building CXX object src/Kernel/Extensions/IOVirtIOBlock/CMakeFiles/IOVirtIOBlock.kext.dir/IOVirtIOBlockDisk.cpp.o
+[100%] Building C object src/Kernel/Extensions/IOVirtIOBlock/CMakeFiles/IOVirtIOBlock.kext.dir/kmod_info.c.o
+[100%] Building CXX object src/Kernel/Extensions/IOVirtIOBlock/CMakeFiles/IOVirtIOBlock.kext.dir/IOVirtIOBlock.cpp.o
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOVirtIOBlock/IOVirtIOBlock.cpp:1:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOVirtIOBlock/IOVirtIOBlock.h:7:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOVirtIOBlock/../IOPCIFamily/include/IOKit/pci/IOPCIDevice.h:383:18: warning: 'handleOpen' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  383 |     virtual bool handleOpen(IOService * forClient, IOOptionBits options, void * arg);
+      |                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu_header_install/System/Library/Frameworks/Kernel.framework/Versions/A/PrivateHeaders/IOKit/IOService.h:636:15: note: overridden virtual function is here
+  636 |         virtual bool handleOpen(    IOService *   forClient,
+      |                      ^
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOVirtIOBlock/IOVirtIOBlock.cpp:1:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOVirtIOBlock/IOVirtIOBlock.h:7:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOVirtIOBlock/../IOPCIFamily/include/IOKit/pci/IOPCIDevice.h:384:18: warning: 'handleClose' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  384 |     virtual void handleClose(IOService * forClient, IOOptionBits options);
+      |                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu_header_install/System/Library/Frameworks/Kernel.framework/Versions/A/PrivateHeaders/IOKit/IOService.h:646:15: note: overridden virtual function is here
+  646 |         virtual void handleClose(   IOService *       forClient,
+      |                      ^
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOVirtIOBlock/IOVirtIOBlockDisk.cpp:1:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOVirtIOBlock/IOVirtIOBlockDisk.h:5:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOVirtIOBlock/IOVirtIOBlock.h:7:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOVirtIOBlock/../IOPCIFamily/include/IOKit/pci/IOPCIDevice.h:383:18: warning: 'handleOpen' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  383 |     virtual bool handleOpen(IOService * forClient, IOOptionBits options, void * arg);
+      |                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu_header_install/System/Library/Frameworks/Kernel.framework/Versions/A/PrivateHeaders/IOKit/IOService.h:636:15: note: overridden virtual function is here
+  636 |         virtual bool handleOpen(    IOService *   forClient,
+      |                      ^
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOVirtIOBlock/IOVirtIOBlockDisk.cpp:1:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOVirtIOBlock/IOVirtIOBlockDisk.h:5:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOVirtIOBlock/IOVirtIOBlock.h:7:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOVirtIOBlock/../IOPCIFamily/include/IOKit/pci/IOPCIDevice.h:384:18: warning: 'handleClose' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  384 |     virtual void handleClose(IOService * forClient, IOOptionBits options);
+      |                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu_header_install/System/Library/Frameworks/Kernel.framework/Versions/A/PrivateHeaders/IOKit/IOService.h:646:15: note: overridden virtual function is here
+  646 |         virtual void handleClose(   IOService *       forClient,
+      |                      ^
+2 warnings generated.
+2 warnings generated.
+[100%] Linking CXX CFBundle shared module IOVirtIOBlock.kext/Contents/MacOS/IOVirtIOBlock
+[100%] Built target IOVirtIOBlock.kext
+[  0%] Built target host_libmacho
+[  0%] Built target unifdef
+[  9%] Built target libelf.host
+[ 27%] Built target host_libstuff
+[ 36%] Built target libctf.host
+[ 54%] Built target libdwarf.host
+[ 54%] Built target host_lipo
+[ 54%] Built target migcom
+[ 54%] Built target host_nm
+[ 54%] Built target host_libtool
+[ 54%] Built target host_codesign_allocate
+[ 54%] Built target host_strip
+[ 54%] Built target host_nmedit
+[ 54%] Built target host_ctf_insert
+[ 63%] Built target host_ctfconvert
+[ 72%] Built target host_ctfmerge
+[ 81%] Built target xnu_headers.extproj
+[ 81%] Built target libkmod
+[ 81%] Built target IOVirtIOFamily.kext
+[ 90%] Built target IONetworkingFamily.kext
+[ 90%] Building CXX object src/Kernel/Extensions/IOVirtIONet/CMakeFiles/IOVirtIONet.kext.dir/IOVirtIONet.cpp.o
+[ 90%] Building C object src/Kernel/Extensions/IOVirtIONet/CMakeFiles/IOVirtIONet.kext.dir/kmod_info.c.o
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOVirtIONet/IOVirtIONet.cpp:1:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOVirtIONet/IOVirtIONet.h:7:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOVirtIONet/../IOPCIFamily/include/IOKit/pci/IOPCIDevice.h:383:18: warning: 'handleOpen' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  383 |     virtual bool handleOpen(IOService * forClient, IOOptionBits options, void * arg);
+      |                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu_header_install/System/Library/Frameworks/Kernel.framework/Versions/A/PrivateHeaders/IOKit/IOService.h:636:15: note: overridden virtual function is here
+  636 |         virtual bool handleOpen(    IOService *   forClient,
+      |                      ^
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOVirtIONet/IOVirtIONet.cpp:1:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOVirtIONet/IOVirtIONet.h:7:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOVirtIONet/../IOPCIFamily/include/IOKit/pci/IOPCIDevice.h:384:18: warning: 'handleClose' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  384 |     virtual void handleClose(IOService * forClient, IOOptionBits options);
+      |                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu_header_install/System/Library/Frameworks/Kernel.framework/Versions/A/PrivateHeaders/IOKit/IOService.h:646:15: note: overridden virtual function is here
+  646 |         virtual void handleClose(   IOService *       forClient,
+      |                      ^
+2 warnings generated.
+[100%] Linking CXX CFBundle shared module IOVirtIONet.kext/Contents/MacOS/IOVirtIONet
+[100%] Built target IOVirtIONet.kext

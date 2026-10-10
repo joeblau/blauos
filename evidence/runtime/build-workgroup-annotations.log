@@ -1,0 +1,54 @@
+Full log: .blauos/build/runtime/raw-experiments/build-workgroup-annotations.log
+SHA256: 8ff028ee0cb6fad426448459ae64170ee4e3a592a397159d6efd4693cb3f257f
+Bytes: 568264
+
+[  0%] Built target libc_headers_gen_script
+[  0%] Built target generate_dyld_headers
+[  0%] Building C object src/Libraries/CrashReporterClient/CMakeFiles/CrashReporterClient.dir/CrashReporterClient.c.o
+[  0%] Building C object tools/mig/CMakeFiles/migcom.dir/error.c.o
+[  0%] Built target libunwind_static_build
+[  1%] Built target libcxxabi_static_build
+[  1%] Building C object tools/mig/CMakeFiles/migcom.dir/global.c.o
+[  1%] Building C object tools/mig/CMakeFiles/migcom.dir/header.c.o
+[  1%] Linking C static library libCrashReporterClient.a
+[  1%] Building C object tools/mig/CMakeFiles/migcom.dir/mig.c.o
+[  3%] Built target libcxx_static_build
+[  3%] Building C object tools/mig/CMakeFiles/migcom.dir/routine.c.o
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/dispatch/dispatch.h:64:
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/os/workgroup.h:30:
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/os/workgroup_object.h:118:73: error: expected ')'
+  118 | os_workgroup_create_with_port(const char *OS_WORKGROUP_UNSAFE_INDEXABLE _Nullable name, mach_port_t mach_port);
+      |                                                                         ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/os/workgroup_object.h:118:30: note: to match this '('
+  118 | os_workgroup_create_with_port(const char *OS_WORKGROUP_UNSAFE_INDEXABLE _Nullable name, mach_port_t mach_port);
+  118 | os_workgroup_create_with_port(const char *OS_WORKGROUP_UNSAFE_INDEXABLE _Nullable name, mach_port_t mach_port);
+      |                              ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/os/workgroup_object.h:139:79: error: expected ')'
+  139 | os_workgroup_create_with_workgroup(const char * OS_WORKGROUP_UNSAFE_INDEXABLE _Nullable name, os_workgroup_t wg);
+      |                                                                               ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/os/workgroup_object.h:139:35: note: to match this '('
+  139 | os_workgroup_create_with_workgroup(const char * OS_WORKGROUP_UNSAFE_INDEXABLE _Nullable name, os_workgroup_t wg);
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/dispatch/dispatch.h:64:
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/os/workgroup.h:32:
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/os/workgroup_parallel.h:68:72: error: expected ')'
+   68 | os_workgroup_parallel_create(const char *OS_WORKGROUP_UNSAFE_INDEXABLE _Nullable name,
+      |                                                                        ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/os/workgroup_parallel.h:68:29: note: to match this '('
+   68 | os_workgroup_parallel_create(const char *OS_WORKGROUP_UNSAFE_INDEXABLE _Nullable name,
+--- final output ---
+[ 78%] Building C object src/Libraries/libSystem/libc/CMakeFiles/libc_static.dir/emulated/flock.c.o
+[ 78%] Building C object src/Libraries/libSystem/libc/CMakeFiles/libc_static.dir/emulated/lutimes.c.o
+[ 78%] Building C object src/Libraries/libSystem/libc/CMakeFiles/libc_static.dir/emulated/copyfile.c.o
+[ 78%] Building C object src/Libraries/libSystem/libc/CMakeFiles/libc_static.dir/uuid/uuidsrc/gen_uuid.c.o
+[ 78%] Building C object src/Libraries/libSystem/libc/CMakeFiles/libc_static.dir/uuid/uuidsrc/clear.c.o
+[ 78%] Building C object src/Libraries/libSystem/libc/CMakeFiles/libc_static.dir/uuid/uuidsrc/compare.c.o
+[ 78%] Building C object src/Libraries/libSystem/libc/CMakeFiles/libc_static.dir/uuid/uuidsrc/copy.c.o
+[ 78%] Building C object src/Libraries/libSystem/libc/CMakeFiles/libc_static.dir/uuid/uuidsrc/isnull.c.o
+[ 78%] Building C object src/Libraries/libSystem/libc/CMakeFiles/libc_static.dir/uuid/uuidsrc/unparse.c.o
+[ 78%] Building C object src/Libraries/libSystem/libc/CMakeFiles/libc_static.dir/uuid/uuidsrc/pack.c.o
+[ 78%] Building C object src/Libraries/libSystem/libc/CMakeFiles/libc_static.dir/uuid/uuidsrc/unpack.c.o
+[ 78%] Building C object src/Libraries/libSystem/libc/CMakeFiles/libc_static.dir/darwin/pd_arm64_abi.c.o
+[ 78%] Linking C static library liblibc_static.a
+[ 78%] Built target libc_static
+make[1]: *** [src/Libraries/dyld/CMakeFiles/dyld.dir/rule] Error 2
+make: *** [dyld] Error 2

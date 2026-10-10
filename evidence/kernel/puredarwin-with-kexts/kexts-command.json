@@ -1,0 +1,24 @@
+{
+  "argv": [
+    "cmake",
+    "--build",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin",
+    "--target",
+    "PDArmPlatformExpert",
+    "PDArmPCI",
+    "IOPCIFamily",
+    "IOStorageFamily",
+    "ext4.kext",
+    "Ext4FileSystemDriver.kext",
+    "AppleFileSystemDriver.kext",
+    "corecrypto.kext",
+    "pthread.kext",
+    "IONetworkingFamily.kext",
+    "IOVirtIOFamily.kext",
+    "IOVirtIOBlock.kext",
+    "IOVirtIONet.kext",
+    "--parallel",
+    "4"
+  ],
+  "cwd": "/Users/joeblau/Developer/joeblau/src/blauos"
+}

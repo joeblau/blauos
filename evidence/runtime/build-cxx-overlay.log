@@ -1,0 +1,117 @@
+Full log: .blauos/build/runtime/raw-experiments/build-cxx-overlay.log
+SHA256: 6aaadd7f1cac0a73bce9e5a3ba70b2411170339c84d35ebdd5598bad5bc2e107
+Bytes: 1764009
+
+[  0%] Yacc parser.y
+[  0%] Building C object src/Libraries/CrashReporterClient/CMakeFiles/CrashReporterClient.dir/CrashReporterClient.c.o
+[  0%] Creating VersionMap.h and for_dyld_priv.inc
+[  0%] Built target libc_headers_gen_script
+[  0%] Building libc++abi cxa_virtual.cpp (raw clang, vendored LLVM headers)
+[  0%] Linking C static library libCrashReporterClient.a
+[  0%] Lex lexxer.l
+[  0%] Building libc++abi cxa_demangle.cpp (raw clang, vendored LLVM headers)
+[  0%] Built target CrashReporterClient
+Ignoring nkf-0.2.0 because its extensions are not built. Try: gem pristine nkf --version 0.2.0
+[  0%] Building C object tools/mig/CMakeFiles/migcom.dir/error.c.o
+[  0%] Building libc++abi stdlib_new_delete.cpp (raw clang, vendored LLVM headers)
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/min.h:16:
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/initializer_list:109:
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cstddef:45:5: error: <cstddef> tried including <stddef.h> but didn't find libc++'s <stddef.h> header.           This usually means that your header search paths are not configured properly.           The header search paths should contain the C++ Standard Library headers before           any C Standard Library, and you are probably using compiler flags that make that           not be the case.
+   45 | #   error <cstddef> tried including <stddef.h> but didn't find libc++'s <stddef.h> header. \
+      |     ^
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyldNew.cpp:34:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.h:31:
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__atomic/atomic_waitable_traits.h:21:
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cstring:In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__atomic/atomic_waitable_traits.h:69:521:
+: error: <cstring> tried including <string.h> but didn't find libc++'s <string.h> header.           This usually means that your header search paths are not configured properly.           The header search paths should contain the C++ Standard Library headers before           any C Standard Library, and you are probably using compiler flags that make that           not be the case.
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cstring:69:5: error: <cstring> tried including <string.h> but didn't find libc++'s <string.h> header.           This usually means that your header search paths are not configured properly.           The header search paths should contain the C++ Standard Library headers before           any C Standard Library, and you are probably using compiler flags that make that           not be the case.
+   69 | #   error <cstring> tr   69 | #   error <cstring> tried inciedluding <string. including <string.h> but didn't find libh> c++'s <stringbut didn't find libc+.h> hea+'der. \
+      |     ^
+s <string.h> header. \
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cstring:In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__atomic/atomic_waitable_traits.h:69:521:
+: error: <cstring> tried including <string.h> but didn't find libc++'s <string.h> header.           This usually means that your header search paths are not configured properly.           The header search paths should contain the C++ Standard Library headers before           any C Standard Library, and you are probably using compiler flags that make that           not be the case.
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cstring:69:5: error: <cstring> tried including <string.h> but didn't find libc++'s <string.h> header.           This usually means that your header search paths are not configured properly.           The header search paths should contain the C++ Standard Library headers before           any C Standard Library, and you are probably using compiler flags that make that           not be the case.
+   69 | #   error <cstring> tr   69 | #   error <cstring> tried inciedluding <string. including <string.h> but didn't find libh> c++'s <stringbut didn't find libc+.h> hea+'der. \
+      |     ^
+s <string.h> header. \
+      |     ^
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/min.h:16:
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/initializer_list:109:
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cstddef:45:5: error: <cstddef> tried including <stddef.h> but didn't find libc++'s <stddef.h> header.           This usually means that your header search paths are not configured properly.           The header search paths should contain the C++ Standard Library headers before           any C Standard Library, and you are probably using compiler flags that make that           not be the case.
+   45 | #   error <cstddef> tried including <stddef.h> but didn't find libc++'s <stddef.h> header. \
+      |     ^
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyldAPIs.cpp:39:
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/vector:312:
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cwchar:116:
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cwctype:56:
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cctype:45:5: error: <cctype> tried including <ctype.h> but didn't find libc++'s <ctype.h> header.           This usually means that your header search paths are not configured properly.            The header search paths should contain the C++ Standard Library headers before           any C Standard Library.
+   45 | #   error <cctype> tried including <ctype.h> but didn't find libc++'s <ctype.h> header. \
+      |     ^
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyldAPIs.cpp:39:
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/vector:312:
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/lexicographical_compare.h:30:
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cwchar:116:
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cwctype:61:5: error: <cwctype> tried including <wctype.h> but didn't find libc++'s <wctype.h> header.           This usually means that your header search paths are not configured properly.           The header search paths should contain the C++ Standard Library headers before           any C Standard Library, and you are probably using compiler flags that make that           not be the case.
+   61 | #   error <cwctype> tried including <wctype.h> but didn't find libc++'s <wctype.h> header. \
+      |     ^
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyldAPIs.cpp:39:
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/vector:312:
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__vector/comparison.h:13:
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/lexicographical_compare.h:30:
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cwchar:121:5: error: <cwchar> tried including <wchar.h> but didn't find libc++'s <wchar.h> header.           This usually means that your header search paths are not configured properly.           The header search paths should contain the C++ Standard Library headers before           any C Standard Library, and you are probably using compiler flags that make that           not be the case.
+  121 | #   error <cwchar> tried including <wchar.h> but didn't find libc++'s <wchar.h> header. \
+      |     ^
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:116:
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/array:119:
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cwchar:116:
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cwctype:56:
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cctype:45:5: error: <cctype> tried including <ctype.h> but didn't find libc++'s <ctype.h> header.           This usually means that your header search paths are not configured properly.            The header search paths should contain the C++ Standard Library headers before           any C Standard Library.
+   45 | #   error <cctype> tried including <ctype.h> but didn't find libc++'s <ctype.h> header. \
+      |     ^
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:116:
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/array:119:
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/lexicographical_compare.h:30:
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cwchar:116:
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cwctype:61:5: error: <cwctype> tried including <wctype.h> but didn't find libc++'s <wctype.h> header.           This usually means that your header search paths are not configured properly.           The header search paths should contain the C++ Standard Library headers before           any C Standard Library, and you are probably using compiler flags that make that           not be the case.
+   61 | #   error <cwctype> tried including <wctype.h> but didn't find libc++'s <wctype.h> header. \
+      |     ^
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:116:
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/array:119:
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/array:119:
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/lexicographical_compare.h:30:
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cwchar:121:5: error: <cwchar> tried including <wchar.h> but didn't find libc++'s <wchar.h> header.           This usually means that your header search paths are not configured properly.           The header search paths should contain the C++ Standard Library headers before           any C Standard Library, and you are probably using compiler flags that make that           not be the case.
+  121 | #   error <cwchar> tried including <wchar.h> but didn't find libc++'s <wchar.h> header. \
+      |     ^
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:116:
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/array:146:
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/array:146:
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/stdexcept:294:
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cstdlib:93:5: error: <cstdlib> tried including <stdlib.h> but didn't find libc++'s <stdlib.h> header.           This usually means that your header search paths are not configured properly.           The header search paths should contain the C++ Standard Library headers before           any C Standard Library, and you are probably using compiler flags that make that           not be the case.
+   93 | #   error <cstdlib> tried including <stdlib.h> but didn't find libc++'s <stdlib.h> header. \
+      |     ^
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyldInitialization.cpp:33:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.h:31:
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/compare:172:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyldNew.cpp:34:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.h/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cstddef:45:5: error: <cstddef> tried including <stddef.h> but didn't find libc++'s <stddef.h> header.           This usually means that your header search paths are not configured properly.           The header search paths should contain the C++ Standard Library headers before           any C Standard Library, and you are probably using compiler flags that make that           not be the case.
+:31:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.h:37:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/include/mach-o/dyld_images.h:32:
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/atomic:635:
+--- final output ---
+      |                                                          ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:6067:68: note: declared here
+ 6067 | static bool launchWithClosure(const dyld3::closure::LaunchClosure* mainClosure,
+      |                                                                    ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:6468:25: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 6468 |         uint8_t filesBootToken[bootToken.count()];
+      |                                ^~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:6468:25: note: function parameter 'bootToken' with unknown value cannot be used in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:6454:47: note: declared here
+ 6454 |                                                                                                                                         const dyld3::Array<uint8_t>& bootToken)
+      |                                                                                                                                                                      ^
+33 warnings and 8 errors generated.
+make[3]: *** [src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/src/dyld2.cpp.o] Error 1
+make[2]: *** [src/Libraries/dyld/CMakeFiles/dyld.dir/all] Error 2
+make[1]: *** [src/Libraries/dyld/CMakeFiles/dyld.dir/rule] Error 2
+make: *** [dyld] Error 2

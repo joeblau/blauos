@@ -1,0 +1,425 @@
+[  0%] Built target host_libmacho
+[  0%] Built target unifdef
+[ 11%] Built target libelf.host
+[ 22%] Built target libctf.host
+[ 44%] Built target libdwarf.host
+[ 44%] Built target migcom
+[ 66%] Built target host_libstuff
+[ 66%] Built target host_lipo
+[ 66%] Built target host_nm
+[ 66%] Built target host_strip
+[ 66%] Built target host_libtool
+[ 88%] Built target host_ctfmerge
+[ 88%] Built target host_ctfconvert
+[ 88%] Built target host_ctf_insert
+[ 88%] Built target host_codesign_allocate
+[ 88%] Built target host_nmedit
+[100%] Built target xnu_headers.extproj
+[100%] Building C object src/Kernel/libkmod/CMakeFiles/libkmod.dir/c_stop.c.o
+[100%] Building C object src/Kernel/libkmod/CMakeFiles/libkmod.dir/c_start.c.o
+[100%] Linking C static library libkmod.a
+[100%] Built target libkmod
+[100%] Building CXX object src/Kernel/Extensions/PDArmPlatformExpert/CMakeFiles/PDArmPlatformExpert.dir/PDArmPlatformExpert.cpp.o
+[100%] Building CXX object src/Kernel/Extensions/PDArmPlatformExpert/CMakeFiles/PDArmPlatformExpert.dir/PDArmCPU.cpp.o
+[100%] Building C object src/Kernel/Extensions/PDArmPlatformExpert/CMakeFiles/PDArmPlatformExpert.dir/kmod_info.c.o
+[100%] Building CXX object src/Kernel/Extensions/PDArmPlatformExpert/CMakeFiles/PDArmPlatformExpert.dir/PDArmGIC.cpp.o
+[100%] Building CXX object src/Kernel/Extensions/PDArmPlatformExpert/CMakeFiles/PDArmPlatformExpert.dir/PDAppleAIC.cpp.o
+[100%] Building CXX object src/Kernel/Extensions/PDArmPlatformExpert/CMakeFiles/PDArmPlatformExpert.dir/PDBcm2835IC.cpp.o
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/PDArmPlatformExpert/PDAppleAIC.cpp:249:22: warning: implicit conversion changes signedness: 'uint32_t' (aka 'unsigned int') to 'IOInterruptVectorNumber' (aka 'int') [-Wsign-conversion]
+  249 |                         disableVectorHard(irq, vector);
+      |                         ~~~~~~~~~~~~~~~~~ ^~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/PDArmPlatformExpert/PDAppleAIC.cpp:276:10: warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
+  276 |         write32(kAICIntMaskSet(vectorNumber / 32), 1u << (vectorNumber % 32));
+      |         ~~~~~~~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/PDArmPlatformExpert/PDAppleAIC.cpp:22:42: note: expanded from macro 'kAICIntMaskSet'
+   22 | #define kAICIntMaskSet(n)        (0x4100 + (n) * 4)
+      |                                   ~~~~~~~^~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/PDArmPlatformExpert/PDAppleAIC.cpp:283:10: warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
+  283 |         write32(kAICIntMaskClr(vectorNumber / 32), 1u << (vectorNumber % 32));
+      |         ~~~~~~~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/PDArmPlatformExpert/PDAppleAIC.cpp:23:42: note: expanded from macro 'kAICIntMaskClr'
+   23 | #define kAICIntMaskClr(n)        (0x4180 + (n) * 4)
+      |                                   ~~~~~~~^~~~~~~~~
+3 warnings generated.
+[100%] Linking CXX CFBundle shared module PDArmPlatformExpert.kext/Contents/MacOS/PDArmPlatformExpert
+[100%] Built target PDArmPlatformExpert
+[  0%] Built target unifdef
+[  0%] Built target host_libmacho
+[ 11%] Built target libelf.host
+[ 33%] Built target host_libstuff
+[ 44%] Built target libctf.host
+[ 66%] Built target libdwarf.host
+[ 66%] Built target migcom
+[ 66%] Built target host_lipo
+[ 66%] Built target host_nm
+[ 66%] Built target host_libtool
+[ 66%] Built target host_strip
+[ 66%] Built target host_codesign_allocate
+[ 66%] Built target host_ctf_insert
+[ 66%] Built target host_nmedit
+[ 77%] Built target host_ctfconvert
+[ 88%] Built target host_ctfmerge
+[100%] Built target xnu_headers.extproj
+[100%] Built target libkmod
+[100%] Building CXX object src/Kernel/Extensions/PDArmPCI/CMakeFiles/PDArmPCI.dir/PDArmPCI.cpp.o
+[100%] Building C object src/Kernel/Extensions/PDArmPCI/CMakeFiles/PDArmPCI.dir/kmod_info.c.o
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/PDArmPCI/PDArmPCI.cpp:1:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/PDArmPCI/PDArmPCI.h:4:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:37:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOAGPDevice.h:34:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIDevice.h:383:18: warning: 'handleOpen' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  383 |     virtual bool handleOpen(IOService * forClient, IOOptionBits options, void * arg);
+      |                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu_header_install/System/Library/Frameworks/Kernel.framework/Versions/A/Headers/IOKit/IOService.h:636:15: note: overridden virtual function is here
+  636 |         virtual bool handleOpen(    IOService *   forClient,
+      |                      ^
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/PDArmPCI/PDArmPCI.cpp:1:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/PDArmPCI/PDArmPCI.h:4:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:37:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOAGPDevice.h:34:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIDevice.h:384:18: warning: 'handleClose' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  384 |     virtual void handleClose(IOService * forClient, IOOptionBits options);
+      |                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu_header_install/System/Library/Frameworks/Kernel.framework/Versions/A/Headers/IOKit/IOService.h:646:15: note: overridden virtual function is here
+  646 |         virtual void handleClose(   IOService *       forClient,
+      |                      ^
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/PDArmPCI/PDArmPCI.cpp:1:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/PDArmPCI/PDArmPCI.h:4:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:183:18: warning: 'free' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  183 |     virtual void free( void );
+      |                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu_header_install/System/Library/Frameworks/Kernel.framework/Versions/A/Headers/IOKit/IOService.h:686:15: note: overridden virtual function is here
+  686 |         virtual void free( void ) APPLE_KEXT_OVERRIDE;
+      |                      ^
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/PDArmPCI/PDArmPCI.cpp:1:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/PDArmPCI/PDArmPCI.h:4:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:185:18: warning: 'start' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  185 |     virtual bool start( IOService * provider );
+      |                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu_header_install/System/Library/Frameworks/Kernel.framework/Versions/A/Headers/IOKit/IOService.h:590:15: note: overridden virtual function is here
+  590 |         virtual bool start( IOService * provider );
+      |                      ^
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/PDArmPCI/PDArmPCI.cpp:1:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/PDArmPCI/PDArmPCI.h:4:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:187:18: warning: 'stop' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  187 |     virtual void stop( IOService * provider );
+      |                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu_header_install/System/Library/Frameworks/Kernel.framework/Versions/A/Headers/IOKit/IOService.h:596:15: note: overridden virtual function is here
+  596 |         virtual void stop( IOService * provider );
+      |                      ^
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/PDArmPCI/PDArmPCI.cpp:1:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/PDArmPCI/PDArmPCI.h:4:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:191:19: warning: 'setProperties' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  191 |         virtual IOReturn setProperties(OSObject * properties);
+      |                          ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu_header_install/System/Library/Frameworks/Kernel.framework/Versions/A/Headers/IOKit/IORegistryEntry.h:649:19: note: overridden virtual function is here
+  649 |         virtual IOReturn setProperties( OSObject * properties );
+      |                          ^
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/PDArmPCI/PDArmPCI.cpp:1:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/PDArmPCI/PDArmPCI.h:4:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:193:22: warning: 'newUserClient' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  193 |     virtual IOReturn newUserClient(task_t owningTask, void * securityID,
+      |                      ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu_header_install/System/Library/Frameworks/Kernel.framework/Versions/A/Headers/IOKit/IOService.h:1330:19: note: overridden virtual function is here
+ 1330 |         virtual IOReturn newUserClient( task_t owningTask, void * securityID,
+      |                          ^
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/PDArmPCI/PDArmPCI.cpp:1:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/PDArmPCI/PDArmPCI.h:4:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:197:24: warning: 'maxCapabilityForDomainState' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  197 |         virtual unsigned long maxCapabilityForDomainState ( IOPMPowerFlags domainState );
+      |                               ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu_header_install/System/Library/Frameworks/Kernel.framework/Versions/A/Headers/IOKit/IOService.h:1785:24: note: overridden virtual function is here
+ 1785 |         virtual unsigned long maxCapabilityForDomainState( IOPMPowerFlags domainState );
+      |                               ^
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/PDArmPCI/PDArmPCI.cpp:1:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/PDArmPCI/PDArmPCI.h:4:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:198:24: warning: 'initialPowerStateForDomainState' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  198 |         virtual unsigned long initialPowerStateForDomainState ( IOPMPowerFlags domainState );
+      |                               ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu_header_install/System/Library/Frameworks/Kernel.framework/Versions/A/Headers/IOKit/IOService.h:1794:24: note: overridden virtual function is here
+ 1794 |         virtual unsigned long initialPowerStateForDomainState( IOPMPowerFlags domainState );
+      |                               ^
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/PDArmPCI/PDArmPCI.cpp:1:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/PDArmPCI/PDArmPCI.h:4:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:199:24: warning: 'powerStateForDomainState' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  199 |         virtual unsigned long powerStateForDomainState ( IOPMPowerFlags domainState );
+      |                               ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu_header_install/System/Library/Frameworks/Kernel.framework/Versions/A/Headers/IOKit/IOService.h:1802:24: note: overridden virtual function is here
+ 1802 |         virtual unsigned long powerStateForDomainState( IOPMPowerFlags domainState );
+      |                               ^
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/PDArmPCI/PDArmPCI.cpp:1:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/PDArmPCI/PDArmPCI.h:4:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:201:22: warning: 'callPlatformFunction' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  201 |     virtual IOReturn callPlatformFunction(const OSSymbol * functionName,
+      |                      ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu_header_install/System/Library/Frameworks/Kernel.framework/Versions/A/Headers/IOKit/IOService.h:1076:19: note: overridden virtual function is here
+ 1076 |         virtual IOReturn callPlatformFunction( const OSSymbol * functionName,
+      |                          ^
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/PDArmPCI/PDArmPCI.cpp:1:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/PDArmPCI/PDArmPCI.h:4:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:394:19: warning: 'firstBusNum' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  394 |     virtual UInt8 firstBusNum( void );
+      |                   ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:139:19: note: overridden virtual function is here
+  139 |     virtual UInt8 firstBusNum( void );
+      |                   ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:395:19: warning: 'lastBusNum' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  395 |     virtual UInt8 lastBusNum( void );
+      |                   ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:140:19: note: overridden virtual function is here
+  140 |     virtual UInt8 lastBusNum( void );
+      |                   ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:398:18: warning: 'free' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  398 |     virtual void free();
+      |                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:183:18: note: overridden virtual function is here
+  183 |     virtual void free( void );
+      |                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:400:18: warning: 'serializeProperties' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  400 |     virtual bool serializeProperties( OSSerialize * serialize ) const;
+      |                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu_header_install/System/Library/Frameworks/Kernel.framework/Versions/A/Headers/IOKit/IOService.h:1374:15: note: overridden virtual function is here
+ 1374 |         virtual bool serializeProperties( OSSerialize * s ) const APPLE_KEXT_OVERRIDE;
+      |                      ^
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/PDArmPCI/PDArmPCI.cpp:1:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/PDArmPCI/PDArmPCI.h:4:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:402:25: warning: 'probe' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  402 |     virtual IOService * probe(  IOService *     provider,
+      |                         ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu_header_install/System/Library/Frameworks/Kernel.framework/Versions/A/Headers/IOKit/IOService.h:582:51: note: overridden virtual function is here
+  582 |         virtual LIBKERN_RETURNS_NOT_RETAINED IOService * probe(  IOService *     provider,
+      |                                                          ^
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/PDArmPCI/PDArmPCI.cpp:1:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/PDArmPCI/PDArmPCI.h:4:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:405:18: warning: 'start' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  405 |     virtual bool start( IOService * provider );
+      |                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:185:18: note: overridden virtual function is here
+  185 |     virtual bool start( IOService * provider );
+      |                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:407:18: warning: 'stop' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  407 |     virtual void stop( IOService * provider );
+      |                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:187:18: note: overridden virtual function is here
+  187 |     virtual void stop( IOService * provider );
+      |                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:409:18: warning: 'configure' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  409 |     virtual bool configure( IOService * provider );
+      |                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:189:18: note: overridden virtual function is here
+  189 |     virtual bool configure( IOService * provider );
+      |                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:411:18: warning: 'probeBus' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  411 |     virtual void probeBus( IOService * provider, UInt8 busNum );
+      |                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:137:18: note: overridden virtual function is here
+  137 |     virtual void probeBus( IOService * provider, UInt8 busNum );
+      |                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:413:22: warning: 'requestProbe' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  413 |     virtual IOReturn requestProbe( IOOptionBits options );
+      |                      ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu_header_install/System/Library/Frameworks/Kernel.framework/Versions/A/Headers/IOKit/IOService.h:1253:19: note: overridden virtual function is here
+ 1253 |         virtual IOReturn requestProbe( IOOptionBits options );
+      |                          ^
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/PDArmPCI/PDArmPCI.cpp:1:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/PDArmPCI/PDArmPCI.h:4:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:415:18: warning: 'systemWillShutdown' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  415 |     virtual void systemWillShutdown(IOOptionBits specifier);
+      |                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu_header_install/System/Library/Frameworks/Kernel.framework/Versions/A/Headers/IOKit/IOService.h:451:15: note: overridden virtual function is here
+  451 |         virtual void systemWillShutdown( IOOptionBits specifier );
+      |                      ^
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/PDArmPCI/PDArmPCI.cpp:1:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/PDArmPCI/PDArmPCI.h:4:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:421:14: warning: 'setPowerState' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  421 |     IOReturn setPowerState( unsigned long powerState,
+      |              ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:225:22: note: overridden virtual function is here
+  225 |     virtual IOReturn setPowerState(unsigned long powerStateOrdinal,
+      |                      ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:426:22: warning: 'saveDeviceState' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  426 |     virtual IOReturn saveDeviceState( IOPCIDevice * device,
+      |                      ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:229:22: note: overridden virtual function is here
+  229 |     virtual IOReturn saveDeviceState( IOPCIDevice * device,
+      |                      ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:429:18: warning: 'publishNub' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  429 |     virtual bool publishNub( IOPCIDevice * nub, UInt32 index );
+      |                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:150:18: note: overridden virtual function is here
+  150 |     virtual bool publishNub( IOPCIDevice * nub, UInt32 index );
+      |                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:431:30: warning: 'ioDeviceMemory' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  431 |     virtual IODeviceMemory * ioDeviceMemory( void );
+      |                              ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:208:30: note: overridden virtual function is here
+  208 |     virtual IODeviceMemory * ioDeviceMemory( void ) = 0;
+      |                              ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:433:31: warning: 'getBridgeSpace' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  433 |     virtual IOPCIAddressSpace getBridgeSpace( void );
+      |                               ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:220:31: note: overridden virtual function is here
+  220 |     virtual IOPCIAddressSpace getBridgeSpace( void ) = 0;
+      |                               ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:435:20: warning: 'configRead32' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  435 |     virtual UInt32 configRead32( IOPCIAddressSpace space, UInt8 offset );
+      |                    ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:210:20: note: overridden virtual function is here
+  210 |     virtual UInt32 configRead32( IOPCIAddressSpace space, UInt8 offset ) = 0;
+      |                    ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:436:18: warning: 'configWrite32' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  436 |     virtual void configWrite32( IOPCIAddressSpace space,
+      |                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:211:18: note: overridden virtual function is here
+  211 |     virtual void configWrite32( IOPCIAddressSpace space,
+      |                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:438:20: warning: 'configRead16' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  438 |     virtual UInt16 configRead16( IOPCIAddressSpace space, UInt8 offset );
+      |                    ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:213:20: note: overridden virtual function is here
+  213 |     virtual UInt16 configRead16( IOPCIAddressSpace space, UInt8 offset ) = 0;
+      |                    ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:439:18: warning: 'configWrite16' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  439 |     virtual void configWrite16( IOPCIAddressSpace space,
+      |                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:214:18: note: overridden virtual function is here
+  214 |     virtual void configWrite16( IOPCIAddressSpace space,
+      |                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:441:19: warning: 'configRead8' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  441 |     virtual UInt8 configRead8( IOPCIAddressSpace space, UInt8 offset );
+      |                   ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:216:19: note: overridden virtual function is here
+  216 |     virtual UInt8 configRead8( IOPCIAddressSpace space, UInt8 offset ) = 0;
+      |                   ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:442:18: warning: 'configWrite8' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  442 |     virtual void configWrite8( IOPCIAddressSpace space,
+      |                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:217:18: note: overridden virtual function is here
+  217 |     virtual void configWrite8( IOPCIAddressSpace space,
+      |                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:445:22: warning: 'setDeviceASPMState' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  445 |     virtual IOReturn setDeviceASPMState(IOPCIDevice * device,
+      |                      ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:280:22: note: overridden virtual function is here
+  280 |     virtual IOReturn setDeviceASPMState(IOPCIDevice * device,
+      |                      ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:448:19: warning: 'checkLink' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  448 |         virtual IOReturn checkLink(uint32_t options = 0);
+      |                          ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:284:19: note: overridden virtual function is here
+  284 |         virtual IOReturn checkLink(uint32_t options = 0);
+      |                          ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:450:19: warning: 'enableLTR' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  450 |         virtual IOReturn enableLTR(IOPCIDevice * device, bool enable);
+      |                          ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:287:19: note: overridden virtual function is here
+  287 |         virtual IOReturn enableLTR(IOPCIDevice * device, bool enable);
+      |                          ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:452:32: warning: 'createEventSource' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  452 |     virtual IOPCIEventSource * createEventSource(IOPCIDevice * device,
+      |                                ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/include/IOKit/pci/IOPCIBridge.h:290:32: note: overridden virtual function is here
+  290 |     virtual IOPCIEventSource * createEventSource(IOPCIDevice * device,
+      |                                ^
+37 warnings generated.
+[100%] Linking CXX CFBundle shared module PDArmPCI.kext/Contents/MacOS/PDArmPCI
+[100%] Built target PDArmPCI
+[  0%] Built target unifdef
+[  0%] Built target host_libmacho
+[ 10%] Built target libelf.host
+[ 30%] Built target host_libstuff
+[ 40%] Built target libctf.host
+[ 60%] Built target libdwarf.host
+[ 60%] Built target migcom
+[ 60%] Built target host_lipo
+[ 60%] Built target host_nm
+[ 60%] Built target host_libtool
+[ 60%] Built target host_strip
+[ 60%] Built target host_codesign_allocate
+[ 60%] Built target host_ctf_insert
+[ 60%] Built target host_nmedit
+[ 70%] Built target host_ctfconvert
+[ 80%] Built target host_ctfmerge
+[ 90%] Built target xnu_headers.extproj
+[ 90%] Built target libkmod
+[ 90%] Building C object src/Kernel/Extensions/IOPCIFamily/CMakeFiles/IOPCIFamily.dir/kmod_info.c.o
+[ 90%] Building CXX object src/Kernel/Extensions/IOPCIFamily/CMakeFiles/IOPCIFamily.dir/IOPCIDevice.cpp.o
+[ 90%] Building CXX object src/Kernel/Extensions/IOPCIFamily/CMakeFiles/IOPCIFamily.dir/IOPCIConfigurator.cpp.o
+[ 90%] Building CXX object src/Kernel/Extensions/IOPCIFamily/CMakeFiles/IOPCIFamily.dir/IOPCIBridge.cpp.o
+[ 90%] Building CXX object src/Kernel/Extensions/IOPCIFamily/CMakeFiles/IOPCIFamily.dir/IOPCIDeviceI386.cpp.o
+[ 90%] Building CXX object src/Kernel/Extensions/IOPCIFamily/CMakeFiles/IOPCIFamily.dir/IOPCIDeviceMappedIO.cpp.o
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOPCIFamily/IOPCIBridge.cpp:1437:118: warning: format specifies type 'unsigned long' but the argument has type 'uint32_t' (aka 'unsigned int') [-Wformat]
+ 1437 |             if (data && (data != 0xFFFFFFFF)) panic("%s: pci restore invalid deviceid 0x%08lx\n", device->getName(), data);
+      |                                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu_header_install/System/Library/Frameworks/Kernel.framework/Versions/A/PrivateHeaders/kern/debug.h:525:27: note: expanded from macro 'panic'
+  525 |                 (panic)(# ex, ## __VA_ARGS__); \
+      |                         ~~~~     ^~~~~~~~~~~
+[ 90%] Building CXX object src/Kernel/Extensions/IOPCIFamily/CMakeFiles/IOPCIFamily.dir/IOPCIMessagedInterruptController.cpp.o
+[ 90%] Building CXX object src/Kernel/Extensions/IOPCIFamily/CMakeFiles/IOPCIFamily.dir/IOPCIRange.cpp.o
+1 warning generated.
+[100%] Linking CXX CFBundle shared module IOPCIFamily.kext/Contents/MacOS/IOPCIFamily
+[100%] Built target IOPCIFamily
+[  0%] Built target unifdef
+[  0%] Built target host_libmacho
+[ 11%] Built target libelf.host
+[ 33%] Built target host_libstuff
+[ 44%] Built target libctf.host
+[ 66%] Built target libdwarf.host
+[ 66%] Built target migcom
+[ 66%] Built target host_lipo
+[ 66%] Built target host_nm
+[ 66%] Built target host_libtool
+[ 66%] Built target host_strip
+[ 66%] Built target host_codesign_allocate
+[ 66%] Built target host_ctf_insert
+[ 66%] Built target host_nmedit
+[ 77%] Built target host_ctfconvert
+[ 88%] Built target host_ctfmerge
+[100%] Built target xnu_headers.extproj
+[100%] Built target libkmod
+[100%] Building C object src/Kernel/Extensions/IOStorageFamily/CMakeFiles/IOStorageFamily.dir/kmod_info.c.o
+[100%] Building CXX object src/Kernel/Extensions/IOStorageFamily/CMakeFiles/IOStorageFamily.dir/IOAppleLabelScheme.cpp.o
+[100%] Building CXX object src/Kernel/Extensions/IOStorageFamily/CMakeFiles/IOStorageFamily.dir/IOApplePartitionScheme.cpp.o
+[100%] Building CXX object src/Kernel/Extensions/IOStorageFamily/CMakeFiles/IOStorageFamily.dir/IOBlockStorageDevice.cpp.o
+[100%] Building CXX object src/Kernel/Extensions/IOStorageFamily/CMakeFiles/IOStorageFamily.dir/IOBlockStorageDriver.cpp.o
+[100%] Building CXX object src/Kernel/Extensions/IOStorageFamily/CMakeFiles/IOStorageFamily.dir/IOFilterScheme.cpp.o
+[100%] Building CXX object src/Kernel/Extensions/IOStorageFamily/CMakeFiles/IOStorageFamily.dir/IOGUIDPartitionScheme.cpp.o
+[100%] Building CXX object src/Kernel/Extensions/IOStorageFamily/CMakeFiles/IOStorageFamily.dir/IOFDiskPartitionScheme.cpp.o
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/Extensions/IOStorageFamily/IOGUIDPartitionScheme.cpp:630:27: warning: address of array 'partitionHint' will always evaluate to 'true' [-Wpointer-bool-conversion]
+  630 |                     uuid, partitionHint ? partitionHint : "(null)");
+      |                           ^~~~~~~~~~~~~ ~
+[100%] Building CXX object src/Kernel/Extensions/IOStorageFamily/CMakeFiles/IOStorageFamily.dir/IOMedia.cpp.o
+1 warning generated.
+[100%] Building CXX object src/Kernel/Extensions/IOStorageFamily/CMakeFiles/IOStorageFamily.dir/IOMediaBSDClient.cpp.o
+[100%] Building CXX object src/Kernel/Extensions/IOStorageFamily/CMakeFiles/IOStorageFamily.dir/IOPartitionScheme.cpp.o
+[100%] Building CXX object src/Kernel/Extensions/IOStorageFamily/CMakeFiles/IOStorageFamily.dir/IOStorage.cpp.o
+[100%] Linking CXX CFBundle shared module IOStorageFamily.kext/Contents/MacOS/IOStorageFamily
+[100%] Built target IOStorageFamily
+[  0%] Built target unifdef
+[  0%] Built target host_libmacho
+[ 11%] Built target libelf.host
+[ 33%] Built target host_libstuff
+[ 44%] Built target libctf.host
+[ 66%] Built target libdwarf.host
+[ 66%] Built target migcom
+[ 66%] Built target host_lipo
+[ 66%] Built target host_nm
+[ 66%] Built target host_libtool
+[ 66%] Built target host_strip
+[ 66%] Built target host_codesign_allocate
+[ 66%] Built target host_ctf_insert
+[ 66%] Built target host_nmedit
+[ 77%] Built target host_ctfconvert
+[ 88%] Built target host_ctfmerge
+[100%] Built target xnu_headers.extproj
+[100%] Built target libkmod
+[100%] Building C object src/Kernel/Extensions/ext4/CMakeFiles/ext4.kext.dir/kmod_info.c.o
+[100%] Building C object src/Kernel/Extensions/ext4/CMakeFiles/ext4.kext.dir/ext4_csum.c.o
+[100%] Building C object src/Kernel/Extensions/ext4/CMakeFiles/ext4.kext.dir/ext4_subr.c.o
+[100%] Building C object src/Kernel/Extensions/ext4/CMakeFiles/ext4.kext.dir/ext4_jbd.c.o
+[100%] Building C object src/Kernel/Extensions/ext4/CMakeFiles/ext4.kext.dir/ext4_vfsops.c.o
+[100%] Building C object src/Kernel/Extensions/ext4/CMakeFiles/ext4.kext.dir/ext4_vnops.c.o
+[100%] Building CXX object src/Kernel/Extensions/ext4/CMakeFiles/ext4.kext.dir/ext4_iokit.cpp.o
+[100%] Linking CXX CFBundle shared module ext4.kext/Contents/MacOS/ext4
+[100%] Built target ext4.kext
+make: *** No rule to make target `Ext4FileSystemDriver'.  Stop.

@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "make",
+    "-j4",
+    "installhdrs",
+    "SDKROOT=/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers-clean/MacOSX.sdk",
+    "SDKROOT_RESOLVED=/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers-clean/MacOSX.sdk",
+    "SDKVERSION=27.2",
+    "PLATFORMPATH=/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform",
+    "ARCH_CONFIGS=ARM64",
+    "KERNEL_CONFIGS=DEVELOPMENT",
+    "RC_DARWIN_KERNEL_VERSION=25.5.0",
+    "OBJROOT=/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers-clean/xnu/obj",
+    "DSTROOT=/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers-clean/xnu/dst",
+    "SYMROOT=/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers-clean/xnu/sym",
+    "CONCISE=1"
+  ],
+  "cwd": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu"
+}

@@ -1,0 +1,35 @@
+[  0%] Built target generate_dyld_headers
+[  0%] Built target libc_headers_gen_script
+[  0%] Built target CrashReporterClient
+[  0%] Built target migcom
+[  1%] Built target libcxxabi_static_build
+[  1%] Built target libunwind_static_build
+[  3%] Built target libcxx_static_build
+[  3%] Generating libc-features.h
+[  3%] Built target corecrypto_user
+[  3%] Built target dyld_availability_headers
+[  8%] Built target corecrypto_shared
+[  8%] Built target libc_features
+[  8%] Built target corecrypto_static
+[ 28%] Built target libsystem_kernel_static
+[ 45%] Built target openlibm_static
+[ 45%] Built target pthread_static
+[ 49%] Built target libplatform_static
+[ 68%] Built target libc_internal_static
+[ 94%] Built target libc_static
+[ 94%] Building CXX object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/src/dyld2.cpp.o
+[ 94%] Building CXX object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/src/dyldAPIs.cpp.o
+[ 94%] Building CXX object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/src/dyldInitialization.cpp.o
+[ 94%] Building CXX object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/src/dyldNew.cpp.o
+clang++clang++: : error: stack-arg-probe flags are unsupported on Darwin platforms, use -fstack-check  or -fno-stack-check instead
+clang++: error: stack-arg-probe flags are unsupported on Darwin platforms, use -fstack-check  or -fno-stack-check instead
+clang++: error: stack-arg-probe flags are unsupported on Darwin platforms, use -fstack-check  or -fno-stack-check instead
+error: stack-arg-probe flags are unsupported on Darwin platforms, use -fstack-check  or -fno-stack-check instead
+make[3]: *** [src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/src/dyld2.cpp.o] Error 1
+make[3]: *** Waiting for unfinished jobs....
+make[3]: *** [src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/src/dyldAPIs.cpp.o] Error 1
+make[3]: *** [src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/src/dyldInitialization.cpp.o] Error 1
+make[3]: *** [src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/src/dyldNew.cpp.o] Error 1
+make[2]: *** [src/Libraries/dyld/CMakeFiles/dyld.dir/all] Error 2
+make[1]: *** [src/Libraries/dyld/CMakeFiles/dyld.dir/rule] Error 2
+make: *** [dyld] Error 2

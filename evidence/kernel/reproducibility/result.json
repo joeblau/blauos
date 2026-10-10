@@ -1,0 +1,53 @@
+{
+  "status": "kernel-built-not-boot-validated",
+  "exit_code": 0,
+  "source": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next",
+  "configuration": "DEVELOPMENT ARM64",
+  "machine": "VIRT",
+  "sdk": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.2.sdk",
+  "artifacts": [
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/reproducibility/src/Kernel/xnu/xnu/System/Library/Kernels/kernel.development.virt",
+      "size": 12588112,
+      "sha256": "bcb57010ef19e53081b52f2730fb78b7042501e7e4ada6accacf4979da71f943",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/reproducibility/src/Kernel/xnu/xnu/System/Library/Kernels/kernel.development.virt: Mach-O 64-bit executable arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/reproducibility/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_VIRT/kernel.development.virt",
+      "size": 12588112,
+      "sha256": "bcb57010ef19e53081b52f2730fb78b7042501e7e4ada6accacf4979da71f943",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/reproducibility/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_VIRT/kernel.development.virt: Mach-O 64-bit executable arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/reproducibility/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_VIRT/kernel.development.virt.dSYM/Contents/Resources/DWARF/kernel.development.virt",
+      "size": 53528412,
+      "sha256": "ac1e0ae6f28f8ac7aab4351dd9dde3570ed5926f67d2be9d761d8050d9aba8e2",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/reproducibility/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_VIRT/kernel.development.virt.dSYM/Contents/Resources/DWARF/kernel.development.virt: Mach-O 64-bit dSYM companion file arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/reproducibility/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_VIRT/kernel.development.virt.unstripped",
+      "size": 15401904,
+      "sha256": "35e8c235768f460de386bb5556fbca83876119f019866d3bba611ef7c58c59be",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/reproducibility/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_VIRT/kernel.development.virt.unstripped: Mach-O 64-bit executable arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/reproducibility/src/Kernel/xnu/xnu_build/src/xnu-build/kernel.development.virt",
+      "size": 12588112,
+      "sha256": "bcb57010ef19e53081b52f2730fb78b7042501e7e4ada6accacf4979da71f943",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/reproducibility/src/Kernel/xnu/xnu_build/src/xnu-build/kernel.development.virt: Mach-O 64-bit executable arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/reproducibility/src/Kernel/xnu/xnu_sym/kernel.development.virt",
+      "size": 15401904,
+      "sha256": "35e8c235768f460de386bb5556fbca83876119f019866d3bba611ef7c58c59be",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/reproducibility/src/Kernel/xnu/xnu_sym/kernel.development.virt: Mach-O 64-bit executable arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/reproducibility/src/Kernel/xnu/xnu_sym/kernel.development.virt.dSYM/Contents/Resources/DWARF/kernel.development.virt",
+      "size": 53528412,
+      "sha256": "ac1e0ae6f28f8ac7aab4351dd9dde3570ed5926f67d2be9d761d8050d9aba8e2",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/reproducibility/src/Kernel/xnu/xnu_sym/kernel.development.virt.dSYM/Contents/Resources/DWARF/kernel.development.virt: Mach-O 64-bit dSYM companion file arm64"
+    }
+  ],
+  "boot_validated": false
+}

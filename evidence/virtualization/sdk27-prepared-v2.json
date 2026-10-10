@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "puredarwin_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+  "upstream_flake_lock_sha256": "78cab4ea95807142177b6be3537783432c913f852ba25812add6cc6dc63ff47f",
+  "stock_kernel_used": false,
+  "stock_runtime_copied": false,
+  "source_path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/vm/sdk27-image-v2/source",
+  "source_prepared": true,
+  "excluded_external_symlinks": [
+    {
+      "path": "src/Libraries/libSystem/libc/gen/FreeBSD/result",
+      "target": "/nix/store/c1zhcbl07c1gkdzxbvhrad89agzk5vqw-puredarwin-curl-8.20.0"
+    }
+  ],
+  "build_passed": false,
+  "guest_boot_passed": false,
+  "sdk_override": {
+    "version": "27.2",
+    "archive_sha256": "8230e9c59a84f995731a7242a41303cc69a352d2e1e8a0be4cf1021e3c943ea7",
+    "source_root": "MacOSX27.2.sdk",
+    "proprietary_build_input": true
+  }
+}

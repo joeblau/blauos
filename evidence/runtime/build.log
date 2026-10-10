@@ -1,0 +1,117 @@
+Full log: .blauos/build/runtime/raw-experiments/build.log
+SHA256: 514a0f31d516ad238bb0911646fc6af76b502103d80d8febc7e8c8cfcde4d296
+Bytes: 652449
+
+[  0%] Yacc parser.y
+[  0%] Creating VersionMap.h and for_dyld_priv.inc
+[  0%] Building C object src/Libraries/CrashReporterClient/CMakeFiles/CrashReporterClient.dir/CrashReporterClient.c.o
+[  0%] Copying libC headers...
++ '[' -n '' -a -z '' ']'
++ MKDIR='mkdir -p'
++ INSTALL=install
++ MV=mv
++ ECHO=echo
++ CHMOD=chmod
++ CP=cp
++ UNIFDEF=unifdef
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc -x assembler-with-cpp -c -DPRIVATE -I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Kernel/xnu/xnu_header_install/usr/include -I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Kernel/xnu/xnu_header_install/System/Library/Frameworks/System.framework/Versions/B/PrivateHeaders -I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/xnu/osfmk -I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/xnu/EXTERNAL_HEADERS -arch arm64 -o /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libsystem_kernel/sys/___bsdthread_terminate.o /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libsystem_kernel/sys/___bsdthread_terminate.s
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libsystem_kernel/sys/_____old_semwait_signal_nocancel.s:2:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libsystem_kernel/sys/SYS.h:49:10: fatal error: 'sys/syscall.h' file not found
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libsystem_kernel/sys/_____sigwait_nocancel.s:2:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libsystem_kernel/sys/SYS.h:49:10: fatal error: 'sys/syscall.h' file not found
+   49 | #include <sys/syscall.h>
+      |          ^~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libsystem_kernel/sys/SYS.h:49:10: fatal error: 'sys/syscall.h' file not found
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libsystem_kernel/sys/_____sigwait_nocancel.s:2:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libsystem_kernel/sys/SYS.h:49:10: fatal error: 'sys/syscall.h' file not found
+   49 | #include <sys/syscall.h>
+      |          ^~~~~~~~~~~~~~~
+   49 | #include <sys/syscall.h>
+      |          ^~~~~~~~~~~~~~~
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc -x assembler-with-cpp -c -DPRIVATE -I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Kernel/xnu/xnu_header_install/usr/include -I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Kernel/xnu/xnu_header_install/System/Library/Frameworks/System.framework/Versions/B/PrivateHeaders -I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/xnu/osfmk -I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/xnu/EXTERNAL_HEADERS -arch arm64 -o /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libsystem_kernel/sys/___coalition_info.o /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libsystem_kernel/sys/___coalition_info.s
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libsystem_kernel/sys/___accept.s:2:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libsystem_kernel/sys/SYS.h:49:10: fatal error: 'sys/syscall.h' file not found
+   49 | #include <sys/syscall.h>
+      |          ^~~~~~~~~~~~~~~
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libsystem_kernel/sys/___access_extended.s:2:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libsystem_kernel/sys/SYS.h:49:10: fatal error: 'sys/syscall.h' file not found
+      |          ^~~~~~~~~~~~~~~
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libsystem_kernel/sys/___access_extended.s:2:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libsystem_kernel/sys/SYS.h:49:10: fatal error: 'sys/syscall.h' file not found
+   49 | #include <sys/syscall.h>
+      |          ^~~~~~~~~~~~~~~
+1 error generated.
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libsystem_kernel/sys/___abort_with_payload.s:2:
+1 error generated.
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libsystem_kernel/sys/___abort_with_payload.s:2:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libsystem_kernel/sys/SYS.h:49:10: fatal error: 'sys/syscall.h' file not found
+   49 | #include <sys/syscall.h>
+      |          ^~~~~~~~~~~~~~~
+1 error generated.
+1 error generated.
+1 error generated.
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libsystem_kernel/sys/___accept_nocancel.s:2:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libsystem_kernel/sys/SYS.h:49:10: fatal error: 'sys/syscall.h' file not found
+   49 | #include <sys/syscall.h>
+      |          ^~~~~~~~~~~~~~~
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libsystem_kernel/sys/___aio_suspend_nocancel.s:2:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libsystem_kernel/sys/SYS.h:49:10: fatal error: 'sys/syscall.h' file not found
+      |          ^~~~~~~~~~~~~~~
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libsystem_kernel/sys/___aio_suspend_nocancel.s:2:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libsystem_kernel/sys/SYS.h:49:10: fatal error: 'sys/syscall.h' file not found
+   49 | #include <sys/syscall.h>
+      |          ^~~~~~~~~~~~~~~
+1 error generated.
+1 error generated.
+1 error generated.
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libsystem_kernel/sys/___bsdthread_ctl.s:2:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libsystem_kernel/sys/SYS.h:49:10: fatal error: 'sys/syscall.h' file not found
+   49 | #include <sys/syscall.h>
+      |          ^~~~~~~~~~~~~~~
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc -x assembler-with-cpp -c -DPRIVATE -I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Kernel/xnu/xnu_header_install/usr/include -I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Kernel/xnu/xnu_header_install/System/Library/Frameworks/System.framework/Versions/B/PrivateHeaders -I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/xnu/osfmk -I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/xnu/EXTERNAL_HEADERS -arch arm64 -o /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libsystem_kernel/sys/___coalition_ledger.o /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libsystem_kernel/sys/___coalition_ledger.s
+1 error generated.
+1 error generated.
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libsystem_kernel/sys/___bind.s:2:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libsystem_kernel/sys/SYS.h:49:10: fatal error: 'sys/syscall.h' file not found
+   49 | #include <sys/syscall.h>
+      |          ^~~~~~~~~~~~~~~
+1 error generated.
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libsystem_kernel/sys/___bsdthread_create.s:2:
+1 error generated.
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libsystem_kernel/sys/___bsdthread_create.s:2:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libsystem_kernel/sys/SYS.h:49:10: fatal error: 'sys/syscall.h' file not found
+   49 | #include <sys/syscall.h>
+      |          ^~~~~~~~~~~~~~~
+1 error generated.
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc exited with value 1
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc exited with value 1
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libsystem_kernel/sys/___bsdthread_register.s:2:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libsystem_kernel/sys/SYS.h:49:10: fatal error: 'sys/syscall.h' file not found
+   49 | #include <sys/syscall.h>
+      |          ^~~~~~~~~~~~~~~
+1 error generated.
+make[3]: *** [src/Libraries/libSystem/libsystem_kernel/syscalls.a] Error 1
+make[3]: *** Waiting for unfinished jobs....
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libsystem_kernel/sys/___chmod.s:2:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libsystem_kernel/sys/SYS.h:49:10: fatal error: 'sys/syscall.h' file not found
+   49 | #include <sys/syscall.h>
+      |          ^~~~~~~~~~~~~~~
+1 error generated.
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libsystem_kernel/sys/___coalition.s:2:
+--- final output ---
+[ 24%] Building C object src/Libraries/libSystem/corecrypto/CMakeFiles/corecrypto_shared.dir/src/ccsrp.c.o
+[ 24%] Building C object src/Libraries/libSystem/corecrypto/CMakeFiles/corecrypto_shared.dir/src/ccwrap_priv.c.o
+[ 26%] Building C object src/Libraries/libSystem/corecrypto/CMakeFiles/corecrypto_shared.dir/src/cc_priv.c.o
+[ 26%] Building C object src/Libraries/libSystem/corecrypto/CMakeFiles/corecrypto_shared.dir/src/ccec25519.c.o
+[ 26%] Building C object src/Libraries/libSystem/corecrypto/CMakeFiles/corecrypto_shared.dir/src/ccccm.c.o
+[ 26%] Building C object src/Libraries/libSystem/corecrypto/CMakeFiles/corecrypto_shared.dir/src/cccbc.c.o
+[ 26%] Building C object src/Libraries/libSystem/corecrypto/CMakeFiles/corecrypto_shared.dir/src/cccfb.c.o
+[ 26%] Building C object src/Libraries/libSystem/corecrypto/CMakeFiles/corecrypto_shared.dir/src/cccfb8.c.o
+[ 26%] Building C object src/Libraries/libSystem/corecrypto/CMakeFiles/corecrypto_shared.dir/src/ccctr.c.o
+[ 26%] Building C object src/Libraries/libSystem/corecrypto/CMakeFiles/corecrypto_shared.dir/src/ccchacha20poly1305.c.o
+[ 26%] Building C object src/Libraries/libSystem/corecrypto/CMakeFiles/corecrypto_shared.dir/src/ccofb.c.o
+[ 26%] Building C object src/Libraries/libSystem/corecrypto/CMakeFiles/corecrypto_shared.dir/src/ccxts.c.o
+[ 26%] Building C object src/Libraries/libSystem/corecrypto/CMakeFiles/corecrypto_shared.dir/src/ccckg.c.o
+[ 26%] Built target corecrypto_shared
+make[1]: *** [src/Libraries/dyld/CMakeFiles/dyld.dir/rule] Error 2
+make: *** [dyld] Error 2

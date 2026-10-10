@@ -1,0 +1,11 @@
+--- a/compiler-rt/cmake/Modules/CompilerRTDarwinUtils.cmake
++++ b/compiler-rt/cmake/Modules/CompilerRTDarwinUtils.cmake
+@@ -406,7 +406,7 @@
+ macro(darwin_add_builtin_libraries)
+   set(DARWIN_EXCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Darwin-excludes)
+ 
+-  set(CFLAGS -fPIC -O3 -fvisibility=hidden -DVISIBILITY_HIDDEN -Wall -fomit-frame-pointer)
++  set(CFLAGS -fPIC -O3 -Wall -fomit-frame-pointer)
+   set(CMAKE_C_FLAGS "")
+   set(CMAKE_CXX_FLAGS "")
+   set(CMAKE_ASM_FLAGS "")

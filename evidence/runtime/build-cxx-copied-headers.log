@@ -1,0 +1,47 @@
+Full log: .blauos/build/runtime/raw-experiments/build-cxx-copied-headers.log
+SHA256: 3eb9bfbfdc82aa31783ef12c5cfd6b02b61cedc4b3fcddb5b9e0974dd0dabb37
+Bytes: 153030
+
+[  0%] Built target libc_headers_gen_script
+[  0%] Built target generate_dyld_headers
+[  0%] Built target CrashReporterClient
+[  0%] Built target migcom
+[  0%] Built target libunwind_static_build
+[  3%] Built target libcxx_static_build
+[  3%] Built target libcxxabi_static_build
+[  3%] Generating libc-features.h
+[  3%] Built target corecrypto_user
+[  3%] Built target dyld_availability_headers
+[  3%] Built target libc_features
+[  8%] Built target corecrypto_shared
+[100%] Building CXX object src/Libraries/dyld/CMakeFiles/dyld.dir/pd_dyld_internal_stubs.cpp.o
+[100%] Linking CXX executable dyld
+Undefined symbols for architecture arm64:
+  "___chkstk_darwin", referenced from:
+      dyld::initializeMainExecutable() in dyld2.cpp.o
+      dyld::loadPhase0(char const*, char const*, dyld::LoadContext const&, unsigned int&, std::__1::vector<char const*, std::__1::allocator<char const*>>*) in dyld2.cpp.o
+      dyld::loadPhase0(char const*, char const*, dyld::LoadContext const&, unsigned int&, std::__1::vector<char const*, std::__1::allocator<char const*>>*) in dyld2.cpp.o
+      ...
+ld: symbol(s) not found for architecture arm64
+clang++: error: linker command failed with exit code 1 (use -v to see invocation)
+make[3]: *** [src/Libraries/dyld/dyld] Error 1
+make[2]: *** [src/Libraries/dyld/CMakeFiles/dyld.dir/all] Error 2
+make[1]: *** [src/Libraries/dyld/CMakeFiles/dyld.dir/rule] Error 2
+make: *** [dyld] Error 2
+--- final output ---
+      dyld::registerBulkLoadCallback(void (*)(unsigned int, mach_header const**, char const**)) in dyld2.cpp.o
+      dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) in dyld2.cpp.o
+      dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) in dyld2.cpp.o
+      dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) in dyld2.cpp.o
+      dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) in dyld2.cpp.o
+      dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) in dyld2.cpp.o
+      dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) in dyld2.cpp.o
+      dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) in dyld2.cpp.o
+      dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) in dyld2.cpp.o
+      ...
+ld: symbol(s) not found for architecture arm64
+clang++: error: linker command failed with exit code 1 (use -v to see invocation)
+make[3]: *** [src/Libraries/dyld/dyld] Error 1
+make[2]: *** [src/Libraries/dyld/CMakeFiles/dyld.dir/all] Error 2
+make[1]: *** [src/Libraries/dyld/CMakeFiles/dyld.dir/rule] Error 2
+make: *** [dyld] Error 2

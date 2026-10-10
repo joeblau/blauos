@@ -1,0 +1,33 @@
+Full log: .blauos/build/runtime/raw-experiments/build-overlay-headers.log
+SHA256: 1032a9f57437e07e4f84b85709d2ff60bff7c0868e7f152626f4d8437c0edc4c
+Bytes: 250779
+
+Copying libC headers...
++ '[' -n '' -a -z '' ']'
++ MKDIR='mkdir -p'
++ INSTALL=install
++ MV=mv
++ ECHO=echo
++ CHMOD=chmod
++ CP=cp
++ UNIFDEF=unifdef
++ FIND=find
++ RM=rm
++ ED=ed
+--- final output ---
++ cp /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libc/headers/System/Library/Frameworks/System.framework/Versions/B/PrivateHeaders/machine/i386/limits.h /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libc/headers/System/Library/Frameworks/System.framework/Versions/B/PrivateHeaders/machine/i386/limits.h.orig
++ echo unifdef -DUNIFDEF_LEGACY_UTMP_APIS -DUNIFDEF_LEGACY_64_APIS -UUNIFDEF_DRIVERKIT -DUNIFDEF_BLOCKS -UUNIFDEF_POSIX_ILP32_ALLOW -DUNIFDEF_LEGACY_RUNE_APIS /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libc/headers/System/Library/Frameworks/System.framework/Versions/B/PrivateHeaders/machine/i386/limits.h.orig '>' /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libc/headers/System/Library/Frameworks/System.framework/Versions/B/PrivateHeaders/machine/i386/limits.h
+unifdef -DUNIFDEF_LEGACY_UTMP_APIS -DUNIFDEF_LEGACY_64_APIS -UUNIFDEF_DRIVERKIT -DUNIFDEF_BLOCKS -UUNIFDEF_POSIX_ILP32_ALLOW -DUNIFDEF_LEGACY_RUNE_APIS /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libc/headers/System/Library/Frameworks/System.framework/Versions/B/PrivateHeaders/machine/i386/limits.h.orig > /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libc/headers/System/Library/Frameworks/System.framework/Versions/B/PrivateHeaders/machine/i386/limits.h
++ unifdef -DUNIFDEF_LEGACY_UTMP_APIS -DUNIFDEF_LEGACY_64_APIS -UUNIFDEF_DRIVERKIT -DUNIFDEF_BLOCKS -UUNIFDEF_POSIX_ILP32_ALLOW -DUNIFDEF_LEGACY_RUNE_APIS /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libc/headers/System/Library/Frameworks/System.framework/Versions/B/PrivateHeaders/machine/i386/limits.h.orig
++ rm /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libc/headers/System/Library/Frameworks/System.framework/Versions/B/PrivateHeaders/machine/i386/limits.h.orig
++ chmod u-w /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libc/headers/System/Library/Frameworks/System.framework/Versions/B/PrivateHeaders/machine/i386/limits.h
++ for i in '`${FIND} "${HDRROOT}/${SDK_INSTALL_HEADERS_ROOT}" -name \*.h -print0 | ${XARGS} -0 ${FGREP} -l -e UNIFDEF -e OPEN_SOURCE -e _USE_EXTENDED_LOCALES_`'
++ chmod u+w /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libc/headers/System/Library/Frameworks/System.framework/Versions/B/PrivateHeaders/libkern/arm/OSByteOrder.h
++ cp /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libc/headers/System/Library/Frameworks/System.framework/Versions/B/PrivateHeaders/libkern/arm/OSByteOrder.h /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libc/headers/System/Library/Frameworks/System.framework/Versions/B/PrivateHeaders/libkern/arm/OSByteOrder.h.orig
++ echo unifdef -DUNIFDEF_LEGACY_UTMP_APIS -DUNIFDEF_LEGACY_64_APIS -UUNIFDEF_DRIVERKIT -DUNIFDEF_BLOCKS -UUNIFDEF_POSIX_ILP32_ALLOW -DUNIFDEF_LEGACY_RUNE_APIS /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libc/headers/System/Library/Frameworks/System.framework/Versions/B/PrivateHeaders/libkern/arm/OSByteOrder.h.orig '>' /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libc/headers/System/Library/Frameworks/System.framework/Versions/B/PrivateHeaders/libkern/arm/OSByteOrder.h
+unifdef -DUNIFDEF_LEGACY_UTMP_APIS -DUNIFDEF_LEGACY_64_APIS -UUNIFDEF_DRIVERKIT -DUNIFDEF_BLOCKS -UUNIFDEF_POSIX_ILP32_ALLOW -DUNIFDEF_LEGACY_RUNE_APIS /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libc/headers/System/Library/Frameworks/System.framework/Versions/B/PrivateHeaders/libkern/arm/OSByteOrder.h.orig > /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libc/headers/System/Library/Frameworks/System.framework/Versions/B/PrivateHeaders/libkern/arm/OSByteOrder.h
++ unifdef -DUNIFDEF_LEGACY_UTMP_APIS -DUNIFDEF_LEGACY_64_APIS -UUNIFDEF_DRIVERKIT -DUNIFDEF_BLOCKS -UUNIFDEF_POSIX_ILP32_ALLOW -DUNIFDEF_LEGACY_RUNE_APIS /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libc/headers/System/Library/Frameworks/System.framework/Versions/B/PrivateHeaders/libkern/arm/OSByteOrder.h.orig
++ rm /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libc/headers/System/Library/Frameworks/System.framework/Versions/B/PrivateHeaders/libkern/arm/OSByteOrder.h.orig
++ chmod u-w /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin-overlay/src/Libraries/libSystem/libc/headers/System/Library/Frameworks/System.framework/Versions/B/PrivateHeaders/libkern/arm/OSByteOrder.h
++ exit 0
+Built target libc_headers_gen_script

@@ -1,0 +1,117 @@
+Full log: .blauos/build/runtime/raw-experiments/build-source-syscalls.log
+SHA256: 89dfbe7794e204029bdb63cf2234022f6541aff4d1ab19fdaeee3ad8daa6ffb1
+Bytes: 10622375
+
+[  0%] Built target libc_headers_gen_script
+[  0%] Built target generate_dyld_headers
+[  0%] Built target CrashReporterClient
+[  0%] Built target migcom
+[  1%] Built target libcxxabi_static_build
+[  3%] Built target libcxx_static_build
+[  3%] Built target libunwind_static_build
+[  3%] Built target corecrypto_user
+[  3%] Generating libc-features.h
+[  8%] Built target corecrypto_shared
+[  8%] Compile syscall stubs
+[  8%] Built target libc_features
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/dispatch/dispatch.h  236 | double   erand48(unsi:63:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/xnu/libkern/os/object.h:209:
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/os/object.h:278:1: error: unknown type name 'OS_ASSUME_PTR_ABI_SINGLE_BEGIN'
+gned short[3]);
+      |                                ^
+      |                                 _Nonnull 
+  278 | OS_OBJECT_ASSUME_ABI_SINGLE_BEGIN
+      |         ^
+st void/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libc/headers/usr/include/stdlib.h:141:6: note: insert '_Nullable' if the pointer may be null
+  141 | void    *bsearch(const void *__key, const void1: error: unknown type name 'OS_ASSUME_PTR_ABI_SINGLE_END'
+  327 | OS_OB  *__base, size_t __nel,
+      |         ^
+      |           _Nullable 
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libc/headers/usr/include/stdlib.hJ*, const void *)) __OSX_AVAILABLE_STARTING(__MAC_10_6, __IPHONE_3_2);
+      |                                      _Nonnull
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Libraries/libSystem/libc/include/stdlib.h:379:41: warning: pointer is missing a nullability type specifier (_Nonnull, _Nullable, or _Null_unspecified) [-Wnullability-completeness]
+  379 | int      cgetstr(char *, coar_t * __rnst c71:1: hestrict, ar *, char cerror: unknown type name 'OS_ASSUME_PTR_ABI_SINGLE_BEGIN'
+   71 | OS_WORKGROUP_ASSUME_ABI_SINGLE_BEGIN
+      | ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/os/workgroup_base.h:38:46: note: expanded from macro 'OS_WORKGROUP_ASSUME_ABI_SINGLE_BEGIN'
+   38 | #define OS_WORKGROUP_ASSUME_ABI_SINGLE_BEGIN OS_ASSUME_PTR_ABI_SINGLE_BEGIN
+      |                                     ^
+      |                                      _Nonnull
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/os/workgroup_base.h:89:1: error: unknown type name 'OS_ASSUME_PTR_ABI_SINGLE_END'
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libc/headers/usr/include/stdlib.h:166:26: warning: pointer is missing a nullability type specifier (_Nonnull, _Nullable, or _Null_unspecified) [-Wnullability-completeness]
+  166 | float    strtof(const char *, char **) __DARWIN_ALIAS(strtof);
+      |                            ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libc/headers/usr/include/stdlib.h:166:26: note: insert '_Nullable' if the pointer may be null
+_trestric/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/dispatch/dispatch.h:64:
+In file included from   166 | f/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/os/workgroup.h:30:
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/os/workgroup_object.ht, int     l:49:  1: *oerror: cg__expected ';' after top level declaratoratr
+   e e   sstturtrictsttof(conrs)49;t char(c |   /* LEGACY *O/*h
+,a      r| S                                                ^ c_WO ha*
+      Rr |                                                   _Nonnull 
+K,*G/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libc/headers/usr/include/stdlib.hROU const Pchar:*) ___DD *201ARE,WI :6cN_A:haL CIAr Lwarning: **pointer is missing a nullability type specifier (_Nonnull, _Nullable, or _Null_unspecified) [-Wnullability-completeness](o)
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/dispatch/dispatch.h:64:
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/os/workgroup.h:30:
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/os/workgroup_object.h:118:73: error: expected ')'
+  118 | os_work_ginsert '_Nullable' if the pointer may be null
+  383 | char    *devname(dev_t, mode_t);
+      |         ^
+      |           _Nullable 
+  432 | void     qsort_r(void *__base, size_t __nel, size_t __width, vmach_port_t mach_port);
+      |                              ^
+ystem(c/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/os/workgroup_object.h:139:79: error: expected ')'
+  139 | os_workgroup_create_with_workgroup(const char * OS_WORKGROUP_UNSAFE_INDEXABLE _Nullable name, os_workgroup_t wg);
+      |                                                                               ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/os/workgroup_object.h:139:35: note: to match this '('
+  139 | os_workgroup_create_with_workgroup(const char * OS_WORKGROUP_UNSAFE_INDEXABLE _Nullable name, os_workgroup_t wg);
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libc/headers/usr/include/stdlib.h:203:46: note: insert '_Nullable' if the pointer may be null
+  203 | char    *fcvt(do/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libc/headers/usr/include/stdlib.h:214:29: note: insert '_Nonnull' if the array parameter should never be null
+uble, int, int *__restrict  214 | void     , int lcong48(uns/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/os/workgroup_object.higne:354:1: error: *d s__restrunknown type name 'OS_ASSUME_PTR_ABI_SINGLE_END'
+  hort[7]354 | OS_WORKGROUPi);
+      |                                ^
+ct)_ASSUME_A      |                                 _Nonnull 
+; /* LEGBI_ACY/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libc/headers/usr/include/stdlib.h:216:19:SIN */G warning: pointer is missing a nullability type specifier (_Nonnull, _Nullable, or _Null_unspecified) [-Wnullability-completeness]
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/os/workgroup_interval.h:151:1: :
+46: note: insert '_Nonnull' if the pointer should never be null
+  205 | ierror: unknown type name 'OS_ASSUME_PTR_ABI_SINGLE_END'
+n  151 |   231 | ctOS_har    *realpath(cWORKons      getsubopGROt char * __restrict(charUP_ASSUME **t,_, c char * _ABI_SINGLE_EN_resD
+      | ^
+thrict) __DARWIN_Ear /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/os/workgroup_base.hXTSN*:39:44: (rnote:  conexpanded from macro 'OS_WORKGROUP_ASSUME_ABI_SINGLE_END'
+st *   39 | #de, charfine **)alpat;
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/dispatch/dispatch.h:64:
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/os/workgroup.h:32:
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/os/workgroup_parallel.h:68:72: error: expected ')'
+   68 | os_workgroup_parallel_create(const char *OS_WORKGROUP_UNSAFE_INDEXABLE _Nullable name,
+      |                                                                        ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/os/workgroup_parallel.h:68:29: note: to match this '('
+   68 | os_workgroup_parallel_create(const char *OS_WORKGROUP_UNSAFE_INDEXABLE _Nullable name,
+      |                              ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/puredarwin/src/Libraries/libSystem/libc/headers/usr/include/stdlib.h:216:19: note: insert '_Nullable' if the pointer may be null
+  216/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/os/workgroup_parallel.h:71:1: error: unknown type name 'OS_ASSUME_PTR_ABI_SINGLE_END'
+   71 | OS_WORKGROUP_ASSUME_ABI_SINGLE_END
+      | ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/os/workgroup_base.h:39:44: note: expanded from macro 'OS_WORKGROUP_ASSUME_ABI_SINGLE_END'
+   39 | #define OS_WORKGROUP_ASSUME_ABI_SINGLE_END OS_ASSUME_PTR_ABI_SINGLE_END
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Libraries/libSystem/libc/pd-compat-include/os/log_private.h:16:
+In file included from /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/os/log.h:29:
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/os/object.h:278:1: error: unknown type name '__ASSUME_PTR_ABI_SINGLE_BEGIN'
+  278 | OS_OBJECT_ASSUME_ABI_SINGLE_BEGIN
+      | ^
+/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/os/object.h:58:43: note: expanded from macro 'OS_OBJECT_ASSUME_ABI_SINGLE_BEGIN'
+   58 | #defin
+--- final output ---
+      |                                          _Nonnull
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Libraries/libSystem/libc/include/stdio.h:442:6: warning: pointer is missing a nullability type specifier (_Nonnull, _Nullable, or _Null_unspecified) [-Wnullability-completeness]
+  442 | FILE    *funopen(const void *,
+      |         ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Libraries/libSystem/libc/include/stdio.h:442:6: note: insert '_Nullable' if the pointer may be null
+  442 | FILE    *funopen(const void *,
+      |         ^
+      |           _Nullable 
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Libraries/libSystem/libc/include/stdio.h:442:6: note: insert '_Nonnull' if the pointer should never be null
+  442 | FILE    *funopen(const void *,
+      |         ^
+      |           _Nonnull 
+197 warnings generated.
+make[2]: *** [src/Libraries/libSystem/libc/CMakeFiles/libc_internal_static.dir/all] Error 2
+make[1]: *** [src/Libraries/dyld/CMakeFiles/dyld.dir/rule] Error 2
+make: *** [dyld] Error 2

@@ -1,0 +1,37 @@
+#!/bin/sh
+# SPDX-License-Identifier: MIT
+# Run inside the isolated source-built guest, never against host launchd.
+set -eu
+[ "${BLAUOS_GUEST_TESTING:-}" = "1" ] || { echo "guest test environment required" >&2; exit 64; }
+test_fixture=/etc/blauos-tests/org.blauos.test.bootstrap.plist
+test_probe=/usr/libexec/blauos-bootstrap-probe
+test_ctl=/usr/bin/launchctl
+test_label=org.blauos.test.bootstrap
+trap '"$test_ctl" unload "$test_fixture" >/dev/null 2>&1 || true' EXIT INT TERM
+"$test_ctl" load "$test_fixture"
+test_first=
+test_second=
+test_attempt=0
+while [ "$test_attempt" -lt 30 ]; do
+  test_first=$("$test_probe" --client 2>/dev/null) && break
+  test_attempt=$((test_attempt + 1))
+  sleep 1
+done
+[ -n "$test_first" ] || { echo "bootstrap round-trip failed" >&2; exit 1; }
+echo "BLAUOS_LAUNCHD job_launch=pass bootstrap_registration=pass ipc_roundtrip=pass"
+test_attempt=0
+while [ "$test_attempt" -lt 30 ]; do
+  test_second=$("$test_probe" --client 2>/dev/null) && [ "$test_second" != "$test_first" ] && break
+  test_attempt=$((test_attempt + 1))
+  sleep 1
+done
+[ -n "$test_second" ] && [ "$test_second" != "$test_first" ] || { echo "supervision failed" >&2; exit 2; }
+echo "BLAUOS_LAUNCHD supervision=pass first_pid=$test_first restarted_pid=$test_second"
+"$test_ctl" unload "$test_fixture"
+if "$test_ctl" list "$test_label" >/dev/null 2>&1; then echo "job still loaded" >&2; exit 3; fi
+echo "BLAUOS_LAUNCHD job_unload=pass"
+if "$test_ctl" load /etc/blauos-tests/absent.plist >/dev/null 2>&1; then echo "missing job accepted" >&2; exit 4; fi
+echo "BLAUOS_LAUNCHD missing_job_error=pass"
+# Whole PID 1 shutdown is a separate VM poweroff/child-reaping test. This
+# fixture does not report that criterion as passing.
+echo "BLAUOS_LAUNCHD result=service_subset_pass system_shutdown=unverified"

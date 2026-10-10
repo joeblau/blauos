@@ -1,0 +1,267 @@
+[  0%] Building C object tools/cctools/libmacho/CMakeFiles/host_libmacho.dir/arch.c.o
+[  0%] Building C object tools/unifdef/CMakeFiles/unifdef.dir/unifdef.c.o
+[  0%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/begin.c.o
+[  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/allocate.c.o
+[  0%] Linking C executable unifdef
+[  0%] Linking C static library libmacho.a
+[  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/apple_version.c.o
+[  0%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/clscook.c.o
+[  0%] Built target unifdef
+[  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/arch_usage.c.o
+[  0%] Built target host_libmacho
+[  0%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/clscook_ELF64.c.o
+[  0%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_create.c.o
+[  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/arch.c.o
+[  0%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_abbrev.c.o
+[ 10%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/cntl.c.o
+[ 10%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_decl.c.o
+[ 10%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_addr_finder.c.o
+[ 10%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/args.c.o
+[ 10%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/cook.c.o
+[ 10%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_error.c.o
+[ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_alloc.c.o
+[ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/data.c.o
+[ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/best_arch.c.o
+[ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_hash.c.o
+[ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_arange.c.o
+[ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/end.c.o
+[ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/breakout.c.o
+[ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_labels.c.o
+[ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_die_deliv.c.o
+[ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/error.c.o
+[ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_lib.c.o
+[ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/bytesex.c.o
+[ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_error.c.o
+[ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/gelf.c.o
+[ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_lookup.c.o
+[ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/checkout.c.o
+[ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getdata.c.o
+[ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_form.c.o
+[ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_open.c.o
+[ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/coff_bytesex.c.o
+[ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getehdr.c.o
+[ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_frame.c.o
+[ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/crc32.c.o
+[ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_subr.c.o
+[ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getident.c.o
+[ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_frame2.c.o
+[ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/dylib_table.c.o
+[ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_types.c.o
+[ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getscn.c.o
+[ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_frame3.c.o
+[ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getshdr.c.o
+[ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_util.c.o
+[ 30%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/dylib_roots.c.o
+[ 30%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_funcs.c.o
+[ 30%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getshstrndx.c.o
+[ 40%] Linking C static library libctf.a
+[ 40%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/errors.c.o
+[ 40%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_global.c.o
+[ 40%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/input.c.o
+[ 40%] Built target libctf.host
+[ 40%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/execute.c.o
+[ 40%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_init_finish.c.o
+[ 40%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/kind.c.o
+[ 40%] Building C object tools/mig/CMakeFiles/migcom.dir/error.c.o
+[ 40%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/fatal_arch.c.o
+[ 40%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_leb.c.o
+[ 40%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/ndxscn.c.o
+[ 40%] Building C object tools/mig/CMakeFiles/migcom.dir/global.c.o
+[ 40%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_line.c.o
+[ 40%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/fatals.c.o
+[ 40%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/nextscn.c.o
+[ 40%] Building C object tools/mig/CMakeFiles/migcom.dir/header.c.o
+[ 40%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/strptr.c.o
+[ 40%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_line2.c.o
+[ 40%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/get_arch_from_host.c.o
+[ 40%] Building C object tools/mig/CMakeFiles/migcom.dir/mig.c.o
+[ 40%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/xlate.c.o
+[ 40%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_loc.c.o
+[ 40%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/get_toc_byte_sex.c.o
+[ 40%] Building C object tools/mig/CMakeFiles/migcom.dir/routine.c.o
+[ 40%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_macro.c.o
+[ 40%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/guess_short_name.c.o
+[ 40%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/xlate64.c.o
+[ 40%] Building C object tools/mig/CMakeFiles/migcom.dir/server.c.o
+[ 40%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_print_lines.c.o
+[ 40%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/hash_string.c.o
+[ 40%] Linking C static library libelf.a
+[ 40%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_pubtypes.c.o
+[ 40%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/hppa.c.o
+[ 40%] Building C object tools/mig/CMakeFiles/migcom.dir/statement.c.o
+[ 40%] Built target libelf.host
+[ 40%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_query.c.o
+[ 40%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/llvm.c.o
+[ 40%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_sort_line.c.o
+[ 40%] Building C object tools/mig/CMakeFiles/migcom.dir/string.c.o
+[ 40%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_string.c.o
+[ 50%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_types.c.o
+[ 50%] Building C object tools/mig/CMakeFiles/migcom.dir/type.c.o
+[ 50%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/lto.c.o
+[ 50%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/macosx_deployment_target.c.o
+[ 50%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_util.c.o
+[ 50%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_vars.c.o
+[ 50%] Building C object tools/mig/CMakeFiles/migcom.dir/user.c.o
+[ 50%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_weaks.c.o
+[ 50%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/ofile_error.c.o
+[ 50%] Building C object tools/mig/CMakeFiles/migcom.dir/utils.c.o
+[ 50%] Building C object tools/mig/CMakeFiles/migcom.dir/y.tab.c.o
+[ 50%] Linking C static library libdwarf.a
+[ 50%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/ofile_get_word.c.o
+[ 50%] Building C object tools/mig/CMakeFiles/migcom.dir/lexxer.yy.c.o
+[ 50%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/ofile.c.o
+[ 50%] Built target libdwarf.host
+[ 50%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/port.c.o
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next/tools/cctools/libstuff/ofile.c:1974:41: warning: comparison of different enumeration types ('enum check_type' and 'enum bool') [-Wenum-compare]
+ 1974 |                 if(check_fat_object_in_archive(ofile) == FALSE)
+      |                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^  ~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next/tools/cctools/libstuff/ofile.c:2292:41: warning: comparison of different enumeration types ('enum check_type' and 'enum bool') [-Wenum-compare]
+ 2292 |                 if(check_fat_object_in_archive(ofile) == FALSE)
+      |                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^  ~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next/tools/cctools/libstuff/ofile.c:2601:42: warning: comparison of different enumeration types ('enum check_type' and 'enum bool') [-Wenum-compare]
+ 2601 |                         if(check_fat_object_in_archive(ofile) == FALSE)
+      |                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^  ~~~~~
+[ 50%] Linking C executable migcom
+[ 50%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/print.c.o
+3 warnings generated.
+[ 50%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/reloc.c.o
+[ 50%] Building CXX object tools/dtrace_ctf/tools/CMakeFiles/host_ctfconvert.dir/alist.cpp.o
+[ 50%] Built target migcom
+[ 50%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/rnd.c.o
+[ 50%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/seg_addr_table.c.o
+[ 60%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/set_arch_flag_name.c.o
+[ 60%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/swap_headers.c.o
+[ 60%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/symbol_list.c.o
+[ 60%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/SymLoc.c.o
+[ 60%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/unix_standard_mode.c.o
+[ 60%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/version_number.c.o
+[ 60%] Building C object tools/dtrace_ctf/tools/CMakeFiles/host_ctfconvert.dir/array.c.o
+[ 60%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/vm_flush_cache.c.o
+[ 60%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/write64.c.o
+[ 60%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/writeout.c.o
+[ 60%] Building CXX object tools/dtrace_ctf/tools/CMakeFiles/host_ctfconvert.dir/atom.cpp.o
+[ 60%] Building C object tools/dtrace_ctf/tools/CMakeFiles/host_ctfconvert.dir/barrier.c.o
+[ 60%] Linking C static library libstuff.a
+[ 60%] Building C object tools/dtrace_ctf/tools/CMakeFiles/host_ctfconvert.dir/ctf.c.o
+[ 60%] Building CXX object tools/dtrace_ctf/tools/CMakeFiles/host_ctfmerge.dir/alist.cpp.o
+[ 60%] Building C object tools/dtrace_ctf/tools/CMakeFiles/host_ctfconvert.dir/ctfconvert.c.o
+[ 60%] Building C object tools/dtrace_ctf/tools/CMakeFiles/host_ctfconvert.dir/darwin_shim.c.o
+[ 60%] Built target host_libstuff
+[ 60%] Building C object tools/dtrace_ctf/tools/CMakeFiles/host_ctfconvert.dir/dwarf.c.o
+[ 60%] Building C object tools/cctools/misc/CMakeFiles/host_lipo.dir/lipo.c.o
+[ 60%] Building C object tools/dtrace_ctf/tools/CMakeFiles/host_ctfconvert.dir/fifo.c.o
+[ 60%] Building C object tools/dtrace_ctf/tools/CMakeFiles/host_ctfmerge.dir/array.c.o
+[ 60%] Building C object tools/dtrace_ctf/tools/CMakeFiles/host_ctfconvert.dir/hash.c.o
+[ 60%] Building C object tools/dtrace_ctf/tools/CMakeFiles/host_ctfconvert.dir/iidesc.c.o
+[ 60%] Linking C executable lipo
+[ 60%] Building CXX object tools/dtrace_ctf/tools/CMakeFiles/host_ctfmerge.dir/atom.cpp.o
+[ 60%] Building C object tools/dtrace_ctf/tools/CMakeFiles/host_ctfconvert.dir/input.c.o
+[ 70%] Building C object tools/dtrace_ctf/tools/CMakeFiles/host_ctfconvert.dir/list.c.o
+[ 70%] Built target host_lipo
+[ 70%] Building C object tools/dtrace_ctf/tools/CMakeFiles/host_ctfconvert.dir/memory.c.o
+[ 70%] Building C object tools/cctools/misc/CMakeFiles/host_nm.dir/nm.c.o
+[ 70%] Building C object tools/cctools/misc/CMakeFiles/host_libtool.dir/libtool.c.o
+[ 70%] Building C object tools/dtrace_ctf/tools/CMakeFiles/host_ctfconvert.dir/merge.c.o
+[ 70%] Building C object tools/dtrace_ctf/tools/CMakeFiles/host_ctfmerge.dir/barrier.c.o
+[ 70%] Linking C executable nm
+[ 70%] Linking C executable libtool
+[ 70%] Building C object tools/dtrace_ctf/tools/CMakeFiles/host_ctfconvert.dir/output.c.o
+[ 70%] Building C object tools/dtrace_ctf/tools/CMakeFiles/host_ctfmerge.dir/ctf.c.o
+[ 70%] Built target host_nm
+[ 70%] Building C object tools/dtrace_ctf/tools/CMakeFiles/host_ctfconvert.dir/stack.c.o
+[ 70%] Built target host_libtool
+[ 70%] Building C object tools/dtrace_ctf/tools/CMakeFiles/host_ctfmerge.dir/ctfmerge.c.o
+[ 70%] Building CXX object tools/dtrace_ctf/tools/CMakeFiles/host_ctfconvert.dir/strtab.cpp.o
+[ 70%] Building C object tools/dtrace_ctf/tools/CMakeFiles/host_ctfmerge.dir/darwin_shim.c.o
+[ 70%] Building C object tools/cctools/misc/CMakeFiles/host_strip.dir/strip.c.o
+[ 70%] Building C object tools/dtrace_ctf/tools/CMakeFiles/host_ctfmerge.dir/dwarf.c.o
+[ 70%] Building C object tools/dtrace_ctf/tools/CMakeFiles/host_ctfmerge.dir/fifo.c.o
+[ 70%] Building C object tools/dtrace_ctf/tools/CMakeFiles/host_ctfmerge.dir/hash.c.o
+[ 80%] Building C object tools/dtrace_ctf/tools/CMakeFiles/host_ctfmerge.dir/iidesc.c.o
+[ 80%] Linking C executable strip
+[ 80%] Building C object tools/dtrace_ctf/tools/CMakeFiles/host_ctfconvert.dir/symbol.c.o
+[ 80%] Building C object tools/dtrace_ctf/tools/CMakeFiles/host_ctfmerge.dir/input.c.o
+[ 80%] Building C object tools/dtrace_ctf/tools/CMakeFiles/host_ctfmerge.dir/list.c.o
+[ 80%] Built target host_strip
+[ 80%] Building C object tools/dtrace_ctf/tools/CMakeFiles/host_ctfconvert.dir/tdata.c.o
+[ 80%] Building C object tools/dtrace_ctf/tools/CMakeFiles/host_ctfmerge.dir/memory.c.o
+[ 80%] Building C object tools/dtrace_ctf/tools/CMakeFiles/host_ctfmerge.dir/merge.c.o
+[ 80%] Building C object tools/cctools/misc/CMakeFiles/host_codesign_allocate.dir/codesign_allocate.c.o
+[ 80%] Building C object tools/dtrace_ctf/tools/CMakeFiles/host_ctfconvert.dir/traverse.c.o
+[ 80%] Building C object tools/dtrace_ctf/tools/CMakeFiles/host_ctfmerge.dir/output.c.o
+[ 80%] Building C object tools/cctools/misc/CMakeFiles/host_ctf_insert.dir/ctf_insert.c.o
+[ 80%] Linking C executable codesign_allocate
+[ 80%] Building C object tools/dtrace_ctf/tools/CMakeFiles/host_ctfconvert.dir/util.c.o
+[ 80%] Linking CXX executable ctfconvert
+[ 80%] Linking C executable ctf_insert
+[ 80%] Building C object tools/dtrace_ctf/tools/CMakeFiles/host_ctfmerge.dir/stack.c.o
+[ 80%] Built target host_codesign_allocate
+[ 80%] Building C object tools/cctools/misc/CMakeFiles/host_nmedit.dir/strip.c.o
+[ 80%] Building CXX object tools/dtrace_ctf/tools/CMakeFiles/host_ctfmerge.dir/strtab.cpp.o
+[ 80%] Built target host_ctf_insert
+[ 80%] Built target host_ctfconvert
+[ 80%] Building C object tools/dtrace_ctf/tools/CMakeFiles/host_ctfmerge.dir/symbol.c.o
+[ 80%] Building C object tools/dtrace_ctf/tools/CMakeFiles/host_ctfmerge.dir/tdata.c.o
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next/tools/cctools/misc/strip.c:730:6: warning: data argument not used by format string [-Wformat-extra-args]
+  730 |             FAKE_SIGN_ARM_BINARY(archs, narchs, output_file); /* cctools-port */
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next/tools/cctools/misc/../include/stuff/port.h:90:6: note: expanded from macro 'FAKE_SIGN_ARM_BINARY'
+   90 |             FAKE_SIGN_BINARY(filename, 1); \
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next/tools/cctools/misc/../include/stuff/port.h:56:63: note: expanded from macro 'FAKE_SIGN_BINARY'
+   55 |                         fprintf(stderr, "[cctools-port]: " \
+      |                                         ~~~~~~~~~~~~~~~~~~~~
+   56 |                                         "cannot find 'ldid' executable in PATH\n", ldid_command); \
+      |                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next/tools/cctools/misc/strip.c:789:6: warning: data argument not used by format string [-Wformat-extra-args]
+  789 |             FAKE_SIGN_ARM_BINARY(archs, narchs, output_file); /* cctools-port */
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next/tools/cctools/misc/../include/stuff/port.h:90:6: note: expanded from macro 'FAKE_SIGN_ARM_BINARY'
+   90 |             FAKE_SIGN_BINARY(filename, 1); \
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next/tools/cctools/misc/../include/stuff/port.h:56:63: note: expanded from macro 'FAKE_SIGN_BINARY'
+   55 |                         fprintf(stderr, "[cctools-port]: " \
+      |                                         ~~~~~~~~~~~~~~~~~~~~
+   56 |                                         "cannot find 'ldid' executable in PATH\n", ldid_command); \
+      |                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  ^
+2 warnings generated.
+[ 80%] Building C object tools/dtrace_ctf/tools/CMakeFiles/host_ctfmerge.dir/traverse.c.o
+[ 80%] Linking C executable host_nmedit
+[ 80%] Building C object tools/dtrace_ctf/tools/CMakeFiles/host_ctfmerge.dir/util.c.o
+[ 80%] Building C object tools/dtrace_ctf/tools/CMakeFiles/host_ctfmerge.dir/utils.c.o
+[ 80%] Built target host_nmedit
+[ 80%] Linking CXX executable ctfmerge
+[ 80%] Built target host_ctfmerge
+[ 90%] Built target xnu_headers.extproj
+[ 90%] Building C object src/Kernel/libkmod/CMakeFiles/libkmod.dir/c_start.c.o
+[ 90%] Building C object src/Kernel/libkmod/CMakeFiles/libkmod.dir/c_stop.c.o
+[ 90%] Linking C static library libkmod.a
+[ 90%] Built target libkmod
+[ 90%] Building C object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/kmod_info.c.o
+[ 90%] Building C object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/cc_clear.c.o
+[ 90%] Building C object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/cc_cmp_safe.c.o
+[ 90%] Building C object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/cc_debug.c.o
+[ 90%] Building C object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/cc_digest.c.o
+[ 90%] Building C object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/algorithms/aes128.c.o
+[ 90%] Building C object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/algorithms/aes_cbc.c.o
+[ 90%] Building C object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/algorithms/aes_ecb.c.o
+[ 90%] Building CXX object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/algorithms/md5_impl.cc.o
+[ 90%] Building C object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/algorithms/cckprng.c.o
+[ 90%] Building C object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/algorithms/pdcrypto_digest_final.c.o
+[ 90%] Building C object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/algorithms/pdcrypto_digest_init.c.o
+[ 90%] Building C object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/algorithms/md5.c.o
+[ 90%] Building C object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/algorithms/pdcrypto_digest_update.c.o
+[ 90%] Building C object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/algorithms/pdcrypto_dummy.c.o
+[ 90%] Building C object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/algorithms/sha1.c.o
+[ 90%] Building CXX object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/algorithms/sha1_impl.cc.o
+[ 90%] Building CXX object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/algorithms/sha256.cc.o
+[ 90%] Building CXX object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/algorithms/sha512.cc.o
+[100%] Building C object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/algorithms/yarrow/comp.c.o
+[100%] Building C object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/algorithms/yarrow/prng.c.o
+[100%] Building C object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/algorithms/yarrow/sha1mod.c.o
+[100%] Building C object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/algorithms/yarrow/smf.c.o
+[100%] Building C object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/algorithms/yarrow/yarrowUtils.c.o
+[100%] Building C object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/kext/cc_functions.c.o
+[100%] Building C object src/Kernel/Extensions/corecrypto/CMakeFiles/corecrypto.kext.dir/kext/cc_kext_main.c.o
+[100%] Linking CXX CFBundle shared module corecrypto.kext/Contents/MacOS/corecrypto
+[100%] Built target corecrypto.kext

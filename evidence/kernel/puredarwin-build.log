@@ -1,0 +1,226 @@
+[  0%] Building C object tools/cctools/libmacho/CMakeFiles/host_libmacho.dir/arch.c.o
+[  0%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/begin.c.o
+[  0%] Building C object tools/unifdef/CMakeFiles/unifdef.dir/unifdef.c.o
+[  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/allocate.c.o
+[  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/apple_version.c.o
+[  0%] Linking C executable unifdef
+[  0%] Linking C static library libmacho.a
+[  0%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/clscook.c.o
+[  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/arch_usage.c.o
+[  0%] Built target unifdef
+[  0%] Built target host_libmacho
+[  0%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/clscook_ELF64.c.o
+[  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/arch.c.o
+[ 10%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/cntl.c.o
+[ 10%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_create.c.o
+[ 10%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/cook.c.o
+[ 10%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/args.c.o
+[ 10%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/data.c.o
+[ 10%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_decl.c.o
+[ 10%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/end.c.o
+[ 10%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/best_arch.c.o
+[ 10%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_abbrev.c.o
+[ 10%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_error.c.o
+[ 10%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/error.c.o
+[ 10%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/breakout.c.o
+[ 10%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_addr_finder.c.o
+[ 10%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_hash.c.o
+[ 10%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/gelf.c.o
+[ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_alloc.c.o
+[ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/bytesex.c.o
+[ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getdata.c.o
+[ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_labels.c.o
+[ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_arange.c.o
+[ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_lib.c.o
+[ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getehdr.c.o
+[ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/checkout.c.o
+[ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_die_deliv.c.o
+[ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getident.c.o
+[ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_lookup.c.o
+[ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/coff_bytesex.c.o
+[ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_error.c.o
+[ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getscn.c.o
+[ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_open.c.o
+[ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/crc32.c.o
+[ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_form.c.o
+[ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getshdr.c.o
+[ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/dylib_table.c.o
+[ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_subr.c.o
+[ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_frame.c.o
+[ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getshstrndx.c.o
+[ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_types.c.o
+[ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_frame2.c.o
+[ 30%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/dylib_roots.c.o
+[ 30%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/input.c.o
+[ 30%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/kind.c.o
+[ 30%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_util.c.o
+[ 30%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_frame3.c.o
+[ 30%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/errors.c.o
+[ 30%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/ndxscn.c.o
+[ 40%] Linking C static library libctf.a
+[ 40%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_funcs.c.o
+[ 40%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/execute.c.o
+[ 40%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/nextscn.c.o
+[ 40%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_global.c.o
+[ 40%] Built target libctf.host
+[ 40%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/fatal_arch.c.o
+[ 40%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_init_finish.c.o
+[ 40%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/strptr.c.o
+[ 40%] Yacc parser.y
+[ 40%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_leb.c.o
+[ 40%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/fatals.c.o
+[ 40%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/xlate.c.o
+[ 40%] Lex lexxer.l
+[ 40%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_line.c.o
+[ 40%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/get_arch_from_host.c.o
+[Full warning log retained under ignored .blauos; see result SHA-256.]
+      INSTALLPY workqueue.py
+      INSTALLPY kevent.py
+      INSTALLPY ulock.py
+      INSTALLPY xnudefines.py
+      INSTALLPY xnu.py
+      INSTALLPY ktrace.py
+      INSTALLPY mbufdefines.py
+      INSTALLPY netdefines.py
+      INSTALLPY macho.py
+      INSTALLPY ipc.py
+      INSTALLPY routedefines.py
+      INSTALLPY ntstat.py
+      INSTALLPY ipcimportancedetail.py
+      INSTALLPY kcdata.py
+      INSTALLPY scheduler.py
+      INSTALLPY structanalyze.py
+      INSTALLPY pmap.py
+      INSTALLPY memory.py
+      INSTALLPY net.py
+      INSTALLPY mbufs.py
+      INSTALLPY utils.py
+      INSTALLPY skywalk.py
+      INSTALLPY ioreg.py
+      INSTALLPY kdp.py
+      INSTALLPY process.py
+      INSTALLPY userspace.py
+      INSTALLPY pci.py
+      INSTALLPY misc.py
+      INSTALLPY apic.py
+      INSTALLPY kasan.py
+      INSTALLPY usertaskgdbserver.py
+      INSTALLPY waitq.py
+      INSTALLPY kauth.py
+      INSTALLPY pgtrace.py
+      INSTALLPY xnutriage.py
+      INSTALLPY zonetriage.py
+      INSTALLPY sysreg.py
+      INSTALLPY kernel_development.py
+      INSTALLPY usertaskdebugging/__init__.py
+      INSTALLPY usertaskdebugging/gdbserver.py
+      INSTALLPY usertaskdebugging/interface.py
+      INSTALLPY usertaskdebugging/target.py
+      INSTALLPY usertaskdebugging/rsprotocol.py
+      INSTALLPY usertaskdebugging/userprocess.py
+      INSTALLPY core/standard.py
+      INSTALLPY core/cvalue.py
+      INSTALLPY core/__init__.py
+      INSTALLPY core/configuration.py
+      INSTALLPY core/caching.py
+      INSTALLPY core/lazytarget.py
+      INSTALLPY core/kernelcore.py
+      INSTALLPY core/xnu_lldb_init.py
+      INSTALLPY plugins/__init__.py
+      INSTALLPY core/operating_system.py
+      INSTALLPY sysregdoc/AArch64-esr_el1.xml
+      INSTALLPY plugins/zprint_perf_log.py
+      INSTALLPY bank.py
+      INSTALLPY turnstile.py
+      INSTALLPY kevent.py
+      INSTALLPY workqueue.py
+      INSTALLPY ulock.py
+      INSTALLPY xnu.py
+      INSTALLPY xnudefines.py
+      INSTALLPY macho.py
+      INSTALLPY ktrace.py
+      INSTALLPY mbufdefines.py
+      INSTALLPY netdefines.py
+      INSTALLPY ntstat.py
+      INSTALLPY ipc.py
+      INSTALLPY routedefines.py
+      INSTALLPY ipcimportancedetail.py
+      INSTALLPY kcdata.py
+      INSTALLPY pmap.py
+      INSTALLPY scheduler.py
+      INSTALLPY structanalyze.py
+      INSTALLPY memory.py
+      INSTALLPY mbufs.py
+      INSTALLPY net.py
+      INSTALLPY skywalk.py
+      INSTALLPY ioreg.py
+      INSTALLPY kdp.py
+      INSTALLPY utils.py
+      INSTALLPY process.py
+      INSTALLPY userspace.py
+      INSTALLPY pci.py
+      INSTALLPY misc.py
+      INSTALLPY apic.py
+      INSTALLPY kasan.py
+      INSTALLPY kauth.py
+      INSTALLPY usertaskgdbserver.py
+      INSTALLPY pgtrace.py
+      INSTALLPY waitq.py
+      INSTALLPY xnutriage.py
+      INSTALLPY zonetriage.py
+      INSTALLPY sysreg.py
+      INSTALLPY kernel_development.py
+        INSTALL kernel.development.virt.linkarguments
+        INSTALL kernel.development.virt.exp
+        INSTALL kernel.development.virt.linkarchives
+        INSTALL kernel.development.virt.alias.exp
+  INSTALLMACROS lldbmacros arm64)
+  INSTALLMACROS kernel_development.py (arm64)
+     INSTALLSYM dSYM Info.plist (arm64)
+  INSTALLMACROS lldbmacros arm64)
+     INSTALLSYM dSYM kernel.development.virt.dSYM (arm64)
+  INSTALLMACROS kernel_development.py (arm64)
+        INSTALL kernel.development.virt (arm64)
+        INSTALL kernel.development.virt.a
+     INSTALLSYM kernel.development.virt (arm64)
+         SYMSET Kasan (arm64)
+     INSTALLSYM symbolset IOKit (arm64)
+     INSTALLSYM symbolset BSDKernel (arm64)
+     INSTALLSYM symbolset Unsupported (arm64)
+     INSTALLSYM symbolset Libkern (arm64)
+     INSTALLSYM symbolset Mach (arm64)
+     INSTALLSYM symbolset MACFramework (arm64)
+     INSTALLSYM kextplist System.kext/Info.plist
+     INSTALLSYM symbolset Private (arm64)
+     INSTALLSYM kextplist System.kext/PlugIns/AppleNMI.kext/Info.plist
+     INSTALLSYM kextplist System.kext/PlugIns/IONVRAMFamily.kext/Info.plist
+     INSTALLSYM kextplist System.kext/PlugIns/ApplePlatformFamily.kext/Info.plist
+     INSTALLSYM kextplist System.kext/PlugIns/IOSystemManagement.kext/Info.plist
+done building xnu
+     INSTALLSYM kextplist System.kext/PlugIns/BSDKernel.kext/Info.plist
+        INSTALL Kasan (arm64)
+     INSTALLSYM kextplist System.kext/PlugIns/Kasan.kext/Info.plist
+     INSTALLSYM kextplist System.kext/PlugIns/IOKit.kext/Info.plist
+     INSTALLSYM kextplist System.kext/PlugIns/MACFramework.kext/Info.plist
+     INSTALLSYM kextplist System.kext/PlugIns/Mach.kext/Info.plist
+     INSTALLSYM kextplist System.kext/PlugIns/Private.kext/Info.plist
+     INSTALLSYM kextplist System.kext/PlugIns/Unsupported.kext/Info.plist
+     INSTALLSYM kextplist System.kext/PlugIns/Libkern.kext/Info.plist
+        INSTALL SupportedKPIs-arm64.txt
+        INSTALL SupportedKPIs-all-archs.txt
+        INSTALL IOKit (arm64)
+        INSTALL BSDKernel (arm64)
+        INSTALL MACFramework (arm64)
+        INSTALL Mach (arm64)
+        INSTALL Kasan (arm64)
+        INSTALL Libkern (arm64)
+        INSTALL Private (arm64)
+        INSTALL Unsupported (arm64)
+     INSTALLSYM kextplist System.kext/PlugIns/AppleNMI.kext/Info.plist
+     INSTALLSYM kextplist System.kext/PlugIns/IOSystemManagement.kext/Info.plist
+     INSTALLSYM kextplist System.kext/Info.plist
+     INSTALLSYM kextplist System.kext/PlugIns/IONVRAMFamily.kext/Info.plist
+     INSTALLSYM kextplist System.kext/PlugIns/ApplePlatformFamily.kext/Info.plist
+[100%] No install step for 'xnu'
+[100%] Completed 'xnu'
+[100%] Built target xnu

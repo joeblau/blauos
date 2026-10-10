@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "status": "diagnostic_pass",
+  "steps": [
+    {
+      "command": [
+        "xcrun",
+        "clang",
+        "-arch",
+        "arm64",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "/Users/joeblau/Developer/joeblau/src/blauos/runtime/probes/runtime_probe.c",
+        "-o",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/host-probe/runtime-probe"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/host-probe/runtime-probe",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/host-probe"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "binary": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/host-probe/runtime-probe",
+  "binary_sha256": "9102250dbb9e04dc2755d1d777c7343c4fa535eb55fba7cc1a18fc9df34c71fc",
+  "macho": {
+    "architecture": "arm64",
+    "cpu_subtype": 0,
+    "file_type": 2,
+    "flags": 2097285,
+    "dependencies": [
+      {
+        "path": "/usr/lib/libSystem.B.dylib",
+        "weak": false
+      }
+    ],
+    "rpaths": [],
+    "dylinker": "/usr/lib/dyld"
+  },
+  "kernel": "stock host macOS",
+  "runtime": "stock host dyld/libSystem",
+  "host_dyld_shared_cache_used": true,
+  "independent_runtime": false,
+  "meets_issue_18_acceptance": false
+}

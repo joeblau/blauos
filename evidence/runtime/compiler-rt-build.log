@@ -1,0 +1,40 @@
+Full log: .blauos/build/runtime/raw-experiments/compiler-rt-build.log
+SHA256: d8df054efbb9e7131acdff5686978e916020fcb3449d200c2114f00a5029dadc
+Bytes: 74014
+
+[  1%] Generating outline_atomic_helpers.dir/outline_atomic_cas16_1.S
+[  1%] Generating outline_atomic_helpers.dir/outline_atomic_cas16_1.S
+[  1%] Generating outline_atomic_helpers.dir/outline_atomic_swp8_5.S
+[  1%] Generating outline_atomic_helpers.dir/outline_atomic_swp8_5.S
+CMake Error: failed to create symbolic link '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/compiler-rt/outline_atomic_helpers.dir/outline_atomic_swp8_5.S': File exists
+make[2]: *** [outline_atomic_helpers.dir/outline_atomic_swp8_5.S] Error 1
+make[2]: *** Deleting file `outline_atomic_helpers.dir/outline_atomic_swp8_5.S'
+make[2]: *** Waiting for unfinished jobs....
+make[1]: *** [CMakeFiles/clang_rt.cc_kext_arm64_osx.dir/all] Error 2
+make[1]: *** Waiting for unfinished jobs....
+[  1%] Generating outline_atomic_helpers.dir/outline_atomic_cas16_4.S
+[  1%] Generating outline_atomic_helpers.dir/outline_atomic_cas16_3.S
+[  1%] Generating outline_atomic_helpers.dir/outline_atomic_swp8_5.S
+[  1%] Generating outline_atomic_helpers.dir/outline_atomic_swp8_5.S
+CMake Error: failed to create symbolic link '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/compiler-rt/outline_atomic_helpers.dir/outline_atomic_swp8_5.S': File exists
+make[2]: *** [outline_atomic_helpers.dir/outline_atomic_swp8_5.S] Error 1
+make[2]: *** Deleting file `outline_atomic_helpers.dir/outline_atomic_swp8_5.S'
+make[2]: *** Waiting for unfinished jobs....
+make[1]: *** [CMakeFiles/clang_rt.cc_kext_arm64_osx.dir/all] Error 2
+--- final output ---
+libtool: warning: 'fixunstfti.c.o' has no symbols
+libtool: warning: 'floatditf.c.o' has no symbols
+libtool: warning: 'floatsitf.c.o' has no symbols
+libtool: warning: 'floattitf.c.o' has no symbols
+libtool: warning: 'floatunditf.c.o' has no symbols
+libtool: warning: 'floatunsitf.c.o' has no symbols
+libtool: warning: 'floatuntitf.c.o' has no symbols
+libtool: warning: 'multc3.c.o' has no symbols
+libtool: warning: 'trunctfdf2.c.o' has no symbols
+libtool: warning: 'trunctfhf2.c.o' has no symbols
+libtool: warning: 'trunctfsf2.c.o' has no symbols
+libtool: warning: 'eprintf.c.o' has no symbols
+libtool: warning: 'truncxfbf2.c.o' has no symbols
+libtool: warning: 'trunctfbf2.c.o' has no symbols
+[ 50%] Built target clang_rt.builtins_arm64_osx
+make: *** [all] Error 2

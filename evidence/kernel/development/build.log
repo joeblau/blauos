@@ -1,0 +1,193 @@
+1: 2026-10-10 08:44:46.968 xcodebuild[70862:25772169] Writing error result bundle to /var/folders/_k/883vgjk55hg79qfxf60d9lzh0000gn/T/ResultBundle_2026-10-10_08-44-0046.xcresult
+2: xcodebuild: error: SDK "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers/MacOSX.sdk" cannot be located.
+3: xcrun: error: unable to lookup item 'PlatformPath' in SDK '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers/MacOSX.sdk'
+4:        GENERATE kasan-denylist-x86_64
+5:              CC kextsymboltool.o
+6:              CC externs.o
+7:        GENERATE bsd/sys/_posix_availability.h
+8:        GENERATE kasan-denylist-arm64
+9:        GENERATE bsd/sys/_symbol_aliasing.h
+10:           BISON parser.c
+11:              CC openp.o
+12:              LD kextsymboltool
+13:              CC searchp.o
+14:        CODESIGN kextsymboltool
+15:        GENERATE kcov-denylist-x86_64
+16:            FLEX lexer.yy.c
+17:        GENERATE kcov-denylist-arm64
+18:              CC parser.o
+19:              CC setsegname.o
+20:              CC main.o
+21:              CC mkheaders.o
+22:              LD setsegname
+23:              CC decomment.o
+24:        CODESIGN setsegname
+25:              CC mkioconf.o
+26:              LD decomment
+27:              CC mkmakefile.o
+28:              CC lexer.yy.o
+29:        CODESIGN decomment
+30: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/SETUP/config/mkmakefile.c:720:6: warning: variable 'lpos' set but not used [-Wunused-but-set-variable]
+31:   720 |         int lpos, len = 0; /* dvw: init to 0 */
+32:       |             ^
+33: 1 warning generated.
+34:              LD config
+35:        CODESIGN config
+36:              CC installfile.o
+37:              CC replacecontents.o
+38:              LD installfile
+39:              LD replacecontents
+40:        CODESIGN installfile
+41:        CODESIGN replacecontents
+42:        GENERATE xnuVersion with version "25.5.0"
+43:             MIG clock.h
+44:             MIG clock_priv.h
+45:             MIG host_priv.h
+46:             MIG host_security.h
+47:             MIG ktrace_background.h
+48:             MIG mach_host.h
+49:             MIG mach_port.h
+50:             MIG mach_vm.h
+51:             IIG IOBufferMemoryDescriptor.h
+52:             IIG IODataQueueDispatchSource.h
+53:             IIG IODispatchQueue.h
+54:             MIG mach_voucher.h
+55:             IIG IODispatchSource.h
+56:             IIG IODMACommand.h
+57:             MIG mach_voucher_attr_control.h
+58:             IIG IOEventLink.h
+59:             IIG IOExtensiblePaniclog.h
+60:             IIG IOInterruptDispatchSource.h
+100:             MIG kextd_mach.h
+101:             MIG lockd_mach.h
+102:              CC mac_audit.o
+103: clang: error: no such include directory: '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers/MacOSX.sdk/usr/local/include/kernel' [-Werror,-Wmissing-include-dirs]
+104: clang: error: no such include directory: '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers/MacOSX.sdk/usr/local/include/iBoot' [-Werror,-Wmissing-include-dirs]
+105: clang: error: no such include directory: '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers/MacOSX.sdk//System/Library/Frameworks/Kernel.framework/Versions/A/PrivateHeaders/AppleFeatures' [-Werror,-Wmissing-include-dirs]
+106: clang: error: no such include directory: '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers/MacOSX.sdk//System/Library/Frameworks/Kernel.framework/Versions/A/PrivateHeaders/platform' [-Werror,-Wmissing-include-dirs]
+107: make[7]: *** [mac_audit.o] Error 1
+108: make[6]: *** [build_all] Error 2
+109: make[5]: *** [do_all] Error 2
+110: make[4]: *** [build_all] Error 2
+111: make[3]: *** [build_all_recurse_into_conf] Error 2
+112: make[2]: *** [build_all_recurse_into_security] Error 2
+113: make[2]: *** Waiting for unfinished jobs....
+114:             IIG IOBufferMemoryDescriptor.h
+115:        GENERATE bsd.syscalls.master from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/bsd/kern/syscalls.master
+116:              CC randomdev.o
+117:             IIG IODataQueueDispatchSource.h
+118: clang: error: no such include directory: '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers/MacOSX.sdk/usr/local/include/kernel' [-Werror,-Wmissing-include-dirs]
+119: clang: error: no such include directory: '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers/MacOSX.sdk/usr/local/include/iBoot' [-Werror,-Wmissing-include-dirs]
+120: clang: error: no such include directory: '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers/MacOSX.sdk//System/Library/Frameworks/Kernel.framework/Versions/A/PrivateHeaders/AppleFeatures' [-Werror,-Wmissing-include-dirs]
+121: clang: error: no such include directory: '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers/MacOSX.sdk//System/Library/Frameworks/Kernel.framework/Versions/A/PrivateHeaders/platform' [-Werror,-Wmissing-include-dirs]
+122: make[7]: *** [randomdev.o] Error 1
+123: make[6]: *** [build_all] Error 2
+124: make[5]: *** [do_all] Error 2
+125: make[4]: *** [build_all] Error 2
+126: make[3]: *** [build_all_recurse_into_conf] Error 2
+127: make[2]: *** [build_all_recurse_into_bsd] Error 2
+128:             IIG IODispatchQueue.h
+129:             IIG IODispatchSource.h
+130:             IIG IODMACommand.h
+131:             IIG IOEventLink.h
+132:             MIG device_server.h
+142:             MIG UNDRequest.c
+143:             IIG IOServiceStateNotificationDispatchSource.h
+144:             MIG clock_reply_user.c
+145:             IIG IOUserClient.h
+146:             MIG UNDReplyServer.c
+147:             IIG IOUserServer.h
+148:             IIG IOWorkGroup.h
+149:             IIG OSAction.h
+150:             MIG coalition_notification_user.c
+151:             IIG OSObject.h
+152:             MIG doubleagent_mig_user.c
+153:             C++ IOUserServer.cpo
+154: clang++: error: no such include directory: '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers/MacOSX.sdk/usr/local/include/kernel' [-Werror,-Wmissing-include-dirs]
+155: clang++: error: no such include directory: '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers/MacOSX.sdk/usr/local/include/iBoot' [-Werror,-Wmissing-include-dirs]
+156: clang++: error: no such include directory: '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers/MacOSX.sdk//System/Library/Frameworks/Kernel.framework/Versions/A/PrivateHeaders/AppleFeatures' [-Werror,-Wmissing-include-dirs]
+157: clang++: error: no such include directory: '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers/MacOSX.sdk//System/Library/Frameworks/Kernel.framework/Versions/A/PrivateHeaders/platform' [-Werror,-Wmissing-include-dirs]
+158: make[7]: *** [IOUserServer.cpo] Error 1
+159: make[6]: *** [build_all] Error 2
+160: make[5]: *** [do_all] Error 2
+161: make[4]: *** [build_all] Error 2
+162: make[3]: *** [build_all_recurse_into_conf] Error 2
+163: make[2]: *** [build_all_recurse_into_iokit] Error 2
+164:             MIG exc_user.c
+165:             MIG gssd_mach.c
+166:             MIG gssd_mach.h
+167:             MIG kextd_mach.c
+168:             MIG fairplayd_notification_user.c
+169:             MIG lockd_mach.c
+170:             MIG kextd_mach.h
+171:             MIG arcade_upcall_user.c
+172:             MIG lockd_mach.h
+173:             MIG host_notify_reply_user.c
+174:             MIG ktrace_background_user.c
+175:             MIG memory_error_notification_user.c
+176:             MIG mach_exc_user.c
+177:             MIG mach_notify_user.c
+178:             MIG mach_test_upcall_user.c
+179:             MIG resource_notify_user.c
+180:             MIG task_access_user.c
+181:             MIG telemetry_notification_user.c
+182:             MIG iocompressionstats_notification_user.c
+183:             MIG upl_user.c
+184:             MIG vfs_nspace_user.c
+185:             MIG vm_map_user.c
+186:             MIG sysdiagnose_notification_user.c
+187:             MIG arcade_register_server.c
+188:             MIG clock_server.c
+189:             MIG exc_server.c
+190:             MIG host_priv_server.c
+191:             MIG mach_eventlink_server.c
+192:             MIG mach_exc_server.c
+193:             MIG mach_host_server.c
+194:             MIG mach_notify_server.c
+195:             MIG mach_port_server.c
+196:             MIG mach_vm_server.c
+197:             MIG mach_voucher_server.c
+198:             MIG memory_entry_server.c
+199:             MIG processor_server.c
+200:             MIG processor_set_server.c
+201:             MIG restartable_server.c
+202:             MIG task_server.c
+203:             MIG thread_act_server.c
+204:             MIG upl_server.c
+205:             MIG vm_map_server.c
+206:             MIG vm32_map_server.c
+207:             MIG checked
+208: /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/usr/bin/python3 /Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/xnu/tools/vm_sanitize_enforcement.py arcade_register_server.c clock_server.c exc_server.c host_priv_server.c mach_eventlink_server.c mach_exc_server.c mach_host_server.c mach_notify_server.c mach_port_server.c mach_vm_server.c mach_voucher_server.c memory_entry_server.c processor_server.c processor_set_server.c restartable_server.c task_server.c thread_act_server.c upl_server.c vm_map_server.c vm32_map_server.c
+209: touch checked
+210:              CC kextd_mach.o
+211:              CC lockd_mach.o
+212:              CC gssd_mach.o
+213:              CC UNDRequest.o
+214: clang: error: no such include directory: '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers/MacOSX.sdk/usr/local/include/kernel' [-Werror,-Wmissing-include-dirs]
+215: clang: error: no such include directory: '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers/MacOSX.sdk/usr/local/include/iBoot' [-Werror,-Wmissing-include-dirs]
+216: clang: error: no such include directory: '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers/MacOSX.sdk//System/Library/Frameworks/Kernel.framework/Versions/A/PrivateHeaders/AppleFeatures' [-Werror,-Wmissing-include-dirs]
+217: clang: error: no such include directory: '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers/MacOSX.sdk//System/Library/Frameworks/Kernel.framework/Versions/A/PrivateHeaders/platform' [-Werror,-Wmissing-include-dirs]
+218: clang: error: no such include directory: '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers/MacOSX.sdk/usr/local/include/kernel' [-Werror,-Wmissing-include-dirs]
+219: clang: error: no such include directory: '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers/MacOSX.sdk/usr/local/include/iBoot' [-Werror,-Wmissing-include-dirs]
+220: clang: error: no such include directory: '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers/MacOSX.sdk//System/Library/Frameworks/Kernel.framework/Versions/A/PrivateHeaders/AppleFeatures' [-Werror,-Wmissing-include-dirs]
+221: clang: error: no such include directory: '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers/MacOSX.sdk//System/Library/Frameworks/Kernel.framework/Versions/A/PrivateHeaders/platform' [-Werror,-Wmissing-include-dirs]
+222: clang: clang: error: error: no such include directory: '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers/MacOSX.sdk/usr/local/include/kernel' [-Werror,-Wmissing-include-dirs]
+223: no such include directory: '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers/MacOSX.sdk/usr/local/include/kernel' [-Werror,-Wmissing-include-dirs]clang: error: no such include directory: '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers/MacOSX.sdk/usr/local/include/iBoot' [-Werror,-Wmissing-include-dirs]
+224: clang: error: no such include directory: '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers/MacOSX.sdk//System/Library/Frameworks/Kernel.framework/Versions/A/PrivateHeaders/AppleFeatures' [-Werror,-Wmissing-include-dirs]
+225: clang: error: no such include directory: '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers/MacOSX.sdk//System/Library/Frameworks/Kernel.framework/Versions/A/PrivateHeaders/platform' [-Werror,-Wmissing-include-dirs]
+226: 
+227: clang: error: no such include directory: '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers/MacOSX.sdk/usr/local/include/iBoot' [-Werror,-Wmissing-include-dirs]
+228: clang: error: no such include directory: '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers/MacOSX.sdk//System/Library/Frameworks/Kernel.framework/Versions/A/PrivateHeaders/AppleFeatures' [-Werror,-Wmissing-include-dirs]
+229: clang: error: no such include directory: '/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/headers/MacOSX.sdk//System/Library/Frameworks/Kernel.framework/Versions/A/PrivateHeaders/platform' [-Werror,-Wmissing-include-dirs]
+230: make[7]: *** [gssd_mach.o] Error 1
+231: make[7]: *** Waiting for unfinished jobs....
+232: make[7]: *** [kextd_mach.o] Error 1
+233: make[7]: *** [lockd_mach.o] Error 1
+234: make[7]: *** [UNDRequest.o] Error 1
+235: make[6]: *** [build_all] Error 2
+236: make[5]: *** [do_all] Error 2
+237: make[4]: *** [build_all] Error 2
+238: make[3]: *** [build_all_recurse_into_conf] Error 2
+239: make[2]: *** [build_all_recurse_into_osfmk] Error 2
+240: make[1]: *** [build_all_bootstrap_DEVELOPMENT^ARM64^VMAPPLE] Error 2
+241: make: *** [all] Error 2

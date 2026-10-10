@@ -1,0 +1,21 @@
+1: [  0%] Built target host_libmacho
+2: [  0%] Built target unifdef
+3: [ 10%] Built target libelf.host
+4: [ 20%] Built target libctf.host
+5: [ 40%] Built target host_libstuff
+6: [ 60%] Built target libdwarf.host
+7: [ 60%] Built target migcom
+8: [ 60%] Built target generate_dyld_headers
+9: [ 60%] Built target host_nm
+10: [ 60%] Built target host_lipo
+11: [ 60%] Built target host_strip
+12: [ 60%] Built target host_libtool
+13: [ 60%] Built target host_codesign_allocate
+14: [ 60%] Built target host_ctf_insert
+15: [ 60%] Built target host_nmedit
+16: [ 60%] Built target dyld_availability_headers
+17: [ 70%] Built target host_ctfconvert
+18: [ 80%] Built target host_ctfmerge
+19: [ 90%] Built target xnu_headers.extproj
+20: [100%] Built target libfirehose_kernel
+21: [100%] Built target xnu

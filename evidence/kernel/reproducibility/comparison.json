@@ -1,0 +1,59 @@
+{
+  "configuration": "DEVELOPMENT ARM64 VIRT",
+  "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+  "source_tree": "ed2345d7f3c11dad2e7f6ffeeb377adc789b12b8",
+  "source_manifest_sha256": "445e5f6ff95c0f1e293572b14e2c58e148269aa18cf81a6591f4c1371735d2c6",
+  "fresh_source": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next",
+  "builds": [
+    {
+      "label": "first",
+      "kernel": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu/System/Library/Kernels/kernel.development.virt",
+      "sha256": "d5b34ec4ec049d6a8c9e6939c16981e339d04204f49e7c661951943ac04d2ad9",
+      "size": 12571728,
+      "uuid": "UUID: 24B6DB58-FF3D-33AC-8F0B-9E1E2A3EA5EA (arm64) /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/puredarwin/src/Kernel/xnu/xnu/System/Library/Kernels/kernel.development.virt",
+      "version_strings": [
+        "@(#)VERSION: Darwin Kernel Version 20.5.0: Sat Oct 10 08:46:32 PDT 2026; joeblau:xnu-build/DEVELOPMENT_ARM64_VIRT",
+        "Darwin Kernel Version 20.5.0: Sat Oct 10 08:46:32 PDT 2026; joeblau:xnu-build/DEVELOPMENT_ARM64_VIRT"
+      ],
+      "undefined_symbols": ""
+    },
+    {
+      "label": "second",
+      "kernel": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/reproducibility/src/Kernel/xnu/xnu/System/Library/Kernels/kernel.development.virt",
+      "sha256": "bcb57010ef19e53081b52f2730fb78b7042501e7e4ada6accacf4979da71f943",
+      "size": 12588112,
+      "uuid": "UUID: 677FAA24-7DF9-33E9-AB33-06B22D3208B6 (arm64) /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/reproducibility/src/Kernel/xnu/xnu/System/Library/Kernels/kernel.development.virt",
+      "version_strings": [
+        "@(#)VERSION: Darwin Kernel Version 20.5.0: Sat Oct 10 08:57:54 PDT 2026; joeblau:xnu-build/DEVELOPMENT_ARM64_VIRT",
+        "Darwin Kernel Version 20.5.0: Sat Oct 10 08:57:54 PDT 2026; joeblau:xnu-build/DEVELOPMENT_ARM64_VIRT"
+      ],
+      "undefined_symbols": ""
+    }
+  ],
+  "kernel_bytes_equal": false,
+  "interpretation": "Both isolated builds pass; kernel bytes differ. Build timestamps and source/build path strings remain uncontrolled; no bit-for-bit release reproducibility claim.",
+  "path_string_samples": {
+    "first": [
+      "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/xnu/osfmk/kern/kern_stackshot.c",
+      "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/xnu/osfmk/kdp/kdp_udp.c",
+      "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/xnu/osfmk/kdp/kdp_core.c",
+      "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/xnu/osfmk/vm/vm_page.h",
+      "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/xnu/osfmk/kdp/processor_core.c",
+      "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/xnu/osfmk/ipc/ipc_entry.c",
+      "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/xnu/osfmk/ipc/ipc_space.h",
+      "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next/src/Kernel/xnu/osfmk/ipc/ipc_eventlink.c"
+    ],
+    "second": [
+      "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next/src/Kernel/xnu/osfmk/kern/kern_stackshot.c",
+      "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next/src/Kernel/xnu/osfmk/kdp/kdp_udp.c",
+      "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next/src/Kernel/xnu/osfmk/kdp/kdp_core.c",
+      "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next/src/Kernel/xnu/osfmk/vm/vm_page.h",
+      "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next/src/Kernel/xnu/osfmk/kdp/processor_core.c",
+      "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next/src/Kernel/xnu/osfmk/ipc/ipc_entry.c",
+      "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next/src/Kernel/xnu/osfmk/ipc/ipc_space.h",
+      "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/verification/sources/puredarwin-vm-next/src/Kernel/xnu/osfmk/ipc/ipc_eventlink.c"
+    ]
+  },
+  "toolchain_manifest_sha256": "fbe0059cb1b66acb12ffee5ec1eca86bcca40a4858352cda1f188483e3dc78b7",
+  "fresh_checkout_status": ""
+}

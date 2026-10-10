@@ -1,0 +1,1300 @@
+[  0%] Built target generate_dyld_headers
+[  0%] Built target libc_headers_gen_script
+[  0%] Built target CrashReporterClient
+[  0%] Built target migcom
+[  1%] Built target libunwind_static_build
+[  3%] Built target libcxxabi_static_build
+[  3%] Built target libcxx_static_build
+[  3%] Generating libc-features.h
+[  3%] Built target corecrypto_user
+[  3%] Built target dyld_availability_headers
+[  8%] Built target corecrypto_shared
+[  8%] Built target libc_features
+[  8%] Built target corecrypto_static
+[ 26%] Built target openlibm_static
+[ 45%] Built target libsystem_kernel_static
+[ 45%] Built target pthread_static
+[ 49%] Built target libplatform_static
+[ 68%] Built target libc_internal_static
+[ 94%] Built target libc_static
+[ 94%] Building CXX object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/src/dyld2.cpp.o
+[ 94%] Building CXX object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/src/dyldAPIs.cpp.o
+[ 94%] Building CXX object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/src/dyldInitialization.cpp.o
+[ 94%] Building CXX object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/src/dyldNew.cpp.o
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:121:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.h:31:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.h:54:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:302:34: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyldNew.cpp:34:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.h:  302 |            31:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.h:54:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:302:34: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ const ValueT* val  302 | ues[values            const ValueT* values[valuesCount];
+      | Cou                                 ^~~~~~~~~~~
+n/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:302:34: note: read of non-const variable 'valuesCount' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:292:22: note: declared here
+  292 |        t];
+      |                                  ^~~~~~~~~~~
+     uint64_t val/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:302:34: note: read of non-const variable 'valuesCount' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:292uesCount = 1;
+      |                      ^
+In file included from :22: note: declared here
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyldInitialization.cpp:33:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.h:31:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.h:54:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:302:34: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  292 |             uint64_t val  302 | uesCount = 1;
+      |                      ^
+            const ValueT* values[valuesCount];
+      |                                  ^~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:302:34: note: read of non-const variable 'valuesCount' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:292:22: note: declared here
+  292 |             uint64_t valuesCount = 1;
+      |                      ^
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyldAPIs.cpp:52:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.h:54:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:302:34: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  302 |             const ValueT* values[valuesCount];
+      |                                  ^~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:302:34: note: read of non-const variable 'valuesCount' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:292:22: note: declared here
+  292 |             uint64_t valuesCount = 1;
+      |                      ^
+1 warning generated.
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyldAPIs.cpp:639:17: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  639 |                         char pathMsg[strlen(msg)+strlen(path)+4];
+      |                                      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyldAPIs.cpp:639:24: note: read of non-constexpr variable 'msg' is not allowed in a constant expression
+  639 |                         char pathMsg[strlen(msg)+strlen(path)+4];
+      |                                             ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyldAPIs.cpp:636:21: note: declared here
+  636 |         catch (const char* msg) {
+      |                            ^
+1 warning generated.
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyldAPIs.cpp:1201:24: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1201 |                 __cxa_range_t ranges[image->segmentCount()];
+      |                                      ^~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyldAPIs.cpp:1201:24: note: read of non-constexpr variable 'image' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyldAPIs.cpp:1196:15: note: declared here
+ 1196 |         ImageLoader* image = NSModuleToImageLoader(module);
+      |                      ^
+[ 94%] Building C object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/src/dyldExceptions.c.o
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyldAPIs.cpp:1842:23: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1842 |         char underscoredName[strlen(symbolName)+2];
+      |                              ^~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyldAPIs.cpp:1842:30: note: function parameter 'symbolName' with unknown value cannot be used in a constant expression
+ 1842 |         char underscoredName[strlen(symbolName)+2];
+      |                                     ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyldAPIs.cpp:1819:48: note: declared here
+ 1819 | void* dlsym_internal(void* handle, const char* symbolName, void* callerAddress)
+      |                                                ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:739:19: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  739 |                         uint8_t buffer[sizeof(dof_ioctl_data_t) + dofSectionCount*sizeof(dof_helper_t)];
+      |                                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:739:46: note: initializer of 'dofSectionCount' is not a constant expression
+  739 |                         uint8_t buffer[sizeof(dof_ioctl_data_t) + dofSectionCount*sizeof(dof_helper_t)];
+      |                                                                   ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:731:15: note: declared here
+  731 |         const size_t dofSectionCount = dofs.size();
+      |                      ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:1033:17: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1033 |         uint8_t buffer[totalSize + MAX_TRAILER_SIZE];
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:1033:17: note: read of non-const variable 'totalSize' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:1022:11: note: declared here
+ 1022 |         unsigned totalSize = (sizeof(struct dyld_process_info_notify_header) + entriesSize + pathsSize + 127) & -128;   // align
+      |                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:1204:25: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1204 |                 dyld_image_info infos[allImagesCount()+1];
+      |                                       ^~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:1204:25: note: non-constexpr function 'allImagesCount' cannot be used in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:190:15: note: declared here
+  190 | extern size_t allImagesCount();
+      |               ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:1205:29: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1205 |         ImageLoader* images[allImagesCount()+1];
+      |                             ^~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:1205:29: note: non-constexpr function 'allImagesCount' cannot be used in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:190:15: note: declared here
+  190 | extern size_t a[ 96%] Building CXX object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/src/dyldLock.cpp.o
+llImagesCount();
+      |               ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:1223:27: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1223 |                         const mach_header* mhs[imageCount];
+      |                                                ^~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:1223:27: note: read of non-const variable 'imageCount' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:1218:12: note: declared here
+ 1218 |                 uint32_t imageCount = (uint32_t)(end-images);
+      |                          ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:1224:29: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1224 |                         const char*        paths[imageCount];
+      |                                                  ^~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:1224:29: note: read of non-const variable 'imageCount' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:1218:12: note: declared here
+ 1218 |                 uint32_t imageCount = (uint32_t)(end-images);
+      |                          ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:1319:23: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1319 |                                 const char* paths[imageCount];
+      |                                                   ^~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:1319:23: note: read of non-const variable 'imageCount' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:1218:12: note: declared here
+ 1218 |                 uint32_t imageCount = (uint32_t)(end-images);
+      |                          ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:1320:28: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1320 |                                 const mach_header* mhs[imageCount];
+      |                                                        ^~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:1320:28: note: read of non-const variable 'imageCount' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:1218:12: note: declared here
+ 1218 |                 uint32_t imageCount = (uint32_t)(end-images);
+      |                          ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:1361:44: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1361 |                         const struct mach_header* loadAddresses[imageCount];
+      |                                                                 ^~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:1361:44: note: read of non-const variable 'imageCount' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:1218:12: note: declared here
+ 1218 |                 uint32_t imageCount = (uint32_t)(end-images);
+      |                          ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:1362:26: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1362 |                         const char* loadPaths[imageCount];
+      |                                               ^~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:1362:26: note: read of non-const variable 'imageCount' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:1218:12: note: declared here
+ 1218 |                 uint32_t imageCount = (uint32_t)(end-images);
+      |                          ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:1766:54: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1766 |         ImageLoader::InitializerTimingList initializerTimes[allImagesCount()];
+      |                                                             ^~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:1766:54: note: non-constexpr function 'allImagesCount' cannot be used in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:190:15: note: declared here
+  190 | extern size_t allImagesCount();
+      |               ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:2357:28: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 2357 |                                 char mainExecutableDir[strlen(sExecPath)+2];
+      |                                                        ^~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:2357:35: note: read of non-constexpr variable 'sExecPath' is not allowed in a constant expression
+ 2357 |                                 char mainExecutableDir[strlen(sExecPath)+2];
+      |                                                               ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:279:24: note: declared here
+  279 | static const char*                                      sExecPath = NULL;
+      |                                                         ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:2371:18: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 2371 |                                                                 char key[keyLen+1];
+      |                                                                          ^~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:2371:18: note: initializer of 'keyLen' is not a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:2368:21: note: declared here
+ 2368 |                                                         const size_t keyLen = equals-keyEqualsValue;
+      |                                                                      ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:2531:14: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 2531 |                                 char key[keyLen+1];
+      |                                          ^~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:2531:14: note: initializer of 'keyLen' is not a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:2530:18: note: declared here
+ 2530 |                                 const size_t keyLen = equals-keyEqualsValue;
+      |                                              ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:2779:20: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 2779 |                                 char framework[len+1];
+      |                                                ^~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:2779:20: note: read of non-const variable 'len' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:2778:12: note: declared here
+ 2778 |                                 size_t len = dirDot - frameworkStart;
+      |                                        ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:3773:25: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 3773 |                         char pathWithSuffix[strlen(path)+strlen(*suffix)+2];
+      |                                             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:3773:32: note: function parameter 'path' with unknown value cannot be used in a constant expression
+ 3773 |                         char pathWithSuffix[strlen(path)+strlen(*suffix)+2];
+      |                                                    ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:3767:44: note: declared here
+ 3767 | static ImageLoader* loadPhase4(const char* path, const char* orgPath, const LoadContext& context, unsigned& cacheIndex, std::vector<const char*>* exceptions)
+      |                                            ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:3807:16: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 3807 |                 char newPath[strlen(executablePath) + strlen(path)];
+      |                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:3807:23: note: read of non-constexpr variable 'executablePath' is not allowed in a constant expression
+ 3807 |                 char newPath[strlen(executablePath) + strlen(path)];
+      |                                     ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:3806:15: note: declared here
+ 3806 |                 const char* executablePath = sExecPath;
+      |                             ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:3821:21: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 3821 |                         char newRealPath[strlen(resolvedPath) + strlen(path)];
+      |                                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:3821:28: note: read of non-constexpr variable 'resolvedPath' is not allowed in a constant expression
+ 3821 |                         char newRealPath[strlen(resolvedPath) + strlen(path)];
+      |                                                 ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:3819:8: note: declared here
+ 3819 |                 char resolvedPath[PATH_MAX];
+      |                      ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:3838:16: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 3838 |                 char newPath[strlen(context.origin) + strlen(path)];
+      |                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:3838:23: note: function parameter 'context' with unknown value cannot be used in a constant expression
+ 3838 |                 char newPath[strlen(context.origin) + strlen(path)];
+      |                                     ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:3797:90: note: declared here
+ 3797 | static ImageLoader* loadPhase3(const char* path, const char* orgPath, const LoadContext& context, unsigned& cacheIndex, std::vector<const char*>* exceptions)
+      |                                                                                          ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:3852:21: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 3852 |                         char newRealPath[strlen(resolvedPath) + strlen(path)];
+      |                                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:3852:28: note: read of non-constexpr variable 'resolvedPath' is not allowed in a constant expression
+ 3852 |                         char newRealPath[strlen(resolvedPath) + strlen(path)];
+      |                                                 ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:3850:8: note: declared here
+ 3850 |                 char resolvedPath[PATH_MAX];
+      |                      ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:3871:19: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 3871 |                                         char newPath[strlen(anRPath) + strlen(trailingPath)+2];
+      |                                                      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:3871:26: note: read of non-constexpr variable 'anRPath' is not allowed in a constant expression
+ 3871 |                                         char newPath[strlen(anRPath) + strlen(trailingPath)+2];
+      |                                                             ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:3870:18: note: declared here
+ 3870 |                                         const char* anRPath = *it;
+      |                                                     ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:3937:16: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 3937 |                                 char npath[strlen(*fp)+frameworkPartialPathLen+8];
+      |                                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:3937:24: note: read of non-constexpr variable 'fp' is not allowed in a constant expression
+ 3937 |                                 char npath[strlen(*fp)+frameworkPartialPathLen+8];
+      |                                                    ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:3936:27: note: declared here
+ 3936 |                         for(const char* const* fp = frameworkPaths; *fp != NULL; ++fp) {
+      |                                                ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:3972:17: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 3972 |                         char libpath[strlen(*lp)+libraryLeafNameLen+8];
+      |                                      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:3972:25: note: read of non-constexpr variable 'lp' is not allowed in a constant expression
+ 3972 |                         char libpath[strlen(*lp)+libraryLeafNameLen+8];
+      |                                              ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:3971:26: note: declared here
+ 3971 |                 for(const char* const* lp = libraryPaths; *lp != NULL; ++lp) {
+      |                                        ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:4078:17: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 4078 |                 char flatPath[sourceLangth];
+      |                               ^~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:4078:17: note: read of non-const variable 'sourceLangth' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:4077:10: note: declared here
+ 4077 |                 size_t sourceLangth = strlen(path);
+      |                        ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:4100:18: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 4100 |                                 char newPath[rootLen + strlen(path)+2];
+      |                                              ^~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:4100:18: note: read of non-const variable 'rootLen' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:4098:11: note: declared here
+ 4098 |                         size_t rootLen = strlen(*rootPath);
+      |                                ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:4367:26: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 4367 |                 const mach_header* mhs[count];
+      |                                        ^~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:4367:26: note: read of non-const variable 'count' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:4364:11: note: declared here
+ 4364 |         unsigned count = dyld::gProcessInfo->infoArrayCount;
+      |                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:4368:28: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 4368 |                 const char*        paths[count];
+      |                                          ^~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:4368:28: note: read of non-const variable 'count' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:4364:11: note: declared here
+ 4364 |         unsigned count = dyld::gProcessInfo->infoArrayCount;
+      |                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:5152:54: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 5152 |         ImageLoader::InitializerTimingList initializerTimes[allImagesCount()];
+      |                                                             ^~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:5152:54: note: non-constexpr function 'allImagesCount' cannot be used in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:190:15: note: declared here
+  190 | extern size_t allImagesCount();
+      |               ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:5206:27: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 5206 |                 ImageLoader* deadImages[sAllImages.size()];
+      |                                         ^~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:5206:38: note: non-constexpr function 'size' cannot be used in a constant expression
+ 5206 |                 ImageLoader* deadImages[sAllImages.size()];
+      |                                                    ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/sdk-cxx-headers/__vector/vector.h:395:83: note: declared here
+  395 |   [[__nodiscard__]] _LIBCPP_CONSTEXPR_SINCE_CXX20 _LIBCPP_HIDE_FROM_ABI size_type size() const _NOEXCEPT {
+      |                                                                                   ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:5220:25: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 5220 |                         __cxa_range_t ranges[maxRangeCount];
+      |                                              ^~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:5220:25: note: read of non-const variable 'maxRangeCount' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:5208:7: note: declared here
+ 5208 |                 int maxRangeCount = 0;
+      |                     ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:6087:2: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 6087 |         STACK_ALLOC_ARRAY(dyld3::LoadedImage, allImages, mainClosure->initialLoadCount());
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Array.h:303:39: note: expanded from macro 'STACK_ALLOC_ARRAY'
+  303 |     uintptr_t __##_name##_array_alloc[1 + ((sizeof(_type)*(_count))/sizeof(uintptr_t))]; \
+      |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:6087:51: note: function parameter 'mainClosure' with unknown value cannot be used in a constant expression
+ 6087 |         STACK_ALLOC_ARRAY(dyld3::LoadedImage, allImages, mainClosure->initialLoadCount());
+      |                                                          ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:6067:68: note: declared here
+ 6067 | static bool launchWithClosure(const dyld3::closure::LaunchClosure* mainClosure,
+      |                                                                    ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:6468:25: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 6468 |         uint8_t filesBootToken[bootToken.count()];
+      |                                ^~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:6468:25: note: function parameter 'bootToken' with unknown value cannot be used in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.cpp:6454:47: note: declared here
+ 6454 |                                                                                                                                         const dyld3::Array<uint8_t>& bootToken)
+      |                                                                                                                                                                      ^
+4 warnings generated.
+[ 96%] Building CXX object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/src/dyld_debugger.cpp.o
+[ 96%] Building C object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/src/glue.c.o
+[ 96%] Building C object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/src/threadLocalVariables.c.o
+[ 96%] Building CXX object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/src/ImageLoader.cpp.o
+[ 96%] Building CXX object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/src/ImageLoaderMachO.cpp.o
+33 warnings generated.
+[ 96%] Building CXX object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/src/ImageLoaderMachOClassic.cpp.o
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld_debugger.cpp:36:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.h:54:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:302:34: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  302 |             const ValueT* values[valuesCount];
+      |                                  ^~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:302:34: note: read of non-const variable 'valuesCount' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:292:22: note: declared here
+  292 |             uint64_t valuesCount = 1;
+      |                      ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld_debugger.cpp:219:24: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  219 |                 uint64_t machHeaders[infoCount];
+      |                                      ^~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld_debugger.cpp:219:24: note: function parameter 'infoCount' with unknown value cannot be used in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld_debugger.cpp:216:69: note: declared here
+  216 |         static void gdb_image_notifier(enum dyld_image_mode mode, uint32_t infoCount, const dyld_image_info info[])
+      |                                                                            ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld_debugger.cpp:259:51: warning: implicit conversion of NULL constant to 'uint32_t' (aka 'unsigned int') [-Wnull-conversion]
+  255 |                                                                 = { 
+      |                                                                   ~
+  256 |                                                                         17, 0, {NULL}, &gdb_image_notifier, false, false, (const mach_header*)&__dso_handle, NULL,
+  257 |                                                                         XSTR(DYLD_VERSION), NULL, 0, NULL, 0, 0, NULL, &dyld_all_image_infos,
+  258 |                                                                         0, 0, NULL, NULL, NULL, 0, {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,},
+  259 |                                                                         0, {0}, "/usr/lib/dyld", {0}, {0}, 0, 0, NULL, 0
+      |                                                                                                                  ^~~~
+      |                                                                                                                  0
+3 warnings generated.
+[ 96%] Building CXX object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/src/ImageLoaderMachOCompressed.cpp.o
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoaderMachO.cpp:54:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoaderMachO.h:39:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.h:54:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:302:34: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  302 |             const ValueT* values[valuesCount];
+      |                                  ^~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:302:34: note: read of non-const variable 'valuesCount' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:292:22: note: declared here
+  292 |             uint64_t valuesCount = 1;
+      |                      ^
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.cpp:45:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.h:54:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:302:34: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  302 |             const ValueT* values[valuesCount];
+      |                                  ^~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:302:34: note: read of non-const variable 'valuesCount' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:292:22: note: declared here
+  292 |             uint64_t valuesCount = 1;
+      |                      ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.cpp:369:38: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  369 |         const ImageLoader* dontSearchImages[imageCount];
+      |                                             ^~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.cpp:369:38: note: read of non-const variable 'imageCount' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.cpp:368:15: note: declared here
+  368 |         unsigned int imageCount = context.imageCount()+2;
+      |                      ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.cpp:378:38: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  378 |         const ImageLoader* dontSearchImages[imageCount];
+      |                                             ^~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.cpp:378:38: note: read of non-const variable 'imageCount' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.cpp:377:15: note: declared here
+  377 |         unsigned int imageCount = context.imageCount()+2;
+      |                      ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.cpp:599:41: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  599 |         ImageLoader::UninitedUpwards upsBuffer[maxImageCount];
+      |                                                ^~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.cpp:599:41: note: read of non-const variable 'maxImageCount' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.cpp:598:11: note: declared here
+  598 |         uint32_t maxImageCount = context.imageCount()+2;
+      |                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.cpp:679:2: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  679 |         STACK_ALLOC_ARRAY(ImageLoader*, danglingUpwards, maxDepth);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Array.h:303:39: note: expanded from macro 'STACK_ALLOC_ARRAY'
+  303 |     uintptr_t __##_name##_array_alloc[1 + ((sizeof(_type)*(_count))/sizeof(uintptr_t))]; \
+      |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.cpp:679:2: note: function parameter 'maxDepth' with unknown value cannot be used in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Array.h:303:59: note: expanded from macro 'STACK_ALLOC_ARRAY'
+  303 |     uintptr_t __##_name##_array_alloc[1 + ((sizeof(_type)*(_count))/sizeof(uintptr_t))]; \
+      |                                                           ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoaderMachO.cpp:1503:24: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.cpp:677:52: note: declared here
+ 1503 |                                                 char  677 | unsign newRealPath[strlened int (resolvedPath) + strlen(path)]ImageLoader::updateDepth(unsigned int maxDepth)
+      |                                                    ^
+;
+      |                                                                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoaderMachO.cpp:1503:31: note: read of non-constexpr variable 'resolvedPath' is not allowed in a constant expression
+ 1503 |                                                 char newRealPath[strlen(resolvedPath) + strlen(path)];
+      |                                                                         ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoaderMachO.cpp:1501:11: note: declared here
+ 1501 |                                         char resolvedPath[PATH_MAX];
+      |                                              ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoaderMachO.cpp:1519:24: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1519 |                                                 char newRealPath[strlen(resolvedPath) + strlen(path)];
+      |                                                                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoaderMachO.cpp:1519:31: note: read of non-constexpr variable 'resolvedPath' is not allowed in a constant expression
+ 1519 |                                                 char newRealPath[strlen(resolvedPath) + strlen(path)];
+      |                                                                         ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoaderMachO.cpp:1517:11: note: declared here
+ 1517 |                                         char resolvedPath[PATH/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.cpp:736:37: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+_MAX];
+      |                                              ^
+  736 |                 DependentLibraryInfo libraryInfos[fLibraryCount]; 
+      |                                                   ^~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.cpp:736:37: note: implicit use of 'this' pointer is only allowed within the evaluation of a call to a 'constexpr' member function
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.cpp:1031:39: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1031 |         ImageLoader* imagesNeedingCoalescing[fgImagesRequiringCoalescing];
+      |                                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.cpp:1031:39: note: read of non-const variable 'fgImagesRequiringCoalescing' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.cpp:50:30: note: declared here
+   50 | uint32_t                                                                ImageLoader::fgImagesRequiringCoalescing = 0;
+      |                                                                                      ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.cpp:1032:24: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1032 |         unsigned imageIndexes[fgImagesRequiringCoalescing];
+      |                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.cpp:1032:24: note: read of non-const variable 'fgImagesRequiringCoalescing' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.cpp:50:30: note: declared here
+   50 | uint32_t                                                                ImageLoader::fgImagesRequiringCoalescing = 0;
+      |                                                                                      ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.cpp:1185:39: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1185 |                 ImageLoader::CoalIterator iterators[count];
+      |                                                     ^~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.cpp:1185:39: note: read of non-const variable 'count' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.cpp:1033:6: note: declared here
+ 1033 |         int count = context.getCoalescedImages(imagesNeedingCoalescing, imageIndexes);
+      |             ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.cpp:1186:40: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1186 |                 ImageLoader::CoalIterator* sortedIts[count];
+      |                                                      ^~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.cpp:1186:40: note: read of non-const variable 'count' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.cpp:1033:6: note: declared here
+ 1033 |         int count = context.getCoalescedImages(imagesNeedingCoalescing, imageIndexes);
+      |             ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.cpp:1333:39: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1333 |         ImageLoader* imagesNeedingCoalescing[fgImagesRequiringCoalescing];
+      |                                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.cpp:1333:39: note: read of non-const variable 'fgImagesRequiringCoalescing' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.cpp:50:30: note: declared here
+   50 | uint32_t                                                                ImageLoader::fgImagesRequiringCoalescing = 0;
+      |                                                                                      ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.cpp:1334:24: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1334 |         unsigned imageIndexes[fgImagesRequiringCoalescing];
+      |                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.cpp:1334:24: note: read of non-const variable 'fgImagesRequiringCoalescing' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.cpp:50:30: note: declared here
+   50 | uint32_t                                                                ImageLoader::fgImagesRequiringCoalescing = 0;
+      |                                                                                      ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.cpp:1419:39: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1419 |                 ImageLoader::CoalIterator iterators[count];
+      |                                                     ^~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.cpp:1419:39: note: read of non-const variable 'count' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.cpp:1335:6: note: declared here
+ 1335 |         int count = context.getCoalescedImages(imagesNeedingCoalescing, imageIndexes);
+      |             ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.cpp:1420:40: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1420 |                 ImageLoader::CoalIterator* sortedIts[count];
+      |                                                      ^~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.cpp:1420:40: note: read of non-const variable 'count' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.cpp:1335:6: note: declared here
+ 1335 |         int count = context.getCoalescedImages(imagesNeedingCoalescing, imageIndexes);
+      |             ^
+3 warnings generated.
+14 warnings generated.
+[ 96%] Building CXX object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/src/ImageLoaderMegaDylib.cpp.o
+[ 96%] Building CXX object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/dyld3/AllImages.cpp.o
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoaderMachOClassic.cpp:55:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoaderMachOClassic.h:31:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoaderMachO.h:39:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.h:54:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:302:34: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  302 |             const ValueT* values[valuesCount];
+      |                                  ^~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:302:34: note: read of non-const variable 'valuesCount' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:292:22: note: declared here
+  292 |             uint64_t valuesCount = 1;
+      |                      ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoaderMachOClassic.cpp:565:32: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  565 |                                                                 char reexportAndSuffix[strlen(*suffix)+strlen(exportThruName)+1];
+      |                                                                                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoaderMachOClassic.cpp:565:40: note: read of non-constexpr variable 'suffix' is not allowed in a constant expression
+  565 |                                                                 char reexportAndSuffix[strlen(*suffix)+strlen(exportThruName)+1];
+      |                                                                                                ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoaderMachOClassic.cpp:564:31: note: declared here
+  564 |                                                         for(const char* const* suffix = context.imageSuffix; *suffix != NULL; ++suffix) {
+      |                                                                                ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoaderMachOClassic.cpp:596:24: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  596 |                                 char childLeafName[len+1];
+      |                                                    ^~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoaderMachOClassic.cpp:596:24: note: read of non-const variable 'len' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoaderMachOClassic.cpp:591:12: note: declared here
+  591 |                                 size_t len;
+      |                                        ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoaderMachOClassic.cpp:613:37: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  613 |                                                                                 char aSubLibNameAndSuffix[strlen(*suffix)+strlen(aSubLibName)+1];
+      |                                                                                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoaderMachOClassic.cpp:613:45: note: read of non-constexpr variable 'suffix' is not allowed in a constant expression
+  613 |                                                                                 char aSubLibNameAndSuffix[strlen(*suffix)+strlen(aSubLibName)+1];
+      |                                                                                                                   ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoaderMachOClassic.cpp:612:33: note: declared here
+  612 |                                                                         for(const char* const* suffix = context.imageSuffix; *suffix != NULL; ++suffix) {
+      |                                                                                                ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoaderMachOClassic.cpp:648:34: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  648 |                                                                                 char umbrellaAndSuffix[strlen(*suffix)+strlen(aSubUmbrellaName)+1];
+      |                                                                                                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoaderMachOClassic.cpp:648:42: note: read of non-constexpr variable 'suffix' is not allowed in a constant expression
+  648 |                                                                                 char umbrellaAndSuffix[strlen(*suffix)+strlen(aSubUmbrellaName)+1];
+      |                                                                                                                ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoaderMachOClassic.cpp:647:33: note: declared here
+  647 |                                                                         for(const char* const* suffix = context.imageSuffix; *suffix != NULL; ++suffix) {
+      |                                                                                                ^
+5 warnings generated.
+[ 96%] Building CXX object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/dyld3/APIs.cpp.o
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoaderMachOCompressed.cpp:43:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.h:31:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.h:54:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:302:34: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  302 |             const ValueT* values[valuesCount];
+      |                                  ^~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:302:34: note: read of non-const variable 'valuesCount' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:292:22: note: declared here
+  292 |             uint64_t valuesCount = 1;
+      |                      ^
+1 warning generated.
+[ 96%] Building CXX object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/dyld3/APIs_macOS.cpp.o
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoaderMegaDylib.cpp:45:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoaderMegaDylib.h:33:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoaderMachO.h:39:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.h:54:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:302:34: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  302 |             const ValueT* values[valuesCount];
+      |                                  ^~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:302:34: note: read of non-const variable 'valuesCount' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:292:22: note: declared here
+  292 |             uint64_t valuesCount = 1;
+      |                      ^
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.cpp:47:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.h:36:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:302:34: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  302 |             const ValueT* values[valuesCount];
+      |                                  ^~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:302:34: note: read of non-const variable 'valuesCount' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:292:22: note: declared here
+  292 |             uint64_t valuesCount = 1;
+      |                      ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.cpp:103:5: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  103 |     STACK_ALLOC_ARRAY(dyld_image_info, oldDyldInfo, initialImages.count());
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Array.h:303:39: note: expanded from macro 'STACK_ALLOC_ARRAY'
+  303 |     uintptr_t __##_name##_array_alloc[1 + ((sizeof(_type)*(_count))/sizeof(uintptr_t))]; \
+      |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.cpp:103:53: note: function parameter 'initialImages' with unknown value cannot be used in a constant expression
+  103 |     STACK_ALLOC_ARRAY(dyld_image_info, oldDyldInfo, initialImages.count());
+      |                                                     ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.cpp:80:48: note: declared here
+   80 |                      const Array<LoadedImage>& initialImages)
+      |                                                ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.cpp:313:37: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  313 |         dyld_image_info oldDyldInfo[count];
+      |                                     ^~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.cpp:313:37: note: read of non-const variable 'count' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.cpp:305:14: note: declared here
+  305 |     uint32_t count = (uint32_t)newImages.count();
+      |              ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.cpp:403:36: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  403 |             const mach_header* mhs[count];
+      |                                    ^~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.cpp:403:36: note: read of non-const variable 'count' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.cpp:377:14: note: declared here
+  377 |     uint32_t count = (ui1 warningn generated.
+t32_t)newImages.count();
+      |              ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.cpp:404:38: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  404 |             const char*        paths[count];
+      |                                      ^~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.cpp:404:38: note: read of non-const variable 'count' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.cpp:377:14: note: declared here
+  377 |     uint32_t count = (uint32_t)newImages.count();
+      |              ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.cpp:417:41: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  417 |         const char*         pathsBuffer[count];
+      |                                         ^~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.cpp:417:41: note: read of non-const variable 'count' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.cpp:377:14: note: declared here
+  377 |     uint32_t count = (uint32_t)newImages.count();
+      |              ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.cpp:418:38: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  418 |         const mach_header*  mhBuffer[count];
+      |                                      ^~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.cpp:418:38: note: read of non-const variable 'count' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.cpp:377:14: note: declared here
+  377 |     uint32_t count = (uint32_t)newImages.count();
+      |              ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.cpp:508:5: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  508 |     STACK_ALLOC_ARRAY(dyld_image_info, oldDyldInfo, unloadImages.count());
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Array.h:303:39: note: expanded from macro 'STACK_ALLOC_ARRAY'
+  303 |     uintptr_t __##_name##_array_alloc[1 + ((sizeof(_type)*(_count))/sizeof(uintptr_t))]; \
+      |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.cpp:508:53: note: function parameter 'unloadImages' with unknown value cannot be used in a constant expression
+  508 |     STACK_ALLOC_ARRAY(dyld_image_info, oldDyldInfo, unloadImages.count());
+      |                                                     ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.cpp:447:56: note: declared here
+  447 | void AllImages::removeImages(const Array<LoadedImage>& unloadImages)
+      |                                                        ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.cpp:960:9: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  960 |         STACK_ALLOC_ARRAY(closure::ImageNum, visited, count());
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Array.h:303:39: note: expanded from macro 'STACK_ALLOC_ARRAY'
+  303 |     uintptr_t __##_name##_array_alloc[1 + ((sizeof(_type)*(_count))/sizeof(uintptr_t))]; \
+      |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.cpp:960:55: note: implicit use of 'this' pointer is only allowed within the evaluation of a call to a 'constexpr' member function
+  960 |         STACK_ALLOC_ARRAY(closure::ImageNum, visited, count());
+      |                                                       ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.cpp:1196:5: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1196 |     STACK_ALLOC_OVERFLOW_SAFE_ARRAY(__cxa_range_t, ranges, _deadCount);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Array.h:310:39: note: expanded from macro 'STACK_ALLOC_OVERFLOW_SAFE_ARRAY'
+  310 |     uintptr_t __##_name##_array_alloc[1 + ((sizeof(_type)*(_count))/sizeof(uintptr_t))]; \
+      |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.cpp:1196:60: note: implicit use of 'this' pointer is only allowed within the evaluation of a call to a 'constexpr' member function
+ 1196 |     STACK_ALLOC_OVERFLOW_SAFE_ARRAY(__cxa_range_t, ranges, _deadCount);
+      |                                                            ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.cpp:1271:9: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1271 |         STACK_ALLOC_ARRAY(Reaper::ImageAndUse, unloadables, _loadedImages.count());
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Array.h:303:39: note: expanded from macro 'STACK_ALLOC_ARRAY'
+  303 |     uintptr_t __##_name##_array_alloc[1 + ((sizeof(_type)*(_count))/sizeof(uintptr_t))]; \
+      |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.cpp:1271:61: note: implicit use of 'this' pointer is only allowed within the evaluation of a call to a 'constexpr' member function
+ 1271 |         STACK_ALLOC_ARRAY(Reaper::ImageAndUse, unloadables, _loadedImages.count());
+      |                                                             ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.cpp:1298:9: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1298 |         STACK_ALLOC_ARRAY(LoadedImage, unloadImages, _loadedImages.count());
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Array.h:303:39: note: expanded from macro 'STACK_ALLOC_ARRAY'
+  303 |     uintptr_t __##_name##_array_alloc[1 + ((sizeof(_type)*(_count))/sizeof(uintptr_t))]; \
+      |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.cpp:1298:54: note: implicit use of 'this' pointer is only allowed within the evaluation of a call to a 'constexpr' member function
+ 1298 |         STACK_ALLOC_ARRAY(LoadedImage, unloadImages, _loadedImages.count());
+      |                                                      ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.cpp:1371:28: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1371 |     const mach_header* mhs[count];
+      |                            ^~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.cpp:1371:28: note: read of non-const variable 'count' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.cpp:1370:14: note: declared here
+ 1370 |     unsigned count = (unsigned)_loadedImages.count();
+      |              ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.cpp:1372:30: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1372 |     const char*        paths[count];
+      |                              ^~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.cpp:1372:30: note: read of non-const variable 'count' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.cpp:1370:14: note: declared here
+ 1370 |     unsigned count = (unsigned)_loadedImages.count();
+      |              ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.cpp:1466:5: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1466 |     STACK_ALLOC_ARRAY(const mach_header*, mhs,   maxCount);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Array.h:303:39: note: expanded from macro 'STACK_ALLOC_ARRAY'
+  303 |     uintptr_t __##_name##_array_alloc[1 + ((sizeof(_type)*(_count))/sizeof(uintptr_t))]; \
+      |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.cpp:1466:5: note: read of non-const variable 'maxCount' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Array.h:303:59: note: expanded from macro 'STACK_ALLOC_ARRAY'
+  303 |     uintptr_t __##_name##_array_alloc[1 + ((sizeof(_type)*(_count))/sizeof(uintptr_t))]; \
+      |                                                           ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.cpp:1465:14: note: declared here
+ 1465 |     uint32_t maxCount = count();
+      |              ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.cpp:1467:5: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1467 |     STACK_ALLOC_ARRAY(const char*,        paths, maxCount);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Array.h:303:39: note: expanded from macro 'STACK_ALLOC_ARRAY'
+  303 |     uintptr_t __##_name##_array_alloc[1 + ((sizeof(_type)*(_count))/sizeof(uintptr_t))]; \
+      |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.cpp:1467:5: note: read of non-const variable 'maxCount' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Array.h:303:59: note: expanded from macro 'STACK_ALLOC_ARRAY'
+  303 |     uintptr_t __##_name##_array_alloc[1 + ((sizeof(_type)*(_count))/sizeof(uintptr_t))]; \
+      |                                                           ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.cpp:1465:14: note: declared here
+ 1465 |     uint32_t maxCount = count();
+      |              ^
+[ 96%] Building CXX object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/dyld3/BootArgs.cpp.o
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.cpp:39:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.h:35:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Closure.h:36:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Array.h:269:18: warning: first argument in call to 'memcpy' is a pointer to non-trivially copyable type 'std::pair<unsigned long, unsigned long>' [-Wnontrivial-memcall]
+  269 |         ::memcpy(newArray, oldArray, sizeof(T)*this->_usedCount);
+      |                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Array.h:252:96: note: in instantiation of member function 'dyld3::GrowableArray<std::pair<unsigned long, unsigned long>, 4, 4>::growTo' requested here
+  252 |     void            verifySpace(uintptr_t n)     { if (this->_usedCount+n > this->_allocCount) growTo(this->_usedCount + n); }
+      |                                                                                                ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Array.h:237:52: note: in instantiation of member function 'dyld3::GrowableArray<std::pair<unsigned long, unsigned long>, 4, 4>::verifySpace' requested here
+  237 |     void            push_back(const T& t)        { verifySpace(1); _elements[_usedCount++] = t; }
+      |                                                    ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/AllImages.cpp:1447:39: note: in instantiation of member function 'dyld3::GrowableArray<std::pair<unsigned long, unsigned long>, 4, 4>::push_back' requested here
+ 1447 |             _objcClassHashTableImages.push_back({ nameBaseAddress, dataBaseAddress });
+      |                                       ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Array.h:269:18: note: explicitly cast the pointer to silence this warning
+  269 |         ::memcpy(newArray, oldArray, sizeof(T)*this->_usedCount);
+      |                  ^
+      |                  (void*)
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/APIs.cpp:54:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.h:36:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:302:34: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  302 |             const ValueT* values[valuesCount];
+      |                                  ^~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:302:34: note: read of non-const variable 'valuesCount' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:292:22: note: declared here
+  292 |             uint64_t valuesCount = 1;
+      |                      ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/APIs.cpp:1097:52: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1097 |     BLOCK_ACCCESSIBLE_ARRAY(char, underscoredName, strlen(symbolName)+2);
+      |                                                    ^~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Array.h:318:35: note: expanded from macro 'BLOCK_ACCCESSIBLE_ARRAY'
+  318 |     _type __##_name##_array_alloc[_count]; \
+      |                                   ^~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/APIs.cpp:1097:59: note: function parameter 'symbolName' with unknown value cannot be used in a constant expression
+ 1097 |     BLOCK_ACCCESSIBLE_ARRAY(char, underscoredName, strlen(symbolName)+2);
+      |                                                           ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/APIs.cpp:1085:48: note: declared here
+ 1085 | void* dlsym_internal(void* handle, const char* symbolName, void* callerAddress)
+      |                                                ^
+17 warnings generated.
+[ 96%] Building CXX object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/dyld3/Closure.cpp.o
+2 warnings generated.
+[ 96%] Building CXX object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/dyld3/ClosureBuilder.cpp.o
+[ 96%] Building CXX object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/dyld3/ClosureFileSystemNull.cpp.o
+[ 96%] Building CXX object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/dyld3/ClosureFileSystemPhysical.cpp.o
+[ 98%] Building CXX object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/dyld3/ClosureWriter.cpp.o
+[ 98%] Building CXX object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/dyld3/Diagnostics.cpp.o
+[ 98%] Building CXX object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/dyld3/Loading.cpp.o
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:40:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.h:36:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:302:34: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  302 |             const ValueT* values[valuesCount];
+      |                                  ^~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:302:34: note: read of non-const variable 'valuesCount' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:292:22: note: declared here
+  292 |             uint64_t valuesCount = 1;
+      |                      ^
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:48:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/include/objc-shared-cache.h:1549:15: warning: first argument in call to 'bzero' is a pointer to non-trivially copyable type 'perfect_hash' [-Wnontrivial-memcall]
+ 1549 |         bzero(&result, sizeof(result));
+      |               ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/include/objc-shared-cache.h:1549:15: note: explicitly cast the pointer to silence this warning
+ 1549 |         bzero(&result, sizeof(result));
+      |               ^
+      |               (void*)
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:714:1: warning: non-void function does not return a value in all control paths [-Wreturn-type]
+  714 | }
+      | ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:729:1: warning: non-void function does not return a value in all control paths [-Wreturn-type]
+  729 | }
+      | ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:739:1: warning: non-void function does not return a value in all control paths [-Wreturn-type]
+  739 | }
+      | ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:846:30: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  846 |                 char msgCopy[strlen(msg)+4];
+      |                              ^~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:846:37: note: read of non-constexpr variable 'msg' is not allowed in a constant expression
+  846 |                 char msgCopy[strlen(msg)+4];
+      |                                     ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:844:29: note: declared here
+  844 |                 const char* msg = _diag.errorMessage();
+      |                             ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:1088:60: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1088 |             BLOCK_ACCCESSIBLE_ARRAY(uint32_t, initOffsets, initCount);
+      |                                                            ^~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:1088:60: note: read of non-const variable 'initCount' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:1081:22: note: declared here
+ 1081 |     __block unsigned initCount = 0;
+      |                      ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:1113:60: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1113 |             BLOCK_ACCCESSIBLE_ARRAY(uint32_t, termOffsets, termCount);
+      |                                                            ^~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:1113:60: note: read of non-const variable 'termCount' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:1108:26: note: declared here
+ 1108 |         __block unsigned termCount = 0;
+      |                          ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:1138:64: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1138 |         BLOCK_ACCCESSIBLE_ARRAY(Image::DyldCacheSegment, segs, segCount);
+      |                                                                ^~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:1138:64: note: initializer of 'segCount' is not a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:1135:20: note: declared here
+ 1135 |     const uint32_t segCount = mh->segmentCount();
+      |                    ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:1150:60: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1150 |         BLOCK_ACCCESSIBLE_ARRAY(Image::DiskSegment, dsegs, segCount*3); // room for padding
+      |                                                            ^~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Array.h:318:35: note: expanded from macro 'BLOCK_ACCCESSIBLE_ARRAY'
+  318 |     _type __##_name##_array_alloc[_count]; \
+      |                                   ^~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:1150:60: note: initializer of 'segCount' is not a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:1135:20: note: declared here
+ 1135 |     const uint32_t segCount = mh->segmentCount();
+      |                    ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:1208:67: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1208 |         BLOCK_ACCCESSIBLE_ARRAY(InterposingTuple, resolvedTuples, tupleCount);
+      |                                                                   ^~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:1208:67:/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureWriter.cpp:617:15: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+   617 |     note: initializer of 'tupleCount' is not a constant expression
+char temp[len+8];
+      |               ^~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:1206:24: note: declared here
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureWriter.cpp:617:15: note:  1206 |         const uint32_t tupleCount = (uint32_t)(sectVmSize/entrySize);
+      |                        ^
+read of non-const variable 'len' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureWriter.cpp:616:14: note: declared here
+  616 |     unsigned len = (unsigned)strlen(envVar);
+      |              ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:1276:9: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1276 |         STACK_ALLOC_ARRAY(InterposingTuple, goodTuples, tupleCount);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Array.h:303:39: note: expanded from macro 'STACK_ALLOC_ARRAY'
+  303 |     uintptr_t __##_name##_array_alloc[1 + ((sizeof(_type)*(_count))/sizeof(uintptr_t))]; \
+      |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:1276:9: note: initializer of 'tupleCount' is not a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Array.h:303:59: note: expanded from macro 'STACK_ALLOC_ARRAY'
+  303 |     uintptr_t __##_name##_array_alloc[1 + ((sizeof(_type)*(_count))/sizeof(uintptr_t))]; \
+      |                                                           ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:1206:24: note: declared here
+ 1206 |         const uint32_t tupleCount = (uint32_t)(sectVmSize/entrySize);
+      |                        ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:1286:9: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1286 |         STACK_ALLOC_ARRAY(Closure::PatchEntry, patches, goodTuples.count());
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Array.h:303:39: note: expanded from macro 'STACK_ALLOC_ARRAY'
+  303 |     uintptr_t __##_name##_array_alloc[1 + ((sizeof(_type)*(_count))/sizeof(uintptr_t))]; \
+      |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:1286:68: note: non-constexpr function 'count' cannot be used in a constant expression
+ 1286 |         STACK_ALLOC_ARRAY(Closure::PatchEntry, patches, goodTuples.count());
+      |                                                                    ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Array.h:64:21: note: declared here
+   64 |     uintptr_t       count() const                { return _usedCount; }
+      |                     ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:1595:1: warning: non-void function does not return a value in all control paths [-Wreturn-type]
+ 1595 | }
+      | ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:1793:24: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1793 |     InitInfo initInfos[_loadedImages.count()];
+      |                        ^~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:1793:24: note: implicit use of 'this' pointer is only allowed within the evaluation of a call to a 'constexpr' member function
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:1818:5: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1818 |     STACK_ALLOC_ARRAY(uint32_t, indexOfImagesWithInits, _loadedImages.count());
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Array.h:303:39: note: expanded from macro 'STACK_ALLOC_ARRAY'
+  303 |     uintptr_t __##_name##_array_alloc[1 + ((sizeof(_type)*(_count))/sizeof(uintptr_t))]; \
+      |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:1818:57: note: implicit use of 'this' pointer is only allowed within the evaluation of a call to a 'constexpr' member function
+ 1818 |     STACK_ALLOC_ARRAY(uint32_t, indexOfImagesWithInits, _loadedImages.count());
+      |                                                         ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:1841:23: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1841 |     ImageNum initNums[indexOfImagesWithInits.count()];
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:1841:46: note: non-constexpr function 'count' cannot be used in a constant expression
+ 1841 |     ImageNum initNums[indexOfImagesWithInits.count()];
+      |                                              ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Array.h:64:21: note: declared here
+   64 |     uintptr_t       count() const                { return _usedCount; }
+      |                     ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:2815:31: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 2815 |                 void *clslist[count];
+      |                               ^~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:2815:31: note: read of non-const variable 'count' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:2795:22: note: declared here
+ 2795 |             uint32_t count = objcClassOpt->getClassHeaderAndIndex(className, cls, hi, index);
+      |                      ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:2816:30: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 2816 |                 void *hilist[count];
+      |                              ^~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:2816:30: note: read of non-const variable 'count' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:2795:22: note: declared here
+ 2795 |             uint32_t count = objcClassOpt->getClassHeaderAndIndex(className, cls, hi, index);
+      |                      ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:2965:31: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 2965 |                 void *clslist[count];
+      |                               ^~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:2965:31: note: read of non-const variable 'count' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:2957:22: note: declared here
+ 2957 |             uint32_t count = objcProtocolOpt->getClassAndHeader(protocolName, cls, hi);
+      |                      ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:2966:30: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 2966 |                 void *hilist[count];
+      |                              ^~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:2966:30: note: read of non-const variable 'count' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:2957:22: note: declared here
+ 2957 |             uint32_t count = objcProtocolOpt->getClassAndHeader(protocolName, cls, hi);
+      |                      ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:3206:5: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 3206 |     STACK_ALLOC_ARRAY(ImageWriter, writers, _loadedImages.count());
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Array.h:303:39: note: expanded from macro 'STACK_ALLOC_ARRAY'
+  303 |     uintptr_t __##_name##_array_alloc[1 + ((sizeof(_type)*(_count))/sizeof(uintptr_t))]; \
+      |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:3206:45: note: implicit use of 'this' pointer is only allowed within the evaluation of a call to a 'constexpr' member function
+ 3206 |     STACK_ALLOC_ARRAY(ImageWriter, writers, _loadedImages.count());
+      |                                             ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:3269:17: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 3269 |                 STACK_ALLOC_ARRAY(Closure::PatchEntry, patches, _dyldCache->patchableExportCount(imageIndex));
+      |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Array.h:303:39: note: expanded from macro 'STACK_ALLOC_ARRAY'
+  303 |     uintptr_t __##_name##_array_alloc[1 + ((sizeof(_type)*(_count))/sizeof(uintptr_t))]; \
+      |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:3269:65: note: implicit use of 'this' pointer is only allowed within the evaluation of a call to a 'constexpr' member function
+ 3269 |                 STACK_ALLOC_ARRAY(Closure::PatchEntry, patches, _dyldCache->patchableExportCount(imageIndex));
+      |                                                                 ^
+1 warning generated.
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:3504:5: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 3504 |     STACK_ALLOC_ARRAY(ImageWriter, writers, _loadedImages.count());
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Array.h:303:39: note: expanded from macro 'STACK_ALLOC_ARRAY'
+  303 |     uintptr_t __##_name##_array_alloc[1 + ((sizeof(_type)*(_count))/sizeof(uintptr_t))]; \
+      |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:3504:45: note: implicit use of 'this' pointer is only allowed within the evaluation of a call to a 'constexpr' member function
+ 3504 |     STACK_ALLOC_ARRAY(ImageWriter, writers, _loadedImages.count());
+      |                                             ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:3568:17: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 3568 |                 STACK_ALLOC_ARRAY(Closure::PatchEntry, patches, _dyldCache->patchableExportCount(imageIndex));
+      |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Array.h:303:39: note: expanded from macro 'STACK_ALLOC_ARRAY'
+  303 |     uintptr_t __##_name##_array_alloc[1 + ((sizeof(_type)*(_count))/sizeof(uintptr_t))]; \
+      |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:3568:65: note: implicit use of 'this' pointer is only allowed within the evaluation of a call to a 'constexpr' member function
+ 3568 |                 STACK_ALLOC_ARRAY(Closure::PatchEntry, patches, _dyldCache->patchableExportCount(imageIndex));
+      |                                                                 ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:3679:5: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 3679 |     STACK_ALLOC_ARRAY(ImageWriter, writers, _loadedImages.count());
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Array.h:303:39: note: expanded from macro 'STACK_ALLOC_ARRAY'
+  303 |     uintptr_t __##_name##_array_alloc[1 + ((sizeof(_type)*(_count))/sizeof(uintptr_t))]; \
+      |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:3679:45: note: implicit use of 'this' pointer is only allowed within the evaluation of a call to a 'constexpr' member function
+ 3679 |     STACK_ALLOC_ARRAY(ImageWriter, writers, _loadedImages.count());
+      |                                             ^
+[ 98%] Building CXX object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/dyld3/Logging.cpp.o
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Logging.cpp:148:22: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  148 |             char key[keyLen+1];
+      |                      ^~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Logging.cpp:148:22: note: initializer of 'keyLen' is not a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Logging.cpp:147:26: note: declared here
+  147 |             const size_t keyLen = equals-keyEqualsValue;
+      |                          ^
+1 warning generated.
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:40:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.h:36:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:302:34: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  302 |             const ValueT* values[valuesCount];
+      |                                  ^~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/ClosureBuilder.cpp:2010:20: note: in instantiation of member function 'dyld3::MultiMap<const char *, dyld3::closure::Image::ObjCClassImageOffset, dyld3::closure::ClosureBuilder::HashCString, dyld3::closure::ClosureBuilder::EqualCString>::forEachEntry' requested here
+ 2010 |     seenClassesMap.forEachEntry(^(const char *const &key, const Image::ObjCClassImageOffset **values,
+      |                    ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:302:34: note: read of non-const variable 'valuesCount' is not allowed in a constant expression
+  302 |             const ValueT* values[valuesCount];
+      |                                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:292:22: note: declared here
+  292 |             uint64_t valuesCount = 1;
+      |                      ^
+[ 98%] Building CXX object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/dyld3/MachOAnalyzer.cpp.o
+[ 98%] Building CXX object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/dyld3/MachOAnalyzerSet.cpp.o
+27 warnings generated.
+[ 98%] Building CXX object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/dyld3/MachOFile.cpp.o
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/MachOAnalyzer.cpp:1458:56: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1458 |     BLOCK_ACCCESSIBLE_ARRAY(SegmentInfo, segmentsInfo, leInfo.layout.lastSegIndex+1);
+      |                                                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Array.h:318:35: note: expanded from macro 'BLOCK_ACCCESSIBLE_ARRAY'
+  318 |     _type __##_name##_array_alloc[_count]; \
+      |                                   ^~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/MachOAnalyzer.cpp:1458:56: note: read of non-constexpr variable 'leInfo' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/MachOAnalyzer.cpp:1453:18: note: declared here
+ 1453 |     LinkEditInfo leInfo;
+      |                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/MachOAnalyzer.cpp:1936:56: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 1936 |     BLOCK_ACCCESSIBLE_ARRAY(SegmentInfo, segmentsInfo, leInfo.layout.lastSegIndex+1);
+      |                                                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Array.h:318:35: note: expanded from macro 'BLOCK_ACCCESSIBLE_ARRAY'
+  318 |     _type __##_name##_array_alloc[_count]; \
+      |                                   ^~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/MachOAnalyzer.cpp:1936:56: note: read of non-constexpr variable 'leInfo' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/MachOAnalyzer.cpp:1931:18: note: declared here
+ 1931 |     LinkEditInfo leInfo;
+      |                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/MachOAnalyzer.cpp:2315:56: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 2315 |     BLOCK_ACCCESSIBLE_ARRAY(SegmentInfo, segmentsInfo, leInfo.layout.lastSegIndex+1);
+      |                                                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Array.h:318:35: note: expanded from macro 'BLOCK_ACCCESSIBLE_ARRAY'
+  318 |     _type __##_name##_array_alloc[_count]; \
+      |                                   ^~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/MachOAnalyzer.cpp:2315:56: note: read of non-constexpr variable 'leInfo' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/MachOAnalyzer.cpp:2310:18: note: declared here
+ 2310 |     LinkEditInfo leInfo;
+      |                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/MachOAnalyzer.cpp:2578:56: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 2578 |     BLOCK_ACCCESSIBLE_ARRAY(SegmentInfo, segmentsInfo, leInfo.layout.lastSegIndex+1);
+      |                                                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Array.h:318:35: note: expanded from macro 'BLOCK_ACCCESSIBLE_ARRAY'
+  318 |     _type __##_name##_array_alloc[_count]; \
+      |                                   ^~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/MachOAnalyzer.cpp:2578:56: note: read of non-constexpr variable 'leInfo' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/MachOAnalyzer.cpp:2573:18: note: declared here
+ 2573 |     LinkEditInfo leInfo;
+      |                  ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/MachOAnalyzer.cpp:2684:56: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+ 2684 |     BLOCK_ACCCESSIBLE_ARRAY(SegmentInfo, segmentsInfo, leInfo.layout.lastSegIndex+1);
+      |                                                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Array.h:318:35: note: expanded from macro 'BLOCK_ACCCESSIBLE_ARRAY'
+  318 |     _type __##_name##_array_alloc[_count]; \
+      |                                   ^~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/MachOAnalyzer.cpp:2684:56: note: read of non-constexpr variable 'leInfo' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/MachOAnalyzer.cpp:2679:18: note: declared here
+ 2679 |     LinkEditInfo leInfo;
+      |                  ^
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Loading.cpp:57:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/dyld2.h:31:
+In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/src/ImageLoader.h:54:
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:302:34: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  302 |             const ValueT* values[valuesCount];
+      |                                  ^~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:302:34: note: read of non-const variable 'valuesCount' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Map.h:292:22: note: declared here
+  292 |             uint64_t valuesCount = 1;
+      |                      ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Loading.cpp:196:5: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  196 |     STACK_ALLOC_ARRAY(ImageOverride, overrides, _existingImages.maxCount() + _newImages.maxCount() + 512);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Array.h:303:39: note: expanded from macro 'STACK_ALLOC_ARRAY'
+  303 |     uintptr_t __##_name##_array_alloc[1 + ((sizeof(_type)*(_count))/sizeof(uintptr_t))]; \
+      |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Loading.cpp:196:49: note: implicit use of 'this' pointer is only allowed within the evaluation of a call to a 'constexpr' member function
+  196 |     STACK_ALLOC_ARRAY(ImageOverride, overrides, _existingImages.maxCount() + _newImages.maxCount() + 512);
+      |                                                 ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Loading.cpp:368:9: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  368 |         STACK_ALLOC_OVERFLOW_SAFE_ARRAY(DOFInfo, dofImages, _newImages.count());
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Array.h:310:39: note: expanded from macro 'STACK_ALLOC_OVERFLOW_SAFE_ARRAY'
+  310 |     uintptr_t __##_name##_array_alloc[1 + ((sizeof(_type)*(_count))/sizeof(uintptr_t))]; \
+      |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Loading.cpp:368:61: note: implicit use of 'this' pointer is only allowed within the evaluation of a call to a 'constexpr' member function
+  368 |         STACK_ALLOC_OVERFLOW_SAFE_ARRAY(DOFInfo, dofImages, _newImages.count());
+      |                                                             ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Loading.cpp:722:24: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  722 |         uint8_t buffer[sizeof(dof_ioctl_data_t) + dofs.count()*sizeof(dof_helper_t)];
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Loading.cpp:722:51: note: function parameter 'dofs' with unknown value cannot be used in a constant expression
+  722 |         uint8_t buffer[sizeof(dof_ioctl_data_t) + dofs.count()*sizeof(dof_helper_t)];
+      |                                                   ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/Loading.cpp:711:49: note: declared here
+  711 | void Loader::registerDOFs(const Array<DOFInfo>& dofs)
+      |                                                 ^
+4 warnings generated.
+5 warnings generated.
+[ 98%] Building CXX object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/dyld3/MachOLoaded.cpp.o
+[ 98%] Building CXX object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/dyld3/PathOverrides.cpp.o
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/MachOFile.cpp:336:1: warning: non-void function does not return a value in all control paths [-Wreturn-type]
+  336 | }
+      | ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/PathOverrides.cpp:109:17: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  109 |     char buffer[allocSize];
+      |                 ^~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/PathOverrides.cpp:109:17: note: read of non-const variable 'allocSize' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/PathOverrides.cpp:108:12: note: declared here
+  108 |     size_t allocSize = strlen(key) + strlen(value) + 2;
+      |            ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/PathOverrides.cpp:151:14: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  151 |     char tmp[strlen(var)+strlen(value)+2];
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/PathOverrides.cpp:151:21: note: function parameter 'var' with unknown value cannot be used in a constant expression
+  151 |     char tmp[strlen(var)+strlen(value)+2];
+      |                     ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/PathOverrides.cpp:144:44: note: declared here
+  144 | void PathOverrides::setString(const char*& var, const char* value)
+      |                                            ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/PathOverrides.cpp:194:21: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  194 |         char buffer[strlen(list)+1];
+      |                     ^~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/PathOverrides.cpp:194:28: note: read of non-constexpr variable 'list' is not allowed in a constant expression
+  194 |         char buffer[strlen(list)+1];
+      |                            ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/PathOverrides.cpp:191:22: note: declared here
+  191 |     for (const char* list : { list1, list2 }) {
+      |                      ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/PathOverrides.cpp:350:24: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  350 |             char npath[strlen(path)+strlen(suffix)+8];
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/PathOverrides.cpp:350:31: note: function parameter 'path' with unknown value cannot be used in a constant expression
+  350 |             char npath[strlen(path)+strlen(suffix)+8];
+      |                               ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/PathOverrides.cpp:343:52: note: declared here
+  343 | void PathOverrides::forEachImageSuffix(const char* path, bool isFallbackPath, bool pathIsInDyldCacheWhichCannotBeOverridden, bool& stop, void (^handler)(const char* possiblePath, bool isFallbackPath, bool& stop)) const
+      |                                                    ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/PathOverrides.cpp:374:32: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  374 |                     char npath[strlen(frDir)+frameworkPartialPathLen+8];
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/PathOverrides.cpp:374:39: note: function parameter 'frDir' with unknown value cannot be used in a constant expression
+  374 |                     char npath[strlen(frDir)+frameworkPartialPathLen+8];
+      |                                       ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/PathOverrides.cpp:373:108: note: declared here
+  373 |                 forEachInColonList(_frameworkPathOverridesEnv, _frameworkPathOverridesExeLC, ^(const char* frDir, bool &innerStop) {
+      |                                                                                                            ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/PathOverrides.cpp:390:32: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  390 |                     char npath[strlen(libDir)+libraryLeafNameLen+8];
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/PathOverrides.cpp:390:39: note: function parameter 'libDir' with unknown value cannot be used in a constant expression
+  390 |                     char npath[strlen(libDir)+libraryLeafNameLen+8];
+      |                                       ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/PathOverrides.cpp:389:100: note: declared here
+  389 |                 forEachInColonList(_dylibPathOverridesEnv, _dylibPathOverridesExeLC, ^(const char* libDir, bool &innerStop) {
+      |                                                                                                    ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/PathOverrides.cpp:415:21: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  415 |         char rtpath[strlen("/System/iOSSupport")+strlen(initialPath)+8];
+      |                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/PathOverrides.cpp:415:57: note: function parameter 'initialPath' with unknown value cannot be used in a constant expression
+  415 |         char rtpath[strlen("/System/iOSSupport")+strlen(initialPath)+8];
+      |                                                         ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/PathOverrides.cpp:361:52: note: declared here
+  361 | void PathOverrides::forEachPathVariant(const char* initialPath, bool pathIsInDyldCacheWhichCannotBeOverridden, void (^handler)(const char* possiblePath, bool isFallbackPath, bool& stop), Platform platform) const
+      |                                                    ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/PathOverrides.cpp:434:24: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  434 |             char npath[strlen(dir)+frameworkPartialPathLen+8];
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/PathOverrides.cpp:434:31: note: function parameter 'dir' with unknown value cannot be used in a constant expression
+  434 |             char npath[strlen(dir)+frameworkPartialPathLen+8];
+      |                               ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/PathOverrides.cpp:433:58: note: declared here
+  433 |         forEachFrameworkFallback(platform, ^(const char* dir, bool& innerStop) {
+      |                                                          ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/PathOverrides.cpp:450:26: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  450 |             char libpath[strlen(dir)+libraryLeafNameLen+8];
+      |                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/PathOverrides.cpp:450:33: note: function parameter 'dir' with unknown value cannot be used in a constant expression
+  450 |             char libpath[strlen(dir)+libraryLeafNameLen+8];
+      |                                 ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/PathOverrides.cpp:449:54: note: declared here
+  449 |         forEachDylibFallback(platform, ^(const char* dir, bool& innerStop) {
+      |                                                      ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/PathOverrides.cpp:484:32: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  484 |                 char framework[len+1];
+      |                                ^~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/PathOverrides.cpp:484:32: note: read of non-const variable 'len' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/PathOverrides.cpp:483:24: note: declared here
+  483 |                 size_t len = dirDot - frameworkStart;
+      |                        ^
+1 warning generated.
+10 warnings generated.
+[ 98%] Building CXX object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/dyld3/RootsChecker.cpp.o
+[ 98%] Building CXX object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/dyld3/SharedCacheRuntime.cpp.o
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/MachOLoaded.cpp:819:13: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  819 |             ccdigest_di_decl(di, tempBuf); // declares tempBuf array in stack
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/corecrypto/include/corecrypto/ccdigest.h:106:41: note: expanded from macro 'ccdigest_di_decl'
+  106 | #define ccdigest_di_decl(_di_, _name_)  cc_ctx_decl(struct ccdigest_ctx, ccdigest_di_size(_di_), _name_)
+      |                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/corecrypto/include/corecrypto/cc.h:60:62: note: expanded from macro 'cc_ctx_decl'
+   60 |  #define cc_ctx_decl(_type_, _size_, _name_)  _type_ _name_ [cc_ctx_n(_type_, _size_)]
+      |                                                              ^~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/corecrypto/include/corecrypto/cc.h:47:34: note: expanded from macro 'cc_ctx_n'
+   47 | #define cc_ctx_n(_type_, _size_) ((_size_ + sizeof(_type_) - 1) / sizeof(_type_))
+      |                                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/MachOLoaded.cpp:819:13: note: read of non-constexpr variable 'di' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/corecrypto/include/corecrypto/ccdigest.h:106:74: note: expanded from macro 'ccdigest_di_decl'
+  106 | #define ccdigest_di_decl(_di_, _name_)  cc_ctx_decl(struct ccdigest_ctx, ccdigest_di_size(_di_), _name_)
+      |                                                                          ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/corecrypto/include/corecrypto/ccdigest.h:97:52: note: expanded from macro 'ccdigest_di_size'
+   97 | #define ccdigest_di_size(_di_)  (ccdigest_ctx_size((_di_)->state_size, (_di_)->block_size))
+      |                                                    ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/MachOLoaded.cpp:818:41: note: declared here
+  818 |             const struct ccdigest_info* di = ccsha384_di();
+      |                                         ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/MachOLoaded.cpp:832:13: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  832 |             ccdigest_di_decl(di, tempBuf); // declares tempBuf array in stack
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/corecrypto/include/corecrypto/ccdigest.h:106:41: note: expanded from macro 'ccdigest_di_decl'
+  106 | #define ccdigest_di_decl(_di_, _name_)  cc_ctx_decl(struct ccdigest_ctx, ccdigest_di_size(_di_), _name_)
+      |                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/corecrypto/include/corecrypto/cc.h:60:62: note: expanded from macro 'cc_ctx_decl'
+   60 |  #define cc_ctx_decl(_type_, _size_, _name_)  _type_ _name_ [cc_ctx_n(_type_, _size_)]
+      |                                                              ^~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/corecrypto/include/corecrypto/cc.h:47:34: note: expanded from macro 'cc_ctx_n'
+   47 | #define cc_ctx_n(_type_, _size_) ((_size_ + sizeof(_type_) - 1) / sizeof(_type_))
+      |                                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/MachOLoaded.cpp:832:13: note: read of non-constexpr variable 'di' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/corecrypto/include/corecrypto/ccdigest.h:106:74: note: expanded from macro 'ccdigest_di_decl'
+  106 | #define ccdigest_di_decl(_di_, _name_)  cc_ctx_decl(struct ccdigest_ctx, ccdigest_di_size(_di_), _name_)
+      |                                                                          ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/corecrypto/include/corecrypto/ccdigest.h:97:52: note: expanded from macro 'ccdigest_di_size'
+   97 | #define ccdigest_di_size(_di_)  (ccdigest_ctx_size((_di_)->state_size, (_di_)->block_size))
+      |                                                    ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/MachOLoaded.cpp:831:41: note: declared here
+  831 |             const struct ccdigest_info* di = ccsha256_di();
+      |                                         ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/MachOLoaded.cpp:845:13: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  845 |             ccdigest_di_decl(di, tempBuf); // declares tempBuf array in stack
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/corecrypto/include/corecrypto/ccdigest.h:106:41: note: expanded from macro 'ccdigest_di_decl'
+  106 | #define ccdigest_di_decl(_di_, _name_)  cc_ctx_decl(struct ccdigest_ctx, ccdigest_di_size(_di_), _name_)
+      |                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/corecrypto/include/corecrypto/cc.h:60:62: note: expanded from macro 'cc_ctx_decl'
+   60 |  #define cc_ctx_decl(_type_, _size_, _name_)  _type_ _name_ [cc_ctx_n(_type_, _size_)]
+      |                                                              ^~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/corecrypto/include/corecrypto/cc.h:47:34: note: expanded from macro 'cc_ctx_n'
+   47 | #define cc_ctx_n(_type_, _size_) ((_size_ + sizeof(_type_) - 1) / sizeof(_type_))
+      |                                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/MachOLoaded.cpp:845:13: note: read of non-constexpr variable 'di' is not allowed in a constant expression
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/corecrypto/include/corecrypto/ccdigest.h:106:74: note: expanded from macro 'ccdigest_di_decl'
+  106 | #define ccdigest_di_decl(_di_, _name_)  cc_ctx_decl(struct ccdigest_ctx, ccdigest_di_size(_di_), _name_)
+      |                                                                          ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/libSystem/corecrypto/include/corecrypto/ccdigest.h:97:52: note: expanded from macro 'ccdigest_di_size'
+   97 | #define ccdigest_di_size(_di_)  (ccdigest_ctx_size((_di_)->state_size, (_di_)->block_size))
+      |                                                    ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/MachOLoaded.cpp:844:41: note: declared here
+  844 |             const struct ccdigest_info* di = ccsha1_di();
+      |                                         ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/MachOLoaded.cpp:1025:1: warning: non-void function does not return a value in all control paths [-Wreturn-type]
+ 1025 | }
+      | ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/MachOLoaded.cpp:1109:1: warning: non-void function does not return a value in all control paths [-Wreturn-type]
+ 1109 | }
+      | ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/MachOLoaded.cpp:1160:1: warning: non-void function does not return a value in all control paths [-Wreturn-type]
+ 1160 | }
+      | ^
+/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/runtime/source-overlay/src/Libraries/dyld/upstream/dyld3/MachOLoaded.cpp:1182:1: warning: non-void function does not return a value in all control paths [-Wreturn-type]
+ 1182 | }
+      | ^
+[ 98%] Building CXX object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/dyld3/Tracing.cpp.o
+7 warnings generated.
+[ 98%] Building CXX object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/dyld3/libdyldEntryVector.cpp.o
+[ 98%] Building CXX object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/dyld3/shared-cache/DyldSharedCache.cpp.o
+[ 98%] Building ASM object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/src/dyldStartup.s.o
+[ 98%] Building ASM object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/src/dyld_stub_binder.s.o
+[ 98%] Building ASM object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/src/threadLocalHelpers.s.o
+[100%] Building ASM object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/src/stub_binding_helper.s.o
+[100%] Building ASM object src/Libraries/dyld/CMakeFiles/dyld.dir/upstream/src/start_glue.s.o
+[100%] Building C object src/Libraries/dyld/CMakeFiles/dyld.dir/pd_stubs.c.o
+[100%] Building C object src/Libraries/dyld/CMakeFiles/dyld.dir/pd_libc_common_storage.c.o
+[100%] Building CXX object src/Libraries/dyld/CMakeFiles/dyld.dir/pd_dyld_internal_stubs.cpp.o
+[100%] Building CXX object src/Libraries/dyld/CMakeFiles/dyld.dir/pd_fileutils.cpp.o
+[100%] Linking CXX executable dyld
+Undefined symbols for architecture arm64:
+  "___chkstk_darwin", referenced from:
+      __pthread_terminate_invoke in libpthread_static.a[2](pthread.c.o)
+      _realpath$DARWIN_EXTSN in liblibc_static.a[184](realpath.c.o)
+      ___getcwd in liblibc_internal_static.a[8](getcwd.c.o)
+      ___printf_render_chr in liblibc_internal_static.a[126](xprintf_str.c.o)
+      _ccdigest in libcorecrypto_static.a[3](ccdigest.c.o)
+      _ccdigest_test_chunk in libcorecrypto_static.a[3](ccdigest.c.o)
+      _ccdigest_test_chunk in libcorecrypto_static.a[3](ccdigest.c.o)
+      ...
+ld: symbol(s) not found for architecture arm64
+clang++: error: linker command failed with exit code 1 (use -v to see invocation)
+make[3]: *** [src/Libraries/dyld/dyld] Error 1
+make[2]: *** [src/Libraries/dyld/CMakeFiles/dyld.dir/all] Error 2
+make[1]: *** [src/Libraries/dyld/CMakeFiles/dyld.dir/rule] Error 2
+make: *** [dyld] Error 2

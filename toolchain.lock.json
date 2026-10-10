@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "profile": "macos-arm64-experiments",
+  "host": {
+    "architecture": "arm64",
+    "os_version": "27.2",
+    "os_build": "26B5101f",
+    "sdk_version": "27.2",
+    "clang_version": "Apple clang version 21.0.0 (clang-2100.3.34.2)\nTarget: arm64-apple-darwin27.2.0\nThread model: posix\nInstalledDir: /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin",
+    "git_version": "git version 2.46.0",
+    "python_version": "Python 3.14.7",
+    "make_version": "GNU Make 3.81\nCopyright (C) 2006  Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.\nThere is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A\nPARTICULAR PURPOSE.\n\nThis program built for i386-apple-darwin11.3.0"
+  },
+  "tools": {
+    "clang": {
+      "sha256": "0993175af320361435e566fa638ad3f0852efe3599bf026da08d9d82be8275fa",
+      "retrieval": "Use the Xcode installation matching the recorded host toolchain; Apple license applies."
+    },
+    "ld": {
+      "sha256": "fea8d0e26b7f0b755eddc2860371136a324719417690dceefe7081615e28012a",
+      "retrieval": "Use the Xcode installation matching the recorded host toolchain; Apple license applies."
+    },
+    "nm": {
+      "sha256": "61b10802eecb575355d64bec77a4f85b9aff0a6fef29ce1dea17a07ec10f37ee",
+      "retrieval": "Use the Xcode installation matching the recorded host toolchain; Apple license applies."
+    },
+    "otool": {
+      "sha256": "3654fb98d2174d55433993bd7d54c878e800930dbe2bdf6778856db05268f00a",
+      "retrieval": "Use the Xcode installation matching the recorded host toolchain; Apple license applies."
+    },
+    "dsymutil": {
+      "sha256": "5718e18ef922f49fcf8994cfef30c325d4fb5009b8956446e484b0c623fc6ce9",
+      "retrieval": "Use the Xcode installation matching the recorded host toolchain; Apple license applies."
+    },
+    "mig": {
+      "sha256": "72210518ef314ef0517869283f6fe1cf990844eefaa15e76c007f9b97d4abcdd",
+      "retrieval": "Use the Xcode installation matching the recorded host toolchain; Apple license applies."
+    }
+  },
+  "sdk": {
+    "content_sha256": "1fd70cc3700dc127c65cde0fcd2f248f280d6562768ca67b3930d1eda2bebc14",
+    "entries": 41671,
+    "algorithm": "sha256(relative-path NUL file-sha256-or-link-target LF; sorted walk; no symlink following)",
+    "version": "27.2",
+    "redistributable": false,
+    "retrieval": "Already-owned Xcode 27.2 beta SDK; preflight verifies its actual content. Not a substitute for the unmodified PureDarwin 11.3 SDK requirement.",
+    "archive_sha256": "8230e9c59a84f995731a7242a41303cc69a352d2e1e8a0be4cf1021e3c943ea7",
+    "archive_root_directory": "MacOSX27.2.sdk"
+  },
+  "required_external_inputs": [
+    {
+      "name": "MacOSX11.3.sdk.tar.xz",
+      "sha256": "9adc1373d3879e1973d28ad9f17c9051b02931674a3ec2a2498128989ece2cb1",
+      "version": "11.3",
+      "profile": "puredarwin-vm-unmodified",
+      "availability": "not-present",
+      "redistributable": false,
+      "retrieval": "Operator-supplied local SDK archive, registered with nix-store --add-fixed sha256; see PureDarwin pinned SDK derivation."
+    }
+  ],
+  "limitations": [
+    "The host is macOS/Xcode beta. Source-build compatibility must be measured; this lock is an observed experiment environment, not a proven standalone target.",
+    "Recent Apple XNU ARM64 builds require a matching KDK; no matching KDK is installed. The public SDK alone does not supply all kernel inputs.",
+    "The upstream PureDarwin Nix baseline requires the distinct macOS11.3 SDK. Current SDK experiments have a different identity and cannot be passed off as the upstream input.",
+    "Docker/Nix guest-build inputs are pinned separately by the PureDarwin flake lock and virtualization tooling."
+  ],
+  "utilities": {
+    "cmake": {
+      "version": "cmake version 4.4.0",
+      "version_args": [
+        "--version"
+      ],
+      "sha256": "8f136fce6bb8e9dbea38320f8a615b1f4896fe80cc7da5c1ff3da69e834f5d4c",
+      "retrieval": "Install the matching utility version through the host toolchain or package manager; preflight checks its exact executable hash."
+    },
+    "flex": {
+      "version": "flex 2.6.4",
+      "version_args": [
+        "--version"
+      ],
+      "sha256": "bc708fdf9306f01bfdfd979577d18493f71bcf5879c0d59274b7cfe2cd716c1d",
+      "retrieval": "Install the matching utility version through the host toolchain or package manager; preflight checks its exact executable hash."
+    },
+    "bison": {
+      "version": "bison (GNU Bison) 2.3",
+      "version_args": [
+        "--version"
+      ],
+      "sha256": "bc708fdf9306f01bfdfd979577d18493f71bcf5879c0d59274b7cfe2cd716c1d",
+      "retrieval": "Install the matching utility version through the host toolchain or package manager; preflight checks its exact executable hash."
+    },
+    "xz": {
+      "version": "xz (XZ Utils) 5.8.4",
+      "version_args": [
+        "--version"
+      ],
+      "sha256": "2f4914fe7d39269b0baf8ea3b4e3045c7496b9a607a0903605cd28275d608ba6",
+      "retrieval": "Install the matching utility version through the host toolchain or package manager; preflight checks its exact executable hash."
+    }
+  }
+}
