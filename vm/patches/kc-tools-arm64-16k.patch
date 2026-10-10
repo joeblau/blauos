@@ -1,5 +1,9 @@
 --- a/lib/prelink.c
 +++ b/lib/prelink.c
-@@ -9,1 +9,1 @@
+@@ -7,5 +7,5 @@
+ #include <stdio.h>
+ 
 -#define PAGE 0x1000ULL
 +#define PAGE 0x4000ULL
+ #define ALIGN_UP(x, a) (((uint64_t)(x) + ((uint64_t)(a) - 1)) & ~((uint64_t)(a) - 1))
+ 

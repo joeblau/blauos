@@ -1,0 +1,125 @@
+{
+  "status": "passed",
+  "collection_sha256": "113e40db4b9949d42cc2ad87861205a4a184294029e482b5b8727dd2ba95e70b",
+  "kernel_sha256": "2b703541dd2b562292970b8643d04b27817c6b73bd00db7960f833929ca707a8",
+  "kexts": [
+    {
+      "identifier": "com.apple.iokit.IOPCIFamily",
+      "load_address": "0xfffffff004004000",
+      "module_start": "0xfffffff004029404",
+      "module_stop": "0xfffffff004029494",
+      "imports_verified": 1931,
+      "locals_verified": 437,
+      "slide_entries_verified": 2368
+    },
+    {
+      "identifier": "com.apple.iokit.IOStorageFamily",
+      "load_address": "0xfffffff004054000",
+      "module_start": "0xfffffff004076f58",
+      "module_stop": "0xfffffff004076fe8",
+      "imports_verified": 3554,
+      "locals_verified": 904,
+      "slide_entries_verified": 4458
+    },
+    {
+      "identifier": "com.apple.iokit.IONetworkingFamily",
+      "load_address": "0xfffffff0040b4000",
+      "module_start": "0xfffffff0040dc258",
+      "module_stop": "0xfffffff0040dc2e8",
+      "imports_verified": 3683,
+      "locals_verified": 801,
+      "slide_entries_verified": 4484
+    },
+    {
+      "identifier": "org.puredarwin.iokit.IOVirtIOFamily",
+      "load_address": "0xfffffff004120000",
+      "module_start": "0xfffffff004125608",
+      "module_stop": "0xfffffff004125698",
+      "imports_verified": 14,
+      "locals_verified": 2,
+      "slide_entries_verified": 16
+    },
+    {
+      "identifier": "org.puredarwin.kext.PDArmPlatformExpert",
+      "load_address": "0xfffffff004134000",
+      "module_start": "0xfffffff00413bb58",
+      "module_stop": "0xfffffff00413bbe8",
+      "imports_verified": 2025,
+      "locals_verified": 91,
+      "slide_entries_verified": 2116
+    },
+    {
+      "identifier": "org.puredarwin.driver.PDArmPCI",
+      "load_address": "0xfffffff00415c000",
+      "module_start": "0xfffffff004160b90",
+      "module_stop": "0xfffffff004160c20",
+      "imports_verified": 369,
+      "locals_verified": 25,
+      "slide_entries_verified": 394
+    },
+    {
+      "identifier": "org.puredarwin.driver.IOVirtIOBlock",
+      "load_address": "0xfffffff004174000",
+      "module_start": "0xfffffff004179cfc",
+      "module_stop": "0xfffffff004179d8c",
+      "imports_verified": 662,
+      "locals_verified": 41,
+      "slide_entries_verified": 703
+    },
+    {
+      "identifier": "org.puredarwin.driver.IOVirtIONet",
+      "load_address": "0xfffffff004190000",
+      "module_start": "0xfffffff0041957f8",
+      "module_stop": "0xfffffff004195888",
+      "imports_verified": 449,
+      "locals_verified": 26,
+      "slide_entries_verified": 475
+    },
+    {
+      "identifier": "com.apple.filesystems.ext4",
+      "load_address": "0xfffffff0041ac000",
+      "module_start": "0xfffffff0041c0cc8",
+      "module_stop": "0xfffffff0041c0d58",
+      "imports_verified": 403,
+      "locals_verified": 49,
+      "slide_entries_verified": 452
+    },
+    {
+      "identifier": "com.ravynos.driver.Ext4FileSystemDriver",
+      "load_address": "0xfffffff0041d8000",
+      "module_start": "0xfffffff0041dca78",
+      "module_stop": "0xfffffff0041dcb08",
+      "imports_verified": 320,
+      "locals_verified": 13,
+      "slide_entries_verified": 333
+    },
+    {
+      "identifier": "com.apple.AppleFileSystemDriver",
+      "load_address": "0xfffffff0041f0000",
+      "module_start": "0xfffffff0041f5640",
+      "module_stop": "0xfffffff0041f56d0",
+      "imports_verified": 335,
+      "locals_verified": 13,
+      "slide_entries_verified": 348
+    },
+    {
+      "identifier": "com.apple.kec.corecrypto",
+      "load_address": "0xfffffff004208000",
+      "module_start": "0xfffffff004223308",
+      "module_stop": "0xfffffff004223398",
+      "imports_verified": 12,
+      "locals_verified": 91,
+      "slide_entries_verified": 103
+    },
+    {
+      "identifier": "com.apple.kec.pthread",
+      "load_address": "0xfffffff004230000",
+      "module_start": "0xfffffff00423d918",
+      "module_stop": "0xfffffff00423d9a8",
+      "imports_verified": 61,
+      "locals_verified": 33,
+      "slide_entries_verified": 94
+    }
+  ],
+  "total_pointers_verified": 16344
+}

@@ -1,0 +1,12 @@
+{
+  "argv": [
+    "cmake",
+    "--build",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci-platform",
+    "--target",
+    "PDArmPlatformExpert",
+    "--parallel",
+    "4"
+  ],
+  "cwd": "/Users/joeblau/Developer/joeblau/src/blauos"
+}

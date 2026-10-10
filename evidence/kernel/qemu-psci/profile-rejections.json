@@ -1,0 +1,42 @@
+{
+  "status": "passed",
+  "cases": [
+    {
+      "case": "missing_kext_build",
+      "argv": [
+        "python3",
+        "scripts/build/xnu.py",
+        "--puredarwin",
+        "--source-name",
+        "puredarwin-vm-next",
+        "--machine",
+        "VIRT",
+        "--qemu-psci-hvc",
+        "--build-root",
+        ".blauos/build/kernel/rejected-psci"
+      ],
+      "exit_code": 1,
+      "diagnostic": "XNU experiment blocked: --qemu-psci-hvc requires --with-kexts and the PureDarwin VIRT profile",
+      "build_directory_created": false
+    },
+    {
+      "case": "missing_profile_patch",
+      "argv": [
+        "python3",
+        "scripts/build/xnu.py",
+        "--puredarwin",
+        "--source-name",
+        "puredarwin-vm-next",
+        "--machine",
+        "VIRT",
+        "--qemu-psci-hvc",
+        "--build-root",
+        ".blauos/build/kernel/rejected-psci",
+        "--with-kexts"
+      ],
+      "exit_code": 1,
+      "diagnostic": "XNU experiment blocked: --qemu-psci-hvc requires the reviewed platform shutdown patch",
+      "build_directory_created": false
+    }
+  ]
+}

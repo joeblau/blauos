@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "symbol": "__ZN19PDArmPlatformExpert11haltRestartEj",
+  "symbol_address": "0x47c4",
+  "symbol_end": "0x48e0",
+  "hvc_instruction_address": "0x48a4",
+  "hvc_opcode": "0xd4000002",
+  "smc_in_function": false,
+  "psci_function_ids": [
+    "0x84000008",
+    "0x84000009"
+  ],
+  "decoded_runtime_board_guard_branch": true,
+  "function_instruction_count": 71,
+  "disassembly": "halt-restart-disassembly.log",
+  "guest_shutdown_verified": false
+}

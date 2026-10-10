@@ -1,0 +1,52 @@
+{
+  "status": "source_verified_kernel_and_13_kexts_built",
+  "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+  "patch": {
+    "path": "vm/patches/pdarm-qemu-psci-shutdown.patch",
+    "sha256": "b153ed78a06dd06f41dcd6cd36dffb4b17d1ea792fed9ae08535d02c0694f201"
+  },
+  "required_profile": {
+    "machine": "virt-10.2",
+    "gic_version": 3,
+    "virtualization": false,
+    "accelerator": "tcg",
+    "cpu": "neoverse-n2",
+    "conduit": "HVC"
+  },
+  "source_findings": [
+    {
+      "path": "src/Kernel/Extensions/PDArmPlatformExpert/PDArmPlatformExpert.cpp",
+      "finding": "No haltRestart override in pinned source; superclass ultimately returns -1 without a configured PE_halt_restart callback"
+    },
+    {
+      "path": "src/Kernel/xnu/osfmk/arm/machine_routines.c",
+      "finding": "halt_all_cpus calls PEHaltRestart then spins forever if the platform fails to power off"
+    }
+  ],
+  "primary_references": [
+    {
+      "url": "https://gitlab.com/qemu-project/qemu/-/raw/v10.2.4/hw/arm/virt.c",
+      "lines": "2088-2104",
+      "finding": "With virtualization=false and secure=false, QEMU selects PSCI HVC; virtualization=true instead selects SMC"
+    },
+    {
+      "url": "https://gitlab.com/qemu-project/qemu/-/raw/v10.2.4/target/arm/tcg/psci.c",
+      "lines": "112-122",
+      "finding": "SYSTEM_OFF requests SHUTDOWN_CAUSE_GUEST_SHUTDOWN; SYSTEM_RESET requests the guest-reset cause"
+    },
+    {
+      "url": "https://gitlab.com/qemu-project/qemu/-/raw/v10.2.4/target/arm/kvm-consts.h",
+      "lines": "48-64",
+      "finding": "PSCI 0.2 function base is 0x84000000; SYSTEM_OFF and SYSTEM_RESET use offsets 8 and 9"
+    }
+  ],
+  "activation": "CMake PUREDARWIN_QEMU_PSCI_HVC defaults OFF and must be explicitly enabled; the built driver also requires exact qemuvirt-io loader marker",
+  "system_off_id": "0x84000008",
+  "system_reset_id": "0x84000009",
+  "guest_shutdown_verified": false,
+  "platform_build_evidence": "platform-result.json",
+  "compiled_hook_evidence": "platform-fast/compiled-hook-check.json",
+  "unsupported_profile_checks": "profile-rejections.json",
+  "full_build_evidence": "result.json",
+  "kext_inventory": "kext-inventory.json"
+}

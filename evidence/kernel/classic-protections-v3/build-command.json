@@ -1,0 +1,12 @@
+{
+  "argv": [
+    "cmake",
+    "--build",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/classic-protections-v3",
+    "--target",
+    "xnu",
+    "--parallel",
+    "8"
+  ],
+  "cwd": "/Users/joeblau/Developer/joeblau/src/blauos"
+}

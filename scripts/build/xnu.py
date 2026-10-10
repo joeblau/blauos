@@ -10,6 +10,7 @@ from pathlib import Path
 import re
 import subprocess
 import sys
+import tarfile
 
 from headers import ROOT, locked_source
 
@@ -61,8 +62,12 @@ def main() -> int:
     parser.add_argument("--darwin-version", default="25.5.0")
     parser.add_argument("--jobs", type=int, default=4)
     parser.add_argument("--puredarwin", action="store_true")
+    parser.add_argument("--patch", type=Path, action="append", default=[],
+                        help="Reviewed patch applied to an isolated pinned source overlay")
     parser.add_argument("--with-kexts", action="store_true",
                         help="Build the source-pinned headless VIRT kernel extensions")
+    parser.add_argument("--qemu-psci-hvc", action="store_true",
+                        help="Enable the reviewed QEMU VIRT virtualization=false PSCI HVC profile")
     parser.add_argument("--make-setting", action="append", default=[], metavar="NAME=VALUE",
                         help="Additional explicit upstream make setting, retained in evidence")
     args = parser.parse_args()
@@ -70,9 +75,49 @@ def main() -> int:
         raise ValueError("--jobs must be positive")
     if args.with_kexts and (not args.puredarwin or args.machine != "VIRT"):
         raise ValueError("--with-kexts currently supports only the PureDarwin VIRT profile")
+    if args.qemu_psci_hvc and (not args.puredarwin or args.machine != "VIRT" or not args.with_kexts):
+        raise ValueError("--qemu-psci-hvc requires --with-kexts and the PureDarwin VIRT profile")
     source = locked_source(args.manifest, args.source_name, args.source_root).resolve()
     build = args.build_root.resolve()
     evidence = args.evidence.resolve()
+    original_source = source
+    amendments = []
+    if args.patch:
+        if not args.puredarwin:
+            raise ValueError("--patch currently supports the PureDarwin source profile")
+        overlay = build / "source-overlay"
+        if overlay.exists():
+            raise ValueError("Patched experiment requires a fresh build root")
+        overlay.mkdir(parents=True)
+        archive = build / "source.tar"
+        with archive.open("wb") as output:
+            subprocess.run(["git", "-C", str(source), "archive", "HEAD"], stdout=output, check=True)
+        excluded_links = []
+        def source_filter(member, destination):
+            # The published tree contains an unused developer-local `result`
+            # symlink. Never recreate absolute host paths in a build overlay.
+            if member.issym() and Path(member.linkname).is_absolute():
+                excluded_links.append(member.name)
+                return None
+            return tarfile.data_filter(member, destination)
+        with tarfile.open(archive) as stream:
+            stream.extractall(overlay, filter=source_filter)
+        amendments.append({"source_archive_sha256": hashlib.sha256(archive.read_bytes()).hexdigest(),
+                           "excluded_absolute_symlinks": excluded_links})
+        subprocess.run(["git", "init", "--quiet", str(overlay)], check=True)
+        for patch in args.patch:
+            patch = patch.resolve()
+            subprocess.run(["git", "apply", "--check", str(patch)], cwd=overlay, check=True)
+            subprocess.run(["git", "apply", str(patch)], cwd=overlay, check=True)
+            amendments.append({"path": str(patch), "sha256": hashlib.sha256(patch.read_bytes()).hexdigest()})
+        source = overlay
+    if args.qemu_psci_hvc:
+        platform_source = source / "src/Kernel/Extensions/PDArmPlatformExpert"
+        if ("option(PUREDARWIN_QEMU_PSCI_HVC" not in
+                (platform_source / "CMakeLists.txt").read_text() or
+                "PDArmPlatformExpert::haltRestart" not in
+                (platform_source / "PDArmPlatformExpert.cpp").read_text()):
+            raise ValueError("--qemu-psci-hvc requires the reviewed platform shutdown patch")
     sdk = args.sdk or Path(subprocess.check_output(["xcrun", "--sdk", "macosx", "--show-sdk-path"], text=True).strip())
     if args.puredarwin:
         command = ["cmake", "-S", str(source), "-B", str(build), "-G", "Unix Makefiles",
@@ -83,6 +128,13 @@ def main() -> int:
                    "-DPUREDARWIN_ENABLE_KERNEL=ON", "-DPUREDARWIN_ENABLE_LIBRARIES=ON",
                    "-DPUREDARWIN_ENABLE_TOOLS=ON", "-DPUREDARWIN_ENABLE_USERSPACE=OFF",
                    "-DPUREDARWIN_ENABLE_PROJECTS=OFF"]
+        if args.with_kexts:
+            # Current macOS Clang otherwise imports ___chkstk_darwin in
+            # corecrypto. The target kernel does not export that host helper.
+            command.extend(["-DCMAKE_C_FLAGS=-fno-stack-check",
+                            "-DCMAKE_CXX_FLAGS=-fno-stack-check"])
+        if args.qemu_psci_hvc:
+            command.append("-DPUREDARWIN_QEMU_PSCI_HVC=ON")
         if execute(command, ROOT, build / "logs/configure.log", evidence, "configure"):
             return 1
         command = ["cmake", "--build", str(build), "--target", "xnu", "--parallel", str(args.jobs)]
@@ -118,9 +170,11 @@ def main() -> int:
                                   "sha256": hashlib.sha256(path.read_bytes()).hexdigest(), "file": kind})
     report = {"status": "kernel-built-not-boot-validated" if code == 0 and artifacts else "blocked",
               "exit_code": code, "source": str(source), "configuration": "DEVELOPMENT ARM64",
-              "source_revision": subprocess.check_output(["git", "-C", str(source), "rev-parse", "HEAD"], text=True).strip(),
+              "source_revision": subprocess.check_output(["git", "-C", str(original_source), "rev-parse", "HEAD"], text=True).strip(),
+              "source_amendments": amendments,
               "manifest_sha256": hashlib.sha256(args.manifest.read_bytes()).hexdigest(),
               "machine": args.machine, "sdk": str(sdk), "artifacts": artifacts,
+              "qemu_psci_hvc_profile": args.qemu_psci_hvc,
               "boot_validated": False}
     evidence.mkdir(parents=True, exist_ok=True)
     (evidence / "result.json").write_text(json.dumps(report, indent=2) + "\n")

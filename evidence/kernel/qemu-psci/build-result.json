@@ -1,0 +1,21 @@
+{
+  "argv": [
+    "cmake",
+    "--build",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci",
+    "--target",
+    "xnu",
+    "--parallel",
+    "8"
+  ],
+  "cwd": "/Users/joeblau/Developer/joeblau/src/blauos",
+  "exit_code": 0,
+  "raw_log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/logs/build.log",
+  "raw_log_bytes": 214568135,
+  "raw_log_sha256": "30a15946844fe8c041f97f9fdf00133fbfde8c782bec5220d3a221c05e726d17",
+  "errors": [
+    "  871 |             os_log_error:iy/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/source-overlay/src/Kernel/xnu/osfmk/kern/task.h:122606s:",
+    "   95 | typedef long                    __darwin_ssize_t;       /* byte countoT/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/qemu-psci/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/kern/locks.h or error:uU 208t); \\",
+    "w/f***(c ute ed       s| i_[_)?_                                   ^)u?_ut_tnona?,st; m"
+  ]
+}

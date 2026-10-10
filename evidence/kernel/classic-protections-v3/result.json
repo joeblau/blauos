@@ -1,0 +1,67 @@
+{
+  "status": "kernel-built-not-boot-validated",
+  "exit_code": 0,
+  "source": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/classic-protections-v3/source-overlay",
+  "configuration": "DEVELOPMENT ARM64",
+  "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+  "source_amendments": [
+    {
+      "source_archive_sha256": "1c955560333a1e47a38f2018ead9fd90580eb4b9520f44435ebfa03afcd3c1f6",
+      "excluded_absolute_symlinks": [
+        "src/Libraries/libSystem/libc/gen/FreeBSD/result"
+      ]
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/vm/patches/xnu-classic-arm64-protections.patch",
+      "sha256": "371466a26ab5ecb68d7491566900c7239a6987cd7f52ddfdc9865ce81c29ba69"
+    }
+  ],
+  "manifest_sha256": "8022bbbfb33204b56bb3297cd8cbb39fb6c08ea65c476492d99462f7edfe3657",
+  "machine": "VIRT",
+  "sdk": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.2.sdk",
+  "artifacts": [
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/classic-protections-v3/src/Kernel/xnu/xnu/System/Library/Kernels/kernel.development.virt",
+      "size": 12588112,
+      "sha256": "24fa35d4327137672221f632b6b9f57b055326fcc32767a5eeee6d9627b66016",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/classic-protections-v3/src/Kernel/xnu/xnu/System/Library/Kernels/kernel.development.virt: Mach-O 64-bit executable arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/classic-protections-v3/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_VIRT/kernel.development.virt",
+      "size": 12588112,
+      "sha256": "24fa35d4327137672221f632b6b9f57b055326fcc32767a5eeee6d9627b66016",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/classic-protections-v3/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_VIRT/kernel.development.virt: Mach-O 64-bit executable arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/classic-protections-v3/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_VIRT/kernel.development.virt.dSYM/Contents/Resources/DWARF/kernel.development.virt",
+      "size": 52568212,
+      "sha256": "37a6a057cd45ef84c75ca5497a5a0bb411efd0d9721377c9b81fb7ec4914ef79",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/classic-protections-v3/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_VIRT/kernel.development.virt.dSYM/Contents/Resources/DWARF/kernel.development.virt: Mach-O 64-bit dSYM companion file arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/classic-protections-v3/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_VIRT/kernel.development.virt.unstripped",
+      "size": 15416648,
+      "sha256": "9fa18b9912389d142e65a4625d01d19b1402585eac0a6428a28d9a1ec06f0f8c",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/classic-protections-v3/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_VIRT/kernel.development.virt.unstripped: Mach-O 64-bit executable arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/classic-protections-v3/src/Kernel/xnu/xnu_build/src/xnu-build/kernel.development.virt",
+      "size": 12588112,
+      "sha256": "24fa35d4327137672221f632b6b9f57b055326fcc32767a5eeee6d9627b66016",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/classic-protections-v3/src/Kernel/xnu/xnu_build/src/xnu-build/kernel.development.virt: Mach-O 64-bit executable arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/classic-protections-v3/src/Kernel/xnu/xnu_sym/kernel.development.virt",
+      "size": 15416648,
+      "sha256": "9fa18b9912389d142e65a4625d01d19b1402585eac0a6428a28d9a1ec06f0f8c",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/classic-protections-v3/src/Kernel/xnu/xnu_sym/kernel.development.virt: Mach-O 64-bit executable arm64"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/classic-protections-v3/src/Kernel/xnu/xnu_sym/kernel.development.virt.dSYM/Contents/Resources/DWARF/kernel.development.virt",
+      "size": 52568212,
+      "sha256": "37a6a057cd45ef84c75ca5497a5a0bb411efd0d9721377c9b81fb7ec4914ef79",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/kernel/classic-protections-v3/src/Kernel/xnu/xnu_sym/kernel.development.virt.dSYM/Contents/Resources/DWARF/kernel.development.virt: Mach-O 64-bit dSYM companion file arm64"
+    }
+  ],
+  "boot_validated": false
+}

@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "original_binary_sha256": "cbf256c272814f89393602d03b1202c79cd5746909d0ce442e9def29cc8b6b25",
+  "original_input_unchanged": true,
+  "cases": [
+    {
+      "case": "unsupported_type",
+      "exit_code": 1,
+      "diagnostic": "unsupported dynamic relocation",
+      "output_written": false
+    },
+    {
+      "case": "unresolved_symbol",
+      "exit_code": 1,
+      "diagnostic": "unresolved external relocation symbol",
+      "output_written": false
+    },
+    {
+      "case": "unmapped_target",
+      "exit_code": 1,
+      "diagnostic": "relocation target outside mapped image",
+      "output_written": false
+    },
+    {
+      "case": "table_outside_image",
+      "exit_code": 1,
+      "diagnostic": "relocation table outside image",
+      "output_written": false
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+--- a/src/Kernel/Extensions/PDArmPlatformExpert/PDArmPlatformExpert.cpp
++++ b/src/Kernel/Extensions/PDArmPlatformExpert/PDArmPlatformExpert.cpp
+@@ -15,10 +15,16 @@
+ 	PDArmCPU *bootCPU;
+ 	IOService *fEMMCNub;
+ 	IOService *fFramebufferNub;
++#if defined(PUREDARWIN_QEMU_PSCI_HVC) && defined(__arm64__)
++	bool fQemuVirtPSCI;
++#endif
+ 
+ public:
+ 	IOService *probe(IOService *provider, SInt32 *score) APPLE_KEXT_OVERRIDE;
+ 	bool start(IOService *provider) APPLE_KEXT_OVERRIDE;
++#if defined(PUREDARWIN_QEMU_PSCI_HVC) && defined(__arm64__)
++	int haltRestart(unsigned int type) APPLE_KEXT_OVERRIDE;
++#endif
+ 	void processTopLevel(IORegistryEntry *root) APPLE_KEXT_OVERRIDE;
+ 	const char *deleteList(void) APPLE_KEXT_OVERRIDE;
+ 	const char *excludeList(void) APPLE_KEXT_OVERRIDE;
+@@ -34,6 +40,9 @@
+ };
+ 
+ static bool pd_platform_is_bcm283x(void);
++#if defined(PUREDARWIN_QEMU_PSCI_HVC) && defined(__arm64__)
++static bool pd_platform_is_qemuvirt(void);
++#endif
+ 
+ #define super IODTPlatformExpert
+ OSDefineMetaClassAndStructors(PDArmPlatformExpert, IODTPlatformExpert);
+@@ -50,6 +59,9 @@
+ PDArmPlatformExpert::start(IOService *provider)
+ {
+ 	if (!super::start(provider)) return false;
++#if defined(PUREDARWIN_QEMU_PSCI_HVC) && defined(__arm64__)
++	fQemuVirtPSCI = pd_platform_is_qemuvirt();
++#endif
+ 	registerService();
+ 
+ 	if (!initPlatformInterrupts()) return false;
+@@ -70,6 +82,48 @@
+ 
+ 	return true;
+ }
++
++#if defined(PUREDARWIN_QEMU_PSCI_HVC) && defined(__arm64__)
++/*
++ * This opt-in build profile is for QEMU virt with virtualization=false.
++ * QEMU provides PSCI through HVC in that configuration. The loader's
++ * qemuvirt-io marker keeps this hook off Raspberry Pi and Apple platforms;
++ * the marker alone does not select a PSCI conduit on arbitrary hardware.
++ */
++static bool
++pd_platform_is_qemuvirt(void)
++{
++	IORegistryEntry *armio = IORegistryEntry::fromPath("/arm-io", gIODTPlane);
++	if (armio == NULL) return false;
++	OSData *kind = OSDynamicCast(OSData, armio->getProperty("device_type"));
++	static const char expected[] = "qemuvirt-io";
++	bool matches = kind != NULL && kind->getLength() == sizeof(expected) &&
++	    memcmp(kind->getBytesNoCopy(), expected, sizeof(expected)) == 0;
++	armio->release();
++	return matches;
++}
++
++int
++PDArmPlatformExpert::haltRestart(unsigned int type)
++{
++	if (!fQemuVirtPSCI || (type != kPEHaltCPU &&
++	    type != kPEUPSDelayHaltCPU && type != kPERestartCPU)) {
++		return super::haltRestart(type);
++	}
++
++	/* Preserve IODTPlatformExpert's NVRAM synchronization before poweroff. */
++	super::haltRestart(kPEPanicSync);
++	IOLog("PDArmPlatformExpert: QEMU PSCI HVC %s\n",
++	    type == kPERestartCPU ? "SYSTEM_RESET" : "SYSTEM_OFF");
++	register uint64_t functionID __asm__("x0") =
++	    type == kPERestartCPU ? 0x84000009ULL : 0x84000008ULL;
++	__asm__ volatile("hvc #0" : "+r"(functionID) : : "x1", "x2", "x3", "memory");
++	/* Successful PSCI SYSTEM_OFF/SYSTEM_RESET never return. */
++	IOLog("PDArmPlatformExpert: PSCI unexpectedly returned %lld\n",
++	    (long long)functionID);
++	return -1;
++}
++#endif
+ 
+ /*
+  * The Pi's device tree describes no display: the VideoCore firmware allocates
+--- a/src/Kernel/Extensions/PDArmPlatformExpert/CMakeLists.txt
++++ b/src/Kernel/Extensions/PDArmPlatformExpert/CMakeLists.txt
+@@ -10,3 +10,9 @@
+ )
+ 
+ install(TARGETS PDArmPlatformExpert DESTINATION System/Library/Extensions COMPONENT BaseSystem)
++
++# Explicitly select the verified QEMU virt PSCI conduit; do not infer it from ARM64.
++option(PUREDARWIN_QEMU_PSCI_HVC "QEMU virt virtualization=false PSCI HVC profile" OFF)
++if(PUREDARWIN_QEMU_PSCI_HVC)
++    target_compile_definitions(PDArmPlatformExpert PRIVATE PUREDARWIN_QEMU_PSCI_HVC=1)
++endif()
