@@ -1,0 +1,9 @@
+test_binary_bytes_preserved_and_timeout_is_not_boot_success (test_serial_capture.SerialCaptureTests.test_binary_bytes_preserved_and_timeout_is_not_boot_success) ... ok
+test_capture_is_bounded_and_reports_truncation (test_serial_capture.SerialCaptureTests.test_capture_is_bounded_and_reports_truncation) ... ok
+test_chunk_metadata_is_bounded_independently_of_byte_count (test_serial_capture.SerialCaptureTests.test_chunk_metadata_is_bounded_independently_of_byte_count) ... ok
+test_regular_file_and_reused_output_are_rejected (test_serial_capture.SerialCaptureTests.test_regular_file_and_reused_output_are_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.355s
+
+OK

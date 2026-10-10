@@ -1,0 +1,233 @@
+{
+  "schema_version": 1,
+  "status": "source_abi_assertions_pass",
+  "compile_only": true,
+  "physical_execution_verified": false,
+  "steps": [
+    {
+      "profile": "apple-xnu-12377",
+      "architecture": "arm64",
+      "command": [
+        "xcrun",
+        "clang",
+        "-arch",
+        "arm64",
+        "-mmacosx-version-min=11.0",
+        "-fsyntax-only",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native-handoff-layout/irrelevant-header-shims",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native-handoff-layout/apple-xnu-12377.c"
+      ],
+      "exit_code": 0,
+      "diagnostics": "",
+      "header_sha256": "479a74f100116358a0e425d8deefc62c5bcbee72e49e69721c9e2d9c53465cd3"
+    },
+    {
+      "profile": "apple-xnu-12377",
+      "architecture": "arm64e",
+      "command": [
+        "xcrun",
+        "clang",
+        "-arch",
+        "arm64e",
+        "-mmacosx-version-min=11.0",
+        "-fsyntax-only",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native-handoff-layout/irrelevant-header-shims",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native-handoff-layout/apple-xnu-12377.c"
+      ],
+      "exit_code": 0,
+      "diagnostics": "",
+      "header_sha256": "479a74f100116358a0e425d8deefc62c5bcbee72e49e69721c9e2d9c53465cd3"
+    },
+    {
+      "profile": "puredarwin-xnu-7195",
+      "architecture": "arm64",
+      "command": [
+        "xcrun",
+        "clang",
+        "-arch",
+        "arm64",
+        "-mmacosx-version-min=11.0",
+        "-fsyntax-only",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native-handoff-layout/irrelevant-header-shims",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native-handoff-layout/puredarwin-xnu-7195.c"
+      ],
+      "exit_code": 0,
+      "diagnostics": "",
+      "header_sha256": "fb031e88ca57453a9cd0732937f7afa7784f02c4030acd7082ee455ddad48707"
+    },
+    {
+      "profile": "puredarwin-xnu-7195",
+      "architecture": "arm64e",
+      "command": [
+        "xcrun",
+        "clang",
+        "-arch",
+        "arm64e",
+        "-mmacosx-version-min=11.0",
+        "-fsyntax-only",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-I/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native-handoff-layout/irrelevant-header-shims",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native-handoff-layout/puredarwin-xnu-7195.c"
+      ],
+      "exit_code": 0,
+      "diagnostics": "",
+      "header_sha256": "fb031e88ca57453a9cd0732937f7afa7784f02c4030acd7082ee455ddad48707"
+    }
+  ],
+  "errors": [],
+  "verified_source_files": [
+    {
+      "profile": "apple-xnu-12377",
+      "source": "xnu",
+      "revision": "ac9718fb1af618d5ce8678d0dc6e8a58f252216f",
+      "path": "pexpert/pexpert/arm64/boot.h",
+      "sha256": "479a74f100116358a0e425d8deefc62c5bcbee72e49e69721c9e2d9c53465cd3"
+    },
+    {
+      "profile": "apple-xnu-12377",
+      "source": "xnu",
+      "revision": "ac9718fb1af618d5ce8678d0dc6e8a58f252216f",
+      "path": "pexpert/pexpert/device_tree.h",
+      "sha256": "4778156e16addc5cd631be849e6cb72c2eed7c6de6346e3638e5e5756a31e37c"
+    },
+    {
+      "profile": "apple-xnu-12377",
+      "source": "xnu",
+      "revision": "ac9718fb1af618d5ce8678d0dc6e8a58f252216f",
+      "path": "pexpert/gen/device_tree.c",
+      "sha256": "8dccf6192ddaf4c77e504912a44883447a2eae23e3c7f149e0b0997042903614"
+    },
+    {
+      "profile": "apple-xnu-12377",
+      "source": "xnu",
+      "revision": "ac9718fb1af618d5ce8678d0dc6e8a58f252216f",
+      "path": "osfmk/arm64/start.s",
+      "sha256": "a5c1a95b087f62f9e548bed7a0274cf420af1d69bfd656c1481d629093e2b07a"
+    },
+    {
+      "profile": "apple-xnu-12377",
+      "source": "xnu",
+      "revision": "ac9718fb1af618d5ce8678d0dc6e8a58f252216f",
+      "path": "osfmk/arm64/arm_vm_init.c",
+      "sha256": "9e17da181e72144d27df4ce256988226bfef0e41c0744fc9ef6466f0844c2a32"
+    },
+    {
+      "profile": "apple-xnu-12377",
+      "source": "xnu",
+      "revision": "ac9718fb1af618d5ce8678d0dc6e8a58f252216f",
+      "path": "osfmk/arm/arm_init.c",
+      "sha256": "14006b33b9b508d3579010ec2d3427c3d9255b8d59917cfa8b7826d3b71c60c0"
+    },
+    {
+      "profile": "apple-xnu-12377",
+      "source": "xnu",
+      "revision": "ac9718fb1af618d5ce8678d0dc6e8a58f252216f",
+      "path": "pexpert/arm/pe_init.c",
+      "sha256": "e8dc60fafb6bcf407ceaf3ec8a6ed6237d5d927d57b87827a09136a67d6482eb"
+    },
+    {
+      "profile": "apple-xnu-12377",
+      "source": "xnu",
+      "revision": "ac9718fb1af618d5ce8678d0dc6e8a58f252216f",
+      "path": "osfmk/arm64/genassym.c",
+      "sha256": "e2ca4b5c8d0c05d63408fb9cb88365733056fbb3cf8dfe448750fc854bedd263"
+    },
+    {
+      "profile": "apple-xnu-12377",
+      "source": "xnu",
+      "revision": "ac9718fb1af618d5ce8678d0dc6e8a58f252216f",
+      "path": "pexpert/pexpert/arm64/board_config.h",
+      "sha256": "147ea1c2e2e23b7844dcebe3ae099f1443505997acb8063da309827b2fb299be"
+    },
+    {
+      "profile": "apple-xnu-12377",
+      "source": "xnu",
+      "revision": "ac9718fb1af618d5ce8678d0dc6e8a58f252216f",
+      "path": "osfmk/arm64/proc_reg.h",
+      "sha256": "fcbead4162ad09d0f51be9ce88e5f2d6d89e89e58934975ee1aa23e506485055"
+    },
+    {
+      "profile": "puredarwin-xnu-7195",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "path": "src/Kernel/xnu/pexpert/pexpert/arm64/boot.h",
+      "sha256": "fb031e88ca57453a9cd0732937f7afa7784f02c4030acd7082ee455ddad48707"
+    },
+    {
+      "profile": "puredarwin-xnu-7195",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "path": "src/Kernel/xnu/pexpert/pexpert/device_tree.h",
+      "sha256": "37771844b786a54de9e85de2f1158315bf956514cb01a8a936fd312d3fe075a0"
+    },
+    {
+      "profile": "puredarwin-xnu-7195",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "path": "src/Kernel/xnu/pexpert/gen/device_tree.c",
+      "sha256": "2856f13969074921f101e8b851545b0b8ed3ff0b1d27d6cf99ec5e1a3e89e0a0"
+    },
+    {
+      "profile": "puredarwin-xnu-7195",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "path": "src/Kernel/xnu/osfmk/arm64/start.s",
+      "sha256": "30c6945de0d8195209165f99851820bc7b1146bddbb87c60156c0752aeeb4f29"
+    },
+    {
+      "profile": "puredarwin-xnu-7195",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "path": "src/Kernel/xnu/osfmk/arm64/arm_vm_init.c",
+      "sha256": "28dbf29d7f47ec18fada23c6fafc551254c9fcb23b687b5bd4e382d8c5266771"
+    },
+    {
+      "profile": "puredarwin-xnu-7195",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "path": "src/Kernel/xnu/osfmk/arm/arm_init.c",
+      "sha256": "b9fa5858204376d84954f2e1c202eac0a69b9dadeb57e6c5a721879d5edf2d55"
+    },
+    {
+      "profile": "puredarwin-xnu-7195",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "path": "src/Kernel/xnu/pexpert/arm/pe_init.c",
+      "sha256": "7b656b12e21353443af6d636d578d78d823c5fe1c8eca420854c4a2a8b3b1a83"
+    },
+    {
+      "profile": "puredarwin-xnu-7195",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "path": "src/Kernel/xnu/osfmk/arm64/genassym.c",
+      "sha256": "4dc42569ac6b74dd7e07c37803476ce97430d34a34ecf2a71ce7191f4702aae7"
+    },
+    {
+      "profile": "puredarwin-xnu-7195",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "path": "src/Kernel/xnu/pexpert/pexpert/arm64/board_config.h",
+      "sha256": "f3fc35e3e8d84366bd2a7672c49c7a780a415f04e71c6d1e833025e0617b3f41"
+    },
+    {
+      "profile": "puredarwin-xnu-7195",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "path": "src/Kernel/xnu/osfmk/arm64/proc_reg.h",
+      "sha256": "3ac93c4b9287ca3c804396c97a4bd845ce1db9803939a1f628cabfc363781205"
+    }
+  ],
+  "source_contract_sha256": "3ce67d69cd920c2310a7b908bab5b4d00389f3a1f5a8c3ad704126ea736e6ad9",
+  "compiler_version": "Apple clang version 21.0.0 (clang-2100.3.34.2)\nTarget: arm64-apple-darwin27.2.0\nThread model: posix\nInstalledDir: /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin\n"
+}

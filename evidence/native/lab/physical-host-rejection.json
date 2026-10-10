@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "level": "entry",
+  "evidence_consistency_passed": false,
+  "kernel_entry_observed": false,
+  "checkpoint_observations_complete": false,
+  "private_identity_consistency_verified": false,
+  "hardware_attestation_verified": false,
+  "physical_gate_passed": false,
+  "review_required": true,
+  "boots": [],
+  "errors": [
+    "inventory: dedicated physical Macmini9,1/Apple M1/J274 observations required"
+  ],
+  "limitations": [
+    "Offline files cannot prove physical origin, physical power cycles, or reviewer identity.",
+    "Authorization receipts do not establish that a custom kernel executed."
+  ],
+  "manifest_sha256": "4e2733a125abef4cd7c2d2bce43c02534b7f903c58282d6933e50ebaa3e6f5a2"
+}

@@ -1,0 +1,16 @@
+test_ambiguous_hardware_record_is_rejected (test_lab_inventory.LabInventoryTests.test_ambiguous_hardware_record_is_rejected) ... ok
+test_identity_is_bound_to_nonce_and_machine (test_lab_inventory.LabInventoryTests.test_identity_is_bound_to_nonce_and_machine) ... ok
+test_other_apple_silicon_and_wrong_board_are_rejected (test_lab_inventory.LabInventoryTests.test_other_apple_silicon_and_wrong_board_are_rejected) ... ok
+test_private_evidence_cannot_enter_public_repo_or_overwrite (test_lab_inventory.LabInventoryTests.test_private_evidence_cannot_enter_public_repo_or_overwrite) ... ok
+test_public_and_private_outputs_cannot_be_same_path (test_lab_inventory.LabInventoryTests.test_public_and_private_outputs_cannot_be_same_path) ... usage: lab_inventory.py [-h] --role {build-host,test-machine} --output OUTPUT
+                        [--private-platform-output PRIVATE_PLATFORM_OUTPUT]
+                        [--identity-nonce IDENTITY_NONCE]
+lab_inventory.py: error: Public inventory and private platform capture require different paths
+ok
+test_public_device_names_do_not_publish_adapter_identifiers (test_lab_inventory.LabInventoryTests.test_public_device_names_do_not_publish_adapter_identifiers) ... ok
+test_public_hardware_omits_private_identifiers (test_lab_inventory.LabInventoryTests.test_public_hardware_omits_private_identifiers) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.003s
+
+OK

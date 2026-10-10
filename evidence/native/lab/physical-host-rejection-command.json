@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-10T18:47:58.487657+00:00",
+  "command": [
+    "python3",
+    "scripts/platform/physical_evidence.py",
+    "validate",
+    ".blauos/build/native-lab/physical-rejection/manifest.json",
+    "--bundle-root",
+    ".",
+    "--output",
+    "evidence/native/lab/physical-host-rejection.json"
+  ],
+  "exit_code": 2,
+  "expected_exit_code": 2,
+  "manifest": {
+    "schema_version": 1,
+    "evidence_kind": "physical-xnu-checkpoint",
+    "inventory": {
+      "path": "evidence/native/lab/build-host-inventory-redacted.json",
+      "sha256": "ba798d7578562c89ece8329119d1776a40cd99afb63a96ad631828e5a6568c4e"
+    }
+  },
+  "manifest_sha256": "4e2733a125abef4cd7c2d2bce43c02534b7f903c58282d6933e50ebaa3e6f5a2",
+  "validator_sha256": "b9047b7f9d89daac8e7558ff5171e0aba084b8a8a27ac5edfe419d1c1f58884b",
+  "inventory_sha256": "ba798d7578562c89ece8329119d1776a40cd99afb63a96ad631828e5a6568c4e",
+  "result_sha256": "6efacfa8c8ae066555f9c9a332ed431341edb8d7a67512675deaff41eb19bc4c",
+  "expected_rejection_observed": true
+}
