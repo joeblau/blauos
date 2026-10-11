@@ -25,9 +25,12 @@ work; this virtual target does not satisfy it.
 
 ## Selected experimental backend
 
-The separate [VirtualBuddy EFI diagnostic experiment](platform/virtualbuddy.md)
-reaches kernel-file parsing and a firmware memory-map checkpoint. It deliberately
-stops before XNU handoff; the current image does not boot on that backend.
+The separate [VirtualBuddy ARM64 experiment](platform/virtualbuddy.md) now boots
+source XNU and independent userspace on generic EFI. Its full 20-check test and
+stock device configuration test pass networking and guest-triggered poweroff.
+It includes an experimental virtio text console and a separate local demo VM.
+Interactive USB keyboard input and SSH remain unsupported. These VM results
+do not establish physical M1 boot.
 
 | Input | Immutable identity |
 | --- | --- |

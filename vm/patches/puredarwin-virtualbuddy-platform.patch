@@ -1,0 +1,399 @@
+diff --git a/src/Kernel/Extensions/IOVirtIOFamily/IOVirtIOTransport.cpp b/src/Kernel/Extensions/IOVirtIOFamily/IOVirtIOTransport.cpp
+index 07123e4..5f93bf7 100644
+--- a/src/Kernel/Extensions/IOVirtIOFamily/IOVirtIOTransport.cpp
++++ b/src/Kernel/Extensions/IOVirtIOFamily/IOVirtIOTransport.cpp
+@@ -178,6 +178,13 @@ IOVirtIOTransport::attach(IOPCIDevice *pci)
+ 
+     // VIRTIO 1.1 sec 3.1.1 device initialization handshake.
+     w8(fCommonCfg + kCommonDeviceStatus, 0); // reset
++    OSSynchronizeIO();
++    unsigned resetWait=0;
++    while(r8(fCommonCfg + kCommonDeviceStatus)!=0 && resetWait++<1000) IOSleep(1);
++    if(r8(fCommonCfg + kCommonDeviceStatus)!=0) {
++        IOLog("IOVirtIOTransport: reset did not complete within one second\n");
++        return false;
++    }
+     w8(fCommonCfg + kCommonDeviceStatus, VIRTIO_STATUS_ACKNOWLEDGE);
+     w8(fCommonCfg + kCommonDeviceStatus, VIRTIO_STATUS_ACKNOWLEDGE | VIRTIO_STATUS_DRIVER);
+     return true;
+@@ -209,6 +216,7 @@ IOVirtIOTransport::negotiateFeatures(uint32_t driverFeatureBitsLow)
+ {
+     w32(fCommonCfg + kCommonDriverFeatureSelect, 0);
+     w32(fCommonCfg + kCommonDriverFeature, driverFeatureBitsLow);
++    OSSynchronizeIO();
+     // Word 1 (features 32-63): always ack VIRTIO_F_VERSION_1 (bit 32,
+     // i.e. bit 0 of this word) - any driver using this modern-PCI-
+     // capability transport is implicitly a 1.0 driver, and un-acked
+@@ -217,8 +225,10 @@ IOVirtIOTransport::negotiateFeatures(uint32_t driverFeatureBitsLow)
+     w32(fCommonCfg + kCommonDriverFeatureSelect, 1);
+     w32(fCommonCfg + kCommonDriverFeature, 0x1);
+ 
++    OSSynchronizeIO();
+     w8(fCommonCfg + kCommonDeviceStatus,
+        VIRTIO_STATUS_ACKNOWLEDGE | VIRTIO_STATUS_DRIVER | VIRTIO_STATUS_FEATURES_OK);
++    OSSynchronizeIO();
+     return (r8(fCommonCfg + kCommonDeviceStatus) & VIRTIO_STATUS_FEATURES_OK) != 0;
+ }
+ 
+diff --git a/src/Kernel/Extensions/IOVirtIONet/IOVirtIONet.cpp b/src/Kernel/Extensions/IOVirtIONet/IOVirtIONet.cpp
+index 297aaa0..6aa7cf7 100644
+--- a/src/Kernel/Extensions/IOVirtIONet/IOVirtIONet.cpp
++++ b/src/Kernel/Extensions/IOVirtIONet/IOVirtIONet.cpp
+@@ -12,6 +12,7 @@ enum {
+     // VIRTIO_NET_F_MAC (bit 5): device config's mac[] field is valid and
+     // should be used as the interface's persistent address.
+     VIRTIO_NET_F_MAC = (1u << 5),
++    VIRTIO_NET_F_MTU = (1u << 3),
+ };
+ 
+ bool IOVirtIONet::init(OSDictionary *properties)
+@@ -108,11 +109,23 @@ bool IOVirtIONet::start(IOService *provider)
+         IOLog("IOVirtIONet: failed to find/map virtio-pci capabilities\n");
+         return false;
+     }
+-    if (!fTransport.negotiateFeatures(VIRTIO_NET_F_MAC)) {
++    uint32_t offered = fTransport.deviceFeaturesLow();
++    uint32_t selected = VIRTIO_NET_F_MAC | (offered & VIRTIO_NET_F_MTU);
++    if (!fTransport.negotiateFeatures(selected)) {
+         IOLog("IOVirtIONet: device rejected feature negotiation\n");
+         return false;
+     }
+ 
++    /* This driver advertises the standard 1500-byte MTU. An offered MTU
++     * is a maximum, not an instruction to enable jumbo frames. */
++    if (selected & VIRTIO_NET_F_MTU) {
++        volatile uint8_t *config = fTransport.deviceConfig();
++        if (!config) return false;
++        uint16_t mtu = (uint16_t)config[10] | ((uint16_t)config[11] << 8);
++        IOLog("IOVirtIONet: negotiated device MTU %u (guest MTU 1500)\n", mtu);
++        if (mtu < 1500) return false;
++    }
++
+     if (!readMACAddress()) {
+         IOLog("IOVirtIONet: failed to read MAC from device config\n");
+         return false;
+diff --git a/src/Kernel/Extensions/PDArmPCI/PDArmPCI.cpp b/src/Kernel/Extensions/PDArmPCI/PDArmPCI.cpp
+index 287a7ea..2744220 100644
+--- a/src/Kernel/Extensions/PDArmPCI/PDArmPCI.cpp
++++ b/src/Kernel/Extensions/PDArmPCI/PDArmPCI.cpp
+@@ -2,6 +2,7 @@
+ 
+ #include <IOKit/IOLib.h>
+ #include <libkern/OSByteOrder.h>
++#include <libkern/c++/OSData.h>
+ 
+ #define super IOPCIBridge
+ OSDefineMetaClassAndStructors(PDArmPCI, IOPCIBridge)
+@@ -24,7 +25,15 @@ bool PDArmPCI::start(IOService *provider)
+ {
+     IOLog("PureDarwin PDArmPCI: start provider=%s\n",
+           provider ? provider->getName() : "(null)");
+-    ecamMemory = IODeviceMemory::withRange(kECAMBase, kECAMLength);
++    IOPhysicalAddress base=kECAMBase;IOPhysicalLength length=kECAMLength;
++    OSData *data=OSDynamicCast(OSData,provider->getProperty("blauos,ecam"));
++    if(data) {
++        if(data->getLength()!=2*sizeof(uint64_t))return false;
++        const uint64_t *v=(const uint64_t *)data->getBytesNoCopy();
++        if(!v[0]||v[1]!=0x10000000ULL||v[0]>~(uint64_t)0-v[1])return false;
++        base=v[0];length=v[1];
++    }
++    ecamMemory = IODeviceMemory::withRange(base, length);
+     if (!ecamMemory)
+         return false;
+ 
+@@ -42,7 +51,15 @@ bool PDArmPCI::configure(IOService *provider)
+ {
+     IOLog("PureDarwin PDArmPCI: configure\n");
+     /* QEMU virt's non-prefetchable PCI window is 0x10000000..0x3fffffff. */
+-    addBridgeMemoryRange(0x10000000ULL, 0x30000000ULL, true);
++    uint64_t base=0x10000000ULL,length=0x30000000ULL;
++    OSData *data=OSDynamicCast(OSData,provider->getProperty("blauos,memory-window"));
++    if(data) {
++        if(data->getLength()!=2*sizeof(uint64_t))return false;
++        const uint64_t *v=(const uint64_t *)data->getBytesNoCopy();
++        if(!v[0]||!v[1]||v[0]>~(uint64_t)0-v[1])return false;
++        base=v[0];length=v[1];
++    }
++    addBridgeMemoryRange(base,length,true);
+     return super::configure(provider);
+ }
+ 
+diff --git a/src/Kernel/Extensions/PDArmPlatformExpert/PDArmGIC.cpp b/src/Kernel/Extensions/PDArmPlatformExpert/PDArmGIC.cpp
+index f6772fb..02ea9ce 100644
+--- a/src/Kernel/Extensions/PDArmPlatformExpert/PDArmGIC.cpp
++++ b/src/Kernel/Extensions/PDArmPlatformExpert/PDArmGIC.cpp
+@@ -1,4 +1,6 @@
+ #include "PDArmGIC.h"
++#include <IOKit/IODeviceTreeSupport.h>
++#include <libkern/c++/OSData.h>
+ #include <IOKit/IOLib.h>
+ #include <IOKit/IOMemoryDescriptor.h>
+ 
+@@ -80,8 +82,19 @@ PDArmGIC_init(void)
+ 		return true;
+ 	}
+ 
+-	gGicd = map_phys(GIC_GICD_BASE_PHYS, GIC_GICD_SIZE, &gGicdMap);
+-	gGicr = map_phys(GIC_GICR_BASE_PHYS, GIC_GICR_FRAME_SIZE, &gGicrMap);
++    uint64_t baseD=GIC_GICD_BASE_PHYS,sizeD=GIC_GICD_SIZE;
++    uint64_t baseR=GIC_GICR_BASE_PHYS,sizeR=GIC_GICR_FRAME_SIZE;
++    IORegistryEntry *root=IORegistryEntry::fromPath("/",gIODTPlane);
++    if(root) {
++        OSData *data=OSDynamicCast(OSData,root->getProperty("blauos,gic"));
++        if(data && data->getLength()==4*sizeof(uint64_t)) {
++            const uint64_t *v=(const uint64_t *)data->getBytesNoCopy();
++            if(v[0]&&v[1]==0x10000&&v[2]&&v[3]>=0x20000) {baseD=v[0];sizeD=v[1];baseR=v[2];sizeR=0x20000;}
++        }
++        root->release();
++    }
++	gGicd = map_phys(baseD, sizeD, &gGicdMap);
++	gGicr = map_phys(baseR, sizeR, &gGicrMap);
+ 	if (gGicd == NULL || gGicr == NULL) {
+ 		IOLog("PDArmGIC: failed to map GIC (gicd=%p gicr=%p)\n", gGicd, gGicr);
+ 		return false;
+diff --git a/src/Kernel/xnu/osfmk/arm64/genassym.c b/src/Kernel/xnu/osfmk/arm64/genassym.c
+index 60b463b..a14219c 100644
+--- a/src/Kernel/xnu/osfmk/arm64/genassym.c
++++ b/src/Kernel/xnu/osfmk/arm64/genassym.c
+@@ -298,6 +298,7 @@ main(int     argc,
+ 	DECLARE("BA_MEM_SIZE", offsetof(struct boot_args, memSize));
+ 	DECLARE("BA_TOP_OF_KERNEL_DATA", offsetof(struct boot_args, topOfKernelData));
+ 	DECLARE("BA_BOOT_FLAGS", offsetof(struct boot_args, bootFlags));
++	DECLARE("BA_MACHINE_TYPE", offsetof(struct boot_args, machineType));
+ 	DECLARE("BA_VIDEO_BASE", offsetof(struct boot_args, Video.v_baseAddr));
+ 	DECLARE("BA_VIDEO_ROWBYTES", offsetof(struct boot_args, Video.v_rowBytes));
+ 
+diff --git a/src/Kernel/xnu/osfmk/arm64/sleh.c b/src/Kernel/xnu/osfmk/arm64/sleh.c
+index b38b130..0e6631f 100644
+--- a/src/Kernel/xnu/osfmk/arm64/sleh.c
++++ b/src/Kernel/xnu/osfmk/arm64/sleh.c
+@@ -1442,6 +1442,14 @@ handle_user_abort(arm_saved_state_t *state, uint32_t esr, vm_offset_t fault_addr
+ 		exc |= EXC_PTRAUTH_BIT;
+ 	}
+ #endif /* __has_feature(ptrauth_calls) */
++#if defined(QEMUVIRT)
++	unsigned int fault_trace=0;
++	if(PE_parse_boot_argn("blauos_fault_trace",&fault_trace,sizeof(fault_trace)) && fault_trace)
++		kprintf("BlauOS user fault: pc=0x%llx sp=0x%llx esr=0x%x far=0x%llx code=0x%llx\n",
++		    (unsigned long long)get_saved_state_pc(state),
++		    (unsigned long long)get_saved_state_sp(state),esr,
++		    (unsigned long long)fault_addr,(unsigned long long)codes[0]);
++#endif
+ 	exception_triage(exc, codes, numcodes);
+ 	__builtin_unreachable();
+ }
+diff --git a/src/Kernel/xnu/osfmk/arm64/start.s b/src/Kernel/xnu/osfmk/arm64/start.s
+index e6ccfa6..584ac2e 100644
+--- a/src/Kernel/xnu/osfmk/arm64/start.s
++++ b/src/Kernel/xnu/osfmk/arm64/start.s
+@@ -81,6 +81,41 @@
+  * everywhere it is used below. Bisects the window between the "E0" mark at
+  * start_first_cpu and the "M0" mark before the SCTLR_EL1 write. */
+ .macro PD_MARK ch
++#if defined(QEMUVIRT)
++	/* Explicit BlauOS EFI profile: bounded pre-MMU virtio TX checkpoint.
++	 * Boot args allocation is one EFI page; private extension at +0x800.
++	 * x9-x11 are dead at these checkpoint sites. */
++	ldr w9, [x20, BA_MACHINE_TYPE]
++	movz w10, #0x4c41
++	movk w10, #0x5642, lsl #16
++	cmp w9, w10
++	b.ne 9f
++	mrs x9, sctlr_el1
++	tbnz x9, #0, 9f
++	ldr x9, [x20, #0x800]
++	cbz x9, 9f
++	mov w11, #\ch
++	strb w11, [x9, #0x300]
++	dsb oshst
++	ldrh w11, [x9, #0x102]
++	add w11, w11, #1
++	strh w11, [x9, #0x102]
++	dsb oshst
++	ldr x10, [x20, #0x808]
++	mov w11, #1
++	strh w11, [x10]
++	movz w10, #0x10, lsl #16
++8:
++	dsb oshld
++	ldrh w11, [x9, #0x202]
++	ldrh w9, [x9, #0x102]
++	cmp w11, w9
++	b.eq 9f
++	ldr x9, [x20, #0x800]
++	subs w10, w10, #1
++	b.ne 8b
++9:
++#endif
+ #if defined(BCM2837)
+ 	movz	x9, #0x3F20, lsl #16
+ 	movk	x9, #0x1000
+@@ -555,8 +590,12 @@ start_cpu:
+ 	.globl EXT(start_first_cpu)
+ LEXT(start_first_cpu)
+ 
++	mov x20, x0
++	PD_MARK 'E'
++
+ 	// Unlock the core for debugging
+ 	msr		OSLAR_EL1, xzr
++	PD_MARK 'L'
+ 	msr		DAIFSet, #(DAIFSC_ALL)				// Disable all interrupts
+ 
+ #if defined(BCM2837)
+diff --git a/src/Kernel/xnu/osfmk/console/serial_console.c b/src/Kernel/xnu/osfmk/console/serial_console.c
+index 4e37a89..71c72e6 100644
+--- a/src/Kernel/xnu/osfmk/console/serial_console.c
++++ b/src/Kernel/xnu/osfmk/console/serial_console.c
+@@ -140,12 +140,17 @@ SECURITY_READ_ONLY_EARLY(struct console_ops) cons_ops[] = {
+ 
+ SECURITY_READ_ONLY_EARLY(uint32_t) nconsops = (sizeof cons_ops / sizeof cons_ops[0]);
+ 
+-#if __x86_64__
++#if __x86_64__ || defined(QEMUVIRT)
++/* VIRT changes from its early serial console to a late virtio framebuffer. */
+ uint32_t cons_ops_index = VC_CONS_OPS;
+ #else
+ SECURITY_READ_ONLY_LATE(uint32_t) cons_ops_index = VC_CONS_OPS;
+ #endif
+ 
++#if defined(QEMUVIRT)
++boolean_t virtio_video_console_active = FALSE;
++#endif
++
+ LCK_GRP_DECLARE(console_lck_grp, "console");
+ 
+ // NMI static variables
+@@ -338,12 +343,14 @@ _cnputs(char * c, int size)
+ #if defined(QEMUVIRT)
+ 	/* QEMU virt has no video backend. Avoid the early KC callback table until
+ 	 * its function pointers have been fixed up by the VM runtime. */
+-	(void)idx;
+ 	while (size-- > 0) {
+-		if (*c == '\n') {
+-			_serial_putc(0, 0, '\r');
++		if (virtio_video_console_active && idx == VC_CONS_OPS) {
++			if (*c == '\n') vcputc(0, 0, '\r');
++			vcputc(0, 0, *c++);
++		} else {
++			if (*c == '\n') _serial_putc(0, 0, '\r');
++			_serial_putc(0, 0, *c++);
+ 		}
+-		_serial_putc(0, 0, *c++);
+ 	}
+ 	return;
+ #endif
+diff --git a/src/Kernel/xnu/osfmk/console/serial_general.c b/src/Kernel/xnu/osfmk/console/serial_general.c
+index 34ba2b4..3603dc2 100644
+--- a/src/Kernel/xnu/osfmk/console/serial_general.c
++++ b/src/Kernel/xnu/osfmk/console/serial_general.c
+@@ -107,6 +107,10 @@ switch_to_video_console(void)
+ {
+ 	int old_cons_ops = cons_ops_index;
+ 	cons_ops_index = VC_CONS_OPS;
++#if defined(QEMUVIRT)
++	extern boolean_t virtio_video_console_active;
++	virtio_video_console_active = TRUE;
++#endif
+ 	return old_cons_ops;
+ }
+ 
+diff --git a/src/Kernel/xnu/pexpert/arm/pe_init.c b/src/Kernel/xnu/pexpert/arm/pe_init.c
+index 6f48f98..3d88dac 100644
+--- a/src/Kernel/xnu/pexpert/arm/pe_init.c
++++ b/src/Kernel/xnu/pexpert/arm/pe_init.c
+@@ -85,6 +85,13 @@ static void
+ check_for_panic_log(void)
+ {
+ #ifdef PLATFORM_PANIC_LOG_PADDR
++#if defined(QEMUVIRT)
++	/* The QEMU reserved panic page is outside this EFI VM's RAM. */
++	DTEntry root;const void *flag=NULL;unsigned int length=0;
++	if(SecureDTLookupEntry(NULL,"/",&root)==kSuccess &&
++	   SecureDTGetProperty(root,"blauos,virtualbuddy",&flag,&length)==kSuccess &&
++	   length==sizeof(uint32_t) && *(const uint32_t *)flag==1) return;
++#endif
+ 	gPanicBase = ml_io_map_wcomb(PLATFORM_PANIC_LOG_PADDR, PLATFORM_PANIC_LOG_SIZE);
+ 	panic_text_len = PLATFORM_PANIC_LOG_SIZE - sizeof(struct embedded_panic_header);
+ 	gPanicSize = PLATFORM_PANIC_LOG_SIZE;
+diff --git a/src/Kernel/xnu/pexpert/arm/pe_serial.c b/src/Kernel/xnu/pexpert/arm/pe_serial.c
+index f2fe1b9..c85c21d 100644
+--- a/src/Kernel/xnu/pexpert/arm/pe_serial.c
++++ b/src/Kernel/xnu/pexpert/arm/pe_serial.c
+@@ -828,6 +828,49 @@ SECURITY_READ_ONLY_LATE(static struct pe_serial_functions) vmapple_uart_serial_f
+ 
+ /*****************************************************************************/
+ 
++#if defined(QEMUVIRT)
++/* Optional modern virtio console prepared by the explicit EFI VM profile.
++ * Queue memory is inside the boot-info allocation covered by topOfKernelData.
++ * Only one descriptor is outstanding; transmit waits are bounded. */
++static volatile uint8_t *vb_console_ring;
++static volatile uint16_t *vb_console_notify;
++static uint64_t vb_console_ring_phys;
++static uint16_t vb_console_sent;
++static bool vb_console_failed;
++static void vb_console_init(void) { }
++static int vb_console_ready(void) { return 1; }
++static int vb_console_rx_ready(void) { return 0; }
++static int vb_console_rx(void) { return -1; }
++static void vb_console_tx(int c) {
++	if (!vb_console_ring || vb_console_failed) return;
++	vb_console_ring[0x300]=(uint8_t)c;
++	*(volatile uint64_t *)(vb_console_ring+0)=vb_console_ring_phys+0x300;
++	*(volatile uint32_t *)(vb_console_ring+8)=1;
++	*(volatile uint16_t *)(vb_console_ring+12)=0;
++	*(volatile uint16_t *)(vb_console_ring+14)=0;
++	*(volatile uint16_t *)(vb_console_ring+0x104+2*(vb_console_sent%8))=0;
++	__asm__ volatile("dsb oshst":::"memory");
++	vb_console_sent++;
++	*(volatile uint16_t *)(vb_console_ring+0x102)=vb_console_sent;
++	__asm__ volatile("dsb oshst":::"memory");
++	*vb_console_notify=1;
++	uint64_t start,now,freq;
++	__asm__ volatile("mrs %0,cntvct_el0":"=r"(start));
++	__asm__ volatile("mrs %0,cntfrq_el0":"=r"(freq));
++	do {
++		__asm__ volatile("dsb oshld":::"memory");
++		if (*(volatile uint16_t *)(vb_console_ring+0x202)==vb_console_sent) return;
++		__asm__ volatile("mrs %0,cntvct_el0":"=r"(now));
++	} while(now-start<freq/10);
++	vb_console_failed=true;
++}
++SECURITY_READ_ONLY_LATE(static struct pe_serial_functions) vb_console_functions={
++	.uart_init=vb_console_init,.uart_set_baud_rate=NULL,
++	.tr0=vb_console_ready,.td0=vb_console_tx,
++	.rr0=vb_console_rx_ready,.rd0=vb_console_rx
++};
++#endif
++
+ static void
+ register_serial_functions(struct pe_serial_functions *fns)
+ {
+@@ -857,6 +900,26 @@ serial_init(void)
+ 		return 1;
+ 	}
+ 
++#if defined(QEMUVIRT)
++	DTEntry vb_root;const void *vb_flag=NULL;unsigned int vb_length=0;
++	if (SecureDTLookupEntry(NULL,"/",&vb_root)==kSuccess &&
++	    SecureDTGetProperty(vb_root,"blauos,virtualbuddy",&vb_flag,&vb_length)==kSuccess &&
++	    vb_length==sizeof(uint32_t) && *(const uint32_t *)vb_flag==1) {
++		const void *vb_data=NULL;
++		if (SecureDTGetProperty(vb_root,"blauos,virtio-console",&vb_data,&vb_length)!=kSuccess ||
++		    vb_length!=4*sizeof(uint64_t)) return 0;
++		const uint64_t *v=vb_data;
++		if(!v[0]||!v[1]||!v[2]||v[3]!=0x4000||(v[2]&0x3fff))return 0;
++		vb_console_ring_phys=v[2];
++		vb_console_ring=(volatile uint8_t *)ml_static_ptovirt(v[2]);
++		vb_console_notify=(volatile uint16_t *)ml_io_map(v[1],sizeof(uint16_t));
++		if(!vb_console_ring||!vb_console_notify)return 0;
++		vb_console_sent=*(volatile uint16_t *)(vb_console_ring+0x102);
++		vb_console_failed=false;
++		register_serial_functions(&vb_console_functions);uart_initted=1;return 1;
++	}
++#endif
++
+ 	dccmode = 0;
+ 	if (PE_parse_boot_argn("dcc", &dccmode, sizeof(dccmode))) {
+ 		register_serial_functions(&dcc_serial_functions);

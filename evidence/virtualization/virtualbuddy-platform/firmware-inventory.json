@@ -1,0 +1,77 @@
+{
+  "madt": [
+    {
+      "type": 11,
+      "size": 80,
+      "hex": "0b50000000000000000000000100000000000000170000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "gicr_base": "0x0",
+      "mpidr": "0x0"
+    },
+    {
+      "type": 12,
+      "size": 24,
+      "hex": "0c1800000000000000000010000000000000000003000000",
+      "gicd_base": "0x10000000",
+      "gic_version": 3
+    },
+    {
+      "type": 13,
+      "size": 24,
+      "hex": "0d180000000000000000ff1f000000000000000080008000"
+    },
+    {
+      "type": 14,
+      "size": 16,
+      "hex": "0e100000000001100000000000000200",
+      "gicr_base": "0x10010000",
+      "gicr_size": "0x20000"
+    }
+  ],
+  "tables": {
+    "ACPI-DSDT.bin": {
+      "sha256": "2f9492da4331aa4ad280027204cfae7e03994dd3fcbb25ed7bf675826e0dc35b",
+      "bytes": 830
+    },
+    "ACPI-RSDP.bin": {
+      "sha256": "7d9ead6f55ce5edae4d90590198ae9cb578aae9e82f68b2db95d6d440fceb6d0",
+      "bytes": 36
+    },
+    "ACPI-XSDT.bin": {
+      "sha256": "e3f6f916aa82704f64326a42fb0f8fe8fc3eef34d69d3f5db6bd4704a193b8d2",
+      "bytes": 68
+    },
+    "ACPI-MCFG.bin": {
+      "sha256": "e9757b31f2f51a44e56af79216438e2c1c4750cde64ec658fbba301bb9515b2a",
+      "bytes": 60
+    },
+    "EFI-MEM.bin": {
+      "sha256": "d4c9eff3b757394808228cc03ae16185aedc0a612c82e7ddd207c097ead8e115",
+      "bytes": 1392
+    },
+    "ACPI-APIC.bin": {
+      "sha256": "ceb448f1a9a51410750508a099604bf3732d2280e0f7c5dbbd75996179bdfce4",
+      "bytes": 188
+    },
+    "ACPI-FACP.bin": {
+      "sha256": "8f3869bf13abeda3ec2baca0fb4908c3cc63b8fae1346722e3fd011740e26bb7",
+      "bytes": 276
+    },
+    "ACPI-GTDT.bin": {
+      "sha256": "ccd35497a4249bec75be67014824245ab32e61160f0b879333a018291cf679e5",
+      "bytes": 104
+    }
+  },
+  "timer": {
+    "secure_el1": 0,
+    "nonsecure_el1": 30,
+    "virtual": 27
+  },
+  "pci_ecam": [
+    {
+      "base": "0x40000000",
+      "segment": 0,
+      "first_bus": 0,
+      "last_bus": 255
+    }
+  ]
+}

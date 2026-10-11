@@ -1,0 +1,12 @@
+{
+  "argv": [
+    "cmake",
+    "--build",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2",
+    "--target",
+    "xnu",
+    "IOVirtIOGPU.kext",
+    "--parallel",
+    "8"
+  ]
+}

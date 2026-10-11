@@ -1,0 +1,634 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 99fb2e8..a3a6ca0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -58,6 +58,10 @@ set(SOURCES
+   src/serial.c
+ )
+ 
++option(XNU_LOADER_VIRTUALBUDDY "Boot the separately adapted Virtualization.framework platform" OFF)
++if(XNU_LOADER_VIRTUALBUDDY)
++  list(APPEND SOURCES src/vb_platform.c)
++endif()
+ add_library(loader_objs OBJECT ${SOURCES})
+ 
+ target_include_directories(loader_objs PRIVATE
+@@ -96,9 +100,14 @@ if(XNU_LOADER_EFI_DIAGNOSTICS_ONLY AND (NOT ARCH STREQUAL "aarch64" OR NOT XNU_L
+   message(FATAL_ERROR "EFI diagnostics require the aarch64 QEMU VIRT source profile")
+ endif()
+ 
++if(XNU_LOADER_VIRTUALBUDDY AND (NOT ARCH STREQUAL "aarch64" OR NOT XNU_LOADER_QEMU_VIRT OR XNU_LOADER_EFI_DIAGNOSTICS_ONLY))
++  message(FATAL_ERROR "VirtualBuddy boot requires ARM64 VIRT and diagnostics-only OFF")
++endif()
++
+ target_compile_definitions(loader_objs PRIVATE
+   EFI_FUNCTION_WRAPPER
+   CONFIG_${ARCH}
++  $<$<BOOL:${XNU_LOADER_VIRTUALBUDDY}>:XNU_LOADER_VIRTUALBUDDY>
+   $<$<BOOL:${XNU_LOADER_QEMU_VIRT}>:XNU_LOADER_QEMU_VIRT>
+   $<$<BOOL:${XNU_LOADER_EFI_DIAGNOSTICS_ONLY}>:XNU_LOADER_EFI_DIAGNOSTICS_ONLY>
+ )
+diff --git a/include/console.h b/include/console.h
+index 1efb324..298abc1 100644
+--- a/include/console.h
++++ b/include/console.h
+@@ -6,7 +6,7 @@
+ VOID log_info(CONST CHAR16 *fmt, ...);
+ VOID log_error(CONST CHAR16 *fmt, ...);
+ 
+-#if defined(XNU_LOADER_EFI_DIAGNOSTICS_ONLY)
++#if defined(XNU_LOADER_EFI_DIAGNOSTICS_ONLY) || defined(XNU_LOADER_VIRTUALBUDDY)
+ VOID diagnostic_log_init(EFI_HANDLE image);
+ VOID diagnostic_log_close(VOID);
+ #endif
+diff --git a/include/vb_platform.h b/include/vb_platform.h
+new file mode 100644
+index 0000000..e74e6fb
+--- /dev/null
++++ b/include/vb_platform.h
+@@ -0,0 +1,13 @@
++#ifndef VB_PLATFORM_H
++#define VB_PLATFORM_H
++#include "common.h"
++typedef struct {
++  UINT64 ram_base, ram_end, gicd_base, gicr_base, gicr_size, ecam_base;
++  UINT64 pci_memory_base, pci_memory_size, console_common, console_notify, console_queue;
++  UINT32 timer_irq, first_bus, last_bus;
++} VBPlatform;
++extern VBPlatform gVB;
++EFI_STATUS vb_discover(AppContext *ctx);
++EFI_STATUS vb_console_prepare(AppContext *ctx);
++VOID vb_console_putc(CHAR8 c);
++#endif
+diff --git a/src/app.c b/src/app.c
+index 6fd785a..11b713e 100644
+--- a/src/app.c
++++ b/src/app.c
+@@ -19,7 +19,7 @@ EFI_STATUS app_init(AppContext *ctx, EFI_HANDLE image, EFI_SYSTEM_TABLE *st) {
+   /* Bring up COM3 @ 115200 before any logging so serial captures the full
+    * boot on real hardware (where there is no EFI console to read). */
+   serial_init();
+-#if defined(XNU_LOADER_EFI_DIAGNOSTICS_ONLY)
++#if defined(XNU_LOADER_EFI_DIAGNOSTICS_ONLY) || defined(XNU_LOADER_VIRTUALBUDDY)
+   diagnostic_log_init(image);
+ #endif
+ 
+diff --git a/src/boot.c b/src/boot.c
+index c9d56c2..68d4761 100644
+--- a/src/boot.c
++++ b/src/boot.c
+@@ -1,3 +1,6 @@
++#if defined(XNU_LOADER_VIRTUALBUDDY)
++#include "vb_platform.h"
++#endif
+ #include "boot.h"
+ #include "console.h"
+ #include "devtree.h"
+@@ -967,6 +970,15 @@ EFI_STATUS arm64_boot_build_args(
+   args->memSize = mem_size;
+   args->topOfKernelData = top_of_kernel_data;
+   args->machineType = 0; /* unused by this kernel's pe_arm_init path */
++#if defined(XNU_LOADER_VIRTUALBUDDY)
++  /* Private experimental ABI, only for the matching source-built kernel.
++   * The public ARM boot_args prefix is unchanged; this allocation is 4 KiB. */
++  _Static_assert(sizeof(arm64_boot_args) <= 0x800, "boot args overlap VM extension");
++  args->machineType = 0x56424c41;
++  UINT64 *early_console = (VOID *)((UINT8 *)args + 0x800);
++  early_console[0] = gVB.console_queue;
++  early_console[1] = gVB.console_notify;
++#endif
+   args->deviceTreeP = device_tree_phys;
+   args->deviceTreeLength = device_tree_len;
+   args->bootFlags = 0;
+diff --git a/src/console.c b/src/console.c
+index 67328e3..4dcbf2b 100644
+--- a/src/console.c
++++ b/src/console.c
+@@ -2,7 +2,7 @@
+ #include "serial.h"
+ #include <stdarg.h>
+ 
+-#if defined(XNU_LOADER_EFI_DIAGNOSTICS_ONLY)
++#if defined(XNU_LOADER_EFI_DIAGNOSTICS_ONLY) || defined(XNU_LOADER_VIRTUALBUDDY)
+ #include "fileio.h"
+ 
+ static EFI_FILE_PROTOCOL *diagnostic_file;
+@@ -78,7 +78,7 @@ static VOID log_emit(CONST CHAR16 *fmt, va_list args) {
+     uefi_call_wrapper(ST->ConOut->OutputString, 2, ST->ConOut, buf);
+ 
+   serial_put16(buf);
+-#if defined(XNU_LOADER_EFI_DIAGNOSTICS_ONLY)
++#if defined(XNU_LOADER_EFI_DIAGNOSTICS_ONLY) || defined(XNU_LOADER_VIRTUALBUDDY)
+   diagnostic_append(buf);
+ #endif
+ }
+diff --git a/src/devtree.c b/src/devtree.c
+index b6dd77a..a715872 100644
+--- a/src/devtree.c
++++ b/src/devtree.c
+@@ -1,3 +1,6 @@
++#if defined(XNU_LOADER_VIRTUALBUDDY)
++#include "vb_platform.h"
++#endif
+ #include "devtree.h"
+ #include "console.h"
+ #include "app.h"
+@@ -1067,14 +1070,20 @@ EFI_STATUS dt_build(
+    * these unconditionally and panics if either is missing; gDramBase/
+    * gDramSize feed real_avail_end/pmap accounting downstream.
+    */
+-#if defined(XNU_LOADER_QEMU_VIRT)
++#if defined(XNU_LOADER_VIRTUALBUDDY)
++  #define XNU_LOADER_DRAM_BASE gVB.ram_base
++#elif defined(XNU_LOADER_QEMU_VIRT)
+   #define XNU_LOADER_DRAM_BASE 0x40000000ULL
+ #else
+   #define XNU_LOADER_DRAM_BASE 0ULL
+ #endif
+   {
+     UINT64 dram_base = XNU_LOADER_DRAM_BASE;
++#if defined(XNU_LOADER_VIRTUALBUDDY)
++    UINT64 dram_size = gVB.ram_end - gVB.ram_base;
++#else
+     UINT64 dram_size = app_detect_physical_memory_size(ctx);
++#endif
+     dt_prop(ctx, chosen, "dram-base", &dram_base, sizeof(dram_base));
+     dt_prop(ctx, chosen, "dram-size", &dram_size, sizeof(dram_size));
+   }
+@@ -1309,9 +1318,14 @@ EFI_STATUS dt_build(
+ #if defined(XNU_LOADER_QEMU_VIRT)
+   dt_prop_str(ctx, armio, "device_type", "qemuvirt-io");
+   {
++#if defined(XNU_LOADER_VIRTUALBUDDY)
++    UINT64 ranges[3] = {0, gVB.gicd_base, 0x10000000ULL};
++#else
+     UINT64 ranges[3] = { 0, 0x08000000ULL, 0x08000000ULL };
++#endif
+     dt_prop(ctx, armio, "ranges", ranges, sizeof(ranges));
+   }
++#if !defined(XNU_LOADER_VIRTUALBUDDY)
+   {
+     DeviceTreeNode *uart0 = dt_create_node(ctx);
+     dt_prop_str(ctx, uart0, "name", "uart0");
+@@ -1319,6 +1333,7 @@ EFI_STATUS dt_build(
+     dt_prop(ctx, uart0, "reg", uart_reg, sizeof(uart_reg));
+     dt_add_child(ctx, armio, uart0);
+   }
++#endif
+ #else
+   dt_prop_str(ctx, armio, "device_type", "bcm2837-io");
+   {
+@@ -1341,12 +1356,30 @@ EFI_STATUS dt_build(
+ #endif
+ #endif
+ 
++#if defined(XNU_LOADER_VIRTUALBUDDY)
++  {
++    UINT64 ecam[2]={gVB.ecam_base,0x10000000ULL};
++    UINT64 window[2]={gVB.pci_memory_base,gVB.pci_memory_size};
++    dt_prop(ctx,pci,"blauos,ecam",ecam,sizeof(ecam));
++    dt_prop(ctx,pci,"blauos,memory-window",window,sizeof(window));
++  }
++#endif
++
+   DeviceTreeNode *root = dt_create_node(ctx);
+   dt_prop_str(ctx, root, "name", "device-tree");
+   /* IOKit matches the platform driver (AppleI386GenericPlatform) on these two
+    * properties being present on the root node. Without them the entire IOKit
+    * driver cascade fails to start and XNU hangs waiting for the root device. */
+   dt_prop_str(ctx, root, "compatible", "ACPI");
++#if defined(XNU_LOADER_VIRTUALBUDDY)
++  dt_prop_u32(ctx,root,"blauos,virtualbuddy",1);
++  {
++    UINT64 gic[4]={gVB.gicd_base,0x10000ULL,gVB.gicr_base,gVB.gicr_size};
++    UINT64 console[4]={gVB.console_common,gVB.console_notify,gVB.console_queue,0x4000};
++    dt_prop(ctx,root,"blauos,gic",gic,sizeof(gic));
++    if(gVB.console_queue)dt_prop(ctx,root,"blauos,virtio-console",console,sizeof(console));
++  }
++#endif
+   dt_prop_str(ctx, root, "model", "ACPI");
+   dt_add_child(ctx, root, chosen);
+ 
+diff --git a/src/jump.S b/src/jump.S
+index d3bbcc1..53d95c8 100644
+--- a/src/jump.S
++++ b/src/jump.S
+@@ -24,6 +24,37 @@
+  * did nothing useful when actually running at EL2: EL2's own MMU
+  * (SCTLR_EL2.M) was still on and still faulting.
+  */
++#if defined(XNU_LOADER_VIRTUALBUDDY)
++/* Bounded handoff checkpoints; x9-x11 hold entry, boot args and stack. */
++.macro VB_JUMP_MARK ch
++    mov w14, #\ch
++    VB_JUMP_BYTE
++.endm
++.macro VB_JUMP_BYTE
++    ldr x12, [x10, #0x800]
++    cbz x12, 9f
++    strb w14, [x12, #0x300]
++    dsb oshst
++    ldrh w14, [x12, #0x102]
++    add w14, w14, #1
++    strh w14, [x12, #0x102]
++    dsb oshst
++    ldr x13, [x10, #0x808]
++    mov w14, #1
++    strh w14, [x13]
++    movz w15, #0x10, lsl #16
++8:
++    dsb oshld
++    ldrh w16, [x12, #0x202]
++    ldrh w17, [x12, #0x102]
++    cmp w16, w17
++    b.eq 9f
++    subs w15, w15, #1
++    b.ne 8b
++9:
++.endm
++#endif
++
+ .text
+ .globl jump_to_xnu
+ .type jump_to_xnu, @function
+@@ -34,6 +65,14 @@ jump_to_xnu:
+     mov x10, x1     /* stash boot_args_phys the same way, ahead of clobbering x1 below */
+     mov x11, x2     /* stash stack_top */
+ 
++#if defined(XNU_LOADER_VIRTUALBUDDY)
++    VB_JUMP_MARK 'J'
++    msr tpidr_el1, x10
++    adrp x12, vb_exception_vectors
++    add x12, x12, :lo12:vb_exception_vectors
++    msr vbar_el1, x12
++    isb
++#endif
+     msr daifset, #0xf
+ 
+     mrs x0, CurrentEL
+@@ -79,10 +118,52 @@ jump_to_xnu:
+     msr sctlr_el1, x1
+     isb
+ 
++#if defined(XNU_LOADER_VIRTUALBUDDY)
++    VB_JUMP_MARK 'K'
++#endif
+     mov sp, x11
+     mov x0, x10     /* boot_args_phys */
+     br x9
+ 
++#if defined(XNU_LOADER_VIRTUALBUDDY)
++/* Pre-kernel exception evidence. XNU installs its own VBAR immediately. */
++.balign 2048
++vb_exception_vectors:
++.rept 16
++    b vb_exception_handler
++.balign 128
++.endr
++vb_exception_handler:
++    msr daifset, #0xf
++    mrs x10, tpidr_el1
++    VB_JUMP_MARK '!'
++    mrs x19, esr_el1
++    bl vb_exception_hex
++    VB_JUMP_MARK ':'
++    mrs x19, elr_el1
++    bl vb_exception_hex
++    VB_JUMP_MARK ':'
++    mrs x19, far_el1
++    bl vb_exception_hex
++    VB_JUMP_MARK '!'
++1:  wfe
++    b 1b
++vb_exception_hex:
++    mov x20, #16
++2:
++    lsr x18, x19, #60
++    lsl x19, x19, #4
++    cmp w18, #10
++    b.lt 3f
++    add w14, w18, #(0x41-10)
++    b 4f
++3:  add w14, w18, #0x30
++4:  VB_JUMP_BYTE
++    subs x20, x20, #1
++    b.ne 2b
++    ret
++#endif
++
+ .section .note.GNU-stack,"",%progbits
+ 
+ #else
+diff --git a/src/main.c b/src/main.c
+index 086ed4c..5b2b572 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -6,6 +6,9 @@
+ #include "macho.h"
+ #include "jump.h"
+ #include "serial.h"
++#if defined(XNU_LOADER_VIRTUALBUDDY)
++#include "vb_platform.h"
++#endif
+ 
+ static VOID   *g_jump_entry;
+ static UINT64  g_jump_args;
+@@ -178,7 +181,9 @@ EFI_STATUS AllocKernelMemRegion(AppContext *ctx, UINT64 span_bytes, UINT64 virt_
+                                (XNU_BOOTINFO_END - XNU_BOOTINFO_BASE) +
+                                XNU_BOOTINFO_ALIGN +
+                                EFI_PAGE_SIZE - 1) >> EFI_PAGE_SHIFT);
+-#if defined(XNU_LOADER_QEMU_VIRT)
++#if defined(XNU_LOADER_VIRTUALBUDDY)
++  #define XNU_LOADER_RAM_BASE gVB.ram_base
++#elif defined(XNU_LOADER_QEMU_VIRT)
+   #define XNU_LOADER_RAM_BASE 0x40000000ULL
+ #else
+   #define XNU_LOADER_RAM_BASE 0ULL
+@@ -278,7 +283,10 @@ static VOID diagnostic_memory_map(AppContext *ctx) {
+   app_free_pool(ctx, map);
+ }
+ 
+-static EFI_STATUS efi_diagnostic_body(EFI_HANDLE image, EFI_SYSTEM_TABLE *st) {
++#endif
++
++#if defined(XNU_LOADER_EFI_DIAGNOSTICS_ONLY) || defined(XNU_LOADER_VIRTUALBUDDY)
++static EFI_STATUS efi_selected_body(EFI_HANDLE image, EFI_SYSTEM_TABLE *st) {
+ #else
+ EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *st) {
+ #endif
+@@ -295,6 +303,10 @@ EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *st) {
+     return status;
+ 
+   log_info(L"XNU EFI loader start\r\n");
++#if defined(XNU_LOADER_VIRTUALBUDDY)
++  status = vb_discover(&ctx);
++  if (EFI_ERROR(status)) return status;
++#endif
+ #if defined(XNU_LOADER_EFI_DIAGNOSTICS_ONLY)
+   log_info(L"BLAUOS EFI DIAGNOSTICS ONLY - XNU handoff disabled\r\n");
+   diagnostic_memory_map(&ctx);
+@@ -511,6 +523,11 @@ EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *st) {
+     return EFI_DEVICE_ERROR;
+   }
+ 
++#if defined(XNU_LOADER_VIRTUALBUDDY)
++  status = vb_console_prepare(&ctx);
++  if (EFI_ERROR(status)) return status;
++#endif
++
+   status = boot_collect_memory_map(&ctx, &boot_state);
+   if (EFI_ERROR(status)) {
+     log_error(L"failed to collect memory map: %r\r\n", status);
+@@ -573,9 +590,13 @@ EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *st) {
+   arm64_boot_args *arm64_args = NULL;
+   {
+     UINT64 arm64_phys_base = ctx.kernel_region_base - XNU_BOOTINFO_ALIGN;
++#if defined(XNU_LOADER_VIRTUALBUDDY)
++    UINT64 arm64_physical_mem_size = gVB.ram_end - arm64_phys_base;
++#else
+     UINT64 arm64_physical_mem_size =
+         (XNU_LOADER_RAM_BASE + app_detect_physical_memory_size(&ctx))
+         - arm64_phys_base;
++#endif
+     status = arm64_boot_build_args(
+         &ctx,
+         cmdline,
+@@ -664,6 +685,11 @@ EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *st) {
+   log_info(L"entry     = 0x%lx\r\n",      (UINT64)(UINTN)host_entry);
+ #endif // VERBOSE_BOOT
+ 
++#if defined(XNU_LOADER_VIRTUALBUDDY)
++  log_info(L"VirtualBuddy: leaving EFI boot services for independently built XNU\r\n");
++  diagnostic_log_close();
++#endif
++
+   /* No logging after this point */
+ #if defined(XNU_LOADER_EFI_DIAGNOSTICS_ONLY)
+   log_info(L"Diagnostic stop: unsupported generic EFI platform; no XNU handoff\r\n");
+@@ -851,17 +877,42 @@ EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *st) {
+   /* Do the copy from a stack we own, clear of the destination. */
+   pd_call_on_stack(stack_top, finish_boot_and_jump, NULL);
+ #else
++#if defined(XNU_LOADER_VIRTUALBUDDY)
++  serial_trace((CONST CHAR8 *)"actual ARM machineType ", arm64_args->machineType);
++  serial_trace((CONST CHAR8 *)"actual ARM console queue ", *(UINT64 *)((UINT8 *)arm64_args+0x800));
++  serial_trace((CONST CHAR8 *)"entry first instruction ", *(UINT32 *)(UINTN)g_jump_entry);
++#endif
+   serial_mark((CONST CHAR8 *)"jumping to kernel");
++#if defined(XNU_LOADER_VIRTUALBUDDY)
++  /* Real ARM cores require data to reach PoC before disabling EFI caches.
++   * QEMU TCG did not expose this missing handoff cache maintenance. */
++  UINT64 ctr;
++  __asm__ volatile("mrs %0, ctr_el0" : "=r"(ctr));
++  UINT64 line = 4ULL << ((ctr >> 16) & 15);
++  const UINT64 ranges[][2] = {
++    {ctx.kernel_region_base, ctx.kernel_region_end},
++    {XNU_BOOTINFO_BASE, XNU_BOOTINFO_END},
++    {stack_base, stack_base + (stack_pages << EFI_PAGE_SHIFT)}
++  };
++  for (UINTN i=0; i<3; i++)
++    for (UINT64 address=ranges[i][0] & ~(line-1); address<ranges[i][1]; address+=line)
++      __asm__ volatile("dc cvac, %0" :: "r"(address) : "memory");
++  __asm__ volatile("dsb sy; ic iallu; dsb sy; isb" ::: "memory");
++#endif
+   jump_to_xnu(g_jump_entry, g_jump_args, g_jump_stack);
+ #endif
+ }
+ 
+-#if defined(XNU_LOADER_EFI_DIAGNOSTICS_ONLY)
++#if defined(XNU_LOADER_EFI_DIAGNOSTICS_ONLY) || defined(XNU_LOADER_VIRTUALBUDDY)
+ EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *st) {
+-  EFI_STATUS status = efi_diagnostic_body(image, st);
++  EFI_STATUS status = efi_selected_body(image, st);
+   if (st && ST == st && st->Hdr.Signature == EFI_SYSTEM_TABLE_SIGNATURE &&
+       st->ConOut && st->BootServices) {
++#if defined(XNU_LOADER_VIRTUALBUDDY)
++    log_info(L"VirtualBuddy boot failed before handoff: %r\r\n", status);
++#else
+     log_info(L"Diagnostic result: %r; XNU was not started.\r\n", status);
++#endif
+     log_info(L"Holding this report for 15 seconds.\r\n");
+     diagnostic_log_close();
+     uefi_call_wrapper(st->BootServices->Stall, 1, 15000000);
+diff --git a/src/serial.c b/src/serial.c
+index 0bbcc32..8d1c9ef 100644
+--- a/src/serial.c
++++ b/src/serial.c
+@@ -81,6 +81,12 @@ static VOID serial_putc(CHAR8 c) {
+   uart_putc(SERIAL_BASE, c);
+ }
+ 
++#elif defined(__aarch64__) && defined(XNU_LOADER_VIRTUALBUDDY)
++#include "vb_platform.h"
++VOID serial_init(VOID) { serial_ready = TRUE; }
++VOID serial_reinit(VOID) { serial_ready = TRUE; }
++static VOID serial_putc(CHAR8 c) { vb_console_putc(c); }
++
+ #elif defined(__aarch64__) && defined(XNU_LOADER_EFI_DIAGNOSTICS_ONLY)
+ 
+ /* Generic EFI firmware provides ConOut, not QEMU's fixed PL011 MMIO.
+diff --git a/src/vb_platform.c b/src/vb_platform.c
+new file mode 100644
+index 0000000..d7b10ac
+--- /dev/null
++++ b/src/vb_platform.c
+@@ -0,0 +1,159 @@
++#include "vb_platform.h"
++#include "app.h"
++#include "console.h"
++
++VBPlatform gVB;
++typedef struct __attribute__((packed)) { CHAR8 sig[4]; UINT32 len; UINT8 rev, sum; CHAR8 rest[26]; } Header;
++static UINT32 u32(CONST VOID *p) { UINT32 v; CopyMem(&v,p,4); return v; }
++static UINT64 u64(CONST VOID *p) { UINT64 v; CopyMem(&v,p,8); return v; }
++static BOOLEAN checksum(CONST VOID *p, UINTN n) { UINT8 sum=0; for (UINTN i=0;i<n;i++) sum+=((CONST UINT8 *)p)[i];return sum==0; }
++static BOOLEAN readable(CONST VOID *p, UINTN size) {
++  UINT64 start=(UINT64)(UINTN)p;
++  return start>=gVB.ram_base && start<=gVB.ram_end && size<=gVB.ram_end-start;
++}
++static BOOLEAN table(Header *h) {
++  return readable(h,36) && h->len>=36 && h->len<=1048576 &&
++         readable(h,h->len) && checksum(h,h->len);
++}
++
++EFI_STATUS vb_discover(AppContext *ctx) {
++  SetMem(&gVB,sizeof(gVB),0);
++  UINTN size=0,key=0,stride=0;UINT32 version=0;EFI_MEMORY_DESCRIPTOR *map=NULL;
++  EFI_STATUS s=uefi_call_wrapper(ctx->bs->GetMemoryMap,5,&size,map,&key,&stride,&version);
++  if (s!=EFI_BUFFER_TOO_SMALL || stride<sizeof(*map) || stride>65536 || size>1048576-stride*8) return EFI_COMPROMISED_DATA;
++  size+=stride*8;UINTN capacity=size;
++  s=app_alloc_pool(ctx,size,(VOID **)&map);if(EFI_ERROR(s))return s;
++  s=uefi_call_wrapper(ctx->bs->GetMemoryMap,5,&size,map,&key,&stride,&version);
++  if(EFI_ERROR(s)||size>capacity||stride<sizeof(*map)||stride>size||size%stride) {app_free_pool(ctx,map);return EFI_COMPROMISED_DATA;}
++  gVB.ram_base=~(UINT64)0;
++  for(UINTN i=0;i<size/stride;i++) {
++    EFI_MEMORY_DESCRIPTOR *d=(VOID *)((UINT8 *)map+i*stride);
++    if(d->Type<1||d->Type>10||d->Type==8||d->NumberOfPages>(~(UINT64)0>>12))continue;
++    UINT64 bytes=d->NumberOfPages<<12;if(d->PhysicalStart>~(UINT64)0-bytes)continue;
++    if(d->PhysicalStart<gVB.ram_base)gVB.ram_base=d->PhysicalStart;
++    if(d->PhysicalStart+bytes>gVB.ram_end)gVB.ram_end=d->PhysicalStart+bytes;
++  }
++  app_free_pool(ctx,map);
++  if(gVB.ram_base>=gVB.ram_end||gVB.ram_end>0x100000000ULL)return EFI_UNSUPPORTED;
++  static CONST EFI_GUID guid=ACPI_20_TABLE_GUID;UINT8 *rsdp=NULL;
++  if(ctx->st->NumberOfTableEntries>128||!ctx->st->ConfigurationTable)return EFI_COMPROMISED_DATA;
++  for(UINTN i=0;i<ctx->st->NumberOfTableEntries;i++) {
++    EFI_CONFIGURATION_TABLE *e=&ctx->st->ConfigurationTable[i];
++    if(!CompareMem(&e->VendorGuid,&guid,sizeof(guid)))rsdp=e->VendorTable;
++  }
++  if(!readable(rsdp,36)||CompareMem(rsdp,"RSD PTR ",8)||rsdp[15]<2||!checksum(rsdp,20)||u32(rsdp+20)<36||u32(rsdp+20)>4096||!readable(rsdp,u32(rsdp+20))||!checksum(rsdp,u32(rsdp+20)))return EFI_UNSUPPORTED;
++  Header *xsdt=(VOID *)(UINTN)u64(rsdp+24);
++  if(!table(xsdt)||CompareMem(xsdt->sig,"XSDT",4)||xsdt->len>36+128*8||(xsdt->len-36)%8)return EFI_COMPROMISED_DATA;
++  Header *madt=NULL,*gtdt=NULL,*mcfg=NULL,*dsdt=NULL;
++  for(UINTN i=0;i<(xsdt->len-36)/8;i++) {
++    Header *h=(VOID *)(UINTN)u64((UINT8 *)xsdt+36+i*8);if(!table(h))return EFI_COMPROMISED_DATA;
++    if(!CompareMem(h->sig,"APIC",4))madt=h;
++    if(!CompareMem(h->sig,"GTDT",4))gtdt=h;
++    if(!CompareMem(h->sig,"MCFG",4))mcfg=h;
++    if(!CompareMem(h->sig,"FACP",4)&&h->len>=148)dsdt=(VOID *)(UINTN)u64((UINT8 *)h+140);
++  }
++  if(!madt||madt->len<44||!gtdt||gtdt->len<72||!mcfg||mcfg->len!=60||!table(dsdt))return EFI_UNSUPPORTED;
++  for(UINTN off=44;off<madt->len;) {
++    UINT8 *p=(UINT8 *)madt+off;if(madt->len-off<2||p[1]<2||p[1]>madt->len-off)return EFI_COMPROMISED_DATA;
++    if(p[0]==12&&p[1]>=24) {if(p[20]!=3)return EFI_UNSUPPORTED;gVB.gicd_base=u64(p+8);}
++    if(p[0]==14&&p[1]>=16) {gVB.gicr_base=u64(p+4);gVB.gicr_size=u32(p+12);}
++    off+=p[1];
++  }
++  gVB.timer_irq=u32((UINT8 *)gtdt+64);
++  gVB.ecam_base=u64((UINT8 *)mcfg+44);gVB.first_bus=((UINT8 *)mcfg)[54];gVB.last_bus=((UINT8 *)mcfg)[55];
++  if(!gVB.gicd_base||!gVB.gicr_base||gVB.gicr_size<0x20000||gVB.timer_irq!=27||gVB.first_bus!=0||gVB.last_bus!=255||((UINT8 *)mcfg)[52]||((UINT8 *)mcfg)[53])return EFI_UNSUPPORTED;
++  /* Select an ACPI _CRS resource buffer containing bus-number and memory
++   * descriptors. This profile rejects translations and malformed bounds. */
++  UINT8 *aml=(UINT8 *)dsdt;
++  for(UINTN i=36;i+10<dsdt->len;i++) {
++    if(CompareMem(aml+i,"_CRS",4)||aml[i+4]!=0x11)continue;
++    UINTN at=i+5;UINT8 first=aml[at++];UINTN extra=first>>6;UINTN pkg=extra?first&15:first&63;
++    if(at+extra>=dsdt->len)continue;
++    for(UINTN j=0;j<extra;j++)pkg|=(UINTN)aml[at++]<<(4+j*8);
++    if(pkg<extra+3||pkg>dsdt->len-(i+5)||aml[at++]!=0x0a)continue;
++    UINTN bytes=aml[at++];if(bytes>dsdt->len-at)continue;
++    UINTN end=at+bytes;BOOLEAN buses=FALSE;
++    while(at<end) {
++      UINT8 tag=aml[at];UINTN n;
++      if(tag&0x80) {if(end-at<3)break;n=3+aml[at+1]+((UINTN)aml[at+2]<<8);}else n=1+(tag&7);
++      if(n>end-at)break;
++      if(tag==0x88&&n==16&&aml[at+3]==2)buses=TRUE;
++      if(buses&&tag==0x87&&n==26&&aml[at+3]==0) {
++        UINT32 lo=u32(aml+at+10),hi=u32(aml+at+14),translation=u32(aml+at+18),length=u32(aml+at+22);
++        if(!translation&&hi>=lo&&(UINT64)hi-lo+1==length&&length) {gVB.pci_memory_base=lo;gVB.pci_memory_size=length;break;}
++      }
++      at+=n;
++    }
++    if(gVB.pci_memory_size)break;
++  }
++  if(!gVB.pci_memory_size)return EFI_UNSUPPORTED;
++  log_info(L"VirtualBuddy profile: RAM 0x%lx..0x%lx GICD 0x%lx GICR 0x%lx size 0x%lx\r\n",gVB.ram_base,gVB.ram_end,gVB.gicd_base,gVB.gicr_base,gVB.gicr_size);
++  log_info(L"VirtualBuddy profile: ECAM 0x%lx PCI memory 0x%lx size 0x%lx timer %u\r\n",gVB.ecam_base,gVB.pci_memory_base,gVB.pci_memory_size,gVB.timer_irq);
++  return EFI_SUCCESS;
++}
++
++/* Early polled console, modern virtio PCI, single-port TX queue only. */
++static volatile UINT8 *common;
++static volatile UINT16 *notify;
++static volatile UINT8 *queue;
++static UINT16 sent;
++static BOOLEAN console_failed;
++static UINT64 bar_address(volatile UINT8 *pci,UINT8 bar) {
++  if(bar>5)return 0;
++  UINT32 value=*(volatile UINT32 *)(pci+0x10+bar*4);if(value&1)return 0;
++  UINT64 base=value&~15U;if((value&6)==4&&bar<5)base|=(UINT64)*(volatile UINT32 *)(pci+0x14+bar*4)<<32;return base;
++}
++static UINT16 r16(volatile UINT8 *p,UINTN off){return *(volatile UINT16 *)(p+off);}
++static UINT32 r32(volatile UINT8 *p,UINTN off){return *(volatile UINT32 *)(p+off);}
++static VOID w16(volatile UINT8 *p,UINTN off,UINT16 v){*(volatile UINT16 *)(p+off)=v;}
++static VOID w32(volatile UINT8 *p,UINTN off,UINT32 v){*(volatile UINT32 *)(p+off)=v;}
++EFI_STATUS vb_console_prepare(AppContext *ctx) {
++  volatile UINT8 *pci=NULL;UINT64 notify_base=0;UINT32 multiplier=0, notify_length=0;
++  for(UINTN dev=0;dev<32;dev++) {
++    volatile UINT8 *p=(VOID *)(UINTN)(gVB.ecam_base+(dev<<15));
++    if(r16(p,0)!=0x1af4||r16(p,2)!=0x1043)continue;
++    UINT8 cap=p[0x34];UINTN hops=0;volatile UINT8 *c=NULL;UINT64 nbase=0;UINT32 mult=0, nlen=0;
++    while(cap>=0x40&&cap<=0xfc&&hops++<48) {
++      UINT8 next=p[cap+1];
++      if(p[cap]==9&&cap<=0xf0&&p[cap+2]>=16&&p[cap+4]<=5) {
++        UINT64 base=bar_address(p,p[cap+4]);UINT32 off=r32(p,cap+8),len=r32(p,cap+12);
++        if(base&&base<=~(UINT64)0-off&&len) {
++          if(p[cap+3]==1&&len>=56)c=(VOID *)(UINTN)(base+off);
++          if(p[cap+3]==2&&p[cap+2]>=20&&cap<=0xec&&len>=2){nbase=base+off;mult=r32(p,cap+16);nlen=len;}
++        }
++      }
++      if(next==cap)break;
++      cap=next;
++    }
++    if(!c||!nbase)continue;
++    w32(c,0,0);UINT32 features0=r32(c,4);w32(c,0,1);UINT32 features1=r32(c,4);
++    if((features0&(1U<<1))||!(features1&1))continue; /* Skip the SPICE multiport device. */
++    pci=p;common=c;notify_base=nbase;multiplier=mult;notify_length=nlen;break;
++  }
++  if(!pci){log_info(L"No single-port virtio console; continuing headless\r\n");return EFI_SUCCESS;}
++  common[20]=0;__asm__ volatile("dsb sy":::"memory");
++  UINTN spins=100000;while(common[20]&&--spins){}if(!spins)return EFI_DEVICE_ERROR;
++  common[20]=1;common[20]=3;w32(common,8,0);w32(common,12,0);w32(common,8,1);w32(common,12,1);
++  common[20]=11;__asm__ volatile("dsb sy":::"memory");if(!(common[20]&8))return EFI_UNSUPPORTED;
++  w16(common,22,1);UINT16 maximum=r16(common,24);if(maximum<8||r16(common,28))return EFI_UNSUPPORTED;
++  EFI_PHYSICAL_ADDRESS physical=XNU_BOOTINFO_BASE+0x8000;
++  EFI_STATUS status=uefi_call_wrapper(ctx->bs->AllocatePages,4,AllocateAddress,EfiLoaderData,4,&physical);if(EFI_ERROR(status))return status;
++  queue=(VOID *)(UINTN)physical;SetMem((VOID *)queue,0x4000,0);w16(queue,0x100,1);
++  w16(common,24,8);*(volatile UINT64 *)(common+32)=physical;*(volatile UINT64 *)(common+40)=physical+0x100;*(volatile UINT64 *)(common+48)=physical+0x200;
++  UINT16 notify_offset=r16(common,30);if(multiplier&&notify_offset>(~(UINT64)0-notify_base)/multiplier)return EFI_COMPROMISED_DATA;
++  if ((UINT64)notify_offset*multiplier > (UINT64)notify_length-2) return EFI_COMPROMISED_DATA;
++  notify=(VOID *)(UINTN)(notify_base+(UINT64)notify_offset*multiplier);
++  w16(common,28,1);w16(pci,4,r16(pci,4)|6);common[20]=15;__asm__ volatile("dsb sy":::"memory");
++  gVB.console_common=(UINT64)(UINTN)common;gVB.console_notify=(UINT64)(UINTN)notify;gVB.console_queue=physical;
++  sent=0;console_failed=FALSE;
++  log_info(L"Virtio console TX prepared common=0x%lx notify=0x%lx queue=0x%lx\r\n",gVB.console_common,gVB.console_notify,gVB.console_queue);
++  return EFI_SUCCESS;
++}
++VOID vb_console_putc(CHAR8 c) {
++  if(!queue||console_failed)return;
++  queue[0x300]=(UINT8)c;*(volatile UINT64 *)(queue+0)=gVB.console_queue+0x300;w32(queue,8,1);w16(queue,12,0);w16(queue,14,0);
++  w16(queue,0x104+2*(sent%8),0);__asm__ volatile("dsb oshst":::"memory");sent++;w16(queue,0x102,sent);__asm__ volatile("dsb oshst":::"memory");*notify=1;
++  UINT64 start,now,freq;__asm__ volatile("mrs %0,cntvct_el0":"=r"(start));__asm__ volatile("mrs %0,cntfrq_el0":"=r"(freq));
++  do {__asm__ volatile("dsb oshld":::"memory");if(r16(queue,0x202)==sent)return;__asm__ volatile("mrs %0,cntvct_el0":"=r"(now));}while(now-start<freq/10);
++  console_failed=TRUE;
++}

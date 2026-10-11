@@ -1,0 +1,158 @@
+{
+  "loader": {
+    "base_revision": "8295cd89c184785896d007d0554b398d22d8e32f",
+    "patches": [
+      {
+        "path": "vm/patches/xnu-loader-efi-diagnostics.patch",
+        "sha256": "7b6ff7a7b8bd1d11dd0a5087ef2c47fc6a6d4c4067711d74a97d58f5e4d3b803"
+      },
+      {
+        "path": "vm/patches/xnu-loader-virtualbuddy-platform.patch",
+        "sha256": "cbf45759903fdc8991ea563db105a932ae4c675f86519ee21e6b96d05c6fd344"
+      }
+    ],
+    "all_modified_files_match_actual_build_input": true,
+    "files": [
+      {
+        "path": "CMakeLists.txt",
+        "sha256": "e6694b49b568d1cc65d0fbe2238356cc81b75e65c4995fd6b3e4535225c3b4bd"
+      },
+      {
+        "path": "include/console.h",
+        "sha256": "6f4a49e43c4a12cd465c38edc5867aab3e130a4440085b1300180b68259a633d"
+      },
+      {
+        "path": "include/vb_platform.h",
+        "sha256": "0a6800c2d7d13465b9ad8521d3aa2b51918044c0f5681dfc71f86395da5ea043"
+      },
+      {
+        "path": "src/app.c",
+        "sha256": "12805ba2815e610030fe80b06ac80c7ff4ea64f38892800224691463190b3c12"
+      },
+      {
+        "path": "src/boot.c",
+        "sha256": "af7f45af099fae6ca68b3f1443eec4c2e4a96debd2c8399bd068c069a0bbacdc"
+      },
+      {
+        "path": "src/console.c",
+        "sha256": "d0149ccff18ac382c789b7643f862094da50f540c04c81f3908d110ef2b9cffa"
+      },
+      {
+        "path": "src/devtree.c",
+        "sha256": "cfc83cfa9be2342acd0a19fb66b141d3f5a22647738042a73f74976bfb334bbd"
+      },
+      {
+        "path": "src/jump.S",
+        "sha256": "eca1a90c46ca391200283e35621e4e12b865af23338097a841cf39e9193299e3"
+      },
+      {
+        "path": "src/main.c",
+        "sha256": "02f1b4eeaa08c2bff35509d1c67f69c4d93421a52915f9a089ad0e387f833952"
+      },
+      {
+        "path": "src/serial.c",
+        "sha256": "3affc2d40940a08e1be1f39d002042b8d1b70be7724a9a36a77060e46d1ff7fb"
+      },
+      {
+        "path": "src/vb_platform.c",
+        "sha256": "86ccdb83654fbdba2fa429f622b84daccd9b4419b7bfdd47cda340e5a84a5524"
+      }
+    ]
+  },
+  "kernel": {
+    "base_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+    "patches": [
+      {
+        "path": "vm/patches/xnu-classic-arm64-protections.patch",
+        "sha256": "371466a26ab5ecb68d7491566900c7239a6987cd7f52ddfdc9865ce81c29ba69"
+      },
+      {
+        "path": "vm/patches/pdarm-qemu-psci-shutdown.patch",
+        "sha256": "b153ed78a06dd06f41dcd6cd36dffb4b17d1ea792fed9ae08535d02c0694f201"
+      },
+      {
+        "path": "vm/patches/puredarwin-virtualbuddy-platform.patch",
+        "sha256": "937d9d31fb3ae2eb417c81f59bc82c43a762183663b635b8e5d3724a1269ad7b"
+      },
+      {
+        "path": "vm/patches/puredarwin-virtualbuddy-console.patch",
+        "sha256": "983625e7ef524aba8a342c45a57fceeddfd349bef719ff064a43af093f4b2400"
+      }
+    ],
+    "all_modified_files_match_actual_build_input": true,
+    "files": [
+      {
+        "path": "src/Kernel/Extensions/IOGraphicsFamily/CMakeLists.txt",
+        "sha256": "ca61ac15e44d8b10efead6b629e443f067852dfcf2bebe1e283b5cea6d5b5c76"
+      },
+      {
+        "path": "src/Kernel/Extensions/IOGraphicsFamily/IOFramebuffer.cpp",
+        "sha256": "4531e66c94410d991d33f338b4d41717357de29a94d04f7604d778d2c12729d6"
+      },
+      {
+        "path": "src/Kernel/Extensions/IOVirtIOFamily/IOVirtIOTransport.cpp",
+        "sha256": "553823ea16c6b84689a6053ef3a7f0c35dd22aafaa26b87c44b70ba4bf70329c"
+      },
+      {
+        "path": "src/Kernel/Extensions/IOVirtIOGPU/CMakeLists.txt",
+        "sha256": "a9d718fa2fb576e2c7c46561f0bd8d63024446a08399b630a7879d4d39b35798"
+      },
+      {
+        "path": "src/Kernel/Extensions/IOVirtIOGPU/IOVirtIOGPU.cpp",
+        "sha256": "6fe44c28046ccac8712d86bc20660dea12de336c8f7f9b37f4eec8f63d3ebab9"
+      },
+      {
+        "path": "src/Kernel/Extensions/IOVirtIONet/IOVirtIONet.cpp",
+        "sha256": "2289918c16c503e339a38e89cf51886b9e6b61530c27ba0f1a0abe93e9145dbf"
+      },
+      {
+        "path": "src/Kernel/Extensions/PDArmPCI/PDArmPCI.cpp",
+        "sha256": "68be7cfa2fcba441e1deca51ba49e38e1c95e9191bd72ff1b1d64ace22af7a91"
+      },
+      {
+        "path": "src/Kernel/Extensions/PDArmPlatformExpert/CMakeLists.txt",
+        "sha256": "931abdbf3d826aed98a73e14266fbbaeaed2838bf224120ca9a44831f989eafa"
+      },
+      {
+        "path": "src/Kernel/Extensions/PDArmPlatformExpert/PDArmGIC.cpp",
+        "sha256": "df97cf1826739174ef00569149d35237e8d69897e7719f6d534dd7fa5beed617"
+      },
+      {
+        "path": "src/Kernel/Extensions/PDArmPlatformExpert/PDArmPlatformExpert.cpp",
+        "sha256": "1eda4b3ee06895407c0c920e99e424b712b16006c88a15cc69e826c5c9dfa99a"
+      },
+      {
+        "path": "src/Kernel/xnu/osfmk/arm64/arm_vm_init.c",
+        "sha256": "3a62f7e26d2ca33adc251b6ed0b133658850ae609d1b562022889b977c509531"
+      },
+      {
+        "path": "src/Kernel/xnu/osfmk/arm64/genassym.c",
+        "sha256": "a3dde6194dc316d7699d7aa4eab6f019746ab756abfeca89421801aa71e77aea"
+      },
+      {
+        "path": "src/Kernel/xnu/osfmk/arm64/sleh.c",
+        "sha256": "d3a792bd8ab7641896e2869ba498959a4b5526a6ecbca8d5ea41d4be0a2214a8"
+      },
+      {
+        "path": "src/Kernel/xnu/osfmk/arm64/start.s",
+        "sha256": "f9d4776a8bbdee7f9d9bf08da3bf8f202d65ac0dda070e41af74cfa5f19ce18a"
+      },
+      {
+        "path": "src/Kernel/xnu/osfmk/console/serial_console.c",
+        "sha256": "c184f2c006520178b5f7e2233b47f17f61344eb386b8c582ab1f8cde3a2c37a8"
+      },
+      {
+        "path": "src/Kernel/xnu/osfmk/console/serial_general.c",
+        "sha256": "b1646f2aff505677a986fe91e8a4bc48e1bb0c5e56aea1a918eb2d19c7ea11ba"
+      },
+      {
+        "path": "src/Kernel/xnu/pexpert/arm/pe_init.c",
+        "sha256": "42fb37344ce443157317af8781e4a98c5631e434bb189d83518913e54186e3a0"
+      },
+      {
+        "path": "src/Kernel/xnu/pexpert/arm/pe_serial.c",
+        "sha256": "ccfcecd2f0205013b747224f349645e11b98efcc89b5c448a98f8f9084fec4bd"
+      }
+    ]
+  }
+}

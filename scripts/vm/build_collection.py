@@ -55,8 +55,9 @@ def build(args):
     if inventory["source_revision"] != pins["puredarwin-vm-next"]:
         raise ValueError("Kext inventory source differs from the locked PureDarwin revision")
     expected = {Path(item["path"]).stem: item for item in inventory["bundles"]}
-    if set(expected) != set(ORDER):
-        raise ValueError("Expected all 13 audited essential kext bundles")
+    order = ORDER + (["IOGraphicsFamily", "IOGOPFramebuffer", "IOVirtIOGPU"] if args.virtualbuddy else [])
+    if set(expected) != set(order):
+        raise ValueError("Inventory must match the selected essential/VirtualBuddy kext profile")
     overrides = {}
     replacement_evidence = []
     for name, bundle, metadata in (("corecrypto", args.corecrypto, args.corecrypto_evidence),
@@ -77,7 +78,7 @@ def build(args):
         replacement_evidence.append({"name": name, "path": str(metadata), "sha256": digest(metadata),
                                      "source_amendments": replacement.get("source_amendments", [])})
     inputs = []
-    for name in ORDER:
+    for name in order:
         path = (args.kext_root / name / (name + ".kext")) if args.kext_root else Path(expected[name]["path"])
         if name == "corecrypto" and args.corecrypto:
             path = args.corecrypto
@@ -146,6 +147,7 @@ def main():
     parser.add_argument("--source", type=Path, default=ROOT / ".blauos/sources/kc-tools")
     parser.add_argument("--kernel", type=Path, required=True, help="Unstripped source-built kernel with its symbol table")
     parser.add_argument("--kernel-sha256", required=True)
+    parser.add_argument("--virtualbuddy", action="store_true", help="Include three audited virtio framebuffer kexts")
     parser.add_argument("--inventory", type=Path, default=ROOT / "evidence/kernel/kexts/result.json")
     parser.add_argument("--kext-root", type=Path, help="Override recorded extension build root for another checkout")
     parser.add_argument("--corecrypto", type=Path, help="Source-built -fno-stack-check corecrypto bundle")

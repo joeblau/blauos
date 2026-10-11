@@ -1,0 +1,5 @@
+HTTP/1.0 200 OK
+Content-Type: text/plain
+Content-Length: 51
+
+BlauOS: XNU, PID 1, shell, runtime and DNS passed.

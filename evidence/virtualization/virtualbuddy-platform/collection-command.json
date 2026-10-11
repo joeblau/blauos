@@ -1,0 +1,456 @@
+{
+  "argv": [
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native-ci/run-2/collection/tools/kc-builder",
+    "-kernel",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/collection-graphics-v11/kernel.development.virt",
+    "-kext",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/IOPCIFamily/IOPCIFamily.kext",
+    "-kext",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/IOStorageFamily/IOStorageFamily.kext",
+    "-kext",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/IONetworkingFamily/IONetworkingFamily.kext",
+    "-kext",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/IOVirtIOFamily/IOVirtIOFamily.kext",
+    "-kext",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/PDArmPlatformExpert/PDArmPlatformExpert.kext",
+    "-kext",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/PDArmPCI/PDArmPCI.kext",
+    "-kext",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/IOVirtIOBlock/IOVirtIOBlock.kext",
+    "-kext",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/IOVirtIONet/IOVirtIONet.kext",
+    "-kext",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/ext4/ext4.kext",
+    "-kext",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/Ext4FileSystemDriver/Ext4FileSystemDriver.kext",
+    "-kext",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/AppleFileSystemDriver/AppleFileSystemDriver.kext",
+    "-kext",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/corecrypto/corecrypto.kext",
+    "-kext",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/pthread/pthread.kext",
+    "-kext",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/IOGraphicsFamily/IOGraphicsFamily.kext",
+    "-kext",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/IOGOPFramebuffer/IOGOPFramebuffer.kext",
+    "-kext",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/IOVirtIOGPU/IOVirtIOGPU.kext",
+    "-codeless",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/AppleNMI.kext",
+    "-codeless",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/ApplePlatformFamily.kext",
+    "-codeless",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/BSDKernel.kext",
+    "-codeless",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/IOKit.kext",
+    "-codeless",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/IONVRAMFamily.kext",
+    "-codeless",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/IOSystemManagement.kext",
+    "-codeless",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/Kasan.kext",
+    "-codeless",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/Libkern.kext",
+    "-codeless",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/MACFramework.kext",
+    "-codeless",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/Mach.kext",
+    "-codeless",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/Private.kext",
+    "-codeless",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/Unsupported.kext",
+    "-o",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/collection-final/kernel.classic",
+    "-classic",
+    "-kext-vmbase",
+    "0xfffffff004004000"
+  ],
+  "inputs": [
+    {
+      "kind": "-kernel",
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/collection-graphics-v11/kernel.development.virt",
+      "files": [
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/collection-graphics-v11/kernel.development.virt",
+          "sha256": "89613196ca3ab5e2194db651735a0f2103729098da3a719d7992ac053668a5f8"
+        }
+      ]
+    },
+    {
+      "kind": "-kext",
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/IOPCIFamily/IOPCIFamily.kext",
+      "files": [
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/IOPCIFamily/IOPCIFamily.kext/Contents/Info.plist",
+          "sha256": "9767825c4b6a338535098dd7530bca42dd1f3783d858a46cce3a97f4fdf98989"
+        },
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/IOPCIFamily/IOPCIFamily.kext/Contents/MacOS/IOPCIFamily",
+          "sha256": "06d332c02edc930dd9251d3e1af67a4777640b3fe70e01492896a15dbd139a8f"
+        }
+      ]
+    },
+    {
+      "kind": "-kext",
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/IOStorageFamily/IOStorageFamily.kext",
+      "files": [
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/IOStorageFamily/IOStorageFamily.kext/Contents/Info.plist",
+          "sha256": "6dff081d0ad0586e940b54953f1c4fcdd6b325bf19de776f4f53543ff320b6c3"
+        },
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/IOStorageFamily/IOStorageFamily.kext/Contents/MacOS/IOStorageFamily",
+          "sha256": "5d8af8431f1d2cc020c00c5dfc7411bef8bfcd7242e7b6589d07e97c0568626b"
+        }
+      ]
+    },
+    {
+      "kind": "-kext",
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/IONetworkingFamily/IONetworkingFamily.kext",
+      "files": [
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/IONetworkingFamily/IONetworkingFamily.kext/Contents/Info.plist",
+          "sha256": "9c99d150e5e23ce10fd316a575b636052be888f08bc3bb824f779b29556d888b"
+        },
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/IONetworkingFamily/IONetworkingFamily.kext/Contents/MacOS/IONetworkingFamily",
+          "sha256": "226c635ef3feef20f46d2efc04f2a961a4254896079ec56e754f099449169283"
+        }
+      ]
+    },
+    {
+      "kind": "-kext",
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/IOVirtIOFamily/IOVirtIOFamily.kext",
+      "files": [
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/IOVirtIOFamily/IOVirtIOFamily.kext/Contents/Info.plist",
+          "sha256": "ac09e68897fafeb8b08c8f0d2b396a937a10f0706ffae49c6a9539d37956b4aa"
+        },
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/IOVirtIOFamily/IOVirtIOFamily.kext/Contents/MacOS/IOVirtIOFamily",
+          "sha256": "6f54cbd560340f6673b9fff4a19fe0c174a982c323141f0e2c56c4679b8b87de"
+        }
+      ]
+    },
+    {
+      "kind": "-kext",
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/PDArmPlatformExpert/PDArmPlatformExpert.kext",
+      "files": [
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/PDArmPlatformExpert/PDArmPlatformExpert.kext/Contents/Info.plist",
+          "sha256": "915b78bb6adbfcf211313912e9c025fe00b5ed902d203283ff80a568c6610c67"
+        },
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/PDArmPlatformExpert/PDArmPlatformExpert.kext/Contents/MacOS/PDArmPlatformExpert",
+          "sha256": "a44d357fc153b356580fa8361c7abc4c6d190e1f5ea1d38acd16e89a8f445ca5"
+        }
+      ]
+    },
+    {
+      "kind": "-kext",
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/PDArmPCI/PDArmPCI.kext",
+      "files": [
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/PDArmPCI/PDArmPCI.kext/Contents/Info.plist",
+          "sha256": "2ad7197ae877e6505235e1ec69e765dbe250b0602d15529880cf2a025c2913cf"
+        },
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/PDArmPCI/PDArmPCI.kext/Contents/MacOS/PDArmPCI",
+          "sha256": "eb675ea2b7a3a18d010cdde46dc8e2be2e2f2f98922738641920a570969e20aa"
+        }
+      ]
+    },
+    {
+      "kind": "-kext",
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/IOVirtIOBlock/IOVirtIOBlock.kext",
+      "files": [
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/IOVirtIOBlock/IOVirtIOBlock.kext/Contents/Info.plist",
+          "sha256": "5f1ca6b0ca3777b68fd732b75d904a2702864ed58b9339ba71c5e2abae17d7a9"
+        },
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/IOVirtIOBlock/IOVirtIOBlock.kext/Contents/MacOS/IOVirtIOBlock",
+          "sha256": "b540675888782f6e3b2e9c23e2f11686a8d6b1306a8c1eb192305b521af0e276"
+        }
+      ]
+    },
+    {
+      "kind": "-kext",
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/IOVirtIONet/IOVirtIONet.kext",
+      "files": [
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/IOVirtIONet/IOVirtIONet.kext/Contents/Info.plist",
+          "sha256": "028465a8478fd9e61741ee00406e0a65ab074662c4a8c1e54e11772c20d09008"
+        },
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/IOVirtIONet/IOVirtIONet.kext/Contents/MacOS/IOVirtIONet",
+          "sha256": "21eeb79b8c8a1168b8af27b589174b634227c84df88e53e88c755bb4d7f98d2d"
+        }
+      ]
+    },
+    {
+      "kind": "-kext",
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/ext4/ext4.kext",
+      "files": [
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/ext4/ext4.kext/Contents/Info.plist",
+          "sha256": "07841a12dab4824ac2b1cb6ed5442840508d0eb856ab4f94c0e40ac137139b7a"
+        },
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/ext4/ext4.kext/Contents/MacOS/ext4",
+          "sha256": "ceaaaaa276b8148bddd28d3291b09b8394b08a40b2f247af9ea54b5ce58f4766"
+        }
+      ]
+    },
+    {
+      "kind": "-kext",
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/Ext4FileSystemDriver/Ext4FileSystemDriver.kext",
+      "files": [
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/Ext4FileSystemDriver/Ext4FileSystemDriver.kext/Contents/Info.plist",
+          "sha256": "5f32635fcfe19edd030128794639ad8177da11a578575a2d65c55b1df6ea2dee"
+        },
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/Ext4FileSystemDriver/Ext4FileSystemDriver.kext/Contents/MacOS/Ext4FileSystemDriver",
+          "sha256": "cd61439dd1940d2b3a3e4deeda8ee148997d5ea46a217c04aa9b3d2b9f1bb798"
+        }
+      ]
+    },
+    {
+      "kind": "-kext",
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/AppleFileSystemDriver/AppleFileSystemDriver.kext",
+      "files": [
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/AppleFileSystemDriver/AppleFileSystemDriver.kext/Contents/Info.plist",
+          "sha256": "9b2ebba974c2840e375a123ba970c4ee769417b2f76fa3564ff279166e2bdb90"
+        },
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/AppleFileSystemDriver/AppleFileSystemDriver.kext/Contents/MacOS/AppleFileSystemDriver",
+          "sha256": "22c7107147a922be9487bbf521f005f29583f3cdf3c3f06dd122376876b9ff09"
+        }
+      ]
+    },
+    {
+      "kind": "-kext",
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/corecrypto/corecrypto.kext",
+      "files": [
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/corecrypto/corecrypto.kext/Contents/Info.plist",
+          "sha256": "6fe1e7a41ac0b0d009076a6a147bf63141d19af6c241657056e13b508b4bd828"
+        },
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/corecrypto/corecrypto.kext/Contents/MacOS/corecrypto",
+          "sha256": "cbf256c272814f89393602d03b1202c79cd5746909d0ce442e9def29cc8b6b25"
+        }
+      ]
+    },
+    {
+      "kind": "-kext",
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/pthread/pthread.kext",
+      "files": [
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/pthread/pthread.kext/Contents/Info.plist",
+          "sha256": "ee398010532dca5d6dab962a4151416296c4b299eed29c3e5bf4b5fbf9164b41"
+        },
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/pthread/pthread.kext/Contents/MacOS/pthread",
+          "sha256": "0ffb73c73b4d38b4ec2ac559bd6cd2d1578fdd7099c79f4b3302a6e7528ac30b"
+        }
+      ]
+    },
+    {
+      "kind": "-kext",
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/IOGraphicsFamily/IOGraphicsFamily.kext",
+      "files": [
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/IOGraphicsFamily/IOGraphicsFamily.kext/Contents/Info.plist",
+          "sha256": "4b92c1a43b2a736b83793a2869d5485380a12f376d217b28aa695e7331554405"
+        },
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/IOGraphicsFamily/IOGraphicsFamily.kext/Contents/MacOS/IOGraphicsFamily",
+          "sha256": "a30cd72e95fc0b084d09680e9cca350a76c2fb50a20fb83d36aa7dcd477451a6"
+        }
+      ]
+    },
+    {
+      "kind": "-kext",
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/IOGOPFramebuffer/IOGOPFramebuffer.kext",
+      "files": [
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/IOGOPFramebuffer/IOGOPFramebuffer.kext/Contents/Info.plist",
+          "sha256": "c6e38ce870ecc3d24320b7956fcf388954c92b5f9534104e2e081c36da8b6886"
+        },
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/IOGOPFramebuffer/IOGOPFramebuffer.kext/Contents/MacOS/IOGOPFramebuffer",
+          "sha256": "5bbdfde4f978201839ae94664abae6b93d80916000fc27f39dfd31892f3073a3"
+        }
+      ]
+    },
+    {
+      "kind": "-kext",
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/IOVirtIOGPU/IOVirtIOGPU.kext",
+      "files": [
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/IOVirtIOGPU/IOVirtIOGPU.kext/Contents/Info.plist",
+          "sha256": "8f3aa806fa2cd391c0a5e48316a7cceadf43fe545de9894a61842156dab6660f"
+        },
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/Extensions/IOVirtIOGPU/IOVirtIOGPU.kext/Contents/MacOS/IOVirtIOGPU",
+          "sha256": "5979395628692f8fa830f86e3062f40e69d0e18168abd49706e8dbdce3a5f6ea"
+        }
+      ]
+    },
+    {
+      "kind": "-codeless",
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/AppleNMI.kext",
+      "files": [
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/AppleNMI.kext/Info.plist",
+          "sha256": "157020336b48dae760af4272acf147d5aa2afe9be89dd0453b45ca114bcedcee"
+        }
+      ]
+    },
+    {
+      "kind": "-codeless",
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/ApplePlatformFamily.kext",
+      "files": [
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/ApplePlatformFamily.kext/Info.plist",
+          "sha256": "ba2847b07d10f456a2a5960e2dc172318cbe29d85fb702e2212bc43759f33202"
+        }
+      ]
+    },
+    {
+      "kind": "-codeless",
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/BSDKernel.kext",
+      "files": [
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/BSDKernel.kext/BSDKernel",
+          "sha256": "c5a7a46704bc0a71acb9b37d2920e8ea868a03d0804236c213644ae3cd4922c5"
+        },
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/BSDKernel.kext/Info.plist",
+          "sha256": "53eb9bd5681defce85d977562f42c80c996dbd98e26f7c898d9490813f2b0273"
+        }
+      ]
+    },
+    {
+      "kind": "-codeless",
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/IOKit.kext",
+      "files": [
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/IOKit.kext/IOKit",
+          "sha256": "93964192e6f6d39ef33ce20a00bba79c28f7c67c44a62b9f4763d20638401fb7"
+        },
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/IOKit.kext/Info.plist",
+          "sha256": "0cdaa5af577e58908c73f07405d7f8551d1bf36d749bb29879425ea983923c48"
+        }
+      ]
+    },
+    {
+      "kind": "-codeless",
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/IONVRAMFamily.kext",
+      "files": [
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/IONVRAMFamily.kext/Info.plist",
+          "sha256": "d5196359b383afeb8d52a44af9384cf452c0e067278ce8f9941e9a35f26889d8"
+        }
+      ]
+    },
+    {
+      "kind": "-codeless",
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/IOSystemManagement.kext",
+      "files": [
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/IOSystemManagement.kext/Info.plist",
+          "sha256": "2d022a4f4b6bab86af225873934cf93283ef68162a14239a41bea19ae698ed18"
+        }
+      ]
+    },
+    {
+      "kind": "-codeless",
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/Kasan.kext",
+      "files": [
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/Kasan.kext/Info.plist",
+          "sha256": "219d04e9f72f78bdf22897c37010b5c95edb23a9b1ede854a987374cbeceb6d1"
+        },
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/Kasan.kext/Kasan",
+          "sha256": "0391a00faea77922523733e4edda882079d1bd245023717f440388b827ffeefa"
+        }
+      ]
+    },
+    {
+      "kind": "-codeless",
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/Libkern.kext",
+      "files": [
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/Libkern.kext/Info.plist",
+          "sha256": "2676b330ec3a36a29d80a0b66f8375b0d5ec0e0ce18215d20cc7ff8bf9dbfea1"
+        },
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/Libkern.kext/Libkern",
+          "sha256": "373f30fd159ff7c8af977d516d1382d944c448dbc7014199cdb3d6b375b2bd01"
+        }
+      ]
+    },
+    {
+      "kind": "-codeless",
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/MACFramework.kext",
+      "files": [
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/MACFramework.kext/Info.plist",
+          "sha256": "10639110cb38ba9612e0cb781a61ff00ba934b655d6b36886c758c4aff5c8285"
+        },
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/MACFramework.kext/MACFramework",
+          "sha256": "719321e8f92548ba863632a2227366456e27660dc10f7e462962c7426135135e"
+        }
+      ]
+    },
+    {
+      "kind": "-codeless",
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/Mach.kext",
+      "files": [
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/Mach.kext/Info.plist",
+          "sha256": "da7ad80eeadd561ad7e496b1ced5c0b187d349129a29e3630b80c757a03d5039"
+        },
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/Mach.kext/Mach",
+          "sha256": "6ec446cb102ed4783f459d6e0bfc806158cf849b90a5b401b5fd3eca9a649a37"
+        }
+      ]
+    },
+    {
+      "kind": "-codeless",
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/Private.kext",
+      "files": [
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/Private.kext/Info.plist",
+          "sha256": "761f38b5c09a4b1f8ea78a1b725dd2849057aa2d57bdc84d54eeddfa9ad5f897"
+        },
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/Private.kext/Private",
+          "sha256": "c998766c516996b4bd29de52ba837a18a53bdb78ab7edc011bd0821227e02b55"
+        }
+      ]
+    },
+    {
+      "kind": "-codeless",
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/Unsupported.kext",
+      "files": [
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/Unsupported.kext/Info.plist",
+          "sha256": "9b73a58fdaf44de2d43c04553277d8f71a40dabc03d04e8fca2c961929b8d62e"
+        },
+        {
+          "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu/System/Library/Extensions/System.kext/PlugIns/Unsupported.kext/Unsupported",
+          "sha256": "6e9a9f0c4cd75db30f71f7756ebfe6e1da7f3fb3ffe282ffc927a14e56a33802"
+        }
+      ]
+    }
+  ]
+}

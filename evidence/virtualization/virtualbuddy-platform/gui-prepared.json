@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "bundle": "/Users/joeblau/Library/Application Support/VirtualBuddy/BlauOS-VirtualBuddy.vbvm",
+  "image_sha256": "f0d89347478e9ff4f9877936e5d67a3fbfc2c8d16eac79758d0f09a2a9e4f891",
+  "configuration": {
+    "version": 0,
+    "systemType": "linux",
+    "hardware": {
+      "cpuCount": 1,
+      "memorySize": 1073741824,
+      "pointingDevice": {
+        "kind": 0
+      },
+      "keyboardDevice": {
+        "kind": 0
+      },
+      "displayDevices": [
+        {
+          "id": "DB13DCC0-A00D-4742-80C7-1B85555441E4",
+          "name": "1280x800",
+          "width": 1280,
+          "height": 800,
+          "pixelsPerInch": 96,
+          "automaticallyReconfiguresDisplay": false
+        }
+      ],
+      "networkDevices": [
+        {
+          "id": "Default",
+          "name": "Default",
+          "kind": 0,
+          "macAddress": "02:da:e7:16:0f:7d"
+        }
+      ],
+      "soundDevices": [],
+      "NVRAM": [],
+      "_storageDevices": [
+        {
+          "id": "75D6EFE2-3E33-4786-8D31-E7382EC92656",
+          "isBootVolume": true,
+          "isEnabled": true,
+          "isSavedStateClone": false,
+          "isReadOnly": false,
+          "isUSBMassStorageDevice": false,
+          "backing": {
+            "managedImage": {
+              "_0": {
+                "id": "__BOOT__",
+                "filename": "Disk",
+                "size": 1142947840,
+                "format": 0
+              }
+            }
+          }
+        }
+      ]
+    },
+    "sharedFolders": [],
+    "guestAdditionsEnabled": false,
+    "rosettaSharingEnabled": false,
+    "captureSystemKeys": false
+  },
+  "metadata": {
+    "uuid": "58C9615D-CAF9-4A6E-9B0C-CE14FF0B5354",
+    "version": 1,
+    "installFinished": true
+  },
+  "boot_verified": false,
+  "physical_boot_gate": false,
+  "nvram": "Fresh store created on first start",
+  "previous_image_sha256": "981d4017723f1eeabca44fe2f48df9a91da459bfef50a0c11ec4449ec955ebe0",
+  "old_owned_helper_stopped": 97221,
+  "existing_user_vms_modified": false
+}
