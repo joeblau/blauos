@@ -128,6 +128,7 @@ def export_evidence(output, public_keys):
                 "commands/build.json", "commands/catalogue.json", "commands/provenance.json",
                 "commands/third-party-notices.txt", "commands/*/third-party-notices.txt",
                 "commands/*/provenance.json", "commands/*/commands.json", "commands/*/inputs.json",
+                "bpm/inputs.json", "bpm/provenance.json", "bpm/*-linked-dylibs.txt",
                 "composed/provenance.json", "image/result.json", "image/account.json", "image/assemble.log",
                 "smoke/**/checkpoint.json", "smoke/**/result.json", "smoke/**/serial.log", "smoke/**/probe.log",
                 "smoke/**/*.stdout", "smoke/**/*.stderr", "smoke/**/known_hosts")
@@ -209,6 +210,9 @@ def execute(args):
         ssh = args.output / "openssh"
         pipeline.python("build-openssh", "build/openssh.py", "--source", sources / "openssh-portable",
                         "--runtime-root", args.root, "--output", ssh, "--jobs", args.jobs, timeout=1800)
+        bpm = args.output / "bpm"
+        pipeline.python("build-bpm", "vm/build_bpm_commands.py", "--runtime-root", args.root,
+                        "--output", bpm, timeout=300)
         capability = args.output / "capabilities"
         pipeline.python("build-capabilities", "build/ssh_capabilities.py", "build", "--runtime-root", args.root,
                         "--output-dir", capability, timeout=300)
@@ -216,7 +220,7 @@ def execute(args):
         pipeline.python("build-ssh-startup", "vm/build_ssh_start.py", "--runtime-root", args.root,
                         "--output", startup, timeout=300)
         composed_root, provenance = compose(args.root, args.provenance,
-            [(layer / "root", layer / "provenance.json") for layer in (ssh, capability, startup, commands)], args.output / "composed")
+            [(layer / "root", layer / "provenance.json") for layer in (ssh, capability, startup, commands, bpm)], args.output / "composed")
         notice = composed_root / "usr/share/doc/blauos-commands/third-party-notices.txt"
         notice.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(commands / "third-party-notices.txt", notice)

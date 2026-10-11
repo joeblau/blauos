@@ -1,0 +1,290 @@
+[
+  {
+    "event": "marker-seen",
+    "marker": "guest-boot",
+    "ok": true
+  },
+  {
+    "receipt": "01-repo.json",
+    "commands": [
+      "bpm repo"
+    ],
+    "controls": [],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "event": "marker-seen",
+    "marker": "repo-list",
+    "ok": true
+  },
+  {
+    "receipt": "02-list-empty.json",
+    "commands": [
+      "bpm list"
+    ],
+    "controls": [],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "event": "marker-seen",
+    "marker": "list-empty",
+    "ok": true
+  },
+  {
+    "receipt": "03-install-vim-collide.json",
+    "commands": [
+      "bpm install vim"
+    ],
+    "controls": [],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "event": "marker-seen",
+    "marker": "vim-collision-refused",
+    "ok": true
+  },
+  {
+    "receipt": "04-install-vim.json",
+    "commands": [
+      "bpm --root /tmp/vimroot --db /tmp/vimdb install vim"
+    ],
+    "controls": [],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "event": "marker-seen",
+    "marker": "vim-installed",
+    "ok": true
+  },
+  {
+    "receipt": "05-run-vim.json",
+    "commands": [
+      "/tmp/vimroot/usr/bin/vim --version | head -n 1"
+    ],
+    "controls": [],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "event": "marker-seen",
+    "marker": "vim-runs",
+    "ok": true
+  },
+  {
+    "receipt": "06-verify-vim.json",
+    "commands": [
+      "bpm --root /tmp/vimroot --db /tmp/vimdb verify vim"
+    ],
+    "controls": [],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "event": "marker-seen",
+    "marker": "vim-verified",
+    "ok": true
+  },
+  {
+    "receipt": "07-recv-hello.json",
+    "commands": [
+      "bpm recv /tmp/hello.bpm"
+    ],
+    "controls": [],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "receipt": "08-stream-hello.json",
+    "package": "blauos-hello-1.0.bpm",
+    "package_sha256": "d3a1a705e7fafadc7bcbae579a09af3b4e821acff5eaea67f7bbf1e398b7aa62",
+    "frames": 411,
+    "stream_seconds": 4.2,
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "event": "marker-seen",
+    "marker": "hello-received",
+    "ok": true
+  },
+  {
+    "receipt": "09-install-hello.json",
+    "commands": [
+      "bpm install /tmp/hello.bpm"
+    ],
+    "controls": [],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "event": "marker-seen",
+    "marker": "hello-installed",
+    "ok": true
+  },
+  {
+    "receipt": "10-run-hello.json",
+    "commands": [
+      "/usr/local/bin/blauos-hello"
+    ],
+    "controls": [],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "event": "marker-seen",
+    "marker": "hello-runs",
+    "ok": true
+  },
+  {
+    "receipt": "11-list.json",
+    "commands": [
+      "bpm list"
+    ],
+    "controls": [],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "event": "marker-seen",
+    "marker": "list-shows-hello",
+    "ok": true
+  },
+  {
+    "receipt": "12-verify-hello.json",
+    "commands": [
+      "bpm verify blauos-hello"
+    ],
+    "controls": [],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "event": "marker-seen",
+    "marker": "hello-verified",
+    "ok": true
+  },
+  {
+    "receipt": "13-remove-hello.json",
+    "commands": [
+      "bpm remove blauos-hello"
+    ],
+    "controls": [],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "event": "marker-seen",
+    "marker": "hello-removed",
+    "ok": true
+  },
+  {
+    "receipt": "14-gone.json",
+    "commands": [
+      "ls /usr/local/bin/blauos-hello"
+    ],
+    "controls": [],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "event": "marker-seen",
+    "marker": "hello-file-gone",
+    "ok": true
+  },
+  {
+    "receipt": "15-recv-tampered.json",
+    "commands": [
+      "bpm recv /tmp/hello-t.bpm"
+    ],
+    "controls": [],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "receipt": "16-stream-tampered.json",
+    "package": "blauos-hello-1.0-tampered.bpm",
+    "package_sha256": "7655f3a26a0f33f4b9114bbbaff7959e6d1b3dbcc17dece4a3bda5e8d6e9626f",
+    "frames": 411,
+    "stream_seconds": 4.2,
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "receipt": "17-install-tampered.json",
+    "commands": [
+      "bpm install /tmp/hello-t.bpm"
+    ],
+    "controls": [],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "event": "marker-seen",
+    "marker": "tampered-rejected",
+    "ok": true
+  },
+  {
+    "receipt": "18-recv-wrongkey.json",
+    "commands": [
+      "bpm recv /tmp/hello-u.bpm"
+    ],
+    "controls": [],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "receipt": "19-stream-wrongkey.json",
+    "package": "blauos-hello-1.0-wrongkey.bpm",
+    "package_sha256": "7e316cd5ae9aa08ed35f6833ed71381ecfee33e8af5fe3a5708fbf40b82ac3b1",
+    "frames": 411,
+    "stream_seconds": 4.2,
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "receipt": "20-install-wrongkey.json",
+    "commands": [
+      "bpm install /tmp/hello-u.bpm"
+    ],
+    "controls": [],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "event": "marker-seen",
+    "marker": "wrongkey-rejected",
+    "ok": true
+  },
+  {
+    "receipt": "21-final-list.json",
+    "commands": [
+      "bpm list",
+      "bpm verify"
+    ],
+    "controls": [],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "event": "marker-seen",
+    "marker": "final-clean",
+    "ok": true
+  },
+  {
+    "receipt": "22-shell-eof.json",
+    "commands": [],
+    "controls": [
+      "eof"
+    ],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "event": "injections-complete",
+    "serial_bytes": 262960
+  }
+]

@@ -1,0 +1,37 @@
+{
+  "backend" : "Virtualization.framework generic EFI",
+  "configuration" : "VirtualBuddy 2.1 generic EFI, 1 CPU, 1 GiB, virtio block\/GPU\/network, USB input, empty virtiofs and SPICE console",
+  "console_input_fifo" : "console-input.fifo",
+  "disk" : "\/Users\/joeblau\/Developer\/joeblau\/src\/blauos\/.blauos\/build\/virtualbuddy-console\/package-manager\/run-pm-1-Disk.img",
+  "events" : [
+    {
+      "name" : "configuration-validated",
+      "time" : "2026-10-11T20:43:17Z"
+    },
+    {
+      "name" : "framework-start-succeeded",
+      "time" : "2026-10-11T20:43:17Z"
+    },
+    {
+      "api" : "VZVirtualMachine.requestStop",
+      "name" : "host-request-stop",
+      "time" : "2026-10-11T20:48:17Z"
+    },
+    {
+      "after_request_stop" : true,
+      "name" : "guest-stopped",
+      "time" : "2026-10-11T20:48:17Z"
+    }
+  ],
+  "extra_serial_port" : true,
+  "framework_start_succeeded" : true,
+  "host_os" : "Version 27.2 (Build 26B5101f)",
+  "observation_seconds" : 600,
+  "physical_gate_passed" : false,
+  "probe_purpose" : "console input injection and host-requested orderly shutdown",
+  "request_stop_after_seconds" : 300,
+  "schema_version" : 1,
+  "screenshot_method" : "No screenshots",
+  "stop_grace_seconds" : 60,
+  "virtualbuddy_app_started_vm" : false
+}

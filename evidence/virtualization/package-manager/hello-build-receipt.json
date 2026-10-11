@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "tool": "package.py",
+  "argv": [
+    "scripts/release/package.py",
+    "build",
+    "--root",
+    ".blauos/build/commands/hello-run-1/root",
+    "--recipe",
+    "packages/blauos-hello.json",
+    "--name",
+    "blauos-hello",
+    "--version",
+    "1.0",
+    "--key",
+    ".blauos/release/package-key.json",
+    "--trust-root",
+    ".blauos/release/package-trust-root.json",
+    "--output",
+    ".blauos/build/virtualbuddy-console/package-manager/packages/blauos-hello-1.0.bpm",
+    "--receipt",
+    ".blauos/build/virtualbuddy-console/package-manager/packages/hello-build-receipt.json"
+  ],
+  "cwd": "/Users/joeblau/Developer/joeblau/src/blauos",
+  "recorded_at": "2026-10-11T20:34:48.399647+00:00",
+  "inputs": {
+    "trust_root_sha256": "36915d2d9de22fd8f9a9f5e96425a846c7724b801ba8009d6060c6c9320fbc52",
+    "key_sha256": "3ab2aac5c3003ef66476556fe35dbd12031c975f87fc3cd7053fec850aa088ee",
+    "recipe_sha256": "46f16ffd4bbd62e17ef5a39b4e7799cc88cd4ffba67920539523acdeef9153f0"
+  },
+  "outputs": {
+    "result_sha256": "d3a1a705e7fafadc7bcbae579a09af3b4e821acff5eaea67f7bbf1e398b7aa62"
+  },
+  "result": {
+    "status": "built",
+    "package": ".blauos/build/virtualbuddy-console/package-manager/packages/blauos-hello-1.0.bpm",
+    "package_sha256": "d3a1a705e7fafadc7bcbae579a09af3b4e821acff5eaea67f7bbf1e398b7aa62",
+    "name": "blauos-hello",
+    "version": "1.0",
+    "file_count": 1,
+    "payload_bytes": 33432,
+    "key_id": "bbe1ed350e6b2b3da7389062fe84acf1"
+  },
+  "receipt_sha256": "bae5f64f494709d382e528448e833396357f62dba82e208ce577dda5f5afe80a"
+}

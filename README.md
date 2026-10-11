@@ -17,6 +17,11 @@ and persistent home data and host keys across two boots. Its secure boot profile
 requires a virtio entropy device; stock VirtualBuddy 2.1 needs the supplied
 host configuration patch. Physical M1 support remains unverified.
 
+The guest [package manager](docs/packages.md) (`bpm`) installs, verifies, and
+removes Ed25519-signed package tarballs bound to the `packages/*.json` recipes,
+with a baked `file://` repo and serial-console transfer as demonstrated
+transports in the live VirtualBuddy guest.
+
 - [Release scope and evidence gates](docs/scope.md)
 - [Repository/source architecture](docs/architecture.md)
 - [Pinned inputs and build instructions](docs/build.md)
@@ -24,6 +29,7 @@ host configuration patch. Physical M1 support remains unverified.
 - [Virtual baseline](docs/virtualization.md)
 - [Account provisioning and SSH login](docs/ssh-login.md)
 - [Command-line tools and updating an existing VM](docs/commands.md)
+- [Guest package manager (bpm): signed packages, transports, live acceptance](docs/packages.md)
 - [Milestone 1 acceptance evidence](docs/milestone-1.md)
 - [Milestone 2 execution record](docs/milestone-2.md)
 - [Native driver interface contracts and reuse boundary](docs/audits/native-driver-contracts.md)
