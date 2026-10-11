@@ -11,11 +11,18 @@ Milestone 2 is in progress: a fresh experimental T8103 ARM64e kernel and
 platform extension build from source. Lab, handoff and capture tools are available. Physical M1 kernel execution and
 driver acceptance remain unverified.
 
+The [SSH login workflow](docs/ssh-login.md) adds public-key accounts to an
+audited VM baseline and verifies non-root commands, terminal sessions, SFTP,
+and persistent home data and host keys across two boots. Its secure boot profile
+requires a virtio entropy device; stock VirtualBuddy 2.1 needs the supplied
+host configuration patch. Physical M1 support remains unverified.
+
 - [Release scope and evidence gates](docs/scope.md)
 - [Repository/source architecture](docs/architecture.md)
 - [Pinned inputs and build instructions](docs/build.md)
 - [Kernel patch policy](docs/kernel-patches.md)
 - [Virtual baseline](docs/virtualization.md)
+- [Account provisioning and SSH login](docs/ssh-login.md)
 - [Milestone 1 acceptance evidence](docs/milestone-1.md)
 - [Milestone 2 execution record](docs/milestone-2.md)
 - [GitHub roadmap](https://github.com/joeblau/blauos/issues/1)

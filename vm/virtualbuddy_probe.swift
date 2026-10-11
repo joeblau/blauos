@@ -5,6 +5,13 @@ import AppKit
 let output = URL(fileURLWithPath: CommandLine.arguments[1], isDirectory: true)
 let disk = URL(fileURLWithPath: CommandLine.arguments[2])
 let fm = FileManager.default
+let timeoutIndex = CommandLine.arguments.firstIndex(of: "--timeout-seconds")
+let timeoutSeconds = timeoutIndex.flatMap { index in
+    index + 1 < CommandLine.arguments.count ? Double(CommandLine.arguments[index + 1]) : nil
+} ?? 90
+guard timeoutSeconds >= 15 && timeoutSeconds <= 600 else {
+    fatalError("Bounded observation must be between 15 and 600 seconds")
+}
 try fm.createDirectory(at: output, withIntermediateDirectories: false)
 var report: [String: Any] = [
     "schema_version": 1,
@@ -18,7 +25,9 @@ var report: [String: Any] = [
     "events": [[String: Any]](),
     "screenshot_method": "No screenshots",
     "configuration": "VirtualBuddy 2.1 generic EFI, 1 CPU, 1 GiB, virtio block/GPU/network, USB input, empty virtiofs and SPICE console",
-    "extra_serial_port": !CommandLine.arguments.contains("--no-serial")
+    "extra_serial_port": !CommandLine.arguments.contains("--no-serial"),
+    "virtio_entropy_device": CommandLine.arguments.contains("--entropy-device"),
+    "observation_seconds": timeoutSeconds
 ]
 func event(_ name: String, _ extra: [String: Any] = [:]) {
     var e = extra
@@ -39,6 +48,9 @@ boot.variableStore = try VZEFIVariableStore(creatingVariableStoreAt: output.appe
 config.bootLoader = boot
 config.cpuCount = 1
 config.memorySize = 1024 * 1024 * 1024
+if CommandLine.arguments.contains("--entropy-device") {
+    config.entropyDevices = [VZVirtioEntropyDeviceConfiguration()]
+}
 let storage = try VZDiskImageStorageDeviceAttachment(url: disk, readOnly: false,
     cachingMode: .cached, synchronizationMode: .fsync)
 config.storageDevices = [VZVirtioBlockDeviceConfiguration(attachment: storage)]
@@ -96,7 +108,7 @@ DispatchQueue.main.async {
         case .success:
             report["framework_start_succeeded"] = true
             event("framework-start-succeeded")
-            DispatchQueue.main.asyncAfter(deadline: .now() + 90) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + timeoutSeconds) {
                 event("bounded-observation-finished", ["vm_state": vm.state.rawValue, "serial_bytes": (try? Data(contentsOf: serialURL).count) ?? 0])
                 if vm.canStop {
                     vm.stop { r in
@@ -111,7 +123,7 @@ DispatchQueue.main.async {
         }
     }
 }
-DispatchQueue.main.asyncAfter(deadline: .now() + 105) {
+DispatchQueue.main.asyncAfter(deadline: .now() + timeoutSeconds + 15) {
     event("probe-watchdog-expired")
     exit(3)
 }

@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "source_lock_sha256": "3ee02e7bbc726b048e371cf322e5416870598906799cf680b583e6573e507c48",
+  "sources": [
+    {
+      "name": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "tree": "ed2345d7f3c11dad2e7f6ffeeb377adc789b12b8",
+      "origin": "https://github.com/PureDarwin/PureDarwin.git"
+    },
+    {
+      "name": "openssh-portable",
+      "revision": "a8c72b842423f0774f542d3c2197247c3dd28d74",
+      "tree": "737f0e3b51d20a708aab7799f6042cc3051e96ac",
+      "origin": "https://github.com/openssh/openssh-portable.git"
+    }
+  ]
+}

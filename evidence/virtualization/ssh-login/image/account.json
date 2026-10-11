@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "username": "joeblau",
+  "uid": 1000,
+  "gid": 1000,
+  "home": "/var/home/joeblau",
+  "shell": "/bin/sh",
+  "authentication": "public-key-only",
+  "public_key_fingerprints": [
+    "SHA256:/X66JAqqk7JfPzWReIUAFF/P0gTH+DIhdKfhN8aUWu0",
+    "SHA256:nYm2LratbA4fGKkg+FqwpYyCF6d4xmA/jFG0Kv6Bvgk"
+  ],
+  "service_account": {
+    "name": "sshd",
+    "uid": 74,
+    "gid": 74,
+    "chroot": "/var/empty"
+  },
+  "metadata": [
+    {
+      "path": "etc",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755",
+      "kind": "directory"
+    },
+    {
+      "path": "etc/passwd",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644",
+      "kind": "file"
+    },
+    {
+      "path": "etc/master.passwd",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0600",
+      "kind": "file"
+    },
+    {
+      "path": "etc/group",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644",
+      "kind": "file"
+    },
+    {
+      "path": "etc/shells",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644",
+      "kind": "file"
+    },
+    {
+      "path": "var",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755",
+      "kind": "directory"
+    },
+    {
+      "path": "var/home",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755",
+      "kind": "directory"
+    },
+    {
+      "path": "var/empty",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755",
+      "kind": "directory"
+    },
+    {
+      "path": "var/home/joeblau",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0700",
+      "kind": "directory"
+    },
+    {
+      "path": "var/home/joeblau/.ssh",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0700",
+      "kind": "directory"
+    },
+    {
+      "path": "var/home/joeblau/.ssh/authorized_keys",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0600",
+      "kind": "file"
+    }
+  ],
+  "metadata_applied": true,
+  "guest_login_verified": false,
+  "filesystem_inode_metadata_verified": true
+}

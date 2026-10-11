@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "workflow_passed": true,
+  "source_image_sha256": "347e278099559dca380a360cdfc6391eb9243abcb5dcc7421c1fa68bc45b27d1",
+  "boot_count": 2,
+  "baseline_checks_per_boot": 20,
+  "ssh_capability_checks_per_boot": 11,
+  "physical_boot_gate": false,
+  "remote_reboot_verified": false,
+  "service_restart_verified": false,
+  "gui_boot_verified": false,
+  "files": [
+    {
+      "path": "result.json",
+      "sha256": "7f2045d8298d693362bb2a6d941401e06309df24f1f04078100ab7aab78a029b"
+    },
+    {
+      "path": "runtime-audit.json",
+      "sha256": "99a1c212bae73f5293929cf5ddb263c01652a664c05ade9119a623f63c12982c"
+    },
+    {
+      "path": "entropy-receipt.json",
+      "sha256": "02e062fd0a172e9579d28e42d35e263e7cc6592d6bb45f158c664c074e703e28"
+    },
+    {
+      "path": "source-inputs.json",
+      "sha256": "32a0500c8cea7b857d2b6dc8742e79b0b21201814cc670867081a48124549cd9"
+    },
+    {
+      "path": "openssh/inputs.json",
+      "sha256": "3ba2874af8fe9f37b9341dedc3f18418abd62447ef544dafce16d479be96ee22"
+    },
+    {
+      "path": "openssh/provenance.json",
+      "sha256": "56d7a81bdf5181586ea058be042784a75ea914c9942ee56101c3a4d74c1f7500"
+    },
+    {
+      "path": "capabilities/build.json",
+      "sha256": "fab7ebcb15ef7decc14c71a94f6802bd80e098750954ec7ec047d34505fe1346"
+    },
+    {
+      "path": "startup/inputs.json",
+      "sha256": "170f47953a7aec12aecfa0cbcfc2ebd20e2a93cf467981f5aa19f3472c90bb9e"
+    },
+    {
+      "path": "startup/provenance.json",
+      "sha256": "72d503a49c38ac5937df21ca035dec13497c4d1e6c211b1b1f3e7593996aad60"
+    },
+    {
+      "path": "image/result.json",
+      "sha256": "01893baa24c7adffbf94b0ca87dc2347d6a97d034341fa3a2432fcd685c55092"
+    },
+    {
+      "path": "image/account.json",
+      "sha256": "f29549607810acc8a5b3f91409d77f80e742d0ad472dc8ddda8aaf02a8b26b3f"
+    },
+    {
+      "path": "smoke/checkpoint.json",
+      "sha256": "318eefc33f18e6eed58c0fac055168bd59c52f29ba1053d5a3046294b3b4e13b"
+    },
+    {
+      "path": "smoke/boot1/checkpoint.json",
+      "sha256": "9b08c1d4afa9d9bbf621ed32110b41beaefb88034bec73a11afd3651580e75fe"
+    },
+    {
+      "path": "smoke/boot1/vm/serial.log",
+      "sha256": "f2415868172ce1250ed0ea5bd6ee08c166671c659aa6c6560b6dbb2a8b312c0d"
+    },
+    {
+      "path": "smoke/boot1/vm/result.json",
+      "sha256": "aba68c10156bd66d2665b80c330c11819feedbed3f14b4a58c0da03768478b7e"
+    },
+    {
+      "path": "smoke/boot1/probe.log",
+      "sha256": "6b12439679842e963dd9ca146106e3163de16839138c592644e31852434328c8"
+    },
+    {
+      "path": "smoke/boot1/command.stdout",
+      "sha256": "a41117709407118870982edeea5e86515effeab98c1a7247b1c49ca4db8bf8cc"
+    },
+    {
+      "path": "smoke/boot1/command.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "smoke/boot1/pty.stdout",
+      "sha256": "aecf6fb08fac9c5b0cff80cdde27383f804be6e073a0b8011c5f5a11d36b0baa"
+    },
+    {
+      "path": "smoke/boot1/pty.stderr",
+      "sha256": "2dcb85638f6504834ac4243fa3ab9e606bcd975dd4206b5cbf670851cd9dda06"
+    },
+    {
+      "path": "smoke/boot1/unauthorized_key.stderr",
+      "sha256": "fe16fc53c9bba89694cd6d7e8c675a7a8dab245a531355c645b41584cb8590f7"
+    },
+    {
+      "path": "smoke/boot1/root_login.stderr",
+      "sha256": "e743a16afcd70677d4dbd46c3c5b40d9058b43e64d03fe306ee314403e6c9ba1"
+    },
+    {
+      "path": "smoke/boot1/sftp.stdout",
+      "sha256": "9078216b8ed58b010e3ee4f3019c8abf8fa16d716a80bcbb5d696e1aedf818df"
+    },
+    {
+      "path": "smoke/boot1/sftp.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "smoke/boot1/known_hosts",
+      "sha256": "d5e00ded6496ccbb54d4e1981380bf4bb8b16e9a16d43f85ab7d570225e37443"
+    },
+    {
+      "path": "smoke/boot2/checkpoint.json",
+      "sha256": "3b17c52f21519a0266ed982cbded1226acdcc9f13be2a5250943f7a6eebc6d94"
+    },
+    {
+      "path": "smoke/boot2/vm/serial.log",
+      "sha256": "5dd41cbe8375af00ec0e09e2551c006202933695f44c365d40191f15b6ff9b23"
+    },
+    {
+      "path": "smoke/boot2/vm/result.json",
+      "sha256": "26efd3e15817805ded2e7f9e7bb6a636c16ceebe8f46e673de84db26ecc62d00"
+    },
+    {
+      "path": "smoke/boot2/probe.log",
+      "sha256": "6b12439679842e963dd9ca146106e3163de16839138c592644e31852434328c8"
+    },
+    {
+      "path": "smoke/boot2/command.stdout",
+      "sha256": "75c65335e826ad6ddb0a233c95eef69776e9cbc38ab1413cf3988fe75e486485"
+    },
+    {
+      "path": "smoke/boot2/command.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "smoke/boot2/pty.stdout",
+      "sha256": "635942209e9df4c7a2fcc08e2adc0f20b1f5eb72f6baa8d5f82ce60a2a7377d4"
+    },
+    {
+      "path": "smoke/boot2/pty.stderr",
+      "sha256": "2dcb85638f6504834ac4243fa3ab9e606bcd975dd4206b5cbf670851cd9dda06"
+    },
+    {
+      "path": "smoke/boot2/unauthorized_key.stderr",
+      "sha256": "fe16fc53c9bba89694cd6d7e8c675a7a8dab245a531355c645b41584cb8590f7"
+    },
+    {
+      "path": "smoke/boot2/root_login.stderr",
+      "sha256": "e743a16afcd70677d4dbd46c3c5b40d9058b43e64d03fe306ee314403e6c9ba1"
+    },
+    {
+      "path": "smoke/boot2/sftp.stdout",
+      "sha256": "4a5b4c3b28df7117c52bc6d4e131436def3da0db1ed6cdccc74e1f1bb540f757"
+    },
+    {
+      "path": "smoke/boot2/sftp.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "smoke/boot2/known_hosts",
+      "sha256": "d5e00ded6496ccbb54d4e1981380bf4bb8b16e9a16d43f85ab7d570225e37443"
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -59,10 +59,14 @@
+ )
+ 
+ option(XNU_LOADER_VIRTUALBUDDY "Boot the separately adapted Virtualization.framework platform" OFF)
++option(XNU_LOADER_REQUIRE_EFI_RNG "Refuse kernel handoff unless firmware supplied a cryptographic boot seed" OFF)
+ if(XNU_LOADER_VIRTUALBUDDY)
+   list(APPEND SOURCES src/vb_platform.c)
+ endif()
+ add_library(loader_objs OBJECT ${SOURCES})
++if(XNU_LOADER_REQUIRE_EFI_RNG)
++  target_compile_definitions(loader_objs PRIVATE XNU_LOADER_REQUIRE_EFI_RNG=1)
++endif()
+ 
+ target_include_directories(loader_objs PRIVATE
+   ${GNU_EFI_INC}
+--- a/src/devtree.c
++++ b/src/devtree.c
+@@ -4,6 +4,7 @@
+ #include "devtree.h"
+ #include "console.h"
+ #include "app.h"
++#include "serial.h"
+ #include <efiprot.h>
+ 
+ #ifndef EFI_RNG_PROTOCOL_GUID
+@@ -993,26 +994,44 @@
+     dt_prop(ctx, chosen, "boot-kernelcache-adler32", &adler, 4);
+   }
+ 
+-  /* 64 entropy bytes for PE_get_random_seed().
+-   * Use EFI_RNG_PROTOCOL if present, else mix TSC with a simple xorshift. */
++  /* 64 seed bytes for PE_get_random_seed(). Timer/xorshift remains only a
++   * development compatibility path; it never qualifies for SSH admission. */
+   {
+     UINT8 seed[64];
+     static EFI_GUID rng_guid = EFI_RNG_PROTOCOL_GUID;
+     EFI_RNG_PROTOCOL *rng = NULL;
+     BOOLEAN got_rng = FALSE;
+-
+-    if (!EFI_ERROR(uefi_call_wrapper(ctx->bs->LocateProtocol, 3,
+-                                     &rng_guid, NULL, (VOID **)&rng)) && rng) {
++    EFI_STATUS rng_status = EFI_NOT_FOUND;
++
++    rng_status = uefi_call_wrapper(ctx->bs->LocateProtocol, 3,
++                                  &rng_guid, NULL, (VOID **)&rng);
++    if (!EFI_ERROR(rng_status) && rng) {
+       /* MUST go through uefi_call_wrapper: firmware protocol methods use the
+        * MS x64 ABI, our code is SysV. A direct rng->GetRNG(...) call passes
+        * args in the wrong registers -> firmware faults. QEMU/OVMF has no RNG
+        * protocol so this path only ever ran on real hardware (where it crashed
+        * right after "found HFS boot UUID"). */
+-      if (!EFI_ERROR(uefi_call_wrapper(rng->GetRNG, 4, rng, NULL, 64, seed)))
++      rng_status = uefi_call_wrapper(rng->GetRNG, 4, rng, NULL, 64, seed);
++      if (!EFI_ERROR(rng_status))
+         got_rng = TRUE;
+     }
+ 
++    if (got_rng) {
++      /* Detect an obvious broken source without printing any seed bytes. */
++      UINT8 nonzero = 0;
++      for (UINTN si = 0; si < sizeof(seed); si++) nonzero |= seed[si];
++      if (!nonzero) { got_rng = FALSE; rng_status = EFI_DEVICE_ERROR; }
++    }
++
+     if (!got_rng) {
++      serial_trace((CONST CHAR8 *)"BLAUOS_BOOT_ENTROPY efi_rng_status=", (UINT64)rng_status);
++#if defined(XNU_LOADER_REQUIRE_EFI_RNG)
++      serial_mark((CONST CHAR8 *)"BLAUOS_BOOT_ENTROPY source=none admission=refused");
++      log_error(L"cryptographic EFI RNG unavailable (%r); refusing kernel handoff\r\n", rng_status);
++      SetMem(seed, sizeof(seed), 0);
++      return EFI_SECURITY_VIOLATION;
++#else
++      serial_mark((CONST CHAR8 *)"BLAUOS_BOOT_ENTROPY source=timer_xorshift admission=development_only");
+       /* Fallback: xorshift64 seeded from the free-running counter
+        * (TSC on x86_64, CNTVCT_EL0 on arm64 - see rdtsc64_raw() above). */
+       UINT64 state = rdtsc64_raw();
+@@ -1024,9 +1043,15 @@
+         state ^= state << 17;
+         seed[si] = (UINT8)state;
+       }
+-    }
+-
++#endif
++    } else {
++      serial_mark((CONST CHAR8 *)"BLAUOS_BOOT_ENTROPY source=efi_rng admission=cryptographic");
++    }
++
++    dt_prop_str(ctx, chosen, "blauos,boot-entropy-source",
++                got_rng ? "efi-rng" : "timer-xorshift-development-only");
+     dt_prop(ctx, chosen, "random-seed", seed, 64);
++    SetMem(seed, sizeof(seed), 0);
+   }
+ 
+   /* booter-name: boot.efi writes "boot.efi" (9 bytes incl null) */

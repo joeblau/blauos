@@ -1,0 +1,42 @@
+diff --git a/openbsd-compat/openbsd-compat.h b/openbsd-compat/openbsd-compat.h
+index 930cf1f..a0c35c2 100644
+--- a/openbsd-compat/openbsd-compat.h
++++ b/openbsd-compat/openbsd-compat.h
+@@ -111,9 +111,21 @@ void *reallocarray(void *, size_t, size_t);
+ void *recallocarray(void *, size_t, size_t, size_t);
+ #endif
+ 
++/* BlauOS runtime supplies these compatibility operations; SDK lacks them. */
++#if defined(__APPLE__) && defined(HAVE_SETRESUID)
++int setresuid(uid_t, uid_t, uid_t);
++#endif
++#if defined(__APPLE__) && defined(HAVE_SETRESGID)
++int setresgid(gid_t, gid_t, gid_t);
++#endif
++
+ #ifndef HAVE_RRESVPORT_AF
++#ifdef __APPLE__
++int rresvport_af(int *alport, int af);
++#else
+ int rresvport_af(int *alport, sa_family_t af);
+ #endif
++#endif
+ 
+ #ifndef HAVE_STRLCPY
+ size_t strlcpy(char *dst, const char *src, size_t siz);
+diff --git a/openbsd-compat/rresvport.c b/openbsd-compat/rresvport.c
+index 1cd61e5..e5a8b42 100644
+--- a/openbsd-compat/rresvport.c
++++ b/openbsd-compat/rresvport.c
+@@ -55,7 +55,11 @@ rresvport(int *alport)
+ #endif
+ 
+ int
++#ifdef __APPLE__
++rresvport_af(int *alport, int af)
++#else
+ rresvport_af(int *alport, sa_family_t af)
++#endif
+ {
+ 	struct sockaddr_storage ss;
+ 	struct sockaddr *sa;
