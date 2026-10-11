@@ -1,0 +1,30 @@
+diff --git a/src/Kernel/libfirehose_kernel/CMakeLists.txt b/src/Kernel/libfirehose_kernel/CMakeLists.txt
+index 363b4de..ccb198b 100644
+--- a/src/Kernel/libfirehose_kernel/CMakeLists.txt
++++ b/src/Kernel/libfirehose_kernel/CMakeLists.txt
+@@ -18,6 +18,11 @@ target_compile_options(libfirehose_kernel PRIVATE -mkernel -Wno-packed -Wno-erro
+ if(PUREDARWIN_ARM64_MACHINE_CONFIG STREQUAL "T8010")
+     target_compile_options(libfirehose_kernel PRIVATE -mcpu=apple-a10)
+ endif()
++# Match the genuine native kernel ABI; an arm64 archive is rejected by arm64e.kernel.
++if(PUREDARWIN_ARM64_MACHINE_CONFIG STREQUAL "T8103")
++    set_property(TARGET libfirehose_kernel PROPERTY OSX_ARCHITECTURES arm64e)
++    target_compile_options(libfirehose_kernel PRIVATE -mcpu=apple-a14)
++endif()
+ target_link_libraries(libfirehose_kernel PRIVATE AvailabilityHeaders xnu_private_headers)
+ target_link_libraries(libfirehose_kernel PRIVATE xnu_kernel_headers xnu_kernel_private_headers)
+ target_link_libraries(libfirehose_kernel PRIVATE libplatform_headers libplatform_private_headers)
+diff --git a/src/Kernel/xnu/config/MASTER.arm64.MacOSX b/src/Kernel/xnu/config/MASTER.arm64.MacOSX
+index 85e4541..a4d988f 100644
+--- a/src/Kernel/xnu/config/MASTER.arm64.MacOSX
++++ b/src/Kernel/xnu/config/MASTER.arm64.MacOSX
+@@ -16,6 +16,9 @@
+ #  Standard Apple OS Configurations:
+ #  -------- ----- -- ---------------
+ #
++#if defined(SOC_CONFIG_t8103)
++#  ARM_EXTRAS_BASE = [ nos_arm_pmap nos_arm_asm ]
++#endif
+ #  KERNEL_BASE =    [ arm64 medium msgb_large config_arrow config_requires_u32_munging config_delay_idle_sleep config_proc_udata_storage config_uexc config_darkboot ARM_EXTRAS_BASE ]
+ #  KERNEL_RELEASE = [ KERNEL_BASE ]
+ #  KERNEL_DEV =     [ KERNEL_BASE development mach_assert config_xnupost proc_ref_debug pgtrace ]

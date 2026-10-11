@@ -1,0 +1,16 @@
+{
+  "kernel": ".blauos/build/native/kernel/puredarwin-t8103-native-17/src/Kernel/xnu/xnu_sym/kernel.development.t8103",
+  "kernel_sha256": "358ebdf64e0fe339cffe4d0c767fd38663d0948bab82eca28e10b085cc3fd523",
+  "kernel_bytes": 18008512,
+  "build_id": "4fa89c0d292d7d75c767687fe3ec056b519e2b74d8896c84622f91a46b5d5b99",
+  "validator_inspect_kernel": {
+    "uuid": "cd37c6c4-1cbd-3122-b636-c3c3b311cd64",
+    "checkpoint_start": 18446741874807767492,
+    "checkpoint_end": 18446741874807767500,
+    "architecture": "arm64e",
+    "file_type": "MH_EXECUTE"
+  },
+  "checkpoint_region_bytes": 8,
+  "marker_occurrences_in_file": 1,
+  "note": "Build-image inspection only; no physical execution is claimed."
+}

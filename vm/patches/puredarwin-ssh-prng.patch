@@ -1,0 +1,202 @@
+--- a/src/Kernel/Extensions/corecrypto/algorithms/cckprng.c
++++ b/src/Kernel/Extensions/corecrypto/algorithms/cckprng.c
+@@ -1,36 +1,101 @@
+ #include <stddef.h>
+ #include <corecrypto/cckprng.h>
+ #include <corecrypto/ccrng.h>
++#include <corecrypto/cc_abort.h>
+ #include "yarrow/yarrow.h"
+-#if !KERNEL
++#if KERNEL
++#include <kern/locks.h>
++#include <pexpert/device_tree.h>
++#include <sys/sysctl.h>
++#include <sys/systm.h>
++#include <string.h>
++static lck_grp_t *prng_lock_group;
++static lck_mtx_t *prng_lock;
++static int ssh_entropy_ready;
++SYSCTL_INT(_kern, OID_AUTO, blauos_ssh_entropy_ready, CTLFLAG_RD | CTLFLAG_LOCKED,
++           &ssh_entropy_ready, 0, "EFI boot entropy and corrected serialized Yarrow provider ready");
++#define PRNG_LOCK() lck_mtx_lock(prng_lock)
++#define PRNG_UNLOCK() lck_mtx_unlock(prng_lock)
++#else
+ #include <stdint.h>
++#include <pthread.h>
++static pthread_mutex_t prng_lock = PTHREAD_MUTEX_INITIALIZER;
++#define PRNG_LOCK() pthread_mutex_lock(&prng_lock)
++#define PRNG_UNLOCK() pthread_mutex_unlock(&prng_lock)
+ #endif
++
++/* XNU registers one kernel PRNG context. Keep its callback and the default
++ * ccrng provider with that context, rather than creating an unseeded RNG. */
++static struct cckprng_ctx *kernel_prng;
++static cckprng_getentropy entropy_callback;
++static void *entropy_callback_arg;
++
++static void prng_check(int status) {
++	if (status != PRNG_SUCCESS) {
++		cc_abort("corecrypto Yarrow failed: %d", status);
++	}
++}
++
++static void reseed_locked(struct cckprng_ctx *ctx, size_t nbytes, const void *seed) {
++	if (!nbytes) return;
++	if (!seed) cc_abort("corecrypto Yarrow missing seed: %d", -1);
++	const BYTE *bytes = seed;
++	while (nbytes) {
++		UINT chunk = nbytes > UINT32_MAX ? UINT32_MAX : (UINT)nbytes;
++		prng_check(prngInput(ctx->prng, (BYTE *)bytes, chunk, 0, 0));
++		bytes += chunk;
++		nbytes -= chunk;
++	}
++	/* Kernel Yarrow disables entropy estimates. prngAllowReseed therefore
++     * rejects every seed. This API receives an already admitted boot seed
++     * or mixes new input into an already seeded state; force the published
++     * Yarrow reseed instead of silently retaining its fixed initial state. */
++	prng_check(prngForceReseed(ctx->prng, 5000));
++	ctx->bytes_since_entropy = 0;
++}
+ 
+ void cckprng_init(struct cckprng_ctx *ctx, unsigned max_ngens, size_t entropybuf_nbytes, const void *entropybuf,
+ 				  const uint32_t *entropybuf_nsamples, size_t seed_nbytes, const void *seed, size_t nonce_nbytes,
+ 				  const void *nonce) {
+-	prngInitialize(&ctx->prng);
++	if (!seed || seed_nbytes < 32) cc_abort("corecrypto short boot seed: %d", -1);
++#if KERNEL
++	if (!prng_lock) {
++		prng_lock_group = lck_grp_alloc_init("corecrypto-yarrow", LCK_GRP_ATTR_NULL);
++		if (!prng_lock_group) cc_abort("corecrypto lock allocation: %d", -1);
++		prng_lock = lck_mtx_alloc_init(prng_lock_group, LCK_ATTR_NULL);
++		if (!prng_lock) cc_abort("corecrypto mutex allocation: %d", -1);
++	}
++#endif
++	PRNG_LOCK();
++	prng_check(prngInitialize(&ctx->prng));
+ 	ctx->bytes_generated = ctx->bytes_since_entropy = 0;
+ 
+-	cckprng_reseed(ctx, seed_nbytes, seed);
+-	cckprng_reseed(ctx, nonce_nbytes, nonce);
+-	cckprng_reseed(ctx, entropybuf_nbytes, entropybuf);
++	reseed_locked(ctx, seed_nbytes, seed);
++	reseed_locked(ctx, nonce_nbytes, nonce);
++	reseed_locked(ctx, entropybuf_nbytes, entropybuf);
++	kernel_prng = ctx;
++#if KERNEL
++	DTEntry chosen;
++	const void *source;
++	unsigned int size;
++	if (SecureDTLookupEntry(NULL, "/chosen", &chosen) == kSuccess &&
++		SecureDTGetProperty(chosen, "blauos,boot-entropy-source", &source, &size) == kSuccess &&
++		size == sizeof("efi-rng") && !memcmp(source, "efi-rng", sizeof("efi-rng"))) {
++		ssh_entropy_ready = 1;
++	}
++	sysctl_register_oid(&sysctl__kern_blauos_ssh_entropy_ready);
++	printf("BLAUOS_KERNEL_ENTROPY provider=yarrow-fixed-v1 boot_source_efi_rng=%d\n", ssh_entropy_ready);
++#endif
++	PRNG_UNLOCK();
+ }
+ 
+ void cckprng_init_with_getentropy(struct cckprng_ctx *ctx, unsigned max_ngens, size_t seed_nbytes, const void *seed,
+ 								  size_t nonce_nbytes, const void *nonce, cckprng_getentropy getentropy,
+ 								  void *getentropy_arg) {
+-	uint8_t entropy[32];
+-	size_t entropy_nbytes = sizeof(entropy);
+-
+ 	cckprng_init(ctx, max_ngens, 0, NULL, NULL, seed_nbytes, seed, nonce_nbytes, nonce);
+-
+-	if (getentropy && getentropy(&entropy_nbytes, entropy, getentropy_arg) == 0) {
+-		if (entropy_nbytes > sizeof(entropy)) {
+-			entropy_nbytes = sizeof(entropy);
+-		}
+-		cckprng_reseed(ctx, entropy_nbytes, entropy);
+-	}
++	entropy_callback = getentropy;
++	entropy_callback_arg = getentropy_arg;
++	cckprng_refresh(ctx);
+ }
+ 
+ void cckprng_initgen(struct cckprng_ctx *ctx, unsigned gen_idx) {
+@@ -38,23 +103,30 @@
+ }
+ 
+ void cckprng_reseed(struct cckprng_ctx *ctx, size_t nbytes, const void *seed) {
+-	if (nbytes == 0 || seed == NULL) {
+-		return;
+-	}
+-
+-	prngInput(ctx->prng, (BYTE *)seed, (UINT)nbytes, 0, 0);
+-	prngAllowReseed(ctx->prng, 5000);
+-	ctx->bytes_since_entropy = 0;
++	PRNG_LOCK();
++	reseed_locked(ctx, nbytes, seed);
++	PRNG_UNLOCK();
+ }
+ 
+ void cckprng_refresh(struct cckprng_ctx *ctx) {
+-	// Nothing is needed here, either.
++	if (!entropy_callback) return;
++	uint8_t entropy[32];
++	size_t nbytes = sizeof(entropy);
++	PRNG_LOCK();
++	int32_t samples = entropy_callback(&nbytes, entropy, entropy_callback_arg);
++	if (samples < 0 || nbytes > sizeof(entropy)) {
++		cc_abort("corecrypto entropy source failed: %d", samples);
++	}
++	if (samples > 0 && nbytes) reseed_locked(ctx, nbytes, entropy);
++	cc_clear(sizeof(entropy), entropy);
++	PRNG_UNLOCK();
+ }
+ 
+ void cckprng_generate(struct cckprng_ctx *ctx, unsigned gen_idx, size_t nbytes, void *out) {
+ 	BYTE *buffer = (BYTE *)out;
++	PRNG_LOCK();
+ 	while (nbytes > UINT32_MAX) {
+-		prngOutput(ctx->prng, buffer, UINT32_MAX);
++		prng_check(prngOutput(ctx->prng, buffer, UINT32_MAX));
+ 		ctx->bytes_generated += UINT32_MAX;
+ 		ctx->bytes_since_entropy += UINT32_MAX;
+ 
+@@ -64,33 +136,30 @@
+ 	}
+ 
+ 	if (nbytes != 0) {
+-		prngOutput(ctx->prng, buffer, (UINT)nbytes);
++		prng_check(prngOutput(ctx->prng, buffer, (UINT)nbytes));
+ 		ctx->bytes_generated += nbytes;
+ 		ctx->bytes_since_entropy += nbytes;
+ 	}
++	PRNG_UNLOCK();
+ }
+ 
+ // MARK: -
+ 
+ struct ccrng_impl {
+ 	CCRNG_STATE_COMMON;
+-	PrngRef prng;
+ };
+ 
+ static int ccrng_generate_impl(struct ccrng_state *rng, size_t outlen, void *out) {
+-	struct ccrng_impl *impl = (struct ccrng_impl *)rng;
+-	prngOutput(impl->prng, out, (UINT)outlen);
++	(void)rng;
++	if (!kernel_prng) return -1;
++	cckprng_refresh(kernel_prng);
++	cckprng_generate(kernel_prng, 0, outlen, out);
+ 	return 0;
+ }
+ 
+ struct ccrng_state *ccrng(int *error) {
+-	static struct ccrng_impl ccrng_impl = { ccrng_generate_impl, NULL };
+-	static bool initialized = false;
+-
+-	if (!initialized) {
+-		prngInitialize(&ccrng_impl.prng);
+-		initialized = true;
+-	}
+-
++	static struct ccrng_impl ccrng_impl = { ccrng_generate_impl };
++	if (error) *error = kernel_prng ? 0 : -1;
++	if (!kernel_prng) return NULL;
+ 	return (struct ccrng_state *)&ccrng_impl;
+ }

@@ -1,0 +1,343 @@
+{
+  "schema_version": 1,
+  "kind": "native-m1-driver-contract-audit",
+  "issue": 41,
+  "checked_on": "2026-10-11",
+  "audit_document": "docs/audits/native-driver-contracts.md",
+  "status": "contracts_defined_source_level_only",
+  "scope": "XNU/IOKit interface contracts for the essential T8103 drivers, the pinned-source reuse boundary, and the seeded hardware-support matrix. Documentation and source audit only; no physical M1 execution.",
+  "input_hashes": {
+    "sources_lock": {
+      "path": "sources.lock.json",
+      "sha256": "de98f7289628e8ea53089b8945798afa01c2dd1afb1328b82e6a9a2321537cee"
+    },
+    "puredarwin_flake_lock": {
+      "path": "manifests/puredarwin-flake.lock",
+      "sha256": "78cab4ea95807142177b6be3537783432c913f852ba25812add6cc6dc63ff47f"
+    },
+    "native_patch_series": {
+      "path": "patches/native/series",
+      "sha256": "3286a6c5ce447a6626e954c2159ce1d5ecacf438061220924c13241ef3aaebef",
+      "patch_count": 17
+    }
+  },
+  "reuse_boundary": {
+    "license_policy": "Project MIT license (LICENSE) does not relicense external sources; per-file notices retained; see docs/audits/puredarwin-reuse.md before redistribution.",
+    "public_pinned_families": [
+      {
+        "name": "upstream-modern-apple",
+        "profile": "upstream-modern",
+        "status": "build experiment; matching KDK not present",
+        "primary_source": {
+          "name": "xnu",
+          "repository": "apple-oss-distributions/xnu",
+          "tag": "xnu-12377.121.6",
+          "revision": "ac9718fb1af618d5ce8678d0dc6e8a58f252216f",
+          "tree": "cba06fba7c9d041633c55cfa3e3130fc367a5a1b",
+          "license": "APSL-2.0 and BSD notices"
+        },
+        "members": [
+          "xnu",
+          "availabilityversions",
+          "libdispatch",
+          "bootstrap_cmds",
+          "dyld",
+          "libsystem",
+          "libc",
+          "libplatform",
+          "libpthread",
+          "libmalloc"
+        ],
+        "driver_source_available": false
+      },
+      {
+        "name": "puredarwin-vm",
+        "profile": "puredarwin-vm",
+        "status": "candidate; upstream Nix requires locally supplied macOS11.3 SDK",
+        "primary_source": {
+          "name": "puredarwin-vm-next",
+          "repository": "PureDarwin/PureDarwin",
+          "tag": "next snapshot",
+          "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+          "tree": "ed2345d7f3c11dad2e7f6ffeeb377adc789b12b8",
+          "license": "Mixed; component license notices apply"
+        },
+        "members": [
+          "puredarwin-vm-next",
+          "iig-tools",
+          "kc-tools",
+          "xnu-loader",
+          "llvm-project",
+          "dash"
+        ],
+        "transitive_lock": {
+          "path": "manifests/puredarwin-flake.lock",
+          "sha256": "78cab4ea95807142177b6be3537783432c913f852ba25812add6cc6dc63ff47f"
+        },
+        "native_patch_series": "patches/native/series",
+        "t8103_platform_extension": "src/Kernel/Extensions/PDArmPlatformExpert",
+        "driver_source_available": "partial: PDAppleAIC platform extension only"
+      }
+    ],
+    "research_only_references": [
+      {
+        "name": "Asahi Linux AIC documentation",
+        "revision": "0d1f8917fa88745d62a4c05d802c4a7298c8616b",
+        "used_by": "patches/native/0007-t8103-aic-rearm-and-driver-abi.patch",
+        "retrieval_hash_receipt": "evidence/native/aic/native-final/inspection.json",
+        "code_imported": false
+      },
+      {
+        "name": "Asahi m1n1",
+        "role": "explicitly activated fallback/debugging boot path; primary hardware research reference; not a blauOS build input"
+      }
+    ],
+    "restricted_components": [
+      {
+        "name": "matching-arm64-kdk",
+        "classification": "binary-only-license-restricted",
+        "required_by": "modern Apple XNU external ARM64 build (KDKROOT; force-loaded KernelSupport archive per makedefs/MakeInc.def)",
+        "present": false,
+        "evidence": "docs/audits/native-security-inputs.md"
+      },
+      {
+        "name": "macosx11-3-sdk",
+        "classification": "proprietary-locally-supplied",
+        "sha256": "9adc1373d3879e1973d28ad9f17c9051b02931674a3ec2a2498128989ece2cb1",
+        "required_by": "unmodified PureDarwin Nix profile",
+        "present_in_repo": false,
+        "evidence": "docs/audits/puredarwin-reuse.md"
+      },
+      {
+        "name": "trustcache-coreentitlements-v2-headers",
+        "classification": "missing-public-inputs",
+        "paths": [
+          "EXTERNAL_HEADERS/TrustCache/API.h",
+          "EXTERNAL_HEADERS/CoreEntitlements/V2/API.h",
+          "EXTERNAL_HEADERS/CoreEntitlements/V2/Kernel.h",
+          "CodeSignature/Entitlements.h"
+        ],
+        "compatibility_stubs_permitted": false,
+        "evidence": "evidence/native/security-inputs.json"
+      },
+      {
+        "name": "apple-firmware-and-boot-authorization",
+        "classification": "binary-only-hardware-assumption",
+        "note": "Recorded separately from source-built components per docs/scope.md; presence never establishes an open driver implementation."
+      },
+      {
+        "name": "apple-binary-drivers",
+        "classification": "binary-only-no-public-source",
+        "drivers": [
+          "IONVMeFamily",
+          "Apple PCIe root complex",
+          "DART/IOMMU",
+          "ANS/RTKit coprocessor interface",
+          "M1 Ethernet controller driver"
+        ]
+      }
+    ]
+  },
+  "driver_contracts": [
+    {
+      "id": "aic",
+      "name": "Apple Interrupt Controller",
+      "milestone_phase": "P0",
+      "iokit_interface": {
+        "kind": "IOInterruptController (primary controller registration)",
+        "discovery": "ADT arm-io/aic nodes; uncached MMIO mapping",
+        "obligations": [
+          "per-vector register/enable/disable honoring IOInterruptVector software-disable concurrency",
+          "post-event hardware re-arm only while a handler stays registered and enabled",
+          "bounded dispatch with explicit spurious-event and storm handling",
+          "failure propagation from resource discovery"
+        ]
+      },
+      "source_availability": "pinned-public-source-repaired",
+      "patches": [
+        "patches/native/0007-t8103-aic-rearm-and-driver-abi.patch",
+        "patches/native/0016-t8103-aic-hardening.patch"
+      ],
+      "evidence": [
+        "docs/audits/native-aic.md",
+        "docs/audits/native-aic-hardening.md",
+        "evidence/native/aic/native-final/result.json"
+      ],
+      "verification": "compile-and-link-only"
+    },
+    {
+      "id": "uart",
+      "name": "Apple polling UART (early serial diagnostics)",
+      "milestone_phase": "P0",
+      "iokit_interface": {
+        "kind": "PEXpert console (not an IOKit driver)",
+        "discovery": "pe_serial.c::serial_init; ADT dock-channel or boot-console/uart0/uart1 compatible selection; 115200 8N1 default adjustable by clock/divider properties",
+        "obligations": [
+          "bounded TX-ready waits",
+          "size-checked property reads",
+          "PE_init_kprintf selection with cnputc_unbuffered fallback"
+        ]
+      },
+      "source_availability": "pinned-public-source-existing",
+      "patches": [
+        "patches/native/0006-t8103-early-diagnostics.patch"
+      ],
+      "evidence": [
+        "docs/audits/native-platform-gaps.md",
+        "docs/platform/m1-early-diagnostics.md",
+        "evidence/native/early-diagnostics/result.json"
+      ],
+      "verification": "compile-and-object-inspection-only"
+    },
+    {
+      "id": "clocks-resets-power-domains",
+      "name": "Clocks, resets and power domains",
+      "milestone_phase": "P0 prerequisite; CPU frequency/idle is P2",
+      "iokit_interface": {
+        "kind": "platform service consumed by DMA/storage/network drivers",
+        "discovery": "ADT clock/reset/power properties; SoC physical base via pe_arm_get_soc_base_phys",
+        "obligations": [
+          "absent or malformed clock nodes produce explicit logged fallbacks, never silent defaults",
+          "validated property lookups with size and overflow checks",
+          "no silent default clock configuration"
+        ]
+      },
+      "source_availability": "no-public-driver-source",
+      "patches": [
+        "patches/native/0014-t8103-timer-discovery.patch"
+      ],
+      "evidence": [
+        "docs/audits/native-platform-gaps.md",
+        "docs/audits/native-timer-discovery.md",
+        "evidence/native/kernel/t8103-timer-discovery/result.json"
+      ],
+      "verification": "contract-only-no-driver"
+    },
+    {
+      "id": "dart-iommu",
+      "name": "DART / IOMMU (DMA translation)",
+      "milestone_phase": "P1",
+      "iokit_interface": {
+        "kind": "IOMapper implementation per DART instance; IODMACommand/memory-descriptor translation for consumers",
+        "discovery": "ADT DART nodes (schema not yet captured)",
+        "obligations": [
+          "mapping lifetime bound to its DMA command, never to the device",
+          "DMA faults reported through the AIC interrupt contract",
+          "implementation fits the public IOMapper seam without broad XNU fork changes"
+        ]
+      },
+      "source_availability": "no-public-source",
+      "patches": [],
+      "evidence": [
+        "docs/scope.md",
+        "docs/audits/source-dependencies.md",
+        "docs/virtualization.md"
+      ],
+      "verification": "contract-only-no-driver"
+    },
+    {
+      "id": "ans-nvme",
+      "name": "ANS / NVMe storage",
+      "milestone_phase": "P1",
+      "iokit_interface": {
+        "kind": "IOKit block storage media service behind the ANS2/RTKit coprocessor mailbox path",
+        "discovery": "depends on clock/reset/power and DART contracts",
+        "obligations": [
+          "DART-backed DMA for all requests",
+          "bounded command timeouts with explicit error returns",
+          "clean teardown on coprocessor reset"
+        ]
+      },
+      "source_availability": "no-public-source",
+      "patches": [],
+      "evidence": [
+        "docs/scope.md",
+        "docs/audits/source-dependencies.md",
+        "docs/virtualization.md"
+      ],
+      "verification": "contract-only-no-driver"
+    },
+    {
+      "id": "ethernet-pcie",
+      "name": "Ethernet via PCIe (Macmini9,1 standard 1 Gb/s)",
+      "milestone_phase": "P1",
+      "iokit_interface": {
+        "kind": "PCIe root-complex platform driver producing IOPCIDevice nubs, then NIC driver claiming the 1 Gb/s controller",
+        "discovery": "PCIe enumeration; ADT PCIe nodes (schema not yet captured)",
+        "obligations": [
+          "DART-backed DMA rings",
+          "AIC-delivered interrupts",
+          "link-state and error accounting",
+          "remote-reboot-safe teardown"
+        ]
+      },
+      "source_availability": "no-public-source",
+      "patches": [],
+      "evidence": [
+        "docs/scope.md",
+        "docs/virtualization.md",
+        "docs/audits/source-dependencies.md"
+      ],
+      "verification": "contract-only-no-driver"
+    }
+  ],
+  "hardware_matrix": [
+    {
+      "model": "Macmini9,1",
+      "soc": "T8103",
+      "driver": "aic",
+      "verification_status": "unverified-no-physical-execution",
+      "note": "Compile/link evidence only; no interrupt delivered on hardware."
+    },
+    {
+      "model": "Macmini9,1",
+      "soc": "T8103",
+      "driver": "uart",
+      "verification_status": "unverified-no-physical-execution",
+      "note": "Early-diagnostics hook compiles; UART physical reachability unproven."
+    },
+    {
+      "model": "Macmini9,1",
+      "soc": "T8103",
+      "driver": "clocks-resets-power-domains",
+      "verification_status": "unverified-no-physical-execution",
+      "note": "No driver exists; contract defined only."
+    },
+    {
+      "model": "Macmini9,1",
+      "soc": "T8103",
+      "driver": "dart-iommu",
+      "verification_status": "unverified-no-physical-execution",
+      "note": "No driver exists; contract defined only."
+    },
+    {
+      "model": "Macmini9,1",
+      "soc": "T8103",
+      "driver": "ans-nvme",
+      "verification_status": "unverified-no-physical-execution",
+      "note": "No driver exists; contract defined only."
+    },
+    {
+      "model": "Macmini9,1",
+      "soc": "T8103",
+      "driver": "ethernet-pcie",
+      "verification_status": "unverified-no-physical-execution",
+      "note": "No driver exists; contract defined only."
+    }
+  ],
+  "acceptance": {
+    "interfaces_documented": true,
+    "reuse_boundary_enumerated": true,
+    "open_implementations_compared": true,
+    "hardware_matrix_seeded": true,
+    "native_build_verified": false,
+    "driver_executed_on_hardware": false,
+    "physical_gate_passed": false,
+    "gate_2_status": "not_run",
+    "blocking_gates": [
+      40,
+      30,
+      12
+    ]
+  }
+}

@@ -1,0 +1,595 @@
+--- a/src/Kernel/xnu/pexpert/pexpert/arm64/H13.h
++++ b/src/Kernel/xnu/pexpert/pexpert/arm64/H13.h
+@@ -68,6 +68,14 @@
+ /* Optional CPU features -- an SoC may #undef these */
+ #define ARM_PARAMETERIZED_PMAP               1
+ #define __ARM_MIXED_PAGE_SIZE__              1
++#if defined(ARM64_BOARD_CONFIG_T8103)
++#define HAS_APCTL_EL1_USERKEYEN              1 /* Supports use of KernKey in EL0 */
++
++/*
++ * APSTS_SUPPORTED: Pointer authentication status registers, MKEYVld flag moved here from APCTL on APPLELIGHTNING (H12)
++ */
++#define __APSTS_SUPPORTED__                  1
++#endif /* ARM64_BOARD_CONFIG_T8103 */
+ #define __ARM_RANGE_TLBI__                   1
+ #define __ARM_E2H__                          1
+ 
+--- a/src/Kernel/xnu/pexpert/pexpert/arm64/apple_arm64_common.h
++++ b/src/Kernel/xnu/pexpert/pexpert/arm64/apple_arm64_common.h
+@@ -63,6 +63,11 @@
+ 
+ #if defined(CPU_HAS_APPLE_PAC) && defined(__arm64e__)
+ #define HAS_APPLE_PAC                        1 /* Has Apple ARMv8.3a pointer authentication */
++#if defined(ARM64_BOARD_CONFIG_T8103)
++#define KERNEL_ROP_ID 0xfeedfacefeedfacf /* placeholder static kernel ROP diversifier */
++#define KERNEL_KERNKEY_ID (KERNEL_ROP_ID + 4)
++#define KERNEL_JOP_ID (KERNEL_KERNKEY_ID + 2)
++#endif /* ARM64_BOARD_CONFIG_T8103 */
+ #endif
+ 
+ #include <pexpert/arm64/apple_arm64_regs.h>
+--- a/src/Kernel/xnu/pexpert/pexpert/arm64/apple_arm64_regs.h
++++ b/src/Kernel/xnu/pexpert/pexpert/arm64/apple_arm64_regs.h
+@@ -345,4 +345,54 @@
+ 
+ #endif /* ASSEMBLER */
+ 
++#if defined(ARM64_BOARD_CONFIG_T8103)
++#if defined(HAS_APPLE_PAC)
++
++#ifdef ASSEMBLER
++#define ARM64_REG_APCTL_EL1            S3_4_c15_c0_4
++#define ARM64_REG_APSTS_EL1            S3_6_c15_c12_4
++#else /* ASSEMBLER */
++#define ARM64_REG_APCTL_EL1            "S3_4_c15_c0_4"
++#define ARM64_REG_APSTS_EL1            "S3_6_c15_c12_4"
++#endif /* ASSEMBLER */
++
++#if ASSEMBLER
++#define ARM64_REG_KERNELKEYLO_EL1      S3_4_c15_c1_0
++#define ARM64_REG_KERNELKEYHI_EL1      S3_4_c15_c1_1
++
++#define ARM64_REG_APIAKEYLO_EL1        S3_0_c2_c1_0
++#define ARM64_REG_APIAKEYHI_EL1        S3_0_c2_c1_1
++#define ARM64_REG_APIBKEYLO_EL1        S3_0_c2_c1_2
++#define ARM64_REG_APIBKEYHI_EL1        S3_0_c2_c1_3
++
++#define ARM64_REG_APDAKEYLO_EL1        S3_0_c2_c2_0
++#define ARM64_REG_APDAKEYHI_EL1        S3_0_c2_c2_1
++#define ARM64_REG_APDBKEYLO_EL1        S3_0_c2_c2_2
++#define ARM64_REG_APDBKEYHI_EL1        S3_0_c2_c2_3
++
++#define ARM64_REG_APGAKEYLO_EL1        S3_0_c2_c3_0
++#define ARM64_REG_APGAKEYHI_EL1        S3_0_c2_c3_1
++#else /* ASSEMBLER */
++#define ARM64_REG_APCTL_EL1            "S3_4_c15_c0_4"
++
++#define ARM64_REG_KERNELKEYLO_EL1      "S3_4_c15_c1_0"
++#define ARM64_REG_KERNELKEYHI_EL1      "S3_4_c15_c1_1"
++
++#define ARM64_REG_APIAKEYLO_EL1        "S3_0_c2_c1_0"
++#define ARM64_REG_APIAKEYHI_EL1        "S3_0_c2_c1_1"
++#define ARM64_REG_APIBKEYLO_EL1        "S3_0_c2_c1_2"
++#define ARM64_REG_APIBKEYHI_EL1        "S3_0_c2_c1_3"
++
++#define ARM64_REG_APDAKEYLO_EL1        "S3_0_c2_c2_0"
++#define ARM64_REG_APDAKEYHI_EL1        "S3_0_c2_c2_1"
++#define ARM64_REG_APDBKEYLO_EL1        "S3_0_c2_c2_2"
++#define ARM64_REG_APDBKEYHI_EL1        "S3_0_c2_c2_3"
++
++#define ARM64_REG_APGAKEYLO_EL1        "S3_0_c2_c3_0"
++#define ARM64_REG_APGAKEYHI_EL1        "S3_0_c2_c3_1"
++#endif /* ASSEMBLER */
++#endif /* HAS_APPLE_PAC */
++
++#endif /* ARM64_BOARD_CONFIG_T8103 */
++
+ #endif /* ! _PEXPERT_ARM_ARM64_H */
+--- a/src/Kernel/xnu/osfmk/arm64/proc_reg.h
++++ b/src/Kernel/xnu/osfmk/arm64/proc_reg.h
+@@ -2028,6 +2028,25 @@
+ #define APSTATE_AP_MASK  ((1ULL << APSTATE_A_SHIFT) | (1ULL << APSTATE_P_SHIFT))
+ 
+ 
++#if defined(ARM64_BOARD_CONFIG_T8103)
++#ifdef __APSTS_SUPPORTED__
++#define APCTL_EL1_AppleMode  (1ULL << 0)
++#define APCTL_EL1_KernKeyEn  (1ULL << 1)
++#define APCTL_EL1_EnAPKey0   (1ULL << 2)
++#define APCTL_EL1_EnAPKey1   (1ULL << 3)
++#ifdef HAS_APCTL_EL1_USERKEYEN
++#define APCTL_EL1_UserKeyEn_OFFSET      4
++#define APCTL_EL1_UserKeyEn             (1ULL << APCTL_EL1_UserKeyEn_OFFSET)
++#endif /* HAS_APCTL_EL1_USERKEYEN */
++#define APSTS_EL1_MKEYVld    (1ULL << 0)
++#else
++#define APCTL_EL1_AppleMode  (1ULL << 0)
++#define APCTL_EL1_MKEYVld    (1ULL << 1)
++#define APCTL_EL1_KernKeyEn  (1ULL << 2)
++#endif
++
++#endif /* ARM64_BOARD_CONFIG_T8103 */
++
+ #define ACTLR_EL1_EnTSO   (1ULL << 1)
+ #define ACTLR_EL1_EnAPFLG (1ULL << 4)
+ #define ACTLR_EL1_EnAFP   (1ULL << 5)
+--- a/src/Kernel/xnu/osfmk/arm64/pac_asm.h
++++ b/src/Kernel/xnu/osfmk/arm64/pac_asm.h
+@@ -41,6 +41,74 @@
+ #include "assym.s"
+ 
+ #if defined(HAS_APPLE_PAC)
++
++#if defined(ARM64_BOARD_CONFIG_T8103)
++#if defined(APPLEFIRESTORM)
++/* H13 may use either fast or slow A-key switching, depending on CPU model and revision */
++#define HAS_PAC_FAST_A_KEY_SWITCHING    1
++#define HAS_PAC_SLOW_A_KEY_SWITCHING    1
++
++/* BEGIN IGNORE CODESTYLE */
++
++/**
++ * IF_PAC_FAST_A_KEY_SWITCHING
++ *
++ * Branch to a specified label if this H13 model + revision supports fast A-key switching.
++ *
++ *   label - label to branch to
++ *   tmp - scratch register
++ */
++.macro IF_PAC_FAST_A_KEY_SWITCHING	label, tmp
++	/**
++	 * start.s attempts to set APCTL_EL1.UserKeyEn.  If this H13 CPU doesn't
++	 * actually support this bit, it will be RaZ.
++	 */
++	mrs		\tmp, ARM64_REG_APCTL_EL1
++	tbnz	\tmp, #APCTL_EL1_UserKeyEn_OFFSET, \label
++.endmacro
++
++/**
++ * IF_PAC_SLOW_A_KEY_SWITCHING
++ *
++ * Branch to a specified label if this H13 model + revision doesn't support fast A-key switching.
++ *
++ *   label - label to branch to
++ *   tmp - scratch register
++ */
++.macro IF_PAC_SLOW_A_KEY_SWITCHING	label, tmp
++	mrs		\tmp, ARM64_REG_APCTL_EL1
++	tbz		\tmp, #APCTL_EL1_UserKeyEn_OFFSET, \label
++.endmacro
++
++/* END IGNORE CODESTYLE */
++
++#elif defined(HAS_APCTL_EL1_USERKEYEN)
++#define HAS_PAC_FAST_A_KEY_SWITCHING    1
++#define HAS_PAC_SLOW_A_KEY_SWITCHING    0
++
++.macro IF_PAC_FAST_A_KEY_SWITCHING      label, tmp
++.error "This macro should never need to be used on this CPU family."
++.endmacro
++
++/* We know at compile time that this CPU family definitely doesn't need slow A-key switching */
++.macro IF_PAC_SLOW_A_KEY_SWITCHING      label, tmp
++.endmacro
++
++#else /* !defined(APPLEFIRESTORM) && !defined(HAS_APCTL_EL1_USERKEYEN) */
++#define HAS_PAC_FAST_A_KEY_SWITCHING    0
++#define HAS_PAC_SLOW_A_KEY_SWITCHING    1
++
++/* We know at compile time that this CPU family definitely doesn't support fast A-key switching */
++.macro IF_PAC_FAST_A_KEY_SWITCHING      label, tmp
++.endmacro
++
++.macro IF_PAC_SLOW_A_KEY_SWITCHING      label, tmp
++.error "This macro should never need to be used on this CPU family."
++.endmacro
++
++#endif /* defined(APPLEFIRESTORM) */
++
++#endif /* ARM64_BOARD_CONFIG_T8103 */
+ 
+ 
+ /* BEGIN IGNORE CODESTYLE */
+@@ -111,6 +179,29 @@
+ 	mov		x1, \new_jop_key
+ 	hvc		#0
+ 	LOAD_SMCCC_CLOBBERED_REGISTERS
++#elif defined(ARM64_BOARD_CONFIG_T8103)
++#if HAS_PAC_FAST_A_KEY_SWITCHING
++	IF_PAC_SLOW_A_KEY_SWITCHING	Lslow_reprogram_jop_keys_\@, \tmp
++	msr		ARM64_REG_KERNELKEYLO_EL1, \new_jop_key
++	add		\tmp, \new_jop_key, #1
++	msr		ARM64_REG_KERNELKEYHI_EL1, \tmp
++#endif /* HAS_PAC_FAST_A_KEY_SWITCHING */
++#if HAS_PAC_FAST_A_KEY_SWITCHING && HAS_PAC_SLOW_A_KEY_SWITCHING
++	b		Lset_jop_key_registers_done_\@
++#endif /* HAS_PAC_FAST_A_KEY_SWITCHING && HAS_PAC_SLOW_A_KEY_SWITCHING */
++
++#if HAS_PAC_SLOW_A_KEY_SWITCHING
++Lslow_reprogram_jop_keys_\@:
++	msr		APIAKeyLo_EL1, \new_jop_key
++	add		\tmp, \new_jop_key, #1
++	msr		APIAKeyHi_EL1, \tmp
++	add		\tmp, \tmp, #1
++	msr		APDAKeyLo_EL1, \tmp
++	add		\tmp, \tmp, #1
++	msr		APDAKeyHi_EL1, \tmp
++#endif /* HAS_PAC_SLOW_A_KEY_SWITCHING */
++
++Lset_jop_key_registers_done_\@:
+ #endif /* HAS_PARAVIRTUALIZED_PAC */
+ .endmacro
+ 
+@@ -131,6 +222,14 @@
+ 	mov		x1, \new_rop_key
+ 	hvc		#0
+ 	LOAD_SMCCC_CLOBBERED_REGISTERS
++#elif defined(ARM64_BOARD_CONFIG_T8103)
++	msr		APIBKeyLo_EL1, \new_rop_key
++	add		\tmp, \new_rop_key, #1
++	msr		APIBKeyHi_EL1, \tmp
++	add		\tmp, \tmp, #1
++	msr		APDBKeyLo_EL1, \tmp
++	add		\tmp, \tmp, #1
++	msr		APDBKeyHi_EL1, \tmp
+ #endif /* HAS_PARAVIRTUALIZED_PAC */
+ .endmacro
+ 
+--- a/src/Kernel/xnu/osfmk/arm64/machine_routines_asm.s
++++ b/src/Kernel/xnu/osfmk/arm64/machine_routines_asm.s
+@@ -30,6 +30,9 @@
+ #include <arm64/exception_asm.h>
+ #include <arm64/machine_machdep.h>
+ #include <arm64/proc_reg.h>
++#if defined(ARM64_BOARD_CONFIG_T8103)
++#include <arm64/pac_asm.h>
++#endif /* ARM64_BOARD_CONFIG_T8103 */
+ #include <arm/pmap.h>
+ #include <pexpert/arm64/board_config.h>
+ #include <sys/errno.h>
+@@ -38,6 +41,17 @@
+ 
+ #if defined(HAS_APPLE_PAC)
+ 
++
++#if defined(ARM64_BOARD_CONFIG_T8103)
++.macro SET_KERN_KEY		dst, apctl_el1
++	orr		\dst, \apctl_el1, #APCTL_EL1_KernKeyEn
++.endmacro
++
++.macro CLEAR_KERN_KEY	dst, apctl_el1
++	and		\dst, \apctl_el1, #~APCTL_EL1_KernKeyEn
++.endmacro
++
++#endif /* ARM64_BOARD_CONFIG_T8103 */
+ 
+ .macro LOAD_CPU_JOP_KEY	dst, tmp
+ 	mrs		\tmp, TPIDR_EL1
+@@ -58,6 +72,44 @@
+ 	hvc		#0
+ 	LOAD_CPU_JOP_KEY x0, x1
+ 	ret
++#elif defined(ARM64_BOARD_CONFIG_T8103)
++	mov		x1, x0
++	mrs		x2, TPIDR_EL1
++	ldr		x2, [x2, ACT_CPUDATAP]
++	ldr		x0, [x2, CPU_JOP_KEY]
++
++	cmp		x0, x1
++	b.eq	Lskip_program_el0_jop_key
++	/*
++	 * We can safely write to the JOP key registers without updating
++	 * current_cpu_datap()->jop_key.  The complementary
++	 * ml_disable_user_jop_key() call will put back the old value.  Interrupts
++	 * are also disabled, so nothing else will read this field in the meantime.
++	 */
++	SET_JOP_KEY_REGISTERS	x1, x2
++Lskip_program_el0_jop_key:
++
++	/*
++	 * if (cpu has APCTL_EL1.UserKeyEn) {
++	 *   set APCTL_EL1.KernKeyEn		// KERNKey is mixed into EL0 keys
++	 * } else {
++	 *   clear APCTL_EL1.KernKeyEn		// KERNKey is not mixed into EL0 keys
++	 * }
++	 */
++	mrs		x1, ARM64_REG_APCTL_EL1
++#if defined(APPLEFIRESTORM)
++	SET_KERN_KEY	x2, x1
++	CLEAR_KERN_KEY	x3, x1
++	tst		x1, #(APCTL_EL1_UserKeyEn)
++	csel	x1, x2, x3, ne
++#elif defined(HAS_APCTL_EL1_USERKEYEN)
++	SET_KERN_KEY	x1, x1
++#else
++	CLEAR_KERN_KEY	x1, x1
++#endif
++	msr		ARM64_REG_APCTL_EL1, x1
++	isb
++	ret
+ #endif /* HAS_PARAVIRTUALIZED_PAC */
+ 
+ /*
+@@ -71,6 +123,33 @@
+ 	MOV64	x0, VMAPPLE_PAC_SET_EL0_DIVERSIFIER_AT_EL1
+ 	mov		x1, #0
+ 	hvc		#0
++	ret
++#elif defined(ARM64_BOARD_CONFIG_T8103)
++	cmp		x0, x1
++	b.eq	Lskip_program_prev_jop_key
++	SET_JOP_KEY_REGISTERS	x1, x2
++Lskip_program_prev_jop_key:
++
++	/*
++	 * if (cpu has APCTL_EL1.UserKeyEn) {
++	 *   clear APCTL_EL1.KernKeyEn		// KERNKey is not mixed into EL1 keys
++	 * } else {
++	 *   set APCTL_EL1.KernKeyEn		// KERNKey is mixed into EL1 keys
++	 * }
++	 */
++	mrs		x1, ARM64_REG_APCTL_EL1
++#if defined(APPLEFIRESTORM)
++	CLEAR_KERN_KEY	x2, x1
++	SET_KERN_KEY	x3, x1
++	tst		x1, #(APCTL_EL1_UserKeyEn)
++	csel	x1, x2, x3, ne
++#elif defined(HAS_APCTL_EL1_USERKEYEN)
++	CLEAR_KERN_KEY	x1, x1
++#else
++	SET_KERN_KEY	x1, x1
++#endif
++	msr		ARM64_REG_APCTL_EL1, x1
++	isb
+ 	ret
+ #endif /* HAS_PARAVIRTUALIZED_PAC */
+ 
+--- a/src/Kernel/xnu/osfmk/arm64/start.s
++++ b/src/Kernel/xnu/osfmk/arm64/start.s
+@@ -1219,6 +1219,69 @@
+ #if HAS_PARAVIRTUALIZED_PAC
+ 	mov		x0, #VMAPPLE_PAC_SET_INITIAL_STATE
+ 	hvc		#0
++#elif defined(ARM64_BOARD_CONFIG_T8103)
++#ifdef __APSTS_SUPPORTED__
++	mrs		x0, ARM64_REG_APSTS_EL1
++	and		x1, x0, #(APSTS_EL1_MKEYVld)
++	cbz		x1, 1b 										// Poll APSTS_EL1.MKEYVld
++	mrs		x0, ARM64_REG_APCTL_EL1
++	orr		x0, x0, #(APCTL_EL1_AppleMode)
++#ifdef HAS_APCTL_EL1_USERKEYEN
++	orr		x0, x0, #(APCTL_EL1_UserKeyEn)
++	and		x0, x0, #~(APCTL_EL1_KernKeyEn)
++#else /* !HAS_APCTL_EL1_USERKEYEN */
++	orr		x0, x0, #(APCTL_EL1_KernKeyEn)
++#endif /* HAS_APCTL_EL1_USERKEYEN */
++	and		x0, x0, #~(APCTL_EL1_EnAPKey0)
++	msr		ARM64_REG_APCTL_EL1, x0
++
++#if defined(APPLEFIRESTORM)
++	IF_PAC_FAST_A_KEY_SWITCHING	1f, x0
++	orr		x0, x0, #(APCTL_EL1_KernKeyEn)
++	msr		ARM64_REG_APCTL_EL1, x0
++1:
++#endif /* APPLEFIRESTORM */
++
++#else
++	mrs		x0, ARM64_REG_APCTL_EL1
++	and		x1, x0, #(APCTL_EL1_MKEYVld)
++	cbz		x1, 1b 										// Poll APCTL_EL1.MKEYVld
++	orr		x0, x0, #(APCTL_EL1_AppleMode)
++	orr		x0, x0, #(APCTL_EL1_KernKeyEn)
++	msr		ARM64_REG_APCTL_EL1, x0
++#endif /* APSTS_SUPPORTED */
++
++	/* ISB necessary to ensure APCTL_EL1_AppleMode logic enabled before proceeding */
++	isb		sy
++	/* Load static kernel key diversification values */
++	ldr		x0, =KERNEL_ROP_ID
++	/* set ROP key. must write at least once to pickup mkey per boot diversification */
++	msr		APIBKeyLo_EL1, x0
++	add		x0, x0, #1
++	msr		APIBKeyHi_EL1, x0
++	add		x0, x0, #1
++	msr		APDBKeyLo_EL1, x0
++	add		x0, x0, #1
++	msr		APDBKeyHi_EL1, x0
++	add		x0, x0, #1
++	msr		ARM64_REG_KERNELKEYLO_EL1, x0
++	add		x0, x0, #1
++	msr		ARM64_REG_KERNELKEYHI_EL1, x0
++	/* set JOP key. must write at least once to pickup mkey per boot diversification */
++	add		x0, x0, #1
++	msr		APIAKeyLo_EL1, x0
++	add		x0, x0, #1
++	msr		APIAKeyHi_EL1, x0
++	add		x0, x0, #1
++	msr		APDAKeyLo_EL1, x0
++	add		x0, x0, #1
++	msr		APDAKeyHi_EL1, x0
++	/* set G key */
++	add		x0, x0, #1
++	msr		APGAKeyLo_EL1, x0
++	add		x0, x0, #1
++	msr		APGAKeyHi_EL1, x0
++
+ #endif /* HAS_PARAVIRTUALIZED_PAC */
+ 
+ 	// Enable caches, MMU, ROP and JOP
+--- a/src/Kernel/xnu/osfmk/arm64/cswitch.s
++++ b/src/Kernel/xnu/osfmk/arm64/cswitch.s
+@@ -172,7 +172,12 @@
+ #endif /* DEBUG || DEVELOPMENT */
+ .endmacro
+ 
++#if defined(ARM64_BOARD_CONFIG_T8103)
++#define CSWITCH_ROP_KEYS	HAS_APPLE_PAC
++#else
+ #define CSWITCH_ROP_KEYS	(HAS_APPLE_PAC && HAS_PARAVIRTUALIZED_PAC)
++#endif /* ARM64_BOARD_CONFIG_T8103 */
++
+ #define CSWITCH_JOP_KEYS	(HAS_APPLE_PAC && HAS_PARAVIRTUALIZED_PAC)
+ 
+ /*
+@@ -216,6 +221,14 @@
+ #endif
+ Lskip_rop_keys_\@:
+ #endif /* CSWITCH_ROP_KEYS */
++
++#if defined(ARM64_BOARD_CONFIG_T8103) && HAS_APPLE_PAC && HAS_PAC_FAST_A_KEY_SWITCHING
++	IF_PAC_SLOW_A_KEY_SWITCHING	Lskip_native_jop_keys_\@, \new_key
++	ldr		\new_key, [\thread, TH_JOP_PID]
++	REPROGRAM_JOP_KEYS	Lskip_native_jop_keys_\@, \new_key, \cpudatap, \tmp_key
++	mov		\wsync, #1
++Lskip_native_jop_keys_\@:
++#endif
+ 
+ #if CSWITCH_JOP_KEYS
+ 	ldr		\new_key, [\thread, TH_JOP_PID]
+--- a/src/Kernel/xnu/osfmk/arm64/exception_asm.h
++++ b/src/Kernel/xnu/osfmk/arm64/exception_asm.h
+@@ -182,6 +182,31 @@
+ 
+ #if defined(HAS_APPLE_PAC)
+ 	.if \mode != HIBERNATE_MODE
++#if defined(ARM64_BOARD_CONFIG_T8103)
++	/**
++	 * Restore kernel keys if:
++	 *
++	 * - Entering the kernel from EL0, and
++	 * - CPU lacks fast A-key switching (fast A-key switching is
++	 *   implemented by reprogramming KERNKey on context switch)
++	 */
++	.if \mode == KERNEL_MODE
++#if HAS_PAC_SLOW_A_KEY_SWITCHING
++	IF_PAC_FAST_A_KEY_SWITCHING	Lskip_restore_kernel_keys_\@, x21
++	and		x21, x23, #(PSR64_MODE_EL_MASK)
++	cmp		x21, #(PSR64_MODE_EL0)
++	bne		Lskip_restore_kernel_keys_\@
++
++	MOV64	x2, KERNEL_JOP_ID
++	mrs		x3, TPIDR_EL1
++	ldr		x3, [x3, ACT_CPUDATAP]
++	REPROGRAM_JOP_KEYS	Lskip_restore_kernel_keys_\@, x2, x3, x4
++	isb		sy
++Lskip_restore_kernel_keys_\@:
++#endif /* HAS_PAC_SLOW_A_KEY_SWITCHING */
++	.endif /* \mode == KERNEL_MODE */
++
++#endif /* ARM64_BOARD_CONFIG_T8103 */
+ 
+ 	/* Save x1 and LR to preserve across call */
+ 	mov		x21, x1
+--- a/src/Kernel/xnu/osfmk/arm64/locore.s
++++ b/src/Kernel/xnu/osfmk/arm64/locore.s
+@@ -1233,6 +1233,63 @@
+ 1:
+ 
+ 
++#if defined(ARM64_BOARD_CONFIG_T8103)
++#if defined(HAS_APPLE_PAC)
++	//	if (eret to userspace) {
++	and		x2, x2, #(PSR64_MODE_EL_MASK)
++	cmp		x2, #(PSR64_MODE_EL0)
++	bne		Ldone_reconfigure_jop
++	//		thread_t thread = current_thread();
++	//		bool disable_jop;
++	//		if (arm_user_jop_disabled()) {
++	//			/* if global user JOP disabled, always turn off JOP regardless of thread flag (kernel running with JOP on) */
++	//			disable_jop = true;
++	//		} else {
++	//			disable_jop = thread->machine.disable_user_jop;
++	//		}
++	mrs		x2, TPIDR_EL1
++	ldrb	w1, [x2, TH_DISABLE_USER_JOP]
++	cbz		w1, Lenable_jop
++	//		if (disable_jop) {
++	//			if (cpu does not have discrete JOP-at-EL1 bit) {
++	//				disable_sctlr_jop_keys();
++	//			}
++	//		} else {
++	//			if (cpu does not have fast A-key switching) {
++	//				reprogram_jop_keys(thread->machine.jop_pid);
++	//			}
++	//		}
++	//	}
++Ldisable_jop:
++#if !(__APCFG_SUPPORTED__ || __APSTS_SUPPORTED__)
++	MOV64	x1, SCTLR_JOP_KEYS_ENABLED
++	mrs		x4, SCTLR_EL1
++	bic		x4, x4, x1
++	msr		SCTLR_EL1, x4
++	MOV64	x1, SCTLR_EL1_EXPECTED
++	cmp		x4, x1
++	bne		.
++#endif /* !(__APCFG_SUPPORTED__ || __APSTS_SUPPORTED__) */
++	b		Ldone_reconfigure_jop
++Lenable_jop:
++#if HAS_PAC_SLOW_A_KEY_SWITCHING
++	IF_PAC_FAST_A_KEY_SWITCHING	Ldone_reconfigure_jop, x1
++	ldr		x1, [x2, TH_JOP_PID]
++	ldr		x2, [x2, ACT_CPUDATAP]
++	REPROGRAM_JOP_KEYS	Ldone_reconfigure_jop, x1, x2, x3
++#if defined(__ARM_ARCH_8_5__)
++	/**
++	 * The new keys will be used after eret to userspace, so explicit sync is
++	 * required iff eret is non-synchronizing.
++	 */
++	isb		sy
++#endif /* defined(__ARM_ARCH_8_5__) */
++#endif /* HAS_PAC_SLOW_A_KEY_SWITCHING */
++Ldone_reconfigure_jop:
++#endif /* defined(HAS_APPLE_PAC) */
++
++#endif /* ARM64_BOARD_CONFIG_T8103 */
++
+ 	/* Restore arm_neon_saved_state64 */
+ 	ldp		q0, q1, [x0, NS64_Q0]
+ 	ldp		q2, q3, [x0, NS64_Q2]
+--- a/src/Kernel/xnu/osfmk/arm/machine_routines_apple.c
++++ b/src/Kernel/xnu/osfmk/arm/machine_routines_apple.c
+@@ -84,6 +84,21 @@
+ 
+ #endif /* HAS_PARAVIRTUALIZED_PAC */
+ 
++#if defined(ARM64_BOARD_CONFIG_T8103)
++static inline bool
++cpu_supports_userkeyen()
++{
++#if defined(APPLEFIRESTORM)
++	return __builtin_arm_rsr64(ARM64_REG_APCTL_EL1) & APCTL_EL1_UserKeyEn;
++#elif HAS_APCTL_EL1_USERKEYEN
++	return true;
++#else
++	return false;
++#endif
++}
++
++#endif /* ARM64_BOARD_CONFIG_T8103 */
++
+ /**
+  * Returns the default ROP key.
+  */
+@@ -93,6 +108,8 @@
+ #if HAS_PARAVIRTUALIZED_PAC
+ 	vmapple_pac_get_default_keys();
+ 	return vmapple_default_rop_pid;
++#elif defined(ARM64_BOARD_CONFIG_T8103)
++	return KERNEL_ROP_ID;
+ #else
+ 	return 0;
+ #endif /* HAS_PARAVIRTUALIZED_PAC */
+@@ -107,6 +124,12 @@
+ #if HAS_PARAVIRTUALIZED_PAC
+ 	vmapple_pac_get_default_keys();
+ 	return vmapple_default_jop_pid;
++#elif defined(ARM64_BOARD_CONFIG_T8103)
++	if (cpu_supports_userkeyen()) {
++		return KERNEL_KERNKEY_ID;
++	} else {
++		return KERNEL_JOP_ID;
++	}
+ #else
+ 	return 0;
+ #endif /* HAS_PARAVIRTUALIZED_PAC */

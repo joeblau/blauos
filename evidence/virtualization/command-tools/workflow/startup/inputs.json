@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "commands": [
+    [
+      "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-Wno-nullability-completeness",
+      "-include",
+      "/Users/joeblau/Developer/joeblau/src/blauos/runtime/compat/sdk27_compile.h",
+      "/Users/joeblau/Developer/joeblau/src/blauos/vm/ssh_start.c",
+      "-o",
+      "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/command-tools/workflow-v1/startup/root/usr/libexec/blauos-ssh-start",
+      "-arch",
+      "arm64",
+      "-isysroot",
+      "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.2.sdk",
+      "-mmacosx-version-min=11.0",
+      "-fno-builtin",
+      "-fno-stack-protector",
+      "-nostdlib",
+      "-L/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/runtime-final-root/usr/lib",
+      "-Wl,-dylib_file,/usr/lib/system/libdyld.dylib:/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/runtime-final-root/usr/lib/system/libdyld.dylib",
+      "-Wl,-platform_version,macos,11.0,11.5",
+      "-Wl,-fixup_chains",
+      "-lSystem",
+      "-Wl,-dylinker_install_name,/usr/lib/dyld"
+    ],
+    [
+      "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-Wno-nullability-completeness",
+      "-include",
+      "/Users/joeblau/Developer/joeblau/src/blauos/runtime/compat/sdk27_compile.h",
+      "/Users/joeblau/Developer/joeblau/src/blauos/vm/ssh_session_probe.c",
+      "-o",
+      "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/command-tools/workflow-v1/startup/root/usr/libexec/blauos-ssh-session-probe",
+      "-arch",
+      "arm64",
+      "-isysroot",
+      "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.2.sdk",
+      "-mmacosx-version-min=11.0",
+      "-fno-builtin",
+      "-fno-stack-protector",
+      "-nostdlib",
+      "-L/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/runtime-final-root/usr/lib",
+      "-Wl,-dylib_file,/usr/lib/system/libdyld.dylib:/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/runtime-final-root/usr/lib/system/libdyld.dylib",
+      "-Wl,-platform_version,macos,11.0,11.5",
+      "-Wl,-fixup_chains",
+      "-lSystem",
+      "-Wl,-dylinker_install_name,/usr/lib/dyld"
+    ]
+  ],
+  "source_files": [
+    {
+      "path": "vm/ssh_start.c",
+      "sha256": "87c2b90aa9875a91e7005ff4f16a83fbbc4e7131cb929cdf1cdd1ef50ee406d9"
+    },
+    {
+      "path": "vm/ssh_session_probe.c",
+      "sha256": "c5a0158e0094a0bb6cba2d9ca5180b426eb55e21b092f7198fc2d0e453dad012"
+    },
+    {
+      "path": "scripts/vm/build_ssh_start.py",
+      "sha256": "f875ca4ba3b9269950463784eee446fe68a52ed14815bdf2ff07a29cd68f9e5c"
+    },
+    {
+      "path": "scripts/vm/build_userspace.py",
+      "sha256": "5c33913a9241282c0c67775d076f021d25f4153cf7ebcbd400835aebc7eb1b2f"
+    },
+    {
+      "path": "runtime/compat/sdk27_compile.h",
+      "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+    }
+  ],
+  "compiler_version": "Apple clang version 21.0.0 (clang-2100.3.34.2)",
+  "compiler_sha256": "0993175af320361435e566fa638ad3f0852efe3599bf026da08d9d82be8275fa",
+  "sdk": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.2.sdk",
+  "runtime_link_inputs": {
+    "usr/lib/libSystem.B.dylib": "c89ccf4efa50bf4be0cf741ec91a7e44b842adbdd129be6577ee10b311161bed",
+    "usr/lib/system/libdyld.dylib": "7dc352822a56c035e262b709d7bd562ee448ce82d886cec22c76696d40a6f1ac"
+  },
+  "stock_runtime_used": false,
+  "guest_execution_verified": false
+}

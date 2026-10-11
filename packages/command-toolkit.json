@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "command-toolkit",
+  "summary": "BSD command toolkit for the server image (file, text, admin, and environment utilities) built from pinned Apple sources with the tracked vm/commands compatibility patches.",
+  "license": {
+    "spdx": null,
+    "notes": "sources.lock.json records 'BSD and APSL-2.0; component notices apply' for apple-file_cmds, apple-libutil, apple-shell-cmds, and apple-text-commands. The BSD variant is per-file; component notices govern until a per-file review lands.",
+    "determined_from": "sources.lock.json#sources[name=apple-file_cmds,apple-libutil,apple-shell-cmds,apple-text-commands].license"
+  },
+  "sources": [
+    {
+      "kind": "git",
+      "lock_name": "apple-file_cmds",
+      "url": "https://github.com/apple-oss-distributions/file_cmds.git",
+      "revision": "1ef2ec6f0f57762a907001ad6ff4e967db79e1a6",
+      "tree": "e83afd197e5fe69cda6bec1b14143b493e0c5908",
+      "tag": "file_cmds-272.250.1"
+    },
+    {
+      "kind": "git",
+      "lock_name": "apple-libutil",
+      "url": "https://github.com/apple-oss-distributions/libutil.git",
+      "revision": "0f4264d617b0a94d8905521fa444e2aa215f0a4d",
+      "tree": "8f5106c4f29686aec5c892b4248368c5344023a2",
+      "tag": "libutil-73"
+    },
+    {
+      "kind": "git",
+      "lock_name": "apple-shell-cmds",
+      "url": "https://github.com/apple-oss-distributions/shell_cmds.git",
+      "revision": "3675cf36782e8339492447b881daf7f82f419859",
+      "tree": "00f35e1f389b06fbf491271cb71609f4ece70438",
+      "tag": "shell_cmds-216.60.1"
+    },
+    {
+      "kind": "git",
+      "lock_name": "apple-text-commands",
+      "url": "https://github.com/apple-oss-distributions/text_cmds.git",
+      "revision": "592aaf8a50aa5810ee8183df20f0ba48bb23aa7e",
+      "tree": "86acbbc726de64390f538cebfcc9c4e2ccfa2c0d",
+      "tag": "text_cmds-199"
+    }
+  ],
+  "depends": ["runtime"],
+  "builder": {
+    "script": "scripts/vm/build_commands.py",
+    "command": [
+      "python3", "scripts/vm/build_commands.py",
+      "--runtime-root", ".blauos/build/runtime",
+      "--output", ".blauos/build/commands/run-1"
+    ],
+    "patches": [
+      "vm/commands/file/file_cmds.patch",
+      "vm/commands/file/libc-support.patch",
+      "vm/commands/admin/date-optional-utmpx.patch"
+    ]
+  },
+  "outputs": [
+    "bin/hostname",
+    "usr/bin/ls", "usr/bin/cp", "usr/bin/mv", "usr/bin/rm", "usr/bin/mkdir",
+    "usr/bin/rmdir", "usr/bin/ln", "usr/bin/chmod", "usr/bin/touch", "usr/bin/stat",
+    "usr/bin/du", "usr/bin/df", "usr/bin/cat", "usr/bin/head", "usr/bin/tail",
+    "usr/bin/wc", "usr/bin/cut", "usr/bin/tr", "usr/bin/uniq", "usr/bin/tee",
+    "usr/bin/grep", "usr/bin/sed", "usr/bin/comm", "usr/bin/paste", "usr/bin/rev",
+    "usr/bin/fold", "usr/bin/expand", "usr/bin/unexpand", "usr/bin/basename",
+    "usr/bin/dirname", "usr/bin/mktemp", "usr/bin/printenv", "usr/bin/env",
+    "usr/bin/id", "usr/bin/whoami", "usr/bin/groups", "usr/bin/date", "usr/bin/ps"
+  ],
+  "isolation": "All five upstream sources (including puredarwin-vm-next for build support) must match the locked revisions; patches are explicit tracked inputs hashed into provenance. Utilities link the independent runtime, never the macOS host libraries.",
+  "rebuild": {
+    "clean_rebuild_verified": false,
+    "note": "Pins are validated by scripts/build/packages.py. Guest acceptance of the built commands is recorded in evidence/virtualization/command-tools; a clean-environment rebuild comparison is remaining work."
+  }
+}

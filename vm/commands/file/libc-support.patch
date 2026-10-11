@@ -1,0 +1,18 @@
+--- a/src/Libraries/libSystem/libc/gen/fts.c
++++ b/src/Libraries/libSystem/libc/gen/fts.c
+@@ -65,12 +65,13 @@
+ #include <stdbool.h>
+ #include <sys/vnode.h>
+ #include <sys/attr.h>
+-#include <os/assumes.h>
++#include <assert.h>
++#define os_assert(condition) assert(condition)
+ 
+ #ifdef __BLOCKS__
+ #include <Block.h>
+ #endif /* __BLOCKS__ */
+-#include <malloc_private.h>
++/* No malloc SPI is used by this traversal implementation. */
+ 
+ #pragma clang diagnostic push
+ #pragma clang diagnostic ignored "-Wstrict-prototypes"

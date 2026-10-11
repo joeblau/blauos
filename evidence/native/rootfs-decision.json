@@ -1,0 +1,195 @@
+{
+  "schema_version": 1,
+  "record": "rootfs-decision",
+  "issue": 47,
+  "date": "2026-10-11",
+  "status": "decision_recorded_physical_behavior_unverified",
+  "decision_doc": "docs/audits/rootfs-decision.md",
+  "physical_m1_validation": false,
+  "gate_2_passed": false,
+  "gate_2_reference": "evidence/gate-2.json (decision: NOT_RUN; no dedicated M1 target exists)",
+  "decision": {
+    "chosen_filesystem": "ext4",
+    "chosen_source": "PureDarwin pinned next tree src/Kernel/Extensions/ext4 (com.apple.filesystems.ext4)",
+    "scope": "Prototype VM images and the native prototype image plan only; the physical M1 disk arrangement is explicitly undecided and hardware-gated",
+    "rationale": [
+      "ext4 is the only candidate with a source-built ARM64 kext in this repository (evidence/kernel/kexts/result.json) and an actual mounted, writable root in the QEMU VIRT guest (/dev/disk0s2, docs/virtualization.md)",
+      "Existing image tooling (scripts/vm/assemble.py, vm/smoke-image.nix) already produces and audits GPT + FAT ESP + ext4 images; no new formatter or provenance path is needed",
+      "The pinned loader's ramdisk loading is commented out, so a block-device root is required regardless of filesystem choice (docs/virtualization.md)",
+      "HFS+ kernel source exists only as an Apple-derived APSL-2.0 core in the PureDarwin tree and is not built or validated here; the pinned modern xnu-12377.121.6 contains no bsd/hfs implementation",
+      "Apple's APFS kernel driver is not available as source in any pinned input; the PureDarwin apfs directory is an incomplete version-0.1 scaffold, not a usable filesystem"
+    ],
+    "revisit_triggers": [
+      "Physical M1 experiments show iBoot/LocalPolicy requires the custom OS root inside an APFS container or volume group",
+      "A source-available, reviewable APFS or HFS+ implementation reaches build and mount validation in this repository",
+      "Gate 2 (independent physical boot) evidence identifies a concrete filesystem-related blocker"
+    ]
+  },
+  "candidates": [
+    {
+      "name": "ext4",
+      "decision": "chosen",
+      "source": {
+        "tree": "puredarwin-vm-next",
+        "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+        "path": "src/Kernel/Extensions/ext4",
+        "bundle_id": "com.apple.filesystems.ext4"
+      },
+      "license": "PureDarwin BSD-style license (PUREDARWIN_LICENSE.txt); driver sources carry no Apple APSL header",
+      "source_state": "Read-write driver: extent-based inodes, 32/64-bit block numbers, metadata_csum maintenance, JBD2 journaling with replay on mount (ext4.h header)",
+      "repo_evidence": [
+        "evidence/kernel/kexts/result.json: built as Mach-O arm64 kext (status built-not-boot-validated at that checkpoint)",
+        "evidence/kernel/kexts/command.json: ext4.kext and Ext4FileSystemDriver in the VM kernel extension set",
+        "docs/virtualization.md: actual guest mounted a genuine ext4 root as /dev/disk0s2 and retained writes in a private disk copy; v11 guest passed PID 1/shell/runtime/network checks"
+      ],
+      "validation_scope": "QEMU VIRT guest only; no physical M1 storage driver exists"
+    },
+    {
+      "name": "hfs+",
+      "decision": "deferred",
+      "source": {
+        "tree": "puredarwin-vm-next",
+        "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+        "path": "src/Kernel/Extensions/hfs",
+        "bundle_id": null
+      },
+      "license": "APSL-2.0 (Apple copyright 1999-2017 headers in core sources); redistribution requires notice retention per sources.lock.json conventions",
+      "source_state": "Apple-derived HFS+ core (BTree, catalog, extents) with a PureDarwin shim and hfs_encodings; not in the built kext set (absent from evidence/kernel/kexts/command.json)",
+      "repo_evidence": [
+        "Pinned modern xnu-12377.121.6 (ac9718fb1af618d5ce8678d0dc6e8a58f252216f) has no bsd/hfs directory; only miscfs, vfs infrastructure and an NFS client ship in the modern open-source kernel",
+        "No source-built HFS+ formatting or fsck tooling exists in this repository; scripts/vm/assemble.py uses mke2fs/debugfs only"
+      ],
+      "validation_scope": "none; not compiled, mounted or booted in this repository"
+    },
+    {
+      "name": "apfs-apple",
+      "decision": "rejected-as-rootfs-unavailable-as-source",
+      "source": null,
+      "license": "Proprietary; Apple's APFS kernel driver is not published in any pinned open-source input",
+      "source_state": "No APFS implementation in pinned xnu-12377.121.6; APFS-related strings in bsd/vfs are VFS-layer integration points, not a filesystem implementation",
+      "repo_evidence": [
+        "docs/platform/native-boot.md: LocalPolicy vuid identifies the selected APFS volume group, so APFS remains a boot-policy/container concern even though it cannot be a source-built kernel filesystem"
+      ],
+      "validation_scope": "none; cannot be built from audited source"
+    },
+    {
+      "name": "apfs-puredarwin-scaffold",
+      "decision": "rejected-incomplete-prototype",
+      "source": {
+        "tree": "puredarwin-vm-next",
+        "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+        "path": "src/Kernel/Extensions/apfs",
+        "bundle_id": "com.apple.filesystems.apfs (bundle version 0.1)"
+      },
+      "license": "PureDarwin-authored scaffold (apfs.h bears no Apple header)",
+      "source_state": "Approximately 3100 lines: container/volume structures, B-tree reader and mount path; mount logs 'mounted scaffold read-write'; apfs_parse_disk_minor returns ENOTSUP for any disk other than disk0; not in the built kext set",
+      "repo_evidence": [
+        "Not listed in evidence/kernel/kexts/command.json; never compiled or mounted by this repository's CI or guest"
+      ],
+      "validation_scope": "none; research scaffold only"
+    },
+    {
+      "name": "msdosfs",
+      "decision": "not-a-rootfs-candidate",
+      "source": {
+        "tree": "puredarwin-vm-next",
+        "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+        "path": "src/Kernel/Extensions/msdosfs"
+      },
+      "license": "BSD notices (BSD-derived msdosfs)",
+      "source_state": "FAT filesystem; the assembled image's ESP is FAT32 (mkfs.fat in scripts/vm/assemble.py) and is a boot-asset partition, not a candidate server root",
+      "repo_evidence": [],
+      "validation_scope": "ESP creation is exercised by the image pipeline; no guest ESP mount requirement is established"
+    }
+  ],
+  "apple_silicon_constraints": [
+    {
+      "id": "FS-C1",
+      "constraint": "Apple Silicon applies a per-installed-OS LocalPolicy; booting a custom XNU requires Permissive Security, set in paired 1TR with machine-owner authorization, and signatures remain checked in the boot chain",
+      "status": "documented",
+      "basis": "Apple Platform Security references cited in docs/platform/native-boot.md; no project experiment has executed a policy change"
+    },
+    {
+      "id": "FS-C2",
+      "constraint": "LocalPolicy field vuid identifies the selected APFS volume group; boot policy on internal storage is therefore bound to APFS volume-group identity",
+      "status": "documented",
+      "basis": "Apple LocalPolicy field documentation cited in docs/platform/native-boot.md; volume-group capture is part of the m1-lab runbook but has never been performed"
+    },
+    {
+      "id": "FS-C3",
+      "constraint": "kmutil configure-boot is recovery-only and targets a selected system --volume; LocalPolicy coih is a SHA384 of the CustomOS Image4 manifest, distinct from file-level SHA256 hashes",
+      "status": "documented",
+      "basis": "Read-only inspection of the installed kmutil.8 man page and kmutil help on the Mac15,8 build host (docs/platform/native-boot.md); host tooling does not establish target recovery compatibility"
+    },
+    {
+      "id": "FS-C4",
+      "constraint": "macOS system volumes on Apple Silicon use a sealed (signed) system volume inside an APFS container; blauOS adopts an immutable system with separate writable data as its intended image model, with APFS containers, boot policy, authorized assets and recoverability determining the eventual disk arrangement",
+      "status": "documented",
+      "basis": "docs/scope.md release-contract language; docs/platform/native-boot.md forbids importing SSV-downgrade steps from unrelated recipes without an observed failure"
+    },
+    {
+      "id": "FS-C5",
+      "constraint": "A block-device root is required for the current prototype: the pinned loader's load_ramdisk calls are commented out, so an rd=md0 ramdisk root cannot be accepted as working",
+      "status": "validated",
+      "basis": "docs/virtualization.md records the loader source inspection and the selection of image-arm64-virt-minimal-release with an ordinary ext4 root",
+      "validation_scope": "virtual (QEMU VIRT) only"
+    },
+    {
+      "id": "FS-C6",
+      "constraint": "A source-built XNU kernel with the source-built ext4 kext mounts a GPT ext4 partition as root (/dev/disk0s2), supports writes retained across a guest session, and carries a passing PID 1/shell/runtime/network guest run",
+      "status": "validated",
+      "basis": "docs/virtualization.md v11 guest narrative and evidence/virtualization/pid1-checkpoint receipts; image assembled by scripts/vm/assemble.py with mke2fs and inode metadata verified via debugfs",
+      "validation_scope": "virtual (QEMU VIRT) only; not evidence for any physical platform"
+    },
+    {
+      "id": "FS-C7",
+      "constraint": "Whether iBoot/LocalPolicy requires a custom OS root filesystem to reside inside an APFS container or APFS volume group on internal ANS storage, or permits a non-APFS partition as root alongside an authorized custom boot object",
+      "status": "hardware-gated",
+      "basis": "No physical M1 exists in the project (evidence/gate-2.json decision NOT_RUN); this can only be resolved by a target experiment with preserved pre/post policy captures"
+    },
+    {
+      "id": "FS-C8",
+      "constraint": "Mounting any root filesystem on physical M1 internal storage requires ANS NVMe and DART/DMA drivers, which are P1 work and have no source implementation or physical validation in this repository",
+      "status": "hardware-gated",
+      "basis": "docs/scope.md places DART/DMA and ANS/storage in P1; docs/audits/source-dependencies.md blocker HW-001 states QEMU VIRT support does not provide M1 support"
+    },
+    {
+      "id": "FS-C9",
+      "constraint": "Actual APFS container behavior on a physical M1 (container/volume creation for a custom OS, sealed-system implications for a non-macOS root, and recoverability of the disk arrangement after experiments)",
+      "status": "hardware-gated",
+      "basis": "Requires the dedicated Macmini9,1 lab, recovery operator and reversal procedure from docs/platform/m1-lab.md and docs/platform/native-boot.md; none verified"
+    }
+  ],
+  "prototype_image_plan": {
+    "current": {
+      "layout": "GPT disk: partition 1 FAT32 ESP (type EF00, EFI/BOOT/BOOTAA64.EFI loader, kernel, boot-args.txt); partition 2 ext4 root (label blauos-root, deterministic uuid5 disk/root/ESP UUIDs derived from kernel+loader+provenance SHA256 digests)",
+      "tooling": [
+        "scripts/vm/assemble.py: audits the staged Mach-O closure, formats GPT/FAT/ext4 in Linux, verifies account inode metadata via debugfs, emits result.json with image and input hashes",
+        "vm/smoke-image.nix: wraps the pinned upstream image-arm64-virt-minimal-release (ordinary ext4 root) and injects source-built probes with a runtime-provenance.json receipt",
+        "scripts/vm/extract_core.py: read-only debugfs extraction of guest artifacts for diagnostics"
+      ],
+      "status": "validated in the QEMU VIRT guest (FS-C6)"
+    },
+    "next_steps": [
+      {
+        "step": "Split the single ext4 root into an immutable ext4 system partition mounted read-only plus a separate writable ext4 data partition for /var and service state, matching the docs/scope.md immutable-system model",
+        "status": "planned-not-validated; requires assemble.py layout changes and a guest remount/rw-guard proof before it can be claimed"
+      },
+      {
+        "step": "Keep the ESP content contract (loader, kernel, boot-args.txt) unchanged so existing collection/provenance tooling continues to bind image hashes",
+        "status": "planned; consistent with current receipts"
+      },
+      {
+        "step": "Defer the physical M1 disk arrangement (APFS container questions, boot-policy binding, authorized assets, reversal) until the lab prerequisites in docs/platform/m1-lab.md are met; candidate arrangements include a non-APFS ext4 root if firmware permits, or APFS-hosted boot assets with separate data volumes, but both are unvalidated",
+        "status": "hardware-gated (FS-C7, FS-C8, FS-C9)"
+      }
+    ]
+  },
+  "hardware_gated_items": [
+    "FS-C7: APFS container/volume-group requirement for a custom OS root on internal storage",
+    "FS-C8: ANS/DART storage drivers required before any physical rootfs mount",
+    "FS-C9: actual APFS container behavior, sealed-system implications and recoverability on a physical M1",
+    "Gate 2 independent physical boot (evidence/gate-2.json: NOT_RUN)"
+  ],
+  "no_invented_results": "All validated entries cite existing repository evidence; no new guest run, build or physical test was performed for this record"
+}

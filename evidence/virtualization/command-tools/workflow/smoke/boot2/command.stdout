@@ -1,0 +1,2 @@
+BLAUOS_SSH_SESSION pass user=joeblau uid=1000 gid=1000 pty=0 persistent=verified
+BLAUOS_SSH_CHALLENGE e038f2f5322e7ae0c39a87e912fd4ad7d8771ee279aa1c867afcaf4d640877c2

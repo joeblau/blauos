@@ -1,0 +1,211 @@
+diff --git a/src/Kernel/Extensions/PDArmPlatformExpert/PDAppleAIC.cpp b/src/Kernel/Extensions/PDArmPlatformExpert/PDAppleAIC.cpp
+index 90edb563..ccb86cc6 100644
+--- a/src/Kernel/Extensions/PDArmPlatformExpert/PDAppleAIC.cpp
++++ b/src/Kernel/Extensions/PDArmPlatformExpert/PDAppleAIC.cpp
+@@ -8,6 +8,7 @@
+ #include <IOKit/IOMemoryDescriptor.h>
+ #include <IOKit/IOLib.h>
+ #include <libkern/c++/OSData.h>
++#include <libkern/c++/OSSymbol.h>
+ 
+ /* AIC registers; see pexpert/pexpert/arm/AIC.h for the full map. */
+ #define kAICInfo                 0x0004
+@@ -65,22 +66,31 @@ static PDAppleAIC *gAIC;
+  * is still starting.
+  */
+ static bool
+-aic_find_registers(IOPhysicalAddress *outPhys, IOByteCount *outSize)
++aic_find_registers(IOPhysicalAddress *outPhys, IOByteCount *outSize, uint32_t *outPhandle)
+ {
++	*outPhandle = 0;
++
+ 	IORegistryEntry *armio = IORegistryEntry::fromPath("/arm-io", gIODTPlane);
+ 	if (armio == NULL) {
+ 		IOLog("PDAppleAIC: no /arm-io node in the device tree\n");
+ 		return false;
+ 	}
+ 
++	/*
++	 * "ranges" entries are three cells (child address, parent physical
++	 * address, size). Require at least one complete entry and no trailing
++	 * partial entry before trusting the parent base.
++	 */
+ 	OSData *ranges = OSDynamicCast(OSData, armio->getProperty("ranges"));
+-	if (ranges == NULL || ranges->getLength() < 2 * sizeof(uint64_t)) {
++	if (ranges == NULL || ranges->getLength() < 3 * sizeof(uint64_t) ||
++	    ranges->getLength() % (3 * sizeof(uint64_t)) != 0) {
+ 		IOLog("PDAppleAIC: /arm-io has no usable ranges property\n");
+ 		armio->release();
+ 		return false;
+ 	}
+-	/* child address, parent (physical) address, size */
+-	uint64_t socPhys = ((const uint64_t *)ranges->getBytesNoCopy())[1];
++	const uint64_t *range = (const uint64_t *)ranges->getBytesNoCopy();
++	uint64_t socPhys = range[1];
++	uint64_t socSize = range[2];
+ 
+ 	IORegistryEntry *aicNode = NULL;
+ 	OSIterator *children = armio->getChildIterator(gIODTPlane);
+@@ -107,12 +117,37 @@ aic_find_registers(IOPhysicalAddress *outPhys, IOByteCount *outSize)
+ 	}
+ 
+ 	OSData *reg = OSDynamicCast(OSData, aicNode->getProperty("reg"));
+-	if (reg == NULL || reg->getLength() < 2 * sizeof(uint64_t)) {
++	if (reg == NULL || reg->getLength() < 2 * sizeof(uint64_t) ||
++	    reg->getLength() % (2 * sizeof(uint64_t)) != 0) {
+ 		IOLog("PDAppleAIC: interrupt controller has no usable reg property\n");
+ 		return false;
+ 	}
+ 	const uint64_t *r = (const uint64_t *)reg->getBytesNoCopy();
+ 
++	/*
++	 * The register window must be a nonzero, non-overflowing subrange of the
++	 * arm-io range it offsets into, and the physical base must not wrap.
++	 */
++	if (r[1] == 0 || r[0] > socSize || r[1] > socSize - r[0]) {
++		IOLog("PDAppleAIC: reg 0x%llx+0x%llx escapes arm-io range size 0x%llx\n",
++		    r[0], r[1], socSize);
++		return false;
++	}
++	if (r[0] > ~0ULL - socPhys) {
++		IOLog("PDAppleAIC: physical base wraps: 0x%llx+0x%llx\n", socPhys, r[0]);
++		return false;
++	}
++
++	/*
++	 * IODeviceTree names interrupt controllers "IOInterruptController%08X"
++	 * from the controller node's phandle (IODTInterruptControllerName);
++	 * initAIC registers that name when a phandle is present.
++	 */
++	OSData *phandle = OSDynamicCast(OSData, aicNode->getProperty(gIODTPHandleKey));
++	if (phandle != NULL && phandle->getLength() >= sizeof(uint32_t)) {
++		*outPhandle = ((const uint32_t *)phandle->getBytesNoCopy())[0];
++	}
++
+ 	*outPhys = (IOPhysicalAddress)(socPhys + r[0]);
+ 	*outSize = (IOByteCount)r[1];
+ 	return true;
+@@ -123,8 +158,9 @@ PDAppleAIC::initAIC(void)
+ {
+ 	IOPhysicalAddress phys = 0;
+ 	IOByteCount       size = 0;
++	uint32_t          phandle = 0;
+ 
+-	if (!aic_find_registers(&phys, &size)) {
++	if (!aic_find_registers(&phys, &size, &phandle)) {
+ 		return false;
+ 	}
+ 
+@@ -149,11 +185,30 @@ PDAppleAIC::initAIC(void)
+ 		return false;
+ 	}
+ 
++	/*
++	 * Every register this driver touches must fit inside the mapped span:
++	 * the event register, the per-source target registers and both mask
++	 * banks, sized by the reported source count.
++	 */
++	uint32_t maskWords = (numIRQs + 31) / 32;
++	uint32_t span = kAICEvent + sizeof(uint32_t);
++	if (kAICTargetCPU(numIRQs - 1) + sizeof(uint32_t) > span) {
++		span = kAICTargetCPU(numIRQs - 1) + sizeof(uint32_t);
++	}
++	if (kAICIntMaskClr(maskWords - 1) + sizeof(uint32_t) > span) {
++		span = kAICIntMaskClr(maskWords - 1) + sizeof(uint32_t);
++	}
++	if (size < span) {
++		IOLog("PDAppleAIC: mapped span 0x%llx does not cover %u sources (need 0x%x)\n",
++		    (uint64_t)size, numIRQs, span);
++		return false;
++	}
++
+ 	/*
+ 	 * Mask every source and point them all at CPU 0 before anything can be
+ 	 * registered. Whatever the booter left enabled is not ours to service.
+ 	 */
+-	for (uint32_t i = 0; i < (numIRQs + 31) / 32; i++) {
++	for (uint32_t i = 0; i < maskWords; i++) {
+ 		write32(kAICIntMaskSet(i), ~0u);
+ 	}
+ 	for (uint32_t i = 0; i < numIRQs; i++) {
+@@ -184,15 +239,6 @@ PDAppleAIC::initAIC(void)
+ 		}
+ 	}
+ 
+-	/*
+-	 * Publish under the name device tree nubs will look for - IODeviceTree
+-	 * builds "IOInterruptController%08X" from the controller node's phandle -
+-	 * and as the primary controller, which is the fallback for nubs with no
+-	 * explicit interrupt parent.
+-	 */
+-	getPlatform()->registerInterruptController(
+-		(OSSymbol *)gIODTDefaultInterruptController, this);
+-
+ 	/*
+ 	 * Take the CPU's external interrupt. IOCPUInterruptController registered
+ 	 * itself under this name from PDArmCPU::startCommon(); its vector for CPU 0
+@@ -211,7 +257,37 @@ PDAppleAIC::initAIC(void)
+ 		IOLog("PDAppleAIC: could not register with the CPU interrupt controller\n");
+ 		return false;
+ 	}
+-	cpuIC->enableInterrupt(this, 0);
++	IOReturn enableStatus = cpuIC->enableInterrupt(this, 0);
++	if (enableStatus != kIOReturnSuccess) {
++		IOLog("PDAppleAIC: could not enable the CPU interrupt: 0x%x\n", enableStatus);
++		cpuIC->unregisterInterrupt(this, 0);
++		return false;
++	}
++
++	/*
++	 * Publish only after all fallible setup succeeded, so a failed init
++	 * cannot leave a half-initialized controller reachable by name. Register
++	 * the per-phandle name device tree nubs look for - IODeviceTree builds
++	 * "IOInterruptController%08X" from the controller node's phandle - and
++	 * the default name, the fallback for nubs with no explicit interrupt
++	 * parent.
++	 */
++	if (phandle != 0) {
++		char name[48];
++		snprintf(name, sizeof(name), "IOInterruptController%08X", phandle);
++		const OSSymbol *nameSym = OSSymbol::withCString(name);
++		if (nameSym == NULL) {
++			IOLog("PDAppleAIC: could not name controller for phandle 0x%08x\n", phandle);
++			cpuIC->disableInterrupt(this, 0);
++			cpuIC->unregisterInterrupt(this, 0);
++			return false;
++		}
++		getPlatform()->registerInterruptController(
++		    const_cast<OSSymbol *>(nameSym), this);
++		nameSym->release();
++	}
++	getPlatform()->registerInterruptController(
++		(OSSymbol *)gIODTDefaultInterruptController, this);
+ 
+ 	IOLog("PDAppleAIC: up at 0x%llx, %u sources, %u cpus (all masked)\n",
+ 	    (uint64_t)phys, numIRQs, numCPUs);
+@@ -221,6 +297,13 @@ PDAppleAIC::initAIC(void)
+ IOReturn
+ PDAppleAIC::handleInterrupt(void * /*refCon*/, IOService * /*nub*/, int /*source*/)
+ {
++	/*
++	 * Each event read acknowledges (and masks) its source, so one dispatch
++	 * cannot legitimately see more distinct external sources than exist;
++	 * bound the loop to also cover interleaved non-external events.
++	 */
++	uint32_t remaining = numIRQs;
++
+ 	for (;;) {
+ 		uint32_t event = read32(kAICEvent);
+ 		uint32_t type  = kAICEventType(event);
+@@ -228,6 +311,11 @@ PDAppleAIC::handleInterrupt(void * /*refCon*/, IOService * /*nub*/, int /*source
+ 		if (type == kAICEventTypeSpurious) {
+ 			break;
+ 		}
++		if (remaining-- == 0) {
++			IOLog("PDAppleAIC: more than %u events in one dispatch; "
++			    "returning with events pending\n", numIRQs);
++			break;
++		}
+ 		if (type != kAICEventTypeExtInt) {
+ 			/* IPIs and timer events are not delivered through this path. */
+ 			continue;

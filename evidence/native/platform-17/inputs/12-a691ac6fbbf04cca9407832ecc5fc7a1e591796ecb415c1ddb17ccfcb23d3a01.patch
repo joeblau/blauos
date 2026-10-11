@@ -1,0 +1,74 @@
+diff --git a/src/Kernel/xnu/osfmk/arm64/cpu.c b/src/Kernel/xnu/osfmk/arm64/cpu.c
+index ad3f9a68..f8e2b2af 100644
+--- a/src/Kernel/xnu/osfmk/arm64/cpu.c
++++ b/src/Kernel/xnu/osfmk/arm64/cpu.c
+@@ -843,6 +843,7 @@ cpu_start(int cpu)
+ 		flush_dcache((vm_offset_t)&CpuDataEntries[cpu], sizeof(cpu_data_entry_t), FALSE);
+ 		flush_dcache((vm_offset_t)cpu_data_ptr, sizeof(cpu_data_t), FALSE);
+ #if defined(KERNEL_INTEGRITY_CTRR)
++		boolean_t cluster_lock_claimed = FALSE;
+ 
+ 		/* First CPU being started within a cluster goes ahead to lock CTRR for cluster;
+ 		 * other CPUs block until cluster is locked. */
+@@ -850,6 +851,7 @@ cpu_start(int cpu)
+ 		switch (ctrr_cluster_locked[cpu_data_ptr->cpu_cluster_id]) {
+ 		case CTRR_UNLOCKED:
+ 			ctrr_cluster_locked[cpu_data_ptr->cpu_cluster_id] = CTRR_LOCKING;
++			cluster_lock_claimed = TRUE;
+ 			lck_spin_unlock(&ctrr_cpu_start_lck);
+ 			break;
+ 		case CTRR_LOCKING:
+@@ -863,7 +865,23 @@ cpu_start(int cpu)
+ 			break;
+ 		}
+ #endif
+-		(void) PE_cpu_start(cpu_data_ptr->cpu_id, (vm_offset_t)NULL, (vm_offset_t)NULL);
++		kern_return_t start_result = PE_cpu_start(cpu_data_ptr->cpu_id, (vm_offset_t)NULL, (vm_offset_t)NULL);
++#if defined(KERNEL_INTEGRITY_CTRR)
++		if ((start_result != KERN_SUCCESS) && cluster_lock_claimed) {
++			/*
++			 * The platform refused to release this CPU from reset, so the
++			 * secondary will never perform its cluster CTRR lockdown.
++			 * Hand the claim back; otherwise every later cpu_start() in
++			 * this cluster would block forever on a lockdown that cannot
++			 * happen.
++			 */
++			lck_spin_lock(&ctrr_cpu_start_lck);
++			ctrr_cluster_locked[cpu_data_ptr->cpu_cluster_id] = CTRR_UNLOCKED;
++			thread_wakeup(&ctrr_cluster_locked[cpu_data_ptr->cpu_cluster_id]);
++			lck_spin_unlock(&ctrr_cpu_start_lck);
++		}
++#endif
++		return start_result;
+ 	}
+ 
+ 	return KERN_SUCCESS;
+diff --git a/src/Kernel/xnu/pexpert/arm/pe_init.c b/src/Kernel/xnu/pexpert/arm/pe_init.c
+index 6f48f989..a080d236 100644
+--- a/src/Kernel/xnu/pexpert/arm/pe_init.c
++++ b/src/Kernel/xnu/pexpert/arm/pe_init.c
+@@ -389,7 +389,7 @@ PE_lockdown_iokit(void)
+ 	 */
+ 	StartIOKitMatching();
+ 
+-#if defined(ARM64_BOARD_CONFIG_BCM2837) || defined(ARM64_BOARD_CONFIG_QEMUVIRT)
++#if defined(ARM64_BOARD_CONFIG_BCM2837) || defined(ARM64_BOARD_CONFIG_QEMUVIRT) || defined(ARM64_BOARD_CONFIG_T8103)
+ 	/*
+ 	 * Upstream this is reached via IOCPUInterruptController::initCPUInterruptController(),
+ 	 * which the platform expert kext calls once every CPU has registered. These
+@@ -398,6 +398,15 @@ PE_lockdown_iokit(void)
+ 	 * boot stops dead between vm_set_restrictions() and bsd_init().
+ 	 * ml_set_max_cpus() ignores its argument -- it only publishes that the
+ 	 * count is final -- so the value here is immaterial.
++	 *
++	 * T8103 does have a platform driver (PDAppleARMPlatformExpert/PDArmCPU),
++	 * but it currently registers at most the boot CPU and never calls
++	 * ml_set_max_cpus(): PDArmCPU::startCPU() unconditionally returns
++	 * KERN_FAILURE, so secondary registration cannot complete. Until the
++	 * platform module performs real registration, publish the topology count
++	 * (machine_conf() derived it from ml_get_topology_info()) so early
++	 * ml_wait_max_cpus() consumers do not wait indefinitely. A later driver
++	 * call to ml_set_max_cpus() is a harmless no-op once the count is set.
+ 	 */
+ 	ml_set_max_cpus(0);
+ #endif

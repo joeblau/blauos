@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "cmake",
+    "--build",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-17",
+    "--target",
+    "xnu",
+    "--parallel",
+    "6"
+  ],
+  "cwd": "/Users/joeblau/Developer/joeblau/src/blauos",
+  "exit_code": 0,
+  "raw_log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-17/logs/build.log",
+  "raw_log_bytes": 3433013,
+  "raw_log_sha256": "cf25744c36ff4a979cb4f58572809aa25224fb0944785f6ef0842924a40b556d",
+  "errors": []
+}

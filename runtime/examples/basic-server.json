@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "hostname": "build-node-1.lab.blauos.local",
+  "image": {
+    "channel": "nightly",
+    "version": "2026.10.11+native.17"
+  },
+  "accounts": [
+    {
+      "name": "joeblau",
+      "uid": 1000,
+      "gid": 1000,
+      "ssh_authorized_keys": [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyAhIiMkJSYn"
+      ]
+    }
+  ],
+  "services": [
+    {
+      "label": "org.blauos.smoke",
+      "program": "/usr/local/bin/smoke",
+      "run_at_load": true,
+      "keep_alive": false
+    }
+  ],
+  "network": {
+    "interfaces": [
+      {"name": "en0", "mode": "dhcp"}
+    ],
+    "dns": ["192.168.64.1"]
+  },
+  "volumes": [
+    {
+      "name": "build-data",
+      "device": "/dev/vdb",
+      "filesystem": "ext4",
+      "mount_point": "/var/data/build",
+      "read_only": false,
+      "required": true
+    }
+  ],
+  "fleet": {
+    "role": "build-node",
+    "labels": {"site": "lab", "arch": "arm64"},
+    "inventory_id": "lab-macmini-01"
+  },
+  "secret_references": [
+    {"name": "builder-api-token", "ref": "vault://kv/blauos/build-node-1/api-token"}
+  ]
+}

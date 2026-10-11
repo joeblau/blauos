@@ -41,6 +41,14 @@ in [#102](https://github.com/joeblau/blauos/issues/102). Interactive keyboard wo
 tracked in [#101](https://github.com/joeblau/blauos/issues/101), and SSH in
 [#55](https://github.com/joeblau/blauos/issues/55).
 
+The separate [SSH workflow](../ssh-login.md) now provides key-only account
+login, terminal sessions and SFTP, with two-boot persistence checks. It adds a
+cryptographic entropy device and a corrected kernel PRNG. Stock VirtualBuddy's
+Linux profile omits that device, so the SSH image requires the supplied
+VirtualBuddy development build or the public framework launcher with
+`--entropy-device`. The original demo described above keeps its own image and
+address.
+
 The framebuffer driver initializes a 1280×800 text console. Screen-capture
 permission was unavailable during the automated tests, so the guest logs and
 network prove execution; a captured VirtualBuddy GUI screen is not claimed.
@@ -184,3 +192,82 @@ Historical diagnostic traces retain their original input identities.
 Sources: [pinned loader serial implementation](https://github.com/PureDarwin/xnu-loader/blob/8295cd89c184785896d007d0554b398d22d8e32f/src/serial.c),
 [VirtualBuddy generic EFI helper](https://github.com/insidegui/VirtualBuddy/blob/088351b0fc67e0b24b83e7954ad48314dda4ce04/VirtualCore/Source/Virtualization/Helpers/LinuxVirtualMachineConfigurationHelper.swift),
 [VIRTIO specification](https://docs.oasis-open.org/virtio/virtio/v1.2/virtio-v1.2.html).
+
+## Console input and host-requested shutdown (2026-10-11)
+
+Two additions complete the console story tracked as
+[#101](https://github.com/joeblau/blauos/issues/101) and
+[#102](https://github.com/joeblau/blauos/issues/102). Both are source-only at
+this writing: no rebuilt loader image or live guest run is claimed here.
+
+**Input inventory.** VirtualBuddy's generic EFI profile exposes five relevant
+devices, recorded in
+[input-device-inventory.json](../../evidence/virtualization/virtualbuddy-console/input-device-inventory.json).
+The USB keyboard (`VZUSBKeyboardConfiguration`, configured without an explicit
+USB controller) and USB absolute pointer present as USB HID devices; the
+published PureDarwin source has no XHCI or HID stack, so they are inventoried
+but unsupported. The SPICE multiport console stays skipped. The selected
+supported input profile is the single-port virtio console's RX queue: the
+backend supplies input bytes through the serial attachment's read file handle.
+
+**Guest input path.** `xnu-loader-virtualbuddy-console-input.patch` prepares
+virtio console queue 0 with one posted 256-byte device-writable buffer and
+extends the `blauos,virtio-console` property from four to six words (the
+four-word stock form keeps working unchanged).
+`puredarwin-virtualbuddy-console-input.patch` implements `rd0`/`rr0` for that
+queue in `pe_serial.c`, draining and reposting the buffer per character with
+fail-closed bounds. From there the existing machinery is unchanged: the
+`serial_keyboard_poll` thread (boot arg `serial=3`) feeds `cons_cinput`, the
+console tty line discipline delivers bytes to `/dev/console`, and Ctrl-C
+(`0x03`) and Ctrl-D EOF (`0x04`) are interpreted by that discipline, not the
+driver. `vm/org.blauos.consoleshell.plist` is an opt-in launchd job binding an
+interactive `/bin/sh` to `/dev/console` for image assemblies that want it.
+
+**Host injection and acceptance probe.** `vm/virtualbuddy_console_probe.swift`
+(compiled and signed; [probe-build.json](../../evidence/virtualization/virtualbuddy-console/probe-build.json))
+attaches the read side of the serial port to a `console-input.fifo` FIFO and
+optionally issues the public `requestStop`. `scripts/vm/console_input.py`
+writes validated frames (commands terminated by CR, control keys, JSON
+receipts) to that FIFO. The existing 20-check probe and image are untouched.
+
+**Host-requested shutdown.** Decoding the captured DSDT fixture identifies the
+guest-visible `requestStop` event: the ARMH0061 PL061 GPIO at `0x20060000`
+(interrupt 37, SPI 5) raises pin 6, and `_E06` performs
+`Notify(PWRB, 0x80)` on the PNP0C0C power button; see
+[power-button-event.json](../../evidence/virtualization/virtualbuddy-console/power-button-event.json).
+`xnu-loader-virtualbuddy-power-button.patch` validates this device in the DSDT
+(the firmware omits the ExtendedIRQ consumer flag and orders GpioInt fields
+unusually; both are handled) and publishes `blauos,power-button`.
+`puredarwin-virtualbuddy-power-button.patch` polls PL061 RIS on a bounded
+100 ms timer, acknowledges the pin, and delivers SIGTERM to PID 1 once — the
+same orderly route as the accepted guest-triggered shutdown (launchd child
+cleanup, unmount, PSCI SYSTEM_OFF). If the guest does not stop, the probe
+waits `--stop-grace-seconds`, records `orderly-shutdown-timeout`, then applies
+the operator-equivalent force stop (`vm.stop`) and records
+`force-stop-recovery`; the guest-side press is never a forced halt.
+
+**Build.** The kernel and kexts compile on this host with the extended series:
+
+```sh
+python3 scripts/build/xnu.py \
+  --source-name puredarwin-vm-next --puredarwin --machine VIRT \
+  --with-kexts --qemu-psci-hvc --virtualbuddy \
+  --patch vm/patches/xnu-classic-arm64-protections.patch \
+  --patch vm/patches/pdarm-qemu-psci-shutdown.patch \
+  --patch vm/patches/puredarwin-virtualbuddy-platform.patch \
+  --patch vm/patches/puredarwin-virtualbuddy-console.patch \
+  --patch vm/patches/puredarwin-virtualbuddy-console-input.patch \
+  --patch vm/patches/puredarwin-virtualbuddy-power-button.patch \
+  --build-root .blauos/build/virtualbuddy-console/kernel-v3 \
+  --evidence .blauos/build/virtualbuddy-console/kernel-v3-evidence
+```
+
+The loader patches apply cleanly on the pinned loader source (verified in
+`tests/test_virtualbuddy_input.py`) but rebuilding `BOOTAA64.EFI` still
+requires the pinned ARM64 Linux Nix builder, which this host is not.
+
+**Still open.** A real interactive capture — a user-typed command echoed in
+the source shell, line editing, Ctrl-C, EOF, and a `guestDidStop` callback
+after host Stop — requires a rebuilt loader and image and a live VirtualBuddy
+run. Parser and protocol logic are covered by unittests against the real
+firmware fixture and synthetic rings; live evidence is not fabricated here.

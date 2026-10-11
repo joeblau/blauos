@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "profile": "cached-kernel-entropy-overlay",
+  "full_kernel_rebuilt": false,
+  "kernel_sha256": "917fa407e753a835958ef8310e3be64da54be602535413941809709a1c617da9",
+  "loader_sha256": "7feec0dac6991b78db57cf7a9d40d1979793d3a16315ad48436796d48d65dc41",
+  "source_lock_sha256": "3ee02e7bbc726b048e371cf322e5416870598906799cf680b583e6573e507c48",
+  "loader_require_efi_rng": true,
+  "kernel_prng_provider": "yarrow-fixed-v1",
+  "virtio_entropy_device": true,
+  "guest_entropy_admission_verified": false,
+  "patches": [
+    {
+      "path": "vm/patches/xnu-loader-ssh-entropy.patch",
+      "sha256": "cf5a226f72f569a212f8ed84fcab897138709fdf47ffdda7206435f23766aca0"
+    },
+    {
+      "path": "vm/patches/puredarwin-ssh-prng.patch",
+      "sha256": "2fdf9c1a526e050f7c1cdc2d918dce11a41bf657d7792b9ad844314259ae28c7"
+    }
+  ],
+  "build_evidence": [
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/ssh-capabilities/reproducible-entropy/corecrypto/build.json",
+      "sha256": "694a242a1d56fd250f969a1a08fdb43124cfb2d034443642e84cbea0ab27499d"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/ssh-capabilities/reproducible-entropy/collection/build.json",
+      "sha256": "3cc4698da5b5098aa161ea7038d75f426bd75febc3b7b399fa61d3d399ae715e"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/ssh-capabilities/reproducible-entropy/loader-build.json",
+      "sha256": "bebdd06d838c175f702695f78f7ca640dbdc75bd47c7e5256101472b9b984237"
+    }
+  ]
+}

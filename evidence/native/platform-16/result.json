@@ -1,0 +1,270 @@
+{
+  "schema_version": 1,
+  "status": "driver-linked-not-hardware-validated",
+  "exit_code": 0,
+  "recipe": {
+    "source_name": "puredarwin-vm-next",
+    "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+    "source_tree": "ed2345d7f3c11dad2e7f6ffeeb377adc789b12b8",
+    "manifest_sha256": "de98f7289628e8ea53089b8945798afa01c2dd1afb1328b82e6a9a2321537cee",
+    "machine": "T8103",
+    "target": "PDArmPlatformExpert",
+    "kernel_configuration": "DEVELOPMENT",
+    "sdk": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+    "source": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/platform-16/source-overlay",
+    "source_archive_sha256": "1c955560333a1e47a38f2018ead9fd90580eb4b9520f44435ebfa03afcd3c1f6",
+    "excluded_absolute_symlinks": [
+      "src/Libraries/libSystem/libc/gen/FreeBSD/result"
+    ],
+    "patches": [
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0001-puredarwin-t8103-build-profile.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/platform-16/inputs/01-76e05e5e7de0f9b5cdac6347e771007067bb19fdb34f4897c70628c72dbc4d65.patch",
+        "sha256": "76e05e5e7de0f9b5cdac6347e771007067bb19fdb34f4897c70628c72dbc4d65"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0002-t8103-public-register-encodings.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/platform-16/inputs/02-0480c7f6299844af5c6cdd6eb7fb23b76c0f32025cc0a2cf07f429f9bf9a685b.patch",
+        "sha256": "0480c7f6299844af5c6cdd6eb7fb23b76c0f32025cc0a2cf07f429f9bf9a685b"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0003-t8103-current-clang-diagnostics.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/platform-16/inputs/03-3e0f1aac169bf648054be8d20c0f0101404f0e4b6de54758ba3409688ce96f99.patch",
+        "sha256": "3e0f1aac169bf648054be8d20c0f0101404f0e4b6de54758ba3409688ce96f99"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0004-t8103-public-platform-sources.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/platform-16/inputs/04-cd1a6e6281fdda5775f1002d1a26433eb5f3e05d822e1cee0d2b23cb6915a04e.patch",
+        "sha256": "cd1a6e6281fdda5775f1002d1a26433eb5f3e05d822e1cee0d2b23cb6915a04e"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0005-t8103-public-ctrr-interface.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/platform-16/inputs/05-45300148900c5b448f5a019e0c4f31145ee566f31c7259193faaa0b6f3352919.patch",
+        "sha256": "45300148900c5b448f5a019e0c4f31145ee566f31c7259193faaa0b6f3352919"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0006-t8103-early-diagnostics.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/platform-16/inputs/06-f49d0c2456d54222d1c149cf84750204ae4281199d8156fa9b0748d09ae9894e.patch",
+        "sha256": "f49d0c2456d54222d1c149cf84750204ae4281199d8156fa9b0748d09ae9894e"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0007-t8103-aic-rearm-and-driver-abi.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/platform-16/inputs/07-ec38272928a3bcf0d41e977dab316a02d255e15db483b64d82e0535a5bdbffca.patch",
+        "sha256": "ec38272928a3bcf0d41e977dab316a02d255e15db483b64d82e0535a5bdbffca"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0008-t8103-public-ppl-port.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/platform-16/inputs/08-f718eae67d8b703dff21d63ac54da1a29d29fa35b900d7f25a69460e3766183f.patch",
+        "sha256": "f718eae67d8b703dff21d63ac54da1a29d29fa35b900d7f25a69460e3766183f"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0009-t8103-pac-atomic-storage.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/platform-16/inputs/09-74b9880d6e9bd42285aec5d951efb24d78c0f036cfb7e71dfb63c570a58adf3e.patch",
+        "sha256": "74b9880d6e9bd42285aec5d951efb24d78c0f036cfb7e71dfb63c570a58adf3e"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0010-t8103-machine-register-encodings.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/platform-16/inputs/10-c2b10d8513de1abdd8b2c06228b26e23f583a3410959cd0a6fd743be7b9565e3.patch",
+        "sha256": "c2b10d8513de1abdd8b2c06228b26e23f583a3410959cd0a6fd743be7b9565e3"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0011-t8103-public-native-pac.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/platform-16/inputs/11-b241ac693020cfeb0c614938f1d43789682bab65f17d6c5530614b9bae194dd4.patch",
+        "sha256": "b241ac693020cfeb0c614938f1d43789682bab65f17d6c5530614b9bae194dd4"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0012-t8103-cpu-registration.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/platform-16/inputs/12-a691ac6fbbf04cca9407832ecc5fc7a1e591796ecb415c1ddb17ccfcb23d3a01.patch",
+        "sha256": "a691ac6fbbf04cca9407832ecc5fc7a1e591796ecb415c1ddb17ccfcb23d3a01"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0013-t8103-handoff-validation.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/platform-16/inputs/13-73966f11254dc6ff9a0209821193f320724ef82652e3f060a4eb5dcea22d312b.patch",
+        "sha256": "73966f11254dc6ff9a0209821193f320724ef82652e3f060a4eb5dcea22d312b"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0014-t8103-timer-discovery.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/platform-16/inputs/14-d5fe023c46354d808692c178c70483bc484372ce4fb4eb327f435a2de73e248e.patch",
+        "sha256": "d5fe023c46354d808692c178c70483bc484372ce4fb4eb327f435a2de73e248e"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0015-t8103-platform-cpu-startup.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/platform-16/inputs/15-b150edaa11b1e61b90dda080a663436a333aeace0aa93be20167f718433151ca.patch",
+        "sha256": "b150edaa11b1e61b90dda080a663436a333aeace0aa93be20167f718433151ca"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0016-t8103-aic-hardening.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/platform-16/inputs/16-cafdcedad82c691ed3207be1e79cc793ceda75479c6e68694819f19df35b30ee.patch",
+        "sha256": "cafdcedad82c691ed3207be1e79cc793ceda75479c6e68694819f19df35b30ee"
+      }
+    ],
+    "wrapper_inputs": [
+      {
+        "path": "scripts/build/xnu.py",
+        "sha256": "103535c95df62690c77778ce4d6cbfb813458931cbb3859b6c607c9e166f6dda"
+      },
+      {
+        "path": "scripts/build/headers.py",
+        "sha256": "08427445722bdfb487c6aba4c78e6ce91a9bc76dd6d4e1a005bdd63e7a48d502"
+      },
+      {
+        "path": "scripts/blauos.py",
+        "sha256": "fc159232fb6b6fed403680b9e8764cac1704f60bc47a90a798e9a0639476cdff"
+      },
+      {
+        "path": "scripts/build/native_platform.py",
+        "sha256": "b699aa45ac6995c423984708c673c26ac605006dd72cb1cfdbf866d974c13494"
+      },
+      {
+        "path": "scripts/build/native_m1.py",
+        "sha256": "6291afab36e11c8fdd578a1052452622acfe6de79197881cb910e3b1c4c73943"
+      }
+    ],
+    "tool_environment": {
+      "SHELL": "/bin/bash",
+      "TMPDIR": "/var/folders/_k/883vgjk55hg79qfxf60d9lzh0000gn/T/",
+      "LC_ALL": "en_US.UTF-8",
+      "USER": "joeblau",
+      "PATH": "/Users/joeblau/.kimi-code/bin:/Users/joeblau/.cargo/bin:/Users/joeblau/.grok/bin:/opt/homebrew/opt/openjdk/bin:/Users/joeblau/.local/share/solana/install/active_release/bin:/Users/joeblau/.local/share/solana/install/active_release/bin:/Users/joeblau/.antigravity/antigravity/bin:/Users/joeblau/.local/bin:/Users/joeblau/.local/share/solana/install/active_release/bin:/Users/joeblau/.bun/bin:/Users/joeblau/.codeium/windsurf/bin:/Users/joeblau/Library/pnpm:/Users/joeblau/.nvm/versions/node/v24.10.0/bin:/Users/joeblau/.local/share/solana/install/active_release/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/Users/joeblau/.cargo/bin:/Users/joeblau/.foundry/bin",
+      "LANG": "en_US.UTF-8",
+      "HOME": "/Users/joeblau",
+      "LOGNAME": "joeblau",
+      "DEVELOPER_DIR": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer",
+      "SDKROOT": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+      "CC": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+      "CXX": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++"
+    },
+    "commands": [
+      {
+        "argv": [
+          "cmake",
+          "-S",
+          "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/platform-16/source-overlay",
+          "-B",
+          "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/platform-16",
+          "-G",
+          "Unix Makefiles",
+          "-DCMAKE_POLICY_VERSION_MINIMUM=3.5",
+          "-DPUREDARWIN_ARCH=arm64",
+          "-DCMAKE_OSX_ARCHITECTURES=arm64",
+          "-DCMAKE_OSX_SYSROOT=/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+          "-DCMAKE_C_COMPILER=/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+          "-DCMAKE_CXX_COMPILER=/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++",
+          "-DPUREDARWIN_ARM64_MACHINE_CONFIG=T8103",
+          "-DPUREDARWIN_XNU_KERNEL_CONFIG=DEVELOPMENT",
+          "-DPUREDARWIN_ENABLE_KERNEL=ON",
+          "-DPUREDARWIN_ENABLE_LIBRARIES=ON",
+          "-DPUREDARWIN_ENABLE_TOOLS=ON",
+          "-DPUREDARWIN_ENABLE_USERSPACE=OFF",
+          "-DPUREDARWIN_ENABLE_PROJECTS=OFF"
+        ],
+        "cwd": "/Users/joeblau/Developer/joeblau/src/blauos",
+        "exit_code": 0,
+        "raw_log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/platform-16/logs/configure.log",
+        "raw_log_bytes": 2139,
+        "raw_log_sha256": "46686f869566d73f69ce051c018f6e2e1dec6b794fab626cea2ec0d264e96c4a",
+        "errors": []
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/platform-16",
+          "--target",
+          "PDArmPlatformExpert",
+          "--parallel",
+          "6"
+        ],
+        "cwd": "/Users/joeblau/Developer/joeblau/src/blauos",
+        "exit_code": 0,
+        "raw_log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/platform-16/logs/build.log",
+        "raw_log_bytes": 122186,
+        "raw_log_sha256": "f745bebfa0301bc32e15f5349f6e8694dbd1ee1906024266dc3c763e25e72b2c",
+        "errors": []
+      }
+    ]
+  },
+  "recipe_sha256": "ad6a8a23dd3bad6a275795d5de90772563f6a3db826e3155a37614722a4bd99a",
+  "artifacts": [
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/platform-16/src/Kernel/Extensions/PDArmPlatformExpert/PDArmPlatformExpert.kext/Contents/MacOS/PDArmPlatformExpert",
+      "sha256": "04a0320f5a5a5869ac7b9b8d167f91668680ba662764043f63f685041278b257",
+      "bytes": 165760,
+      "header": {
+        "header_offset": 0,
+        "cpu_subtype": "0xc0000002",
+        "architecture": "arm64e",
+        "filetype": "11",
+        "flags": "0x85",
+        "uuid": "9DC92D13-FB9A-3F05-8956-41022D9BA7F0",
+        "segments": [
+          {
+            "name": "__TEXT",
+            "vmaddr": "0x0",
+            "vmsize": 16384,
+            "fileoff": 0,
+            "filesize": 16384,
+            "initial_protection": 1,
+            "max_protection": 1
+          },
+          {
+            "name": "__TEXT_EXEC",
+            "vmaddr": "0x4000",
+            "vmsize": 32768,
+            "fileoff": 16384,
+            "filesize": 32768,
+            "initial_protection": 5,
+            "max_protection": 5
+          },
+          {
+            "name": "__DATA",
+            "vmaddr": "0xc000",
+            "vmsize": 16384,
+            "fileoff": 49152,
+            "filesize": 16384,
+            "initial_protection": 3,
+            "max_protection": 3
+          },
+          {
+            "name": "__DATA_CONST",
+            "vmaddr": "0x10000",
+            "vmsize": 32768,
+            "fileoff": 65536,
+            "filesize": 32768,
+            "initial_protection": 3,
+            "max_protection": 3
+          },
+          {
+            "name": "__LINKEDIT",
+            "vmaddr": "0x18000",
+            "vmsize": 81920,
+            "fileoff": 98304,
+            "filesize": 67456,
+            "initial_protection": 1,
+            "max_protection": 1
+          }
+        ],
+        "fileset_entries": [],
+        "entry_pc": null,
+        "load_commands": [
+          "0x19",
+          "0x19",
+          "0x19",
+          "0x19",
+          "0x19",
+          "0x80000034",
+          "0x2",
+          "0xb",
+          "0x1b",
+          "0x2a",
+          "0x1e"
+        ]
+      }
+    }
+  ],
+  "errors": [],
+  "kernel_linkage_verified": false,
+  "native_boot_assets_ready": false,
+  "physical_interrupt_delivery_verified": false,
+  "physical_gate_passed": false
+}

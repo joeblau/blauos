@@ -1,0 +1,665 @@
+diff --git a/src/Kernel/Extensions/PDArmPlatformExpert/CMakeLists.txt b/src/Kernel/Extensions/PDArmPlatformExpert/CMakeLists.txt
+index 25bdd2a9f8d6573749b1bb81f367f148f62bc7cf..0d8dfb74c644f9a4d5b29ecb150d343cb88de3d0 100644
+--- a/src/Kernel/Extensions/PDArmPlatformExpert/CMakeLists.txt
++++ b/src/Kernel/Extensions/PDArmPlatformExpert/CMakeLists.txt
+@@ -4,6 +4,7 @@ add_kext_bundle(PDArmPlatformExpert INFO_PLIST Info.plist KERNEL_PRIVATE
+ target_sources(PDArmPlatformExpert PRIVATE
+     PDArmPlatformExpert.cpp
+     PDArmCPU.cpp
++    PDAppleARMCPU.cpp
+     PDArmGIC.cpp
+     PDAppleAIC.cpp
+     PDBcm2835IC.cpp
+diff --git a/src/Kernel/Extensions/PDArmPlatformExpert/PDAppleARMCPU.cpp b/src/Kernel/Extensions/PDArmPlatformExpert/PDAppleARMCPU.cpp
+new file mode 100644
+index 0000000000000000000000000000000000000000..15e14f1e99a5c9e2f1f06e56084e7a464d2e8947
+--- /dev/null
++++ b/src/Kernel/Extensions/PDArmPlatformExpert/PDAppleARMCPU.cpp
+@@ -0,0 +1,412 @@
++/*
++ * PDAppleARMCPU - IOCPU personality for Apple SoCs (H13/T8103 profile).
++ *
++ * This class is the platform module's side of CPU registration and secondary
++ * startup: processors are registered with the Mach layer through
++ * ml_processor_register(), secondary cores are released with the documented
++ * PMGR reset/power handoff, and inter-processor signals use the H13 fast-IPI
++ * registers through ml_cpu_signal().
++ */
++#include "PDAppleARMCPU.h"
++#include <IOKit/IODeviceTreeSupport.h>
++#include <IOKit/IOMemoryDescriptor.h>
++#include <IOKit/IOLib.h>
++#include <IOKit/IOPlatformExpert.h>
++#include <libkern/c++/OSData.h>
++
++extern "C" {
++/* osfmk/kern/processor.h exposes these only with MACH_KERNEL_PRIVATE. */
++extern kern_return_t processor_start(processor_t processor);
++extern kern_return_t processor_exit(processor_t processor);
++}
++
++/*
++ * CPU start block in the PMGR register space, and the RVBAR slot in each
++ * core's cpu-impl register block. The offsets are the documented M1-series
++ * values; see the audit record for the exact documentation revision.
++ */
++#define kPMGRCpuStartBlock     0x54000ULL
++#define kPMGRCpuAlive          0x004ULL  /* system-wide core-alive bitmask */
++#define kPMGRCpuStartCluster   0x008ULL  /* per-cluster core-start bitmask base */
++#define kPMGRCpuStartBlockSize 0x010ULL
++
++#define super PDArmCPU
++OSDefineMetaClassAndStructors(PDAppleARMCPU, PDArmCPU);
++
++PDArmCPUInterruptController *PDAppleARMCPU::gSharedIC;
++
++static volatile uint8_t *gPMGR;
++static IOMemoryMap *gPMGRMap;
++static bool gPMGRTried;
++
++static uint32_t
++pmgr_read(uint64_t off)
++{
++	return *(volatile uint32_t *)(gPMGR + off);
++}
++
++static void
++pmgr_write(uint64_t off, uint32_t val)
++{
++	*(volatile uint32_t *)(gPMGR + off) = val;
++}
++
++/*
++ * The PMGR's "reg" is an offset into the arm-io range, exactly as the AIC
++ * node is read in PDAppleAIC.cpp.
++ */
++static bool
++pmgr_find_registers(IOPhysicalAddress *outPhys, IOByteCount *outSize)
++{
++	IORegistryEntry *armio = IORegistryEntry::fromPath("/arm-io", gIODTPlane);
++	if (armio == NULL) {
++		return false;
++	}
++
++	OSData *ranges = OSDynamicCast(OSData, armio->getProperty("ranges"));
++	if (ranges == NULL || ranges->getLength() < 2 * sizeof(uint64_t)) {
++		armio->release();
++		return false;
++	}
++	/* child address, parent (physical) address, size */
++	uint64_t socPhys = ((const uint64_t *)ranges->getBytesNoCopy())[1];
++	armio->release();
++
++	IORegistryEntry *pmgr = IORegistryEntry::fromPath("/arm-io/pmgr", gIODTPlane);
++	if (pmgr == NULL) {
++		IOLog("PDAppleARMCPU: no /arm-io/pmgr node in the device tree\n");
++		return false;
++	}
++
++	OSData *reg = OSDynamicCast(OSData, pmgr->getProperty("reg"));
++	if (reg == NULL || reg->getLength() < 2 * sizeof(uint64_t)) {
++		IOLog("PDAppleARMCPU: /arm-io/pmgr has no usable reg property\n");
++		pmgr->release();
++		return false;
++	}
++	const uint64_t *r = (const uint64_t *)reg->getBytesNoCopy();
++
++	*outPhys = (IOPhysicalAddress)(socPhys + r[0]);
++	*outSize = (IOByteCount)r[1];
++	pmgr->release();
++	return true;
++}
++
++bool
++PDAppleARMCPU::mapPMGR(void)
++{
++	if (gPMGR != NULL) {
++		return true;
++	}
++	if (gPMGRTried) {
++		return false;
++	}
++	gPMGRTried = true;
++
++	IOPhysicalAddress phys = 0;
++	IOByteCount       size = 0;
++	if (!pmgr_find_registers(&phys, &size)) {
++		return false;
++	}
++	if (size < kPMGRCpuStartBlock + kPMGRCpuStartBlockSize) {
++		IOLog("PDAppleARMCPU: PMGR block of 0x%llx bytes does not cover the "
++		    "CPU start registers\n", (uint64_t)size);
++		return false;
++	}
++
++	IOMemoryDescriptor *desc = IOMemoryDescriptor::withPhysicalAddress(
++		phys, size, kIODirectionOutIn);
++	if (desc == NULL) {
++		return false;
++	}
++	gPMGRMap = desc->map(kIOMapAnywhere | kIOMapInhibitCache);
++	desc->release();
++	if (gPMGRMap == NULL) {
++		IOLog("PDAppleARMCPU: failed to map PMGR registers at 0x%llx\n",
++		    (uint64_t)phys);
++		return false;
++	}
++	gPMGR = (volatile uint8_t *)gPMGRMap->getVirtualAddress();
++	return true;
++}
++
++void
++PDAppleARMCPU::setTopology(const ml_topology_cpu_t *topology)
++{
++	fTopology = topology;
++	if (topology != NULL) {
++		snprintf(fName, sizeof(fName), "CPU%u", topology->cpu_id);
++		setCPUNumber(topology->cpu_id);
++	}
++}
++
++/*
++ * Register this processor with the Mach layer. Runs from the boot context;
++ * for a secondary this must happen before it is released from reset, because
++ * cpu_start() consumes the per-CPU data that ml_processor_register() installs.
++ */
++kern_return_t
++PDAppleARMCPU::registerProcessor(void)
++{
++	if (fRegistered) {
++		return KERN_SUCCESS;
++	}
++	if (fTopology == NULL) {
++		return KERN_INVALID_ARGUMENT;
++	}
++
++	ml_processor_info_t info;
++	memset(&info, 0, sizeof(info));
++	/* PE_cpu_start()/PE_cpu_machine_init() pass this back as the target. */
++	info.cpu_id = (cpu_id_t)this;
++	info.phys_id = fTopology->phys_id;
++	info.log_id = fTopology->cpu_id;
++	info.cluster_id = fTopology->cluster_id;
++	info.cluster_type = fTopology->cluster_type;
++	info.l2_access_penalty = fTopology->l2_access_penalty;
++	info.l2_cache_id = fTopology->l2_cache_id;
++	info.l2_cache_size = fTopology->l2_cache_size;
++	info.l3_cache_id = fTopology->l3_cache_id;
++	info.l3_cache_size = fTopology->l3_cache_size;
++
++	perfmon_interrupt_handler_func pmiHandler = NULL;
++	kern_return_t rc = ml_processor_register(&info, &machProcessor,
++	    &ipi_handler, &pmiHandler);
++	if (rc != KERN_SUCCESS) {
++		return rc;
++	}
++
++	setCPUNumber(fTopology->cpu_id);
++	fRegistered = true;
++	return KERN_SUCCESS;
++}
++
++bool
++PDAppleARMCPU::startCommon(void)
++{
++	if (startCommonCompleted) {
++		return true;
++	}
++
++	unsigned int online = 1;
++	const ml_topology_info_t *topology = ml_get_topology_info();
++	if (topology != NULL && topology->num_cpus > 0) {
++		online = topology->num_cpus;
++	}
++
++	if (gSharedIC == NULL) {
++		gSharedIC = new PDArmCPUInterruptController;
++		if (gSharedIC == NULL) {
++			return false;
++		}
++		/*
++		 * Size the controller to the whole supported CPU set: the source
++		 * count doubles as the ml_set_max_cpus() argument, and
++		 * enableCPUInterrupt() publishes IOService::cpusRunning() only
++		 * after every CPU in the set has checked in.
++		 */
++		if (gSharedIC->initCPUInterruptController((int)online, (int)online) != kIOReturnSuccess) {
++			gSharedIC->release();
++			gSharedIC = NULL;
++			return false;
++		}
++		gSharedIC->attach(this);
++		gSharedIC->registerCPUInterruptController();
++	}
++	cpuIC = gSharedIC;
++
++	setCPUState(kIOCPUStateUninitalized);
++	initCPU(true);
++	registerService();
++
++	startCommonCompleted = true;
++	return true;
++}
++
++/*
++ * Register and release one secondary CPU. Runs on the boot CPU; the target
++ * checks in through PE_cpu_machine_init() -> initCPU().
++ */
++kern_return_t
++PDAppleARMCPU::startSecondary(void)
++{
++	if (fTopology == NULL || gSharedIC == NULL) {
++		return KERN_FAILURE;
++	}
++	cpuIC = gSharedIC;
++
++	kern_return_t rc = registerProcessor();
++	if (rc != KERN_SUCCESS) {
++		return rc;
++	}
++
++	setCPUState(kIOCPUStateStopped);
++	registerService();
++
++	return processor_start(machProcessor);
++}
++
++void
++PDAppleARMCPU::initCPU(bool /*boot*/)
++{
++	/*
++	 * Runs on the CPU being initialized: on the boot CPU from startCommon(),
++	 * and on each secondary from PE_cpu_machine_init() as the core comes up.
++	 */
++	if (!fRegistered) {
++		kern_return_t rc = registerProcessor();
++		if (rc != KERN_SUCCESS) {
++			IOLog("PDAppleARMCPU: cpu%u registration failed: %d\n",
++			    getCPUNumber(), rc);
++			return;
++		}
++	}
++	if (!fInterruptEnabled && cpuIC != NULL) {
++		cpuIC->enableCPUInterrupt(this);
++		fInterruptEnabled = true;
++	}
++	setCPUState(kIOCPUStateRunning);
++}
++
++void
++PDAppleARMCPU::quiesceCPU(void)
++{
++	/* Runs on the target CPU as it goes down for sleep. */
++	const ml_topology_info_t *topology = ml_get_topology_info();
++
++	if (topology != NULL && fTopology == topology->boot_cpu) {
++		IOCPURunPlatformQuiesceActions();
++	}
++	setCPUState(kIOCPUStateStopped);
++
++	/* The core sleeps here and resumes after wake. */
++	ml_arm_sleep();
++}
++
++/*
++ * Release a secondary CPU from reset: the documented H13/M1 PMGR handoff.
++ * cpu_start() calls this through PE_cpu_start() on the boot context.
++ */
++kern_return_t
++PDAppleARMCPU::startCPU(vm_offset_t start_paddr, vm_offset_t /*arg_paddr*/)
++{
++	const ml_topology_info_t *topology = ml_get_topology_info();
++
++	if (!fRegistered || fTopology == NULL || machProcessor == NULL ||
++	    topology == NULL || topology->boot_cpu == NULL) {
++		return KERN_FAILURE;
++	}
++	if (fTopology == topology->boot_cpu) {
++		/* The boot CPU is already running; there is nothing to release. */
++		return KERN_SUCCESS;
++	}
++
++	unsigned int cpu = fTopology->cpu_id;
++	unsigned int core = fTopology->phys_id & 0xFF;          /* MPIDR Aff0 */
++	unsigned int cluster = (fTopology->phys_id >> 8) & 0x7; /* MPIDR Aff1 */
++	if (cpu >= 32 || core >= 32) {
++		return KERN_INVALID_ARGUMENT;
++	}
++	if (fTopology->cpu_IMPL_regs == 0) {
++		IOLog("PDAppleARMCPU: cpu%u has no cpu-impl register block\n", cpu);
++		return KERN_RESOURCE_SHORTAGE;
++	}
++	if (!mapPMGR()) {
++		return KERN_RESOURCE_SHORTAGE;
++	}
++
++	/*
++	 * Entry address. cpu_start() passes no start_paddr in this profile, so
++	 * the RVBAR value iBoot programmed from the kernel entry point is used
++	 * ("Reset vector = (__start & ~0xfff)", osfmk/arm64/start.s); a caller
++	 * that does supply a start address takes precedence.
++	 */
++	volatile uint64_t *rvbar = (volatile uint64_t *)fTopology->cpu_IMPL_regs;
++	uint64_t entry = (uint64_t)start_paddr;
++	if (entry != 0) {
++		*rvbar = entry;
++		OSSynchronizeIO();
++	} else {
++		entry = *rvbar;
++	}
++	if (entry == 0) {
++		IOLog("PDAppleARMCPU: cpu%u has no reset entry address\n", cpu);
++		return KERN_INVALID_ARGUMENT;
++	}
++
++	/* Mark the core alive system-wide, then start it within its cluster. */
++	pmgr_write(kPMGRCpuStartBlock + kPMGRCpuAlive,
++	    pmgr_read(kPMGRCpuStartBlock + kPMGRCpuAlive) | (1u << cpu));
++	OSSynchronizeIO();
++	pmgr_write(kPMGRCpuStartBlock + kPMGRCpuStartCluster + 4 * cluster,
++	    pmgr_read(kPMGRCpuStartBlock + kPMGRCpuStartCluster + 4 * cluster) | (1u << core));
++	OSSynchronizeIO();
++
++	IOLog("PDAppleARMCPU: released cpu%u (cluster %u core %u) at 0x%llx\n",
++	    cpu, cluster, core, entry);
++	return KERN_SUCCESS;
++}
++
++void
++PDAppleARMCPU::haltCPU(void)
++{
++	const ml_topology_info_t *topology = ml_get_topology_info();
++
++	if (!fRegistered || machProcessor == NULL ||
++	    topology == NULL || topology->boot_cpu == NULL) {
++		return;
++	}
++
++	if (fTopology != topology->boot_cpu) {
++		/* The target runs PE_cpu_machine_quiesce() -> quiesceCPU(). */
++		processor_exit(machProcessor);
++		return;
++	}
++
++	/* Boot CPU: quiesce the platform; the system sleeps here. */
++	IOCPURunPlatformQuiesceActions();
++	setCPUState(kIOCPUStateStopped);
++	ml_arm_sleep();
++	setCPUState(kIOCPUStateRunning);
++	IOCPURunPlatformActiveActions();
++}
++
++void
++PDAppleARMCPU::signalCPU(IOCPU *target)
++{
++	PDAppleARMCPU *appleTarget = OSDynamicCast(PDAppleARMCPU, target);
++	if (appleTarget == NULL || appleTarget->fTopology == NULL) {
++		return;
++	}
++	/* H13 fast IPI through IPIRR_EL1, addressed by MPIDR. */
++	ml_cpu_signal(appleTarget->fTopology->phys_id);
++}
++
++void
++PDAppleARMCPU::signalCPUDeferred(IOCPU *target)
++{
++	PDAppleARMCPU *appleTarget = OSDynamicCast(PDAppleARMCPU, target);
++	if (appleTarget == NULL || appleTarget->fTopology == NULL) {
++		return;
++	}
++	ml_cpu_signal_deferred(appleTarget->fTopology->phys_id);
++}
++
++void
++PDAppleARMCPU::signalCPUCancel(IOCPU *target)
++{
++	PDAppleARMCPU *appleTarget = OSDynamicCast(PDAppleARMCPU, target);
++	if (appleTarget == NULL || appleTarget->fTopology == NULL) {
++		return;
++	}
++	ml_cpu_signal_retract(appleTarget->fTopology->phys_id);
++}
++
++const OSSymbol *
++PDAppleARMCPU::getCPUName(void)
++{
++	if (fTopology == NULL) {
++		return super::getCPUName();
++	}
++	return OSSymbol::withCStringNoCopy(fName);
++}
+diff --git a/src/Kernel/Extensions/PDArmPlatformExpert/PDAppleARMCPU.h b/src/Kernel/Extensions/PDArmPlatformExpert/PDAppleARMCPU.h
+new file mode 100644
+index 0000000000000000000000000000000000000000..4abd6f70d00c7080c65e0e867ebc73460bec00fc
+--- /dev/null
++++ b/src/Kernel/Extensions/PDArmPlatformExpert/PDAppleARMCPU.h
+@@ -0,0 +1,47 @@
++#ifndef _PUREDARWIN_PDAPPLEARMCPU_H
++#define _PUREDARWIN_PDAPPLEARMCPU_H
++
++#include "PDArmCPU.h"
++
++/*
++ * IOCPU personality for Apple SoCs (H13/T8103 profile). Unlike the virt/Pi
++ * PDArmCPU, this class connects the platform module to the kernel's SMP
++ * interfaces: processors are registered through ml_processor_register(),
++ * secondary cores are released with the documented PMGR reset/power handoff,
++ * and inter-processor signals use the H13 fast-IPI registers through
++ * ml_cpu_signal().
++ *
++ * One PDArmCPUInterruptController is shared by the whole supported CPU set so
++ * that enableCPUInterrupt() tracks every online processor before publishing
++ * IOService::cpusRunning().
++ */
++class PDAppleARMCPU : public PDArmCPU {
++	OSDeclareDefaultStructors(PDAppleARMCPU);
++
++private:
++	const ml_topology_cpu_t *fTopology = NULL;
++	bool fRegistered = false;
++	bool fInterruptEnabled = false;
++	char fName[16] = {0};
++
++	static PDArmCPUInterruptController *gSharedIC;
++
++	kern_return_t registerProcessor(void);
++	static bool mapPMGR(void);
++
++public:
++	virtual bool startCommon(void) APPLE_KEXT_OVERRIDE;
++	virtual void initCPU(bool boot) APPLE_KEXT_OVERRIDE;
++	virtual void quiesceCPU(void) APPLE_KEXT_OVERRIDE;
++	virtual kern_return_t startCPU(vm_offset_t start_paddr, vm_offset_t arg_paddr) APPLE_KEXT_OVERRIDE;
++	virtual void haltCPU(void) APPLE_KEXT_OVERRIDE;
++	virtual void signalCPU(IOCPU *target) APPLE_KEXT_OVERRIDE;
++	virtual void signalCPUDeferred(IOCPU *target) APPLE_KEXT_OVERRIDE;
++	virtual void signalCPUCancel(IOCPU *target) APPLE_KEXT_OVERRIDE;
++	virtual const OSSymbol *getCPUName(void) APPLE_KEXT_OVERRIDE;
++
++	void setTopology(const ml_topology_cpu_t *topology);
++	kern_return_t startSecondary(void);
++};
++
++#endif /* _PUREDARWIN_PDAPPLEARMCPU_H */
+diff --git a/src/Kernel/Extensions/PDArmPlatformExpert/PDArmCPU.h b/src/Kernel/Extensions/PDArmPlatformExpert/PDArmCPU.h
+index 51400202cf2e082ad2520de1f4df43b0ef51c501..e6a05fbd4004d19c2873ebb917556e676baeb997 100644
+--- a/src/Kernel/Extensions/PDArmPlatformExpert/PDArmCPU.h
++++ b/src/Kernel/Extensions/PDArmPlatformExpert/PDArmCPU.h
+@@ -6,7 +6,7 @@
+ class PDArmCPU : public IOCPU {
+ 	OSDeclareDefaultStructors(PDArmCPU);
+ 
+-private:
++protected:
+ 	IOCPUInterruptController *cpuIC;
+ 	bool startCommonCompleted;
+ 
+@@ -18,7 +18,7 @@ public:
+ 	virtual kern_return_t startCPU(vm_offset_t start_paddr, vm_offset_t arg_paddr) APPLE_KEXT_OVERRIDE;
+ 	virtual void haltCPU(void) APPLE_KEXT_OVERRIDE;
+ 	virtual const OSSymbol *getCPUName(void) APPLE_KEXT_OVERRIDE;
+-	bool startCommon(void);
++	virtual bool startCommon(void);
+ };
+ 
+ class PDArmCPUInterruptController : public IOCPUInterruptController {
+diff --git a/src/Kernel/Extensions/PDArmPlatformExpert/PDArmPlatformExpert.cpp b/src/Kernel/Extensions/PDArmPlatformExpert/PDArmPlatformExpert.cpp
+index 2c19186007ffa4db678b45949c0c3705e5578f20..851e1d0fe166e4eaebb5a9354b660882cf30d1bc 100644
+--- a/src/Kernel/Extensions/PDArmPlatformExpert/PDArmPlatformExpert.cpp
++++ b/src/Kernel/Extensions/PDArmPlatformExpert/PDArmPlatformExpert.cpp
+@@ -3,6 +3,7 @@
+ #include <IOKit/IOKitKeys.h>
+ #include <IOKit/IOLib.h>
+ #include "PDArmCPU.h"
++#include "PDAppleARMCPU.h"
+ #include "PDArmGIC.h"
+ #include "PDAppleAIC.h"
+ #include "PDBcm2835IC.h"
+@@ -29,6 +30,9 @@ protected:
+ 	virtual bool initPlatformInterrupts(void);
+ 	virtual void initPlatformInterruptsLate(void);
+ 	virtual const char *platformModelName(void);
++	virtual PDArmCPU *newBootCPU(void);
++	virtual bool startBootCPU(PDArmCPU *cpu);
++	virtual bool startSecondaryCPUs(void);
+ 	void publishBcm2835EMMC(void);
+ 	void publishBcm283xFramebuffer(void);
+ };
+@@ -54,11 +58,17 @@ PDArmPlatformExpert::start(IOService *provider)
+ 
+ 	if (!initPlatformInterrupts()) return false;
+ 
+-	bootCPU = new PDArmCPU;
++	bootCPU = newBootCPU();
+ 	if (bootCPU == NULL) return false;
+ 	bootCPU->init();
+-	bootCPU->attach(0);
+-	if (!bootCPU->startCommon()) return false;
++	if (!startBootCPU(bootCPU)) return false;
++
++	/*
++	 * Secondaries are released before the late interrupt hook so that a
++	 * controller which attaches to the shared CPU interrupt controller does
++	 * not wait on cores that have not been started yet.
++	 */
++	if (!startSecondaryCPUs()) return false;
+ 
+ 	initPlatformInterruptsLate();
+ 
+@@ -71,6 +81,30 @@ PDArmPlatformExpert::start(IOService *provider)
+ 	return true;
+ }
+ 
++PDArmCPU *
++PDArmPlatformExpert::newBootCPU(void)
++{
++	return new PDArmCPU;
++}
++
++bool
++PDArmPlatformExpert::startBootCPU(PDArmCPU *cpu)
++{
++	/*
++	 * The virt/Pi profiles have no device-tree cpu nub to serve as the IOCPU
++	 * provider, so the boot CPU skips the ordinary IOCPU::start() path.
++	 */
++	cpu->attach(0);
++	return cpu->startCommon();
++}
++
++bool
++PDArmPlatformExpert::startSecondaryCPUs(void)
++{
++	/* No secondary CPUs are started on the virt target. */
++	return true;
++}
++
+ /*
+  * The Pi's device tree describes no display: the VideoCore firmware allocates
+  * the framebuffer and the loader passes its geometry in boot_args, which is
+@@ -262,6 +296,9 @@ protected:
+ 	bool initPlatformInterrupts(void) APPLE_KEXT_OVERRIDE;
+ 	void initPlatformInterruptsLate(void) APPLE_KEXT_OVERRIDE;
+ 	const char *platformModelName(void) APPLE_KEXT_OVERRIDE;
++	PDArmCPU *newBootCPU(void) APPLE_KEXT_OVERRIDE;
++	bool startBootCPU(PDArmCPU *cpu) APPLE_KEXT_OVERRIDE;
++	bool startSecondaryCPUs(void) APPLE_KEXT_OVERRIDE;
+ };
+ 
+ #undef super
+@@ -275,6 +312,75 @@ PDAppleARMPlatformExpert::initPlatformInterrupts(void)
+ 	return true;
+ }
+ 
++PDArmCPU *
++PDAppleARMPlatformExpert::newBootCPU(void)
++{
++	return new PDAppleARMCPU;
++}
++
++bool
++PDAppleARMPlatformExpert::startBootCPU(PDArmCPU *cpu)
++{
++	const ml_topology_info_t *topology = ml_get_topology_info();
++	PDAppleARMCPU *appleCPU = OSDynamicCast(PDAppleARMCPU, cpu);
++
++	if (appleCPU == NULL || topology == NULL || topology->boot_cpu == NULL) {
++		return false;
++	}
++
++	appleCPU->setTopology(topology->boot_cpu);
++
++	/*
++	 * The ADT cpu nubs are not published this early, so the platform expert
++	 * itself is the provider; this still routes the boot CPU through the
++	 * ordinary IOCPU::start() group and property setup.
++	 */
++	appleCPU->attach(this);
++	return appleCPU->start(this);
++}
++
++bool
++PDAppleARMPlatformExpert::startSecondaryCPUs(void)
++{
++	const ml_topology_info_t *topology = ml_get_topology_info();
++
++	if (topology == NULL || topology->cpus == NULL || topology->num_cpus == 0) {
++		IOLog("PDAppleARMPlatformExpert: no CPU topology; "
++		    "running on the boot CPU only\n");
++		return true;
++	}
++
++	for (unsigned int i = 0; i < topology->num_cpus; i++) {
++		const ml_topology_cpu_t *entry = &topology->cpus[i];
++		if (entry == topology->boot_cpu) {
++			continue;
++		}
++
++		PDAppleARMCPU *cpu = new PDAppleARMCPU;
++		if (cpu == NULL || !cpu->init()) {
++			IOLog("PDAppleARMPlatformExpert: could not create cpu%u\n",
++			    entry->cpu_id);
++			OSSafeReleaseNULL(cpu);
++			continue;
++		}
++		cpu->setTopology(entry);
++		cpu->attach(this);
++
++		kern_return_t rc = cpu->startSecondary();
++		if (rc != KERN_SUCCESS) {
++			IOLog("PDAppleARMPlatformExpert: cpu%u (cluster %u type %d) "
++			    "did not start: %d\n",
++			    entry->cpu_id, entry->cluster_id,
++			    (int)entry->cluster_type, rc);
++		}
++	}
++
++	/* Every processor has been registered and started; scheduler contract. */
++	ml_cpu_init_completed();
++	IOService::publishResource(gIOAllCPUInitializedKey, kOSBooleanTrue);
++	return true;
++}
++
+ void
+ PDAppleARMPlatformExpert::initPlatformInterruptsLate(void)
+ {

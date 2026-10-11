@@ -4,12 +4,16 @@ Tracks [#28](https://github.com/joeblau/blauos/issues/28) and
 [#39](https://github.com/joeblau/blauos/issues/39). No physical checkpoint has
 been captured. [physical_evidence.py](../../scripts/platform/physical_evidence.py)
 checks evidence files offline; it does not authorize boot objects, install
-images, change policy, reset hardware or approve Gate 2. The currently
-full checkpoint protocol below is **not implemented**. A separate
-[partial early diagnostic hook](m1-early-diagnostics.md) has compiled as a
-native kernel object, but emits a different protocol and lacks the required
-hardware tests and bindings. A source build, passive serial collector and
-unit tests do not complete the hardware tasks.
+images, change policy, reset hardware or approve Gate 2. The
+full checkpoint protocol below is now implemented as an opt-in source emitter
+by [patch 0017](../../patches/native/0017-t8103-physical-checkpoint-protocol.patch)
+(see the [checkpoint protocol audit](../audits/native-checkpoint-protocol.md)):
+with an exact `blauos-checkpoint-nonce=` boot argument the kernel measures and
+emits the events at their real implementation sites. A separate
+[partial early diagnostic hook](m1-early-diagnostics.md) remains a distinct,
+narrower signal. An implemented emitter, a source build, a passive serial
+collector and unit tests do not complete the hardware tasks: no physical
+checkpoint has been captured.
 
 The dedicated target is Macmini9,1, Apple M1/T8103, J274AP. Those identifiers
 refer to the 2020 M1 Mac mini in the
@@ -99,9 +103,12 @@ The source instrumentation and recipe must produce two real labels:
 bytes. The loadable image must contain exactly one NUL-terminated
 `BLAUOS_PHYSICAL_BUILD_ID=<computed build_id>` marker. Build ID calculation
 excludes output hashes to avoid a self-referential hash; the separate build
-receipt binds the resulting kernel bytes. The current native source does
-not yet emit this protocol or these labels. A future emitter must measure
-events at their real implementation sites and remain independently reviewable.
+receipt binds the resulting kernel bytes. Patch 0017 emits this protocol and
+these labels, and the build wrapper's `--build-id` option injects the
+provisioned marker; the
+[emitter audit](../audits/native-checkpoint-protocol.md) records the measured
+implementation sites. The emitter measures events at their real
+implementation sites and remains independently reviewable.
 
 An event is a complete serial line with this **proposed format**, where the
 payload is a single JSON object:

@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "level": "checkpoint",
+  "evidence_consistency_passed": true,
+  "kernel_entry_observed": true,
+  "checkpoint_observations_complete": true,
+  "private_identity_consistency_verified": false,
+  "hardware_attestation_verified": false,
+  "physical_gate_passed": false,
+  "review_required": true,
+  "boots": [
+    {
+      "index": 0,
+      "nonce": "1010101010101010101010101010101010101010101010101010101010101010",
+      "mode_claim": "cold",
+      "serial_sha256": "7ef9d1dbcb56ec3af2e1f5d64e20a14c31f0dc82552fea9cf31078b5f30c2441",
+      "capture": {
+        "transport": "native-uart",
+        "chunks": 1,
+        "stop_reason": "duration-limit"
+      },
+      "entry_observed": true,
+      "checkpoint_complete": true,
+      "checkpoint": {
+        "memory_ranges": 1,
+        "reservations": 3,
+        "online_cpus": 8,
+        "device_tree_sha256": "e73fda6341dfa186847cb71cc3c9acccdbe2e5870fb6d1dc32d61fb0a2aa9d90"
+      }
+    },
+    {
+      "index": 1,
+      "nonce": "1111111111111111111111111111111111111111111111111111111111111111",
+      "mode_claim": "cold",
+      "serial_sha256": "1a397445138677517488bc73214e415f04fc9c2689d44a6de68ec4850813a623",
+      "capture": {
+        "transport": "native-uart",
+        "chunks": 1,
+        "stop_reason": "duration-limit"
+      },
+      "entry_observed": true,
+      "checkpoint_complete": true,
+      "checkpoint": {
+        "memory_ranges": 1,
+        "reservations": 3,
+        "online_cpus": 8,
+        "device_tree_sha256": "e73fda6341dfa186847cb71cc3c9acccdbe2e5870fb6d1dc32d61fb0a2aa9d90"
+      }
+    },
+    {
+      "index": 2,
+      "nonce": "1212121212121212121212121212121212121212121212121212121212121212",
+      "mode_claim": "warm",
+      "serial_sha256": "fff2d4de5eb40f7f228cf1053809c2584c8edde46250b12a0f9b52a0a349557a",
+      "capture": {
+        "transport": "native-uart",
+        "chunks": 1,
+        "stop_reason": "duration-limit"
+      },
+      "entry_observed": true,
+      "checkpoint_complete": true,
+      "checkpoint": {
+        "memory_ranges": 1,
+        "reservations": 3,
+        "online_cpus": 8,
+        "device_tree_sha256": "e73fda6341dfa186847cb71cc3c9acccdbe2e5870fb6d1dc32d61fb0a2aa9d90"
+      }
+    },
+    {
+      "index": 3,
+      "nonce": "1313131313131313131313131313131313131313131313131313131313131313",
+      "mode_claim": "warm",
+      "serial_sha256": "c37903b1fc808fc1a5f3a13ecd024677967bd1fb2ef92b616e3016474ff7044b",
+      "capture": {
+        "transport": "native-uart",
+        "chunks": 1,
+        "stop_reason": "duration-limit"
+      },
+      "entry_observed": true,
+      "checkpoint_complete": true,
+      "checkpoint": {
+        "memory_ranges": 1,
+        "reservations": 3,
+        "online_cpus": 8,
+        "device_tree_sha256": "e73fda6341dfa186847cb71cc3c9acccdbe2e5870fb6d1dc32d61fb0a2aa9d90"
+      }
+    }
+  ],
+  "errors": [],
+  "limitations": [
+    "Offline files cannot prove physical origin, physical power cycles, or reviewer identity.",
+    "Authorization receipts do not establish that a custom kernel executed."
+  ],
+  "manifest_sha256": "5500e1fb72afc0410c3ebf3b9d9eb1936755e45af16cbbc5cdfc706a12414cb2",
+  "kernel": {
+    "uuid": "cd37c6c4-1cbd-3122-b636-c3c3b311cd64",
+    "checkpoint_start": 18446741874807767492,
+    "checkpoint_end": 18446741874807767500,
+    "architecture": "arm64e",
+    "file_type": "MH_EXECUTE",
+    "sha256": "358ebdf64e0fe339cffe4d0c767fd38663d0948bab82eca28e10b085cc3fd523",
+    "build_id": "4fa89c0d292d7d75c767687fe3ec056b519e2b74d8896c84622f91a46b5d5b99"
+  }
+}

@@ -1,0 +1,2 @@
+sftp> put "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/command-tools/workflow-v1/smoke/upload.bin" /var/home/joeblau/.blauos-sftp-fixture
+sftp> get /var/home/joeblau/.blauos-sftp-fixture "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/command-tools/workflow-v1/smoke/boot1/download.bin"

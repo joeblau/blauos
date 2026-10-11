@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "assembled": true,
+  "guest_boot_passed": false,
+  "image": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/ssh-login/reproducible-run-1/image/blauos-arm64.img",
+  "image_sha256": "347e278099559dca380a360cdfc6391eb9243abcb5dcc7421c1fa68bc45b27d1",
+  "kernel_sha256": "917fa407e753a835958ef8310e3be64da54be602535413941809709a1c617da9",
+  "loader_sha256": "7feec0dac6991b78db57cf7a9d40d1979793d3a16315ad48436796d48d65dc41",
+  "runtime_provenance_sha256": "ee08140d4938f3b5a59f87397c33179cb9a930d50667e0e0c806991b4fe4dd4b",
+  "disk_uuid": "45cb67ce-9404-5789-99a6-cb1ff27b9a55",
+  "root_uuid": "61c4d2a8-8653-5261-b171-aba17d683b0d",
+  "device_nodes": "Kernel mounts devfs; no Linux device-number substitution",
+  "fixture_sha256": {
+    "org.blauos.test.bootstrap.plist": "8e8a7d90d90bed488934eaada85ff831546442805cfbb80d75b3f0dc90e33c3e",
+    "org.blauos.test.exec-failure.plist": "44685b6f5346c662bc8ac544708747b6b5016d06f16755171aaf4ef078c62381",
+    "org.blauos.test.shutdown.plist": "08e55b2d118836b67fff209debcdc78de8c438c96856cf1b60f4f77e311fa117",
+    "launchd-test.sh": "874be8521bd3b434fe8d21573f2898bbc276a71abc35eb45616a7ea528ab7024"
+  },
+  "bit_identical_rebuild_verified": false,
+  "account": {
+    "schema_version": 1,
+    "username": "joeblau",
+    "uid": 1000,
+    "gid": 1000,
+    "home": "/var/home/joeblau",
+    "shell": "/bin/sh",
+    "authentication": "public-key-only",
+    "public_key_fingerprints": [
+      "SHA256:/X66JAqqk7JfPzWReIUAFF/P0gTH+DIhdKfhN8aUWu0",
+      "SHA256:nYm2LratbA4fGKkg+FqwpYyCF6d4xmA/jFG0Kv6Bvgk"
+    ],
+    "service_account": {
+      "name": "sshd",
+      "uid": 74,
+      "gid": 74,
+      "chroot": "/var/empty"
+    },
+    "metadata": [
+      {
+        "path": "etc",
+        "uid": 0,
+        "gid": 0,
+        "mode": "0755",
+        "kind": "directory"
+      },
+      {
+        "path": "etc/passwd",
+        "uid": 0,
+        "gid": 0,
+        "mode": "0644",
+        "kind": "file"
+      },
+      {
+        "path": "etc/master.passwd",
+        "uid": 0,
+        "gid": 0,
+        "mode": "0600",
+        "kind": "file"
+      },
+      {
+        "path": "etc/group",
+        "uid": 0,
+        "gid": 0,
+        "mode": "0644",
+        "kind": "file"
+      },
+      {
+        "path": "etc/shells",
+        "uid": 0,
+        "gid": 0,
+        "mode": "0644",
+        "kind": "file"
+      },
+      {
+        "path": "var",
+        "uid": 0,
+        "gid": 0,
+        "mode": "0755",
+        "kind": "directory"
+      },
+      {
+        "path": "var/home",
+        "uid": 0,
+        "gid": 0,
+        "mode": "0755",
+        "kind": "directory"
+      },
+      {
+        "path": "var/empty",
+        "uid": 0,
+        "gid": 0,
+        "mode": "0755",
+        "kind": "directory"
+      },
+      {
+        "path": "var/home/joeblau",
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0700",
+        "kind": "directory"
+      },
+      {
+        "path": "var/home/joeblau/.ssh",
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0700",
+        "kind": "directory"
+      },
+      {
+        "path": "var/home/joeblau/.ssh/authorized_keys",
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0600",
+        "kind": "file"
+      }
+    ],
+    "metadata_applied": true,
+    "guest_login_verified": false,
+    "filesystem_inode_metadata_verified": true
+  },
+  "ssh_login_verified": false
+}

@@ -1,0 +1,260 @@
+1: [  0%] Building C object tools/unifdef/CMakeFiles/unifdef.dir/unifdef.c.o
+2: [  0%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/begin.c.o
+3: [  0%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_abbrev.c.o
+4: [  0%] Building C object tools/cctools/libmacho/CMakeFiles/host_libmacho.dir/arch.c.o
+5: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/allocate.c.o
+6: [  0%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_create.c.o
+7: [  0%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_addr_finder.c.o
+8: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/apple_version.c.o
+9: [  0%] Linking C static library libmacho.a
+10: [  0%] Linking C executable unifdef
+11: [  0%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_decl.c.o
+12: [  0%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/arch_usage.c.o
+13: [ 10%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_alloc.c.o
+14: [ 10%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/clscook.c.o
+15: [ 10%] Built target host_libmacho
+16: [ 10%] Built target unifdef
+17: [ 10%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_error.c.o
+18: [ 10%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/arch.c.o
+19: [ 10%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_arange.c.o
+20: [ 10%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/args.c.o
+21: [ 10%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_die_deliv.c.o
+22: [ 10%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_hash.c.o
+23: [ 10%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/clscook_ELF64.c.o
+24: [ 10%] Yacc parser.y
+25: [ 10%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_error.c.o
+26: [ 10%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/best_arch.c.o
+27: [ 10%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_labels.c.o
+28: [ 10%] Creating VersionMap.h and for_dyld_priv.inc
+29: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/cntl.c.o
+30: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_form.c.o
+31: [ 20%] Lex lexxer.l
+32: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/breakout.c.o
+33: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_lib.c.o
+34: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/cook.c.o
+35: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_frame.c.o
+36: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/bytesex.c.o
+37: [ 20%] Building C object tools/mig/CMakeFiles/migcom.dir/error.c.o
+38: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/data.c.o
+39: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_lookup.c.o
+40: Ignoring nkf-0.2.0 because its extensions are not built. Try: gem pristine nkf --version 0.2.0
+41: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_frame2.c.o
+42: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/end.c.o
+43: [ 20%] Building C object tools/mig/CMakeFiles/migcom.dir/global.c.o
+44: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_open.c.o
+45: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_frame3.c.o
+46: [ 20%] Building C object tools/mig/CMakeFiles/migcom.dir/header.c.o
+47: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/checkout.c.o
+48: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/error.c.o
+49: Ignoring nkf-0.2.0 because its extensions are not built. Try: gem pristine nkf --version 0.2.0
+50: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_subr.c.o
+51: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_funcs.c.o
+52: [ 20%] Building C object tools/mig/CMakeFiles/migcom.dir/mig.c.o
+53: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/gelf.c.o
+54: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/coff_bytesex.c.o
+55: [ 20%] Building C object tools/dtrace_ctf/libctf/CMakeFiles/libctf.host.dir/ctf_types.c.o
+56: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_global.c.o
+57: [ 20%] Building C object tools/dtrace_ctf/libelf/CMakeFiles/libelf.host.dir/getdata.c.o
+58: [ 20%] Building C object tools/mig/CMakeFiles/migcom.dir/routine.c.o
+59: [ 20%] Building C object tools/cctools/libstuff/CMakeFiles/host_libstuff.dir/crc32.c.o
+60: [ 20%] Building C object tools/dtrace_ctf/libdwarf/CMakeFiles/libdwarf.host.dir/dwarf_init_finish.c.o
+4631:      INSTALLHDR OSObject.h
+4632:      INSTALLHDR syscall_sw.h
+4633:      INSTALLHDR IODispatchQueue.h
+4634: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-17/source-overlay/src/Kernel/xnu/pexpert/arm/pe_init.c:472:3: error: call to undeclared function 'blauos_checkpoint_measure_handoff'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+4635:   472 |                 blauos_checkpoint_measure_handoff(args);
+4636:       |                 ^
+4637: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-17/source-overlay/src/Kernel/xnu/pexpert/arm/pe_init.c:688:9: warning: cast to smaller integer type 'unsigned int' from 'char *' [-Wpointer-to-int-cast]
+4638:   688 |         assert((unsigned int)(location - gPanicBase) < gPanicSize);
+4639:       |                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+4642:       |                               ^~
+4643: 1 warning and 1 error generated.
+4644: 1 warning generated.
+4645: make[11]: *** [pe_init.o] Error 1
+4646: make[10]: *** [build_all] Error 2
+4647: make[9]: *** [do_all] Error 2
+4648: make[8]: *** [build_all] Error 2
+4649: make[7]: *** [build_all_recurse_into_conf] Error 2
+4650: make[6]: *** [build_all_recurse_into_pexpert] Error 2
+4651: make[6]: *** Waiting for unfinished jobs....
+4652:             C++ OSUnserializeXML.cpo
+4653:      INSTALLHDR atm_notification.defs
+4654:      INSTALLHDR vmparam.h
+4655:      INSTALLHDR sdt.h
+4656:      INSTALLHDR object.h
+9812: 1 warning generated.
+9813: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-17/source-overlay/src/Kernel/xnu/osfmk/arm/blauos_checkpoint.c:34:
+9814: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-17/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/bsd/libkern/libkern.h:78:
+9815: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-17/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/bsd/sys/types.h:101:33: error: typedef redefinition with different types ('int32_t' (aka 'int') vs 'unsigned int')
+9816:   101 | typedef int32_t                 daddr_t;        /* disk address */
+9817:       |                                 ^
+9818: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-17/source-overlay/src/Kernel/xnu/osfmk/libsa/types.h:73:25: note: previous definition is here
+9819:    73 | typedef unsigned int    daddr_t;        /* an unsigned 32 */
+9820:       |                         ^
+9821: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-17/source-overlay/src/Kernel/xnu/osfmk/arm/blauos_checkpoint.c:34:
+9822: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-17/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/bsd/libkern/libkern.h:78:
+9823: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-17/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/bsd/sys/types.h:103:
+9824: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-17/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/bsd/sys/_types/_dev_t.h:31:31: error: typedef redefinition with different types ('__darwin_dev_t' (aka 'int') vs 'long')
+9825:    31 | typedef __darwin_dev_t        dev_t;    /* device number */
+9826:       |                               ^
+9827: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-17/source-overlay/src/Kernel/xnu/osfmk/libsa/arm/types.h:59:25: note: previous definition is here
+9828:    59 | typedef long            dev_t;          /* device number (major+minor) */
+9829:       |                         ^
+9853:       |         ^
+9854:      INSTALLHDR clock.h
+9855: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-17/source-overlay/src/Kernel/xnu/osfmk/arm/blauos_checkpoint.c:34:
+9856: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-17/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/bsd/libkern/libkern.h:202:9: error: conflicting types for 'copyinstr'
+9857:   202 | int     copyinstr(const user_addr_t uaddr, void *kaddr, size_t len, size_t *done) OS_WARN_RESULT;
+9858:       |         ^
+9859: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-17/source-overlay/src/Kernel/xnu/osfmk/kern/misc_protos.h:129:12: note: previous declaration is here
+9860:   129 | extern int copyinstr(
+9861:       |            ^
+9862: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-17/source-overlay/src/Kernel/xnu/osfmk/arm/blauos_checkpoint.c:36:
+9863: In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-17/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/pexpert/pexpert/pexpert.h:35:
+9864: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-17/source-overlay/src/Kernel/xnu/osfmk/kern/kern_types.h:209:42: error: typedef redefinition with different types ('struct clock *' vs '__darwin_clock_t' (aka 'unsigned long'))
+9865:   209 | typedef  struct clock                   *clock_t;
+9866:       |                                          ^
+9867: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-17/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/bsd/sys/_types/_clock_t.h:31:33: note: previous definition is here
+9868:    31 | typedef __darwin_clock_t        clock_t;
+9869:       |                                 ^
+9911:       |               ~~~~~~~   ^~~~
+9912:             C++ IORangeAllocator.cpo
+9913:      INSTALLHDR packet_mangler.h
+9914: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-17/source-overlay/src/Kernel/xnu/osfmk/arm/blauos_checkpoint.c:392:26: error: use of undeclared identifier 'kernel_pmap'; did you mean 'kernel_map'?
+9915:   392 |         walked = pmap_find_phys(kernel_pmap, (addr64_t)(vm_offset_t)&sentinel);
+9916:       |                                 ^~~~~~~~~~~
+9917:       |                                 kernel_map
+9918: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-17/source-overlay/src/Kernel/xnu/osfmk/vm/vm_kern.h:460:17: note: 'kernel_map' declared here
+9919:   460 | extern vm_map_t kernel_map;
+9945:   461 |         IOMemoryEntry *      cloneEntries;
+9946:       |                                          ^
+9947:       |                                           = nullptr
+9948: make[11]: *** [blauos_checkpoint.o] Error 1
+9949: make[11]: *** Waiting for unfinished jobs....
+9950: 5 warnings generated.
+9951: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-17/source-overlay/src/Kernel/xnu/iokit/Kernel/IOMemoryDescriptor.cpp:1021:8: warning: variable 'memEntryCacheMode' may be uninitialized when used here [-Wconditional-uninitialized]
+9952:  1021 |                             memEntryCacheMode, NULL, entry->entry);
+9953:       |                             ^~~~~~~~~~~~~~~~~
+9954: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-17/source-overlay/src/Kernel/xnu/iokit/Kernel/IOMemoryDescriptor.cpp:819:43: note: initialize the variable 'memEntryCacheMode' to silence this warning
+10082:      INSTALLHDR _guid_t.h
+10083: 1 warning generated.
+10084: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-17/source-overlay/src/Kernel/xnu/bsd/net/if_6lowpan.c:558:53: warning: implicit conversion changes signedness: 'int32_t' (aka 'int') to 'u_int32_t' (aka 'unsigned int') [-Wsign-conversion]
+10085:   558 |         (void)ifnet_stat_increment_out(ifp, 1make[10]: *** [build_all] Error 2
+10086: , m->m_pkthmake[9]: *** [do_all] Error 2
+10087: dr.len, 0);
+10088:       |               ~~~~~~~~~~~~~~~~~~~~~~~~         ~~~~~~~~~~~~^~~
+10089: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-17/source-overlay/src/Kernel/xnu/bsd/net/if_6lowpan.c:566:59: warning: implicit conversion changes signedness: 'int' to 'size_t' (aka 'unsigned long') [-Wsign-conversion]
+10090:   566 |         if (bpf_func && (mbuf_setdata(m, m->m_data + 2, m->m_len - 2) == 0)) {
+10091:       |                          ~~~~~~~~~~~~                   ~~~~~~~~~^~~
+10092: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-17/source-overlay/src/Kernel/xnu/bsd/net/if_6lowpan.c:568:43: warning: implicit conversion changes signedness: 'int' to 'size_t' (aka 'unsigned long') [-Wsign-conversion]
+10093:   568 |                 mbuf_setdata(m, m->m_data - 2,            C++ IOCPU.cpo
+10094: make[8]: *** [build_all] Error 2
+10095: make[7]: *** [build_all_recurse_into_conf] Error 2
+10096:  m->m_len + 2);
+10097:       |                 ~~~~~~~~~~~~                   ~~~~~~~~~^~~
+10098: make[6]: *** [build_all_recurse_into_osfmk] Error 2
+10099: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-17/source-overlay/src/Kernel/xnu/bsd/net/if_6lowpan.c:695:46: warning: implicit conversion changes signedness: 'int32_t' (aka 'int') to 'u_int32_t' (aka 'unsigned int') [-Wsign-conversion]
+10100:   695 |                 ifnet_stat_increment_in(p, 1, mc->m_pkthdr.len, 0);
+10101:       |                 ~~~~~~~~~~~~~~~~~~~~~~~       ~~~~~~~~~~~~~^~~
+10102: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-17/source-overlay/src/Kernel/xnu/bsd/net/if_6lowpan.c:833:27: warning: implicit conversion changes signedness: 'int' to 'u_int32_t' (aka 'unsigned int') [-Wsign-conversion]
+10103:   833 |                 ifnet_set_mtu(ifp, ifr->ifr_mtu);
+30632:      INSTALLHDR stdio.h
+30633:      INSTALLHDR sysctl.h
+30634:      INSTALLHDR stat.h
+30635:      INSTALLHDR syslimits.h
+30636:      INSTALLHDR syslog.h
+30637:      INSTALLHDR systm.h
+30638:      INSTALLHDR sys_domain.h
+30639:      INSTALLHDR time.h
+30640:      INSTALLHDR ucontext.h
+30641:      INSTALLHDR types.h
+30642:      INSTALLHDR ubc.h
+30643:      INSTALLHDR ucred.h
+30644:      INSTALLHDR uio.h
+30645:      INSTALLHDR un.h
+30646:      INSTALLHDR unistd.h
+30647:      INSTALLHDR unpcb.h
+30648:      INSTALLHDR utfconv.h
+30649:      INSTALLHDR unicode.h
+30650:      INSTALLHDR vsock.h
+30651:      INSTALLHDR vmparam.h
+30652:      INSTALLHDR vnode_if.h
+30653:      INSTALLHDR vnode.h
+30654:      INSTALLHDR vm.h
+30655:      INSTALLHDR xattr.h
+30656:      INSTALLHDR _select.h
+30657:      INSTALLHDR _structs.h
+30658:      INSTALLHDR _types.h
+30659:      INSTALLHDR kpi_socket.h
+30660:      INSTALLHDR kpi_mbuf.h
+30661:      INSTALLHDR domain.h
+30662:      INSTALLHDR _endian.h
+30663:      INSTALLHDR protosw.h
+30664:      INSTALLHDR kpi_socketfilter.h
+30665:      INSTALLHDR ttycom.h
+30666:      INSTALLHDR termios.h
+30667:      INSTALLHDR msg.h
+30668:      INSTALLHDR wait.h
+30669:      INSTALLHDR timex.h
+30670:      INSTALLHDR codesign.h
+30671:      INSTALLHDR commpage.h
+30672:      INSTALLHDR cprotect.h
+30673:      INSTALLHDR spawn.h
+30674:      INSTALLHDR csr.h
+30675:      INSTALLHDR decmpfs.h
+30676:      INSTALLHDR content_protection.h
+30677:      INSTALLHDR eventhandler.h
+30678:      INSTALLHDR fbt.h
+30679:      INSTALLHDR disktab.h
+30680:      INSTALLHDR fileport.h
+30681:      INSTALLHDR fslog.h
+30682:      INSTALLHDR fsctl.h
+30683:      INSTALLHDR kasl.h
+30684:      INSTALLHDR kern_memorystatus.h
+30685:      INSTALLHDR kern_memorystatus_freeze.h
+30686:      INSTALLHDR msgbuf.h
+30687:      INSTALLHDR ktrace.h
+30688:      INSTALLHDR monotonic.h
+30689:      INSTALLHDR kern_memorystatus_notify.h
+30690:      INSTALLHDR kpi_private.h
+30691:      INSTALLHDR mach_swapon.h
+30692:      INSTALLHDR linker_set.h
+30693:      INSTALLHDR persona.h
+30694:      INSTALLHDR eventvar.h
+30695:      INSTALLHDR reboot.h
+30696:      INSTALLHDR quota.h
+30697:      INSTALLHDR pthread_shims.h
+30698:      INSTALLHDR proc_info.h
+30699:      INSTALLHDR sem_internal.h
+30700:      INSTALLHDR shm_internal.h
+30701:      INSTALLHDR stackshot.h
+30702:      INSTALLHDR tty.h
+30703:      INSTALLHDR ttychars.h
+30704:      INSTALLHDR ttydefaults.h
+30705:      INSTALLHDR ttydev.h
+30706:      INSTALLHDR vmmeter.h
+30707:      INSTALLHDR vfs_context.h
+30708:      INSTALLHDR user.h
+30709:      INSTALLHDR spawn_internal.h
+30710:      INSTALLHDR reason.h
+30711:      INSTALLHDR signalvar.h
+30712:      INSTALLHDR pgo.h
+30713:      INSTALLHDR doc_tombstone.h
+30714:      INSTALLHDR memory_maintenance.h
+30715:      INSTALLHDR priv.h
+30716:      INSTALLHDR fsevents.h
+30717:      INSTALLHDR work_interval.h
+30718:      INSTALLHDR kern_sysctl.h
+30719:      INSTALLHDR vsock_transport.h
+30720:      INSTALLHDR sysproto.h
+30721:      INSTALLHDR sys__types.modulemap
+30722:      INSTALLHDR sys_types.modulemap
+30723:      INSTALLHDR sys_cdefs.modulemap
+30724: 2 warnings generated.
+30725:      LDFILELIST bsd
+30726: make[5]: *** [build_all_bootstrap_DEVELOPMENT^ARM64^T8103] Error 2
+30727: make[4]: *** [install] Error 2
+30728: make[3]: *** [src/Kernel/xnu/xnu_build/src/xnu-stamp/xnu-build] Error 2
+30729: make[2]: *** [src/Kernel/xnu/CMakeFiles/xnu.dir/all] Error 2
+30730: make[1]: *** [src/Kernel/xnu/CMakeFiles/xnu.dir/rule] Error 2
+30731: make: *** [xnu] Error 2

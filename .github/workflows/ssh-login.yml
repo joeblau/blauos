@@ -1,0 +1,91 @@
+name: Independent ARM64 SSH login
+
+on:
+  workflow_dispatch:
+    inputs:
+      baseline_receipt:
+        description: "Runner-local JSON with audited root/provenance and strict entropy kernel/loader paths and hashes"
+        required: true
+        type: string
+      public_key:
+        description: "Bare Ed25519 PUBLIC key for the named guest account; never a private key"
+        required: true
+        type: string
+      username:
+        description: "Guest account name"
+        default: joeblau
+        required: true
+        type: string
+      uid:
+        description: "Guest UID (1000–60000)"
+        default: "1000"
+        required: true
+        type: string
+      gid:
+        description: "Guest GID (1000–60000)"
+        default: "1000"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: blauos-independent-ssh-runner
+  cancel-in-progress: false
+
+jobs:
+  build-and-login:
+    name: Source commands, SSH, account permissions, and two guest logins
+    runs-on: [self-hosted, macOS, ARM64, blauos-native-sdk]
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          clean: true
+      - name: Build and verify SSH on the prepared independent baseline
+        env:
+          BLAUOS_BASELINE_RECEIPT: ${{ inputs.baseline_receipt }}
+          BLAUOS_SSH_PUBLIC_KEY: ${{ inputs.public_key }}
+          BLAUOS_SSH_USERNAME: ${{ inputs.username }}
+          BLAUOS_SSH_UID: ${{ inputs.uid }}
+          BLAUOS_SSH_GID: ${{ inputs.gid }}
+          BLAUOS_RUN_ID: ${{ github.run_id }}
+        run: |
+          python3 - <<'PY'
+          import os
+          import subprocess
+          import sys
+          subprocess.run([
+              sys.executable, "scripts/vm/ssh_workflow.py",
+              "--baseline-receipt", os.environ["BLAUOS_BASELINE_RECEIPT"],
+              "--public-key-env", "BLAUOS_SSH_PUBLIC_KEY",
+              "--username", os.environ["BLAUOS_SSH_USERNAME"],
+              "--uid", os.environ["BLAUOS_SSH_UID"],
+              "--gid", os.environ["BLAUOS_SSH_GID"],
+              "--output", ".blauos/build/ssh-login/actions-" + os.environ["BLAUOS_RUN_ID"],
+              "--require-clean-project",
+          ], check=True)
+          PY
+      - name: Remove only the run's owned formatter container
+        if: always()
+        env:
+          BLAUOS_RUN_ID: ${{ github.run_id }}
+        run: |
+          python3 - <<'PY'
+          import os
+          import subprocess
+          import sys
+          subprocess.run([
+              sys.executable, "scripts/vm/ssh_workflow.py",
+              "--output", ".blauos/build/ssh-login/actions-" + os.environ["BLAUOS_RUN_ID"],
+              "--cleanup-only",
+          ], check=True)
+          PY
+      - name: Upload allowlisted receipts and redacted logs
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: independent-ssh-login-evidence
+          if-no-files-found: warn
+          path: .blauos/build/ssh-login/actions-${{ github.run_id }}/evidence/**

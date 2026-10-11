@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "hostname": "files-1.blauos.local",
+  "image": {
+    "channel": "stable",
+    "version": "2026.10.1",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "accounts": [
+    {
+      "name": "joeblau",
+      "uid": 1000,
+      "gid": 1000,
+      "ssh_authorized_keys": [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyAhIiMkJSYn",
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA8QERITFBUWFxgZGhscHR4fICEiIyQlJicoKSorLC0u"
+      ]
+    }
+  ],
+  "services": [
+    {
+      "label": "org.blauos.sshd",
+      "program": "/usr/local/sbin/sshd",
+      "program_arguments": ["-D", "-e"],
+      "run_at_load": true,
+      "keep_alive": true,
+      "mach_services": ["org.blauos.sshd.control"]
+    }
+  ],
+  "network": {
+    "interfaces": [
+      {
+        "name": "en0",
+        "mode": "static",
+        "address": "192.168.64.20",
+        "prefix_length": 24,
+        "gateway": "192.168.64.1"
+      }
+    ],
+    "dns": ["192.168.64.1", "1.1.1.1"],
+    "mtu": 1500
+  },
+  "volumes": [
+    {
+      "name": "media",
+      "device": "/dev/vdb",
+      "filesystem": "ext4",
+      "mount_point": "/var/data/media",
+      "read_only": true
+    },
+    {
+      "name": "backups",
+      "device": "/dev/vdc",
+      "filesystem": "apfs",
+      "mount_point": "/var/data/backups",
+      "required": true
+    }
+  ],
+  "fleet": {
+    "role": "file-server",
+    "labels": {"site": "lab"}
+  }
+}

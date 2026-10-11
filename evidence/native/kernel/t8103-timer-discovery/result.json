@@ -1,0 +1,295 @@
+{
+  "status": "kernel-built-not-boot-validated",
+  "exit_code": 0,
+  "source": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/t8103-timer-discovery/source-overlay",
+  "configuration": "DEVELOPMENT ARM64",
+  "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+  "source_amendments": [
+    {
+      "source_archive_sha256": "1c955560333a1e47a38f2018ead9fd90580eb4b9520f44435ebfa03afcd3c1f6",
+      "excluded_absolute_symlinks": [
+        "src/Libraries/libSystem/libc/gen/FreeBSD/result"
+      ]
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0001-puredarwin-t8103-build-profile.patch",
+      "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/t8103-timer-discovery/inputs/01-76e05e5e7de0f9b5cdac6347e771007067bb19fdb34f4897c70628c72dbc4d65.patch",
+      "sha256": "76e05e5e7de0f9b5cdac6347e771007067bb19fdb34f4897c70628c72dbc4d65"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0002-t8103-public-register-encodings.patch",
+      "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/t8103-timer-discovery/inputs/02-0480c7f6299844af5c6cdd6eb7fb23b76c0f32025cc0a2cf07f429f9bf9a685b.patch",
+      "sha256": "0480c7f6299844af5c6cdd6eb7fb23b76c0f32025cc0a2cf07f429f9bf9a685b"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0003-t8103-current-clang-diagnostics.patch",
+      "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/t8103-timer-discovery/inputs/03-3e0f1aac169bf648054be8d20c0f0101404f0e4b6de54758ba3409688ce96f99.patch",
+      "sha256": "3e0f1aac169bf648054be8d20c0f0101404f0e4b6de54758ba3409688ce96f99"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0004-t8103-public-platform-sources.patch",
+      "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/t8103-timer-discovery/inputs/04-cd1a6e6281fdda5775f1002d1a26433eb5f3e05d822e1cee0d2b23cb6915a04e.patch",
+      "sha256": "cd1a6e6281fdda5775f1002d1a26433eb5f3e05d822e1cee0d2b23cb6915a04e"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0005-t8103-public-ctrr-interface.patch",
+      "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/t8103-timer-discovery/inputs/05-45300148900c5b448f5a019e0c4f31145ee566f31c7259193faaa0b6f3352919.patch",
+      "sha256": "45300148900c5b448f5a019e0c4f31145ee566f31c7259193faaa0b6f3352919"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0006-t8103-early-diagnostics.patch",
+      "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/t8103-timer-discovery/inputs/06-f49d0c2456d54222d1c149cf84750204ae4281199d8156fa9b0748d09ae9894e.patch",
+      "sha256": "f49d0c2456d54222d1c149cf84750204ae4281199d8156fa9b0748d09ae9894e"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0007-t8103-aic-rearm-and-driver-abi.patch",
+      "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/t8103-timer-discovery/inputs/07-ec38272928a3bcf0d41e977dab316a02d255e15db483b64d82e0535a5bdbffca.patch",
+      "sha256": "ec38272928a3bcf0d41e977dab316a02d255e15db483b64d82e0535a5bdbffca"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0008-t8103-public-ppl-port.patch",
+      "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/t8103-timer-discovery/inputs/08-f718eae67d8b703dff21d63ac54da1a29d29fa35b900d7f25a69460e3766183f.patch",
+      "sha256": "f718eae67d8b703dff21d63ac54da1a29d29fa35b900d7f25a69460e3766183f"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0009-t8103-pac-atomic-storage.patch",
+      "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/t8103-timer-discovery/inputs/09-74b9880d6e9bd42285aec5d951efb24d78c0f036cfb7e71dfb63c570a58adf3e.patch",
+      "sha256": "74b9880d6e9bd42285aec5d951efb24d78c0f036cfb7e71dfb63c570a58adf3e"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0010-t8103-machine-register-encodings.patch",
+      "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/t8103-timer-discovery/inputs/10-c2b10d8513de1abdd8b2c06228b26e23f583a3410959cd0a6fd743be7b9565e3.patch",
+      "sha256": "c2b10d8513de1abdd8b2c06228b26e23f583a3410959cd0a6fd743be7b9565e3"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0011-t8103-public-native-pac.patch",
+      "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/t8103-timer-discovery/inputs/11-b241ac693020cfeb0c614938f1d43789682bab65f17d6c5530614b9bae194dd4.patch",
+      "sha256": "b241ac693020cfeb0c614938f1d43789682bab65f17d6c5530614b9bae194dd4"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0014-t8103-timer-discovery.patch",
+      "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/t8103-timer-discovery/inputs/12-9097aaa49804e8db932e376a28cde60ba4ca11e50de9afaf2bc0a9b29692492f.patch",
+      "sha256": "9097aaa49804e8db932e376a28cde60ba4ca11e50de9afaf2bc0a9b29692492f"
+    }
+  ],
+  "manifest_sha256": "de98f7289628e8ea53089b8945798afa01c2dd1afb1328b82e6a9a2321537cee",
+  "machine": "T8103",
+  "sdk": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+  "artifacts": [
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/t8103-timer-discovery/src/Kernel/xnu/xnu/System/Library/Kernels/kernel.development.t8103",
+      "size": 15078720,
+      "sha256": "f2d95fa0603744e5aa8b18b01e63319e0fd4c0ba3df60c5bd2d862e6394d01e8",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/t8103-timer-discovery/src/Kernel/xnu/xnu/System/Library/Kernels/kernel.development.t8103: Mach-O 64-bit executable arm64e"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/t8103-timer-discovery/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_T8103/kernel.development.t8103",
+      "size": 15078720,
+      "sha256": "f2d95fa0603744e5aa8b18b01e63319e0fd4c0ba3df60c5bd2d862e6394d01e8",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/t8103-timer-discovery/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_T8103/kernel.development.t8103: Mach-O 64-bit executable arm64e"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/t8103-timer-discovery/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_T8103/kernel.development.t8103.dSYM/Contents/Resources/DWARF/kernel.development.t8103",
+      "size": 55192873,
+      "sha256": "97d7d66c4bf25161b2e8cd17bdc901aaca4981b01ade3056f148e8b37fba1515",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/t8103-timer-discovery/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_T8103/kernel.development.t8103.dSYM/Contents/Resources/DWARF/kernel.development.t8103: Mach-O 64-bit dSYM companion file arm64e"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/t8103-timer-discovery/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_T8103/kernel.development.t8103.unstripped",
+      "size": 17979464,
+      "sha256": "427a1fc910341a00148492d74b2c583997080069b3a82ffa8864688baa5d6b58",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/t8103-timer-discovery/src/Kernel/xnu/xnu_build/src/xnu-build/DEVELOPMENT_ARM64_T8103/kernel.development.t8103.unstripped: Mach-O 64-bit executable arm64e"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/t8103-timer-discovery/src/Kernel/xnu/xnu_build/src/xnu-build/kernel.development.t8103",
+      "size": 15078720,
+      "sha256": "f2d95fa0603744e5aa8b18b01e63319e0fd4c0ba3df60c5bd2d862e6394d01e8",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/t8103-timer-discovery/src/Kernel/xnu/xnu_build/src/xnu-build/kernel.development.t8103: Mach-O 64-bit executable arm64e"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/t8103-timer-discovery/src/Kernel/xnu/xnu_sym/kernel.development.t8103",
+      "size": 17979464,
+      "sha256": "427a1fc910341a00148492d74b2c583997080069b3a82ffa8864688baa5d6b58",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/t8103-timer-discovery/src/Kernel/xnu/xnu_sym/kernel.development.t8103: Mach-O 64-bit executable arm64e"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/t8103-timer-discovery/src/Kernel/xnu/xnu_sym/kernel.development.t8103.dSYM/Contents/Resources/DWARF/kernel.development.t8103",
+      "size": 55192873,
+      "sha256": "97d7d66c4bf25161b2e8cd17bdc901aaca4981b01ade3056f148e8b37fba1515",
+      "file": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/t8103-timer-discovery/src/Kernel/xnu/xnu_sym/kernel.development.t8103.dSYM/Contents/Resources/DWARF/kernel.development.t8103: Mach-O 64-bit dSYM companion file arm64e"
+    }
+  ],
+  "qemu_psci_hvc_profile": false,
+  "recipe": {
+    "schema_version": 1,
+    "build_system": "puredarwin_cmake",
+    "manifest_sha256": "de98f7289628e8ea53089b8945798afa01c2dd1afb1328b82e6a9a2321537cee",
+    "source_name": "puredarwin-vm-next",
+    "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+    "source_tree": "ed2345d7f3c11dad2e7f6ffeeb377adc789b12b8",
+    "machine": "T8103",
+    "architecture_config": "ARM64",
+    "kernel_config": "DEVELOPMENT",
+    "original_source": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next",
+    "effective_source": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/t8103-timer-discovery/source-overlay",
+    "sdk": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+    "kdk": null,
+    "darwin_version": "20.5.0",
+    "requested_apple_darwin_version": null,
+    "applied_apple_darwin_version": null,
+    "source_master_version": {
+      "path": "src/Kernel/xnu/config/MasterVersion",
+      "sha256": "31671a8f8bad9cc7ec6a5e21fc4c91b9cdec81de93dbbc7426c5dbe3e3455653",
+      "version": "20.5.0"
+    },
+    "make_settings": {},
+    "build_wrapper_inputs": [
+      {
+        "path": "scripts/build/xnu.py",
+        "sha256": "103535c95df62690c77778ce4d6cbfb813458931cbb3859b6c607c9e166f6dda"
+      },
+      {
+        "path": "scripts/build/headers.py",
+        "sha256": "08427445722bdfb487c6aba4c78e6ce91a9bc76dd6d4e1a005bdd63e7a48d502"
+      },
+      {
+        "path": "scripts/blauos.py",
+        "sha256": "fc159232fb6b6fed403680b9e8764cac1704f60bc47a90a798e9a0639476cdff"
+      }
+    ],
+    "source_amendments": [
+      {
+        "source_archive_sha256": "1c955560333a1e47a38f2018ead9fd90580eb4b9520f44435ebfa03afcd3c1f6",
+        "excluded_absolute_symlinks": [
+          "src/Libraries/libSystem/libc/gen/FreeBSD/result"
+        ]
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0001-puredarwin-t8103-build-profile.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/t8103-timer-discovery/inputs/01-76e05e5e7de0f9b5cdac6347e771007067bb19fdb34f4897c70628c72dbc4d65.patch",
+        "sha256": "76e05e5e7de0f9b5cdac6347e771007067bb19fdb34f4897c70628c72dbc4d65"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0002-t8103-public-register-encodings.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/t8103-timer-discovery/inputs/02-0480c7f6299844af5c6cdd6eb7fb23b76c0f32025cc0a2cf07f429f9bf9a685b.patch",
+        "sha256": "0480c7f6299844af5c6cdd6eb7fb23b76c0f32025cc0a2cf07f429f9bf9a685b"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0003-t8103-current-clang-diagnostics.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/t8103-timer-discovery/inputs/03-3e0f1aac169bf648054be8d20c0f0101404f0e4b6de54758ba3409688ce96f99.patch",
+        "sha256": "3e0f1aac169bf648054be8d20c0f0101404f0e4b6de54758ba3409688ce96f99"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0004-t8103-public-platform-sources.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/t8103-timer-discovery/inputs/04-cd1a6e6281fdda5775f1002d1a26433eb5f3e05d822e1cee0d2b23cb6915a04e.patch",
+        "sha256": "cd1a6e6281fdda5775f1002d1a26433eb5f3e05d822e1cee0d2b23cb6915a04e"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0005-t8103-public-ctrr-interface.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/t8103-timer-discovery/inputs/05-45300148900c5b448f5a019e0c4f31145ee566f31c7259193faaa0b6f3352919.patch",
+        "sha256": "45300148900c5b448f5a019e0c4f31145ee566f31c7259193faaa0b6f3352919"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0006-t8103-early-diagnostics.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/t8103-timer-discovery/inputs/06-f49d0c2456d54222d1c149cf84750204ae4281199d8156fa9b0748d09ae9894e.patch",
+        "sha256": "f49d0c2456d54222d1c149cf84750204ae4281199d8156fa9b0748d09ae9894e"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0007-t8103-aic-rearm-and-driver-abi.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/t8103-timer-discovery/inputs/07-ec38272928a3bcf0d41e977dab316a02d255e15db483b64d82e0535a5bdbffca.patch",
+        "sha256": "ec38272928a3bcf0d41e977dab316a02d255e15db483b64d82e0535a5bdbffca"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0008-t8103-public-ppl-port.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/t8103-timer-discovery/inputs/08-f718eae67d8b703dff21d63ac54da1a29d29fa35b900d7f25a69460e3766183f.patch",
+        "sha256": "f718eae67d8b703dff21d63ac54da1a29d29fa35b900d7f25a69460e3766183f"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0009-t8103-pac-atomic-storage.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/t8103-timer-discovery/inputs/09-74b9880d6e9bd42285aec5d951efb24d78c0f036cfb7e71dfb63c570a58adf3e.patch",
+        "sha256": "74b9880d6e9bd42285aec5d951efb24d78c0f036cfb7e71dfb63c570a58adf3e"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0010-t8103-machine-register-encodings.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/t8103-timer-discovery/inputs/10-c2b10d8513de1abdd8b2c06228b26e23f583a3410959cd0a6fd743be7b9565e3.patch",
+        "sha256": "c2b10d8513de1abdd8b2c06228b26e23f583a3410959cd0a6fd743be7b9565e3"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0011-t8103-public-native-pac.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/t8103-timer-discovery/inputs/11-b241ac693020cfeb0c614938f1d43789682bab65f17d6c5530614b9bae194dd4.patch",
+        "sha256": "b241ac693020cfeb0c614938f1d43789682bab65f17d6c5530614b9bae194dd4"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0014-t8103-timer-discovery.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/t8103-timer-discovery/inputs/12-9097aaa49804e8db932e376a28cde60ba4ca11e50de9afaf2bc0a9b29692492f.patch",
+        "sha256": "9097aaa49804e8db932e376a28cde60ba4ca11e50de9afaf2bc0a9b29692492f"
+      }
+    ],
+    "commands": [
+      {
+        "argv": [
+          "cmake",
+          "-S",
+          "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/t8103-timer-discovery/source-overlay",
+          "-B",
+          "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/t8103-timer-discovery",
+          "-G",
+          "Unix Makefiles",
+          "-DCMAKE_POLICY_VERSION_MINIMUM=3.5",
+          "-DPUREDARWIN_ARCH=arm64",
+          "-DCMAKE_OSX_ARCHITECTURES=arm64",
+          "-DCMAKE_OSX_SYSROOT=/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+          "-DCMAKE_C_COMPILER=/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+          "-DCMAKE_CXX_COMPILER=/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++",
+          "-DPUREDARWIN_ARM64_MACHINE_CONFIG=T8103",
+          "-DPUREDARWIN_XNU_KERNEL_CONFIG=DEVELOPMENT",
+          "-DPUREDARWIN_ENABLE_KERNEL=ON",
+          "-DPUREDARWIN_ENABLE_LIBRARIES=ON",
+          "-DPUREDARWIN_ENABLE_TOOLS=ON",
+          "-DPUREDARWIN_ENABLE_USERSPACE=OFF",
+          "-DPUREDARWIN_ENABLE_PROJECTS=OFF"
+        ],
+        "cwd": "/Users/joeblau/Developer/joeblau/src/blauos",
+        "exit_code": 0,
+        "raw_log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/t8103-timer-discovery/logs/configure.log",
+        "raw_log_bytes": 2156,
+        "raw_log_sha256": "096171d457d214f8a55a0b4b4a621032106a07c7c0b0abaa3be4f9edda41f1c6",
+        "errors": []
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/t8103-timer-discovery",
+          "--target",
+          "xnu",
+          "--parallel",
+          "3"
+        ],
+        "cwd": "/Users/joeblau/Developer/joeblau/src/blauos",
+        "exit_code": 0,
+        "raw_log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/t8103-timer-discovery/logs/build.log",
+        "raw_log_bytes": 3391642,
+        "raw_log_sha256": "b24e6de83a249e97bd07dd75e5866ae28dab1b244e4e534493b5987e70ec163f",
+        "errors": []
+      }
+    ],
+    "tool_environment": {
+      "CC": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+      "CXX": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++",
+      "DEVELOPER_DIR": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer",
+      "HOME": "/Users/joeblau",
+      "LANG": "en_US.UTF-8",
+      "LC_ALL": "en_US.UTF-8",
+      "LOGNAME": "joeblau",
+      "PATH": "/Users/joeblau/.kimi-code/bin:/Users/joeblau/.cargo/bin:/Users/joeblau/.grok/bin:/opt/homebrew/opt/openjdk/bin:/Users/joeblau/.local/share/solana/install/active_release/bin:/Users/joeblau/.local/share/solana/install/active_release/bin:/Users/joeblau/.antigravity/antigravity/bin:/Users/joeblau/.local/bin:/Users/joeblau/.local/share/solana/install/active_release/bin:/Users/joeblau/.bun/bin:/Users/joeblau/.codeium/windsurf/bin:/Users/joeblau/Library/pnpm:/Users/joeblau/.nvm/versions/node/v24.10.0/bin:/Users/joeblau/.local/share/solana/install/active_release/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/Users/joeblau/.cargo/bin:/Users/joeblau/.foundry/bin",
+      "SDKROOT": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+      "SHELL": "/bin/bash",
+      "TMPDIR": "/var/folders/_k/883vgjk55hg79qfxf60d9lzh0000gn/T/",
+      "USER": "joeblau"
+    }
+  },
+  "recipe_sha256": "21338dfb3031f72156eadf88d6c6b72e3e1164b7b8595084da22bb176f806181",
+  "build_wrapper_sha256": "103535c95df62690c77778ce4d6cbfb813458931cbb3859b6c607c9e166f6dda",
+  "boot_validated": false
+}

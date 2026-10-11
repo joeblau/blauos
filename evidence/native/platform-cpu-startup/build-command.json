@@ -1,0 +1,12 @@
+{
+  "argv": [
+    "cmake",
+    "--build",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/platform-cpu-startup",
+    "--target",
+    "PDArmPlatformExpert",
+    "--parallel",
+    "3"
+  ],
+  "cwd": "/Users/joeblau/Developer/joeblau/src/blauos"
+}

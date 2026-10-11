@@ -1,0 +1,23 @@
+diff --git a/src/Kernel/xnu/osfmk/arm/pmap.c b/src/Kernel/xnu/osfmk/arm/pmap.c
+index b04cde6..7b55d61 100644
+--- a/src/Kernel/xnu/osfmk/arm/pmap.c
++++ b/src/Kernel/xnu/osfmk/arm/pmap.c
+@@ -12323,7 +12323,18 @@ pmap_nest_internal(
+ 	subord_addr = subord;
+ #endif // __has_feature(ptrauth_calls)
+ 
++#if defined(ARM64_BOARD_CONFIG_T8103) && __has_feature(ptrauth_calls)
++	/*
++	 * Current Clang rejects C11 atomics on address-discriminated pointer
++	 * lvalues. Compare/store the already signed pointer bits atomically;
++	 * preserve the field's address-discriminated PAC qualifier for reads.
++	 * Signing above still uses this exact field address and discriminator.
++	 */
++	if (os_atomic_cmpxchg((uintptr_t *)&grand->nested_pmap,
++	    (uintptr_t)PMAP_NULL, (uintptr_t)subord_addr, relaxed)) {
++#else
+ 	if (os_atomic_cmpxchg(&grand->nested_pmap, PMAP_NULL, subord_addr, relaxed)) {
++#endif
+ 		/*
+ 		 * If this is grand's first nesting operation, keep the reference on subord.
+ 		 * It will be released by pmap_destroy_internal() when grand is destroyed.

@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "cmake",
+    "--build",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/t8103-cpu-registration",
+    "--target",
+    "xnu",
+    "--parallel",
+    "3"
+  ],
+  "cwd": "/Users/joeblau/Developer/joeblau/src/blauos",
+  "exit_code": 0,
+  "raw_log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/t8103-cpu-registration/logs/build.log",
+  "raw_log_bytes": 3399969,
+  "raw_log_sha256": "c526687c4bd8dc6b4d49107ea78a60736e8168b0093797821f628d9118cb34e9",
+  "errors": []
+}

@@ -1,0 +1,19 @@
+diff --git a/src/Kernel/xnu/osfmk/arm64/native_apple_sysregs.h b/src/Kernel/xnu/osfmk/arm64/native_apple_sysregs.h
+index bcf9bb5..2e8ddb5 100644
+--- a/src/Kernel/xnu/osfmk/arm64/native_apple_sysregs.h
++++ b/src/Kernel/xnu/osfmk/arm64/native_apple_sysregs.h
+@@ -9,6 +9,14 @@
+ #define BLAUOS_SYSREG_STR_(reg) #reg
+ #define BLAUOS_SYSREG_STR(reg) BLAUOS_SYSREG_STR_(reg)
+ #if defined(ARM64_BOARD_CONFIG_T8103)
++/* Native machine_routines_asm: published M1 CPU/HID/VMSA encodings.
++ * CPU_CFG (m1n1 ACC_CFG) and VMSA_LOCK: Asahi register documentation;
++ * HID13/HID14: the same pinned m1n1 cpu_regs.h register map.
++ */
++#define CPU_CFG S3_5_C15_C4_0
++#define HID13 S3_0_C15_C14_0
++#define HID14 S3_0_C15_C15_0
++#define VMSA_LOCK_EL1 S3_4_C15_C1_2
+ #define HID8 S3_0_C15_C8_0
+ #define IPICR_EL1 S3_5_C15_C3_1
+ #define IPIRR_GLOBAL_EL1 S3_5_C15_C0_1

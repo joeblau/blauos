@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "kernel-collection-tools",
+  "summary": "PureDarwin kernel collection and interface generation tooling (iig-tools, kc-tools, xnu-loader) pinned jointly by sources.lock.json and the PureDarwin flake lock.",
+  "license": {
+    "spdx": "BSD-3-Clause",
+    "notes": "sources.lock.json records BSD-3-Clause for iig-tools, kc-tools, and xnu-loader.",
+    "determined_from": "sources.lock.json#sources[name=iig-tools,kc-tools,xnu-loader].license"
+  },
+  "sources": [
+    {
+      "kind": "git",
+      "lock_name": "iig-tools",
+      "url": "https://github.com/PureDarwin/iig-tools.git",
+      "revision": "8d6651f5f1417820783e3b3eb38df8e481d0a2fb",
+      "tree": "f9d1f5e4dcb97d135cfa93cd499c2f60f242e0fe",
+      "tag": "PureDarwin flake input"
+    },
+    {
+      "kind": "git",
+      "lock_name": "kc-tools",
+      "url": "https://github.com/PureDarwin/kc-tools.git",
+      "revision": "802fbc70ef5431950f24e79b02f2d938385d91bd",
+      "tree": "de86d03cb7d8d19d00ceb8fc1782b936f1406f05",
+      "tag": "PureDarwin flake input"
+    },
+    {
+      "kind": "git",
+      "lock_name": "xnu-loader",
+      "url": "https://github.com/PureDarwin/xnu-loader.git",
+      "revision": "8295cd89c184785896d007d0554b398d22d8e32f",
+      "tree": "cd88bd37dace9ffabaca34d4a04e6870d341f6ac",
+      "tag": "PureDarwin flake input"
+    }
+  ],
+  "depends": [],
+  "builder": {
+    "script": "scripts/build/xnu.py",
+    "command": [
+      "python3", "scripts/build/xnu.py",
+      "--puredarwin", "--machine", "VIRT",
+      "--source-name", "puredarwin-vm-next"
+    ],
+    "patches": []
+  },
+  "outputs": ["kc.tools", "iig", "xnu-loader"],
+  "isolation": "Build-time tools supplied by the pinned PureDarwin flake; revisions must agree between sources.lock.json and manifests/puredarwin-flake.lock. Nixpkgs/compiler transitive inputs follow the flake lock recorded under transitive_locks.",
+  "rebuild": {
+    "clean_rebuild_verified": false,
+    "note": "Pins are cross-validated against both lock files by scripts/build/packages.py; a clean Nix rebuild is remaining work and requires the operator-supplied macOS11.3 SDK recorded in toolchain.lock.json."
+  }
+}

@@ -1,0 +1,45 @@
+diff --git a/src/Kernel/xnu/osfmk/arm64/amcc_rorgn.c b/src/Kernel/xnu/osfmk/arm64/amcc_rorgn.c
+index 35128d5..6d24068 100644
+--- a/src/Kernel/xnu/osfmk/arm64/amcc_rorgn.c
++++ b/src/Kernel/xnu/osfmk/arm64/amcc_rorgn.c
+@@ -42,7 +42,13 @@
+ #include <arm/pmap.h>
+ #include <arm64/tlb.h>
+ #include <arm64/amcc_rorgn.h>
++/* T8103 CTRR definitions are derived from the pinned public Asahi register map.
++ * Keep the original platform header dependency for every other board. */
++#if defined(ARM64_BOARD_CONFIG_T8103)
++#include <pexpert/arm64/apple_arm64_regs.h>
++#else
+ #include <memmap_types.h>
++#endif
+ 
+ #if HIBERNATION
+ #include <arm64/pal_hibernate.h>
+diff --git a/src/Kernel/xnu/pexpert/pexpert/arm64/apple_arm64_regs.h b/src/Kernel/xnu/pexpert/pexpert/arm64/apple_arm64_regs.h
+index c4976d8..de24d34 100644
+--- a/src/Kernel/xnu/pexpert/pexpert/arm64/apple_arm64_regs.h
++++ b/src/Kernel/xnu/pexpert/pexpert/arm64/apple_arm64_regs.h
+@@ -14,6 +14,22 @@
+ 
+ #ifdef APPLE_ARM64_ARCH_FAMILY
+ 
++#if defined(ARM64_BOARD_CONFIG_T8103)
++/* M1 CTRR: AsahiLinux/docs 0d1f8917fa88745d62a4c05d802c4a7298c8616b,
++ * docs/hw/cpu/system-registers.md register map and CTRR control bits.
++ * Preserve the source's EL1/EL2 writes, lock sequence and protection mask. */
++#define ARM64_REG_CTRR_LOCK_EL1  __MSR_STR(S3_4_C15_C2_2)
++#define ARM64_REG_CTRR_A_LWR_EL1 __MSR_STR(S3_4_C15_C2_3)
++#define ARM64_REG_CTRR_A_UPR_EL1 __MSR_STR(S3_4_C15_C2_4)
++#define ARM64_REG_CTRR_CTL_EL1   __MSR_STR(S3_4_C15_C2_5)
++#define ACC_CTRR_LOCK_EL2        __MSR_STR(S3_4_C15_C11_5)
++#define ACC_CTRR_A_LWR_EL2       __MSR_STR(S3_4_C15_C11_0)
++#define ACC_CTRR_A_UPR_EL2       __MSR_STR(S3_4_C15_C11_1)
++#define ACC_CTRR_CTL_EL2         __MSR_STR(S3_4_C15_C11_4)
++#define CTRR_CTL_EL1_A_MMUON_WRPROTECT (1ULL << 1)
++#define CTRR_CTL_EL1_A_PXN             (1ULL << 4)
++#endif
++
+ #define ARM64_REG_HID0_LoopBuffDisb       (1<<20)
+ #define ARM64_REG_HID0_AMXCacheFusionDisb (1ULL<<21)
+ #define ARM64_REG_HID0_ICPrefLimitOneBrn  (1<<25)

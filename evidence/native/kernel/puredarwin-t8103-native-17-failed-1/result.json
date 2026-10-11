@@ -1,0 +1,332 @@
+{
+  "status": "blocked",
+  "exit_code": 2,
+  "source": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-17/source-overlay",
+  "configuration": "DEVELOPMENT ARM64",
+  "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+  "source_amendments": [
+    {
+      "source_archive_sha256": "1c955560333a1e47a38f2018ead9fd90580eb4b9520f44435ebfa03afcd3c1f6",
+      "excluded_absolute_symlinks": [
+        "src/Libraries/libSystem/libc/gen/FreeBSD/result"
+      ]
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0001-puredarwin-t8103-build-profile.patch",
+      "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/puredarwin-t8103-native-17/inputs/01-76e05e5e7de0f9b5cdac6347e771007067bb19fdb34f4897c70628c72dbc4d65.patch",
+      "sha256": "76e05e5e7de0f9b5cdac6347e771007067bb19fdb34f4897c70628c72dbc4d65"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0002-t8103-public-register-encodings.patch",
+      "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/puredarwin-t8103-native-17/inputs/02-0480c7f6299844af5c6cdd6eb7fb23b76c0f32025cc0a2cf07f429f9bf9a685b.patch",
+      "sha256": "0480c7f6299844af5c6cdd6eb7fb23b76c0f32025cc0a2cf07f429f9bf9a685b"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0003-t8103-current-clang-diagnostics.patch",
+      "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/puredarwin-t8103-native-17/inputs/03-3e0f1aac169bf648054be8d20c0f0101404f0e4b6de54758ba3409688ce96f99.patch",
+      "sha256": "3e0f1aac169bf648054be8d20c0f0101404f0e4b6de54758ba3409688ce96f99"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0004-t8103-public-platform-sources.patch",
+      "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/puredarwin-t8103-native-17/inputs/04-cd1a6e6281fdda5775f1002d1a26433eb5f3e05d822e1cee0d2b23cb6915a04e.patch",
+      "sha256": "cd1a6e6281fdda5775f1002d1a26433eb5f3e05d822e1cee0d2b23cb6915a04e"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0005-t8103-public-ctrr-interface.patch",
+      "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/puredarwin-t8103-native-17/inputs/05-45300148900c5b448f5a019e0c4f31145ee566f31c7259193faaa0b6f3352919.patch",
+      "sha256": "45300148900c5b448f5a019e0c4f31145ee566f31c7259193faaa0b6f3352919"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0006-t8103-early-diagnostics.patch",
+      "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/puredarwin-t8103-native-17/inputs/06-f49d0c2456d54222d1c149cf84750204ae4281199d8156fa9b0748d09ae9894e.patch",
+      "sha256": "f49d0c2456d54222d1c149cf84750204ae4281199d8156fa9b0748d09ae9894e"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0007-t8103-aic-rearm-and-driver-abi.patch",
+      "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/puredarwin-t8103-native-17/inputs/07-ec38272928a3bcf0d41e977dab316a02d255e15db483b64d82e0535a5bdbffca.patch",
+      "sha256": "ec38272928a3bcf0d41e977dab316a02d255e15db483b64d82e0535a5bdbffca"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0008-t8103-public-ppl-port.patch",
+      "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/puredarwin-t8103-native-17/inputs/08-f718eae67d8b703dff21d63ac54da1a29d29fa35b900d7f25a69460e3766183f.patch",
+      "sha256": "f718eae67d8b703dff21d63ac54da1a29d29fa35b900d7f25a69460e3766183f"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0009-t8103-pac-atomic-storage.patch",
+      "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/puredarwin-t8103-native-17/inputs/09-74b9880d6e9bd42285aec5d951efb24d78c0f036cfb7e71dfb63c570a58adf3e.patch",
+      "sha256": "74b9880d6e9bd42285aec5d951efb24d78c0f036cfb7e71dfb63c570a58adf3e"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0010-t8103-machine-register-encodings.patch",
+      "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/puredarwin-t8103-native-17/inputs/10-c2b10d8513de1abdd8b2c06228b26e23f583a3410959cd0a6fd743be7b9565e3.patch",
+      "sha256": "c2b10d8513de1abdd8b2c06228b26e23f583a3410959cd0a6fd743be7b9565e3"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0011-t8103-public-native-pac.patch",
+      "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/puredarwin-t8103-native-17/inputs/11-b241ac693020cfeb0c614938f1d43789682bab65f17d6c5530614b9bae194dd4.patch",
+      "sha256": "b241ac693020cfeb0c614938f1d43789682bab65f17d6c5530614b9bae194dd4"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0012-t8103-cpu-registration.patch",
+      "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/puredarwin-t8103-native-17/inputs/12-a691ac6fbbf04cca9407832ecc5fc7a1e591796ecb415c1ddb17ccfcb23d3a01.patch",
+      "sha256": "a691ac6fbbf04cca9407832ecc5fc7a1e591796ecb415c1ddb17ccfcb23d3a01"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0013-t8103-handoff-validation.patch",
+      "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/puredarwin-t8103-native-17/inputs/13-73966f11254dc6ff9a0209821193f320724ef82652e3f060a4eb5dcea22d312b.patch",
+      "sha256": "73966f11254dc6ff9a0209821193f320724ef82652e3f060a4eb5dcea22d312b"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0014-t8103-timer-discovery.patch",
+      "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/puredarwin-t8103-native-17/inputs/14-d5fe023c46354d808692c178c70483bc484372ce4fb4eb327f435a2de73e248e.patch",
+      "sha256": "d5fe023c46354d808692c178c70483bc484372ce4fb4eb327f435a2de73e248e"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0015-t8103-platform-cpu-startup.patch",
+      "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/puredarwin-t8103-native-17/inputs/15-b150edaa11b1e61b90dda080a663436a333aeace0aa93be20167f718433151ca.patch",
+      "sha256": "b150edaa11b1e61b90dda080a663436a333aeace0aa93be20167f718433151ca"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0016-t8103-aic-hardening.patch",
+      "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/puredarwin-t8103-native-17/inputs/16-cafdcedad82c691ed3207be1e79cc793ceda75479c6e68694819f19df35b30ee.patch",
+      "sha256": "cafdcedad82c691ed3207be1e79cc793ceda75479c6e68694819f19df35b30ee"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0017-t8103-physical-checkpoint-protocol.patch",
+      "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/puredarwin-t8103-native-17/inputs/17-9f3a2a9bbda25008277a4f9283e4dc7f11b1bc2a08fa8ba1631b8f3b50278867.patch",
+      "sha256": "9f3a2a9bbda25008277a4f9283e4dc7f11b1bc2a08fa8ba1631b8f3b50278867"
+    }
+  ],
+  "manifest_sha256": "de98f7289628e8ea53089b8945798afa01c2dd1afb1328b82e6a9a2321537cee",
+  "machine": "T8103",
+  "sdk": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+  "artifacts": [],
+  "qemu_psci_hvc_profile": false,
+  "blauos_physical_build_id": "8fef3c669124d5870e9ca751876b1cc1f06341c809584e4cf7ae47238811e65a",
+  "recipe": {
+    "schema_version": 1,
+    "build_system": "puredarwin_cmake",
+    "manifest_sha256": "de98f7289628e8ea53089b8945798afa01c2dd1afb1328b82e6a9a2321537cee",
+    "source_name": "puredarwin-vm-next",
+    "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+    "source_tree": "ed2345d7f3c11dad2e7f6ffeeb377adc789b12b8",
+    "machine": "T8103",
+    "architecture_config": "ARM64",
+    "kernel_config": "DEVELOPMENT",
+    "original_source": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next",
+    "effective_source": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-17/source-overlay",
+    "sdk": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+    "kdk": null,
+    "darwin_version": "20.5.0",
+    "requested_apple_darwin_version": null,
+    "applied_apple_darwin_version": null,
+    "source_master_version": {
+      "path": "src/Kernel/xnu/config/MasterVersion",
+      "sha256": "31671a8f8bad9cc7ec6a5e21fc4c91b9cdec81de93dbbc7426c5dbe3e3455653",
+      "version": "20.5.0"
+    },
+    "make_settings": {},
+    "build_wrapper_inputs": [
+      {
+        "path": "scripts/build/xnu.py",
+        "sha256": "b07100a878c8b7c0afa09392c9fc45c71090ec74e60ba9e1b984ba2674d19568"
+      },
+      {
+        "path": "scripts/build/headers.py",
+        "sha256": "08427445722bdfb487c6aba4c78e6ce91a9bc76dd6d4e1a005bdd63e7a48d502"
+      },
+      {
+        "path": "scripts/blauos.py",
+        "sha256": "fc159232fb6b6fed403680b9e8764cac1704f60bc47a90a798e9a0639476cdff"
+      }
+    ],
+    "source_amendments": [
+      {
+        "source_archive_sha256": "1c955560333a1e47a38f2018ead9fd90580eb4b9520f44435ebfa03afcd3c1f6",
+        "excluded_absolute_symlinks": [
+          "src/Libraries/libSystem/libc/gen/FreeBSD/result"
+        ]
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0001-puredarwin-t8103-build-profile.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/puredarwin-t8103-native-17/inputs/01-76e05e5e7de0f9b5cdac6347e771007067bb19fdb34f4897c70628c72dbc4d65.patch",
+        "sha256": "76e05e5e7de0f9b5cdac6347e771007067bb19fdb34f4897c70628c72dbc4d65"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0002-t8103-public-register-encodings.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/puredarwin-t8103-native-17/inputs/02-0480c7f6299844af5c6cdd6eb7fb23b76c0f32025cc0a2cf07f429f9bf9a685b.patch",
+        "sha256": "0480c7f6299844af5c6cdd6eb7fb23b76c0f32025cc0a2cf07f429f9bf9a685b"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0003-t8103-current-clang-diagnostics.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/puredarwin-t8103-native-17/inputs/03-3e0f1aac169bf648054be8d20c0f0101404f0e4b6de54758ba3409688ce96f99.patch",
+        "sha256": "3e0f1aac169bf648054be8d20c0f0101404f0e4b6de54758ba3409688ce96f99"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0004-t8103-public-platform-sources.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/puredarwin-t8103-native-17/inputs/04-cd1a6e6281fdda5775f1002d1a26433eb5f3e05d822e1cee0d2b23cb6915a04e.patch",
+        "sha256": "cd1a6e6281fdda5775f1002d1a26433eb5f3e05d822e1cee0d2b23cb6915a04e"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0005-t8103-public-ctrr-interface.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/puredarwin-t8103-native-17/inputs/05-45300148900c5b448f5a019e0c4f31145ee566f31c7259193faaa0b6f3352919.patch",
+        "sha256": "45300148900c5b448f5a019e0c4f31145ee566f31c7259193faaa0b6f3352919"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0006-t8103-early-diagnostics.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/puredarwin-t8103-native-17/inputs/06-f49d0c2456d54222d1c149cf84750204ae4281199d8156fa9b0748d09ae9894e.patch",
+        "sha256": "f49d0c2456d54222d1c149cf84750204ae4281199d8156fa9b0748d09ae9894e"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0007-t8103-aic-rearm-and-driver-abi.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/puredarwin-t8103-native-17/inputs/07-ec38272928a3bcf0d41e977dab316a02d255e15db483b64d82e0535a5bdbffca.patch",
+        "sha256": "ec38272928a3bcf0d41e977dab316a02d255e15db483b64d82e0535a5bdbffca"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0008-t8103-public-ppl-port.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/puredarwin-t8103-native-17/inputs/08-f718eae67d8b703dff21d63ac54da1a29d29fa35b900d7f25a69460e3766183f.patch",
+        "sha256": "f718eae67d8b703dff21d63ac54da1a29d29fa35b900d7f25a69460e3766183f"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0009-t8103-pac-atomic-storage.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/puredarwin-t8103-native-17/inputs/09-74b9880d6e9bd42285aec5d951efb24d78c0f036cfb7e71dfb63c570a58adf3e.patch",
+        "sha256": "74b9880d6e9bd42285aec5d951efb24d78c0f036cfb7e71dfb63c570a58adf3e"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0010-t8103-machine-register-encodings.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/puredarwin-t8103-native-17/inputs/10-c2b10d8513de1abdd8b2c06228b26e23f583a3410959cd0a6fd743be7b9565e3.patch",
+        "sha256": "c2b10d8513de1abdd8b2c06228b26e23f583a3410959cd0a6fd743be7b9565e3"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0011-t8103-public-native-pac.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/puredarwin-t8103-native-17/inputs/11-b241ac693020cfeb0c614938f1d43789682bab65f17d6c5530614b9bae194dd4.patch",
+        "sha256": "b241ac693020cfeb0c614938f1d43789682bab65f17d6c5530614b9bae194dd4"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0012-t8103-cpu-registration.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/puredarwin-t8103-native-17/inputs/12-a691ac6fbbf04cca9407832ecc5fc7a1e591796ecb415c1ddb17ccfcb23d3a01.patch",
+        "sha256": "a691ac6fbbf04cca9407832ecc5fc7a1e591796ecb415c1ddb17ccfcb23d3a01"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0013-t8103-handoff-validation.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/puredarwin-t8103-native-17/inputs/13-73966f11254dc6ff9a0209821193f320724ef82652e3f060a4eb5dcea22d312b.patch",
+        "sha256": "73966f11254dc6ff9a0209821193f320724ef82652e3f060a4eb5dcea22d312b"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0014-t8103-timer-discovery.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/puredarwin-t8103-native-17/inputs/14-d5fe023c46354d808692c178c70483bc484372ce4fb4eb327f435a2de73e248e.patch",
+        "sha256": "d5fe023c46354d808692c178c70483bc484372ce4fb4eb327f435a2de73e248e"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0015-t8103-platform-cpu-startup.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/puredarwin-t8103-native-17/inputs/15-b150edaa11b1e61b90dda080a663436a333aeace0aa93be20167f718433151ca.patch",
+        "sha256": "b150edaa11b1e61b90dda080a663436a333aeace0aa93be20167f718433151ca"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0016-t8103-aic-hardening.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/puredarwin-t8103-native-17/inputs/16-cafdcedad82c691ed3207be1e79cc793ceda75479c6e68694819f19df35b30ee.patch",
+        "sha256": "cafdcedad82c691ed3207be1e79cc793ceda75479c6e68694819f19df35b30ee"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/patches/native/0017-t8103-physical-checkpoint-protocol.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/native/kernel/puredarwin-t8103-native-17/inputs/17-9f3a2a9bbda25008277a4f9283e4dc7f11b1bc2a08fa8ba1631b8f3b50278867.patch",
+        "sha256": "9f3a2a9bbda25008277a4f9283e4dc7f11b1bc2a08fa8ba1631b8f3b50278867"
+      }
+    ],
+    "commands": [
+      {
+        "argv": [
+          "cmake",
+          "-S",
+          "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-17/source-overlay",
+          "-B",
+          "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-17",
+          "-G",
+          "Unix Makefiles",
+          "-DCMAKE_POLICY_VERSION_MINIMUM=3.5",
+          "-DPUREDARWIN_ARCH=arm64",
+          "-DCMAKE_OSX_ARCHITECTURES=arm64",
+          "-DCMAKE_OSX_SYSROOT=/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+          "-DCMAKE_C_COMPILER=/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+          "-DCMAKE_CXX_COMPILER=/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++",
+          "-DPUREDARWIN_ARM64_MACHINE_CONFIG=T8103",
+          "-DPUREDARWIN_XNU_KERNEL_CONFIG=DEVELOPMENT",
+          "-DPUREDARWIN_ENABLE_KERNEL=ON",
+          "-DPUREDARWIN_ENABLE_LIBRARIES=ON",
+          "-DPUREDARWIN_ENABLE_TOOLS=ON",
+          "-DPUREDARWIN_ENABLE_USERSPACE=OFF",
+          "-DPUREDARWIN_ENABLE_PROJECTS=OFF",
+          "-DPUREDARWIN_BLAUOS_BUILD_ID=8fef3c669124d5870e9ca751876b1cc1f06341c809584e4cf7ae47238811e65a"
+        ],
+        "cwd": "/Users/joeblau/Developer/joeblau/src/blauos",
+        "exit_code": 0,
+        "raw_log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-17/logs/configure.log",
+        "raw_log_bytes": 2161,
+        "raw_log_sha256": "ce5274ce8d13b16f4aa8be97cc76acfb837a3e9e9609338ac79b3b353811c032",
+        "errors": []
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-17",
+          "--target",
+          "xnu",
+          "--parallel",
+          "6"
+        ],
+        "cwd": "/Users/joeblau/Developer/joeblau/src/blauos",
+        "exit_code": 2,
+        "raw_log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-17/logs/build.log",
+        "raw_log_bytes": 3073670,
+        "raw_log_sha256": "3a0297922a679d57061101a20ec0251feb196c770f9ea76245bde9cb12562387",
+        "errors": [
+          "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-17/source-overlay/src/Kernel/xnu/pexpert/arm/pe_init.c:472:3: error: call to undeclared function 'blauos_checkpoint_measure_handoff'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]",
+          "make[11]: *** [pe_init.o] Error 1",
+          "make[10]: *** [build_all] Error 2",
+          "make[9]: *** [do_all] Error 2",
+          "make[8]: *** [build_all] Error 2",
+          "make[7]: *** [build_all_recurse_into_conf] Error 2",
+          "make[6]: *** [build_all_recurse_into_pexpert] Error 2",
+          "make[6]: *** Waiting for unfinished jobs....",
+          "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-17/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/bsd/sys/types.h:101:33: error: typedef redefinition with different types ('int32_t' (aka 'int') vs 'unsigned int')",
+          "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-17/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/bsd/sys/_types/_dev_t.h:31:31: error: typedef redefinition with different types ('__darwin_dev_t' (aka 'int') vs 'long')",
+          "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-17/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/bsd/libkern/libkern.h:202:9: error: conflicting types for 'copyinstr'",
+          "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-17/source-overlay/src/Kernel/xnu/osfmk/kern/kern_types.h:209:42: error: typedef redefinition with different types ('struct clock *' vs '__darwin_clock_t' (aka 'unsigned long'))",
+          "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-17/source-overlay/src/Kernel/xnu/osfmk/arm/blauos_checkpoint.c:392:26: error: use of undeclared identifier 'kernel_pmap'; did you mean 'kernel_map'?",
+          "make[11]: *** [blauos_checkpoint.o] Error 1",
+          "make[11]: *** Waiting for unfinished jobs....",
+          "  558 |         (void)ifnet_stat_increment_out(ifp, 1make[10]: *** [build_all] Error 2",
+          ", m->m_pkthmake[9]: *** [do_all] Error 2",
+          "make[8]: *** [build_all] Error 2",
+          "make[7]: *** [build_all_recurse_into_conf] Error 2",
+          "make[6]: *** [build_all_recurse_into_osfmk] Error 2",
+          "make[5]: *** [build_all_bootstrap_DEVELOPMENT^ARM64^T8103] Error 2",
+          "make[4]: *** [install] Error 2",
+          "make[3]: *** [src/Kernel/xnu/xnu_build/src/xnu-stamp/xnu-build] Error 2",
+          "make[2]: *** [src/Kernel/xnu/CMakeFiles/xnu.dir/all] Error 2",
+          "make[1]: *** [src/Kernel/xnu/CMakeFiles/xnu.dir/rule] Error 2",
+          "make: *** [xnu] Error 2"
+        ]
+      }
+    ],
+    "blauos_physical_build_id": "8fef3c669124d5870e9ca751876b1cc1f06341c809584e4cf7ae47238811e65a",
+    "tool_environment": {
+      "CC": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+      "CXX": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++",
+      "DEVELOPER_DIR": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer",
+      "HOME": "/Users/joeblau",
+      "LANG": "en_US.UTF-8",
+      "LC_ALL": "en_US.UTF-8",
+      "LOGNAME": "joeblau",
+      "PATH": "/Users/joeblau/.kimi-code/bin:/Users/joeblau/.cargo/bin:/Users/joeblau/.grok/bin:/opt/homebrew/opt/openjdk/bin:/Users/joeblau/.local/share/solana/install/active_release/bin:/Users/joeblau/.local/share/solana/install/active_release/bin:/Users/joeblau/.antigravity/antigravity/bin:/Users/joeblau/.local/bin:/Users/joeblau/.local/share/solana/install/active_release/bin:/Users/joeblau/.bun/bin:/Users/joeblau/.codeium/windsurf/bin:/Users/joeblau/Library/pnpm:/Users/joeblau/.nvm/versions/node/v24.10.0/bin:/Users/joeblau/.local/share/solana/install/active_release/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/Users/joeblau/.cargo/bin:/Users/joeblau/.foundry/bin",
+      "SDKROOT": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+      "SHELL": "/bin/bash",
+      "TMPDIR": "/var/folders/_k/883vgjk55hg79qfxf60d9lzh0000gn/T/",
+      "USER": "joeblau"
+    }
+  },
+  "recipe_sha256": "3695152fbc9e055d2949350f9ae6434b5e138fb4564066a35d1942cde28677c9",
+  "build_wrapper_sha256": "b07100a878c8b7c0afa09392c9fc45c71090ec74e60ba9e1b984ba2674d19568",
+  "boot_validated": false
+}

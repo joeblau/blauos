@@ -1,0 +1,33 @@
+1: -- The C compiler identification is AppleClang 21.0.0.21000334
+2: -- The CXX compiler identification is AppleClang 21.0.0.21000334
+3: -- Detecting C compiler ABI info
+4: -- Detecting C compiler ABI info - done
+5: -- Check for working C compiler: /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang - skipped
+6: -- Detecting C compile features
+7: -- Detecting C compile features - done
+8: -- Detecting CXX compiler ABI info
+9: -- Detecting CXX compiler ABI info - done
+10: -- Check for working CXX compiler: /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ - skipped
+11: -- Detecting CXX compile features
+12: -- Detecting CXX compile features - done
+13: -- The OBJC compiler identification is AppleClang 21.0.0.21000334
+14: -- Detecting OBJC compiler ABI info
+15: -- Detecting OBJC compiler ABI info - done
+16: -- Check for working OBJC compiler: /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang - skipped
+17: -- PureDarwin target architecture: arm64
+18: -- The ASM compiler identification is AppleClang
+19: -- Found assembler: /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang
+20: CMake Warning at cmake/iig.cmake:10 (message):
+21:   iig not found on PATH, run `nix profile install` in the iig-tools repo
+22:   (https://github.com/PureDarwin/iig-tools, or your local checkout) before
+23:   building any target that calls iig()
+24: Call Stack (most recent call first):
+25:   CMakeLists.txt:139 (include)
+26: 
+27: 
+28: -- Found OpenSSL: /opt/homebrew/Cellar/openssl@3/3.6.5/lib/libcrypto.dylib (found version "3.6.5")
+29: -- Found ZLIB: /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/libz.tbd (found version "1.2.12")
+30: -- Found LibXml2: /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/libxml2.tbd (found version "2.9.13")
+31: -- Configuring done (1.3s)
+32: -- Generating done (0.8s)
+33: -- Build files have been written to: /Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/puredarwin-t8103-native-17

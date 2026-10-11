@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "cmake",
+    "--build",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/platform-17",
+    "--target",
+    "PDArmPlatformExpert",
+    "--parallel",
+    "6"
+  ],
+  "cwd": "/Users/joeblau/Developer/joeblau/src/blauos",
+  "exit_code": 0,
+  "raw_log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/platform-17/logs/build.log",
+  "raw_log_bytes": 122186,
+  "raw_log_sha256": "7a4b3ac3e697e90483b58e6fc5c85078f85d79d9be758fc11540d9ed1d7b1f22",
+  "errors": []
+}
