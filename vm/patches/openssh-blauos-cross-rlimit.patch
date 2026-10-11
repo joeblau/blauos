@@ -1,0 +1,32 @@
+diff --git a/configure b/configure
+index b70c886..80cd1de 100755
+--- a/configure
++++ b/configure
+@@ -20969,9 +20969,9 @@ if test "x$sandbox_arg" != "xno"; then
+ printf %s "checking if select and/or poll works with descriptor rlimit... " >&6; }
+     if test "$cross_compiling" = yes
+ then :
+-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: cross compiling: assuming no" >&5
+-printf "%s\n" "$as_me: WARNING: cross compiling: assuming no" >&2;}
+-	 select_works_with_rlimit=no
++  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: cross compiling: requiring independently verified BLAUOS_CROSS_RLIMIT_SELECT" >&5
++printf "%s\n" "$as_me: WARNING: cross compiling: requiring independently verified BLAUOS_CROSS_RLIMIT_SELECT" >&2;}
++	 select_works_with_rlimit=${BLAUOS_CROSS_RLIMIT_SELECT:-no}
+ 
+ else $as_nop
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+diff --git a/configure.ac b/configure.ac
+index bb4d065..e877772 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -3859,8 +3859,8 @@ if test "x$sandbox_arg" != "xno"; then
+ 	 select_works_with_rlimit=yes],
+ 	[AC_MSG_RESULT([no])
+ 	 select_works_with_rlimit=no],
+-	[AC_MSG_WARN([cross compiling: assuming no])
+-	 select_works_with_rlimit=no]
++	[AC_MSG_WARN([cross compiling: requiring independently verified BLAUOS_CROSS_RLIMIT_SELECT])
++	 select_works_with_rlimit=${BLAUOS_CROSS_RLIMIT_SELECT:-no}]
+     )
+ 
+     AC_MSG_CHECKING([if setrlimit(RLIMIT_NOFILE,{0,0}) works])

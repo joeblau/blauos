@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "execution_verified": false,
+  "entropy_quality_verified": false,
+  "entropy_admission_sysctl": "kern.blauos_ssh_entropy_ready",
+  "command": [
+    "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+    "-O2",
+    "-Wall",
+    "-Wextra",
+    "-Wno-nullability-completeness",
+    "-include",
+    "/Users/joeblau/Developer/joeblau/src/blauos/runtime/compat/sdk27_compile.h",
+    "/Users/joeblau/Developer/joeblau/src/blauos/runtime/probes/ssh_capability_probe.c",
+    "-o",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/ssh-login/reproducible-run-1/capabilities/root/usr/libexec/blauos-ssh-capability-probe",
+    "-arch",
+    "arm64",
+    "-isysroot",
+    "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.2.sdk",
+    "-mmacosx-version-min=11.0",
+    "-fno-builtin",
+    "-fno-stack-protector",
+    "-nostdlib",
+    "-L/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/runtime-final-root/usr/lib",
+    "-Wl,-dylib_file,/usr/lib/system/libdyld.dylib:/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/runtime-final-root/usr/lib/system/libdyld.dylib",
+    "-Wl,-platform_version,macos,11.0,11.5",
+    "-Wl,-fixup_chains",
+    "-lSystem",
+    "-Wl,-dylinker_install_name,/usr/lib/dyld"
+  ],
+  "exit_code": 0,
+  "artifacts": [
+    {
+      "path": "/usr/libexec/blauos-ssh-capability-probe",
+      "sha256": "1564182607f2bbb06f82745ada759af80ce44fe1773c5e33fda97206bb120ffc",
+      "source": "blauos",
+      "revision": "workspace-sha256:1df59dc3d95d3ce00eb53a9e39846f28b047f1f40cbc0418fe6691859fe14aa3",
+      "source_path": "runtime/probes/ssh_capability_probe.c",
+      "source_file_sha256": "ad90e316c8decdaed1fbe2ef6a1ae26301478e928a6c168c21f5885e4645a4a0",
+      "source_files": [
+        {
+          "path": "runtime/probes/ssh_capability_probe.c",
+          "sha256": "ad90e316c8decdaed1fbe2ef6a1ae26301478e928a6c168c21f5885e4645a4a0"
+        },
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        }
+      ],
+      "workspace_revision": "34379bc90db594c8ad64d2d62f18de778b8137e7"
+    }
+  ],
+  "runtime_inputs": [
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/runtime-final-root/usr/lib/libSystem.B.dylib",
+      "sha256": "c89ccf4efa50bf4be0cf741ec91a7e44b842adbdd129be6577ee10b311161bed"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/runtime-final-root/usr/lib/system/libdyld.dylib",
+      "sha256": "7dc352822a56c035e262b709d7bd562ee448ce82d886cec22c76696d40a6f1ac"
+    }
+  ]
+}

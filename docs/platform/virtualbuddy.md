@@ -41,6 +41,14 @@ in [#102](https://github.com/joeblau/blauos/issues/102). Interactive keyboard wo
 tracked in [#101](https://github.com/joeblau/blauos/issues/101), and SSH in
 [#55](https://github.com/joeblau/blauos/issues/55).
 
+The separate [SSH workflow](../ssh-login.md) now provides key-only account
+login, terminal sessions and SFTP, with two-boot persistence checks. It adds a
+cryptographic entropy device and a corrected kernel PRNG. Stock VirtualBuddy's
+Linux profile omits that device, so the SSH image requires the supplied
+VirtualBuddy development build or the public framework launcher with
+`--entropy-device`. The original demo described above keeps its own image and
+address.
+
 The framebuffer driver initializes a 1280×800 text console. Screen-capture
 permission was unavailable during the automated tests, so the guest logs and
 network prove execution; a captured VirtualBuddy GUI screen is not claimed.

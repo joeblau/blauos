@@ -1,0 +1,16 @@
+diff --git a/VirtualCore/Source/Virtualization/Helpers/LinuxVirtualMachineConfigurationHelper.swift b/VirtualCore/Source/Virtualization/Helpers/LinuxVirtualMachineConfigurationHelper.swift
+--- a/VirtualCore/Source/Virtualization/Helpers/LinuxVirtualMachineConfigurationHelper.swift
++++ b/VirtualCore/Source/Virtualization/Helpers/LinuxVirtualMachineConfigurationHelper.swift
+@@ -43,6 +43,12 @@ struct LinuxVirtualMachineConfigurationHelper: VirtualMachineConfigurationHelper {
+         return [graphicsConfiguration]
+     }
+ 
++    // BlauOS SSH requires a firmware-admitted cryptographic boot seed.
++    // The generic Linux profile otherwise inherits an empty entropy list.
++    func createEntropyDevices() -> [VZVirtioEntropyDeviceConfiguration] {
++        [VZVirtioEntropyDeviceConfiguration()]
++    }
++
+     @available(macOS 13.0, *)
+     func createSpiceAgentConsoleDeviceConfiguration() -> VZVirtioConsoleDeviceConfiguration? {
+         let consoleDevice = VZVirtioConsoleDeviceConfiguration()

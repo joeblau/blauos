@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "source": "openssh-portable",
+  "revision": "a8c72b842423f0774f542d3c2197247c3dd28d74",
+  "source_lock_sha256": "3ee02e7bbc726b048e371cf322e5416870598906799cf680b583e6573e507c48",
+  "configure_command": [
+    "sh",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/ssh-login/reproducible-run-1/openssh/source/configure",
+    "--host=aarch64-apple-darwin20",
+    "--build=aarch64-apple-darwin27",
+    "--without-openssl",
+    "--without-zlib",
+    "--without-pam",
+    "--without-audit",
+    "--without-libedit",
+    "--disable-pkcs11",
+    "--disable-security-key",
+    "--with-sandbox=rlimit",
+    "--prefix=/usr",
+    "--sysconfdir=/etc/ssh",
+    "--with-privsep-user=sshd",
+    "--with-privsep-path=/var/empty",
+    "--disable-strip"
+  ],
+  "environment": {
+    "CC": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+    "CPPFLAGS": "",
+    "CFLAGS": "-O2 -arch arm64 -isysroot /Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.2.sdk -mmacosx-version-min=11.0 -fno-builtin -fno-stack-protector -include /Users/joeblau/Developer/joeblau/src/blauos/runtime/compat/sdk27_compile.h",
+    "LDFLAGS": "-Z -nostdlib -L/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/runtime-final-root/usr/lib -Wl,-dylib_file,/usr/lib/system/libdyld.dylib:/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/runtime-final-root/usr/lib/system/libdyld.dylib -Wl,-platform_version,macos,11.0,11.5 -Wl,-fixup_chains -Wl,-dylinker_install_name,/usr/lib/dyld",
+    "LIBS": "-lSystem",
+    "BLAUOS_CROSS_RLIMIT_SELECT": "yes",
+    "ac_cv_func_arc4random": "no",
+    "ac_cv_func_arc4random_buf": "no",
+    "ac_cv_func_arc4random_uniform": "no"
+  },
+  "build_amendments": [
+    {
+      "path": "scripts/build/openssh.py",
+      "sha256": "1577627823dcf380c584e16d9591d6013894adc5dcfc6d5e2fa05dbb75d34640"
+    },
+    {
+      "path": "runtime/compat/sdk27_compile.h",
+      "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+    },
+    {
+      "path": "vm/patches/openssh-blauos-cross-rlimit.patch",
+      "sha256": "834e88868cd527d95675f829e1460ca4b1407e83c8ef1055ae5156528f45e9a2"
+    },
+    {
+      "path": "vm/patches/openssh-darwin-source-runtime.patch",
+      "sha256": "9daceacc895b2a4ae5c0e53cbe112b6200e5e980ef816b766e50b850cf1d4eb4"
+    }
+  ],
+  "upstream_configure_sha256": "3e764c6bddd331f33f6a71de70cc6b473403691aae3a5285a99578df2c1cf0b5",
+  "configure_sha256": "b41af4d36fdedd48098d4a121cd4e1f329a1a5c015a43fc8e5f15bf7c47a82cf",
+  "compiler_version": "Apple clang version 21.0.0 (clang-2100.3.34.2)",
+  "compiler_sha256": "0993175af320361435e566fa638ad3f0852efe3599bf026da08d9d82be8275fa",
+  "sdk": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+  "runtime_link_inputs": {
+    "usr/lib/libSystem.B.dylib": "c89ccf4efa50bf4be0cf741ec91a7e44b842adbdd129be6577ee10b311161bed",
+    "usr/lib/system/libdyld.dylib": "7dc352822a56c035e262b709d7bd562ee448ce82d886cec22c76696d40a6f1ac"
+  },
+  "stock_runtime_used": false,
+  "target_execute_during_configure": false,
+  "configure_runtime_assumptions_verified": false,
+  "guest_execution_verified": false,
+  "crypto_profile": "upstream internal crypto; Ed25519, X25519/hybrid KEX, ChaCha20-Poly1305; no OpenSSL or zlib",
+  "privilege_separation": "upstream monitor, unprivileged sshd account, chroot and rlimit sandbox",
+  "make_command": [
+    "make",
+    "-j4",
+    "sshd",
+    "sshd-auth",
+    "sshd-session",
+    "sftp-server",
+    "ssh-keygen",
+    "ssh"
+  ]
+}
