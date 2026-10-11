@@ -15,8 +15,8 @@
       "sha256": "7f2045d8298d693362bb2a6d941401e06309df24f1f04078100ab7aab78a029b"
     },
     {
-      "path": "runtime-audit.json",
-      "sha256": "99a1c212bae73f5293929cf5ddb263c01652a664c05ade9119a623f63c12982c"
+      "path": "runtime-audit.json.gz",
+      "sha256": "f477303525c99428a373ec7efa36f9b5f1e623dfc05cd29476614339daed74e0"
     },
     {
       "path": "entropy-receipt.json",
@@ -162,5 +162,6 @@
       "path": "smoke/boot2/known_hosts",
       "sha256": "d5e00ded6496ccbb54d4e1981380bf4bb8b16e9a16d43f85ab7d570225e37443"
     }
-  ]
+  ],
+  "runtime_audit_uncompressed_sha256": "99a1c212bae73f5293929cf5ddb263c01652a664c05ade9119a623f63c12982c"
 }
