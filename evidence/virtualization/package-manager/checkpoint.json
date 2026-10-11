@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-11",
+  "subject": "Guest package manager (bpm): live VirtualBuddy acceptance of signed .bpm package install/verify/remove with serial and file:// repo transports",
+  "host": "M3 Max, macOS 27.2 (26B5101f), VirtualBuddy 2.1 generic EFI profile via vm/virtualbuddy_console_probe.swift (freshly rebuilt this run)",
+  "design_decision": {
+    "choice": "Repo-native guest tool bpm (vm/commands/bpm/bpm.c) + host tool scripts/release/package.py",
+    "evaluation": "opkg, dpkg, and pkgsrc pkg_install were evaluated and rejected: all require compression libraries (gzip/xz/bzip2 via zlib/libarchive) absent from the libSystem-only guest runtime; dpkg additionally requires Perl and maintainer-script shells, pkgsrc requires OpenSSL for signatures, opkg's useful configurations require libcurl/wget. Porting those stacks exceeds a purpose-built tool and contradicts the minimal server-image profile. bpm reuses the repository's exact Ed25519 trust-root and signed-manifest scheme (scripts/release/signing.py), so host and guest verify the same bytes with the same policy.",
+    "format": "Uncompressed ustar .bpm: manifest.json (name, version, depends, recipe {path, sha256} binding packages/*.json, files[] {path, sha256, size, mode}) + manifest.json.sig (RFC 8032 over the canonical signing payload) + payload/<path> members. Guest verifies signature, manifest digest, then every payload hash before writing anything.",
+    "docs": "docs/packages.md"
+  },
+  "image": {
+    "image_sha256": "743bd7466d0ebb82d3599e69e752f7e8431653ef0ff0ecca9a7bb3df5e6a7889",
+    "kernel_sha256": "b157c2db7b4f229a28b54cc6af8edd7cda639f7eab050ae3c4aee48c7f625d54",
+    "loader_sha256": "1e754f784114592f28763ca99203d519ca9f195237c16ca97b8af145acdba674",
+    "kernel_note": "Same kernel collection and folded loader as evidence/virtualization/virtualbuddy-console/live (unchanged; no loader work in this task)",
+    "layers": "composed-login (runtime + vim-inclusive command toolkit + console-login) + bpm-run-2 (/usr/bin/bpm, libSystem-only, otool-verified) + staged package repo layer",
+    "assemble_command": "docker exec blauos-vb-console-live python3 scripts/vm/assemble.py --root package-manager/composed/root --provenance package-manager/composed/provenance.json --kernel collection-v3/kernel.classic --loader BOOTAA64-folded.EFI --output package-manager/image-run-1 --root-mb 1024 --boot-args '-v debug=0x218 serial=3 keepsyms=1 no_interrupt_masked_debug=1 gopconsole=1' --network 192.168.64.200 255.255.255.0 192.168.64.1 192.168.64.1 --standalone --console-shell",
+    "bpm_binary_sha256": "654b1efffd96a625571a5973bd144a5afa13557df27f900f81987fe75bf1aec1"
+  },
+  "signing": {
+    "scheme": "ed25519-pure-python-rfc8032 (scripts/release/signing.py)",
+    "key_id": "bbe1ed350e6b2b3da7389062fe84acf1",
+    "trust_root_sha256": "36915d2d9de22fd8f9a9f5e96425a846c7724b801ba8009d6060c6c9320fbc52",
+    "trust_root_guest_path": "/etc/blauos/trust-root.json (baked via package.py stage-repo layer)",
+    "key_custody": "Demo private key at .blauos/release/package-key.json (gitignored, never committed); only the key_id, public key, and hashes are exported"
+  },
+  "packages": {
+    "vim-9.2.1175.bpm": {
+      "sha256": "0f89fd4e334c3626707e4a371bd62f4ae5b1d3a928499c73cc7ec77e89f40393",
+      "recipe": "packages/vim.json",
+      "source_layer": ".blauos/build/commands/vim-run-1/root (usr/bin/vim, 1720840 bytes)",
+      "transport": "image-baked local file:// repo /var/db/bpm/repo with signed index.json (index sha256 b09f6544f148aece5cce638e7cbc90060f6b3b1eae708fe2da772129942c50ec)"
+    },
+    "blauos-hello-1.0.bpm": {
+      "sha256": "d3a1a705e7fafadc7bcbae579a09af3b4e821acff5eaea67f7bbf1e398b7aa62",
+      "recipe": "packages/blauos-hello.json (workspace-pinned vm/commands/bpm/hello.c)",
+      "transport": "serial console: hex frames injected through console-input.fifo, decoded by guest `bpm recv`, digest-verified"
+    },
+    "blauos-hello-1.0-tampered.bpm": {
+      "sha256": "7655f3a26a0f33f4b9114bbbaff7959e6d1b3dbcc17dece4a3bda5e8d6e9626f",
+      "note": "one payload byte flipped after signing; must be rejected at payload hash verification"
+    },
+    "blauos-hello-1.0-wrongkey.bpm": {
+      "sha256": "7e316cd5ae9aa08ed35f6833ed71381ecfee33e8af5fe3a5708fbf40b82ac3b1",
+      "note": "same manifest signed by a freshly generated key absent from the baked trust root; must be rejected as unknown-key"
+    }
+  },
+  "probe_command": "virtualbuddy_console_probe live-run-1 run-pm-1-Disk.img --timeout-seconds 600 --request-stop-after 300 --stop-grace-seconds 60 (exit 0)",
+  "driver": "package-manager/drive-pm.py (sha256 recorded in driver receipts); every step asserts the guest's own serial output before proceeding",
+  "live_transcript": [
+    "bpm repo -> 'vim 9.2.1175 vim-9.2.1175.bpm' + BLAUOS_BPM repo count=1 pass (signed index verified in guest)",
+    "bpm list -> BLAUOS_BPM list count=0",
+    "bpm install vim -> BLAUOS_BPM install fail destination-exists (no-overwrite of base-image /usr/bin/vim, fail-closed)",
+    "bpm --root /tmp/vimroot --db /tmp/vimdb install vim -> BLAUOS_BPM install name=vim version=9.2.1175 files=1 pass (repo index signature + package hash + Ed25519 manifest signature + payload SHA-256 all verified in guest)",
+    "/tmp/vimroot/usr/bin/vim --version | head -n 1 -> 'VIM - Vi IMproved 9.2 (2026 Feb 14)' (installed binary runs)",
+    "bpm --root /tmp/vimroot --db /tmp/vimdb verify vim -> pass (re-hashed installed file)",
+    "bpm recv /tmp/hello.bpm <- 411 hex frames over the virtio console (4.2 s) -> BLAUOS_BPM recv pass sha256=d3a1a705... bytes=40960 (digest equals the host package file hash)",
+    "bpm install /tmp/hello.bpm -> BLAUOS_BPM install name=blauos-hello version=1.0 files=1 pass",
+    "/usr/local/bin/blauos-hello -> BLAUOS_HELLO_PACKAGE pass",
+    "bpm list -> blauos-hello 1.0; bpm verify blauos-hello -> pass",
+    "bpm remove blauos-hello -> BLAUOS_BPM remove name=blauos-hello files=1 pass; ls /usr/local/bin/blauos-hello -> No such file or directory",
+    "bpm recv /tmp/hello-t.bpm (tampered) -> recv pass sha256=7655f3a2...; bpm install -> BLAUOS_BPM install fail payload-verify (rejected before any write)",
+    "bpm recv /tmp/hello-u.bpm (untrusted key) -> recv pass sha256=7e316cd5...; bpm install -> BLAUOS_BPM install fail unknown-key",
+    "final bpm list -> count=0; bpm verify -> pass; host requestStop -> guest SIGTERM chain -> unmount -> PSCI SYSTEM_OFF -> public guestDidStop 20:48:17Z, probe exit 0"
+  ],
+  "marker_assertions": "17 of 17 expected guest markers observed in serial.log; no marker-missing entries in driver-log.json",
+  "files": {
+    "serial.log": "9f7daffbd3b152d98d68efd8a251e6c9485d1eeb35ae5f1000ac478d9c891621",
+    "driver-log.json": "11fd9aa83f3413e45f6b4e28b467bab1a35f7ca9b528dfe3d902c62a5a23d668",
+    "probe-result.json": "e7885c11769c0a64ca254db60ff303f55c735caa48271198d1c67196798976ee",
+    "probe.log": "3a3a025ae20add7b7e0b978c4a0c81621d3b531b8c7a4bf1a1450ab5c44a336c",
+    "image-result.json": "b5e0a612642001b8a2b778b920029392c83e46941720e663afdc7499de114ca6",
+    "vim-build-receipt.json": "f8ed774f3640e74c3850cfa8d5ca5983454f3da771084849e896b5de3df563f8",
+    "hello-build-receipt.json": "1dd9823a0962b1e7df60f03196aa28b1417b93ac910fd3a15fb8b5520eb8cb16",
+    "index-receipt.json": "51853849befcd3044b7f6417c5c9982361555a60c56391cf6542aaa7dcca86c3",
+    "stage-receipt.json": "6fa72883ff661362fa877ef9337921bb883a1995009f5cd4f35fa02f924208aa"
+  },
+  "host_tests": {
+    "tests/test_release_package.py": "14 tests: manifest/recipe binding, tampered payload/manifest, untrusted/revoked key, missing signature member, forged manifest, index + stage-repo",
+    "tests/test_bpm_command.py": "16 tests: host-compiled bpm install/list/verify/remove lifecycle, tampered/unsigned/schema rejections, dependent and overwrite refusal, repo index enforcement, serial recv framing",
+    "suites": "tests 308, runtime/tests 20, platform/apple-m1/handoff/tests 36 — all pass"
+  },
+  "honest_limitations": [
+    "No upgrades, dependency solving, or package scripts; install refuses existing files by design",
+    "Key rotation reaches the guest only via a newly baked trust root image layer",
+    "Serial transport throughput limits practical transfers to tens of KB; SFTP remains the transport on the SSH profile (not available under stock VirtualBuddy 2.1, which omits the virtio entropy device)",
+    "These are VM results on VirtualBuddy's generic EFI platform; physical Apple Silicon Gate 2 is not run"
+  ],
+  "physical_gate_passed": false
+}

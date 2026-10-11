@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "tool": "package.py",
+  "argv": [
+    "scripts/release/package.py",
+    "index",
+    "--repo-dir",
+    ".blauos/build/virtualbuddy-console/package-manager/repo",
+    "--key",
+    ".blauos/release/package-key.json",
+    "--trust-root",
+    ".blauos/release/package-trust-root.json",
+    "--receipt",
+    ".blauos/build/virtualbuddy-console/package-manager/repo/index-receipt.json"
+  ],
+  "cwd": "/Users/joeblau/Developer/joeblau/src/blauos",
+  "recorded_at": "2026-10-11T20:34:49.392423+00:00",
+  "inputs": {
+    "trust_root_sha256": "36915d2d9de22fd8f9a9f5e96425a846c7724b801ba8009d6060c6c9320fbc52",
+    "key_sha256": "3ab2aac5c3003ef66476556fe35dbd12031c975f87fc3cd7053fec850aa088ee"
+  },
+  "outputs": {
+    "result_sha256": null
+  },
+  "result": {
+    "status": "indexed",
+    "packages": 1,
+    "index": ".blauos/build/virtualbuddy-console/package-manager/repo/index.json",
+    "index_sha256": "b09f6544f148aece5cce638e7cbc90060f6b3b1eae708fe2da772129942c50ec",
+    "key_id": "bbe1ed350e6b2b3da7389062fe84acf1"
+  },
+  "receipt_sha256": "9ad970b917c826456ad42d78b2268f8364d81e07569688d134432981493d9027"
+}

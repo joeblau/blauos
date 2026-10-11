@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "tool": "package.py",
+  "argv": [
+    "scripts/release/package.py",
+    "build",
+    "--root",
+    ".blauos/build/commands/vim-run-1/root",
+    "--recipe",
+    "packages/vim.json",
+    "--name",
+    "vim",
+    "--version",
+    "9.2.1175",
+    "--key",
+    ".blauos/release/package-key.json",
+    "--trust-root",
+    ".blauos/release/package-trust-root.json",
+    "--output",
+    ".blauos/build/virtualbuddy-console/package-manager/packages/vim-9.2.1175.bpm",
+    "--receipt",
+    ".blauos/build/virtualbuddy-console/package-manager/packages/vim-build-receipt.json"
+  ],
+  "cwd": "/Users/joeblau/Developer/joeblau/src/blauos",
+  "recorded_at": "2026-10-11T20:34:26.566913+00:00",
+  "inputs": {
+    "trust_root_sha256": "36915d2d9de22fd8f9a9f5e96425a846c7724b801ba8009d6060c6c9320fbc52",
+    "key_sha256": "3ab2aac5c3003ef66476556fe35dbd12031c975f87fc3cd7053fec850aa088ee",
+    "recipe_sha256": "8482c07b72d8037ff2b66abc9a201b5495c68b0fd2edf3da468413f27ed1e7d7"
+  },
+  "outputs": {
+    "result_sha256": "0f89fd4e334c3626707e4a371bd62f4ae5b1d3a928499c73cc7ec77e89f40393"
+  },
+  "result": {
+    "status": "built",
+    "package": ".blauos/build/virtualbuddy-console/package-manager/packages/vim-9.2.1175.bpm",
+    "package_sha256": "0f89fd4e334c3626707e4a371bd62f4ae5b1d3a928499c73cc7ec77e89f40393",
+    "name": "vim",
+    "version": "9.2.1175",
+    "file_count": 1,
+    "payload_bytes": 1720840,
+    "key_id": "bbe1ed350e6b2b3da7389062fe84acf1"
+  },
+  "receipt_sha256": "baef589708774d10f4d178b487d9ff1968174062da30bcd1811d40a489ec0885"
+}

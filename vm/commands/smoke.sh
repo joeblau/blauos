@@ -132,4 +132,13 @@ q!
 VIMSCRIPT
 [ "$(cat "$work/keep")" = keep ]
 printf 'BLAUOS_COMMAND_CHECK editor pass\n'
+
+# Package manager checks are read-only and apply only where bpm is installed
+# (images carrying the bpm layer). The signed-package install acceptance runs
+# in the live VirtualBuddy evidence, not in this unprivileged session.
+if command -v bpm >/dev/null 2>&1; then
+    bpm list >/dev/null
+    bpm verify >/dev/null
+    printf 'BLAUOS_COMMAND_CHECK package pass\n'
+fi
 printf 'BLAUOS_COMMAND_CHECK all pass\n'

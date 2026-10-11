@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "tool": "package.py",
+  "argv": [
+    "scripts/release/package.py",
+    "stage-repo",
+    "--repo-dir",
+    ".blauos/build/virtualbuddy-console/package-manager/repo",
+    "--trust-root",
+    ".blauos/release/package-trust-root.json",
+    "--output",
+    ".blauos/build/virtualbuddy-console/package-manager/repo-layer",
+    "--receipt",
+    ".blauos/build/virtualbuddy-console/package-manager/stage-receipt.json"
+  ],
+  "cwd": "/Users/joeblau/Developer/joeblau/src/blauos",
+  "recorded_at": "2026-10-11T20:34:49.648483+00:00",
+  "inputs": {
+    "trust_root_sha256": "36915d2d9de22fd8f9a9f5e96425a846c7724b801ba8009d6060c6c9320fbc52"
+  },
+  "outputs": {
+    "result_sha256": null
+  },
+  "result": {
+    "status": "staged",
+    "layer": ".blauos/build/virtualbuddy-console/package-manager/repo-layer/root",
+    "artifacts": 4
+  },
+  "receipt_sha256": "91259a60804085303385e5e3a3090838d725748437b989a31adc921c4a4f7a14"
+}

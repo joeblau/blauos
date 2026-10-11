@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "name": "blauos-hello",
+  "summary": "Tiny repo-native demo payload for guest package-manager acceptance: prints a marker line; packaged as a signed .bpm and installed/verified/removed by bpm in the VirtualBuddy guest.",
+  "license": {
+    "spdx": "MIT",
+    "notes": "Repo-native fixture (vm/commands/bpm/hello.c); the repository's own MIT license applies per the root LICENSE file.",
+    "determined_from": "LICENSE (MIT) at the repository root"
+  },
+  "sources": [
+    {
+      "kind": "workspace",
+      "lock_name": "blauos-hello-c",
+      "path": "vm/commands/bpm/hello.c",
+      "sha256": "a8b1c2d25c72f2a101f40badfc815574a7d10ecd3f91ad7d5c76132c3dbf89b0"
+    }
+  ],
+  "depends": ["runtime"],
+  "builder": {
+    "script": "scripts/vm/build_hello_demo.py",
+    "command": [
+      "python3", "scripts/vm/build_hello_demo.py",
+      "--runtime-root", ".blauos/build/runtime/root",
+      "--output", ".blauos/build/commands/hello-run-1"
+    ],
+    "patches": []
+  },
+  "outputs": [
+    "usr/local/bin/blauos-hello"
+  ],
+  "isolation": "Compiles one repo-native C file against the independently built runtime with the pinned SDK profile (libSystem-only link, verified by otool in the builder). The workspace source pin is a content hash of the tracked file, validated by scripts/build/packages.py.",
+  "rebuild": {
+    "clean_rebuild_verified": false,
+    "note": "Pins are validated by scripts/build/packages.py. Guest install acceptance is recorded in evidence/virtualization/package-manager; a clean-environment rebuild comparison is remaining work."
+  }
+}

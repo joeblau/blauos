@@ -16,11 +16,14 @@ Recipe fields:
                     "determined_from": <string>}; SPDX is recorded only where
                     determinable from the locked license notices, otherwise
                     null with notes citing the component notices
-  sources          nonempty list of {"kind": "git"|"archive", "lock_name",
-                    "url", "revision", "tree", "tag"} entries whose pins must
-                    match sources.lock.json exactly; git sources that also
-                    appear in manifests/puredarwin-flake.lock must match the
-                    locked flake revision too
+  sources          nonempty list of {"kind": "git"|"archive"|"workspace", ...}
+                    entries: git/archive pins must match sources.lock.json
+                    exactly (git sources that also appear in
+                    manifests/puredarwin-flake.lock must match the locked
+                    flake revision too); workspace sources are repo-native
+                    files recorded as {"kind": "workspace", "lock_name",
+                    "path", "sha256"} and validated against the current
+                    checkout by content hash
   depends          list of other recipe names; must be acyclic
   builder          {"script": repo-relative builder path, "command": argv,
                     "patches": repo-relative tracked patch paths}
@@ -161,12 +164,27 @@ def validate_license(name: str, license_field) -> None:
         parse_spdx(spdx)
 
 
-def validate_source(name: str, source: dict, lock: dict, flake_nodes: dict) -> list[str]:
+def validate_source(name: str, source: dict, lock: dict, flake_nodes: dict,
+                    root: Path = ROOT) -> list[str]:
     """Return the validation checks performed for one pinned source."""
     checks = []
     lock_name = source.get("lock_name")
     require(isinstance(lock_name, str) and lock_name, f"{name}: source lock_name required")
     kind = source.get("kind")
+    if kind == "workspace":
+        relative = source.get("path")
+        path = PurePosixPath(relative) if isinstance(relative, str) else None
+        require(path is not None and not path.is_absolute() and ".." not in path.parts,
+                f"{name}: workspace source path must be a relative path without '..'")
+        target = (root / relative).resolve()
+        require(target.is_relative_to(root.resolve()) and target.is_file(),
+                f"{name}: workspace source {relative!r} does not exist in the repository")
+        require(source.get("sha256") == file_sha256(target),
+                f"{name}: workspace source {relative!r} sha256 does not match the checkout")
+        require(SHA256_PATTERN.fullmatch(source["sha256"]),
+                f"{name}: {lock_name} sha256 must be 64 lowercase hexadecimal characters")
+        checks.append(f"{lock_name}.workspace-sha256")
+        return checks
     if kind == "git":
         pin = next((item for item in lock.get("sources", []) if item["name"] == lock_name), None)
         require(pin is not None, f"{name}: {lock_name} is not pinned in sources.lock.json")
@@ -198,7 +216,7 @@ def validate_source(name: str, source: dict, lock: dict, flake_nodes: dict) -> l
         require(SHA256_PATTERN.fullmatch(source["sha256"]),
                 f"{name}: {lock_name} sha256 must be 64 lowercase hexadecimal characters")
     else:
-        raise RecipeError(f"{name}: source kind must be 'git' or 'archive', found {kind!r}")
+        raise RecipeError(f"{name}: source kind must be 'git', 'archive', or 'workspace', found {kind!r}")
     return checks
 
 
@@ -276,7 +294,7 @@ def validate_recipes(recipes_dir: Path, manifest: Path, flake_lock: Path,
             require(source.get("lock_name") not in lock_names,
                     f"{name}: duplicate source {source.get('lock_name')!r}")
             lock_names.add(source.get("lock_name"))
-            checks.extend(validate_source(name, source, lock, flake_nodes))
+            checks.extend(validate_source(name, source, lock, flake_nodes, root))
         checks.extend(validate_builder(name, recipe.get("builder"), root))
         outputs = recipe.get("outputs")
         require(isinstance(outputs, list) and outputs, f"{name}: outputs must be a nonempty list")
