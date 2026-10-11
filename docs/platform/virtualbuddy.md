@@ -46,6 +46,14 @@ permission was unavailable during the automated tests, so the guest logs and
 network prove execution; a captured VirtualBuddy GUI screen is not claimed.
 The original stalled screen will persist if the original VM is started again.
 
+The first demo image replacement produced VirtualBuddy's “virtual machine
+stopped unexpectedly” message when the old VM's dedicated helper was terminated
+to release its disk. The matching host log is preserved with the
+[restart evidence](../../evidence/virtualization/virtualbuddy-platform/restart-checkpoint.json).
+The replacement booted, and a later restart from the same disk passed repeated
+live health checks. This occurrence is tied to that host-forced stop; the error
+message alone does not identify a guest fault.
+
 ## What changed
 
 The original loader prints through EFI, then polls QEMU's PL011 UART at
