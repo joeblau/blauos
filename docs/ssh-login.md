@@ -109,8 +109,9 @@ private-key contents. Its test key pair is removed after acceptance or failure;
 the image retains the now unusable test public key until an explicit future
 account-management operation removes it.
 
-The workflow fetches locked OpenSSH/PureDarwin sources, builds the SSH binaries
-and local probes, adds their exact artifacts to a copied baseline, and audits
+The workflow fetches locked OpenSSH, PureDarwin, and BSD utility sources, builds
+the SSH binaries, local probes, and [command-line toolkit](commands.md), adds
+their exact artifacts to a copied baseline, and audits
 the full independent runtime closure. It formats the account-enabled disk
 inside a uniquely named, labelled Linux ARM64 Nix container, compiles and signs
 the public VZ probe, and runs `scripts/vm/ssh_smoke.py`. It removes only its own
@@ -120,7 +121,7 @@ A passing `result.json` requires the real two-boot harness to pass. The harness
 pins the host key obtained through trusted guest console output, checks fresh
 session challenges, rejects another key and root login, verifies actual
 UID/GID/home and root-only access denial, tests a controlling PTY, and checks
-SFTP and persisted data/host identity after guest-initiated poweroff and a
+SFTP, actual file/text/identity command behavior, and persisted data/host identity after guest-initiated poweroff and a
 second boot. Both guests are stopped when acceptance finishes. A listening
 port, a host-only unit test, or a copied prior receipt cannot establish success.
 

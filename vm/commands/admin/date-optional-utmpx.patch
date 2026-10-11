@@ -1,0 +1,31 @@
+diff --git a/date/date.c b/date/date.c
+--- a/date/date.c
++++ b/date/date.c
+@@ -59,6 +59,10 @@
+ #include <unistd.h>
+ #include <utmpx.h>
+ 
++/* The minimal independent runtime has no writable utmpx/ASL service.
++ * Date changes still use the real privileged settimeofday syscall. */
++extern void blauos_record_clock_change(const struct utmpx *);
++
+ #ifdef __APPLE__
+ #include <get_compat.h>
+ #else
+@@ -327,14 +331,14 @@ setthetime(const char *fmt, const char *p, int jflag, int nflag)
+ 		if (nflag || netsettime(tval)) {
+ 			utx.ut_type = OLD_TIME;
+ 			(void)gettimeofday(&utx.ut_tv, NULL);
+-			pututxline(&utx);
++			blauos_record_clock_change(&utx);
+ 			tv.tv_sec = tval;
+ 			tv.tv_usec = 0;
+ 			if (settimeofday(&tv, NULL) != 0)
+ 				err(1, "settimeofday (timeval)");
+ 			utx.ut_type = NEW_TIME;
+ 			(void)gettimeofday(&utx.ut_tv, NULL);
+-			pututxline(&utx);
++			blauos_record_clock_change(&utx);
+ 		}
+ 
+ 		if ((p = getlogin()) == NULL)

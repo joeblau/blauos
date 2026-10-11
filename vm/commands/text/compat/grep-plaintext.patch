@@ -1,0 +1,172 @@
+--- a/grep/grep.h
++++ b/grep/grep.h
+@@ -31,12 +31,10 @@
+  * SUCH DAMAGE.
+  */
+ 
+-#include <bzlib.h>
+ #include <limits.h>
+ #include <regex.h>
+ #include <stdbool.h>
+ #include <stdio.h>
+-#include <zlib.h>
+ 
+ extern const char		*errstr[];
+ 
+@@ -56,7 +54,7 @@
+ 
+ #define	FILE_STDIO	0
+ #define	FILE_MMAP	1
+-#ifdef __APPLE__
++#if defined(__APPLE__) && !defined(BLAUOS_GREP_NO_COMPRESSION)
+ #define	FILE_GZIP	2
+ #define	FILE_BZIP	3
+ #define	FILE_XZ		4
+--- a/grep/file.c
++++ b/grep/file.c
+@@ -50,7 +50,7 @@
+ #include <wchar.h>
+ #include <wctype.h>
+ 
+-#ifdef __APPLE__
++#if defined(__APPLE__) && !defined(BLAUOS_GREP_NO_COMPRESSION)
+ #include <zlib.h>
+ #include <lzma.h>
+ #include <bzlib.h>
+@@ -61,7 +61,7 @@
+ #define	MAXBUFSIZ	(32 * 1024)
+ #define	LNBUFBUMP	80
+ 
+-#ifdef __APPLE__
++#if defined(__APPLE__) && !defined(BLAUOS_GREP_NO_COMPRESSION)
+ static gzFile gzbufdesc;
+ static lzma_stream lstrm = LZMA_STREAM_INIT;
+ static lzma_action laction;
+@@ -86,7 +86,7 @@
+ 	if ((refillbehave = filebehave) == FILE_MMAP)
+ 		return (0);
+ 
+-#ifdef __APPLE__
++#if defined(__APPLE__) && !defined(BLAUOS_GREP_NO_COMPRESSION)
+ 	/*
+ 	 * Fallback to plain old read() if BZ2_bzRead() tossed BZ_DATA_ERROR_MAGIC
+ 	 * below.  We can't change filebehave without losing pertinent information
+@@ -99,7 +99,7 @@
+ 	bufrem = 0;
+ 
+ 	switch (refillbehave) {
+-#ifdef __APPLE__
++#if defined(__APPLE__) && !defined(BLAUOS_GREP_NO_COMPRESSION)
+ 	case FILE_GZIP:
+ 		nr = gzread(gzbufdesc, buffer, MAXBUFSIZ);
+ 		break;
+@@ -312,7 +312,7 @@
+ 		buffer = grep_malloc(MAXBUFSIZ);
+ 
+ 	switch (filebehave) {
+-#ifdef __APPLE__
++#if defined(__APPLE__) && !defined(BLAUOS_GREP_NO_COMPRESSION)
+ 	case FILE_GZIP:
+ 		if ((gzbufdesc = gzdopen(f->fd, "r")) == NULL)
+ 			goto error2;
+--- a/grep/grep.c
++++ b/grep/grep.c
+@@ -58,7 +58,11 @@
+ /* 1*/	"(standard input)",
+ /* 2*/	"unknown %s option",
+ #ifdef __APPLE__
++#ifdef BLAUOS_GREP_NO_COMPRESSION
++/* 3*/	"usage: %s [-abcdDEFGHhIiLlmnOopqRSsUVvwxz] [-A num] [-B num] [-C[num]]\n",
++#else
+ /* 3*/	"usage: %s [-abcdDEFGHhIiJLlMmnOopqRSsUVvwXxZz] [-A num] [-B num] [-C[num]]\n",
++#endif
+ #else
+ /* 3*/	"usage: %s [-abcDEFGHhIiLlmnOoPqRSsUVvwxz] [-A num] [-B num] [-C[num]]\n",
+ #endif
+@@ -161,7 +165,11 @@
+ }
+ 
+ #ifdef __APPLE__
++#ifdef BLAUOS_GREP_NO_COMPRESSION
++static const char	*optstr = "0123456789A:B:C:D:EFGHILOSRUVabcd:e:f:hilm:nopqrsuvwxyz";
++#else
+ static const char	*optstr = "0123456789A:B:C:D:EFGHIJLMOSRUVXZabcd:e:f:hilm:nopqrsuvwxyz";
++#endif
+ #else
+ static const char	*optstr = "0123456789A:B:C:D:EFGHILOPSRUVabcd:e:f:hilm:nopqrsuvwxyz";
+ #endif
+@@ -196,13 +204,13 @@
+ 	{"no-filename",		no_argument,		NULL, 'h'},
+ 	{"with-filename",	no_argument,		NULL, 'H'},
+ 	{"ignore-case",		no_argument,		NULL, 'i'},
+-#ifdef __APPLE__
++#if defined(__APPLE__) && !defined(BLAUOS_GREP_NO_COMPRESSION)
+ 	{"bz2decompress",	no_argument,		NULL, 'J'},
+ #endif
+ 	{"files-with-matches",	no_argument,		NULL, 'l'},
+ 	{"files-without-match", no_argument,            NULL, 'L'},
+ 	{"max-count",		required_argument,	NULL, 'm'},
+-#ifdef __APPLE__
++#if defined(__APPLE__) && !defined(BLAUOS_GREP_NO_COMPRESSION)
+ 	{"lzma",		no_argument,		NULL, 'M'},
+ #endif
+ 	{"line-number",		no_argument,		NULL, 'n'},
+@@ -217,11 +225,11 @@
+ 	{"version",		no_argument,		NULL, 'V'},
+ 	{"word-regexp",		no_argument,		NULL, 'w'},
+ 	{"line-regexp",		no_argument,		NULL, 'x'},
+-#ifdef __APPLE__
++#if defined(__APPLE__) && !defined(BLAUOS_GREP_NO_COMPRESSION)
+ 	{"xz",			no_argument,		NULL, 'X'},
+ #endif
+ 	{"null-data",		no_argument,		NULL, 'z'},
+-#ifdef __APPLE__
++#if defined(__APPLE__) && !defined(BLAUOS_GREP_NO_COMPRESSION)
+ 	{"decompress",          no_argument,            NULL, 'Z'},
+ #endif
+ 	{NULL,			no_argument,		NULL, 0}
+@@ -354,7 +362,7 @@
+ 	 * binary without the need of scripting and using ugly hacks.
+ 	 */
+ 	pn = getprogname();
+-#ifdef __APPLE__
++#if defined(__APPLE__) && !defined(BLAUOS_GREP_NO_COMPRESSION)
+ 	if (pn[0] == 'b' && pn[1] == 'z') {
+ 		filebehave = FILE_BZIP;
+ 		pn += 2;
+@@ -545,7 +553,7 @@
+ 			iflag =  true;
+ 			cflags |= REG_ICASE;
+ 			break;
+-#ifdef __APPLE__
++#if defined(__APPLE__) && !defined(BLAUOS_GREP_NO_COMPRESSION)
+ 		case 'J':
+ 			filebehave = FILE_BZIP;
+ 			break;
+@@ -570,7 +578,7 @@
+ 				err(2, NULL);
+ 			}
+ 			break;
+-#ifdef __APPLE__
++#if defined(__APPLE__) && !defined(BLAUOS_GREP_NO_COMPRESSION)
+ 		case 'M':
+ 			filebehave = FILE_LZMA;
+ 			break;
+@@ -628,7 +636,7 @@
+ 			xflag = true;
+ 			cflags &= ~REG_NOSUB;
+ 			break;
+-#ifdef __APPLE__
++#if defined(__APPLE__) && !defined(BLAUOS_GREP_NO_COMPRESSION)
+ 		case 'X':
+ 			filebehave = FILE_XZ;
+ 			break;
+@@ -636,7 +644,7 @@
+ 		case 'z':
+ 			fileeol = '\0';
+ 			break;
+-#ifdef __APPLE__
++#if defined(__APPLE__) && !defined(BLAUOS_GREP_NO_COMPRESSION)
+ 		case 'Z':
+ 			filebehave = FILE_GZIP;
+ 			break;

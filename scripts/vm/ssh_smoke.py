@@ -120,6 +120,17 @@ def ssh_checks(args, directory, deadline, key, disk_nonce, boot, tools):
         (directory / "ssh-checks.json").write_text(json.dumps(checks, indent=2) + "\n")
         if not passed:
             raise RuntimeError(f"Authenticated {name} session failed (see {directory / (name + '.stderr')})")
+    if getattr(args, "commands_smoke", None):
+        command = [tools["ssh"], *options, "-T", f"{args.username}@{args.guest_ip}", "/bin/sh -s"]
+        process, receipt = command_receipt(command, directory, "commands", deadline, args.commands_smoke.read_text())
+        markers = {match.group(1) for line in process.stdout.splitlines()
+                   if (match := re.fullmatch(r"BLAUOS_COMMAND_CHECK ([a-z]+) pass", line.strip()))}
+        passed = process.returncode == 0 and {"files", "text", "identity", "search", "all"}.issubset(markers)
+        checks["commands"] = {**receipt, "passed": passed, "checks": sorted(markers),
+                              "source_sha256": sha256(args.commands_smoke)}
+        (directory / "ssh-checks.json").write_text(json.dumps(checks, indent=2) + "\n")
+        if not passed:
+            raise RuntimeError("Actual guest command behavior failed")
     for name, username, identity in (("unauthorized_key", args.username, args.output / "wrong-key"),
                                      ("root_login", "root", args.identity)):
         command = [tools["ssh"], *connection_options(identity, known), "-T", f"{username}@{args.guest_ip}", "/bin/true"]
@@ -311,6 +322,7 @@ def main():
     parser.add_argument("--gid", type=int, default=1000)
     parser.add_argument("--timeout-seconds", type=int, default=180)
     parser.add_argument("--entropy-device", action="store_true")
+    parser.add_argument("--commands-smoke", type=Path, help="Exercise file, text and identity commands on each guest boot")
     args = parser.parse_args()
     try:
         result = run(args)

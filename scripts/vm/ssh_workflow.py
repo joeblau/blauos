@@ -124,6 +124,9 @@ def export_evidence(output, public_keys):
                 "entropy-receipt.json", "linux-tools.json", "logs/*.log", "openssh/inputs.json",
                 "openssh/provenance.json", "openssh/config.h", "openssh/LICENCE", "capabilities/build.json",
                 "capabilities/provenance.json", "startup/inputs.json", "startup/provenance.json",
+                "commands/build.json", "commands/catalogue.json", "commands/provenance.json",
+                "commands/third-party-notices.txt", "commands/*/third-party-notices.txt",
+                "commands/*/provenance.json", "commands/*/commands.json", "commands/*/inputs.json",
                 "composed/provenance.json", "image/result.json", "image/account.json", "image/assemble.log",
                 "smoke/**/checkpoint.json", "smoke/**/result.json", "smoke/**/serial.log", "smoke/**/probe.log",
                 "smoke/**/*.stdout", "smoke/**/*.stderr", "smoke/**/known_hosts")
@@ -191,7 +194,13 @@ def execute(args):
         verify_entropy_receipt(json.loads((args.output / "entropy-receipt.json").read_text()), args.kernel_sha256, args.loader_sha256)
         sources = args.output / "sources"
         pipeline.python("fetch-ssh-sources", "blauos.py", "fetch", "openssh-portable", "puredarwin-vm-next",
+                        "apple-file_cmds", "apple-libutil", "apple-shell-cmds", "apple-text-commands",
                         "--sources-dir", sources, "--report", args.output / "source-inputs.json", timeout=1800)
+        commands = args.output / "commands"
+        pipeline.python("build-command-tools", "vm/build_commands.py", "--source", sources / "puredarwin-vm-next",
+                        "--file-source", sources / "apple-file_cmds", "--libutil-source", sources / "apple-libutil",
+                        "--shell-source", sources / "apple-shell-cmds", "--text-source", sources / "apple-text-commands",
+                        "--runtime-root", args.root, "--output", commands, timeout=900)
         ssh = args.output / "openssh"
         pipeline.python("build-openssh", "build/openssh.py", "--source", sources / "openssh-portable",
                         "--runtime-root", args.root, "--output", ssh, "--jobs", args.jobs, timeout=1800)
@@ -202,7 +211,10 @@ def execute(args):
         pipeline.python("build-ssh-startup", "vm/build_ssh_start.py", "--runtime-root", args.root,
                         "--output", startup, timeout=300)
         composed_root, provenance = compose(args.root, args.provenance,
-            [(layer / "root", layer / "provenance.json") for layer in (ssh, capability, startup)], args.output / "composed")
+            [(layer / "root", layer / "provenance.json") for layer in (ssh, capability, startup, commands)], args.output / "composed")
+        notice = composed_root / "usr/share/doc/blauos-commands/third-party-notices.txt"
+        notice.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(commands / "third-party-notices.txt", notice)
         pipeline.python("ssh-runtime-audit", "build/runtime.py", "inspect", "--root", composed_root,
                         "--provenance", provenance, "--output", args.output / "runtime-audit.json", timeout=300)
         if json.loads((args.output / "runtime-audit.json").read_text()).get("offline_dependency_closure") is not True:
@@ -251,7 +263,8 @@ def execute(args):
         pipeline.python("two-boot-ssh-acceptance", "vm/ssh_smoke.py", "--image", image, "--image-sha256", image_hash,
                         "--probe", probe, "--guest-ip", args.network[0], "--username", args.username,
                         "--uid", args.uid, "--gid", args.gid, "--identity", identity, "--output", smoke,
-                        "--entropy-device", "--timeout-seconds", args.boot_timeout, timeout=args.boot_timeout * 2 + 300)
+                        "--entropy-device", "--commands-smoke", ROOT / "vm/commands/smoke.sh",
+                        "--timeout-seconds", args.boot_timeout, timeout=args.boot_timeout * 2 + 300)
         checkpoint = json.loads((smoke / "checkpoint.json").read_text())
         if checkpoint.get("passed") is not True:
             raise ValueError("Actual two-boot SSH acceptance did not pass")

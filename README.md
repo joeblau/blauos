@@ -23,6 +23,7 @@ host configuration patch. Physical M1 support remains unverified.
 - [Kernel patch policy](docs/kernel-patches.md)
 - [Virtual baseline](docs/virtualization.md)
 - [Account provisioning and SSH login](docs/ssh-login.md)
+- [Command-line tools and updating an existing VM](docs/commands.md)
 - [Milestone 1 acceptance evidence](docs/milestone-1.md)
 - [Milestone 2 execution record](docs/milestone-2.md)
 - [GitHub roadmap](https://github.com/joeblau/blauos/issues/1)

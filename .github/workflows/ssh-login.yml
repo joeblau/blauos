@@ -36,7 +36,7 @@ concurrency:
 
 jobs:
   build-and-login:
-    name: Source SSH build, account permissions, and two guest logins
+    name: Source commands, SSH, account permissions, and two guest logins
     runs-on: [self-hosted, macOS, ARM64, blauos-native-sdk]
     timeout-minutes: 90
     steps:
