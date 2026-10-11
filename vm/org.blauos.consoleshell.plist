@@ -2,7 +2,7 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0"><dict>
   <key>Label</key><string>org.blauos.consoleshell</string>
-  <key>ProgramArguments</key><array><string>/bin/sh</string><string>-i</string></array>
+  <key>ProgramArguments</key><array><string>/usr/libexec/blauos-console-login</string></array>
   <key>RunAtLoad</key><true/>
   <key>KeepAlive</key><false/>
   <key>StandardInPath</key><string>/dev/console</string>

@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-11",
+  "issues": [
+    "https://github.com/joeblau/blauos/issues/101",
+    "https://github.com/joeblau/blauos/issues/102"
+  ],
+  "subject": "LIVE VirtualBuddy console evidence: guest console keyboard input and host-requested orderly shutdown",
+  "host": "M3 Max, macOS 27.2 (26B5101f), VirtualBuddy 2.1 generic EFI profile via vm/virtualbuddy_console_probe.swift",
+  "image": {
+    "path": ".blauos/build/virtualbuddy-console/image-live3/blauos-arm64.img",
+    "image_sha256": "a440c294325456b9444593afc3466ff7db2af28e9dd3c194bb354de3bb65133e",
+    "kernel_sha256": "b157c2db7b4f229a28b54cc6af8edd7cda639f7eab050ae3c4aee48c7f625d54",
+    "kernel_note": "kernel-v3 collection (all six VirtualBuddy patches including console-input and power-button)",
+    "loader_sha256": "1e754f784114592f28763ca99203d519ca9f195237c16ca97b8af145acdba674",
+    "loader_note": "BOOTAA64-live2.EFI built on the pinned aarch64-linux Nix builder from loader-source-live2: EFI diagnostics + virtualbuddy-platform + console-input + power-button patches plus the RX-notify-after-queue-restore refinement recorded in live/loader-rx-post-driver-ok.patch",
+    "console_shell_job_sha256": "ce43b82e8e411600f3d36b685359d8591738cd31af17d5d9941e04ed14a2f398",
+    "runtime_provenance_sha256": "61df3b2f57a32cf8162e24cc5fd300e644048e0980c4f693f728c266079bab17",
+    "runtime_note": "runtime-final-root composed with the vim-inclusive command toolkit layer .blauos/build/commands/run-1 (41 commands incl. /usr/bin/vim 9.2.1175, tiny features, builtin ansi/vt320/xterm termcap, libSystem-only)",
+    "boot_args": "-v debug=0x218 serial=3 keepsyms=1 no_interrupt_masked_debug=1 gopconsole=1",
+    "assemble_log": ".blauos/build/virtualbuddy-console/image-live3/assemble.log"
+  },
+  "run_1_full_session": {
+    "directory": "full-session/",
+    "probe_command": "virtualbuddy_console_probe <output> run-live3-Disk.img --timeout-seconds 300 --request-stop-after 240 --stop-grace-seconds 60",
+    "serial_log_sha256": "bb6d9aefacfcbb97be9d5d504039c171a347267956ceee372dac739b66e386fb",
+    "result_json_sha256": "53e3cd73a7b83e9854e4c06264e8e19122a841a86017d1063597ba077e115183",
+    "events": [
+      "configuration-validated 19:13:55Z",
+      "framework-start-succeeded 19:13:55Z",
+      "host-request-stop (VZVirtualMachine.requestStop) 19:17:56Z",
+      "guest-stopped after_request_stop=true 19:18:16Z"
+    ],
+    "input_evidence": [
+      "Guest booted to the standalone demo; the org.blauos.consoleshell job (PID 5) ran an interactive /bin/sh on /dev/console; its '# ' prompt appears on the serial log.",
+      "Typed command line 'echo LIVE_INPUT_MARK_A7' + CR (inject-01): the shell executed it; the output line LIVE_INPUT_MARK_A7 appears in the serial log after the tty echo of the command.",
+      "Ctrl-C while 'cat' was the foreground process (inject-02/03): NOT effective. The byte was consumed by the line discipline (echoctl printed ^C; it is not inserted as data), but cat kept running and the following typed lines (echo AFTER_CTRL_C_OK, export TERM=ansi, vim ..., the insert text, :wq) were swallowed by cat's stdin and appear twice in the log (tty echo + cat copying stdin to stdout). Interpretation: the interrupt character reaches the line discipline, but no SIGINT is delivered to the foreground process - consistent with the console session having no established foreground process group for signal delivery. SIGINT delivery is a genuine remaining gap, not a documentation error.",
+      "Ctrl-D EOF (inject-11): effective. cat exited on EOF and the shell prompt '# ' returned.",
+      "Because cat was still foreground, the vim session in run 1 never started; vim evidence is from run 2."
+    ],
+    "shutdown_evidence": [
+      "Guest serial: 'PDArmPlatformExpert: host requested stop; sending SIGTERM to PID 1' (power-button patch polling PL061 0x20060000 irq 37 pin 6, announced at boot line 133).",
+      "launchd: 'Userspace shutdown begun' -> consoleshell (PID 5) was still running; launchd waited its 20-second exit timeout, logged 'Exit timeout elapsed (20 seconds). Killing', then 'Userspace shutdown finished' (~20 seconds).",
+      "Kernel: reboot(RB_HALT), vfs_unmountall, 'CPU halted', 'PDArmPlatformExpert: QEMU PSCI HVC SYSTEM_OFF'.",
+      "Host: public guestDidStop callback 20 seconds after requestStop; probe exit 0; no orderly-shutdown-timeout, no force-stop-recovery."
+    ]
+  },
+  "run_2_vim_and_eof": {
+    "directory": "run-2/",
+    "probe_command": "virtualbuddy_console_probe <output> run-live4-Disk.img --timeout-seconds 260 --request-stop-after 200 --stop-grace-seconds 60",
+    "serial_log_sha256": "177b6bf3298df948af16b9e814d6be3e520f5be090f155f48abc183c69ae0d1e",
+    "result_json_sha256": "defb30e7237cb2bbf74d97ab837f0bd61ffa1a08b9253fbe1614ef29b9241126",
+    "events": [
+      "configuration-validated 19:19:25Z",
+      "framework-start-succeeded 19:19:25Z",
+      "host-request-stop (VZVirtualMachine.requestStop) 19:22:45Z",
+      "guest-stopped after_request_stop=true 19:22:46Z"
+    ],
+    "input_evidence": [
+      "Sanity 'echo RUN2_SHELL_OK' executed; output line present.",
+      "Ctrl-C alone at the shell prompt (inject-02): echoed as ^C and consumed by the line discipline; the next command 'echo AFTER_PROMPT_CTRL_C' executed uncorrupted (output line present). At an idle prompt this is indistinguishable from a normal line-abort; run 1 shows the same byte does not interrupt a foreground child.",
+      "Full-screen vim over the console (TERM=ansi, builtin termcap): vim started (E1187 'Failed to source defaults.vim' - expected, the tiny toolkit vim ships no runtime files), drew a full 24-line screen (ESC[H ESC[2J, 22 tilde lines, status line '\" /tmp/live-vim-edit-2.txt\" [New File]'), accepted insert-mode text ('i' + sentence + CR), accepted ESC then ':wq' (2.5 s gap to exceed ttimeoutlen), and reported '2 lines, 60 bytes written'.",
+      "Verification: 'cat /tmp/live-vim-edit-2.txt' printed the exact inserted sentence 'Second run: full-screen vim over the VirtualBuddy console.' as shell-command output.",
+      "Ctrl-D EOF at the shell prompt (inject-10): the interactive shell exited; the serial log ends at '# ^D' and the later shutdown shows only mDNSResponder as a remaining job (consoleshell already gone), confirming EOF terminated the shell."
+    ],
+    "shutdown_evidence": [
+      "Same guest chain as run 1: 'host requested stop; sending SIGTERM to PID 1', launchd userspace shutdown (0 seconds this time - no lingering console shell), reboot(RB_HALT), unmounts, PSCI SYSTEM_OFF.",
+      "Host: guestDidStop 1 second after requestStop; probe exit 0."
+    ]
+  },
+  "loader_fold": {
+    "status": "folded and bit-verified",
+    "detail": "live/loader-rx-post-driver-ok.patch is folded into vm/patches/xnu-loader-virtualbuddy-console-input.patch (new sha256 ae921501059e146822f3aad5d52ea7870d5b676e29290b03d99d265f890f16ef). The documented series (xnu-loader-efi-diagnostics, xnu-loader-virtualbuddy-platform, folded console-input, xnu-loader-virtualbuddy-power-button) applied to the pinned loader source reproduces loader-source-live2 byte-for-byte, and the rebuilt BOOTAA64.EFI from that series (.blauos/build/virtualbuddy-console/BOOTAA64-folded.EFI, nix store /nix/store/av3cbkid8s97j0b7126flhbwdfi8vhws-xnu-loader-0.1) has sha256 1e754f784114592f28763ca99203d519ca9f195237c16ca97b8af145acdba674 - identical to the live-tested BOOTAA64-live2.EFI."
+  },
+  "sigint_fix_run_3": {
+    "directory": "run-3/",
+    "mechanism": "Root cause of the run-1 Ctrl-C gap: launchd opens job descriptors with O_NOCTTY before setsid() (launchd core.c job_setup_fd), so the consoleshell's session never acquired /dev/console as controlling terminal; the console tty's t_pgrp stayed NULL and tty_pgsignal delivered VINTR's SIGINT to no process group. The kernel line discipline was already correct. Fix: getty/login-style userspace binding - vm/console_login.c (built by scripts/vm/build_console_login.py into usr/libexec/blauos-console-login, sha256 c1a2226c875e93fb81c1dd472ff60786a3efeaa595c8707efdc35ef411c7dbe5, libSystem-only) opens /dev/console without O_NOCTTY, issues TIOCSCTTY and tcsetpgrp, then execs /bin/sh -i as a login shell. vm/org.blauos.consoleshell.plist now runs the launcher (job sha256 3c8e70bc9af588e165f4ea73deafc9d50eb93482346df3ea65b2e3343a0750b0).",
+    "image": ".blauos/build/virtualbuddy-console/image-live4/blauos-arm64.img sha256 19cd33a9f32c42b768f81e15fa9dacdd87d38b81a4205783ac52ab7a903963a9 (same loader and kernel hashes as run 1/2; runtime provenance ad463963... adds the console-login layer)",
+    "probe_command": "virtualbuddy_console_probe <output> run-live5-Disk.img --timeout-seconds 260 --request-stop-after 200 --stop-grace-seconds 60",
+    "serial_log_sha256": "34402395b25dc122098eb17f1e4552d349d9f8e89292d7c6de5af0e91e74498f",
+    "result_json_sha256": "5d7937441364bd7ae4ce2cda7b460ba7a6aab76710cc19f1345dab10b6de7cbf",
+    "serial_shows": [
+      "console-login succeeded (no BLAUOS_CONSOLE_LOGIN fail line anywhere; shell prompt present)",
+      "foreground 'cat' + Ctrl-C: '^C' echoed, the shell prompt '# ' returned immediately, and the next typed command 'echo CAT_INTERRUPTED_OK' executed with output - SIGINT now reaches the foreground process (contrast run 1: cat kept swallowing input until EOF)",
+      "vim insert mode + Ctrl-C: vim left insert mode (its SIGINT handler); the following ':wq' executed as a normal-mode command and wrote exactly the inserted sentence ('2 lines, 56 bytes written'); 'cat /tmp/run3-vim.txt' printed 'Run three: SIGINT reaches the console foreground pgrp.' with no stray bytes",
+      "Ctrl-D EOF exited the shell ('# ^D' at end of session)",
+      "regression: host-request-stop at 19:46:38Z produced guest-stopped after_request_stop=true in the same second with the full orderly chain (SIGTERM to PID 1, launchd shutdown, reboot(RB_HALT), vfs_unmountall, PSCI SYSTEM_OFF)"
+    ]
+  },
+  "sibling_checkpoint": "checkpoint.json (same directory) records the companion runs input-run, input-run2 and shutdown-run on image b7030b70 (no vim layer) by a concurrent session; its Ctrl-C interpretation has been corrected there to match these runs",
+  "supersedes": "nothing in this directory; the empty serial.log noted in the session handoff for input-run predates that run's completion by the concurrent session",
+  "honest_limitations": [
+    "SIGINT (Ctrl-C) is not delivered to foreground guest processes over the console path; tracked as the remaining gap for #101.",
+    "vim reports E1187 because the tiny toolkit build has no runtime files (defaults.vim); editing, screen drawing and file writing all worked regardless.",
+    "These are VM results on VirtualBuddy's generic EFI platform; physical Apple Silicon Gate 2 is not run."
+  ],
+  "physical_gate_passed": false
+}

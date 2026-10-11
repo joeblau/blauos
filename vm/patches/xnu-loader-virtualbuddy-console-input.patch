@@ -29,10 +29,10 @@ index a715872..11fe9c8 100644
  #endif
    dt_prop_str(ctx, root, "model", "ACPI");
 diff --git a/src/vb_platform.c b/src/vb_platform.c
-index d7b10ac..ed4c3d0 100644
+index d7b10ac..0abd2e8 100644
 --- a/src/vb_platform.c
 +++ b/src/vb_platform.c
-@@ -143,7 +143,28 @@ EFI_STATUS vb_console_prepare(AppContext *ctx) {
+@@ -143,10 +143,31 @@ EFI_STATUS vb_console_prepare(AppContext *ctx) {
    UINT16 notify_offset=r16(common,30);if(multiplier&&notify_offset>(~(UINT64)0-notify_base)/multiplier)return EFI_COMPROMISED_DATA;
    if ((UINT64)notify_offset*multiplier > (UINT64)notify_length-2) return EFI_COMPROMISED_DATA;
    notify=(VOID *)(UINTN)(notify_base+(UINT64)notify_offset*multiplier);
@@ -52,13 +52,16 @@ index d7b10ac..ed4c3d0 100644
 +        w16(rx,0x100,1);w16(rx,0x104,0);__asm__ volatile("dsb sy":::"memory");w16(rx,0x102,1);
 +        w16(common,28,1);__asm__ volatile("dsb sy":::"memory");
 +        gVB.console_rx_notify=notify_base+(UINT64)rx_notify_offset*multiplier;gVB.console_rx_queue=rxphysical;
-+        *(volatile UINT16 *)gVB.console_rx_notify=0;
-+        log_info(L"Virtio console RX prepared notify=0x%lx queue=0x%lx\r\n",gVB.console_rx_notify,gVB.console_rx_queue);
 +      }
 +    }
 +  }
 +  w16(common,22,1); /* Restore the TX queue selection. */
 +  common[20]=15;__asm__ volatile("dsb sy":::"memory");
++  if(gVB.console_rx_notify){*(volatile UINT16 *)gVB.console_rx_notify=0;__asm__ volatile("dsb sy":::"memory");}
    gVB.console_common=(UINT64)(UINTN)common;gVB.console_notify=(UINT64)(UINTN)notify;gVB.console_queue=physical;
    sent=0;console_failed=FALSE;
    log_info(L"Virtio console TX prepared common=0x%lx notify=0x%lx queue=0x%lx\r\n",gVB.console_common,gVB.console_notify,gVB.console_queue);
++  if(gVB.console_rx_queue)log_info(L"Virtio console RX prepared notify=0x%lx queue=0x%lx\r\n",gVB.console_rx_notify,gVB.console_rx_queue);
+   return EFI_SUCCESS;
+ }
+ VOID vb_console_putc(CHAR8 c) {

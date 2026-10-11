@@ -1,0 +1,24 @@
+diff --git a/src/proto/termlib.pro b/src/proto/termlib.pro
+index 4a7d918..3906d83 100644
+--- a/src/proto/termlib.pro
++++ b/src/proto/termlib.pro
+@@ -4,5 +4,5 @@ int tgetflag(char *id);
+ int tgetnum(char *id);
+ char *tgetstr(char *id, char **buf);
+ char *tgoto(char *cm, int col, int line);
+-int tputs(char *cp, int affcnt, void (*outc)(unsigned int));
++int tputs(char *cp, int affcnt, int (*outc)(int));
+ // vim: ft=c
+diff --git a/src/termlib.c b/src/termlib.c
+index c063950..d0f92ad 100644
+--- a/src/termlib.c
++++ b/src/termlib.c
+@@ -543,7 +543,7 @@ long _bauds[16]={
+ tputs(
+     char *cp,				// string to print
+     int affcnt,				// Number of lines affected
+-    void (*outc)(unsigned int))		// routine to output 1 character
++    int (*outc)(int))		// routine to output 1 character
+ {
+     long    frac,			// 10^(#digits after decimal point)
+ 	counter,			// digits

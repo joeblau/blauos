@@ -121,6 +121,7 @@ def export_evidence(output, public_keys):
     export = output / "evidence"
     export.mkdir(exist_ok=True)
     patterns = ("result.json", "host.json", "baseline-audit.json", "runtime-audit.json", "source-inputs.json",
+                "archive-inputs.json",
                 "entropy-receipt.json", "linux-tools.json", "logs/*.log", "openssh/inputs.json",
                 "openssh/provenance.json", "openssh/config.h", "openssh/LICENCE", "capabilities/build.json",
                 "capabilities/provenance.json", "startup/inputs.json", "startup/provenance.json",
@@ -196,10 +197,14 @@ def execute(args):
         pipeline.python("fetch-ssh-sources", "blauos.py", "fetch", "openssh-portable", "puredarwin-vm-next",
                         "apple-file_cmds", "apple-libutil", "apple-shell-cmds", "apple-text-commands",
                         "--sources-dir", sources, "--report", args.output / "source-inputs.json", timeout=1800)
+        inputs_dir = args.output / "inputs"
+        pipeline.python("fetch-vim-archive", "blauos.py", "fetch-archives", "vim-9.2.1175",
+                        "--inputs-dir", inputs_dir, "--report", args.output / "archive-inputs.json", timeout=600)
         commands = args.output / "commands"
         pipeline.python("build-command-tools", "vm/build_commands.py", "--source", sources / "puredarwin-vm-next",
                         "--file-source", sources / "apple-file_cmds", "--libutil-source", sources / "apple-libutil",
                         "--shell-source", sources / "apple-shell-cmds", "--text-source", sources / "apple-text-commands",
+                        "--vim-archive", inputs_dir / "vim-9.2.1175.tar.gz",
                         "--runtime-root", args.root, "--output", commands, timeout=900)
         ssh = args.output / "openssh"
         pipeline.python("build-openssh", "build/openssh.py", "--source", sources / "openssh-portable",

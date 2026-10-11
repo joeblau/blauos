@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "fifo": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/virtualization/virtualbuddy-console/live/run-3/console-input.fifo",
+  "frames": [
+    {
+      "frame": "command:vim /tmp/run3-vim.txt",
+      "bytes": 22,
+      "sha256": "73b8e4e1c0ab0bfd91963c3eb40a2816f51fe3b2893146a378b7b992027eec79"
+    }
+  ],
+  "guest_execution": "not established by host-side injection"
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "name": "vim",
+  "summary": "Tiny-feature Vim editor for the server image, built from the pinned vim/vim release tarball with the tracked vm/commands/vim compatibility configuration, linking only the independent runtime's libSystem.",
+  "license": {
+    "spdx": null,
+    "notes": "Vim is distributed under the Vim license (charityware), recorded in sources.lock.json as 'Vim license (charityware); see archive runtime/doc/uganda.txt and README.md'. The SPDX license-list identifier is Vim, but this repository's restricted SPDX validator does not include it yet, so SPDX stays null and the archive notices govern.",
+    "determined_from": "sources.lock.json#archives[name=vim-9.2.1175].license and archive runtime/doc/uganda.txt"
+  },
+  "sources": [
+    {
+      "kind": "archive",
+      "lock_name": "vim-9.2.1175",
+      "url": "https://github.com/vim/vim/archive/refs/tags/v9.2.1175.tar.gz",
+      "filename": "vim-9.2.1175.tar.gz",
+      "sha256": "dda63db3bdb752a23d436bbc59e06d3bf22ab858735896df9765c41e6d5d6577"
+    }
+  ],
+  "depends": ["runtime"],
+  "builder": {
+    "script": "scripts/vm/build_vim_commands.py",
+    "command": [
+      "python3", "scripts/vm/build_vim_commands.py",
+      "--archive", ".blauos/inputs/vim-9.2.1175.tar.gz",
+      "--runtime-root", ".blauos/build/runtime/root",
+      "--output", ".blauos/build/commands/vim-run-1"
+    ],
+    "patches": [
+      "vm/commands/vim/termlib-tputs.patch"
+    ]
+  },
+  "outputs": [
+    "usr/bin/vim"
+  ],
+  "isolation": "The archive SHA-256 is verified against sources.lock.json before and after compilation; the tracked config.h/osdef.h/patch amendments are explicit hashed build inputs. The executable links the independent runtime's libSystem only, never macOS host libraries, and autoconf host probing is not used.",
+  "rebuild": {
+    "clean_rebuild_verified": false,
+    "note": "Pins are validated by scripts/build/packages.py. Guest acceptance of the built editor is recorded in evidence/virtualization/command-tools; a clean-environment rebuild comparison is remaining work."
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "fifo": "evidence/virtualization/virtualbuddy-console/live/input-run/vm/console-input.fifo",
+  "frames": [
+    {
+      "frame": "type:echo blauX",
+      "bytes": 10,
+      "sha256": "ab8cb29f7f6980443a1c2057410a9f38c0bfb8e9cee5aa53fcfa7011c8459755"
+    },
+    {
+      "frame": "backspace",
+      "bytes": 1,
+      "sha256": "620bfdaa346b088fb49998d92f19a7eaf6bfc2fb0aee015753966da1028cb731"
+    },
+    {
+      "frame": "fix:os",
+      "bytes": 3,
+      "sha256": "f1e07fffbc84836d237b42e9c34f19f74b6839690bbf89caf136d5f346cbbd46"
+    }
+  ],
+  "guest_execution": "not established by host-side injection",
+  "note": "line editing: typed 'echo blauX', erased X with backspace, typed 'os' + CR"
+}

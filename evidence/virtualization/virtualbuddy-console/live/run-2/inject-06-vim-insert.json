@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "fifo": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/virtualization/virtualbuddy-console/live/run-2/console-input.fifo",
+  "frames": [
+    {
+      "frame": "command:iSecond run: full-screen vim over the VirtualBuddy console.",
+      "bytes": 60,
+      "sha256": "d9e3f7017d01a8f77652082b0a503a2cc3100117b75496c3d4c250b5b5a05d69"
+    }
+  ],
+  "guest_execution": "not established by host-side injection"
+}

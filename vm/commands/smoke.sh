@@ -4,7 +4,7 @@ set -eu
 LC_ALL=C
 export LC_ALL
 
-for tool in ls cat cp mv rm mkdir rmdir ln chmod touch stat du df head tail wc cut tr uniq tee printenv pwd basename dirname mktemp id whoami groups env date ps grep sed comm paste rev fold expand unexpand hostname; do
+for tool in ls cat cp mv rm mkdir rmdir ln chmod touch stat du df head tail wc cut tr uniq tee printenv pwd basename dirname mktemp id whoami groups env date ps grep sed comm paste rev fold expand unexpand hostname vim; do
     command -v "$tool" >/dev/null || { printf 'Missing command: %s\n' "$tool" >&2; exit 1; }
 done
 
@@ -96,4 +96,40 @@ for option in -J -M -X -Z; do
 done
 if sed 's/[invalid/replaced/' "$work/one/input" > /dev/null 2>&1; then exit 1; fi
 printf 'BLAUOS_COMMAND_CHECK search pass\n'
+
+# Editor checks use non-interactive ex-script mode, which works over a plain
+# serial line without terminal capabilities. Full-screen mode needs the
+# interactive serial console with TERM set to one of Vim's builtin termcap
+# entries (ansi, vt320, vt52, xterm, or a compatible name) and is exercised
+# manually at the console, not by this script.
+vim --version | grep -q 'Vi IMproved'
+printf 'alpha\nbeta\n' > "$work/edit"
+vim -es -u NONE -i NONE "$work/edit" <<'VIMSCRIPT'
+%s/beta/changed/
+w!
+q!
+VIMSCRIPT
+[ "$(cat "$work/edit")" = "$(printf 'alpha\nchanged')" ]
+printf 'gamma\n' > "$work/append"
+vim -es -u NONE -i NONE "$work/append" <<'VIMSCRIPT'
+$append
+delta
+.
+w!
+q!
+VIMSCRIPT
+[ "$(cat "$work/append")" = "$(printf 'gamma\ndelta')" ]
+printf 'keep\ndiscard\n' > "$work/keep"
+vim -es -u NONE -i NONE "$work/keep" <<'VIMSCRIPT'
+2delete
+q!
+VIMSCRIPT
+[ "$(cat "$work/keep")" = "$(printf 'keep\ndiscard')" ]
+vim -es -u NONE -i NONE "$work/keep" <<'VIMSCRIPT'
+2delete
+w!
+q!
+VIMSCRIPT
+[ "$(cat "$work/keep")" = keep ]
+printf 'BLAUOS_COMMAND_CHECK editor pass\n'
 printf 'BLAUOS_COMMAND_CHECK all pass\n'

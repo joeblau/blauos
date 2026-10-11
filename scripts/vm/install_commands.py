@@ -15,7 +15,7 @@ from ssh_smoke import connection_options
 from ssh_workflow import compose, digest, write_json
 
 ROOT = Path(__file__).resolve().parents[2]
-CHECKS = {"files", "text", "identity", "search", "all"}
+CHECKS = {"files", "text", "identity", "search", "editor", "all"}
 
 
 def command_artifacts(root, provenance):

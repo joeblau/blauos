@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "fifo": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/virtualization/virtualbuddy-console/live/full-session/console-input.fifo",
+  "frames": [
+    {
+      "frame": "command:iTyped live through the VirtualBuddy console keyboard path.",
+      "bytes": 60,
+      "sha256": "7f5c170e1f6b6f71ee24282fef495b6c2ce4b9bc03ae4578f5a2fc0b9dae7b03"
+    }
+  ],
+  "guest_execution": "not established by host-side injection"
+}

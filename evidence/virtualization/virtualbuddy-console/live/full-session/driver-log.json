@@ -1,0 +1,122 @@
+[
+  {
+    "event": "guest-boot-marker-seen",
+    "serial_bytes": 13184
+  },
+  {
+    "receipt": "inject-01-typed-command.json",
+    "commands": [
+      "echo LIVE_INPUT_MARK_A7"
+    ],
+    "controls": [],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "step": "typed-command",
+    "marker_in_serial": true
+  },
+  {
+    "receipt": "inject-02-cat.json",
+    "commands": [
+      "cat"
+    ],
+    "controls": [],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "receipt": "inject-03-ctrl-c.json",
+    "commands": [],
+    "controls": [
+      "ctrl-c"
+    ],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "receipt": "inject-04-after-ctrl-c.json",
+    "commands": [
+      "echo AFTER_CTRL_C_OK"
+    ],
+    "controls": [],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "step": "ctrl-c",
+    "after_marker_in_serial": true
+  },
+  {
+    "receipt": "inject-05-term.json",
+    "commands": [
+      "export TERM=ansi"
+    ],
+    "controls": [],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "receipt": "inject-06-vim-start.json",
+    "commands": [
+      "vim /tmp/live-console-edit.txt"
+    ],
+    "controls": [],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "receipt": "inject-07-vim-insert.json",
+    "commands": [
+      "iTyped live through the VirtualBuddy console keyboard path."
+    ],
+    "controls": [],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "receipt": "inject-08-vim-escape.json",
+    "commands": [],
+    "controls": [
+      "escape"
+    ],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "receipt": "inject-09-vim-wq.json",
+    "commands": [
+      ":wq"
+    ],
+    "controls": [],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "receipt": "inject-10-vim-verify.json",
+    "commands": [
+      "cat /tmp/live-console-edit.txt"
+    ],
+    "controls": [],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "step": "vim-session",
+    "file_content_in_serial": true
+  },
+  {
+    "receipt": "inject-11-eof.json",
+    "commands": [],
+    "controls": [
+      "eof"
+    ],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "step": "eof-sent",
+    "elapsed_since_boot_marker": 42.0,
+    "serial_bytes": 13602
+  }
+]
