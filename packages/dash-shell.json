@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "name": "dash-shell",
+  "summary": "POSIX shell for the server image, cross-built from pinned dash v0.5.13 against the independent Darwin runtime.",
+  "license": {
+    "spdx": "BSD-3-Clause AND GPL-2.0-or-later",
+    "notes": "sources.lock.json records 'BSD-3-Clause and generated signal-name tooling GPL-2.0-or-later notices; see COPYING and source notices'. The GPL-2.0-or-later component is build-time signal-name generation tooling.",
+    "determined_from": "sources.lock.json#sources[name=dash].license"
+  },
+  "sources": [
+    {
+      "kind": "git",
+      "lock_name": "dash",
+      "url": "https://git.kernel.org/pub/scm/utils/dash/dash.git",
+      "revision": "1365bb36a92656eb52b64cb04d249c47a1d3c4cf",
+      "tree": "4e35b89352208719b04855c46800705db110e035",
+      "tag": "v0.5.13"
+    }
+  ],
+  "depends": ["runtime"],
+  "builder": {
+    "script": "scripts/vm/build_shell.py",
+    "command": [
+      "python3", "scripts/vm/build_shell.py",
+      "--runtime-root", ".blauos/build/runtime",
+      "--output", ".blauos/build/shell"
+    ],
+    "patches": []
+  },
+  "outputs": ["bin/sh"],
+  "isolation": "Cross-configured against the source-built runtime; the prepared source must match upstream tracked files and the locked revision. Target programs are never executed on the build host.",
+  "rebuild": {
+    "clean_rebuild_verified": false,
+    "note": "Pins are validated by scripts/build/packages.py. A clean-environment rebuild with artifact comparison against a recorded build_shell.py provenance receipt is remaining work."
+  }
+}

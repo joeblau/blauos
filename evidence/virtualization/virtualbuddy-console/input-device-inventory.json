@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "issue": "https://github.com/joeblau/blauos/issues/101",
+  "date": "2026-10-11",
+  "subject": "Input devices exposed by the VirtualBuddy 2.1 generic EFI profile",
+  "host_configuration_source": "vm/virtualbuddy_probe.swift (accepted probe) and vm/virtualbuddy_console_probe.swift use identical device configuration",
+  "devices": [
+    {
+      "host_api": "VZUSBKeyboardConfiguration",
+      "guest_presentation": "USB HID keyboard behind the implicit USB controller; no explicit USB controller is configured by the host profile",
+      "guest_driver_status": "unsupported: the published PureDarwin source has no XHCI or HID keyboard driver for this platform",
+      "decision": "inventoried, not selected"
+    },
+    {
+      "host_api": "VZUSBScreenCoordinatePointingDeviceConfiguration",
+      "guest_presentation": "USB HID absolute pointer",
+      "guest_driver_status": "unsupported: no XHCI or HID driver",
+      "decision": "inventoried, not selected; the text console does not consume pointer input"
+    },
+    {
+      "host_api": "VZVirtioConsoleDeviceConfiguration with VZSpiceAgentPortAttachment",
+      "guest_presentation": "virtio multiport console device (virtio device id 0x1043 feature bit 1)",
+      "guest_driver_status": "deliberately skipped by the loader (single-port console only)",
+      "decision": "not an input path"
+    },
+    {
+      "host_api": "VZVirtioConsoleDeviceSerialPortConfiguration with VZFileHandleSerialPortAttachment",
+      "guest_presentation": "single-port virtio console; port 0 queue 1 is the accepted TX path, queue 0 is the RX input path",
+      "guest_driver_status": "TX accepted since the platform checkpoint; RX implemented by vm/patches/xnu-loader-virtualbuddy-console-input.patch and vm/patches/puredarwin-virtualbuddy-console-input.patch",
+      "decision": "SELECTED supported virtual input profile: the backend supplies input bytes through the attachment's read file handle; vm/virtualbuddy_console_probe.swift attaches a host FIFO (console-input.fifo) and scripts/vm/console_input.py writes validated frames"
+    },
+    {
+      "host_api": "VZVirtioGraphicsDeviceConfiguration scanout 1280x800",
+      "guest_presentation": "virtio GPU framebuffer, output only",
+      "guest_driver_status": "accepted text console output",
+      "decision": "output only"
+    }
+  ],
+  "guest_input_path": "RX virtqueue -> pe_serial rd0/rr0 -> serial_keyboard_poll (16 ms) -> cons_cinput -> console tty line discipline -> /dev/console; Ctrl-C (0x03) and Ctrl-D EOF (0x04) are interpreted by the existing tty line discipline, not by the driver",
+  "no_proprietary_runtime": "input path uses only public Virtualization.framework attachments and source-built guest code",
+  "guest_execution": "not established by this inventory",
+  "physical_gate_passed": false
+}

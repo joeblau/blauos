@@ -1,0 +1,87 @@
+diff --git a/src/Kernel/xnu/pexpert/arm/pe_serial.c b/src/Kernel/xnu/pexpert/arm/pe_serial.c
+index c85c21d2..349785ad 100644
+--- a/src/Kernel/xnu/pexpert/arm/pe_serial.c
++++ b/src/Kernel/xnu/pexpert/arm/pe_serial.c
+@@ -837,10 +837,50 @@ static volatile uint16_t *vb_console_notify;
+ static uint64_t vb_console_ring_phys;
+ static uint16_t vb_console_sent;
+ static bool vb_console_failed;
++/* Optional input queue (queue 0) prepared by the loader's console-input
++ * patch; the six-word form of blauos,virtio-console carries it. One posted
++ * 256-byte device-writable buffer is drained and reposted per character. */
++static volatile uint8_t *vb_rx_ring;
++static volatile uint16_t *vb_rx_notify;
++static uint64_t vb_rx_ring_phys;
++static uint16_t vb_rx_consumed;
++static uint16_t vb_rx_pos;
++static uint16_t vb_rx_len;
++static bool vb_rx_failed;
+ static void vb_console_init(void) { }
+ static int vb_console_ready(void) { return 1; }
+-static int vb_console_rx_ready(void) { return 0; }
+-static int vb_console_rx(void) { return -1; }
++static void vb_rx_repost(void) {
++	*(volatile uint64_t *)(vb_rx_ring+0)=vb_rx_ring_phys+0x300;
++	*(volatile uint32_t *)(vb_rx_ring+8)=0x100;
++	*(volatile uint16_t *)(vb_rx_ring+12)=2; /* VIRTQ_DESC_F_WRITE */
++	*(volatile uint16_t *)(vb_rx_ring+14)=0;
++	uint16_t idx=*(volatile uint16_t *)(vb_rx_ring+0x102);
++	*(volatile uint16_t *)(vb_rx_ring+0x104+2*(idx%8))=0;
++	__asm__ volatile("dsb oshst":::"memory");
++	*(volatile uint16_t *)(vb_rx_ring+0x102)=idx+1;
++	__asm__ volatile("dsb oshst":::"memory");
++	*vb_rx_notify=0;
++}
++static int vb_console_rx_ready(void) {
++	if (vb_rx_pos<vb_rx_len) return 1;
++	if (!vb_rx_ring || vb_rx_failed) return 0;
++	__asm__ volatile("dsb oshld":::"memory");
++	if (*(volatile uint16_t *)(vb_rx_ring+0x202)==vb_rx_consumed) return 0;
++	volatile uint8_t *elem=vb_rx_ring+0x204+8*(vb_rx_consumed%8);
++	uint32_t id=*(volatile uint32_t *)elem;
++	uint32_t len=*(volatile uint32_t *)(elem+4);
++	vb_rx_consumed++;
++	if (id!=0 || len>0x100) { vb_rx_failed=true; return 0; }
++	vb_rx_len=(uint16_t)len;
++	vb_rx_pos=0;
++	return vb_rx_len>0;
++}
++static int vb_console_rx(void) {
++	if (!vb_console_rx_ready()) return -1;
++	int c=vb_rx_ring[0x300+vb_rx_pos++];
++	if (vb_rx_pos>=vb_rx_len) { vb_rx_len=0; vb_rx_repost(); }
++	return c;
++}
+ static void vb_console_tx(int c) {
+ 	if (!vb_console_ring || vb_console_failed) return;
+ 	vb_console_ring[0x300]=(uint8_t)c;
+@@ -907,7 +947,7 @@ serial_init(void)
+ 	    vb_length==sizeof(uint32_t) && *(const uint32_t *)vb_flag==1) {
+ 		const void *vb_data=NULL;
+ 		if (SecureDTGetProperty(vb_root,"blauos,virtio-console",&vb_data,&vb_length)!=kSuccess ||
+-		    vb_length!=4*sizeof(uint64_t)) return 0;
++		    (vb_length!=4*sizeof(uint64_t) && vb_length!=6*sizeof(uint64_t))) return 0;
+ 		const uint64_t *v=vb_data;
+ 		if(!v[0]||!v[1]||!v[2]||v[3]!=0x4000||(v[2]&0x3fff))return 0;
+ 		vb_console_ring_phys=v[2];
+@@ -916,6 +956,20 @@ serial_init(void)
+ 		if(!vb_console_ring||!vb_console_notify)return 0;
+ 		vb_console_sent=*(volatile uint16_t *)(vb_console_ring+0x102);
+ 		vb_console_failed=false;
++		if (vb_length==6*sizeof(uint64_t) && v[4] && v[5] && !(v[5]&0x3fff)) {
++			vb_rx_ring_phys=v[5];
++			vb_rx_ring=(volatile uint8_t *)ml_static_ptovirt(v[5]);
++			vb_rx_notify=(volatile uint16_t *)ml_io_map(v[4],sizeof(uint16_t));
++			if (vb_rx_ring && vb_rx_notify) {
++				vb_rx_consumed=*(volatile uint16_t *)(vb_rx_ring+0x202);
++				vb_rx_pos=0;
++				vb_rx_len=0;
++				vb_rx_failed=false;
++			} else {
++				vb_rx_ring=NULL;
++				vb_rx_notify=NULL;
++			}
++		}
+ 		register_serial_functions(&vb_console_functions);uart_initted=1;return 1;
+ 	}
+ #endif

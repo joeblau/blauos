@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "name": "kernel",
+  "summary": "PureDarwin ARM64 VIRT kernel and headless kernel extensions built from the pinned PureDarwin next-branch snapshot with the reviewed CMake profile.",
+  "license": {
+    "spdx": null,
+    "notes": "sources.lock.json records 'Mixed; component license notices apply' for puredarwin-vm-next. Per-component notices govern; see docs/audits/puredarwin-reuse.md before redistribution.",
+    "determined_from": "sources.lock.json#sources[name=puredarwin-vm-next].license"
+  },
+  "sources": [
+    {
+      "kind": "git",
+      "lock_name": "puredarwin-vm-next",
+      "url": "https://github.com/PureDarwin/PureDarwin.git",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "tree": "ed2345d7f3c11dad2e7f6ffeeb377adc789b12b8",
+      "tag": "next snapshot"
+    }
+  ],
+  "depends": ["kernel-collection-tools"],
+  "builder": {
+    "script": "scripts/build/xnu.py",
+    "command": [
+      "python3", "scripts/build/xnu.py",
+      "--puredarwin", "--machine", "VIRT", "--with-kexts",
+      "--source-name", "puredarwin-vm-next"
+    ],
+    "patches": []
+  },
+  "outputs": ["kernel.development.arm64.VIRT"],
+  "isolation": "Source checkout must match the locked revision and tree; patches apply only to a fresh isolated overlay. Compilation uses the recorded host toolchain against the host SDK; no host runtime is linked into the kernel.",
+  "rebuild": {
+    "clean_rebuild_verified": false,
+    "note": "Recipe and pins are validated by scripts/build/packages.py. A clean-environment rebuild with artifact comparison against a recorded receipt (xnu.py result.json) is remaining work; compile evidence is not boot acceptance."
+  }
+}

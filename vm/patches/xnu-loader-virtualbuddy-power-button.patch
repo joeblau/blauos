@@ -1,0 +1,101 @@
+diff --git a/include/vb_platform.h b/include/vb_platform.h
+index 71bc083..74325b7 100644
+--- a/include/vb_platform.h
++++ b/include/vb_platform.h
+@@ -5,7 +5,8 @@ typedef struct {
+   UINT64 ram_base, ram_end, gicd_base, gicr_base, gicr_size, ecam_base;
+   UINT64 pci_memory_base, pci_memory_size, console_common, console_notify, console_queue;
+   UINT64 console_rx_notify, console_rx_queue;
+-  UINT32 timer_irq, first_bus, last_bus;
++  UINT64 power_base;
++  UINT32 timer_irq, first_bus, last_bus, power_irq, power_pin;
+ } VBPlatform;
+ extern VBPlatform gVB;
+ EFI_STATUS vb_discover(AppContext *ctx);
+diff --git a/src/devtree.c b/src/devtree.c
+index 11fe9c8..ed721f0 100644
+--- a/src/devtree.c
++++ b/src/devtree.c
+@@ -1380,6 +1380,10 @@ EFI_STATUS dt_build(
+     dt_prop(ctx,root,"blauos,gic",gic,sizeof(gic));
+     if(gVB.console_queue)dt_prop(ctx,root,"blauos,virtio-console",console,
+       gVB.console_rx_queue?sizeof(console):4*sizeof(UINT64));
++    if(gVB.power_base) {
++      UINT64 power[3]={gVB.power_base,gVB.power_irq,gVB.power_pin};
++      dt_prop(ctx,root,"blauos,power-button",power,sizeof(power));
++    }
+   }
+ #endif
+   dt_prop_str(ctx, root, "model", "ACPI");
+diff --git a/src/vb_platform.c b/src/vb_platform.c
+index ed4c3d0..aa14a71 100644
+--- a/src/vb_platform.c
++++ b/src/vb_platform.c
+@@ -87,6 +87,67 @@ EFI_STATUS vb_discover(AppContext *ctx) {
+     if(gVB.pci_memory_size)break;
+   }
+   if(!gVB.pci_memory_size)return EFI_UNSUPPORTED;
++  /* Host stop request: the firmware's PL061 GPIO (ACPI ARMH0061) raises an
++   * event on the power pin and _E06 notifies the PNP0C0C power button. The
++   * source kernel has no ACPI interpreter, so publish the validated device
++   * for a direct guest handler. Absent device: continue without it. */
++  for(UINTN i=36;i+16<dsdt->len;i++) {
++    if(CompareMem(aml+i,"ARMH0061",8))continue;
++    UINTN window=i+0x800<dsdt->len?i+0x800:dsdt->len;
++    UINTN crs=0,aei=0;
++    for(UINTN j=i+8;j+6<window;j++) {
++      if(!CompareMem(aml+j,"_CRS",4)&&aml[j+4]==0x11)crs=j+5;
++      if(!CompareMem(aml+j,"_AEI",4)&&aml[j+4]==0x11)aei=j+5;
++    }
++    if(!crs||!aei)return EFI_COMPROMISED_DATA;
++    UINTN at=crs;UINT8 first=aml[at++];UINTN extra=first>>6;UINTN pkg=extra?first&15:first&63;
++    if(at+extra>=dsdt->len)return EFI_COMPROMISED_DATA;
++    for(UINTN j=0;j<extra;j++)pkg|=(UINTN)aml[at++]<<(4+j*8);
++    if(pkg<extra+3||pkg>dsdt->len-(crs-1)||aml[at++]!=0x0a)return EFI_COMPROMISED_DATA;
++    UINTN bytes=aml[at++];if(bytes>dsdt->len-at)return EFI_COMPROMISED_DATA;
++    UINTN end=at+bytes;
++    while(at<end) {
++      UINT8 tag=aml[at];UINTN n;
++      if(tag&0x80) {if(end-at<3)return EFI_COMPROMISED_DATA;n=3+aml[at+1]+((UINTN)aml[at+2]<<8);}else n=1+(tag&7);
++      if(n>end-at)return EFI_COMPROMISED_DATA;
++      if(tag==0x86&&n==12) {gVB.power_base=u32(aml+at+4);if(u32(aml+at+8)!=0x1000)return EFI_UNSUPPORTED;}
++      if(tag==0x89&&n>=7)gVB.power_irq=u32(aml+at+n-4); /* Last payload word; this firmware omits the consumer flag byte. */
++      if(tag==0x79)break;
++      at+=n;
++    }
++    at=aei;first=aml[at++];extra=first>>6;pkg=extra?first&15:first&63;
++    if(at+extra>=dsdt->len)return EFI_COMPROMISED_DATA;
++    for(UINTN j=0;j<extra;j++)pkg|=(UINTN)aml[at++]<<(4+j*8);
++    if(pkg<extra+3||pkg>dsdt->len-(aei-1)||aml[at++]!=0x0a)return EFI_COMPROMISED_DATA;
++    bytes=aml[at++];if(bytes>dsdt->len-at)return EFI_COMPROMISED_DATA;
++    end=at+bytes;
++    while(at<end) {
++      UINT8 tag=aml[at];UINTN n;
++      if(tag&0x80) {if(end-at<3)return EFI_COMPROMISED_DATA;n=3+aml[at+1]+((UINTN)aml[at+2]<<8);}else n=1+(tag&7);
++      if(n>end-at)return EFI_COMPROMISED_DATA;
++      if(tag==0x8c&&n>=15&&aml[at+3]==1) {
++        /* Anchor on the resource source string: this firmware's descriptor
++         * field ordering does not match the published layout. The pin table
++         * immediately precedes "GPIO\0". */
++        for(UINTN k=at+5;k+5<=at+n;k++)
++          if(!CompareMem(aml+k,"GPIO",4)&&!aml[k+4]) {gVB.power_pin=aml[k-2]|((UINTN)aml[k-1]<<8);break;}
++      }
++      if(tag==0x79)break;
++      at+=n;
++    }
++    if(!gVB.power_base||(gVB.power_base&0xfff)||gVB.power_irq<32||gVB.power_irq>=1020||gVB.power_pin>=8)
++      return EFI_UNSUPPORTED;
++    /* The event method for the pin must notify the PNP0C0C power button. */
++    CHAR8 handler[5]="_E00";handler[3]=(CHAR8)(gVB.power_pin<10?'0'+gVB.power_pin:'A'+gVB.power_pin-10);
++    BOOLEAN notifies=FALSE,declared=FALSE;
++    for(UINTN k=36;k+10<=dsdt->len;k++) {
++      if(!CompareMem(aml+k,handler,4)&&aml[k+4]==0&&!CompareMem(aml+k+5,"\x86""PWRB",5))notifies=TRUE;
++      if(!CompareMem(aml+k,"PNP0C0C",7))declared=TRUE;
++    }
++    if(!notifies||!declared)return EFI_UNSUPPORTED;
++    log_info(L"VirtualBuddy power button: PL061 0x%lx irq %u pin %u\r\n",gVB.power_base,gVB.power_irq,gVB.power_pin);
++    break;
++  }
+   log_info(L"VirtualBuddy profile: RAM 0x%lx..0x%lx GICD 0x%lx GICR 0x%lx size 0x%lx\r\n",gVB.ram_base,gVB.ram_end,gVB.gicd_base,gVB.gicr_base,gVB.gicr_size);
+   log_info(L"VirtualBuddy profile: ECAM 0x%lx PCI memory 0x%lx size 0x%lx timer %u\r\n",gVB.ecam_base,gVB.pci_memory_base,gVB.pci_memory_size,gVB.timer_irq);
+   return EFI_SUCCESS;

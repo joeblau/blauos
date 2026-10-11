@@ -1,0 +1,64 @@
+diff --git a/include/vb_platform.h b/include/vb_platform.h
+index e74e6fb..71bc083 100644
+--- a/include/vb_platform.h
++++ b/include/vb_platform.h
+@@ -4,6 +4,7 @@
+ typedef struct {
+   UINT64 ram_base, ram_end, gicd_base, gicr_base, gicr_size, ecam_base;
+   UINT64 pci_memory_base, pci_memory_size, console_common, console_notify, console_queue;
++  UINT64 console_rx_notify, console_rx_queue;
+   UINT32 timer_irq, first_bus, last_bus;
+ } VBPlatform;
+ extern VBPlatform gVB;
+diff --git a/src/devtree.c b/src/devtree.c
+index a715872..11fe9c8 100644
+--- a/src/devtree.c
++++ b/src/devtree.c
+@@ -1375,9 +1375,11 @@ EFI_STATUS dt_build(
+   dt_prop_u32(ctx,root,"blauos,virtualbuddy",1);
+   {
+     UINT64 gic[4]={gVB.gicd_base,0x10000ULL,gVB.gicr_base,gVB.gicr_size};
+-    UINT64 console[4]={gVB.console_common,gVB.console_notify,gVB.console_queue,0x4000};
++    UINT64 console[6]={gVB.console_common,gVB.console_notify,gVB.console_queue,0x4000,
++      gVB.console_rx_notify,gVB.console_rx_queue};
+     dt_prop(ctx,root,"blauos,gic",gic,sizeof(gic));
+-    if(gVB.console_queue)dt_prop(ctx,root,"blauos,virtio-console",console,sizeof(console));
++    if(gVB.console_queue)dt_prop(ctx,root,"blauos,virtio-console",console,
++      gVB.console_rx_queue?sizeof(console):4*sizeof(UINT64));
+   }
+ #endif
+   dt_prop_str(ctx, root, "model", "ACPI");
+diff --git a/src/vb_platform.c b/src/vb_platform.c
+index d7b10ac..ed4c3d0 100644
+--- a/src/vb_platform.c
++++ b/src/vb_platform.c
+@@ -143,7 +143,28 @@ EFI_STATUS vb_console_prepare(AppContext *ctx) {
+   UINT16 notify_offset=r16(common,30);if(multiplier&&notify_offset>(~(UINT64)0-notify_base)/multiplier)return EFI_COMPROMISED_DATA;
+   if ((UINT64)notify_offset*multiplier > (UINT64)notify_length-2) return EFI_COMPROMISED_DATA;
+   notify=(VOID *)(UINTN)(notify_base+(UINT64)notify_offset*multiplier);
+-  w16(common,28,1);w16(pci,4,r16(pci,4)|6);common[20]=15;__asm__ volatile("dsb sy":::"memory");
++  w16(common,28,1);w16(pci,4,r16(pci,4)|6);
++  /* Optional input path: queue 0 with one posted 256-byte device-writable
++   * buffer. The backend only fills it when it supplies guest input. */
++  w16(common,22,0);
++  if(r16(common,24)>=8&&!r16(common,28)) {
++    EFI_PHYSICAL_ADDRESS rxphysical=XNU_BOOTINFO_BASE+0xC000;
++    if(!EFI_ERROR(uefi_call_wrapper(ctx->bs->AllocatePages,4,AllocateAddress,EfiLoaderData,4,&rxphysical))) {
++      volatile UINT8 *rx=(VOID *)(UINTN)rxphysical;SetMem((VOID *)rx,0x4000,0);
++      w16(common,24,8);*(volatile UINT64 *)(common+32)=rxphysical;*(volatile UINT64 *)(common+40)=rxphysical+0x100;*(volatile UINT64 *)(common+48)=rxphysical+0x200;
++      UINT16 rx_notify_offset=r16(common,30);
++      if((!multiplier||rx_notify_offset<=(~(UINT64)0-notify_base)/multiplier)&&(UINT64)rx_notify_offset*multiplier<=notify_length-2) {
++        *(volatile UINT64 *)(rx+0)=rxphysical+0x300;w32(rx,8,0x100);w16(rx,12,2);w16(rx,14,0);
++        w16(rx,0x100,1);w16(rx,0x104,0);__asm__ volatile("dsb sy":::"memory");w16(rx,0x102,1);
++        w16(common,28,1);__asm__ volatile("dsb sy":::"memory");
++        gVB.console_rx_notify=notify_base+(UINT64)rx_notify_offset*multiplier;gVB.console_rx_queue=rxphysical;
++        *(volatile UINT16 *)gVB.console_rx_notify=0;
++        log_info(L"Virtio console RX prepared notify=0x%lx queue=0x%lx\r\n",gVB.console_rx_notify,gVB.console_rx_queue);
++      }
++    }
++  }
++  w16(common,22,1); /* Restore the TX queue selection. */
++  common[20]=15;__asm__ volatile("dsb sy":::"memory");
+   gVB.console_common=(UINT64)(UINTN)common;gVB.console_notify=(UINT64)(UINTN)notify;gVB.console_queue=physical;
+   sent=0;console_failed=FALSE;
+   log_info(L"Virtio console TX prepared common=0x%lx notify=0x%lx queue=0x%lx\r\n",gVB.console_common,gVB.console_notify,gVB.console_queue);

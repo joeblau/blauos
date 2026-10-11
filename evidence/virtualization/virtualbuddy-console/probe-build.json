@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "built": true,
+  "signed": true,
+  "entitlements": "vm/virtualization.entitlements.plist",
+  "source": {
+    "path": "vm/virtualbuddy_console_probe.swift",
+    "sha256": "03b46e0ac3a8d7520042fbbc166b5667fa97597470cd7b1ee28167b796f1d1bc"
+  },
+  "artifact": {
+    "path": ".blauos/build/virtualbuddy-console/probe/virtualbuddy_console_probe",
+    "sha256": "bc8cbdc73abb137329fcb5b72fde224daf5fd1ef99170ea53dbb1aed7e2a869f",
+    "bytes": 164128
+  },
+  "commands": [
+    [
+      "swiftc",
+      "vm/virtualbuddy_console_probe.swift",
+      "-o",
+      ".blauos/build/virtualbuddy-console/probe/virtualbuddy_console_probe"
+    ],
+    [
+      "codesign",
+      "--force",
+      "--sign",
+      "-",
+      "--entitlements",
+      "vm/virtualization.entitlements.plist",
+      ".blauos/build/virtualbuddy-console/probe/virtualbuddy_console_probe"
+    ]
+  ],
+  "host_os": "27.2",
+  "guest_execution": "not established by probe compilation",
+  "physical_gate_passed": false
+}
