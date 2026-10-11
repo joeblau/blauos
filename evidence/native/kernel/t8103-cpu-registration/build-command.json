@@ -1,0 +1,12 @@
+{
+  "argv": [
+    "cmake",
+    "--build",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/t8103-cpu-registration",
+    "--target",
+    "xnu",
+    "--parallel",
+    "3"
+  ],
+  "cwd": "/Users/joeblau/Developer/joeblau/src/blauos"
+}

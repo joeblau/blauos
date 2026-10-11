@@ -9,3 +9,9 @@
 0009-t8103-pac-atomic-storage.patch
 0010-t8103-machine-register-encodings.patch
 0011-t8103-public-native-pac.patch
+0012-t8103-cpu-registration.patch
+0013-t8103-handoff-validation.patch
+0014-t8103-timer-discovery.patch
+0015-t8103-platform-cpu-startup.patch
+0016-t8103-aic-hardening.patch
+0017-t8103-physical-checkpoint-protocol.patch

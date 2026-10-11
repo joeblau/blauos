@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "cmake",
+    "--build",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/t8103-timer-discovery",
+    "--target",
+    "xnu",
+    "--parallel",
+    "3"
+  ],
+  "cwd": "/Users/joeblau/Developer/joeblau/src/blauos",
+  "exit_code": 0,
+  "raw_log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/t8103-timer-discovery/logs/build.log",
+  "raw_log_bytes": 3391642,
+  "raw_log_sha256": "b24e6de83a249e97bd07dd75e5866ae28dab1b244e4e534493b5987e70ec163f",
+  "errors": []
+}

@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "cmake",
+    "--build",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/platform-cpu-startup",
+    "--target",
+    "PDArmPlatformExpert",
+    "--parallel",
+    "3"
+  ],
+  "cwd": "/Users/joeblau/Developer/joeblau/src/blauos",
+  "exit_code": 0,
+  "raw_log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/platform-cpu-startup/logs/build.log",
+  "raw_log_bytes": 122405,
+  "raw_log_sha256": "f42b5ed58f1a3208c126c62bab628736077e30907ac31189203c2ad2c0a7e32c",
+  "errors": []
+}

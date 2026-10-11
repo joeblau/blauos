@@ -1,0 +1,1115 @@
+diff --git a/src/Kernel/Extensions/PDArmPlatformExpert/PDAppleAIC.cpp b/src/Kernel/Extensions/PDArmPlatformExpert/PDAppleAIC.cpp
+index ccb86cc6..0ba20930 100644
+--- a/src/Kernel/Extensions/PDArmPlatformExpert/PDAppleAIC.cpp
++++ b/src/Kernel/Extensions/PDArmPlatformExpert/PDAppleAIC.cpp
+@@ -9,6 +9,67 @@
+ #include <IOKit/IOLib.h>
+ #include <libkern/c++/OSData.h>
+ #include <libkern/c++/OSSymbol.h>
++#include <pexpert/pexpert.h>
++
++/*
++ * BlauOS experimental physical checkpoint protocol (issues #29/#39): when
++ * the boot arguments carry an exact blauos-checkpoint-nonce=<64 lowercase
++ * hex> token, the first delivered external interrupt is reported on the
++ * kprintf path as a BLAUOS_PHYSICAL interrupt event.  Inert without the
++ * token.  kprintf is declared locally because sys/kprintf.h is not shipped
++ * to this kext's header set; _kprintf and _PE_boot_args are kernel exports.
++ */
++extern "C" void kprintf(const char *fmt, ...);
++
++#define kBlauosCheckpointNonceKey "blauos-checkpoint-nonce="
++
++static char     gBlauosNonce[65];
++static bool     gBlauosNonceParsed;
++static uint32_t gBlauosInterruptHandled;
++static bool     gBlauosInterruptEmitted;
++
++static bool
++blauosCheckpointNonce(void)
++{
++	if (!gBlauosNonceParsed) {
++		gBlauosNonceParsed = true;
++		/*
++		 * Scan the raw command line: PE_parse_boot_argn() converts a
++		 * digit-leading value to an integer even for a character
++		 * destination, which would mangle an all-digit nonce.
++		 */
++		const char *line = PE_boot_args();
++		const size_t keyLength = strlen(kBlauosCheckpointNonceKey);
++		for (size_t i = 0; i < 608 && line[i] != '\0';) {
++			while (i < 608 && (line[i] == ' ' || line[i] == '\t')) {
++				i++;
++			}
++			size_t start = i;
++			while (i < 608 && line[i] != '\0' && line[i] != ' ' && line[i] != '\t') {
++				i++;
++			}
++			if (i - start != keyLength + 64 ||
++			    strncmp(line + start, kBlauosCheckpointNonceKey, keyLength) != 0) {
++				continue;
++			}
++			bool hex = true;
++			for (size_t j = 0; j < 64; j++) {
++				char c = line[start + keyLength + j];
++				if (!((c >= '0' && c <= '9') || (c >= 'a' && c <= 'f'))) {
++					hex = false;
++					break;
++				}
++			}
++			if (hex) {
++				memcpy(gBlauosNonce, line + start + keyLength, 64);
++				gBlauosNonce[64] = '\0';
++			}
++			break;
++		}
++	}
++	return gBlauosNonce[0] != '\0';
++}
++
+ 
+ /* AIC registers; see pexpert/pexpert/arm/AIC.h for the full map. */
+ #define kAICInfo                 0x0004
+@@ -335,6 +396,17 @@ PDAppleAIC::handleInterrupt(void * /*refCon*/, IOService * /*nub*/, int /*source
+ 		if (!vector->interruptDisabledSoft && vector->interruptRegistered) {
+ 			vector->handler(vector->target, vector->refCon,
+ 			    vector->nub, vector->source);
++			if (blauosCheckpointNonce()) {
++				/* One external interrupt was genuinely delivered. */
++				gBlauosInterruptHandled++;
++				if (!gBlauosInterruptEmitted) {
++					gBlauosInterruptEmitted = true;
++					kprintf("BLAUOS_PHYSICAL %s interrupt "
++					    "{\"controller\":\"apple-aic\",\"handled_count\":%u,"
++					    "\"irq\":%u}\n",
++					    gBlauosNonce, gBlauosInterruptHandled, irq);
++				}
++			}
+ 		}
+ 
+ 		/* AIC event reads automatically mask the source. Recheck after the
+diff --git a/src/Kernel/xnu/CMakeLists.txt b/src/Kernel/xnu/CMakeLists.txt
+index 550fbf9a..6ef45523 100644
+--- a/src/Kernel/xnu/CMakeLists.txt
++++ b/src/Kernel/xnu/CMakeLists.txt
+@@ -117,6 +117,24 @@ if(NOT PUREDARWIN_XNU_KERNEL_CONFIG MATCHES "^(RELEASE|DEVELOPMENT|DEBUG|KASAN)$
+         "Unsupported PUREDARWIN_XNU_KERNEL_CONFIG='${PUREDARWIN_XNU_KERNEL_CONFIG}'")
+ endif()
+ 
++# Optional BlauOS physical checkpoint build identity for the native T8103
++# experiment (64 lowercase hex, computed by the build wrapper's operator).
++# Forwarded to the kernel make build, which injects it as the
++# BLAUOS_PHYSICAL_BUILD_ID preprocessor define (see cmake/MakeInc.def.in).
++# Empty by default: no build-ID marker is emitted.
++set(PUREDARWIN_BLAUOS_BUILD_ID "" CACHE STRING
++    "Optional 64-hex BlauOS checkpoint build identity injected into the T8103 kernel")
++set(XNU_BLAUOS_BUILD_ID_MAKE_ARG "")
++if(PUREDARWIN_BLAUOS_BUILD_ID)
++    string(LENGTH "${PUREDARWIN_BLAUOS_BUILD_ID}" _blauos_build_id_length)
++    if(NOT _blauos_build_id_length EQUAL 64 OR
++            NOT PUREDARWIN_BLAUOS_BUILD_ID MATCHES "^[0-9a-f]+$")
++        message(FATAL_ERROR
++            "PUREDARWIN_BLAUOS_BUILD_ID must be 64 lowercase hexadecimal characters")
++    endif()
++    set(XNU_BLAUOS_BUILD_ID_MAKE_ARG "BLAUOS_PHYSICAL_BUILD_ID=${PUREDARWIN_BLAUOS_BUILD_ID}")
++endif()
++
+ file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/xnu_header_install)
+ externalproject_add(xnu_headers.extproj
+     PREFIX ${CMAKE_CURRENT_BINARY_DIR}/xnu_header_build
+@@ -215,6 +233,7 @@ externalproject_add(xnu
+         ${CMAKE_COMMAND} -E env LD=${XNU_LD_PATH} STRIP=${XNU_STRIP_PATH} ${XNU_HOST_CC_ENV} --unset=CC --unset=CXX --unset=NM --unset=CTFCONVERT --unset=CTFMERGE --unset=CTFINSERT
+         make ${XNU_MAKE_OUTPUT_SYNC_FLAG} -C <SOURCE_DIR> install ARCH_CONFIGS=${XNU_ARCH_CONFIGS} ${XNU_MACHINE_CONFIGS} ${XNU_LD_KERNEL_LIBS} BUILD_LTO=0
+             BUILD_WERROR=0 DO_CTFMERGE=0 KERNEL_CONFIGS=${PUREDARWIN_XNU_KERNEL_CONFIG}
++            ${XNU_BLAUOS_BUILD_ID_MAKE_ARG}
+             SRCROOT=${CMAKE_CURRENT_SOURCE_DIR} OBJROOT=<BINARY_DIR>
+             SYMROOT=${CMAKE_CURRENT_BINARY_DIR}/xnu_sym DSTROOT=${CMAKE_CURRENT_BINARY_DIR}/xnu
+     INSTALL_COMMAND "" # installed during build
+diff --git a/src/Kernel/xnu/cmake/MakeInc.def.in b/src/Kernel/xnu/cmake/MakeInc.def.in
+index 91ef17e1..ae0ac371 100644
+--- a/src/Kernel/xnu/cmake/MakeInc.def.in
++++ b/src/Kernel/xnu/cmake/MakeInc.def.in
+@@ -346,6 +346,16 @@ CFLAGS_CLANG_EXTRA := $(shell $(CC) $(TRIVIAL_AUTO_VAR_INIT_EXTRA) -xc -c /dev/n
+ 
+ CFLAGS_GEN = $(CFLAGS_COMMON) $(CFLAGS_LINUX) $(CFLAGS_DARWIN) $(CFLAGS_CLANG_EXTRA)
+ 
++# Optional BlauOS physical checkpoint build identity (64 lowercase hex from
++# the build wrapper; see osfmk/arm/blauos_checkpoint.c).  Absent by default:
++# an unprovisioned build carries no BLAUOS_PHYSICAL_BUILD_ID marker and must
++# fail offline validation.
++ifeq ($(CURRENT_MACHINE_CONFIG),T8103)
++ifneq ($(strip $(BLAUOS_PHYSICAL_BUILD_ID)),)
++CFLAGS_GEN += -DBLAUOS_PHYSICAL_BUILD_ID=$(BLAUOS_PHYSICAL_BUILD_ID)
++endif
++endif
++
+ CFLAGS_RELEASE	=
+ CFLAGS_DEVELOPMENT	=
+ CFLAGS_DEBUG	=
+diff --git a/src/Kernel/xnu/config/IOKit.exports b/src/Kernel/xnu/config/IOKit.exports
+index 4a59447b..2c5c811b 100644
+--- a/src/Kernel/xnu/config/IOKit.exports
++++ b/src/Kernel/xnu/config/IOKit.exports
+@@ -107,6 +107,7 @@ _PE_cpu_start
+ _PE_enter_debugger
+ _PE_halt_restart
+ _PE_parse_boot_argn
++_PE_boot_args
+ __Z17IODTMapInterruptsP15IORegistryEntry
+ __Z17IODeviceTreeAllocPv
+ __Z17IOServiceOrderingPK15OSMetaClassBaseS1_Pv
+diff --git a/src/Kernel/xnu/osfmk/arm/Makefile b/src/Kernel/xnu/osfmk/arm/Makefile
+index 50251f85..84b9290e 100644
+--- a/src/Kernel/xnu/osfmk/arm/Makefile
++++ b/src/Kernel/xnu/osfmk/arm/Makefile
+@@ -54,6 +54,7 @@ INSTALL_KF_MD_LCL_LIST = \
+ # TODO: consolidate INSTALL_KF_MD_LCL_LIST and EXPORT_MD_LIST? Only difference is caches_internal.h/machine_cpu.h
+ # Headers used to compile xnu
+ EXPORT_MD_LIST = \
++		blauos_checkpoint.h \
+ 		caches_internal.h \
+ 		dbgwrap.h \
+ 		machine_cpu.h \
+@@ -106,6 +107,7 @@ INSTALL_KF_MD_LIST = $(ARM_HEADER_FILES)
+ INSTALL_KF_MD_LCL_LIST = machine_kpc.h monotonic.h $(ARM_HEADER_FILES)
+ 
+ EXPORT_MD_LIST =	\
++		blauos_checkpoint.h \
+ 		caches_internal.h \
+ 		machine_kpc.h \
+ 		monotonic.h \
+diff --git a/src/Kernel/xnu/osfmk/arm/arm_init.c b/src/Kernel/xnu/osfmk/arm/arm_init.c
+index a19d2981..4d279a2c 100644
+--- a/src/Kernel/xnu/osfmk/arm/arm_init.c
++++ b/src/Kernel/xnu/osfmk/arm/arm_init.c
+@@ -66,6 +66,7 @@
+ #include <arm/misc_protos.h>
+ #include <arm/machine_cpu.h>
+ #include <arm/rtclock.h>
++#include <arm/blauos_checkpoint.h>
+ #include <vm/vm_map.h>
+ 
+ #include <libkern/kernel_mach_header.h>
+@@ -676,6 +677,11 @@ arm_init(
+ #endif
+ 
+ 	/* If kernel integrity is supported, use a constant copy of the boot args. */
++#if defined(ARM64_BOARD_CONFIG_T8103) && (DEVELOPMENT || DEBUG)
++	/* Preserve the received iBoot pointer for the handoff measurement; the
++	 * constant copy's padding bytes are not required to match. */
++	blauos_checkpoint_record_boot_args(args);
++#endif
+ 	const_boot_args = *args;
+ 	BootArgs = args = &const_boot_args;
+ 
+@@ -1010,6 +1016,12 @@ MACRO_END
+ 	kernel_startup_initialize_upto(STARTUP_SUB_KPRINTF);
+ #if defined(ARM64_BOARD_CONFIG_T8103) && (DEVELOPMENT || DEBUG)
+ 	blauos_native_early_diagnostics();
++	/*
++	 * Full physical checkpoint protocol entry: measures the live PC inside
++	 * the dedicated checkpoint symbols and emits the entry event plus any
++	 * handoff/MMU measurements already taken.  Inert without the nonce.
++	 */
++	blauos_physical_checkpoint_entry();
+ #endif
+ #if defined(ARM64_BOARD_CONFIG_BCM2837)
+ 	pd_dump_iocat_vtable("w:kpf ");
+@@ -1282,6 +1294,10 @@ arm_init_cpu(
+ 
+ 
+ 	kprintf("arm_cpu_init(): cpu %d online\n", cpu_data_ptr->cpu_number);
++#if defined(ARM64_BOARD_CONFIG_T8103) && (DEVELOPMENT || DEBUG)
++	/* A secondary (or the boot CPU on resume) reached online state. */
++	blauos_checkpoint_cpu_online(cpu_data_ptr->cpu_number);
++#endif
+ 
+ 	if (cpu_data_ptr == &BootCpuData) {
+ 		if (kdebug_enable == 0) {
+diff --git a/src/Kernel/xnu/osfmk/arm/arm_vm_init.c b/src/Kernel/xnu/osfmk/arm/arm_vm_init.c
+index 8309d144..830db3d1 100644
+--- a/src/Kernel/xnu/osfmk/arm/arm_vm_init.c
++++ b/src/Kernel/xnu/osfmk/arm/arm_vm_init.c
+@@ -47,6 +47,7 @@
+ #include <arm/pmap.h>
+ #include <arm/misc_protos.h>
+ #include <arm/lowglobals.h>
++#include <arm/blauos_checkpoint.h>
+ 
+ #include <pexpert/arm/boot.h>
+ #include <pexpert/device_tree.h>
+@@ -678,6 +679,10 @@ arm_vm_init(uint64_t memory_size, boot_args * args)
+ 
+ 	first_avail = avail_start;
+ 	patch_low_glo_static_region(args->topOfKernelData, avail_start - args->topOfKernelData);
++#if defined(ARM64_BOARD_CONFIG_T8103) && (DEVELOPMENT || DEBUG)
++	/* The real kernel page tables are live; measure translation state. */
++	blauos_checkpoint_measure_mmu();
++#endif
+ #if defined(ARM_BOARD_CONFIG_BCM2835)
+ 	pd_bcm2835_early_uart_tag('e');
+ #endif
+diff --git a/src/Kernel/xnu/osfmk/arm/blauos_checkpoint.c b/src/Kernel/xnu/osfmk/arm/blauos_checkpoint.c
+new file mode 100644
+index 00000000..31a10c50
+--- /dev/null
++++ b/src/Kernel/xnu/osfmk/arm/blauos_checkpoint.c
+@@ -0,0 +1,657 @@
++/*
++ * BlauOS experimental physical checkpoint protocol emitter (T8103 only).
++ *
++ * Software side of GitHub issues #29/#39 and the Path A contract in
++ * docs/platform/m1-checkpoint.md.  When the boot arguments carry an exact
++ * blauos-checkpoint-nonce=<64 lowercase hex characters> token, measurement
++ * hooks at the real implementation sites (arm_init, PE_init_platform,
++ * arm_vm_init, sleh.c, rtclock.c, PDAppleAIC, arm_init_cpu) emit complete
++ * serial lines of the form:
++ *
++ *	BLAUOS_PHYSICAL <nonce> <event> <single JSON object>
++ *
++ * Without the nonce boot argument every hook is inert and the kernel behaves
++ * exactly as before.  This file never claims physical execution: emitted
++ * payloads are observations, and only an offline validator plus an
++ * independent reviewer can bind them to a captured hardware session.
++ *
++ * The optional lab-record identity is supplied to the experiment through a
++ * second exact token, blauos-checkpoint-identity=<64 lowercase hex>.  It is
++ * an operator-supplied identifier, not a kernel-made hardware attestation.
++ *
++ * Both tokens are read by scanning the received CommandLine bytes directly:
++ * PE_parse_boot_argn() converts a digit-leading value to an integer even for
++ * a character destination, so it cannot faithfully read a nonce that happens
++ * to consist entirely of decimal digits.
++ */
++
++#include <arm/blauos_checkpoint.h>
++
++#if defined(ARM64_BOARD_CONFIG_T8103) && (DEVELOPMENT || DEBUG)
++
++#include <mach/mach_types.h>
++#include <kern/misc_protos.h>
++#include <libkern/kernel_mach_header.h>
++#include <pexpert/pexpert.h>
++#include <pexpert/arm64/boot.h>
++#include <pexpert/device_tree.h>
++#include <vm/vm_map.h>
++#include <vm/pmap.h>
++#include <arm/machine_routines.h>
++#include <arm/pmap.h>
++#include <arm/atomic.h>
++#include <arm64/proc_reg.h>
++
++/* The reviewed source ABI profile for this pinned tree (m1-checkpoint.md). */
++#define BLAUOS_CHECKPOINT_PROFILE "puredarwin-xnu-7195"
++
++/* Offline validator bound (physical_evidence.py MAX_ADT_BYTES). */
++#define BLAUOS_CHECKPOINT_MAX_ADT (16 * 1024 * 1024)
++
++#define BLAUOS_HEX_DIGITS "0123456789abcdef"
++
++/*
++ * The loadable build identity marker.  The value is injected at build time
++ * (scripts/build/xnu.py --build-id, passed through CMake as
++ * PUREDARWIN_BLAUOS_BUILD_ID and through the kernel makefiles as
++ * BLAUOS_PHYSICAL_BUILD_ID).  Without it the marker is absent and offline
++ * validation must fail, which is the honest outcome for an unprovisioned
++ * build.  The entry event reads the identity back out of this marker so the
++ * two can never disagree.
++ */
++#if defined(BLAUOS_PHYSICAL_BUILD_ID)
++#define BLAUOS_STRINGIZE_INNER(value) #value
++#define BLAUOS_STRINGIZE(value) BLAUOS_STRINGIZE_INNER(value)
++__attribute__((used))
++static const char blauos_physical_build_id_marker[] =
++	"BLAUOS_PHYSICAL_BUILD_ID=" BLAUOS_STRINGIZE(BLAUOS_PHYSICAL_BUILD_ID);
++#endif
++
++/*
++ * Bounded local SHA-256 (FIPS 180-4).  The kernel's corecrypto-backed SHA-256
++ * is not initialized at the early handoff measurement site, so the emitter
++ * carries its own small implementation with no external dependencies.
++ */
++typedef struct {
++	uint32_t h[8];
++	uint64_t total;
++	uint8_t block[64];
++	size_t used;
++} blauos_sha256_t;
++
++static const uint32_t blauos_sha256_k[64] = {
++	0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5,
++	0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
++	0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3,
++	0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174,
++	0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc,
++	0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da,
++	0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7,
++	0xc6e00bf3, 0xd5a79147, 0x06ca6351, 0x14292967,
++	0x27b70a85, 0x2e1b2138, 0x4d2c6dfc, 0x53380d13,
++	0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85,
++	0xa2bfe8a1, 0xa81a664b, 0xc24b8b70, 0xc76c51a3,
++	0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070,
++	0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5,
++	0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3,
++	0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208,
++	0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2,
++};
++
++#define BLAUOS_ROR32(x, n) (((x) >> (n)) | ((x) << (32 - (n))))
++
++static void
++blauos_sha256_block(blauos_sha256_t *ctx, const uint8_t block[64])
++{
++	uint32_t w[64];
++	for (unsigned int i = 0; i < 16; i++) {
++		w[i] = ((uint32_t)block[4 * i] << 24) |
++		    ((uint32_t)block[4 * i + 1] << 16) |
++		    ((uint32_t)block[4 * i + 2] << 8) |
++		    (uint32_t)block[4 * i + 3];
++	}
++	for (unsigned int i = 16; i < 64; i++) {
++		uint32_t s0 = BLAUOS_ROR32(w[i - 15], 7) ^ BLAUOS_ROR32(w[i - 15], 18) ^ (w[i - 15] >> 3);
++		uint32_t s1 = BLAUOS_ROR32(w[i - 2], 17) ^ BLAUOS_ROR32(w[i - 2], 19) ^ (w[i - 2] >> 10);
++		w[i] = w[i - 16] + s0 + w[i - 7] + s1;
++	}
++	uint32_t a = ctx->h[0], b = ctx->h[1], c = ctx->h[2], d = ctx->h[3];
++	uint32_t e = ctx->h[4], f = ctx->h[5], g = ctx->h[6], h = ctx->h[7];
++	for (unsigned int i = 0; i < 64; i++) {
++		uint32_t s1 = BLAUOS_ROR32(e, 6) ^ BLAUOS_ROR32(e, 11) ^ BLAUOS_ROR32(e, 25);
++		uint32_t ch = (e & f) ^ (~e & g);
++		uint32_t t1 = h + s1 + ch + blauos_sha256_k[i] + w[i];
++		uint32_t s0 = BLAUOS_ROR32(a, 2) ^ BLAUOS_ROR32(a, 13) ^ BLAUOS_ROR32(a, 22);
++		uint32_t maj = (a & b) ^ (a & c) ^ (b & c);
++		uint32_t t2 = s0 + maj;
++		h = g; g = f; f = e; e = d + t1;
++		d = c; c = b; b = a; a = t1 + t2;
++	}
++	ctx->h[0] += a; ctx->h[1] += b; ctx->h[2] += c; ctx->h[3] += d;
++	ctx->h[4] += e; ctx->h[5] += f; ctx->h[6] += g; ctx->h[7] += h;
++}
++
++static void
++blauos_sha256_init(blauos_sha256_t *ctx)
++{
++	static const uint32_t initial[8] = {
++		0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a,
++		0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19,
++	};
++	memcpy(ctx->h, initial, sizeof(initial));
++	ctx->total = 0;
++	ctx->used = 0;
++}
++
++static void
++blauos_sha256_update(blauos_sha256_t *ctx, const void *data, size_t length)
++{
++	const uint8_t *bytes = (const uint8_t *)data;
++	ctx->total += length;
++	while (length > 0) {
++		size_t take = 64 - ctx->used;
++		if (take > length) {
++			take = length;
++		}
++		memcpy(ctx->block + ctx->used, bytes, take);
++		ctx->used += take;
++		bytes += take;
++		length -= take;
++		if (ctx->used == 64) {
++			blauos_sha256_block(ctx, ctx->block);
++			ctx->used = 0;
++		}
++	}
++}
++
++static void
++blauos_sha256_final(blauos_sha256_t *ctx, uint8_t digest[32])
++{
++	uint64_t bit_length = ctx->total * 8;
++	ctx->block[ctx->used++] = 0x80;
++	if (ctx->used > 56) {
++		while (ctx->used < 64) {
++			ctx->block[ctx->used++] = 0;
++		}
++		blauos_sha256_block(ctx, ctx->block);
++		ctx->used = 0;
++	}
++	while (ctx->used < 56) {
++		ctx->block[ctx->used++] = 0;
++	}
++	for (unsigned int i = 0; i < 8; i++) {
++		ctx->block[63 - i] = (uint8_t)(bit_length >> (8 * i));
++	}
++	blauos_sha256_block(ctx, ctx->block);
++	for (unsigned int i = 0; i < 8; i++) {
++		digest[4 * i] = (uint8_t)(ctx->h[i] >> 24);
++		digest[4 * i + 1] = (uint8_t)(ctx->h[i] >> 16);
++		digest[4 * i + 2] = (uint8_t)(ctx->h[i] >> 8);
++		digest[4 * i + 3] = (uint8_t)ctx->h[i];
++	}
++}
++
++static void
++blauos_sha256_hex(const void *data, size_t length, char out[65])
++{
++	uint8_t digest[32];
++	blauos_sha256_t ctx;
++	blauos_sha256_init(&ctx);
++	blauos_sha256_update(&ctx, data, length);
++	blauos_sha256_final(&ctx, digest);
++	for (unsigned int i = 0; i < 32; i++) {
++		out[2 * i] = BLAUOS_HEX_DIGITS[digest[i] >> 4];
++		out[2 * i + 1] = BLAUOS_HEX_DIGITS[digest[i] & 0xf];
++	}
++	out[64] = '\0';
++}
++
++static struct {
++	int parsed;
++	int active;
++	char nonce[65];
++	char identity[65];
++	int identity_ok;
++	void *boot_args_original;
++	uint64_t cpus_online_mask;
++	int handoff_measured;
++	char boot_args_sha256[65];
++	char device_tree_sha256[65];
++	char memory_plan_sha256[65];
++	char memory_plan_json[384];
++	int mmu_measured;
++	uint64_t current_el;
++	uint64_t sctlr_el1;
++	uint64_t tcr_el1;
++	uint64_t ttbr0_el1;
++	uint64_t ttbr1_el1;
++	int translation_readback_matched;
++	volatile int brk_armed;
++	volatile int brk_recovered;
++	uint32_t brk_esr;
++	uint64_t brk_elr;
++	uint64_t brk_far;
++	volatile uint64_t timer_delivered;
++} blauos_ckpt;
++
++/* The end label is defined by the assembly region below; it is a code
++ * address, never called. */
++extern void blauos_physical_checkpoint_entry_end(void);
++
++/*
++ * Scan the received CommandLine bytes for an exact `<key><64 lowercase hex>`
++ * whitespace-delimited token.  Bounded by the arm64 BOOT_LINE_LENGTH.
++ */
++static int
++blauos_scan_hex64_token(const char *line, size_t bound, const char *key, char out[65])
++{
++	size_t key_length = strlen(key);
++	size_t i = 0;
++	while (i < bound && line[i] != '\0') {
++		while (i < bound && (line[i] == ' ' || line[i] == '\t')) {
++			i++;
++		}
++		size_t start = i;
++		while (i < bound && line[i] != '\0' && line[i] != ' ' && line[i] != '\t') {
++			i++;
++		}
++		if (i - start != key_length + 64 ||
++		    strncmp(line + start, key, key_length) != 0) {
++			continue;
++		}
++		for (size_t j = 0; j < 64; j++) {
++			char c = line[start + key_length + j];
++			if (!((c >= '0' && c <= '9') || (c >= 'a' && c <= 'f'))) {
++				return 0;
++			}
++		}
++		memcpy(out, line + start + key_length, 64);
++		out[64] = '\0';
++		return 1;
++	}
++	return 0;
++}
++
++static int
++blauos_checkpoint_active(void)
++{
++	if (!blauos_ckpt.parsed) {
++		blauos_ckpt.parsed = 1;
++		boot_args *args = (boot_args *)PE_state.bootArgs;
++		if (args != NULL &&
++		    blauos_scan_hex64_token(args->CommandLine, BOOT_LINE_LENGTH,
++		    "blauos-checkpoint-nonce=", blauos_ckpt.nonce)) {
++			blauos_ckpt.active = 1;
++			blauos_ckpt.identity_ok =
++			    blauos_scan_hex64_token(args->CommandLine, BOOT_LINE_LENGTH,
++			    "blauos-checkpoint-identity=", blauos_ckpt.identity);
++		}
++	}
++	return blauos_ckpt.active;
++}
++
++static void
++blauos_physical_emit(const char *event, const char *json)
++{
++	kprintf("BLAUOS_PHYSICAL %s %s %s\n", blauos_ckpt.nonce, event, json);
++}
++
++void
++blauos_checkpoint_record_boot_args(void *args)
++{
++	blauos_ckpt.boot_args_original = args;
++}
++
++/*
++ * PE_init_platform(FALSE) site: hash the received handoff inputs and derive
++ * the kernel's memory plan.  kprintf is not yet available here, so the
++ * results are stashed and emitted from the kprintf-ready entry site.  The
++ * received iBoot boot_args block is hashed (not the kernel's constant copy,
++ * whose padding bytes a struct assignment is not required to preserve).
++ */
++void
++blauos_checkpoint_measure_handoff(void *args_ptr)
++{
++	boot_args *args = (boot_args *)args_ptr;
++	const void *prop;
++	unsigned int size;
++	DTEntry chosen;
++	uint64_t dram_base = 0, dram_size = 0;
++	vm_offset_t boot_args_phys;
++
++	if (!blauos_checkpoint_active() || blauos_ckpt.handoff_measured || args == NULL) {
++		return;
++	}
++	const uint8_t *received = (const uint8_t *)(blauos_ckpt.boot_args_original != NULL ?
++	    blauos_ckpt.boot_args_original : args_ptr);
++	blauos_sha256_hex(received, sizeof(boot_args), blauos_ckpt.boot_args_sha256);
++	if (PE_state.deviceTreeHead == NULL || PE_state.deviceTreeSize == 0 ||
++	    PE_state.deviceTreeSize > BLAUOS_CHECKPOINT_MAX_ADT) {
++		return;
++	}
++	blauos_sha256_hex(PE_state.deviceTreeHead, PE_state.deviceTreeSize,
++	    blauos_ckpt.device_tree_sha256);
++	if (SecureDTLookupEntry(NULL, "/chosen", &chosen) != kSuccess ||
++	    SecureDTGetProperty(chosen, "dram-base", &prop, &size) != kSuccess ||
++	    size != sizeof(uint64_t)) {
++		return;
++	}
++	dram_base = *(const uint64_t *)prop;
++	if (SecureDTGetProperty(chosen, "dram-size", &prop, &size) != kSuccess ||
++	    size != sizeof(uint64_t)) {
++		return;
++	}
++	dram_size = *(const uint64_t *)prop;
++	boot_args_phys = ml_static_vtop((vm_offset_t)received);
++	/*
++	 * Canonical JSON serialization of the plan this kernel derived from the
++	 * received handoff; the same bytes are printed for capture and hashed
++	 * for the handoff event.  Reservations are deliberately empty: the
++	 * offline validator adds the boot_args/device-tree/ADR-memory-map
++	 * reservations from the captured files and checks containment itself.
++	 */
++	int length = snprintf(blauos_ckpt.memory_plan_json, sizeof(blauos_ckpt.memory_plan_json),
++	    "{\"boot_args_phys\":%llu,\"device_tree_pointer_space\":\"physical\","
++	    "\"page_size\":%u,\"ram\":[{\"base\":%llu,\"name\":\"dram\",\"size\":%llu}],"
++	    "\"reservations\":[],\"schema_version\":1}",
++	    (unsigned long long)boot_args_phys, (unsigned int)PAGE_SIZE,
++	    (unsigned long long)dram_base, (unsigned long long)dram_size);
++	if (length <= 0 || length >= (int)sizeof(blauos_ckpt.memory_plan_json)) {
++		return;
++	}
++	blauos_sha256_hex(blauos_ckpt.memory_plan_json, (size_t)length,
++	    blauos_ckpt.memory_plan_sha256);
++	blauos_ckpt.handoff_measured = 1;
++}
++
++/*
++ * arm_vm_init() site: the real kernel page tables have just been installed
++ * and the TLB flushed.  Read the actual translation registers and cross-check
++ * one known kernel address: the page-table walk (pmap_find_phys) of a sentinel
++ * must agree with the static window computation (ml_static_vtop), and a
++ * store/load through the new translation must observe the stored value.
++ */
++void
++blauos_checkpoint_measure_mmu(void)
++{
++	static volatile uint64_t sentinel;
++	const uint64_t magic = 0xB1A505C3E771E5A1ULL;
++	vm_offset_t direct_pa;
++	ppnum_t walked;
++
++	if (!blauos_checkpoint_active() || blauos_ckpt.mmu_measured) {
++		return;
++	}
++	blauos_ckpt.current_el = __builtin_arm_rsr64("CurrentEL") >> 2;
++	blauos_ckpt.sctlr_el1 = __builtin_arm_rsr64("SCTLR_EL1");
++	blauos_ckpt.tcr_el1 = __builtin_arm_rsr64("TCR_EL1");
++	blauos_ckpt.ttbr0_el1 = __builtin_arm_rsr64("TTBR0_EL1");
++	blauos_ckpt.ttbr1_el1 = __builtin_arm_rsr64("TTBR1_EL1");
++	sentinel = magic;
++	direct_pa = ml_static_vtop((vm_offset_t)&sentinel);
++	walked = pmap_find_phys(kernel_pmap, (addr64_t)(vm_offset_t)&sentinel);
++	blauos_ckpt.translation_readback_matched =
++	    sentinel == magic && direct_pa != 0 && walked != 0 &&
++	    walked == (ppnum_t)atop_64(direct_pa);
++	blauos_ckpt.mmu_measured = 1;
++}
++
++int
++blauos_checkpoint_brk_intercept_armed(unsigned int comment)
++{
++	return blauos_ckpt.active && blauos_ckpt.brk_armed &&
++	    comment == BLAUOS_CHECKPOINT_BRK_COMMENT;
++}
++
++void
++blauos_checkpoint_brk_record(unsigned int esr, unsigned long long elr,
++    unsigned long long far)
++{
++	blauos_ckpt.brk_esr = esr;
++	blauos_ckpt.brk_elr = elr;
++	blauos_ckpt.brk_far = far;
++	blauos_ckpt.brk_recovered = 1;
++}
++
++void
++blauos_checkpoint_timer_delivered(void)
++{
++	if (blauos_ckpt.active) {
++		blauos_ckpt.timer_delivered++;
++	}
++}
++
++void
++blauos_checkpoint_cpu_online(int cpu_number)
++{
++	if (blauos_ckpt.active && cpu_number >= 0 && cpu_number < 64) {
++		blauos_ckpt.cpus_online_mask |= 1ULL << cpu_number;
++	}
++}
++
++static uint64_t
++blauos_checkpoint_hwclock(void)
++{
++	__builtin_arm_isb(ISB_SY);
++	return __builtin_arm_rsr64("CNTVCT_EL0");
++}
++
++static void
++blauos_checkpoint_emit_entry(uint64_t pc)
++{
++	char json[640];
++	char uuid_text[37] = "unavailable";
++	char model[32] = "unknown";
++	char soc[16] = "unknown";
++	const char *build_id = "unprovisioned";
++	const char *identity = "unprovisioned";
++	unsigned long uuid_length = 0;
++	const unsigned char *uuid;
++	extern kernel_mach_header_t _mh_execute_header;
++	extern vm_offset_t vm_kernel_slide;
++	DTEntry root;
++	const void *prop;
++	unsigned int size;
++
++	uuid = getuuidfromheader(&_mh_execute_header, &uuid_length);
++	if (uuid != NULL && uuid_length == 16) {
++		snprintf(uuid_text, sizeof(uuid_text),
++		    "%02x%02x%02x%02x-%02x%02x-%02x%02x-%02x%02x-"
++		    "%02x%02x%02x%02x%02x%02x",
++		    uuid[0], uuid[1], uuid[2], uuid[3], uuid[4], uuid[5],
++		    uuid[6], uuid[7], uuid[8], uuid[9], uuid[10], uuid[11],
++		    uuid[12], uuid[13], uuid[14], uuid[15]);
++	}
++	if (SecureDTFindEntry("name", "device-tree", &root) == kSuccess &&
++	    SecureDTGetProperty(root, "model", &prop, &size) == kSuccess && size > 0) {
++		unsigned int copy = 0;
++		const char *text = (const char *)prop;
++		while (copy + 1 < sizeof(model) && copy < size &&
++		    ((text[copy] >= '0' && text[copy] <= '9') ||
++		    (text[copy] >= 'A' && text[copy] <= 'Z') ||
++		    (text[copy] >= 'a' && text[copy] <= 'z') ||
++		    text[copy] == ',' || text[copy] == '.' || text[copy] == '-')) {
++			model[copy] = text[copy];
++			copy++;
++		}
++		model[copy] = '\0';
++	}
++	if (SecureDTLookupEntry(NULL, "/chosen", &root) == kSuccess &&
++	    SecureDTGetProperty(root, "chip-id", &prop, &size) == kSuccess &&
++	    size == sizeof(uint32_t)) {
++		snprintf(soc, sizeof(soc), "t%04x", *(const uint32_t *)prop);
++	}
++#if defined(BLAUOS_PHYSICAL_BUILD_ID)
++	build_id = blauos_physical_build_id_marker + strlen("BLAUOS_PHYSICAL_BUILD_ID=");
++#endif
++	if (blauos_ckpt.identity_ok) {
++		identity = blauos_ckpt.identity;
++	}
++	/*
++	 * The dedicated symbols must delimit at most 4096 executable bytes and
++	 * the measured PC must land inside them; otherwise this build cannot
++	 * support the checkpoint contract and must not emit the entry event.
++	 */
++	uint64_t start = (uint64_t)(vm_offset_t)&blauos_physical_checkpoint_entry;
++	uint64_t end = (uint64_t)(vm_offset_t)&blauos_physical_checkpoint_entry_end;
++	if (end <= start || end - start > 4096 || pc < start || pc >= end) {
++		kprintf("BLAUOS_CHECKPOINT disabled reason=bad_checkpoint_region\n");
++		return;
++	}
++	snprintf(json, sizeof(json),
++	    "{\"build_id\":\"%s\",\"kernel_uuid\":\"%s\",\"model\":\"%s\",\"soc\":\"%s\","
++	    "\"identity_fingerprint_sha256\":\"%s\",\"execution_environment\":\"native-iboot\","
++	    "\"slide\":\"0x%llx\",\"pc\":\"0x%llx\"}",
++	    build_id, uuid_text, model, soc, identity,
++	    (unsigned long long)vm_kernel_slide, (unsigned long long)pc);
++	blauos_physical_emit("entry", json);
++}
++
++void __attribute__((noinline))
++blauos_physical_checkpoint_entry_measure(uint64_t pc);
++
++/*
++ * The dedicated checkpoint region: the entry symbol, a PC measurement and a
++ * tail call, then the end symbol.  Two instructions (eight bytes), well under
++ * the 4096-byte bound, in one executable section.
++ */
++__asm__(
++	".text\n"
++	".p2align 2\n"
++	".globl _blauos_physical_checkpoint_entry\n"
++	"_blauos_physical_checkpoint_entry:\n"
++	"    adr x0, .\n"
++	"    b _blauos_physical_checkpoint_entry_measure\n"
++	".globl _blauos_physical_checkpoint_entry_end\n"
++	"_blauos_physical_checkpoint_entry_end:\n"
++	);
++
++void __attribute__((noinline))
++blauos_physical_checkpoint_entry_measure(uint64_t pc)
++{
++	char json[640];
++
++	if (!blauos_checkpoint_active()) {
++		return;
++	}
++	blauos_ckpt.cpus_online_mask |= 1; /* this code runs on the boot CPU */
++	blauos_checkpoint_emit_entry(pc);
++	if (blauos_ckpt.handoff_measured) {
++		snprintf(json, sizeof(json),
++		    "{\"boot_args_sha256\":\"%s\",\"device_tree_sha256\":\"%s\","
++		    "\"memory_plan_sha256\":\"%s\",\"profile\":\"%s\"}",
++		    blauos_ckpt.boot_args_sha256, blauos_ckpt.device_tree_sha256,
++		    blauos_ckpt.memory_plan_sha256, BLAUOS_CHECKPOINT_PROFILE);
++		blauos_physical_emit("handoff", json);
++		kprintf("BLAUOS_MEMORY_PLAN %s %s\n", blauos_ckpt.nonce,
++		    blauos_ckpt.memory_plan_json);
++	}
++	if (blauos_ckpt.mmu_measured) {
++		snprintf(json, sizeof(json),
++		    "{\"current_el\":%llu,\"page_size\":%u,"
++		    "\"sctlr_el1\":\"0x%llx\",\"tcr_el1\":\"0x%llx\","
++		    "\"ttbr0_el1\":\"0x%llx\",\"ttbr1_el1\":\"0x%llx\","
++		    "\"translation_readback\":\"%s\"}",
++		    (unsigned long long)blauos_ckpt.current_el, (unsigned int)PAGE_SIZE,
++		    (unsigned long long)blauos_ckpt.sctlr_el1,
++		    (unsigned long long)blauos_ckpt.tcr_el1,
++		    (unsigned long long)blauos_ckpt.ttbr0_el1,
++		    (unsigned long long)blauos_ckpt.ttbr1_el1,
++		    blauos_ckpt.translation_readback_matched ? "matched" : "mismatch");
++		blauos_physical_emit("mmu", json);
++	}
++}
++
++void
++blauos_physical_checkpoint_finalize(void)
++{
++	char json[640];
++	char online[160];
++	uint64_t frequency, counter_before, counter_after, delivered_before;
++	uint64_t mask, give_up;
++	boolean_t interrupts;
++
++	if (!blauos_checkpoint_active()) {
++		return;
++	}
++
++	/* Controlled BRK probe through the real synchronous exception path. */
++	blauos_ckpt.brk_recovered = 0;
++	blauos_ckpt.brk_armed = 1;
++	__asm__ volatile("brk %0" :: "i" (BLAUOS_CHECKPOINT_BRK_COMMENT) : "memory");
++	blauos_ckpt.brk_armed = 0;
++	snprintf(json, sizeof(json),
++	    "{\"elr_el1\":\"0x%llx\",\"esr_el1\":\"0x%llx\",\"far_el1\":\"0x%llx\","
++	    "\"kind\":\"controlled-brk\",\"recovered\":%s}",
++	    (unsigned long long)blauos_ckpt.brk_elr,
++	    (unsigned long long)blauos_ckpt.brk_esr,
++	    (unsigned long long)blauos_ckpt.brk_far,
++	    blauos_ckpt.brk_recovered ? "true" : "false");
++	blauos_physical_emit("exception", json);
++
++	/*
++	 * Timer probe: measure the counter, program a near one-shot
++	 * decrementer pop, and count rtclock_intr() deliveries with a
++	 * one-second bound.  A zero delivered count is reported as-is; it
++	 * cannot satisfy the offline validator, which is the honest outcome.
++	 */
++	frequency = __builtin_arm_rsr64("CNTFRQ_EL0");
++	counter_before = blauos_checkpoint_hwclock();
++	delivered_before = blauos_ckpt.timer_delivered;
++	if (frequency != 0) {
++		interrupts = ml_set_interrupts_enabled(FALSE);
++		ml_set_decrementer((uint32_t)(frequency / 100 + 1));
++		ml_set_interrupts_enabled(interrupts);
++		give_up = blauos_checkpoint_hwclock() + frequency;
++		while (blauos_ckpt.timer_delivered == delivered_before &&
++		    blauos_checkpoint_hwclock() < give_up) {
++		}
++	}
++	counter_after = blauos_checkpoint_hwclock();
++	snprintf(json, sizeof(json),
++	    "{\"counter_after\":%llu,\"counter_before\":%llu,"
++	    "\"delivered\":%llu,\"frequency_hz\":%llu}",
++	    (unsigned long long)counter_after, (unsigned long long)counter_before,
++	    (unsigned long long)(blauos_ckpt.timer_delivered - delivered_before),
++	    (unsigned long long)frequency);
++	blauos_physical_emit("timer", json);
++
++	/*
++	 * CPU observation: wait (bounded, five seconds) for secondaries that
++	 * platform startup released, then report exactly the CPUs that reached
++	 * arm_init_cpu()'s online point.  A shortfall is reported, not hidden.
++	 */
++	if (frequency != 0) {
++		give_up = blauos_checkpoint_hwclock() + 5 * frequency;
++		while (blauos_checkpoint_hwclock() < give_up) {
++			mask = blauos_ckpt.cpus_online_mask;
++			if ((mask & 0xffULL) == 0xffULL) {
++				break;
++			}
++		}
++	}
++	mask = blauos_ckpt.cpus_online_mask;
++	size_t used = 0;
++	online[0] = '\0';
++	for (int cpu = 0; cpu < 64 && used + 8 < sizeof(online); cpu++) {
++		if (mask & (1ULL << cpu)) {
++			used += (size_t)snprintf(online + used, sizeof(online) - used,
++			    "%s%d", used == 0 ? "" : ",", cpu);
++		}
++	}
++	snprintf(json, sizeof(json), "{\"boot_cpu\":0,\"online\":[%s]}", online);
++	blauos_physical_emit("cpus", json);
++
++	blauos_physical_emit("checkpoint", "{\"status\":\"controlled-stop\"}");
++
++	/*
++	 * Controlled stop through the registered platform halt callback.  If
++	 * no callback is registered or it returns, initialization continues;
++	 * the emitted checkpoint line already records the intended stop.
++	 */
++	if (PE_halt_restart != NULL) {
++		(void)(*PE_halt_restart)(kPEHaltCPU);
++	}
++}
++
++#endif /* ARM64_BOARD_CONFIG_T8103 && (DEVELOPMENT || DEBUG) */
+diff --git a/src/Kernel/xnu/osfmk/arm/blauos_checkpoint.h b/src/Kernel/xnu/osfmk/arm/blauos_checkpoint.h
+new file mode 100644
+index 00000000..15d8c259
+--- /dev/null
++++ b/src/Kernel/xnu/osfmk/arm/blauos_checkpoint.h
+@@ -0,0 +1,70 @@
++/*
++ * BlauOS experimental physical checkpoint protocol, software emitter side of
++ * the Path A contract in docs/platform/m1-checkpoint.md (issues #29/#39).
++ *
++ * Every hook is inert unless the boot arguments carry an exact
++ * blauos-checkpoint-nonce=<64 lowercase hex characters> token; without that
++ * boot argument the kernel behaves exactly as before.  Compiling or linking
++ * this file is source/build evidence only; it is not physical execution
++ * evidence and satisfies no hardware gate.
++ */
++#ifndef _ARM_BLAUOS_CHECKPOINT_H_
++#define _ARM_BLAUOS_CHECKPOINT_H_
++
++#if defined(ARM64_BOARD_CONFIG_T8103) && (DEVELOPMENT || DEBUG)
++
++/*
++ * Designated BRK immediate for the controlled exception-delivery probe.  It
++ * must stay clear of the pointer-authentication failure comment range
++ * 0xc470-0xc473 that sleh.c::handle_kernel_breakpoint() treats separately.
++ */
++#define BLAUOS_CHECKPOINT_BRK_COMMENT 0xB105
++
++/* arm_init: preserve the received iBoot boot_args pointer before the
++ * constant copy replaces it. */
++void blauos_checkpoint_record_boot_args(void *args);
++
++/* arm_init, immediately after STARTUP_SUB_KPRINTF: assembly thunk that
++ * measures the live PC inside the dedicated checkpoint symbols, then emits
++ * the entry event and any measured handoff/MMU events. */
++void blauos_physical_checkpoint_entry(void);
++
++/* PE_init_platform(FALSE): hash the received handoff inputs. */
++void blauos_checkpoint_measure_handoff(void *args);
++
++/* arm_vm_init(), after the real page tables are installed. */
++void blauos_checkpoint_measure_mmu(void);
++
++/* sleh.c ESR_EC_BRK_AARCH64 kernel path: recognize the probe BRK. */
++int blauos_checkpoint_brk_intercept_armed(unsigned int comment);
++void blauos_checkpoint_brk_record(unsigned int esr, unsigned long long elr,
++    unsigned long long far);
++
++/* rtclock_intr(): count one delivered timer interrupt callback. */
++void blauos_checkpoint_timer_delivered(void);
++
++/* arm_init_cpu(): record one CPU that reached online state. */
++void blauos_checkpoint_cpu_online(int cpu_number);
++
++/* kernel_bootstrap_thread(), after bsd_init(): run the controlled BRK and
++ * timer probes, report observed CPUs, emit the controlled-stop checkpoint
++ * and halt through the registered platform callback. */
++void blauos_physical_checkpoint_finalize(void);
++
++#else /* !(ARM64_BOARD_CONFIG_T8103 && (DEVELOPMENT || DEBUG)) */
++
++static inline void blauos_checkpoint_record_boot_args(void *args) { (void)args; }
++static inline void blauos_physical_checkpoint_entry(void) {}
++static inline void blauos_checkpoint_measure_handoff(void *args) { (void)args; }
++static inline void blauos_checkpoint_measure_mmu(void) {}
++static inline int blauos_checkpoint_brk_intercept_armed(unsigned int comment) { (void)comment; return 0; }
++static inline void blauos_checkpoint_brk_record(unsigned int esr,
++    unsigned long long elr, unsigned long long far)
++{ (void)esr; (void)elr; (void)far; }
++static inline void blauos_checkpoint_timer_delivered(void) {}
++static inline void blauos_checkpoint_cpu_online(int cpu_number) { (void)cpu_number; }
++static inline void blauos_physical_checkpoint_finalize(void) {}
++
++#endif /* ARM64_BOARD_CONFIG_T8103 && (DEVELOPMENT || DEBUG) */
++
++#endif /* _ARM_BLAUOS_CHECKPOINT_H_ */
+diff --git a/src/Kernel/xnu/osfmk/arm/rtclock.c b/src/Kernel/xnu/osfmk/arm/rtclock.c
+index 1022fb2b..6ce5b854 100644
+--- a/src/Kernel/xnu/osfmk/arm/rtclock.c
++++ b/src/Kernel/xnu/osfmk/arm/rtclock.c
+@@ -61,6 +61,7 @@
+ #error Unsupported arch
+ #endif
+ #include <arm/rtclock.h>
++#include <arm/blauos_checkpoint.h>
+ 
+ #include <IOKit/IOPlatformExpert.h>
+ #include <libkern/OSAtomic.h>
+@@ -290,6 +291,11 @@ rtclock_intr(__unused unsigned int is_user_context)
+ 
+ 	cdp = getCpuDatap();
+ 
++#if defined(ARM64_BOARD_CONFIG_T8103) && (DEVELOPMENT || DEBUG)
++	/* One real timer interrupt was delivered to this CPU's rtclock path. */
++	blauos_checkpoint_timer_delivered();
++#endif
++
+ 	cdp->cpu_stat.timer_cnt++;
+ 	SCHED_STATS_INC(timer_pop_count);
+ 
+diff --git a/src/Kernel/xnu/osfmk/arm64/sleh.c b/src/Kernel/xnu/osfmk/arm64/sleh.c
+index a53a5d0e..6318d68c 100644
+--- a/src/Kernel/xnu/osfmk/arm64/sleh.c
++++ b/src/Kernel/xnu/osfmk/arm64/sleh.c
+@@ -27,6 +27,7 @@
+  */
+ 
+ #include <arm64/native_apple_sysregs.h>
++#include <arm/blauos_checkpoint.h>
+ #include <arm/caches_internal.h>
+ #include <arm/cpu_data.h>
+ #include <arm/cpu_data_internal.h>
+@@ -724,6 +725,19 @@ sleh_synchronous(arm_context_t *context, uint32_t esr, vm_offset_t far)
+ 		__builtin_unreachable();
+ 
+ 	case ESR_EC_BRK_AARCH64:
++#if defined(ARM64_BOARD_CONFIG_T8103) && (DEVELOPMENT || DEBUG)
++		/*
++		 * Opt-in controlled-BRK probe for the physical checkpoint
++		 * protocol: only the designated comment, only while the probe
++		 * is armed.  Record the delivered syndrome/registers and resume
++		 * after the BRK; every other BRK keeps the panic-by-design path.
++		 */
++		if (blauos_checkpoint_brk_intercept_armed(ISS_BRK_COMMENT(esr))) {
++			blauos_checkpoint_brk_record(esr, get_saved_state_pc(state), far);
++			set_saved_state_pc(state, get_saved_state_pc(state) + 4);
++			break;
++		}
++#endif
+ 		if (PSR64_IS_KERNEL(get_saved_state_cpsr(state))) {
+ 			handle_kernel_breakpoint(state, esr);
+ 		} else {
+diff --git a/src/Kernel/xnu/osfmk/conf/files.arm64 b/src/Kernel/xnu/osfmk/conf/files.arm64
+index 4f861afc..4ee2f2a4 100644
+--- a/src/Kernel/xnu/osfmk/conf/files.arm64
++++ b/src/Kernel/xnu/osfmk/conf/files.arm64
+@@ -32,6 +32,7 @@ osfmk/arm/data.s	standard
+ osfmk/arm64/dbgwrap.c		standard
+ osfmk/arm/arm_timer.c		standard
+ osfmk/arm/arm_init.c	standard
++osfmk/arm/blauos_checkpoint.c	standard
+ osfmk/arm64/arm_vm_init.c	standard
+ osfmk/arm/io_map.c		standard
+ osfmk/arm64/loose_ends.c	standard
+diff --git a/src/Kernel/xnu/osfmk/kern/startup.c b/src/Kernel/xnu/osfmk/kern/startup.c
+index 56d5ed85..1f03ba74 100644
+--- a/src/Kernel/xnu/osfmk/kern/startup.c
++++ b/src/Kernel/xnu/osfmk/kern/startup.c
+@@ -117,6 +117,7 @@
+ #include <machine/pmap.h>
+ #include <machine/commpage.h>
+ #include <machine/machine_routines.h>
++#include <arm/blauos_checkpoint.h>
+ #include <libkern/version.h>
+ #include <sys/codesign.h>
+ #include <sys/kdebug.h>
+@@ -850,6 +851,16 @@ kernel_bootstrap_thread(void)
+ 	kernel_bootstrap_log("bsd_init-done");
+ #endif
+ 
++#if defined(ARM64_BOARD_CONFIG_T8103) && (DEVELOPMENT || DEBUG)
++	/*
++	 * Opt-in physical checkpoint: kernel and BSD initialization are
++	 * complete.  Run the controlled exception/timer probes, report the
++	 * observed CPU set, emit the controlled-stop event and halt through
++	 * the platform callback.  Inert without the nonce boot argument.
++	 */
++	blauos_physical_checkpoint_finalize();
++#endif
++
+ 
+ 	/*
+ 	 * Get rid of pages used for early boot tracing.
+diff --git a/src/Kernel/xnu/pexpert/arm/pe_init.c b/src/Kernel/xnu/pexpert/arm/pe_init.c
+index 95fd461e..c9b88684 100644
+--- a/src/Kernel/xnu/pexpert/arm/pe_init.c
++++ b/src/Kernel/xnu/pexpert/arm/pe_init.c
+@@ -23,6 +23,7 @@
+ #elif defined __arm64__
+ #include <pexpert/arm64/board_config.h>
+ #endif
++#include <arm/blauos_checkpoint.h>
+ 
+ 
+ /* extern references */
+@@ -461,6 +462,15 @@ PE_init_platform(boolean_t vm_initialized, void *args)
+ 		 */
+ 		SecureDTInit(PE_state.deviceTreeHead, PE_state.deviceTreeSize);
+ 		pe_identify_machine(boot_args_ptr);
++#if defined(ARM64_BOARD_CONFIG_T8103) && (DEVELOPMENT || DEBUG)
++		/*
++		 * Measure the received handoff (boot_args bytes, ADT bytes,
++		 * derived memory plan) for the opt-in physical checkpoint
++		 * protocol; kprintf is not yet up, so results are stashed and
++		 * emitted at the kprintf-ready entry site.  Inert otherwise.
++		 */
++		blauos_checkpoint_measure_handoff(args);
++#endif
+ 	} else {
+ 		if (pe_arm_init_interrupts(args) == 0) {
+ 			kprintf("PE_init_platform: pe_arm_init_interrupts failed\n");

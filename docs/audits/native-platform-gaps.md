@@ -1,5 +1,15 @@
 # Native M1 P0 platform gaps
 
+> **Follow-up (2026-10-10/11):** the source-level gaps below were closed by
+> patches 0012–0017 — see [native-cpu-registration](native-cpu-registration.md),
+> [native-handoff-validation](native-handoff-validation.md),
+> [native-timer-discovery](native-timer-discovery.md),
+> [native-cpu-startup](native-cpu-startup.md),
+> [native-aic-hardening](native-aic-hardening.md) and
+> [native-checkpoint-protocol](native-checkpoint-protocol.md). Every *physical*
+> criterion in this audit remains open. The text below is the original
+> point-in-time audit.
+
 The T8103 source experiment now has a fresh linked older kernel candidate,
 including the native PAC restoration. It has not booted on a physical M1.
 Several important interfaces remain incomplete, especially CPU registration

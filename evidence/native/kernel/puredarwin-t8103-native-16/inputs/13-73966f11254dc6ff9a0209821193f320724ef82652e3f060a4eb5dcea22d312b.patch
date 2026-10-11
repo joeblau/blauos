@@ -1,0 +1,425 @@
+diff --git a/src/Kernel/xnu/osfmk/arm/arm_init.c b/src/Kernel/xnu/osfmk/arm/arm_init.c
+index 817cf974..a19d2981 100644
+--- a/src/Kernel/xnu/osfmk/arm/arm_init.c
++++ b/src/Kernel/xnu/osfmk/arm/arm_init.c
+@@ -1099,7 +1099,9 @@ MACRO_END
+ 	}
+ #endif
+ 
+-	PE_init_platform(TRUE, &BootCpuData);
++	if (PE_init_platform(TRUE, &BootCpuData) != KERN_SUCCESS) {
++		panic("arm_init: platform expert interrupt/timebase initialization failed");
++	}
+ #if defined(ARM64_BOARD_CONFIG_BCM2837)
+ 	pd_dump_iocat_vtable("w:plat ");
+ #endif
+@@ -1263,7 +1265,9 @@ arm_init_cpu(
+ 		arm64_stall_sleep = TRUE;
+ #endif
+ 		serial_init();
+-		PE_init_platform(TRUE, NULL);
++		if (PE_init_platform(TRUE, NULL) != KERN_SUCCESS) {
++			panic("arm_init_cpu: platform expert interrupt/timebase initialization failed");
++		}
+ 		commpage_update_timebase();
+ 	}
+ 	PE_init_cpu();
+diff --git a/src/Kernel/xnu/pexpert/arm/pe_identify_machine.c b/src/Kernel/xnu/pexpert/arm/pe_identify_machine.c
+index cd271b8f..5a4277cf 100644
+--- a/src/Kernel/xnu/pexpert/arm/pe_identify_machine.c
++++ b/src/Kernel/xnu/pexpert/arm/pe_identify_machine.c
+@@ -31,6 +31,7 @@ extern void clean_mmu_dcache(void);
+ static char    *gPESoCDeviceType;
+ static char     gPESoCDeviceTypeBuffer[SOC_DEVICE_TYPE_BUFFER_SIZE];
+ static vm_offset_t gPESoCBasePhys;
++static vm_offset_t gPESoCWindowSize;
+ 
+ static uint32_t gTCFG0Value;
+ 
+@@ -306,18 +307,73 @@ pe_arm_get_soc_base_phys(void)
+ 
+ 	if (SecureDTFindEntry("name", "arm-io", &entryP) == kSuccess) {
+ 		if (gPESoCDeviceType == 0) {
+-			SecureDTGetProperty(entryP, "device_type", (void const **)&tmpStr, &prop_size);
++			if (SecureDTGetProperty(entryP, "device_type", (void const **)&tmpStr, &prop_size) != kSuccess ||
++			    prop_size == 0) {
++				kprintf("pe_arm_get_soc_base_phys: arm-io has no usable device_type\n");
++				return 0;
++			}
+ 			strlcpy(gPESoCDeviceTypeBuffer, tmpStr, SOC_DEVICE_TYPE_BUFFER_SIZE);
+ 			gPESoCDeviceType = gPESoCDeviceTypeBuffer;
+ 
+-			SecureDTGetProperty(entryP, "ranges", (void const **)&ranges_prop, &prop_size);
+-			gPESoCBasePhys = *(ranges_prop + 1);
++			/*
++			 * ranges entries are <child offset, parent base, length>; the
++			 * parent base is required, the length is captured when the
++			 * firmware supplies it so child register windows can be
++			 * containment-checked.
++			 */
++			if (SecureDTGetProperty(entryP, "ranges", (void const **)&ranges_prop, &prop_size) != kSuccess ||
++			    prop_size < 2 * sizeof(uintptr_t)) {
++				kprintf("pe_arm_get_soc_base_phys: arm-io has no usable ranges property\n");
++				return 0;
++			}
++			gPESoCBasePhys = ranges_prop[1];
++			if (prop_size >= 3 * sizeof(uintptr_t)) {
++				gPESoCWindowSize = ranges_prop[2];
++			}
+ 		}
+ 		return gPESoCBasePhys;
+ 	}
+ 	return 0;
+ }
+ 
++/*
++ * Validate a child `reg` offset/length pair against the arm-io parent window
++ * and produce the physical address. Rejects short properties, zero lengths,
++ * wrapping base+offset addition and ranges that escape the parent window when
++ * the firmware supplied a window length. Returns nonzero on success.
++ */
++int
++pe_arm_soc_reg_range(uintptr_t const *reg_prop, uint32_t prop_size,
++    vm_offset_t *phys, vm_offset_t *length)
++{
++	vm_offset_t     base, offset, size;
++
++	if (reg_prop == NULL || phys == NULL || length == NULL ||
++	    prop_size < 2 * sizeof(uintptr_t)) {
++		return 0;
++	}
++
++	base = pe_arm_get_soc_base_phys();
++	if (base == 0) {
++		return 0;
++	}
++
++	offset = (vm_offset_t)reg_prop[0];
++	size = (vm_offset_t)reg_prop[1];
++
++	if (size == 0 || offset > ~(vm_offset_t)0 - base) {
++		return 0;
++	}
++	if (gPESoCWindowSize != 0 &&
++	    (offset > gPESoCWindowSize || size > gPESoCWindowSize - offset)) {
++		return 0;
++	}
++
++	*phys = base + offset;
++	*length = size;
++	return 1;
++}
++
+ extern void     fleh_fiq_generic(void);
+ 
+ #if defined(ARM_BOARD_CLASS_T8002)
+@@ -570,6 +626,7 @@ pe_arm_init_debug(void *args)
+ 	DTEntry         entryP;
+ 	uintptr_t const *reg_prop;
+ 	uint32_t        prop_size;
++	vm_offset_t     reg_phys, reg_length;
+ 
+ #if defined(QEMUVIRT)
+ 	/* QEMU virt has no Apple cpu-debug-interface. */
+@@ -584,8 +641,9 @@ pe_arm_init_debug(void *args)
+ 
+ 	if (SecureDTFindEntry("device_type", "cpu-debug-interface", &entryP) == kSuccess) {
+ 		if (args != NULL) {
+-			if (SecureDTGetProperty(entryP, "reg", (void const **)&reg_prop, &prop_size) == kSuccess) {
+-				ml_init_arm_debug_interface(args, ml_io_map(gSocPhys + *reg_prop, *(reg_prop + 1)));
++			if (SecureDTGetProperty(entryP, "reg", (void const **)&reg_prop, &prop_size) == kSuccess &&
++			    pe_arm_soc_reg_range(reg_prop, prop_size, &reg_phys, &reg_length)) {
++				ml_init_arm_debug_interface(args, ml_io_map(reg_phys, reg_length));
+ 			}
+ #if DEVELOPMENT || DEBUG
+ 			// When args != NULL, this means we're being called from arm_init on the boot CPU.
+@@ -630,6 +688,7 @@ pe_arm_map_interrupt_controller(void)
+ 	DTEntry         entryP;
+ 	uintptr_t const *reg_prop;
+ 	uint32_t        prop_size;
++	vm_offset_t     reg_phys, reg_length;
+ 	vm_offset_t     soc_phys = 0;
+ 
+ 	gSocPhys = pe_arm_get_soc_base_phys();
+@@ -642,8 +701,12 @@ pe_arm_map_interrupt_controller(void)
+ 
+ 	if (SecureDTFindEntry("interrupt-controller", "master", &entryP) == kSuccess) {
+ 		kprintf("pe_arm_map_interrupt_controller: found interrupt-controller\n");
+-		SecureDTGetProperty(entryP, "reg", (void const **)&reg_prop, &prop_size);
+-		gPicBase = ml_io_map(soc_phys + *reg_prop, *(reg_prop + 1));
++		if (SecureDTGetProperty(entryP, "reg", (void const **)&reg_prop, &prop_size) == kSuccess &&
++		    pe_arm_soc_reg_range(reg_prop, prop_size, &reg_phys, &reg_length)) {
++			gPicBase = ml_io_map(reg_phys, reg_length);
++		} else {
++			kprintf("pe_arm_map_interrupt_controller: invalid interrupt-controller reg property\n");
++		}
+ 		kprintf("pe_arm_map_interrupt_controller: gPicBase: 0x%lx\n", (unsigned long)gPicBase);
+ 	}
+ 	if (gPicBase == 0) {
+@@ -678,8 +741,12 @@ pe_arm_map_interrupt_controller(void)
+ 
+ 	if (SecureDTFindEntry("device_type", "timer", &entryP) == kSuccess) {
+ 		kprintf("pe_arm_map_interrupt_controller: found timer\n");
+-		SecureDTGetProperty(entryP, "reg", (void const **)&reg_prop, &prop_size);
+-		gTimerBase = ml_io_map(soc_phys + *reg_prop, *(reg_prop + 1));
++		if (SecureDTGetProperty(entryP, "reg", (void const **)&reg_prop, &prop_size) == kSuccess &&
++		    pe_arm_soc_reg_range(reg_prop, prop_size, &reg_phys, &reg_length)) {
++			gTimerBase = ml_io_map(reg_phys, reg_length);
++		} else {
++			kprintf("pe_arm_map_interrupt_controller: invalid timer reg property\n");
++		}
+ 		kprintf("pe_arm_map_interrupt_controller: gTimerBase: 0x%lx\n", (unsigned long)gTimerBase);
+ 	}
+ 	if (gTimerBase == 0) {
+diff --git a/src/Kernel/xnu/pexpert/arm/pe_init.c b/src/Kernel/xnu/pexpert/arm/pe_init.c
+index 6f48f989..bf495fec 100644
+--- a/src/Kernel/xnu/pexpert/arm/pe_init.c
++++ b/src/Kernel/xnu/pexpert/arm/pe_init.c
+@@ -411,7 +411,7 @@ PE_slide_devicetree(vm_offset_t slide)
+ 	SecureDTInit(PE_state.deviceTreeHead, PE_state.deviceTreeSize);
+ }
+ 
+-void
++kern_return_t
+ PE_init_platform(boolean_t vm_initialized, void *args)
+ {
+ 	DTEntry         entry;
+@@ -453,7 +453,10 @@ PE_init_platform(boolean_t vm_initialized, void *args)
+ 		SecureDTInit(PE_state.deviceTreeHead, PE_state.deviceTreeSize);
+ 		pe_identify_machine(boot_args_ptr);
+ 	} else {
+-		pe_arm_init_interrupts(args);
++		if (pe_arm_init_interrupts(args) == 0) {
++			kprintf("PE_init_platform: pe_arm_init_interrupts failed\n");
++			return KERN_FAILURE;
++		}
+ 		pe_arm_init_debug(args);
+ 	}
+ 
+@@ -521,6 +524,8 @@ PE_init_platform(boolean_t vm_initialized, void *args)
+ 		}
+ 		pe_init_debug();
+ 	}
++
++	return KERN_SUCCESS;
+ }
+ 
+ void
+diff --git a/src/Kernel/xnu/pexpert/arm/pe_serial.c b/src/Kernel/xnu/pexpert/arm/pe_serial.c
+index f2fe1b9e..c045c41a 100644
+--- a/src/Kernel/xnu/pexpert/arm/pe_serial.c
++++ b/src/Kernel/xnu/pexpert/arm/pe_serial.c
+@@ -835,13 +835,34 @@ register_serial_functions(struct pe_serial_functions *fns)
+ 	gPESF = fns;
+ }
+ 
++/*
++ * Map a UART node's register window. The reg property must carry a complete
++ * offset/length pair, survive overflow-checked addition against the arm-io
++ * parent base and stay inside the parent window when its length is known.
++ * Returns 1 and stores the mapped base on success, 0 otherwise.
++ */
++static int
++serial_map_uart_regs(DTEntry entryP, vm_offset_t *base_out)
++{
++	uintptr_t const *reg_prop;
++	uint32_t        prop_size;
++	vm_offset_t     reg_phys, reg_length;
++
++	if (SecureDTGetProperty(entryP, "reg", (void const **)&reg_prop, &prop_size) != kSuccess ||
++	    !pe_arm_soc_reg_range(reg_prop, prop_size, &reg_phys, &reg_length)) {
++		return 0;
++	}
++	*base_out = ml_io_map(reg_phys, reg_length);
++	return *base_out != 0;
++}
++
+ int
+ serial_init(void)
+ {
+ 	DTEntry         entryP = NULL;
+ 	uint32_t        prop_size;
+ 	vm_offset_t     soc_base;
+-	uintptr_t const *reg_prop;
++	uintptr_t const *reg_prop __unused;
+ 	uint32_t const  *prop_value __unused = NULL;
+ 	char const      *serial_compat __unused = 0;
+ 	uint32_t        dccmode;
+@@ -900,8 +921,7 @@ serial_init(void)
+ 
+ #if defined(VMAPPLE_UART) || defined(QEMUVIRT_UART)
+ 	if (SecureDTFindEntry("name", "uart0", &entryP) == kSuccess) {
+-		SecureDTGetProperty(entryP, "reg", (void const **)&reg_prop, &prop_size);
+-		vmapple_uart0_base_vaddr = ml_io_map(soc_base + *reg_prop, *(reg_prop + 1));
++		serial_map_uart_regs(entryP, &vmapple_uart0_base_vaddr);
+ 	}
+ 
+ 	if (vmapple_uart0_base_vaddr != 0) {
+@@ -911,28 +931,57 @@ serial_init(void)
+ 
+ #ifdef DOCKCHANNEL_UART
+ 	uint32_t no_dockchannel_uart = 0;
++	vm_offset_t dock_reg_phys, dock_reg_length;
+ 	if (SecureDTFindEntry("name", "dockchannel-uart", &entryP) == kSuccess) {
+-		SecureDTGetProperty(entryP, "reg", (void const **)&reg_prop, &prop_size);
++		if (SecureDTGetProperty(entryP, "reg", (void const **)&reg_prop, &prop_size) != kSuccess) {
++			panic("Missing dockchannel-uart reg property");
++		}
+ 		// Should be two reg entries
+ 		if (prop_size / sizeof(uintptr_t) != 4) {
+ 			panic("Malformed dockchannel-uart property");
+ 		}
+-		dockchannel_uart_base = ml_io_map(soc_base + *reg_prop, *(reg_prop + 1));
+-		dock_agent_base = ml_io_map(soc_base + *(reg_prop + 2), *(reg_prop + 3));
++		if (!pe_arm_soc_reg_range(reg_prop, prop_size, &dock_reg_phys, &dock_reg_length)) {
++			panic("Malformed dockchannel-uart property");
++		}
++		dockchannel_uart_base = ml_io_map(dock_reg_phys, dock_reg_length);
++		if (!pe_arm_soc_reg_range(reg_prop + 2, prop_size - 2 * sizeof(uintptr_t),
++		    &dock_reg_phys, &dock_reg_length)) {
++			panic("Malformed dockchannel-uart property");
++		}
++		dock_agent_base = ml_io_map(dock_reg_phys, dock_reg_length);
+ 		PE_parse_boot_argn("no-dockfifo-uart", &no_dockchannel_uart, sizeof(no_dockchannel_uart));
+ 		// Keep the old name for boot-arg
+-		if (no_dockchannel_uart == 0) {
++		if (no_dockchannel_uart == 0 && dockchannel_uart_base != 0 && dock_agent_base != 0) {
+ 			register_serial_functions(&dockchannel_uart_serial_functions);
+-			SecureDTGetProperty(entryP, "max-aop-clk", (void const **)&prop_value, &prop_size);
+-			max_dockchannel_drain_period = (uint32_t)((prop_value)?  (*prop_value * 0.03) : DOCKCHANNEL_DRAIN_PERIOD);
+ 			prop_value = NULL;
+-			SecureDTGetProperty(entryP, "enable-sw-drain", (void const **)&prop_value, &prop_size);
+-			use_sw_drain = (prop_value)?  *prop_value : 0;
++			if (SecureDTGetProperty(entryP, "max-aop-clk", (void const **)&prop_value, &prop_size) == kSuccess &&
++			    prop_size >= sizeof(uint32_t)) {
++				max_dockchannel_drain_period = (uint32_t)(*prop_value * 0.03);
++			} else {
++				max_dockchannel_drain_period = DOCKCHANNEL_DRAIN_PERIOD;
++			}
++			prop_value = NULL;
++			if (SecureDTGetProperty(entryP, "enable-sw-drain", (void const **)&prop_value, &prop_size) == kSuccess &&
++			    prop_size >= sizeof(uint32_t)) {
++				use_sw_drain = *prop_value;
++			} else {
++				use_sw_drain = 0;
++			}
+ 			prop_value = NULL;
+-			SecureDTGetProperty(entryP, "dock-wstat-mask", (void const **)&prop_value, &prop_size);
+-			dock_wstat_mask = (prop_value)?  *prop_value : 0x1ff;
++			if (SecureDTGetProperty(entryP, "dock-wstat-mask", (void const **)&prop_value, &prop_size) == kSuccess &&
++			    prop_size >= sizeof(uint32_t)) {
++				dock_wstat_mask = *prop_value;
++			} else {
++				dock_wstat_mask = 0x1ff;
++			}
+ 		} else {
+-			dockchannel_uart_clear_intr();
++			if (no_dockchannel_uart == 0) {
++				kprintf("serial_init: failed to map dockchannel-uart; falling back to uart0/uart1\n");
++				dockchannel_uart_base = 0;
++				dock_agent_base = 0;
++			} else if (dock_agent_base != 0) {
++				dockchannel_uart_clear_intr();
++			}
+ 		}
+ 		// If no dockchannel-uart is found in the device tree, fall back
+ 		// to looking for the traditional UART serial console.
+@@ -946,40 +995,38 @@ serial_init(void)
+ 	 */
+ 
+ 	if (SecureDTFindEntry("boot-console", NULL, &entryP) == kSuccess) {
+-		SecureDTGetProperty(entryP, "reg", (void const **)&reg_prop, &prop_size);
+-		uart_base = ml_io_map(soc_base + *reg_prop, *(reg_prop + 1));
++		serial_map_uart_regs(entryP, &uart_base);
+ 		if (serial_compat == 0) {
+ 			SecureDTGetProperty(entryP, "compatible", (void const **)&serial_compat, &prop_size);
+ 		}
+ 	} else if (SecureDTFindEntry("name", "uart0", &entryP) == kSuccess) {
+-		SecureDTGetProperty(entryP, "reg", (void const **)&reg_prop, &prop_size);
+-		uart_base = ml_io_map(soc_base + *reg_prop, *(reg_prop + 1));
++		serial_map_uart_regs(entryP, &uart_base);
+ 		if (serial_compat == 0) {
+ 			SecureDTGetProperty(entryP, "compatible", (void const **)&serial_compat, &prop_size);
+ 		}
+ 	} else if (SecureDTFindEntry("name", "uart1", &entryP) == kSuccess) {
+-		SecureDTGetProperty(entryP, "reg", (void const **)&reg_prop, &prop_size);
+-		uart_base = ml_io_map(soc_base + *reg_prop, *(reg_prop + 1));
++		serial_map_uart_regs(entryP, &uart_base);
+ 		if (serial_compat == 0) {
+ 			SecureDTGetProperty(entryP, "compatible", (void const **)&serial_compat, &prop_size);
+ 		}
+ 	}
+ #ifdef  S3CUART
+ 	if (NULL != entryP) {
+-		SecureDTGetProperty(entryP, "pclk", (void const **)&prop_value, &prop_size);
+-		if (prop_value) {
++		prop_value = NULL;
++		if (SecureDTGetProperty(entryP, "pclk", (void const **)&prop_value, &prop_size) == kSuccess &&
++		    prop_size >= sizeof(uint32_t)) {
+ 			dt_pclk = *prop_value;
+ 		}
+ 
+ 		prop_value = NULL;
+-		SecureDTGetProperty(entryP, "sampling", (void const **)&prop_value, &prop_size);
+-		if (prop_value) {
++		if (SecureDTGetProperty(entryP, "sampling", (void const **)&prop_value, &prop_size) == kSuccess &&
++		    prop_size >= sizeof(uint32_t)) {
+ 			dt_sampling = *prop_value;
+ 		}
+ 
+ 		prop_value = NULL;
+-		SecureDTGetProperty(entryP, "ubrdiv", (void const **)&prop_value, &prop_size);
+-		if (prop_value) {
++		if (SecureDTGetProperty(entryP, "ubrdiv", (void const **)&prop_value, &prop_size) == kSuccess &&
++		    prop_size >= sizeof(uint32_t)) {
+ 			dt_ubrdiv = *prop_value;
+ 		}
+ 	}
+diff --git a/src/Kernel/xnu/pexpert/i386/pe_init.c b/src/Kernel/xnu/pexpert/i386/pe_init.c
+index 74c6c627..3f2ad821 100644
+--- a/src/Kernel/xnu/pexpert/i386/pe_init.c
++++ b/src/Kernel/xnu/pexpert/i386/pe_init.c
+@@ -199,7 +199,7 @@ PE_lockdown_iokit(void)
+ 	ml_wait_max_cpus();
+ }
+ 
+-void
++kern_return_t
+ PE_init_platform(boolean_t vm_initialized, void * _args)
+ {
+ 	boot_args *args = (boot_args *)_args;
+@@ -262,6 +262,8 @@ PE_init_platform(boolean_t vm_initialized, void * _args)
+ 		pe_identify_machine(args);
+ 		pe_init_debug();
+ 	}
++
++	return KERN_SUCCESS;
+ }
+ 
+ void
+diff --git a/src/Kernel/xnu/pexpert/pexpert/arm/protos.h b/src/Kernel/xnu/pexpert/pexpert/arm/protos.h
+index 209473ed..22e4b376 100644
+--- a/src/Kernel/xnu/pexpert/pexpert/arm/protos.h
++++ b/src/Kernel/xnu/pexpert/pexpert/arm/protos.h
+@@ -9,6 +9,8 @@
+ #endif
+ 
+ extern vm_offset_t pe_arm_get_soc_base_phys(void);
++extern int pe_arm_soc_reg_range(uintptr_t const *reg_prop, uint32_t prop_size,
++    vm_offset_t *phys, vm_offset_t *length);
+ extern uint32_t pe_arm_init_interrupts(void *args);
+ extern void pe_arm_init_debug(void *args);
+ 
+diff --git a/src/Kernel/xnu/pexpert/pexpert/pexpert.h b/src/Kernel/xnu/pexpert/pexpert/pexpert.h
+index e6fd6d56..db0cf8a1 100644
+--- a/src/Kernel/xnu/pexpert/pexpert/pexpert.h
++++ b/src/Kernel/xnu/pexpert/pexpert/pexpert.h
+@@ -79,7 +79,7 @@ extern void lpss_uart_enable(boolean_t on_off);
+ void PE_enter_debugger(
+ 	const char *cause);
+ 
+-void PE_init_platform(
++kern_return_t PE_init_platform(
+ 	boolean_t vm_initialized,
+ 	void *args);
+ 

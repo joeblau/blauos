@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "cmake",
+    "--build",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/platform-aic-hardening",
+    "--target",
+    "PDArmPlatformExpert",
+    "--parallel",
+    "3"
+  ],
+  "cwd": "/Users/joeblau/Developer/joeblau/src/blauos",
+  "exit_code": 0,
+  "raw_log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/platform-aic-hardening/logs/build.log",
+  "raw_log_bytes": 122403,
+  "raw_log_sha256": "abc5e11323422706937d566f56262268870b67d71292baad869146f730836813",
+  "errors": []
+}
