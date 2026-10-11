@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "artifacts": [
+    {
+      "path": "/usr/libexec/blauos-ssh-capability-probe",
+      "sha256": "1564182607f2bbb06f82745ada759af80ce44fe1773c5e33fda97206bb120ffc",
+      "source": "blauos",
+      "revision": "workspace-sha256:1df59dc3d95d3ce00eb53a9e39846f28b047f1f40cbc0418fe6691859fe14aa3",
+      "source_path": "runtime/probes/ssh_capability_probe.c",
+      "source_file_sha256": "ad90e316c8decdaed1fbe2ef6a1ae26301478e928a6c168c21f5885e4645a4a0",
+      "source_files": [
+        {
+          "path": "runtime/probes/ssh_capability_probe.c",
+          "sha256": "ad90e316c8decdaed1fbe2ef6a1ae26301478e928a6c168c21f5885e4645a4a0"
+        },
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        }
+      ],
+      "workspace_revision": "6fe28fdb64ecb7511de656279d8f003281284de7"
+    }
+  ]
+}

@@ -1,0 +1,184 @@
+{
+  "schema_version": 1,
+  "passed": true,
+  "activated": true,
+  "username": "joeblau",
+  "guest_ip": "192.168.64.201",
+  "commands": {
+    "ls": {
+      "sha256": "a3f835f86d364e78f8913c729cc3ad4053f4d9698ecf34767b59350e1c0c3f0f",
+      "path": "/bin/ls"
+    },
+    "cp": {
+      "sha256": "3994b22f71ee4e7c851cca4a80d7f6a4dc29616867e465f8ef8176c7c6524757",
+      "path": "/bin/cp"
+    },
+    "mv": {
+      "sha256": "9ae3bd23e06cd4943df0ea3e008d20f4d8a32279c636b712ad60f10c316361f3",
+      "path": "/bin/mv"
+    },
+    "rm": {
+      "sha256": "f82cdd0c6566f1697c49bb99350e3bf4a4f695b40bff5f9862ae1ca9f62cad48",
+      "path": "/bin/rm"
+    },
+    "mkdir": {
+      "sha256": "f21bd36c46b00333f2312de5b78ae5ee47fcc1d44efa1f292c7587e0fd9e7e4e",
+      "path": "/bin/mkdir"
+    },
+    "rmdir": {
+      "sha256": "e8f6218c2e364925b0f188e935b92a8d52ca7b68c9f97f0d80d4b409faa3c48d",
+      "path": "/bin/rmdir"
+    },
+    "ln": {
+      "sha256": "d85db89909897120e9e0f954223b8f3cef6f85c70df911f468bac67322ef055c",
+      "path": "/bin/ln"
+    },
+    "chmod": {
+      "sha256": "aa29deb1925b62ff96b7d51bcd6ae291e672e62f82c582389ba53ad2867302e1",
+      "path": "/bin/chmod"
+    },
+    "touch": {
+      "sha256": "300199d3f575574503dfff1f396efa9bc74ab68f345429bd9087a399e06dcdc4",
+      "path": "/usr/bin/touch"
+    },
+    "stat": {
+      "sha256": "3185e8262d3c70f6a3a26d3fe9139b1685127f34e942deb2b0e9001fabfa652e",
+      "path": "/usr/bin/stat"
+    },
+    "df": {
+      "sha256": "2a16af62cac4e567531c0ad8351eb93111ab9130b3b6c09e06dd535ff3f47633",
+      "path": "/bin/df"
+    },
+    "du": {
+      "sha256": "352b30f8c942749d052e575555abea961940b9e2cd4c37d3ffd40f0b81ceb70e",
+      "path": "/usr/bin/du"
+    },
+    "cat": {
+      "sha256": "8202396154199536c97691332af4013c774be8af072cf59e4e69649c02087989",
+      "path": "/bin/cat"
+    },
+    "head": {
+      "sha256": "eb82ee094c6180f2e6c1d922b784ee7f3857fc12cee1058a7cf354751fa52ee3",
+      "path": "/usr/bin/head"
+    },
+    "tail": {
+      "sha256": "2266272ff20eae05bbac7fd35df6e3bd631bea584af2e400445e1be4b0256fd8",
+      "path": "/usr/bin/tail"
+    },
+    "wc": {
+      "sha256": "35ccb0c559cfed0b36abafa0cfe0cc6f9ea65b4467d72a122b0d920dde0e2e1a",
+      "path": "/usr/bin/wc"
+    },
+    "cut": {
+      "sha256": "2fcf5024a6f6908bc3eefa69f31bc1596857df59e9e7c1af58b806ac14446e33",
+      "path": "/usr/bin/cut"
+    },
+    "tr": {
+      "sha256": "ee6969f538dba9002388095959982629b251725aa321c64c742ea4117646aa19",
+      "path": "/usr/bin/tr"
+    },
+    "uniq": {
+      "sha256": "f89df3a499ba63a2ad7bdda592820cca4df80e256e28e81597d505b8a1e6b02d",
+      "path": "/usr/bin/uniq"
+    },
+    "tee": {
+      "sha256": "466342dafbda1ea2576fb1d9f0d089c7644ca42900c1eb100032ab8bb79a0438",
+      "path": "/usr/bin/tee"
+    },
+    "printenv": {
+      "sha256": "704aac603aff37ec406e9f4496330f3002d9376ddc9ccc140fc8ebfc66928c70",
+      "path": "/usr/bin/printenv"
+    },
+    "pwd": {
+      "sha256": "290c633db11de3917bfe802fd95fbea14e3307fdc98426a4ad654462d7044ab0",
+      "path": "/bin/pwd"
+    },
+    "basename": {
+      "sha256": "c8f6b08974443eab4c3e26633496baafb73ad5fbd4870f00ca391aa64df56cb8",
+      "path": "/usr/bin/basename"
+    },
+    "dirname": {
+      "sha256": "6b25ff9fd55c2ac264878fae03a57317021392eb8386cd21057e40cb05162cdc",
+      "path": "/usr/bin/dirname"
+    },
+    "mktemp": {
+      "sha256": "2b8c2acbc9637ce0da287b2185443257acd96e830057f8da29282ecf35b2fc98",
+      "path": "/usr/bin/mktemp"
+    },
+    "hostname": {
+      "sha256": "4905fccea26743b7106ed0b6cc207acd383d43cddfd84c671268d88e72ab51eb",
+      "path": "/bin/hostname"
+    },
+    "comm": {
+      "sha256": "0a301296d384dd7549f48852232f591377ddc5e5bb401b046f4790f2dcfb35dc",
+      "path": "/usr/bin/comm"
+    },
+    "paste": {
+      "sha256": "f5f80f167498dde6a1e80dd532e5a126f7a60e1aaba5aff4d01d71dcb66d6a00",
+      "path": "/usr/bin/paste"
+    },
+    "rev": {
+      "sha256": "3238a59e9c944a6b5531724d123faaa8719d7d75a2eebc53b45f415ea237b655",
+      "path": "/usr/bin/rev"
+    },
+    "fold": {
+      "sha256": "8568fe52a5629699f0682b9ffb8188325d4e7a17ed9e003082e3b9849ba5d09d",
+      "path": "/usr/bin/fold"
+    },
+    "expand": {
+      "sha256": "adcc3e7d6144a5aa84aa4808dfc0c26477616dac8de1827799af102fa5b5e634",
+      "path": "/usr/bin/expand"
+    },
+    "unexpand": {
+      "sha256": "4cd9c13b77ad7722fef4ef195f95944161243a8eed84656257d6ae198d9c89b5",
+      "path": "/usr/bin/unexpand"
+    },
+    "sed": {
+      "sha256": "a50dc82374f61470bf860555bc11325dbb22b27a0b227e63ec6eab496a62e720",
+      "path": "/usr/bin/sed"
+    },
+    "grep": {
+      "sha256": "d83ef15622373ba49b58985847074d35034a27641746c33036a33bc7d0374c6a",
+      "path": "/usr/bin/grep"
+    },
+    "id": {
+      "sha256": "03c9c2c5fa3473d17a7feb85edacb22d38292f5885b2fb1a262b8fa697797519",
+      "path": "/usr/bin/id"
+    },
+    "env": {
+      "sha256": "aa03f90c58d45f15915605717fb6d185c98ee1d28a4e3b1083ee2ebd004fc33b",
+      "path": "/usr/bin/env"
+    },
+    "date": {
+      "sha256": "62de9d7e6b814766a577ac9100e7d250369e9ef255bb88fabce67fb19999d92c",
+      "path": "/bin/date"
+    },
+    "ps": {
+      "sha256": "1eaad620049766c6996bd7ecc52418e318ad72b4ddc262d24e139f56cab76c1e",
+      "path": "/bin/ps"
+    },
+    "whoami": {
+      "sha256": "03c9c2c5fa3473d17a7feb85edacb22d38292f5885b2fb1a262b8fa697797519",
+      "path": "/usr/bin/whoami"
+    },
+    "groups": {
+      "sha256": "03c9c2c5fa3473d17a7feb85edacb22d38292f5885b2fb1a262b8fa697797519",
+      "path": "/usr/bin/groups"
+    }
+  },
+  "physical_boot_gate": false,
+  "runtime_audit_sha256": "61a39fa6556951b3545f599289f489fb52fffad333ac7a833549e103909fdec9",
+  "release": "/var/home/joeblau/.local/blauos-tools-ed8901655b84-330ca9",
+  "transferred_hashes_verified": true,
+  "checks": [
+    "all",
+    "files",
+    "identity",
+    "search",
+    "text"
+  ],
+  "smoke_source_sha256": "d0f4dc722ccbb9fe23c20840fd943b6df29a5c8a200969665e74c4cb2b3459c2",
+  "activation_attempted": true,
+  "original_profile_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "installed_profile_sha256": "5bfde8c536df74229be521240c1273f77bb38cf45aff4d830058f111f8816783"
+}
