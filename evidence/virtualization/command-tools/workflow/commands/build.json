@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "built": true,
+  "layers": [
+    {
+      "name": "file",
+      "exit_code": 0,
+      "argv": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "/Users/joeblau/Developer/joeblau/src/blauos/scripts/vm/build_file_commands.py",
+        "--source",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/command-tools/workflow-v1/sources/apple-file_cmds",
+        "--libutil-source",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/command-tools/workflow-v1/sources/apple-libutil",
+        "--darwin-source",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/command-tools/workflow-v1/sources/puredarwin-vm-next",
+        "--runtime-root",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/runtime-final-root",
+        "--output",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/command-tools/workflow-v1/commands/file"
+      ]
+    },
+    {
+      "name": "text",
+      "exit_code": 0,
+      "argv": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "/Users/joeblau/Developer/joeblau/src/blauos/scripts/vm/build_text_commands.py",
+        "--source",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/command-tools/workflow-v1/sources/puredarwin-vm-next",
+        "--apple-source",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/command-tools/workflow-v1/sources/apple-text-commands",
+        "--runtime-root",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/runtime-final-root",
+        "--output",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/command-tools/workflow-v1/commands/text"
+      ]
+    },
+    {
+      "name": "admin",
+      "exit_code": 0,
+      "argv": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "/Users/joeblau/Developer/joeblau/src/blauos/scripts/vm/build_admin_commands.py",
+        "--source",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/command-tools/workflow-v1/sources/apple-shell-cmds",
+        "--darwin-source",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/command-tools/workflow-v1/sources/puredarwin-vm-next",
+        "--runtime-root",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/runtime-final-root",
+        "--output",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/command-tools/workflow-v1/commands/admin"
+      ]
+    }
+  ],
+  "guest_execution_verified": false,
+  "stock_runtime_used": false
+}

@@ -6,6 +6,12 @@ pinned Apple and PureDarwin sources, using the independently built Darwin
 runtime. The Mac supplies compiler tools and SDK headers; its executables and
 runtime libraries are not copied into the guest.
 
+The [recorded acceptance](../evidence/virtualization/command-tools/checkpoint.json)
+passed all 16 image workflow stages, both actual guest boots, and 187 host tests.
+The running account also passed all 40 command checks. A second account update
+preserved its existing nonempty profile. Private profiles, keys, and disk images
+are excluded from the public evidence.
+
 The toolkit includes:
 
 | Purpose | Commands |

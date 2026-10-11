@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "source_lock_sha256": "de98f7289628e8ea53089b8945798afa01c2dd1afb1328b82e6a9a2321537cee",
+  "sources": [
+    {
+      "name": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "tree": "ed2345d7f3c11dad2e7f6ffeeb377adc789b12b8",
+      "origin": "https://github.com/PureDarwin/PureDarwin.git"
+    },
+    {
+      "name": "openssh-portable",
+      "revision": "a8c72b842423f0774f542d3c2197247c3dd28d74",
+      "tree": "737f0e3b51d20a708aab7799f6042cc3051e96ac",
+      "origin": "https://github.com/openssh/openssh-portable.git"
+    },
+    {
+      "name": "apple-file_cmds",
+      "revision": "1ef2ec6f0f57762a907001ad6ff4e967db79e1a6",
+      "tree": "e83afd197e5fe69cda6bec1b14143b493e0c5908",
+      "origin": "https://github.com/apple-oss-distributions/file_cmds.git"
+    },
+    {
+      "name": "apple-shell-cmds",
+      "revision": "3675cf36782e8339492447b881daf7f82f419859",
+      "tree": "00f35e1f389b06fbf491271cb71609f4ece70438",
+      "origin": "https://github.com/apple-oss-distributions/shell_cmds.git"
+    },
+    {
+      "name": "apple-libutil",
+      "revision": "0f4264d617b0a94d8905521fa444e2aa215f0a4d",
+      "tree": "8f5106c4f29686aec5c892b4248368c5344023a2",
+      "origin": "https://github.com/apple-oss-distributions/libutil.git"
+    },
+    {
+      "name": "apple-text-commands",
+      "revision": "592aaf8a50aa5810ee8183df20f0ba48bb23aa7e",
+      "tree": "86acbbc726de64390f538cebfcc9c4e2ccfa2c0d",
+      "origin": "https://github.com/apple-oss-distributions/text_cmds.git"
+    }
+  ]
+}
