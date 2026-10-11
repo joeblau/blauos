@@ -1,0 +1,45 @@
+{
+  "backend" : "Virtualization.framework generic EFI",
+  "configuration" : "VirtualBuddy 2.1 generic EFI, 1 CPU, 1 GiB, virtio block\/GPU\/network, USB input, empty virtiofs and SPICE console; no extra serial port",
+  "disk" : "\/Users\/joeblau\/Developer\/joeblau\/src\/blauos\/.blauos\/experiments\/virtualbuddy\/safe-Disk.img",
+  "events" : [
+    {
+      "name" : "configuration-validated",
+      "time" : "2026-10-10T23:04:30Z"
+    },
+    {
+      "name" : "framework-start-succeeded",
+      "time" : "2026-10-10T23:04:30Z"
+    },
+    {
+      "bytes" : 78321,
+      "file" : "frame-4s.png",
+      "name" : "screenshot-saved",
+      "time" : "2026-10-10T23:04:35Z"
+    },
+    {
+      "bytes" : 78321,
+      "file" : "frame-12s.png",
+      "name" : "screenshot-saved",
+      "time" : "2026-10-10T23:04:43Z"
+    },
+    {
+      "name" : "bounded-observation-finished",
+      "serial_bytes" : 0,
+      "time" : "2026-10-10T23:04:51Z",
+      "vm_state" : 1
+    },
+    {
+      "name" : "host-stopped-probe",
+      "result" : "nil",
+      "time" : "2026-10-10T23:04:51Z"
+    }
+  ],
+  "framework_start_succeeded" : true,
+  "host_os" : "Version 27.2 (Build 26B5101f)",
+  "independent_xnu_execution_observed" : false,
+  "physical_gate_passed" : false,
+  "schema_version" : 1,
+  "screenshot_method" : "Public AppKit cacheDisplay of the owned VZVirtualMachineView; no host desktop capture",
+  "virtualbuddy_app_started_vm" : false
+}

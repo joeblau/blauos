@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "passed": true,
+  "nonce": "60b7bad1d7e35983aa293b1f4e2e7c91856f9b223e9a5492923ddb9ff857ec75",
+  "guest_challenge_seen": true,
+  "host_to_guest_passed": true,
+  "shutdown_requested": true,
+  "guest_shutdown_passed": true,
+  "physical_boot_gate": false,
+  "extra_serial_port": true,
+  "image_sha256": "6c40bba9f2c8016da4f71777a12a36257aa399124f0a13214bdb1e5177339172",
+  "probe_sha256": "3ac74fec63ae6a4fe187c526539f0d4fe0a2fc82276b38b537724db9cb36b72a",
+  "argv": [
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/supported-probe",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/release-serial/vm",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/release-serial-Disk.img"
+  ],
+  "markers": [
+    "atfork_handlers",
+    "blocks_lifetime",
+    "clock",
+    "concurrent_once",
+    "dns",
+    "dynamic_loader",
+    "guest_to_host",
+    "host_to_guest",
+    "kernel",
+    "launchd",
+    "launchd_services",
+    "locale_conversions",
+    "mach_timer",
+    "network_service",
+    "runtime",
+    "shell",
+    "shutdown_child_reaped",
+    "shutdown_job_exit",
+    "shutdown_job_started",
+    "shutdown_requested"
+  ],
+  "serial_sha256": "01a7ad8d3386a5694739e5bc5968b8fa6ec18ed4c2bccd489827040c69126912"
+}

@@ -1,0 +1,16 @@
+{
+  "build": {
+    "drvPath": "/nix/store/62bnbh8jwvw5nhy8kw3nqc31dzzryfvb-xnu-loader-0.1.drv",
+    "outputs": {
+      "out": "/nix/store/fcj7gn179m2digm345abh6hily1kcrwk-xnu-loader-0.1"
+    }
+  },
+  "bytes": 127382,
+  "sha256": "fe76eec178c2775a151fd1db08581595c39ccf6010653e2250fd8a82de205607",
+  "machine": "ARM64",
+  "format": "PE EFI application",
+  "patch_sha256": "7b6ff7a7b8bd1d11dd0a5087ef2c47fc6a6d4c4067711d74a97d58f5e4d3b803",
+  "source_revision": "8295cd89c184785896d007d0554b398d22d8e32f",
+  "compiler": "GCC 14.3.0 / GNU EFI 4.0.2",
+  "diagnostic_only": true
+}

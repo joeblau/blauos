@@ -3,7 +3,9 @@
 import argparse
 import hashlib
 import json
+import ipaddress
 import os
+import plistlib
 from pathlib import Path
 import shutil
 import subprocess
@@ -57,7 +59,7 @@ def assemble(args):
     (staging / "cores").chmod(0o700)
     configs = {
         "hosts": "127.0.0.1 localhost blauos\n::1 localhost\n",
-        "resolv.conf": "nameserver 10.0.2.3\n",
+        "resolv.conf": "nameserver " + (args.network[3] if args.network else "10.0.2.3") + "\n",
         "passwd": "root:*:0:0:root:/var/root:/bin/sh\nnobody:*:65534:65534:nobody:/var/empty:/bin/false\n",
         "master.passwd": "root:*:0:0::0:0:root:/var/root:/bin/sh\nnobody:*:65534:65534::0:0:nobody:/var/empty:/bin/false\n",
         "group": "wheel:*:0:root\nnobody:*:65534:\n",
@@ -68,13 +70,18 @@ def assemble(args):
     }
     for name, text in configs.items():
         path = staging / "etc" / name
-        if not path.exists():
+        if not path.exists() or (args.network and name == "resolv.conf"):
             path.write_text(text)
             path.chmod(0o644)
     fixture_names = ("org.blauos.test.bootstrap.plist", "org.blauos.test.exec-failure.plist", "org.blauos.test.shutdown.plist", "launchd-test.sh")
     for name in fixture_names:
         shutil.copyfile(ROOT / "runtime/fixtures" / name, staging / "etc/blauos-tests" / name)
-    shutil.copyfile(ROOT / "vm/org.blauos.smoke.plist", staging / "System/Library/LaunchDaemons/org.blauos.smoke.plist")
+    smoke_plist = plistlib.loads((ROOT / "vm/org.blauos.smoke.plist").read_bytes())
+    if args.network:
+        smoke_plist["ProgramArguments"] += ["--network", *args.network]
+    if args.standalone:
+        smoke_plist["ProgramArguments"].append("--standalone")
+    (staging / "System/Library/LaunchDaemons/org.blauos.smoke.plist").write_bytes(plistlib.dumps(smoke_plist))
     image = args.output / "blauos-arm64.img"
     esp = args.output / "esp.img"
     root_image = args.output / "root.ext4"
@@ -130,11 +137,24 @@ def main():
     parser.add_argument("--root-mb", type=int, default=512)
     parser.add_argument("--esp-mb", type=int, default=64)
     parser.add_argument("--boot-args", default="-v debug=0x218 serial=3 keepsyms=1 no_interrupt_masked_debug=1 kextlog=0xfffffff")
+    parser.add_argument("--network", nargs=4, metavar=("ADDRESS", "NETMASK", "GATEWAY", "DNS"),
+                        help="Configure the guest probe and resolver before daemon startup")
+    parser.add_argument("--standalone", action="store_true",
+                        help="Run the demonstration health service without an acceptance challenge")
     args = parser.parse_args()
     for name in ("root", "provenance", "kernel", "loader", "output"):
         setattr(args, name, getattr(args, name).resolve())
     if args.root_mb < 64 or args.esp_mb < 32:
         parser.error("Root must be at least 64 MB and ESP at least 32 MB")
+    if args.standalone and not args.network:
+        parser.error("--standalone requires an explicit --network")
+    if args.network:
+        try:
+            for value in args.network:
+                ipaddress.IPv4Address(value)
+            ipaddress.IPv4Network((args.network[0], args.network[1]), strict=False)
+        except ValueError as error:
+            parser.error(str(error))
     try:
         print(json.dumps(assemble(args), indent=2))
         return 0

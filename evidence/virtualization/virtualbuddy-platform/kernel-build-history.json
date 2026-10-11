@@ -1,0 +1,293 @@
+{
+  "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+  "manifest_sha256": "8022bbbfb33204b56bb3297cd8cbb39fb6c08ea65c476492d99462f7edfe3657",
+  "machine": "VIRT",
+  "sdk": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+  "recipe": {
+    "schema_version": 1,
+    "build_system": "puredarwin_cmake",
+    "manifest_sha256": "8022bbbfb33204b56bb3297cd8cbb39fb6c08ea65c476492d99462f7edfe3657",
+    "source_name": "puredarwin-vm-next",
+    "source_revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+    "source_tree": "ed2345d7f3c11dad2e7f6ffeeb377adc789b12b8",
+    "machine": "VIRT",
+    "architecture_config": "ARM64",
+    "kernel_config": "DEVELOPMENT",
+    "original_source": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/sources/puredarwin-vm-next",
+    "effective_source": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/source-overlay",
+    "sdk": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+    "kdk": null,
+    "darwin_version": "20.5.0",
+    "requested_apple_darwin_version": null,
+    "applied_apple_darwin_version": null,
+    "source_master_version": {
+      "path": "src/Kernel/xnu/config/MasterVersion",
+      "sha256": "31671a8f8bad9cc7ec6a5e21fc4c91b9cdec81de93dbbc7426c5dbe3e3455653",
+      "version": "20.5.0"
+    },
+    "make_settings": {},
+    "build_wrapper_inputs": [
+      {
+        "path": "scripts/build/xnu.py",
+        "sha256": "9e789f1228887ead1a40d0659fcb2ccc97c46cd5275ac6f502440a51a9179643"
+      },
+      {
+        "path": "scripts/build/headers.py",
+        "sha256": "08427445722bdfb487c6aba4c78e6ce91a9bc76dd6d4e1a005bdd63e7a48d502"
+      },
+      {
+        "path": "scripts/blauos.py",
+        "sha256": "fc159232fb6b6fed403680b9e8764cac1704f60bc47a90a798e9a0639476cdff"
+      }
+    ],
+    "source_amendments": [
+      {
+        "source_archive_sha256": "1c955560333a1e47a38f2018ead9fd90580eb4b9520f44435ebfa03afcd3c1f6",
+        "excluded_absolute_symlinks": [
+          "src/Libraries/libSystem/libc/gen/FreeBSD/result"
+        ]
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/vm/patches/xnu-classic-arm64-protections.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2-evidence/inputs/01-371466a26ab5ecb68d7491566900c7239a6987cd7f52ddfdc9865ce81c29ba69.patch",
+        "sha256": "371466a26ab5ecb68d7491566900c7239a6987cd7f52ddfdc9865ce81c29ba69"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/vm/patches/pdarm-qemu-psci-shutdown.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2-evidence/inputs/02-b153ed78a06dd06f41dcd6cd36dffb4b17d1ea792fed9ae08535d02c0694f201.patch",
+        "sha256": "b153ed78a06dd06f41dcd6cd36dffb4b17d1ea792fed9ae08535d02c0694f201"
+      },
+      {
+        "path": "/Users/joeblau/Developer/joeblau/src/blauos/vm/patches/puredarwin-virtualbuddy-platform.patch",
+        "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2-evidence/inputs/03-6a118f3bdf9bf93ce10378f0db0296079fef337f57b8b401a64b7e1801786e08.patch",
+        "sha256": "6a118f3bdf9bf93ce10378f0db0296079fef337f57b8b401a64b7e1801786e08"
+      }
+    ],
+    "commands": [
+      {
+        "argv": [
+          "cmake",
+          "-S",
+          "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/source-overlay",
+          "-B",
+          "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2",
+          "-G",
+          "Unix Makefiles",
+          "-DCMAKE_POLICY_VERSION_MINIMUM=3.5",
+          "-DPUREDARWIN_ARCH=arm64",
+          "-DCMAKE_OSX_ARCHITECTURES=arm64",
+          "-DCMAKE_OSX_SYSROOT=/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+          "-DCMAKE_C_COMPILER=/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+          "-DCMAKE_CXX_COMPILER=/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++",
+          "-DPUREDARWIN_ARM64_MACHINE_CONFIG=VIRT",
+          "-DPUREDARWIN_XNU_KERNEL_CONFIG=DEVELOPMENT",
+          "-DPUREDARWIN_ENABLE_KERNEL=ON",
+          "-DPUREDARWIN_ENABLE_LIBRARIES=ON",
+          "-DPUREDARWIN_ENABLE_TOOLS=ON",
+          "-DPUREDARWIN_ENABLE_USERSPACE=OFF",
+          "-DPUREDARWIN_ENABLE_PROJECTS=OFF",
+          "-DCMAKE_C_FLAGS=-fno-stack-check",
+          "-DCMAKE_CXX_FLAGS=-fno-stack-check",
+          "-DPUREDARWIN_QEMU_PSCI_HVC=ON"
+        ],
+        "cwd": "/Users/joeblau/Developer/joeblau/src/blauos",
+        "exit_code": 0,
+        "raw_log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/logs/configure.log",
+        "raw_log_bytes": 2158,
+        "raw_log_sha256": "fb534fd4c0b972b7f0cc178eee53bd445ad8f15e6b780a8f0eb02f07cf7f0773",
+        "errors": []
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2",
+          "--target",
+          "xnu",
+          "--parallel",
+          "8"
+        ],
+        "cwd": "/Users/joeblau/Developer/joeblau/src/blauos",
+        "exit_code": 0,
+        "raw_log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/logs/build.log",
+        "raw_log_bytes": 231422361,
+        "raw_log_sha256": "5e12b3a54fbf5ca2a88c9b1be5c2621d5abe930595b45d0aaed11b2a6e51e8fe",
+        "errors": [
+          "ata t   35 | _REerror:SER_VEDIOBufferMem %SordaT,yDe lengtsthe_At;: crip%l     /* mbsTE struct dt)a\\te_t */",
+          " aa 0)/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu_build/src/xnu-build/EXPORT_HDRS/osfmk/kern/priority_queue.h*Nri:s gs* rn umbte_659tuse f:c , vr,  oid81rn :***3 d o _c,/t e , co",
+          "t:653  | /Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/source-overlay/src/Kernel/xnu/osfmk/kern/priority_queue.hri *** s,r1ic, p __p",
+          "       ,  _98q\"***_        _ vb vumm41In file included from c}| /Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/source-overlay/src/Kernel/xnu/bsd/sys/signal.h^",
+          "om_nGntpt/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/source-overlay/src/Kernel/xnu/osfmk/machine/pmap.h:81  qur_  E ***tru _: note: io:t6  texpanded from macro '\\",
+          "  :Smtnt 69_:  | __ e_ p(:<scratch space>***(434i2)g_fnote:   ;580ofexpanded from macro 'os_cast_to_atomic_pointer'_"
+        ]
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2",
+          "--target",
+          "PDArmPlatformExpert",
+          "PDArmPCI",
+          "IOPCIFamily",
+          "IOStorageFamily",
+          "ext4.kext",
+          "Ext4FileSystemDriver.kext",
+          "AppleFileSystemDriver.kext",
+          "corecrypto.kext",
+          "pthread.kext",
+          "IONetworkingFamily.kext",
+          "IOVirtIOFamily.kext",
+          "IOVirtIOBlock.kext",
+          "IOVirtIONet.kext",
+          "--parallel",
+          "8"
+        ],
+        "cwd": "/Users/joeblau/Developer/joeblau/src/blauos",
+        "exit_code": 0,
+        "raw_log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/logs/kexts.log",
+        "raw_log_bytes": 71193,
+        "raw_log_sha256": "9f8f69a79d8b7590e5cc4efcf84e61b1d04dd8328f3918118a362104d54b59ba",
+        "errors": []
+      }
+    ],
+    "tool_environment": {
+      "CC": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+      "CXX": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++",
+      "DEVELOPER_DIR": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer",
+      "HOME": "/Users/joeblau",
+      "LANG": "en_US.UTF-8",
+      "LC_ALL": "en_US.UTF-8",
+      "LOGNAME": "joeblau",
+      "PATH": "/Users/joeblau/.codex/packages/app-server-daemon/releases/0.162.1-aarch64-apple-darwin/codex-path:/Users/joeblau/.kimi-code/bin:/Users/joeblau/.cargo/bin:/Users/joeblau/.grok/bin:/opt/homebrew/opt/openjdk/bin:/Users/joeblau/.local/share/solana/install/active_release/bin:/Users/joeblau/.local/share/solana/install/active_release/bin:/Users/joeblau/.antigravity/antigravity/bin:/Users/joeblau/.local/bin:/Users/joeblau/.local/share/solana/install/active_release/bin:/Users/joeblau/.bun/bin:/Users/joeblau/.codeium/windsurf/bin:/Users/joeblau/.nvm/versions/node/v24.10.0/bin:/Users/joeblau/.local/share/solana/install/active_release/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/Users/joeblau/.codex/tmp/arg0/codex-arg0pob7j3:/Users/joeblau/.codex/packages/app-server-daemon/releases/0.162.1-aarch64-apple-darwin/codex-path:/Users/joeblau/.codex/tmp/arg0/codex-arg0LkDzuY:/Users/joeblau/.bun/install/global/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/codex-path:/Users/joeblau/.kimi-code/bin:/Users/joeblau/.cargo/bin:/Users/joeblau/.grok/bin:/opt/homebrew/opt/openjdk/bin:/Users/joeblau/.local/share/solana/install/active_release/bin:/Users/joeblau/.antigravity/antigravity/bin:/Users/joeblau/.local/bin:/Users/joeblau/.bun/bin:/Users/joeblau/.codeium/windsurf/bin:/Users/joeblau/Library/pnpm:/Users/joeblau/.nvm/versions/node/v24.10.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/joeblau/.foundry/bin:/Users/joeblau/.foundry/bin",
+      "SDKROOT": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+      "SHELL": "/bin/zsh",
+      "TMPDIR": "/var/folders/_k/883vgjk55hg79qfxf60d9lzh0000gn/T/",
+      "USER": "joeblau"
+    }
+  },
+  "source_amendments": [
+    {
+      "source_archive_sha256": "1c955560333a1e47a38f2018ead9fd90580eb4b9520f44435ebfa03afcd3c1f6",
+      "excluded_absolute_symlinks": [
+        "src/Libraries/libSystem/libc/gen/FreeBSD/result"
+      ]
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/vm/patches/xnu-classic-arm64-protections.patch",
+      "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2-evidence/inputs/01-371466a26ab5ecb68d7491566900c7239a6987cd7f52ddfdc9865ce81c29ba69.patch",
+      "sha256": "371466a26ab5ecb68d7491566900c7239a6987cd7f52ddfdc9865ce81c29ba69"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/vm/patches/pdarm-qemu-psci-shutdown.patch",
+      "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2-evidence/inputs/02-b153ed78a06dd06f41dcd6cd36dffb4b17d1ea792fed9ae08535d02c0694f201.patch",
+      "sha256": "b153ed78a06dd06f41dcd6cd36dffb4b17d1ea792fed9ae08535d02c0694f201"
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/vm/patches/puredarwin-virtualbuddy-platform.patch",
+      "snapshot_path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2-evidence/inputs/03-6a118f3bdf9bf93ce10378f0db0296079fef337f57b8b401a64b7e1801786e08.patch",
+      "sha256": "6a118f3bdf9bf93ce10378f0db0296079fef337f57b8b401a64b7e1801786e08"
+    }
+  ],
+  "original_full_build_result_sha256": "70749b4ba632c2951bca3d4658e506348e8e11fa0d3f1c444a084abc5099c846",
+  "scope": "Original full kernel build followed by recorded source amendments; final reconstruction and collection hashes bind the consumed artifacts",
+  "final_kernel_sha256": "89613196ca3ab5e2194db651735a0f2103729098da3a719d7992ac053668a5f8",
+  "amendment_builds": [
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v3-build.log",
+      "raw_log_sha256": "62cc865c890a710e472953375beaeddde0a4ad05622fe155208d5703fb3d25bd",
+      "tail": [
+        "        INSTALL Mach (arm64)",
+        "        INSTALL BSDKernel (arm64)",
+        "        INSTALL IOKit (arm64)",
+        "        INSTALL Unsupported (arm64)",
+        "        INSTALL MACFramework (arm64)",
+        "done building xnu",
+        "        INSTALL Private (arm64)",
+        "        INSTALL Libkern (arm64)",
+        "        INSTALL Kasan (arm64)",
+        "[100%] No install step for 'xnu'",
+        "[100%] Completed 'xnu'",
+        "[100%] Built target xnu"
+      ]
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v4-build.log",
+      "raw_log_sha256": "dc01601cb726dd1361e118ed51d6d4d632eb1b79971c9056d191057b4cd4e3b7",
+      "tail": [
+        "done building xnu",
+        "        INSTALL Kasan (arm64)",
+        "        INSTALL IOKit (arm64)",
+        "        INSTALL Unsupported (arm64)",
+        "        INSTALL Libkern (arm64)",
+        "        INSTALL Mach (arm64)",
+        "        INSTALL Private (arm64)",
+        "        INSTALL BSDKernel (arm64)",
+        "        INSTALL MACFramework (arm64)",
+        "[100%] No install step for 'xnu'",
+        "[100%] Completed 'xnu'",
+        "[100%] Built target xnu"
+      ]
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v5-build.log",
+      "raw_log_sha256": "a48005874b2ac4af218e450b80ae93c355ce042dfb242d52792c1fbc8714314a",
+      "tail": [
+        "        INSTALL BSDKernel (arm64)",
+        "done building xnu",
+        "        INSTALL Kasan (arm64)",
+        "        INSTALL IOKit (arm64)",
+        "        INSTALL MACFramework (arm64)",
+        "        INSTALL Unsupported (arm64)",
+        "        INSTALL Libkern (arm64)",
+        "        INSTALL Private (arm64)",
+        "        INSTALL Mach (arm64)",
+        "[100%] No install step for 'xnu'",
+        "[100%] Completed 'xnu'",
+        "[100%] Built target xnu"
+      ]
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v6-build.log",
+      "raw_log_sha256": "897acc7b797d43e288c4c13df959c9d17da9724eba1ce2b81c89d4af79501037",
+      "tail": [
+        "        INSTALL IOKit (arm64)",
+        "        INSTALL Kasan (arm64)",
+        "        INSTALL Libkern (arm64)",
+        "        INSTALL Mach (arm64)",
+        "        INSTALL MACFramework (arm64)",
+        "done building xnu",
+        "        INSTALL BSDKernel (arm64)",
+        "        INSTALL Private (arm64)",
+        "        INSTALL Unsupported (arm64)",
+        "[100%] No install step for 'xnu'",
+        "[100%] Completed 'xnu'",
+        "[100%] Built target xnu"
+      ]
+    },
+    {
+      "path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v7-build.log",
+      "raw_log_sha256": "7ac022441b984d616c8ec527407788381109c3987a38a95d1a32aa3abc5f53ab",
+      "tail": [
+        "      |                      ^",
+        "In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/source-overlay/src/Kernel/Extensions/IOVirtIOGPU/IOVirtIOGPU.cpp:13:",
+        "In file included from /Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/source-overlay/src/Kernel/Extensions/IOVirtIOGPU/IOVirtIOGPU.h:14:",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/source-overlay/src/Kernel/Extensions/IOVirtIOGPU/../IOPCIFamily/include/IOKit/pci/IOPCIDevice.h:384:18: warning: 'handleClose' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]",
+        "  384 |     virtual void handleClose(IOService * forClient, IOOptionBits options);",
+        "      |                  ^",
+        "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/kernel-v2/src/Kernel/xnu/xnu_header_install/System/Library/Frameworks/Kernel.framework/Versions/A/PrivateHeaders/IOKit/IOService.h:646:15: note: overridden virtual function is here",
+        "  646 |         virtual void handleClose(   IOService *       forClient,",
+        "      |                      ^",
+        "2 warnings generated.",
+        "[100%] Linking CXX CFBundle shared module IOVirtIOGPU.kext/Contents/MacOS/IOVirtIOGPU",
+        "[100%] Built target IOVirtIOGPU.kext"
+      ]
+    }
+  ],
+  "graphics_lock_release_amendment": {
+    "command": "graphics-build-command.json",
+    "log": "graphics-build.log",
+    "raw_log_sha256": "4c2157387a6900ff61cdefdd5f07f2aa04d6d377b2edbe065e61c0550d5f3f3a",
+    "scope": "Removed a dangling debug conditional so the command lock is released on timeout as well as success; rebuilt GPU and collection and repeated both backend acceptance runs."
+  }
+}

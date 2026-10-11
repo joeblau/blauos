@@ -1,0 +1,17 @@
+Timestamp               Ty Process[PID:TID]
+2026-10-10 17:26:29.224 Df com.apple.Virtualization.VirtualMachine[97221:1f8a0fe] [com.apple.xpc:connection] [0x7c7f05ca00] invalidated because the current process cancelled the connection by calling xpc_connection_cancel()
+2026-10-10 17:26:29.224 Df com.apple.Virtualization.VirtualMachine[97221:1f8a0fe] [com.apple.xpc:connection] [0x7c7f05c280] invalidated because the current process cancelled the connection by calling xpc_connection_cancel()
+2026-10-10 17:26:29.224 Df com.apple.Virtualization.VirtualMachine[97221:1f91fff] [com.apple.CoreAnalytics:client] Entering exit handler.
+2026-10-10 17:26:29.224 Df com.apple.Virtualization.VirtualMachine[97221:1f91fff] [com.apple.CoreAnalytics:client] Queueing exit procedure onto XPC queue. Any further messages sent will be discarded. activeSendTransactions=0
+2026-10-10 17:26:29.224 Df com.apple.Virtualization.VirtualMachine[97221:1f97607] [com.apple.CoreAnalytics:client] Cancelling XPC connection. Any further reply handler invocations will not retry messages
+2026-10-10 17:26:29.224 Df com.apple.Virtualization.VirtualMachine[97221:1f97607] [com.apple.xpc:connection] [0x7c7f05c780] invalidated because the current process cancelled the connection by calling xpc_connection_cancel()
+2026-10-10 17:26:29.224 Df com.apple.Virtualization.VirtualMachine[97221:1f91fff] [com.apple.CoreAnalytics:client] Exiting exit handler.
+2026-10-10 17:26:29.224 Df com.apple.Virtualization.VirtualMachine[97221:1f97607] [com.apple.CoreAnalytics:client] XPC connection invalidated (daemon unloaded/disabled)
+2026-10-10 17:26:29.379 Df com.apple.Virtualization.VirtualMachine[97221:1f91ffe] [com.apple.xpc:connection] [0x7c7f05cb40] invalidated because the current process cancelled the connection by calling xpc_connection_cancel()
+2026-10-10 17:26:29.379 Df com.apple.Virtualization.VirtualMachine[97221:1f91ffe] [com.apple.xpc:connection] [0x7c7f05cc80] invalidated because the current process cancelled the connection by calling xpc_connection_cancel()
+2026-10-10 17:26:29.379 Df com.apple.Virtualization.VirtualMachine[97221:1f8a100] [com.apple.CoreAnalytics:client] Entering exit handler.
+2026-10-10 17:26:29.379 Df com.apple.Virtualization.VirtualMachine[97221:1f8a100] [com.apple.CoreAnalytics:client] Queueing exit procedure onto XPC queue. Any further messages sent will be discarded. activeSendTransactions=0
+2026-10-10 17:26:29.379 Df com.apple.Virtualization.VirtualMachine[97221:1f8a100] [com.apple.CoreAnalytics:client] Exiting exit handler.
+2026-10-10 17:26:29.379 Df com.apple.Virtualization.VirtualMachine[97221:1f97607] [com.apple.CoreAnalytics:client] XPC message reply connection invalidated (client likely exiting): Connection invalid
+2026-10-10 17:26:29.382 E  VirtualBuddy[59803:1e9835c] [codes.rambo.VirtualCore:VMInstance(BlauOS-VirtualBuddy)] Guest stopped with error: Error Domain=VZErrorDomain Code=1 "The virtual machine stopped unexpectedly." UserInfo={NSLocalizedFailure=Internal Virtualization error., NSLocalizedFailureReason=The virtual machine stopped unexpectedly.}
+2026-10-10 17:26:29.382 Df VirtualBuddy[59803:1e9835c] [codes.rambo.VirtualCore:VMLibraryController] Stop preventing app termination

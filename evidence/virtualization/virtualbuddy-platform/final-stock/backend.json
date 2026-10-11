@@ -1,0 +1,27 @@
+{
+  "backend" : "Virtualization.framework generic EFI",
+  "configuration" : "VirtualBuddy 2.1 generic EFI, 1 CPU, 1 GiB, virtio block\/GPU\/network, USB input, empty virtiofs and SPICE console",
+  "disk" : "\/Users\/joeblau\/Developer\/joeblau\/src\/blauos\/.blauos\/experiments\/virtualbuddy-platform\/release-stock-Disk.img",
+  "events" : [
+    {
+      "name" : "configuration-validated",
+      "time" : "2026-10-11T00:23:16Z"
+    },
+    {
+      "name" : "framework-start-succeeded",
+      "time" : "2026-10-11T00:23:16Z"
+    },
+    {
+      "name" : "guest-stopped",
+      "time" : "2026-10-11T00:23:54Z"
+    }
+  ],
+  "extra_serial_port" : false,
+  "framework_start_succeeded" : true,
+  "guest_checkpoints" : "Classified separately from the guest log",
+  "host_os" : "Version 27.2 (Build 26B5101f)",
+  "physical_gate_passed" : false,
+  "schema_version" : 1,
+  "screenshot_method" : "No screenshots",
+  "virtualbuddy_app_started_vm" : false
+}

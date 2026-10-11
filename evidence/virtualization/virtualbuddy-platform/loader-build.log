@@ -1,0 +1,88 @@
+this derivation will be built:
+  /nix/store/7d8p6nifnj96f5rvca73zywdrl7scm7w-xnu-loader-0.1.drv
+building '/nix/store/7d8p6nifnj96f5rvca73zywdrl7scm7w-xnu-loader-0.1.drv'...
+xnu-loader> Running phase: unpackPhase
+xnu-loader> unpacking source archive /nix/store/xckdqljcrsv3gry84cx664lykbqwg48c-xnu-loader-vb-boot-source
+xnu-loader> source root is xnu-loader-vb-boot-source
+xnu-loader> Running phase: patchPhase
+xnu-loader> Running phase: updateAutotoolsGnuConfigScriptsPhase
+xnu-loader> Running phase: configurePhase
+xnu-loader> cmake flags: -DCMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY=OFF -DCMAKE_FIND_USE_PACKAGE_REGISTRY=OFF -DCMAKE_EXPORT_NO_PACKAGE_REGISTRY=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -DCMAKE_INSTALL_LOCALEDIR=/nix/store/0inwhphnh7k66g98pnwwrnvkhkk30cq7-xnu-loader-0.1/share/locale -DCMAKE_INSTALL_LIBEXECDIR=/nix/store/0inwhphnh7k66g98pnwwrnvkhkk30cq7-xnu-loader-0.1/libexec -DCMAKE_INSTALL_LIBDIR=/nix/store/0inwhphnh7k66g98pnwwrnvkhkk30cq7-xnu-loader-0.1/lib -DCMAKE_INSTALL_DOCDIR=/nix/store/0inwhphnh7k66g98pnwwrnvkhkk30cq7-xnu-loader-0.1/share/doc/xnu_loader -DCMAKE_INSTALL_INFODIR=/nix/store/0inwhphnh7k66g98pnwwrnvkhkk30cq7-xnu-loader-0.1/share/info -DCMAKE_INSTALL_MANDIR=/nix/store/0inwhphnh7k66g98pnwwrnvkhkk30cq7-xnu-loader-0.1/share/man -DCMAKE_INSTALL_INCLUDEDIR=/nix/store/0inwhphnh7k66g98pnwwrnvkhkk30cq7-xnu-loader-0.1/include -DCMAKE_INSTALL_SBINDIR=/nix/store/0inwhphnh7k66g98pnwwrnvkhkk30cq7-xnu-loader-0.1/sbin -DCMAKE_INSTALL_BINDIR=/nix/store/0inwhphnh7k66g98pnwwrnvkhkk30cq7-xnu-loader-0.1/bin -DCMAKE_INSTALL_NAME_DIR=/nix/store/0inwhphnh7k66g98pnwwrnvkhkk30cq7-xnu-loader-0.1/lib -DCMAKE_STRIP=/nix/store/48ywmq5vl4jld47z5f1p662vwi0anw6y-gcc-wrapper-14.3.0/bin/strip -DCMAKE_RANLIB=/nix/store/48ywmq5vl4jld47z5f1p662vwi0anw6y-gcc-wrapper-14.3.0/bin/ranlib -DCMAKE_AR=/nix/store/48ywmq5vl4jld47z5f1p662vwi0anw6y-gcc-wrapper-14.3.0/bin/ar -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ -DCMAKE_INSTALL_PREFIX=/nix/store/0inwhphnh7k66g98pnwwrnvkhkk30cq7-xnu-loader-0.1 -DGNU_EFI_DIR=/nix/store/z534w7770fzs2lbl5g5v1bxdhfmj7gv0-gnu-efi-4.0.2 -DARCH=aarch64 -DXNU_LOADER_QEMU_VIRT=ON -DXNU_LOADER_VIRTUALBUDDY=ON
+xnu-loader> -- The C compiler identification is GNU 14.3.0
+xnu-loader> -- Detecting C compiler ABI info
+xnu-loader> -- Detecting C compiler ABI info - done
+xnu-loader> -- Check for working C compiler: /nix/store/48ywmq5vl4jld47z5f1p662vwi0anw6y-gcc-wrapper-14.3.0/bin/gcc - skipped
+xnu-loader> -- Detecting C compile features
+xnu-loader> -- Detecting C compile features - done
+xnu-loader> -- The ASM compiler identification is GNU
+xnu-loader> -- Found assembler: /nix/store/48ywmq5vl4jld47z5f1p662vwi0anw6y-gcc-wrapper-14.3.0/bin/gcc
+xnu-loader> -- libgcc: /nix/store/35f3jqq1xw3lk9cpg7sb99nbrbgxd9ag-gcc-14.3.0/lib/gcc/aarch64-unknown-linux-gnu/14.3.0/libgcc.a
+xnu-loader> -- Configuring done (0.1s)
+xnu-loader> -- Generating done (0.0s)
+xnu-loader> CMake Warning:
+xnu-loader>   Manually-specified variables were not used by the project:
+xnu-loader> 
+xnu-loader>     BUILD_TESTING
+xnu-loader>     CMAKE_CXX_COMPILER
+xnu-loader>     CMAKE_EXPORT_NO_PACKAGE_REGISTRY
+xnu-loader>     CMAKE_FIND_USE_PACKAGE_REGISTRY
+xnu-loader>     CMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY
+xnu-loader>     CMAKE_INSTALL_BINDIR
+xnu-loader>     CMAKE_INSTALL_DOCDIR
+xnu-loader>     CMAKE_INSTALL_INCLUDEDIR
+xnu-loader>     CMAKE_INSTALL_INFODIR
+xnu-loader>     CMAKE_INSTALL_LIBDIR
+xnu-loader>     CMAKE_INSTALL_LIBEXECDIR
+xnu-loader>     CMAKE_INSTALL_LOCALEDIR
+xnu-loader>     CMAKE_INSTALL_MANDIR
+xnu-loader>     CMAKE_INSTALL_SBINDIR
+xnu-loader> 
+xnu-loader> 
+xnu-loader> -- Build files have been written to: /nix/var/nix/builds/nix-2589-1435208870/xnu-loader-vb-boot-source/build
+xnu-loader> cmake: enabled parallel building
+xnu-loader> cmake: enabled parallel installing
+xnu-loader> Running phase: buildPhase
+xnu-loader> build flags: -j2 SHELL=/nix/store/6cankpvayjgidrbx5sj1gms2s13nvfvh-bash-5.3p3/bin/bash
+xnu-loader> [  7%] Building C object CMakeFiles/loader_objs.dir/src/main.c.o
+xnu-loader> [ 15%] Building C object CMakeFiles/loader_objs.dir/src/app.c.o
+xnu-loader> /nix/var/nix/builds/nix-2589-1435208870/xnu-loader-vb-boot-source/src/main.c:57:19: warning: 'load_ramdisk' defined but not used [-Wunused-function]
+xnu-loader>    57 | static EFI_STATUS load_ramdisk(AppContext *ctx) {
+xnu-loader>       |                   ^~~~~~~~~~~~
+xnu-loader> /nix/var/nix/builds/nix-2589-1435208870/xnu-loader-vb-boot-source/src/main.c:30:19: warning: 'append_ramdisk_boot_arg' defined but not used [-Wunused-function]
+xnu-loader>    30 | static EFI_STATUS append_ramdisk_boot_arg(
+xnu-loader>       |                   ^~~~~~~~~~~~~~~~~~~~~~~
+xnu-loader> /nix/var/nix/builds/nix-2589-1435208870/xnu-loader-vb-boot-source/src/main.c:18:16: warning: 'g_copy_bytes' defined but not used [-Wunused-variable]
+xnu-loader>    18 | static UINT64  g_copy_bytes;
+xnu-loader>       |                ^~~~~~~~~~~~
+xnu-loader> /nix/var/nix/builds/nix-2589-1435208870/xnu-loader-vb-boot-source/src/main.c:17:16: warning: 'g_copy_dst' defined but not used [-Wunused-variable]
+xnu-loader>    17 | static UINT64  g_copy_dst;
+xnu-loader>       |                ^~~~~~~~~~
+xnu-loader> /nix/var/nix/builds/nix-2589-1435208870/xnu-loader-vb-boot-source/src/main.c:16:16: warning: 'g_copy_src' defined but not used [-Wunused-variable]
+xnu-loader>    16 | static UINT64  g_copy_src;
+xnu-loader>       |                ^~~~~~~~~~
+xnu-loader> [ 23%] Building C object CMakeFiles/loader_objs.dir/src/boot.c.o
+xnu-loader> [ 30%] Building C object CMakeFiles/loader_objs.dir/src/console.c.o
+xnu-loader> [ 38%] Building C object CMakeFiles/loader_objs.dir/src/devtree.c.o
+xnu-loader> [ 46%] Building C object CMakeFiles/loader_objs.dir/src/fileio.c.o
+xnu-loader> [ 53%] Building ASM object CMakeFiles/loader_objs.dir/src/jump.S.o
+xnu-loader> [ 61%] Building C object CMakeFiles/loader_objs.dir/src/lowmem.c.o
+xnu-loader> [ 69%] Building C object CMakeFiles/loader_objs.dir/src/macho.c.o
+xnu-loader> /nix/var/nix/builds/nix-2589-1435208870/xnu-loader-vb-boot-source/src/macho.c:6:15: warning: 'align_up' defined but not used [-Wunused-function]
+xnu-loader>     6 | static UINT64 align_up(UINT64 value, UINT64 align) {
+xnu-loader>       |               ^~~~~~~~
+xnu-loader> [ 76%] Building C object CMakeFiles/loader_objs.dir/src/serial.c.o
+xnu-loader> [ 84%] Building C object CMakeFiles/loader_objs.dir/src/vb_platform.c.o
+xnu-loader> [ 84%] Built target loader_objs
+xnu-loader> [ 92%] Generating xnu-loader.so
+xnu-loader> [100%] Generating xnu-loader.efi
+xnu-loader> [100%] Built target xnu-loader
+xnu-loader> Running phase: installPhase
+xnu-loader> 64+0 records in
+xnu-loader> 64+0 records out
+xnu-loader> 67108864 bytes (67 MB, 64 MiB) copied, 0.0128758 s, 5.2 GB/s
+xnu-loader> mkfs.fat 4.2 (2021-01-31)
+xnu-loader> Running phase: fixupPhase
+xnu-loader> shrinking RPATHs of ELF executables and libraries in /nix/store/0inwhphnh7k66g98pnwwrnvkhkk30cq7-xnu-loader-0.1
+xnu-loader> checking for references to /nix/var/nix/builds/nix-2589-1435208870/ in /nix/store/0inwhphnh7k66g98pnwwrnvkhkk30cq7-xnu-loader-0.1...
+xnu-loader> patching script interpreter paths in /nix/store/0inwhphnh7k66g98pnwwrnvkhkk30cq7-xnu-loader-0.1
+[{"drvPath":"/nix/store/7d8p6nifnj96f5rvca73zywdrl7scm7w-xnu-loader-0.1.drv","outputs":{"out":"/nix/store/0inwhphnh7k66g98pnwwrnvkhkk30cq7-xnu-loader-0.1"}}]

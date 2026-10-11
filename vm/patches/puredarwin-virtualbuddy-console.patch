@@ -1,0 +1,95 @@
+diff --git a/src/Kernel/Extensions/IOGraphicsFamily/CMakeLists.txt b/src/Kernel/Extensions/IOGraphicsFamily/CMakeLists.txt
+index 351eaf3..50706d9 100644
+--- a/src/Kernel/Extensions/IOGraphicsFamily/CMakeLists.txt
++++ b/src/Kernel/Extensions/IOGraphicsFamily/CMakeLists.txt
+@@ -42,3 +42,9 @@ target_compile_definitions(IOGraphicsFamily.kext PRIVATE
+     DEBG_CATEGORIES_BUILD=0x1ffull)
+ set_property(TARGET IOGraphicsFamily.kext PROPERTY CXX_STANDARD 14)
+ install(TARGETS IOGraphicsFamily.kext DESTINATION System/Library/Extensions COMPONENT BaseSystem)
++
++# Optional generic-EFI text console; no compressed boot logo dependency.
++option(PUREDARWIN_VIRTUALBUDDY "Build the experimental generic EFI VM console" OFF)
++if(PUREDARWIN_VIRTUALBUDDY)
++    target_compile_definitions(IOGraphicsFamily.kext PRIVATE BLAUOS_VIRTUALBUDDY=1)
++endif()
+diff --git a/src/Kernel/Extensions/IOGraphicsFamily/IOFramebuffer.cpp b/src/Kernel/Extensions/IOGraphicsFamily/IOFramebuffer.cpp
+index 05bc2aa..1cef1e6 100644
+--- a/src/Kernel/Extensions/IOGraphicsFamily/IOFramebuffer.cpp
++++ b/src/Kernel/Extensions/IOGraphicsFamily/IOFramebuffer.cpp
+@@ -2436,7 +2436,13 @@ static void IOFramebufferBootInitFB(IOVirtualAddress frameBuffer,
+ 		if (!logoData) logo = 0;
+ 		else
+ 		{
++#if defined(BLAUOS_VIRTUALBUDDY)
++            /* This headless VM profile uses a text console and solid backdrop.
++             * The private compressed-logo codec is not a build dependency. */
++            unpackedSize = 0;
++#else
+ 			unpackedSize = lzvn_decode(logoData, lw * lh, src, srcSize);
++#endif
+ 			if (unpackedSize != (lw * lh)) logo = 0;
+ 		}
+ 	}
+@@ -15316,3 +15322,12 @@ OSMetaClassDefineReservedUnused(IOFramebuffer, 28);
+ OSMetaClassDefineReservedUnused(IOFramebuffer, 29);
+ OSMetaClassDefineReservedUnused(IOFramebuffer, 30);
+ OSMetaClassDefineReservedUnused(IOFramebuffer, 31);
++
++#if defined(BLAUOS_VIRTUALBUDDY)
++/* This declared virtual method has no implementation in the published source.
++ * Report unsupported diagnostics explicitly for the optional VM console. */
++IOReturn IOFramebuffer::diagnoseReport(void *, void *, void *, void *)
++{
++    return kIOReturnUnsupported;
++}
++#endif
+diff --git a/src/Kernel/Extensions/IOVirtIOGPU/CMakeLists.txt b/src/Kernel/Extensions/IOVirtIOGPU/CMakeLists.txt
+index a3536e3..042d9e9 100644
+--- a/src/Kernel/Extensions/IOVirtIOGPU/CMakeLists.txt
++++ b/src/Kernel/Extensions/IOVirtIOGPU/CMakeLists.txt
+@@ -27,3 +27,8 @@ target_compile_options(IOVirtIOGPU.kext PRIVATE
+ set_property(TARGET IOVirtIOGPU.kext PROPERTY CXX_STANDARD 14)
+ add_dependencies(IOVirtIOGPU.kext IOGOPFramebuffer.kext IOVirtIOFamily.kext)
+ install(TARGETS IOVirtIOGPU.kext DESTINATION System/Library/Extensions COMPONENT BaseSystem)
++
++if(PUREDARWIN_VIRTUALBUDDY)
++    target_compile_definitions(IOVirtIOGPU.kext PRIVATE BLAUOS_VIRTUALBUDDY=1)
++    add_dependencies(IOVirtIOGPU.kext IOGraphicsFamily.kext)
++endif()
+diff --git a/src/Kernel/Extensions/IOVirtIOGPU/IOVirtIOGPU.cpp b/src/Kernel/Extensions/IOVirtIOGPU/IOVirtIOGPU.cpp
+index ae988d1..3b871d9 100644
+--- a/src/Kernel/Extensions/IOVirtIOGPU/IOVirtIOGPU.cpp
++++ b/src/Kernel/Extensions/IOVirtIOGPU/IOVirtIOGPU.cpp
+@@ -326,7 +326,11 @@ IOVirtIOGPU::gpuCreateResource2D(uint32_t resourceId, uint32_t width, uint32_t h
+     VGpuResourceCreate2D req; bzero(&req, sizeof(req));
+     req.hdr.type = VIRTIO_GPU_CMD_RESOURCE_CREATE_2D;
+     req.resource_id = resourceId;
++#if defined(BLAUOS_VIRTUALBUDDY)
++    req.format = 2; /* VIRTIO_GPU_FORMAT_B8G8R8X8_UNORM, opaque console. */
++#else
+     req.format = VIRTIO_GPU_FORMAT_B8G8R8A8_UNORM;
++#endif
+     req.width = width;
+     req.height = height;
+ 
+@@ -1131,7 +1135,7 @@ IOVirtIOGPU::start(IOService *provider)
+     }
+ 
+     IOPlatformExpert *pe = getPlatform();
+-#if !defined(__arm64__) && !defined(__aarch64__)
++#if (!defined(__arm64__) && !defined(__aarch64__)) || defined(BLAUOS_VIRTUALBUDDY)
+     if (pe) {
+         PE_Video consoleInfo;
+         consoleInfo.v_baseAddr = (unsigned long)fFbPhys | 1; // force mapping
+@@ -1157,9 +1161,11 @@ IOVirtIOGPU::start(IOService *provider)
+                 pe->setConsoleInfo(&consoleInfo, kPETextScreen);
+                 DEBUG("active console switched to virtio-gpu video, old console=%d\n", oldConsole);
+ 
++#if !defined(BLAUOS_VIRTUALBUDDY)
+                 vc_progress_set(FALSE, 0);
+                 vc_progress_set(TRUE, 0);
+                 DEBUG("gopprogress: overlaid kernel progress meter on text console\n");
++#endif
+             }
+         }
+     }

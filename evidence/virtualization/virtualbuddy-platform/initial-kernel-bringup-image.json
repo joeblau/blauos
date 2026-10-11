@@ -1,0 +1,15 @@
+{
+  "base_image": ".blauos/build/vm/native-image-v11/blauos-arm64.img",
+  "base_image_sha256": "7ffa519c3b31a46642dee528acd3f64e59cbea6823db773ebcc9eb78f42cf8b2",
+  "consumed_kernel_path": "/EFI/BOOT/kernel",
+  "kernel_copyback_matches": true,
+  "image_sha256": "35867f66d634c2b27fc1ad54b6808fa889c96780ae6f47a939f38792b4feca05",
+  "kernel_sha256": "89613196ca3ab5e2194db651735a0f2103729098da3a719d7992ac053668a5f8",
+  "kernel_classic_sha256": "0ce224229970a2db918e820533b54fcd6fc529edce6a38cc002a3422a7a874f8",
+  "loader_sha256": "40a988909e7a9b1ff61b9e9fe0892e791a1e63f4c5a863df15edc87957d9d598",
+  "probe_argv": [
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/preflight-probe",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/graphics-v11-run",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/graphics-v11-Disk.img"
+  ]
+}

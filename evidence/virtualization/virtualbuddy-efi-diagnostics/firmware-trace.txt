@@ -1,0 +1,70 @@
+XNU EFI loader start
+BLAUOS EFI DIAGNOSTICS ONLY - XNU handoff disabled
+EFI memory descriptors=29 stride=48 version=1
+Largest conventional range: 0x70000000 - 0xA8000000
+QEMU profile expects RAM at 0x40000000; UART MMIO disabled
+loader image base=0xAE564000 size=0x2A000
+kernel size: 17858560 bytes
+Mach-O 64-bit
+  ncmds: 25
+  sizeofcmds: 4736
+  flags: 0x200001
+segment           __TEXT vm=0xFFFFFFF007004000 vmsz=0xF8000 fileoff=0x0 filesz=0xF8000
+segment     __DATA_CONST vm=0xFFFFFFF0070FC000 vmsz=0xF8000 fileoff=0xF8000 filesz=0xF8000
+segment __LASTDATA_CONST vm=0xFFFFFFF0071F4000 vmsz=0x4000 fileoff=0x1F0000 filesz=0x4000
+segment __PLK_DATA_CONST vm=0xFFFFFFF0071F8000 vmsz=0x0 fileoff=0x1F4000 filesz=0x0
+segment      __TEXT_EXEC vm=0xFFFFFFF0071F8000 vmsz=0x660000 fileoff=0x1F4000 filesz=0x660000
+segment           __LAST vm=0xFFFFFFF007858000 vmsz=0x0 fileoff=0x0 filesz=0x0
+segment  __PLK_TEXT_EXEC vm=0xFFFFFFF007858000 vmsz=0x0 fileoff=0x854000 filesz=0x0
+segment            __KLD vm=0xFFFFFFF007858000 vmsz=0x4000 fileoff=0x854000 filesz=0x4000
+segment           __DATA vm=0xFFFFFFF00785C000 vmsz=0xEC000 fileoff=0x858000 filesz=0x3C000
+segment   __PRELINK_DATA vm=0xFFFFFFF00424C000 vmsz=0x4000 fileoff=0x0 filesz=0x0
+segment       __BOOTDATA vm=0xFFFFFFF007948000 vmsz=0x3C000 fileoff=0x894000 filesz=0x3C000
+segment        __KLDDATA vm=0xFFFFFFF007984000 vmsz=0x4000 fileoff=0x8D0000 filesz=0x4000
+segment       __LINKINFO vm=0xFFFFFFF007988000 vmsz=0x94000 fileoff=0x8D4000 filesz=0x94000
+segment   __PLK_LLVM_COV vm=0xFFFFFFF007A1C000 vmsz=0x0 fileoff=0x968000 filesz=0x0
+segment   __PLK_LINKEDIT vm=0xFFFFFFF007A1C000 vmsz=0x0 fileoff=0x968000 filesz=0x0
+segment   __PRELINK_INFO vm=0xFFFFFFF004250000 vmsz=0xC000 fileoff=0x10FC000 filesz=0xB766
+segment   __PRELINK_TEXT vm=0xFFFFFFF004004000 vmsz=0x248000 fileoff=0xEB4000 filesz=0x248000
+segment       __LINKEDIT vm=0xFFFFFFF007A1C000 vmsz=0x54C000 fileoff=0x968000 filesz=0x548FF0
+KASLR: disabled, kslide=0
+phys_base=0x4004000 kslide=0x0 span=0x3F64000
+EFI checkpoint complete: kernel parsed, memory map collected
+VirtualBuddy platform adaptation required; XNU was not started
+Diagnostic result: Unsupported; XNU was not started.
+Holding this report for 15 seconds.
+XNU EFI loader start
+BLAUOS EFI DIAGNOSTICS ONLY - XNU handoff disabled
+EFI memory descriptors=27 stride=48 version=1
+Largest conventional range: 0x70000000 - 0xA8000000
+QEMU profile expects RAM at 0x40000000; UART MMIO disabled
+loader image base=0xAE564000 size=0x2A000
+kernel size: 17858560 bytes
+Mach-O 64-bit
+  ncmds: 25
+  sizeofcmds: 4736
+  flags: 0x200001
+segment           __TEXT vm=0xFFFFFFF007004000 vmsz=0xF8000 fileoff=0x0 filesz=0xF8000
+segment     __DATA_CONST vm=0xFFFFFFF0070FC000 vmsz=0xF8000 fileoff=0xF8000 filesz=0xF8000
+segment __LASTDATA_CONST vm=0xFFFFFFF0071F4000 vmsz=0x4000 fileoff=0x1F0000 filesz=0x4000
+segment __PLK_DATA_CONST vm=0xFFFFFFF0071F8000 vmsz=0x0 fileoff=0x1F4000 filesz=0x0
+segment      __TEXT_EXEC vm=0xFFFFFFF0071F8000 vmsz=0x660000 fileoff=0x1F4000 filesz=0x660000
+segment           __LAST vm=0xFFFFFFF007858000 vmsz=0x0 fileoff=0x0 filesz=0x0
+segment  __PLK_TEXT_EXEC vm=0xFFFFFFF007858000 vmsz=0x0 fileoff=0x854000 filesz=0x0
+segment            __KLD vm=0xFFFFFFF007858000 vmsz=0x4000 fileoff=0x854000 filesz=0x4000
+segment           __DATA vm=0xFFFFFFF00785C000 vmsz=0xEC000 fileoff=0x858000 filesz=0x3C000
+segment   __PRELINK_DATA vm=0xFFFFFFF00424C000 vmsz=0x4000 fileoff=0x0 filesz=0x0
+segment       __BOOTDATA vm=0xFFFFFFF007948000 vmsz=0x3C000 fileoff=0x894000 filesz=0x3C000
+segment        __KLDDATA vm=0xFFFFFFF007984000 vmsz=0x4000 fileoff=0x8D0000 filesz=0x4000
+segment       __LINKINFO vm=0xFFFFFFF007988000 vmsz=0x94000 fileoff=0x8D4000 filesz=0x94000
+segment   __PLK_LLVM_COV vm=0xFFFFFFF007A1C000 vmsz=0x0 fileoff=0x968000 filesz=0x0
+segment   __PLK_LINKEDIT vm=0xFFFFFFF007A1C000 vmsz=0x0 fileoff=0x968000 filesz=0x0
+segment   __PRELINK_INFO vm=0xFFFFFFF004250000 vmsz=0xC000 fileoff=0x10FC000 filesz=0xB766
+segment   __PRELINK_TEXT vm=0xFFFFFFF004004000 vmsz=0x248000 fileoff=0xEB4000 filesz=0x248000
+segment       __LINKEDIT vm=0xFFFFFFF007A1C000 vmsz=0x54C000 fileoff=0x968000 filesz=0x548FF0
+KASLR: disabled, kslide=0
+phys_base=0x4004000 kslide=0x0 span=0x3F64000
+EFI checkpoint complete: kernel parsed, memory map collected
+VirtualBuddy platform adaptation required; XNU was not started
+Diagnostic result: Unsupported; XNU was not started.
+Holding this report for 15 seconds.

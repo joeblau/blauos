@@ -1,0 +1,269 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 91c4f6b..99fb2e8 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -91,11 +91,16 @@ if(ARCH STREQUAL "x86_64")
+ endif()
+ 
+ option(XNU_LOADER_QEMU_VIRT "Target QEMU's generic virt machine (PL011 UART) instead of BCM2837" OFF)
++option(XNU_LOADER_EFI_DIAGNOSTICS_ONLY "Use only EFI console and stop before XNU handoff" OFF)
++if(XNU_LOADER_EFI_DIAGNOSTICS_ONLY AND (NOT ARCH STREQUAL "aarch64" OR NOT XNU_LOADER_QEMU_VIRT))
++  message(FATAL_ERROR "EFI diagnostics require the aarch64 QEMU VIRT source profile")
++endif()
+ 
+ target_compile_definitions(loader_objs PRIVATE
+   EFI_FUNCTION_WRAPPER
+   CONFIG_${ARCH}
+   $<$<BOOL:${XNU_LOADER_QEMU_VIRT}>:XNU_LOADER_QEMU_VIRT>
++  $<$<BOOL:${XNU_LOADER_EFI_DIAGNOSTICS_ONLY}>:XNU_LOADER_EFI_DIAGNOSTICS_ONLY>
+ )
+ 
+ add_custom_command(
+diff --git a/include/console.h b/include/console.h
+index f4ef6c4..1efb324 100644
+--- a/include/console.h
++++ b/include/console.h
+@@ -6,4 +6,9 @@
+ VOID log_info(CONST CHAR16 *fmt, ...);
+ VOID log_error(CONST CHAR16 *fmt, ...);
+ 
++#if defined(XNU_LOADER_EFI_DIAGNOSTICS_ONLY)
++VOID diagnostic_log_init(EFI_HANDLE image);
++VOID diagnostic_log_close(VOID);
++#endif
++
+ #endif
+\ No newline at end of file
+diff --git a/src/serial.c b/src/serial.c
+index eebab9c..0bbcc32 100644
+--- a/src/serial.c
++++ b/src/serial.c
+@@ -81,6 +81,14 @@ static VOID serial_putc(CHAR8 c) {
+   uart_putc(SERIAL_BASE, c);
+ }
+ 
++#elif defined(__aarch64__) && defined(XNU_LOADER_EFI_DIAGNOSTICS_ONLY)
++
++/* Generic EFI firmware provides ConOut, not QEMU's fixed PL011 MMIO.
++ * Never access a guessed UART in this explicitly diagnostic-only build. */
++VOID serial_init(VOID) { serial_ready = FALSE; }
++VOID serial_reinit(VOID) { serial_ready = FALSE; }
++static VOID serial_putc(CHAR8 c) { (VOID)c; }
++
+ #elif defined(__aarch64__) && defined(XNU_LOADER_QEMU_VIRT)
+ 
+ #define QEMUVIRT_UART_BASE 0x09000000ULL
+diff --git a/src/console.c b/src/console.c
+index 4ac71a3..67328e3 100644
+--- a/src/console.c
++++ b/src/console.c
+@@ -2,6 +2,70 @@
+ #include "serial.h"
+ #include <stdarg.h>
+ 
++#if defined(XNU_LOADER_EFI_DIAGNOSTICS_ONLY)
++#include "fileio.h"
++
++static EFI_FILE_PROTOCOL *diagnostic_file;
++static UINTN diagnostic_bytes;
++#define DIAGNOSTIC_LOG_LIMIT 65536u
++
++VOID diagnostic_log_init(EFI_HANDLE image) {
++  EFI_LOADED_IMAGE *loaded = NULL;
++  EFI_SIMPLE_FILE_SYSTEM_PROTOCOL *fs = NULL;
++  EFI_FILE_PROTOCOL *root = NULL;
++  EFI_STATUS status;
++  diagnostic_file = NULL;
++  diagnostic_bytes = 0;
++  Print(L"EFI diagnostics: opening trace file\r\n");
++  status = uefi_call_wrapper(BS->HandleProtocol, 3, image, &LoadedImageProtocol, (VOID **)&loaded);
++  if (EFI_ERROR(status)) return;
++  status = uefi_call_wrapper(BS->HandleProtocol, 3, loaded->DeviceHandle,
++                            &gEfiSimpleFileSystemProtocolGuid, (VOID **)&fs);
++  if (EFI_ERROR(status)) return;
++  status = uefi_call_wrapper(fs->OpenVolume, 2, fs, &root);
++  if (EFI_ERROR(status)) return;
++  status = file_open(root, L"\\EFI\\BOOT\\blauos-efi.txt",
++                     EFI_FILE_MODE_READ | EFI_FILE_MODE_WRITE | EFI_FILE_MODE_CREATE,
++                     0, &diagnostic_file);
++  uefi_call_wrapper(root->Close, 1, root);
++  if (EFI_ERROR(status)) { diagnostic_file = NULL; return; }
++  status = file_get_size(diagnostic_file, &diagnostic_bytes);
++  if (!EFI_ERROR(status) && diagnostic_bytes <= DIAGNOSTIC_LOG_LIMIT)
++    status = uefi_call_wrapper(diagnostic_file->SetPosition, 2, diagnostic_file,
++                              (UINT64)diagnostic_bytes);
++  if (EFI_ERROR(status) || diagnostic_bytes > DIAGNOSTIC_LOG_LIMIT) {
++    uefi_call_wrapper(diagnostic_file->Close, 1, diagnostic_file);
++    diagnostic_file = NULL;
++  }
++}
++
++VOID diagnostic_log_close(VOID) {
++  if (diagnostic_file) {
++    uefi_call_wrapper(diagnostic_file->Close, 1, diagnostic_file);
++    diagnostic_file = NULL;
++  }
++}
++
++static VOID diagnostic_append(CONST CHAR16 *text) {
++  if (!diagnostic_file) return;
++  UINTN length = 0;
++  while (length < 512 && text[length] != 0) length++;
++  UINTN bytes = length * sizeof(CHAR16);
++  if (bytes > DIAGNOSTIC_LOG_LIMIT - diagnostic_bytes) return;
++  UINTN written = bytes;
++  EFI_STATUS status = uefi_call_wrapper(diagnostic_file->Write, 3,
++                                        diagnostic_file, &written, (VOID *)text);
++  if (!EFI_ERROR(status) && written <= bytes) {
++    diagnostic_bytes += written;
++    status = uefi_call_wrapper(diagnostic_file->Flush, 1, diagnostic_file);
++  }
++  if (EFI_ERROR(status) || written != bytes) {
++    uefi_call_wrapper(diagnostic_file->Close, 1, diagnostic_file);
++    diagnostic_file = NULL;
++  }
++}
++#endif
++
+ /* Format once, then fan the result out to both the EFI console (while boot
+  * services are alive) and the COM3 UART (works pre- and post-ExitBootServices,
+  * so a serial cable captures the full boot on real hardware). */
+@@ -14,6 +78,9 @@ static VOID log_emit(CONST CHAR16 *fmt, va_list args) {
+     uefi_call_wrapper(ST->ConOut->OutputString, 2, ST->ConOut, buf);
+ 
+   serial_put16(buf);
++#if defined(XNU_LOADER_EFI_DIAGNOSTICS_ONLY)
++  diagnostic_append(buf);
++#endif
+ }
+ 
+ VOID log_info(CONST CHAR16 *fmt, ...) {
+diff --git a/src/app.c b/src/app.c
+index 51c565d..6fd785a 100644
+--- a/src/app.c
++++ b/src/app.c
+@@ -19,6 +19,9 @@ EFI_STATUS app_init(AppContext *ctx, EFI_HANDLE image, EFI_SYSTEM_TABLE *st) {
+   /* Bring up COM3 @ 115200 before any logging so serial captures the full
+    * boot on real hardware (where there is no EFI console to read). */
+   serial_init();
++#if defined(XNU_LOADER_EFI_DIAGNOSTICS_ONLY)
++  diagnostic_log_init(image);
++#endif
+ 
+   return EFI_SUCCESS;
+ }
+diff --git a/src/main.c b/src/main.c
+index 308ef16..086ed4c 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -233,7 +233,55 @@ EFI_STATUS AllocKernelMemRegion(AppContext *ctx, UINT64 span_bytes, UINT64 virt_
+ #endif
+ }
+ 
++#if defined(XNU_LOADER_EFI_DIAGNOSTICS_ONLY)
++static VOID diagnostic_memory_map(AppContext *ctx) {
++  UINTN size = 0, key = 0, stride = 0;
++  UINT32 version = 0;
++  EFI_MEMORY_DESCRIPTOR *map = NULL;
++  EFI_STATUS status = uefi_call_wrapper(ctx->bs->GetMemoryMap, 5,
++      &size, map, &key, &stride, &version);
++  if (status != EFI_BUFFER_TOO_SMALL || stride < sizeof(*map) ||
++      stride > 65536 || size > 1048576 - stride * 8) {
++    log_error(L"EFI diagnostic: rejected memory-map query %r\r\n", status);
++    return;
++  }
++  size += stride * 8;
++  status = app_alloc_pool(ctx, size, (VOID **)&map);
++  if (EFI_ERROR(status)) {
++    log_error(L"EFI diagnostic: memory-map allocation %r\r\n", status);
++    return;
++  }
++  UINTN capacity = size;
++  status = uefi_call_wrapper(ctx->bs->GetMemoryMap, 5,
++      &size, map, &key, &stride, &version);
++  if (!EFI_ERROR(status) && size <= capacity && stride >= sizeof(*map) &&
++      stride <= size && size % stride == 0) {
++    UINT64 largest_start = 0, largest_bytes = 0;
++    UINTN count = size / stride;
++    for (UINTN i = 0; i < count; i++) {
++      EFI_MEMORY_DESCRIPTOR *d = (VOID *)((UINT8 *)map + i * stride);
++      if (d->Type == EfiConventionalMemory && d->NumberOfPages <= (~(UINT64)0 >> 12)) {
++        UINT64 bytes = d->NumberOfPages << 12;
++        if (bytes > largest_bytes && d->PhysicalStart <= ~(UINT64)0 - bytes) {
++          largest_start = d->PhysicalStart;
++          largest_bytes = bytes;
++        }
++      }
++    }
++    log_info(L"EFI memory descriptors=%lu stride=%lu version=%u\r\n", count, stride, version);
++    log_info(L"Largest conventional range: 0x%lx - 0x%lx\r\n",
++             largest_start, largest_start + largest_bytes);
++    log_info(L"QEMU profile expects RAM at 0x40000000; UART MMIO disabled\r\n");
++  } else {
++    log_error(L"EFI diagnostic: memory-map read rejected %r\r\n", status);
++  }
++  app_free_pool(ctx, map);
++}
++
++static EFI_STATUS efi_diagnostic_body(EFI_HANDLE image, EFI_SYSTEM_TABLE *st) {
++#else
+ EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *st) {
++#endif
+   AppContext ctx;
+   FileBuffer kernel = {0};
+   MachoImage image_info;
+@@ -247,6 +295,10 @@ EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *st) {
+     return status;
+ 
+   log_info(L"XNU EFI loader start\r\n");
++#if defined(XNU_LOADER_EFI_DIAGNOSTICS_ONLY)
++  log_info(L"BLAUOS EFI DIAGNOSTICS ONLY - XNU handoff disabled\r\n");
++  diagnostic_memory_map(&ctx);
++#endif
+ 
+   {
+     EFI_LOADED_IMAGE *li = NULL;
+@@ -316,6 +368,13 @@ EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *st) {
+ 
+   }
+ 
++#if defined(XNU_LOADER_EFI_DIAGNOSTICS_ONLY)
++  log_info(L"EFI checkpoint complete: kernel parsed, memory map collected\r\n");
++  log_info(L"VirtualBuddy platform adaptation required; XNU was not started\r\n");
++  file_free(&ctx, &kernel);
++  return EFI_UNSUPPORTED;
++#endif
++
+ #if !defined(__aarch64__)
+   /* x86: the boot-info block lives at a fixed low address (0x2800000);
+    * reserve it before the staging allocation can land on it. On arm64 the
+@@ -606,6 +665,11 @@ EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *st) {
+ #endif // VERBOSE_BOOT
+ 
+   /* No logging after this point */
++#if defined(XNU_LOADER_EFI_DIAGNOSTICS_ONLY)
++  log_info(L"Diagnostic stop: unsupported generic EFI platform; no XNU handoff\r\n");
++  return EFI_UNSUPPORTED;
++#endif
++
+   status = exit_boot_services_retry(&ctx, image, &boot_state);
+   if (EFI_ERROR(status)) {
+     log_error(L"ExitBootServices failed: %r\r\n", status);
+@@ -791,3 +855,17 @@ EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *st) {
+   jump_to_xnu(g_jump_entry, g_jump_args, g_jump_stack);
+ #endif
+ }
++
++#if defined(XNU_LOADER_EFI_DIAGNOSTICS_ONLY)
++EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *st) {
++  EFI_STATUS status = efi_diagnostic_body(image, st);
++  if (st && ST == st && st->Hdr.Signature == EFI_SYSTEM_TABLE_SIGNATURE &&
++      st->ConOut && st->BootServices) {
++    log_info(L"Diagnostic result: %r; XNU was not started.\r\n", status);
++    log_info(L"Holding this report for 15 seconds.\r\n");
++    diagnostic_log_close();
++    uefi_call_wrapper(st->BootServices->Stall, 1, 15000000);
++  }
++  return status;
++}
++#endif

@@ -1,0 +1,25 @@
+test_accepts_matching_source_archive_identity (test_macho.MachOValidationTests.test_accepts_matching_source_archive_identity) ... ok
+test_declared_provider_without_load_dependency_fails (test_macho.MachOValidationTests.test_declared_provider_without_load_dependency_fails) ... ok
+test_distinguishes_weak_flat_import (test_macho.MachOValidationTests.test_distinguishes_weak_flat_import) ... ok
+test_fails_closed_without_runtime_and_provenance (test_macho.MachOValidationTests.test_fails_closed_without_runtime_and_provenance) ... ok
+test_flat_import_requires_staged_provider (test_macho.MachOValidationTests.test_flat_import_requires_staged_provider) ... ok
+test_kernel_has_no_userspace_loader_requirement (test_macho.MachOValidationTests.test_kernel_has_no_userspace_loader_requirement) ... ok
+test_parses_required_flat_import (test_macho.MachOValidationTests.test_parses_required_flat_import) ... ok
+test_rejects_artifact_hash_mismatch (test_macho.MachOValidationTests.test_rejects_artifact_hash_mismatch) ... ok
+test_rejects_command_outside_file (test_macho.MachOValidationTests.test_rejects_command_outside_file) ... ok
+test_rejects_directory_symlink_to_host_tree (test_macho.MachOValidationTests.test_rejects_directory_symlink_to_host_tree) ... ok
+test_rejects_fat_slice_outside_file (test_macho.MachOValidationTests.test_rejects_fat_slice_outside_file) ... ok
+test_rejects_mismatched_source_archive_hash (test_macho.MachOValidationTests.test_rejects_mismatched_source_archive_hash) ... ok
+test_rejects_missing_local_source_snapshot (test_macho.MachOValidationTests.test_rejects_missing_local_source_snapshot) ... ok
+test_rejects_non_arm64_artifacts (test_macho.MachOValidationTests.test_rejects_non_arm64_artifacts) ... ok
+test_rejects_symlink_to_host_library (test_macho.MachOValidationTests.test_rejects_symlink_to_host_library) ... ok
+test_rejects_unpinned_source_revision (test_macho.MachOValidationTests.test_rejects_unpinned_source_revision) ... ok
+test_rejects_unterminated_dependency_name (test_macho.MachOValidationTests.test_rejects_unterminated_dependency_name) ... ok
+test_selects_arm64_fat_slice (test_macho.MachOValidationTests.test_selects_arm64_fat_slice) ... ok
+test_strong_dependency_supplies_required_flat_provider (test_macho.MachOValidationTests.test_strong_dependency_supplies_required_flat_provider) ... ok
+test_weak_dependency_cannot_supply_required_flat_provider (test_macho.MachOValidationTests.test_weak_dependency_cannot_supply_required_flat_provider) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.016s
+
+OK

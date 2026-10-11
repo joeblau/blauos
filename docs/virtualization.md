@@ -25,6 +25,13 @@ work; this virtual target does not satisfy it.
 
 ## Selected experimental backend
 
+The separate [VirtualBuddy ARM64 experiment](platform/virtualbuddy.md) now boots
+source XNU and independent userspace on generic EFI. Its full 20-check test and
+stock device configuration test pass networking and guest-triggered poweroff.
+It includes an experimental virtio text console and a separate local demo VM.
+Interactive USB keyboard input and SSH remain unsupported. These VM results
+do not establish physical M1 boot.
+
 | Input | Immutable identity |
 | --- | --- |
 | PureDarwin `next` (including XNU 20.5.0 and VIRT platform code) | `1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290` |

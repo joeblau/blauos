@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy/efi-probe-exact",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy/safe-run",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy/safe-Disk.img"
+  ],
+  "exit_code": 0,
+  "stdout_sha256": "12b5af6ea58d5e4ac0a432639a7ced5822ed9904e856d4f91c0d5eddb3b68b53",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "probe_source_sha256": "e74feff3289db1dba489ab9d78ea7b1bb60c5f44529bcc673732d9d7fe43d8ef",
+  "probe_binary_sha256": "58a88658a9414976e44d2cb12168eb8f12621e83a46c3e2d496e48206d22bce4",
+  "private_screenshot_api_used": false,
+  "extra_serial_port": false
+}

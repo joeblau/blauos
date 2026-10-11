@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "observed_cmake_cache_sha256": "f7eec06fc04175f3eec1b84040d9d490a8c67751542b00e66b529be72876eb89",
+  "observed_configuration": {
+    "PUREDARWIN_ARCH": "arm64",
+    "PUREDARWIN_ARM64_MACHINE_CONFIG": "VIRT",
+    "PUREDARWIN_XNU_KERNEL_CONFIG": "DEVELOPMENT",
+    "PUREDARWIN_QEMU_PSCI_HVC": "ON",
+    "PUREDARWIN_VIRTUALBUDDY": "ON",
+    "CMAKE_C_COMPILER": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+    "CMAKE_CXX_COMPILER": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++",
+    "CMAKE_OSX_SYSROOT": "/Applications/Xcode-27.2.0-Beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
+  },
+  "configuration_command_is_historical": true,
+  "source_reconstruction": "patch-reconstruction.json",
+  "final_collection_inputs": "collection-command.json"
+}

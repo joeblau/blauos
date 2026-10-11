@@ -1,0 +1,75 @@
+{
+  "bundle": "/Users/joeblau/Library/Application Support/VirtualBuddy/BlauOS-EFI-Diagnostics.vbvm",
+  "image_sha256_before_gui_boot": "bfa115480f61394566eb36fc3e3ef36b9a5c74c0c2edcdd19d83015d8a444bf0",
+  "efi_loader_sha256": "fe76eec178c2775a151fd1db08581595c39ccf6010653e2250fd8a82de205607",
+  "configuration": {
+    "version": 0,
+    "systemType": "linux",
+    "hardware": {
+      "cpuCount": 1,
+      "memorySize": 1073741824,
+      "pointingDevice": {
+        "kind": 0
+      },
+      "keyboardDevice": {
+        "kind": 0
+      },
+      "displayDevices": [
+        {
+          "id": "14DF6820-D24D-4C82-BD62-26C874B8FB32",
+          "name": "1280x800",
+          "width": 1280,
+          "height": 800,
+          "pixelsPerInch": 96,
+          "automaticallyReconfiguresDisplay": false
+        }
+      ],
+      "networkDevices": [
+        {
+          "id": "Default",
+          "name": "Default",
+          "kind": 0,
+          "macAddress": "02:42:B1:A0:05:03"
+        }
+      ],
+      "soundDevices": [],
+      "NVRAM": [],
+      "_storageDevices": [
+        {
+          "id": "8D5C6AB9-24F5-4BBA-83FC-8565458879F7",
+          "isBootVolume": true,
+          "isEnabled": true,
+          "isSavedStateClone": false,
+          "isReadOnly": false,
+          "isUSBMassStorageDevice": false,
+          "backing": {
+            "managedImage": {
+              "_0": {
+                "id": "__BOOT__",
+                "filename": "Disk",
+                "size": 606076928,
+                "format": 0
+              }
+            }
+          }
+        }
+      ]
+    },
+    "sharedFolders": [],
+    "guestAdditionsEnabled": false,
+    "rosettaSharingEnabled": false,
+    "captureSystemKeys": false
+  },
+  "metadata": {
+    "uuid": "D7529D12-0FBE-4E4F-AEBC-D02511D61B4D",
+    "version": 1,
+    "installFinished": true,
+    "backgroundHash": {
+      "value": "U4H09BEfIY$%U7ocVcM$8%R*M}f~zwIXcArd",
+      "size": 4
+    }
+  },
+  "opened_in_virtualbuddy": true,
+  "gui_play_automated": false,
+  "independent_xnu_execution": false
+}

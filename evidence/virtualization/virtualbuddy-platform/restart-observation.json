@@ -1,0 +1,47 @@
+{
+  "samples": [
+    {
+      "observed_at_utc": "2026-10-11T00:41:39.478150+00:00",
+      "health_passed": true,
+      "disk_open": true,
+      "owner": "COMMAND     PID    USER   FD   TYPE DEVICE   SIZE/OFF      NODE NAME\ncom.apple 49736 joeblau    6u   REG   1,17 1142947840 835819154 /Users/joeblau/Library/Application Support/VirtualBuddy/BlauOS-VirtualBuddy.vbvm/Disk.img\n"
+    },
+    {
+      "observed_at_utc": "2026-10-11T00:41:50.160326+00:00",
+      "health_passed": true,
+      "disk_open": true,
+      "owner": "COMMAND     PID    USER   FD   TYPE DEVICE   SIZE/OFF      NODE NAME\ncom.apple 49736 joeblau    6u   REG   1,17 1142947840 835819154 /Users/joeblau/Library/Application Support/VirtualBuddy/BlauOS-VirtualBuddy.vbvm/Disk.img\n"
+    },
+    {
+      "observed_at_utc": "2026-10-11T00:42:00.840514+00:00",
+      "health_passed": true,
+      "disk_open": true,
+      "owner": "COMMAND     PID    USER   FD   TYPE DEVICE   SIZE/OFF      NODE NAME\ncom.apple 49736 joeblau    6u   REG   1,17 1142947840 835819154 /Users/joeblau/Library/Application Support/VirtualBuddy/BlauOS-VirtualBuddy.vbvm/Disk.img\n"
+    },
+    {
+      "observed_at_utc": "2026-10-11T00:42:11.507077+00:00",
+      "health_passed": true,
+      "disk_open": true,
+      "owner": "COMMAND     PID    USER   FD   TYPE DEVICE   SIZE/OFF      NODE NAME\ncom.apple 49736 joeblau    6u   REG   1,17 1142947840 835819154 /Users/joeblau/Library/Application Support/VirtualBuddy/BlauOS-VirtualBuddy.vbvm/Disk.img\n"
+    },
+    {
+      "observed_at_utc": "2026-10-11T00:42:22.204572+00:00",
+      "health_passed": true,
+      "disk_open": true,
+      "owner": "COMMAND     PID    USER   FD   TYPE DEVICE   SIZE/OFF      NODE NAME\ncom.apple 49736 joeblau    6u   REG   1,17 1142947840 835819154 /Users/joeblau/Library/Application Support/VirtualBuddy/BlauOS-VirtualBuddy.vbvm/Disk.img\n"
+    },
+    {
+      "observed_at_utc": "2026-10-11T00:42:32.909448+00:00",
+      "health_passed": true,
+      "disk_open": true,
+      "owner": "COMMAND     PID    USER   FD   TYPE DEVICE   SIZE/OFF      NODE NAME\ncom.apple 49736 joeblau    6u   REG   1,17 1142947840 835819154 /Users/joeblau/Library/Application Support/VirtualBuddy/BlauOS-VirtualBuddy.vbvm/Disk.img\n"
+    },
+    {
+      "observed_at_utc": "2026-10-11T00:42:43.613313+00:00",
+      "health_passed": true,
+      "disk_open": true,
+      "owner": "COMMAND     PID    USER   FD   TYPE DEVICE   SIZE/OFF      NODE NAME\ncom.apple 49736 joeblau    6u   REG   1,17 1142947840 835819154 /Users/joeblau/Library/Application Support/VirtualBuddy/BlauOS-VirtualBuddy.vbvm/Disk.img\n"
+    }
+  ],
+  "all_passed": true
+}

@@ -1,0 +1,17 @@
+{
+  "sources": [
+    {
+      "name": "xnu-loader",
+      "revision": "8295cd89c184785896d007d0554b398d22d8e32f",
+      "tree": "cd88bd37dace9ffabaca34d4a04e6870d341f6ac",
+      "origin": "https://github.com/PureDarwin/xnu-loader.git"
+    },
+    {
+      "name": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "tree": "ed2345d7f3c11dad2e7f6ffeeb377adc789b12b8",
+      "origin": "https://github.com/PureDarwin/PureDarwin.git"
+    }
+  ],
+  "sources_lock_sha256": "8022bbbfb33204b56bb3297cd8cbb39fb6c08ea65c476492d99462f7edfe3657"
+}

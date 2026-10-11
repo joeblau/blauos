@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "source_kernel_execution_observed": true,
+  "independent_userspace_observed": true,
+  "persistent_root_mounted": true,
+  "runtime_and_launchd_service_tests_passed": true,
+  "fresh_challenge_checks_passed": 20,
+  "serial_backend_proof": "final-serial/checkpoint.json",
+  "stock_device_configuration_proof": "final-stock/checkpoint.json",
+  "virtualbuddy_app_boot_observed": true,
+  "virtualbuddy_app_proof": "gui-checkpoint.json",
+  "bidirectional_tcp_and_dns_verified": true,
+  "guest_initiated_poweroff_verified": true,
+  "poweroff_backend": "Public Virtualization.framework with VirtualBuddy-equivalent devices",
+  "qemu_regression_passed": true,
+  "qemu_proof": "qemu-regression/result.json",
+  "interactive_usb_keyboard_verified": false,
+  "ssh_verified": false,
+  "captured_gui_screen": false,
+  "physical_boot_gate": false,
+  "bit_identical_image_rebuild_verified": false,
+  "tested_configuration": {
+    "app": "VirtualBuddy 2.1 (325)",
+    "cpu_count": 1,
+    "memory_bytes": 1073741824,
+    "display": "1280x800 virtio text console",
+    "host": "M3 Max, macOS 27.2 beta"
+  },
+  "source_lock_sha256": "8022bbbfb33204b56bb3297cd8cbb39fb6c08ea65c476492d99462f7edfe3657",
+  "historical_diagnostic_image_correction": "The older 606076928-byte run-2 image was a failed userspace experiment; historical EFI traces still bind that original image.",
+  "virtualbuddy_host_stop_supported": false,
+  "follow_up_issues": {
+    "keyboard": 101,
+    "ssh": 55,
+    "host_requested_shutdown": 102
+  }
+}

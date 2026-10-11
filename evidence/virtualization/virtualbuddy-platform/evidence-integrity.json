@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "loader_and_kernel_patch_hashes_match": true,
+  "modified_sources_match_actual_build_tree": true,
+  "collection_input_files_match": true,
+  "test_and_demo_images_match_preparation": true,
+  "runtime_audit_matches": true,
+  "serial_log_matches": true,
+  "actual_application_observation_matches_final_demo": true,
+  "documentation_links_valid": true
+}

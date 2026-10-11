@@ -1,0 +1,8 @@
+{
+  "raw_audit_path": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/runtime-final-audit-v2.json",
+  "raw_audit_sha256": "0763210ecfce9dab2ed7aa8f1c2693311598bf1c082c96ea81dca451c6c99fb4",
+  "status": "pass",
+  "offline_dependency_closure": true,
+  "errors": [],
+  "target_artifact_count": 44
+}

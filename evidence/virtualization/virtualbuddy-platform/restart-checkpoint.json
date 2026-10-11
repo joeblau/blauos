@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "reported_error": "VZErrorDomain Code=1: The virtual machine stopped unexpectedly",
+  "matching_error_at_utc": "2026-10-11T00:26:29.382+00:00",
+  "matching_error_cause": "Agent terminated the prior owned VM helper to release its disk during image replacement",
+  "terminated_owned_helper_pid": 97221,
+  "host_log": "forced-stop-context.log",
+  "host_log_sha256": "72ebce9c72fa8b5be4059e6a3bf542105696d2abb2951da08e61caae5bbced07",
+  "later_window_close_at_utc": "2026-10-11T00:39:45+00:00",
+  "restart_action": "Opened the existing bundle and sent the authenticated public VirtualBuddy boot deep link",
+  "reused_existing_guest_disk": true,
+  "replaced_disk_for_this_restart": false,
+  "repeated_health_checks_passed": 7,
+  "observation_duration_seconds": 64.135163,
+  "observations": "restart-observation.json",
+  "observations_sha256": "daedf5387ab2023897804a8244be41bde0e2c024df066e1ab09035f2f3917dcb",
+  "kernel_source_changed_for_this_incident": false,
+  "guest_crash_in_matching_host_log": false,
+  "physical_boot_gate": false,
+  "scope": "Matching host-forced stop and bounded successful restart; indefinite unattended stability is not established"
+}

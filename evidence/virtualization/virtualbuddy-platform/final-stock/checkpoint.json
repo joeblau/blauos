@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "passed": true,
+  "nonce": "4f4178aab52855a780235c036e5470d90961c691c3d1bfe9dd2f1d2760a4400b",
+  "guest_challenge_seen": true,
+  "host_to_guest_passed": true,
+  "shutdown_requested": true,
+  "guest_shutdown_passed": true,
+  "physical_boot_gate": false,
+  "extra_serial_port": false,
+  "image_sha256": "6c40bba9f2c8016da4f71777a12a36257aa399124f0a13214bdb1e5177339172",
+  "probe_sha256": "3ac74fec63ae6a4fe187c526539f0d4fe0a2fc82276b38b537724db9cb36b72a",
+  "argv": [
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/supported-probe",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/release-stock/vm",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/experiments/virtualbuddy-platform/release-stock-Disk.img",
+    "--no-serial"
+  ],
+  "markers": [],
+  "serial_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

@@ -127,6 +127,8 @@ def main() -> int:
                         help="Build the source-pinned headless VIRT kernel extensions")
     parser.add_argument("--qemu-psci-hvc", action="store_true",
                         help="Enable the reviewed QEMU VIRT virtualization=false PSCI HVC profile")
+    parser.add_argument("--virtualbuddy", action="store_true",
+                        help="Build the explicit generic EFI virtio framebuffer profile with its three extra kexts")
     parser.add_argument("--make-setting", action="append", default=[], metavar="NAME=VALUE",
                         help="Reviewed PLATFORM=MacOSX or plain WARNFLAGS_STD diagnostics only")
     args = parser.parse_args()
@@ -144,6 +146,8 @@ def main() -> int:
         raise ValueError("--with-kexts currently supports only the PureDarwin VIRT profile")
     if args.qemu_psci_hvc and (not args.puredarwin or args.machine != "VIRT" or not args.with_kexts):
         raise ValueError("--qemu-psci-hvc requires --with-kexts and the PureDarwin VIRT profile")
+    if args.virtualbuddy and (not args.puredarwin or args.machine != "VIRT" or not args.with_kexts):
+        raise ValueError("--virtualbuddy requires --with-kexts and the PureDarwin VIRT profile")
     build = fresh_build_root(args.build_root)
     source = locked_source(args.manifest, args.source_name, args.source_root).resolve()
     evidence = args.evidence.resolve()
@@ -245,6 +249,8 @@ def main() -> int:
                             "-DCMAKE_CXX_FLAGS=-fno-stack-check"])
         if args.qemu_psci_hvc:
             command.append("-DPUREDARWIN_QEMU_PSCI_HVC=ON")
+        if args.virtualbuddy:
+            command.append("-DPUREDARWIN_VIRTUALBUDDY=ON")
         code = execute(command, ROOT, build / "logs/configure.log", evidence, "configure", environment=environment, recipe_steps=recipe["commands"])
         if code == 0:
             command = ["cmake", "--build", str(build), "--target", "xnu", "--parallel", str(args.jobs)]
@@ -253,6 +259,10 @@ def main() -> int:
             command = ["cmake", "--build", str(build), "--target",
                        *HEADLESS_KEXT_TARGETS, "--parallel", str(args.jobs)]
             code = execute(command, ROOT, build / "logs/kexts.log", evidence, "kexts", environment=environment, recipe_steps=recipe["commands"])
+        if code == 0 and args.virtualbuddy:
+            command = ["cmake", "--build", str(build), "--target", "IOGraphicsFamily.kext",
+                       "IOGOPFramebuffer.kext", "IOVirtIOGPU.kext", "--parallel", str(args.jobs)]
+            code = execute(command, ROOT, build / "logs/graphics.log", evidence, "graphics", environment=environment, recipe_steps=recipe["commands"])
     else:
         settings = sdk / "SDKSettings.json"
         base_sdk = settings.resolve().parent if settings.is_file() else sdk.resolve()

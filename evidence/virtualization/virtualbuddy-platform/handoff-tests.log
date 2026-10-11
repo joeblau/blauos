@@ -1,0 +1,41 @@
+test_adt_every_truncation (test_decoder.DecoderTests.test_adt_every_truncation) ... ok
+test_adt_length_mismatch (test_decoder.DecoderTests.test_adt_length_mismatch) ... ok
+test_adt_value_padding (test_decoder.DecoderTests.test_adt_value_padding) ... ok
+test_alignment (test_decoder.DecoderTests.test_alignment) ... ok
+test_big_endian_fdt_header_rejected (test_decoder.DecoderTests.test_big_endian_fdt_header_rejected) ... ok
+test_boot_args_every_truncation (test_decoder.DecoderTests.test_boot_args_every_truncation) ... ok
+test_boot_memory_overflow (test_decoder.DecoderTests.test_boot_memory_overflow) ... ok
+test_cli_retains_hardware_false (test_decoder.DecoderTests.test_cli_retains_hardware_false) ... ok
+test_command_line_must_terminate (test_decoder.DecoderTests.test_command_line_must_terminate) ... ok
+test_contract_and_decoder_profiles_match (test_decoder.DecoderTests.test_contract_and_decoder_profiles_match) ... ok
+test_declared_property_length_and_child_count (test_decoder.DecoderTests.test_declared_property_length_and_child_count) ... ok
+test_depth_limit (test_decoder.DecoderTests.test_depth_limit) ... ok
+test_duplicate_property_and_siblings (test_decoder.DecoderTests.test_duplicate_property_and_siblings) ... ok
+test_explicit_containment_overlap (test_decoder.DecoderTests.test_explicit_containment_overlap) ... ok
+test_explicit_physical_pointer_space (test_decoder.DecoderTests.test_explicit_physical_pointer_space) ... ok
+test_impossible_property_count (test_decoder.DecoderTests.test_impossible_property_count) ... ok
+test_memory_plan_count_limit (test_decoder.DecoderTests.test_memory_plan_count_limit) ... ok
+test_missing_and_unsupported_memory_map (test_decoder.DecoderTests.test_missing_and_unsupported_memory_map) ... ok
+test_missing_name (test_decoder.DecoderTests.test_missing_name) ... ok
+test_partial_overlap_cannot_be_waived (test_decoder.DecoderTests.test_partial_overlap_cannot_be_waived) ... ok
+test_pointer_space_is_explicit (test_decoder.DecoderTests.test_pointer_space_is_explicit) ... ok
+test_ram_overlap (test_decoder.DecoderTests.test_ram_overlap) ... ok
+test_reservation_outside_ram (test_decoder.DecoderTests.test_reservation_outside_ram) ... ok
+test_reservation_overlap (test_decoder.DecoderTests.test_reservation_overlap) ... ok
+test_top_of_kernel_outside_ram (test_decoder.DecoderTests.test_top_of_kernel_outside_ram) ... ok
+test_trailing_data_rejected (test_decoder.DecoderTests.test_trailing_data_rejected) ... ok
+test_two_distinct_source_abis (test_decoder.DecoderTests.test_two_distinct_source_abis) ... ok
+test_unknown_allowance_and_bad_schema (test_decoder.DecoderTests.test_unknown_allowance_and_bad_schema) ... ok
+test_unknown_profile_and_extra_boot_args_rejected (test_decoder.DecoderTests.test_unknown_profile_and_extra_boot_args_rejected) ... ok
+test_unterminated_property_name (test_decoder.DecoderTests.test_unterminated_property_name) ... ok
+test_valid_plan_does_not_derive_free_memory (test_decoder.DecoderTests.test_valid_plan_does_not_derive_free_memory) ... ok
+test_version_and_revision_rejected (test_decoder.DecoderTests.test_version_and_revision_rejected) ... ok
+test_virtual_pointer_outside_window (test_decoder.DecoderTests.test_virtual_pointer_outside_window) ... ok
+test_wrong_profile_rejected (test_decoder.DecoderTests.test_wrong_profile_rejected) ... ok
+test_zero_and_oversized_device_tree (test_decoder.DecoderTests.test_zero_and_oversized_device_tree) ... ok
+test_zero_overflow_and_boolean_ranges (test_decoder.DecoderTests.test_zero_overflow_and_boolean_ranges) ... ok
+
+----------------------------------------------------------------------
+Ran 36 tests in 0.093s
+
+OK

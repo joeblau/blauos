@@ -2,3 +2,5 @@
 *.log -whitespace
 *.patch -whitespace
 *disassembly.txt -whitespace
+evidence/virtualization/virtualbuddy-platform/firmware-dsdt.dsl -whitespace
+evidence/virtualization/virtualbuddy-platform/gui-health-response.txt -text -whitespace
