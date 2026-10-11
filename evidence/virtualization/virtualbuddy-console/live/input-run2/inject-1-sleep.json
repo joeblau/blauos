@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "fifo": "evidence/virtualization/virtualbuddy-console/live/input-run2/vm/console-input.fifo",
+  "frames": [
+    {
+      "frame": "command:sleep 30",
+      "bytes": 9,
+      "sha256": "4bd2c292474fac3dd06b75d86452ead67f3f30a1712ce8772df4207a05e416c5"
+    }
+  ],
+  "guest_execution": "not established by host-side injection"
+}

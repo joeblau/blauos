@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "fifo": "evidence/virtualization/virtualbuddy-console/live/input-run/vm/console-input.fifo",
+  "frames": [
+    {
+      "frame": "command:echo hello-issue-101",
+      "bytes": 21,
+      "sha256": "d80f59a35dce32840e1ce1c58a93bbfe6875581780a480b7ddffc5262237d615"
+    }
+  ],
+  "guest_execution": "not established by host-side injection"
+}

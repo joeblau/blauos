@@ -20,10 +20,11 @@ The toolkit includes:
 | Reading and processing text | `cat`, `head`, `tail`, `wc`, `cut`, `tr`, `uniq`, `tee`, `grep`, `sed`, `comm`, `paste`, `rev`, `fold`, `expand`, `unexpand` |
 | Paths and environment | `pwd`, `basename`, `dirname`, `mktemp`, `printenv`, `env`, `hostname` |
 | Accounts and processes | `id`, `whoami`, `groups`, `date`, `ps` |
+| Editor | `vim` (tiny feature set; ex scripts and full-screen editing) |
 
 The original `uname`, `sleep`, `echo`, `test`, `true`, `false`, shell, and SSH
 tools remain available. The shell also supplies `cd`, `printf`, and other POSIX
-builtins. This toolkit does not yet include an editor, `sort`, a package
+builtins. This toolkit does not yet include `sort`, a package
 manager, or a guest zsh.
 
 ## Build and include in images
@@ -39,6 +40,7 @@ To build only the additive command layer on the prepared macOS build host:
 
 ```sh
 python3 scripts/blauos.py fetch puredarwin-vm-next apple-file_cmds apple-libutil apple-shell-cmds apple-text-commands
+python3 scripts/blauos.py fetch-archives vim-9.2.1175
 python3 scripts/vm/build_commands.py \
   --runtime-root /path/to/independently-built-runtime \
   --output .blauos/build/commands/run-1
@@ -48,6 +50,24 @@ The output contains `root/`, exact source provenance, compiler commands, and a
 command catalogue. Existing inputs and build directories are preserved. A
 successful build alone does not establish that the programs run; the full
 runtime audit and actual guest acceptance are required.
+
+The `vim` layer builds from the pinned GitHub release tarball rather than a Git
+checkout, and replaces Vim's autoconf configure (which probes and links the
+host runtime) with the tracked configuration under
+[`vm/commands/vim`](../vm/commands/vim/README.md): a tiny feature set without
+X11, eval, or external language interfaces, using Vim's own termlib and builtin
+termcap entries (`ansi`, `vt320`, `vt52`, `xterm`, `dumb`) because the runtime
+has no curses or termcap library. The acceptance script checks `vim --version`
+and `vim -es` ex-script editing, which work over a plain serial line;
+full-screen editing needs the interactive console with a matching `TERM` and is
+exercised manually. To build only the editor layer:
+
+```sh
+python3 scripts/vm/build_vim_commands.py \
+  --archive .blauos/inputs/vim-9.2.1175.tar.gz \
+  --runtime-root /path/to/independently-built-runtime \
+  --output .blauos/build/commands/vim-run-1
+```
 
 ## Update an existing logged-in VM
 

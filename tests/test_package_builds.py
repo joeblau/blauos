@@ -51,7 +51,7 @@ class RepoRecipeTests(unittest.TestCase):
         names = [entry["name"] for entry in receipt["recipes"]]
         self.assertEqual(names, receipt["build_order"])
         self.assertEqual(set(names), {"kernel", "kernel-collection-tools", "runtime",
-                                      "dash-shell", "command-toolkit", "openssh"})
+                                      "dash-shell", "command-toolkit", "openssh", "vim"})
         # Dependencies resolve before their dependents.
         self.assertLess(names.index("runtime"), names.index("openssh"))
         self.assertLess(names.index("kernel-collection-tools"), names.index("kernel"))
@@ -60,8 +60,15 @@ class RepoRecipeTests(unittest.TestCase):
             self.assertTrue(sources)
             lock = json.loads(LOCK.read_text())
             pins = {item["name"]: item for item in lock["sources"]}
+            archive_pins = {item["name"]: item for item in lock["archives"]}
             recipe = json.loads((RECIPES / f"{entry['name']}.json").read_text())
             for source in recipe["sources"]:
+                if source["kind"] == "archive":
+                    pin = archive_pins[source["lock_name"]]
+                    self.assertEqual(source["url"], pin["url"])
+                    self.assertEqual(source["filename"], pin["filename"])
+                    self.assertEqual(source["sha256"], pin["sha256"])
+                    continue
                 pin = pins[source["lock_name"]]
                 self.assertEqual(source["url"], pin["url"])
                 self.assertEqual(source["revision"], pin["revision"])
@@ -69,7 +76,8 @@ class RepoRecipeTests(unittest.TestCase):
                 self.assertEqual(source.get("tag"), pin.get("tag"))
             # Every pin comparison is recorded as an explicit check.
             for source in recipe["sources"]:
-                self.assertIn(f"{source['lock_name']}.revision", entry["checks"])
+                field = "sha256" if source["kind"] == "archive" else "revision"
+                self.assertIn(f"{source['lock_name']}.{field}", entry["checks"])
         # Flake-locked tool revisions are cross-checked against the flake lock.
         tools = next(entry for entry in receipt["recipes"] if entry["name"] == "kernel-collection-tools")
         for lock_name in ("iig-tools", "kc-tools", "xnu-loader"):
@@ -80,7 +88,7 @@ class RepoRecipeTests(unittest.TestCase):
         result = subprocess.run(["python3", str(ROOT / "scripts/build/packages.py"), "validate"],
                                 cwd=ROOT, capture_output=True, text=True)
         self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertIn("6 recipes", result.stdout)
+        self.assertIn("7 recipes", result.stdout)
 
     def test_every_recipe_records_license_metadata(self):
         for path in sorted(RECIPES.glob("*.json")):

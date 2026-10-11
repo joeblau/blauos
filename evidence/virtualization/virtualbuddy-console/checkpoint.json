@@ -13,18 +13,20 @@
     "kernel_build": "kernel-build-result.json"
   },
   "new_sources": {
-    "vm/patches/xnu-loader-virtualbuddy-console-input.patch": "b9ad924471ea20a3f56422113bbcc362c1b9ae704addf2fa7031bda21756b9ae",
+    "vm/patches/xnu-loader-virtualbuddy-console-input.patch": "ae921501059e146822f3aad5d52ea7870d5b676e29290b03d99d265f890f16ef",
     "vm/patches/puredarwin-virtualbuddy-console-input.patch": "21ae8d48cd3c7644d593dd4cb08c5abb5cdc762bc3952c1d486dc03be52e0296",
     "vm/patches/xnu-loader-virtualbuddy-power-button.patch": "1cbb278ce718db6afffae8b977a1b7c68ed12639432b1a77fd823624abfc598f",
     "vm/patches/puredarwin-virtualbuddy-power-button.patch": "c5a0bd85d316ec23b080761f5740186e1e7a41d370ec30b452f02888695fac8e",
     "vm/virtualbuddy_console_probe.swift": "03b46e0ac3a8d7520042fbbc166b5667fa97597470cd7b1ee28167b796f1d1bc",
     "scripts/vm/console_input.py": "5267d452bca106dba8f397a0ce3a0c44e1650c17e4bfda9456c87eff03665492",
-    "vm/org.blauos.consoleshell.plist": "ce43b82e8e411600f3d36b685359d8591738cd31af17d5d9941e04ed14a2f398"
+    "vm/org.blauos.consoleshell.plist": "3c8e70bc9af588e165f4ea73deafc9d50eb93482346df3ea65b2e3343a0750b0",
+    "vm/console_login.c": "ffaed1a77cff7d8a0c90f18cd16cedf1f578c346838a9e4032579929e2bb7c71",
+    "scripts/vm/build_console_login.py": "14bbf8cce4136b440e8cfa782979c26b52dce03214d83db12fccf41410eb1c76"
   },
   "build_evidence": {
     "kernel": "kernel-build-result.json: kernel and all kexts (including PDArmPlatformExpert with the power-button handler) compile with the six-patch series; status kernel-built-not-boot-validated",
     "probe": "probe-build.json: swiftc compile plus ad-hoc virtualization-entitled signature on this host",
-    "loader": "NOT rebuilt: BOOTAA64.EFI requires the pinned ARM64 Linux Nix builder; patches verified to stack on the pinned loader source by tests/test_virtualbuddy_input.py"
+    "loader": "rebuilt 2026-10-11 on the pinned ARM64 Linux Nix builder (BOOTAA64-live2.EFI, sha256 1e754f784114592f28763ca99203d519ca9f195237c16ca97b8af145acdba674); see live/checkpoint-live.json"
   },
   "test_coverage": {
     "tests/test_virtualbuddy_input.py": "6e34f2c9b91ee81b609d20643e3ae3d5af9fd998e563fa6a8318c2d7db8360e9",
@@ -32,14 +34,13 @@
     "result": "19 new tests pass; full suites (tests, runtime/tests, platform/apple-m1/handoff/tests) pass"
   },
   "live_evidence": {
-    "status": "not captured",
-    "remaining": [
-      "rebuild BOOTAA64.EFI on the pinned Linux Nix builder with the two loader patches",
-      "assemble a test image including org.blauos.consoleshell.plist",
-      "run virtualbuddy_console_probe with console_input.py: capture a typed command, line editing, Ctrl-C and EOF in the source shell",
-      "run with --request-stop-after: capture public guestDidStop after requestStop without host termination"
-    ],
-    "reason": "live runs require the rebuilt loader/image; no live evidence is fabricated here"
+    "status": "captured 2026-10-11",
+    "checkpoint": "live/checkpoint-live.json",
+    "summary": [
+      "loader rebuilt on the pinned Linux Nix builder; the RX-notify live amendment is folded into xnu-loader-virtualbuddy-console-input.patch and the documented vm/patches series now reproduces the live-tested BOOTAA64.EFI bit-for-bit (sha256 1e754f784114592f28763ca99203d519ca9f195237c16ca97b8af145acdba674)",
+      "five live VirtualBuddy probe runs captured: typed command execution, backspace line editing, EOF, full-screen vim sessions, and requestStop -> guest SIGTERM -> unmount -> PSCI SYSTEM_OFF -> public guestDidStop (three independent shutdown runs)",
+      "the run-1/2 Ctrl-C gap (SIGINT consumed by the line discipline but delivered to a NULL foreground pgrp because launchd opens job fds O_NOCTTY before setsid) is fixed by the getty-style consoleshell launcher vm/console_login.c; run-3 shows a foreground cat interrupted by Ctrl-C, vim leaving insert mode on Ctrl-C, and the shutdown route unaffected"
+    ]
   },
   "acceptance_preserved": "The 20-check probe (vm/virtualbuddy_probe.swift), the accepted image inputs, the stock no-serial configuration and the QEMU baseline are untouched; the kernel accepts the stock four-word console property unchanged",
   "physical_gate_passed": false,

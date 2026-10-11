@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "fifo": "evidence/virtualization/virtualbuddy-console/live/input-run2/vm/console-input.fifo",
+  "frames": [
+    {
+      "frame": "command:echo post-eof-must-not-run",
+      "bytes": 27,
+      "sha256": "778a79f51318e455186815796f07a49eb078111382a4b38076eadbcc53912df9"
+    }
+  ],
+  "guest_execution": "not established by host-side injection"
+}

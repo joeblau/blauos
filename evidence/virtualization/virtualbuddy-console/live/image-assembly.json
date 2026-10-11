@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "assembled": true,
+  "guest_boot_passed": false,
+  "image": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/virtualbuddy-console/image-live2/blauos-arm64.img",
+  "image_sha256": "b7030b70c63f284b8fba44de9d1e7c0292505f2f5904f94258d2a9365763b13f",
+  "kernel_sha256": "b157c2db7b4f229a28b54cc6af8edd7cda639f7eab050ae3c4aee48c7f625d54",
+  "loader_sha256": "1e754f784114592f28763ca99203d519ca9f195237c16ca97b8af145acdba674",
+  "runtime_provenance_sha256": "a183b92d36e08bf6368b4bd59ac672f5f8e7e674f46af0db3b3a92f1f0ef7c16",
+  "disk_uuid": "c009553c-04a7-575d-88e1-b3c4f81b3785",
+  "root_uuid": "ed86e5f0-ba61-5f7a-b61f-9e5dda210660",
+  "device_nodes": "Kernel mounts devfs; no Linux device-number substitution",
+  "fixture_sha256": {
+    "org.blauos.test.bootstrap.plist": "8e8a7d90d90bed488934eaada85ff831546442805cfbb80d75b3f0dc90e33c3e",
+    "org.blauos.test.exec-failure.plist": "44685b6f5346c662bc8ac544708747b6b5016d06f16755171aaf4ef078c62381",
+    "org.blauos.test.shutdown.plist": "08e55b2d118836b67fff209debcdc78de8c438c96856cf1b60f4f77e311fa117",
+    "launchd-test.sh": "874be8521bd3b434fe8d21573f2898bbc276a71abc35eb45616a7ea528ab7024"
+  },
+  "bit_identical_rebuild_verified": false,
+  "console_shell_job_sha256": "ce43b82e8e411600f3d36b685359d8591738cd31af17d5d9941e04ed14a2f398",
+  "assemble_argv": [
+    "assemble.py",
+    "--root runtime-final-root",
+    "--provenance runtime-final-provenance.json",
+    "--kernel collection-v3/kernel.classic",
+    "--loader BOOTAA64-live2.EFI",
+    "--root-mb 1024",
+    "--boot-args -v debug=0x218 serial=3 keepsyms=1 no_interrupt_masked_debug=1 gopconsole=1",
+    "--network 192.168.64.200 255.255.255.0 192.168.64.1 192.168.64.1",
+    "--standalone",
+    "--console-shell",
+    "(executed via docker exec on blauos-vb-console-live with the recorded nix store PATH)"
+  ],
+  "console_shell_staging": "scripts/vm/assemble.py --console-shell (option added for this work) stages vm/org.blauos.consoleshell.plist into System/Library/LaunchDaemons",
+  "esp_copyback_verified": {
+    "BOOTAA64.EFI": "1e754f784114592f28763ca99203d519ca9f195237c16ca97b8af145acdba674",
+    "kernel": "b157c2db7b4f229a28b54cc6af8edd7cda639f7eab050ae3c4aee48c7f625d54",
+    "method": "mcopy out of the assembled ESP inside the builder; hashes match build inputs"
+  },
+  "kernel_collection": {
+    "path": ".blauos/build/virtualbuddy-console/collection-v3/kernel.classic",
+    "sha256": "b157c2db7b4f229a28b54cc6af8edd7cda639f7eab050ae3c4aee48c7f625d54",
+    "builder": ".blauos/build/native-ci/run-2/collection/tools/kc-builder -classic -kext-vmbase 0xfffffff004004000",
+    "kernel": ".blauos/build/virtualbuddy-console/kernel-v3 (6-patch series, evidence/virtualization/virtualbuddy-console/kernel-build-result.json)",
+    "kexts": "16 kexts + 12 codeless System.kext plug-ins from the kernel-v3 build tree; argv and log in .blauos/build/virtualbuddy-console/collection-v3/"
+  }
+}

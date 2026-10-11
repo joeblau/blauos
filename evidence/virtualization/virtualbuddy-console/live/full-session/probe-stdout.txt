@@ -1,0 +1,5 @@
+configuration-validated [:]
+framework-start-succeeded [:]
+host-request-stop ["api": "VZVirtualMachine.requestStop"]
+guest-stopped ["after_request_stop": true]
+probe-exit=0

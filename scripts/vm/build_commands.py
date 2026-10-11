@@ -12,6 +12,7 @@ import shutil
 import subprocess
 import sys
 
+from build_vim_commands import ARCHIVE_NAME, archive_pin, verify_archive
 from install_commands import command_artifacts
 from ssh_workflow import digest, write_json
 
@@ -22,7 +23,7 @@ def build(args):
     if args.output.exists() or args.output.is_symlink():
         raise ValueError("Use a fresh command build output directory")
     for input_path in (args.source, args.file_source, args.libutil_source, args.shell_source,
-                       args.text_source, args.runtime_root):
+                       args.text_source, args.vim_archive, args.runtime_root):
         if args.output.resolve().is_relative_to(input_path.resolve()):
             raise ValueError("Build output must be outside source and runtime inputs")
     spec = importlib.util.spec_from_file_location("blauos_source_verifier", ROOT / "scripts/blauos.py")
@@ -34,12 +35,14 @@ def build(args):
                ("apple-text-commands", args.text_source))
     for name, source in sources:
         verifier.verify_source(pins[name], source.absolute())
+    verify_archive(archive_pin(ROOT / "sources.lock.json"), args.vim_archive.absolute())
     args.output.mkdir(parents=True)
     layers = {
         "file": ["--source", args.file_source, "--libutil-source", args.libutil_source,
                  "--darwin-source", args.source],
         "text": ["--source", args.source, "--apple-source", args.text_source],
         "admin": ["--source", args.shell_source, "--darwin-source", args.source],
+        "vim": ["--archive", args.vim_archive],
     }
 
     def compile_layer(item):
@@ -61,6 +64,7 @@ def build(args):
         raise ValueError("Command source build failed: " + ", ".join(entry["name"] for entry in failures))
     for name, source in sources:
         verifier.verify_source(pins[name], source.absolute())
+    verify_archive(archive_pin(ROOT / "sources.lock.json"), args.vim_archive.absolute())
     root = args.output / "root"
     root.mkdir()
     artifacts, names = [], set()
@@ -97,6 +101,10 @@ def build(args):
                     if identity in seen:
                         continue
                     seen.add(identity)
+                    if source_name not in bases:
+                        # Archive-pinned layers ship their notices in their own
+                        # third-party-notices.txt collected above.
+                        continue
                     text = (bases[source_name] / relative).read_text()
                     prefix = re.match(r"\s*(?:(?:/\*.*?\*/)|(?://[^\n]*\n)|\s)+", text, re.DOTALL)
                     if prefix:
@@ -116,6 +124,8 @@ def main():
                          ("libutil-source", "apple-libutil"), ("shell-source", "apple-shell-cmds"),
                          ("text-source", "apple-text-commands")):
         parser.add_argument("--" + name, type=Path, default=ROOT / ".blauos/sources" / source)
+    parser.add_argument("--vim-archive", type=Path,
+                        default=ROOT / ".blauos/inputs" / (ARCHIVE_NAME + ".tar.gz"))
     parser.add_argument("--runtime-root", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()

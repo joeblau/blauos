@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-11",
+  "subject": "LIVE guest evidence for #101 (console keyboard input) and #102 (host-requested orderly shutdown) on the VirtualBuddy generic EFI platform",
+  "issues": [
+    "https://github.com/joeblau/blauos/issues/101",
+    "https://github.com/joeblau/blauos/issues/102"
+  ],
+  "host": {
+    "os": "macOS 27.2 beta (probe report)",
+    "backend": "Virtualization.framework generic EFI via vm/virtualbuddy_console_probe.swift",
+    "probe_sha256": "bc8cbdc73abb137329fcb5b72fde224daf5fd1ef99170ea53dbb1aed7e2a869f"
+  },
+  "image": {
+    "path": ".blauos/build/virtualbuddy-console/image-live2/blauos-arm64.img",
+    "image_sha256": "b7030b70c63f284b8fba44de9d1e7c0292505f2f5904f94258d2a9365763b13f",
+    "loader_sha256": "1e754f784114592f28763ca99203d519ca9f195237c16ca97b8af145acdba674",
+    "kernel_collection_sha256": "b157c2db7b4f229a28b54cc6af8edd7cda639f7eab050ae3c4aee48c7f625d54",
+    "boot_args": "-v debug=0x218 serial=3 keepsyms=1 no_interrupt_masked_debug=1 gopconsole=1",
+    "jobs": [
+      "org.blauos.smoke (standalone health service)",
+      "org.blauos.consoleshell (interactive /bin/sh -i on /dev/console)"
+    ],
+    "receipts": [
+      "loader-build.json",
+      "image-assembly.json"
+    ]
+  },
+  "loader_amendment": "loader-rx-post-driver-ok.patch \u2014 REQUIRED for live boot; the original console-input loader patch wedges the VZ virtio console by printing/notifying before DRIVER_OK (bisect in loader-build.json). The four reviewed patches are untouched; this is an additional change the coordinator may want to fold into xnu-loader-virtualbuddy-console-input.patch.",
+  "issue_101": {
+    "demonstrated": true,
+    "runs": {
+      "input-run": {
+        "serial_sha256": "34e30e16c6fddbcc1f19430e8fe476daa36c3daf83161fc86b455fc80323b514",
+        "serial_log": "input-run/vm/serial.log",
+        "injection_receipts": [
+          "inject-1-command.json",
+          "inject-2-editing.json",
+          "inject-3a-sleep.json",
+          "inject-3b-ctrlc.json",
+          "inject-4-eof.json"
+        ],
+        "serial_shows": [
+          "loader lines 'Virtio console TX prepared' and 'Virtio console RX prepared notify=0x100044000 queue=0x75CC4000'",
+          "typed 'echo hello-issue-101' echoed by the tty and executed: output line 'hello-issue-101'",
+          "line editing: typed 'echo blauX', 0x7f backspace erased X, 'os' + CR; the shell executed 'echo blauos' and printed 'blauos'"
+        ]
+      },
+      "input-run2": {
+        "serial_sha256": "33681a06c4f96ed50dd2d3007dce627347cfd875927f23e57751f65e9541edb1",
+        "serial_log": "input-run2/vm/serial.log",
+        "injection_receipts": [
+          "inject-1-sleep.json",
+          "inject-2-ctrlc.json",
+          "inject-3-after.json",
+          "inject-4-eof.json",
+          "inject-5-post-eof.json"
+        ],
+        "serial_shows": [
+          "'sleep 30' echoed and started; 0x03 echoed as ^C but did NOT interrupt sleep (no prompt returned); the typed line 'echo shell-alive-after-ctrl-c' stayed queued in the tty input buffer and executed only when sleep exited on its own ('# shell-alive-after-ctrl-c')",
+          "after 0x04 (^D) the typed line 'echo post-eof-must-not-run' was echoed by the line discipline but never executed (no output line): the shell took EOF",
+          "CORRECTION (later runs): the original reading 'Ctrl-C returned the console to the shell' is wrong. run-2/full-session prove the line discipline consumes ^C (echoctl only) but delivers no SIGINT to the foreground process: a foreground cat kept consuming input until EOF. A pending cooked line is NOT discarded by ^C (the shell-alive line above executed after sleep exited naturally). See checkpoint-live.json"
+        ]
+      }
+    },
+    "path": "host console_input.py -> probe console-input.fifo -> VZ serial read handle -> virtio console RX queue 0 (loader-posted buffer) -> pe_serial rd0/rr0 -> serial_keyboard_poll (serial=3) -> cons_cinput -> /dev/console tty -> /bin/sh -i",
+    "caveats": [
+      "Ctrl-C (0x03) in these runs did NOT deliver SIGINT to the foreground guest process (foreground cat survived ^C in full-session; sleep 30 ran on here); root cause: launchd opens job fds with O_NOCTTY before setsid(), so the console tty never gained a foreground process group. FIXED in run-3 (see checkpoint-live.json sigint_fix_run_3): the consoleshell job now execs via usr/libexec/blauos-console-login (TIOCSCTTY + tcsetpgrp), and live run-3 shows cat interrupted by Ctrl-C and vim leaving insert mode on Ctrl-C",
+      "A cooked line pending in the tty input queue survives ^C and executes when the foreground process exits naturally (input-run2)",
+      "EOF has no guest-visible 'exit' banner; evidence is that subsequent input is echoed but never executed",
+      "USB keyboard remains unsupported (no XHCI/HID stack); input enters through the virtio serial RX queue only"
+    ]
+  },
+  "issue_102": {
+    "demonstrated": true,
+    "run": "shutdown-run",
+    "serial_sha256": "0ffc4b9678893fb93cfe76cc621b99a73214ef11f45ba8f956cab6812754689e",
+    "serial_log": "shutdown-run/vm/serial.log",
+    "probe_events": [
+      "configuration-validated",
+      "framework-start-succeeded",
+      "host-request-stop (VZVirtualMachine.requestStop) at 19:06:26Z",
+      "guest-stopped with after_request_stop=true at 19:06:46Z"
+    ],
+    "probe_exit_code": 0,
+    "no_force_stop": "result.json records no orderly-shutdown-timeout, no force-stop-recovery and no host-stopped-probe event",
+    "serial_shows": [
+      "launchd: 'System: Userspace shutdown took approximately 20 seconds.'",
+      "'System: About to call: reboot(RB_HALT).'",
+      "vfs_unmountall(nonsystem) and vfs_unmountall(system) completed ('done')",
+      "'CPU halted'",
+      "'PDArmPlatformExpert: QEMU PSCI HVC SYSTEM_OFF'"
+    ],
+    "route": "requestStop -> ARMH0061 PL061 GPIO pin 6 -> kernel 100 ms RIS poll (puredarwin-virtualbuddy-power-button.patch) -> SIGTERM to PID 1 -> launchd child cleanup + unmount -> PSCI SYSTEM_OFF -> public guestDidStop"
+  },
+  "physical_gate_passed": false,
+  "note": "VM results on the generic EFI platform; no physical Apple Silicon console input or shutdown is claimed (Gate 2 not run)."
+}

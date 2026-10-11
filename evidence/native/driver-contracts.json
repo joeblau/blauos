@@ -9,7 +9,7 @@
   "input_hashes": {
     "sources_lock": {
       "path": "sources.lock.json",
-      "sha256": "de98f7289628e8ea53089b8945798afa01c2dd1afb1328b82e6a9a2321537cee"
+      "sha256": "474bfdd33a8e4ea3240af89ab785b452c448711d3e1130dbea6120b784d524ac"
     },
     "puredarwin_flake_lock": {
       "path": "manifests/puredarwin-flake.lock",

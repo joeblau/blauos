@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "fifo": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/virtualization/virtualbuddy-console/live/run-3/console-input.fifo",
+  "frames": [
+    {
+      "frame": "command:iRun three: SIGINT reaches the console foreground pgrp.",
+      "bytes": 56,
+      "sha256": "f6df7553633378443305364f1c8a42bdb638989f9583d5de3005b0a176a6b262"
+    }
+  ],
+  "guest_execution": "not established by host-side injection"
+}

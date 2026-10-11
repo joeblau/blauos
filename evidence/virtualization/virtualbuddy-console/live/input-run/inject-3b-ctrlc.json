@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "fifo": "evidence/virtualization/virtualbuddy-console/live/input-run/vm/console-input.fifo",
+  "frames": [
+    {
+      "frame": "command:echo after-ctrl-c",
+      "bytes": 18,
+      "sha256": "1dbef9b9aa4d1acbf016948c40d78592ab6bc388054e850e9c826696cfab3aae"
+    },
+    {
+      "frame": "ctrl-c",
+      "bytes": 1,
+      "sha256": "084fed08b978af4d7d196a7446a86b58009e636b611db16211b65a9aadff29c5"
+    }
+  ],
+  "guest_execution": "not established by host-side injection"
+}

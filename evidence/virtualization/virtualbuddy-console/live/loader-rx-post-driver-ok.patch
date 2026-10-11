@@ -1,0 +1,21 @@
+--- a/src/vb_platform.c
++++ b/src/vb_platform.c
+@@ -219,16 +219,16 @@
+         w16(rx,0x100,1);w16(rx,0x104,0);__asm__ volatile("dsb sy":::"memory");w16(rx,0x102,1);
+         w16(common,28,1);__asm__ volatile("dsb sy":::"memory");
+         gVB.console_rx_notify=notify_base+(UINT64)rx_notify_offset*multiplier;gVB.console_rx_queue=rxphysical;
+-        *(volatile UINT16 *)gVB.console_rx_notify=0;
+-        log_info(L"Virtio console RX prepared notify=0x%lx queue=0x%lx\r\n",gVB.console_rx_notify,gVB.console_rx_queue);
+       }
+     }
+   }
+   w16(common,22,1); /* Restore the TX queue selection. */
+   common[20]=15;__asm__ volatile("dsb sy":::"memory");
++  if(gVB.console_rx_notify){*(volatile UINT16 *)gVB.console_rx_notify=0;__asm__ volatile("dsb sy":::"memory");}
+   gVB.console_common=(UINT64)(UINTN)common;gVB.console_notify=(UINT64)(UINTN)notify;gVB.console_queue=physical;
+   sent=0;console_failed=FALSE;
+   log_info(L"Virtio console TX prepared common=0x%lx notify=0x%lx queue=0x%lx\r\n",gVB.console_common,gVB.console_notify,gVB.console_queue);
++  if(gVB.console_rx_queue)log_info(L"Virtio console RX prepared notify=0x%lx queue=0x%lx\r\n",gVB.console_rx_notify,gVB.console_rx_queue);
+   return EFI_SUCCESS;
+ }
+ VOID vb_console_putc(CHAR8 c) {

@@ -197,8 +197,8 @@ Sources: [pinned loader serial implementation](https://github.com/PureDarwin/xnu
 
 Two additions complete the console story tracked as
 [#101](https://github.com/joeblau/blauos/issues/101) and
-[#102](https://github.com/joeblau/blauos/issues/102). Both are source-only at
-this writing: no rebuilt loader image or live guest run is claimed here.
+[#102](https://github.com/joeblau/blauos/issues/102). Live guest runs now
+demonstrate both; see "Live results (2026-10-11)" below.
 
 **Input inventory.** VirtualBuddy's generic EFI profile exposes five relevant
 devices, recorded in
@@ -221,7 +221,16 @@ fail-closed bounds. From there the existing machinery is unchanged: the
 console tty line discipline delivers bytes to `/dev/console`, and Ctrl-C
 (`0x03`) and Ctrl-D EOF (`0x04`) are interpreted by that discipline, not the
 driver. `vm/org.blauos.consoleshell.plist` is an opt-in launchd job binding an
-interactive `/bin/sh` to `/dev/console` for image assemblies that want it.
+interactive `/bin/sh` to `/dev/console` for image assemblies that want it. It
+execs the shell through `usr/libexec/blauos-console-login`
+(`vm/console_login.c`), a getty-style session binder: launchd opens job
+descriptors with `O_NOCTTY` before `setsid()`, so without this step the
+console tty never gains a foreground process group and the line discipline's
+SIGINT reaches `tty_pgsignal` with a NULL `t_pgrp` (echoed as `^C`, delivered
+to no one — the exact gap observed in the first live runs). The launcher opens
+`/dev/console` without `O_NOCTTY`, issues `TIOCSCTTY` and `tcsetpgrp`, then
+execs the shell; it fails closed (nonzero exit, logged job failure) if any
+step is refused.
 
 **Host injection and acceptance probe.** `vm/virtualbuddy_console_probe.swift`
 (compiled and signed; [probe-build.json](../../evidence/virtualization/virtualbuddy-console/probe-build.json))
@@ -263,11 +272,68 @@ python3 scripts/build/xnu.py \
 ```
 
 The loader patches apply cleanly on the pinned loader source (verified in
-`tests/test_virtualbuddy_input.py`) but rebuilding `BOOTAA64.EFI` still
-requires the pinned ARM64 Linux Nix builder, which this host is not.
+`tests/test_virtualbuddy_input.py`) and `BOOTAA64.EFI` has been rebuilt on the
+pinned ARM64 Linux Nix builder. One live-boot amendment was required on top of
+the original four patches: the console-input patch's "RX prepared" `log_info`
+and its queue-0 notification ran before `DRIVER_OK`, and `vb_console_putc`
+then posted to a queue the device was not yet processing, latching
+`console_failed` and wedging the console TX path (a nine-variant live bisect
+is summarized in
+[loader-build.json](../../evidence/virtualization/virtualbuddy-console/live/loader-build.json)).
+The amendment defers the queue-0 notification and the report until after
+`DRIVER_OK`. **The amendment is now folded into
+`xnu-loader-virtualbuddy-console-input.patch`** (the standalone
+[loader-rx-post-driver-ok.patch](../../evidence/virtualization/virtualbuddy-console/live/loader-rx-post-driver-ok.patch)
+is kept as the historical record): the documented `vm/patches/` series
+rebuilds the live-tested `BOOTAA64.EFI` bit-for-bit, sha256
+`1e754f784114592f28763ca99203d519ca9f195237c16ca97b8af145acdba674`.
 
-**Still open.** A real interactive capture — a user-typed command echoed in
-the source shell, line editing, Ctrl-C, EOF, and a `guestDidStop` callback
-after host Stop — requires a rebuilt loader and image and a live VirtualBuddy
-run. Parser and protocol logic are covered by unittests against the real
-firmware fixture and synthetic rings; live evidence is not fabricated here.
+## Live results (2026-10-11)
+
+Six live probe runs on three images (loader `1e754f78…`, kernel collection
+`b157c2db…`; vim-inclusive images `a440c294…` and `19cd33a9…`) captured the
+interactive story end to end. Receipts, per-frame injection records and serial
+logs:
+[live/checkpoint.json](../../evidence/virtualization/virtualbuddy-console/live/checkpoint.json)
+(runs `input-run`, `input-run2`, `shutdown-run` on image `b7030b70…`) and
+[live/checkpoint-live.json](../../evidence/virtualization/virtualbuddy-console/live/checkpoint-live.json)
+(runs `full-session` and `run-2` on `a440c294…`, run `run-3` on `19cd33a9…`).
+
+**#101 console input.** The consoleshell job's interactive `/bin/sh` prompt
+appears on the serial log, and typed frames injected through the probe's
+`console-input.fifo` execute: `echo hello-issue-101` printed
+`hello-issue-101`, and a mistyped `echo blauX` corrected with one backspace
+executed as `echo blauos` and printed `blauos` (run `input-run`).
+Full-screen vim sessions (TERM=ansi, builtin termcap; runs `run-2`, `run-3`)
+drew the 24-line screen, accepted insert-mode text, and `:wq` wrote the file;
+`cat` afterwards printed the exact inserted sentence. vim reports `E1187:
+Failed to source defaults.vim` because the tiny toolkit build ships no runtime
+files; editing was unaffected. Ctrl-D EOF works: it ended a foreground `cat`
+(run `full-session`) and exited the shell itself (runs `input-run2`, `run-2`,
+`run-3`). **Ctrl-C now interrupts the foreground process** (run `run-3`): a
+foreground `cat` died on `^C` and the shell executed the next command, and
+vim's SIGINT handler left insert mode so the following `:wq` executed as a
+command. The first runs (`full-session`, `input-run2`) had shown `^C` echoctl'd
+but delivered to no process; root cause was userspace session setup, not the
+kernel input path — launchd opens job descriptors with `O_NOCTTY` before
+`setsid()`, leaving the console tty's `t_pgrp` NULL. The consoleshell job now
+execs through `usr/libexec/blauos-console-login` (`TIOCSCTTY` + `tcsetpgrp`),
+which fixes delivery; a command line queued behind a blocking process still
+survives `^C` and runs when that process exits (canonical-mode semantics). (An
+earlier draft of this section read `input-run2` as Ctrl-C working before the
+fix; that reading was wrong, and `full-session` disproved it.)
+
+**#102 host-requested shutdown.** In four runs (`shutdown-run`,
+`full-session`, `run-2`, `run-3`) `vm.requestStop()` produced the public
+`guestDidStop` callback with `after_request_stop: true`, probe exit 0, no
+timeout and no force-stop recovery. The serial log shows the orderly route end
+to end: `PDArmPlatformExpert: host requested stop; sending SIGTERM to PID 1`,
+launchd userspace shutdown (about 20 seconds while the console shell lingered
+and was killed at its exit timeout; under 1 second once EOF had ended it),
+`reboot(RB_HALT)`, both `vfs_unmountall` passes, and `PDArmPlatformExpert:
+QEMU PSCI HVC SYSTEM_OFF`.
+
+These remain VM results on the generic EFI platform; physical Apple Silicon
+console input and shutdown (Gate 2) are not claimed. USB keyboard input is
+still unsupported (no XHCI/HID stack); input enters through the virtio serial
+RX queue.

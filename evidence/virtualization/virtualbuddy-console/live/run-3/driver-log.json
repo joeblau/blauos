@@ -1,0 +1,109 @@
+[
+  {
+    "event": "guest-boot-marker-seen",
+    "serial_bytes": 13185
+  },
+  {
+    "receipt": "inject-01-sanity.json",
+    "commands": [
+      "echo RUN3_SHELL_OK"
+    ],
+    "controls": [],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "receipt": "inject-02-cat.json",
+    "commands": [
+      "cat"
+    ],
+    "controls": [],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "receipt": "inject-03-ctrl-c.json",
+    "commands": [],
+    "controls": [
+      "ctrl-c"
+    ],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "receipt": "inject-04-after-ctrl-c.json",
+    "commands": [
+      "echo CAT_INTERRUPTED_OK"
+    ],
+    "controls": [],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "receipt": "inject-05-term.json",
+    "commands": [
+      "export TERM=ansi"
+    ],
+    "controls": [],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "receipt": "inject-06-vim-start.json",
+    "commands": [
+      "vim /tmp/run3-vim.txt"
+    ],
+    "controls": [],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "receipt": "inject-07-vim-insert.json",
+    "commands": [
+      "iRun three: SIGINT reaches the console foreground pgrp."
+    ],
+    "controls": [],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "receipt": "inject-08-vim-ctrl-c.json",
+    "commands": [],
+    "controls": [
+      "ctrl-c"
+    ],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "receipt": "inject-09-vim-wq.json",
+    "commands": [
+      ":wq"
+    ],
+    "controls": [],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "receipt": "inject-10-verify.json",
+    "commands": [
+      "cat /tmp/run3-vim.txt"
+    ],
+    "controls": [],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "receipt": "inject-11-shell-eof.json",
+    "commands": [],
+    "controls": [
+      "eof"
+    ],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "event": "injections-complete",
+    "serial_bytes": 13812
+  }
+]

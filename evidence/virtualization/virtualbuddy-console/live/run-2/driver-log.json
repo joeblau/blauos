@@ -1,0 +1,100 @@
+[
+  {
+    "event": "guest-boot-marker-seen",
+    "serial_bytes": 13184
+  },
+  {
+    "receipt": "inject-01-sanity.json",
+    "commands": [
+      "echo RUN2_SHELL_OK"
+    ],
+    "controls": [],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "receipt": "inject-02-prompt-ctrl-c.json",
+    "commands": [],
+    "controls": [
+      "ctrl-c"
+    ],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "receipt": "inject-03-after-prompt-ctrl-c.json",
+    "commands": [
+      "echo AFTER_PROMPT_CTRL_C"
+    ],
+    "controls": [],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "receipt": "inject-04-term.json",
+    "commands": [
+      "export TERM=ansi"
+    ],
+    "controls": [],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "receipt": "inject-05-vim-start.json",
+    "commands": [
+      "vim /tmp/live-vim-edit-2.txt"
+    ],
+    "controls": [],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "receipt": "inject-06-vim-insert.json",
+    "commands": [
+      "iSecond run: full-screen vim over the VirtualBuddy console."
+    ],
+    "controls": [],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "receipt": "inject-07-vim-escape.json",
+    "commands": [],
+    "controls": [
+      "escape"
+    ],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "receipt": "inject-08-vim-wq.json",
+    "commands": [
+      ":wq"
+    ],
+    "controls": [],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "receipt": "inject-09-verify.json",
+    "commands": [
+      "cat /tmp/live-vim-edit-2.txt"
+    ],
+    "controls": [],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "receipt": "inject-10-shell-eof.json",
+    "commands": [],
+    "controls": [
+      "eof"
+    ],
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "event": "injections-complete",
+    "serial_bytes": 13838
+  }
+]

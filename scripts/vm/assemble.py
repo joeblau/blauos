@@ -136,6 +136,9 @@ def assemble(args):
     if args.standalone:
         smoke_plist["ProgramArguments"].append("--standalone")
     (staging / "System/Library/LaunchDaemons/org.blauos.smoke.plist").write_bytes(plistlib.dumps(smoke_plist))
+    if args.console_shell:
+        shutil.copyfile(ROOT / "vm/org.blauos.consoleshell.plist",
+                        staging / "System/Library/LaunchDaemons/org.blauos.consoleshell.plist")
     account_receipt = args.output / "account.json"
     if args.ssh_user:
         account_receipt.write_text(json.dumps(ssh_configuration(staging, args), indent=2) + "\n")
@@ -188,6 +191,9 @@ def assemble(args):
               "disk_uuid": disk_uuid, "root_uuid": root_uuid, "device_nodes": "Kernel mounts devfs; no Linux device-number substitution",
               "fixture_sha256": {name: digest(staging / "etc/blauos-tests" / name) for name in fixture_names},
               "bit_identical_rebuild_verified": False}
+    if args.console_shell:
+        result["console_shell_job_sha256"] = digest(
+            staging / "System/Library/LaunchDaemons/org.blauos.consoleshell.plist")
     if args.ssh_user:
         result["account"] = json.loads(account_receipt.read_text())
         result["ssh_login_verified"] = False
@@ -209,6 +215,8 @@ def main():
                         help="Configure the guest probe and resolver before daemon startup")
     parser.add_argument("--standalone", action="store_true",
                         help="Run the demonstration health service without an acceptance challenge")
+    parser.add_argument("--console-shell", action="store_true",
+                        help="Bind an interactive /bin/sh to /dev/console via the console-login session binder (opt-in org.blauos.consoleshell job)")
     parser.add_argument("--ssh-user", help="Provision an initial non-root SSH account")
     parser.add_argument("--ssh-public-key", type=Path, help="Ed25519 public keys; never a private key")
     parser.add_argument("--ssh-uid", type=int, default=1000)

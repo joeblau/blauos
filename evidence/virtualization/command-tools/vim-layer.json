@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "component": "vim editor layer for the source-built BSD command toolkit",
+  "vim_version": "9.2.1175",
+  "upstream_revision": "0f07525b20807e68df43274c5ebbae952b02b56f",
+  "archive_sha256": "dda63db3bdb752a23d436bbc59e06d3bf22ab858735896df9765c41e6d5d6577",
+  "feature_config": "FEAT_TINY; no GUI/X11; no eval; no external language interfaces; Vim termlib.c with builtin termcap entries (ansi, vt320, vt52, xterm, dumb); no terminfo/termcap/curses/iconv/gettext libraries",
+  "executable_sha256": "e98635a91997059cd107bb3d2237bd3c93f0ee44065cb9dfa2f235d5421b5969",
+  "linked_dylibs": [
+    "/usr/lib/libSystem.B.dylib"
+  ],
+  "build_receipts": [
+    {
+      "path": ".blauos/build/commands/vim-run-1/provenance.json",
+      "sha256": "acafc7e59b0b4bb9a4de228347fbf6a05b139e0ae52ba6c4897a90c556b382d0"
+    },
+    {
+      "path": ".blauos/build/commands/vim-run-1/commands.json",
+      "sha256": "71d199cef9f28c28b20baa7e3b3ddcd20129af75f73a541501fbb010063aecd5"
+    },
+    {
+      "path": ".blauos/build/commands/vim-run-1/vim-linked-dylibs.txt",
+      "sha256": "0b509ea13fa8c078f43b0c144076aaa985b2c025fecd28174dab1a62b6c9f5db"
+    },
+    {
+      "path": ".blauos/build/commands/run-1/provenance.json",
+      "sha256": "cdedc8eae6a7ff37e1bd6b5dfec92ebba70b1f2599557e3bd57872cee9798206"
+    },
+    {
+      "path": ".blauos/build/commands/run-1/build.json",
+      "sha256": "97794eb246349881c55c4321cbae99a9d7ac36e56c5791ee1c81a173191e702d"
+    },
+    {
+      "path": ".blauos/build/commands/run-1/catalogue.json",
+      "sha256": "695286152cf3bfdb258aa7f17390d77d086247634cd1f46eb3ff4c88ea466bc1"
+    },
+    {
+      "path": ".blauos/build/commands/audit-run-1/runtime-audit.json",
+      "sha256": "8e5ccb3775467de4e6a77ee2de954bdd68c1f0082f88da05ae8457c09e93bc03"
+    }
+  ],
+  "host_verification": {
+    "archive_hash_verified_before_and_after_build": true,
+    "linked_dylibs": [
+      "/usr/lib/libSystem.B.dylib"
+    ],
+    "toolkit_command_count": 41,
+    "runtime_audit_offline_dependency_closure": true,
+    "host_sanity_runs": [
+      "vim --version reports 9.2 patches 1-1175, tiny without GUI",
+      "vim -es ex-script substitute/write/quit edits verified on the build host (host libSystem; not guest evidence)"
+    ]
+  },
+  "guest_execution_verified": false,
+  "stock_runtime_used": false,
+  "pending": [
+    "Live guest acceptance of vm/commands/smoke.sh editor checks (vim --version, vim -es ex scripts) over SSH; the live VM run is owned by a separate workstream",
+    "Interactive full-screen editing check at the serial console with TERM matching a builtin termcap entry (ansi, vt320, vt52, xterm)",
+    "runtime/server-image.json does not list vim; adding it is a server-image decision for that workstream"
+  ]
+}

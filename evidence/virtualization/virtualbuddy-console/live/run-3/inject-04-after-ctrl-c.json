@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "fifo": "/Users/joeblau/Developer/joeblau/src/blauos/evidence/virtualization/virtualbuddy-console/live/run-3/console-input.fifo",
+  "frames": [
+    {
+      "frame": "command:echo CAT_INTERRUPTED_OK",
+      "bytes": 24,
+      "sha256": "0c8a69d8996937430ccc46528fe489daa5fdd3ef2c728f5eb47502aaae2b6fda"
+    }
+  ],
+  "guest_execution": "not established by host-side injection"
+}

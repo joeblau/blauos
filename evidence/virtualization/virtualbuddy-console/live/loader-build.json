@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-11",
+  "subject": "BOOTAA64.EFI rebuilt on the pinned ARM64 Linux Nix builder with the #101/#102 loader patches plus one live-boot amendment",
+  "builder": {
+    "runtime": "Docker linux/aarch64",
+    "image": "nixos/nix@sha256:a326ac1ed46069ead5cdcba3a3a1e7255ebf72300c8319bf2c12cacfe9ab2787",
+    "container": "blauos-vb-console-live",
+    "nix_store_volume": "blauos-native-ci-nix-store (persistent)",
+    "nix_expr": "let f=builtins.getFlake \"path:<repo>/.blauos/sources/puredarwin-vm-next\"; base=f.inputs.xnu-loader.packages.aarch64-linux.arm64-virt; in base.overrideAttrs(old: {src=builtins.path{path=\"<repo>/.blauos/build/virtualbuddy-console/loader-source-live2\";name=\"xnu-loader-vb-live2-source\";};cmakeFlags=old.cmakeFlags++[\"-DXNU_LOADER_VIRTUALBUDDY=ON\"];})",
+    "build_log": ".blauos/build/virtualbuddy-console/loader-live2-build.log",
+    "nix_store_output": "/nix/store (live2 derivation) -> xnu-loader.efi"
+  },
+  "base_revision": "8295cd89c184785896d007d0554b398d22d8e32f",
+  "patch_series": [
+    "vm/patches/xnu-loader-efi-diagnostics.patch",
+    "vm/patches/xnu-loader-virtualbuddy-platform.patch",
+    "vm/patches/xnu-loader-virtualbuddy-console-input.patch",
+    "vm/patches/xnu-loader-virtualbuddy-power-button.patch"
+  ],
+  "require_efi_rng": false,
+  "require_efi_rng_rationale": "-DXNU_LOADER_REQUIRE_EFI_RNG=ON belongs to the SSH secure-boot profile (strict loader + virtio entropy device, .blauos/experiments/ssh-workflow). This image keeps the standard generic-EFI profile; the console probe attaches no entropy device, so the strict RNG requirement is not enabled.",
+  "amendment": {
+    "path": "evidence/virtualization/virtualbuddy-console/live/loader-rx-post-driver-ok.patch",
+    "sha256": "363d5ea9b48d0b911353d0e0fab5799c97353dcaeffae0415479e52045718d03",
+    "reason": "Live bisect (below) proved the original console-input loader patch silences the virtio console: its 'Virtio console RX prepared' log_info and the queue-0 notification ran between queue-enable and DRIVER_OK. vb_console_putc then posts to a queue the device is not processing, its 0.1s poll latches console_failed, and the pre-DRIVER_OK post wedges VZ's queue processing for the kernel as well. The amendment moves the queue-0 notification to just after DRIVER_OK and the RX report to after the TX-prepared line.",
+    "files_touched": [
+      "src/vb_platform.c"
+    ]
+  },
+  "overlay_verification": "Pinned loader + first two patches reproduce the accepted virtualbuddy-platform loader source byte-for-byte except the three files the new patches touch (include/vb_platform.h, src/devtree.c, src/vb_platform.c).",
+  "artifact": {
+    "path": ".blauos/build/virtualbuddy-console/BOOTAA64-live2.EFI",
+    "sha256": "1e754f784114592f28763ca99203d519ca9f195237c16ca97b8af145acdba674",
+    "bytes": 146123
+  },
+  "bisect_summary": {
+    "method": "one-change loader variants booted against the identical kernel collection and probe; guest health endpoint used to distinguish guest hang from console wedge",
+    "runs": [
+      {
+        "variant": "full 4-patch loader (image-v1)",
+        "serial_bytes": 0,
+        "guest_health": "up",
+        "note": "guest boots; console TX dead from first byte"
+      },
+      {
+        "variant": "console-input patch only",
+        "serial_bytes": 0,
+        "note": "console-input patch sufficient to wedge"
+      },
+      {
+        "variant": "V-A notify after DRIVER_OK, RX print kept pre-DRIVER_OK",
+        "serial_bytes": 0
+      },
+      {
+        "variant": "V-B no queue-0 device registers at all, RX print pre-DRIVER_OK",
+        "serial_bytes": 0
+      },
+      {
+        "variant": "V-C queue 0 enabled, no posted buffer, RX print pre-DRIVER_OK",
+        "serial_bytes": 0
+      },
+      {
+        "variant": "V-D queue-select round-trip + print pre-DRIVER_OK",
+        "serial_bytes": 0
+      },
+      {
+        "variant": "V-E allocation + 6-word property, no queue select, print pre-DRIVER_OK",
+        "serial_bytes": 0
+      },
+      {
+        "variant": "V-F print-only addition pre-DRIVER_OK",
+        "serial_bytes": 0,
+        "guest_health": "up"
+      },
+      {
+        "variant": "V-G bare queue-select round-trip, no print",
+        "serial_bytes": 13119,
+        "guest_health": "up",
+        "note": "WORKS"
+      },
+      {
+        "variant": "V-H full RX setup, no prints, notify after DRIVER_OK",
+        "serial_bytes": 13119,
+        "guest_health": "up",
+        "note": "WORKS"
+      },
+      {
+        "variant": "live2 = V-H + RX report after TX-prepared line",
+        "serial_bytes": 13185,
+        "note": "WORKS; serial shows both TX-prepared and RX-prepared lines"
+      }
+    ],
+    "conclusion": "The pre-DRIVER_OK log_info virtio post is the wedge trigger; any queue-0 MMIO programming, the posted RX buffer, the extra page allocation and the 6-word property are all individually and jointly safe once printing is deferred.",
+    "evidence": "live/bisect/<variant>/serial.log + result.json per variant (0-byte serial = wedged console; guest health endpoint verified live guests for wedged runs)"
+  }
+}
