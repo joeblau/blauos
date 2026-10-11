@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "runtime",
+  "summary": "Independent ARM64 Darwin runtime libraries (libSystem provider and dyld) built from the pinned PureDarwin snapshot with source-built compiler-rt builtins from pinned llvm-project.",
+  "license": {
+    "spdx": null,
+    "notes": "Mixed. puredarwin-vm-next component notices apply (APSL-2.0/BSD families); the llvm-project compiler-rt portion is Apache-2.0 WITH LLVM-exception. See sources.lock.json license fields and docs/audits/puredarwin-reuse.md.",
+    "determined_from": "sources.lock.json#sources[name=puredarwin-vm-next,llvm-project].license"
+  },
+  "sources": [
+    {
+      "kind": "git",
+      "lock_name": "puredarwin-vm-next",
+      "url": "https://github.com/PureDarwin/PureDarwin.git",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "tree": "ed2345d7f3c11dad2e7f6ffeeb377adc789b12b8",
+      "tag": "next snapshot"
+    },
+    {
+      "kind": "git",
+      "lock_name": "llvm-project",
+      "url": "https://github.com/llvm/llvm-project.git",
+      "revision": "2078da43e25a4623cab2d0d60decddf709aaea28",
+      "tree": "3dd0f2c2e9f846ac47b0c61eba95bc5c51cef513"
+    }
+  ],
+  "depends": [],
+  "builder": {
+    "script": "scripts/build/runtime.py",
+    "command": [
+      "python3", "scripts/build/runtime.py", "build",
+      "--source-name", "puredarwin-vm-next",
+      "--output-dir", ".blauos/build/runtime"
+    ],
+    "patches": []
+  },
+  "outputs": ["usr/lib/libSystem.B.dylib", "usr/lib/dyld"],
+  "isolation": "Target executables link only the source-built runtime; the macOS host runtime and dyld shared cache are never copied. llvm-project supplies compiler-rt builtins only, via the sparse paths recorded in sources.lock.json.",
+  "rebuild": {
+    "clean_rebuild_verified": false,
+    "note": "Pins are validated by scripts/build/packages.py. A clean-environment rebuild with artifact comparison against a recorded runtime provenance receipt is remaining work."
+  }
+}

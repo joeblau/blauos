@@ -1,0 +1,229 @@
+{
+  "schema_version": 1,
+  "image": "blauos-minimal-server",
+  "defined": "2026-10-11",
+  "issue": "https://github.com/joeblau/blauos/issues/60",
+  "decision_record": "docs/audits/server-principles.md",
+  "evidence_level": "software",
+  "status": "Software-level allowlist definition only. Virtual two-boot SSH acceptance is recorded in evidence/virtualization/ssh-login/. Gate 4 (#59) is OPEN and Gate 2 physical M1 acceptance is NOT_RUN; this file authorizes no release and claims no physical boot.",
+  "services": [
+    {
+      "label": "pid1.launchd",
+      "kind": "pid1",
+      "plist": null,
+      "program": "/sbin/launchd",
+      "launchd_keys": {},
+      "provenance": {
+        "source": "puredarwin-vm-next src/Libraries/XPC/launchd (launchd 842.91.1 lineage)",
+        "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+        "builder": "PureDarwin image-arm64-virt Nix profile via vm/smoke-image.nix; scripts/build/launchd.py",
+        "evidence": "runtime/service-subset.json; evidence/ci/github-native-38074322304/boot/result.json"
+      },
+      "justification": "PID 1 Mach bootstrap namespace, RunAtLoad executable jobs, MachServices registration, KeepAlive supervision, launchctl load/unload and clean shutdown are the verified minimum job-management subset; a smaller substitute PID 1 program is explicitly rejected by the reuse audit."
+    },
+    {
+      "label": "org.blauos.sshd",
+      "kind": "launchd_daemon",
+      "plist": "System/Library/LaunchDaemons/org.blauos.sshd.plist",
+      "program": "/usr/libexec/blauos-ssh-start",
+      "launchd_keys": {"RunAtLoad": true, "KeepAlive": true, "ThrottleInterval": 30},
+      "provenance": {
+        "source": "vm/ssh_start.c (workspace) supervising OpenSSH portable V_10_6_P1",
+        "revision": "a8c72b842423f0774f542d3c2197247c3dd28d74",
+        "builder": "scripts/vm/build_ssh_start.py; staged by scripts/vm/assemble.py ssh_configuration()",
+        "evidence": "docs/ssh-login.md; evidence/virtualization/ssh-login/checkpoint.json"
+      },
+      "justification": "The single network-facing service of the minimal server. The wrapper is the dedicated initialization gate: it refuses to start sshd until the read-only kern.blauos_ssh_entropy_ready admission and the guest capability probe (account, PTY, credential drop, rlimit sandbox, chroot) pass. sshd runs key-only Ed25519 authentication for one named non-root account with password, root and forwarding paths disabled."
+    },
+    {
+      "label": "org.blauos.smoke",
+      "kind": "launchd_daemon",
+      "plist": "System/Library/LaunchDaemons/org.blauos.smoke.plist",
+      "program": "/bin/blauos_guest_probe",
+      "launchd_keys": {"RunAtLoad": true},
+      "provenance": {
+        "source": "vm/guest_probe.c (workspace)",
+        "revision": "workspace",
+        "builder": "vm/smoke-image.nix; scripts/vm/assemble.py",
+        "evidence": "evidence/ci/github-native-38074322304/boot/serial.log"
+      },
+      "justification": "Boot health and acceptance service: writes structured guest results to /dev/console and, in the standalone profile, exercises the configured network interface. It proves the launchd subset on every boot instead of assuming it."
+    }
+  ],
+  "runtime_components": [
+    {
+      "name": "launchd",
+      "paths": ["/sbin/launchd"],
+      "role": "init-runtime",
+      "provenance": {
+        "source": "puredarwin-vm-next src/Libraries/XPC/launchd (842.91.1 lineage)",
+        "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+        "builder": "PureDarwin image-arm64-virt Nix profile",
+        "evidence": "runtime/service-subset.json"
+      },
+      "justification": "Real source job manager required as PID 1; see the pid1.launchd service entry."
+    },
+    {
+      "name": "launchctl",
+      "paths": ["/usr/bin/launchctl", "/bin/launchctl"],
+      "role": "operator-management",
+      "provenance": {
+        "source": "puredarwin-vm-next src/Libraries/XPC/launchd",
+        "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+        "builder": "PureDarwin image-arm64-virt Nix profile",
+        "evidence": "runtime/service-subset.json"
+      },
+      "justification": "load/unload and job inspection are part of the verified launchd subset; the only operator interface to the service manager."
+    },
+    {
+      "name": "dyld",
+      "paths": ["/usr/lib/dyld"],
+      "role": "core-runtime",
+      "provenance": {
+        "source": "puredarwin-vm-next src/Libraries/dyld with the recorded narrow vector overlay",
+        "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+        "builder": "PureDarwin image-arm64-virt Nix profile; scripts/build/runtime.py audit",
+        "evidence": "docs/audits/puredarwin-reuse.md"
+      },
+      "justification": "The dynamic loader is the interpreter for every shipped executable; abort-path shims are documented as excluded from general support claims."
+    },
+    {
+      "name": "libSystem",
+      "paths": ["/usr/lib/libSystem.B.dylib", "/usr/lib/system/libdyld.dylib"],
+      "role": "core-runtime",
+      "provenance": {
+        "source": "puredarwin-vm-next src/Libraries/libSystem aggregation with llvm-project compiler-rt builtins",
+        "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+        "builder": "PureDarwin image-arm64-virt Nix profile; scripts/build/runtime.py closure audit",
+        "evidence": "docs/audits/runtime-build.md"
+      },
+      "justification": "The independently built C runtime is the only library every shipped executable links against; load-command inspection rejects any other dylib dependency."
+    },
+    {
+      "name": "shell-dash",
+      "paths": ["/bin/sh"],
+      "role": "operator-shell",
+      "provenance": {
+        "source": "dash v0.5.13",
+        "revision": "1365bb36a92656eb52b64cb04d249c47a1d3c4cf",
+        "builder": "scripts/vm/build_shell.py",
+        "evidence": "docs/audits/puredarwin-reuse.md"
+      },
+      "justification": "The operator login shell for the headless SSH server and the script interpreter for initialization; PCC-style shell removal is rejected for an operator-managed server (see decision D4 in docs/audits/server-principles.md)."
+    },
+    {
+      "name": "netsetup",
+      "paths": ["/bin/netsetup"],
+      "role": "network-configuration",
+      "provenance": {
+        "source": "puredarwin-vm-next with vm/patches/netsetup-interface-registration.patch",
+        "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+        "builder": "PureDarwin image-arm64-virt Nix profile",
+        "evidence": "docs/virtualization.md"
+      },
+      "justification": "Configures the guest interface and resolver before daemon startup; SSH acceptance depends on the static guest address it applies."
+    },
+    {
+      "name": "openssh-server",
+      "paths": ["/usr/sbin/sshd", "/usr/libexec/sshd-auth", "/usr/libexec/sshd-session", "/usr/libexec/sftp-server", "/usr/bin/ssh-keygen"],
+      "role": "network-service",
+      "provenance": {
+        "source": "openssh-portable V_10_6_P1 with vm/patches/openssh-darwin-source-runtime.patch and vm/patches/openssh-blauos-cross-rlimit.patch",
+        "revision": "a8c72b842423f0774f542d3c2197247c3dd28d74",
+        "builder": "scripts/build/openssh.py",
+        "evidence": "docs/openssh-build.md"
+      },
+      "justification": "Authenticated remote access and file transfer. 10.6 requires both privilege-separation helper executables; ssh-keygen generates per-guest host keys only after entropy admission. The internal crypto profile (Ed25519/X25519/ChaCha20-Poly1305/AES-CTR) is recorded as experimental upstream."
+    },
+    {
+      "name": "ssh-start-wrapper",
+      "paths": ["/usr/libexec/blauos-ssh-start"],
+      "role": "dedicated-initialization",
+      "provenance": {
+        "source": "vm/ssh_start.c (workspace)",
+        "revision": "workspace",
+        "builder": "scripts/vm/build_ssh_start.py",
+        "evidence": "docs/audits/ssh-entropy.md"
+      },
+      "justification": "BlauOS's answer to PCC's dedicated initialization (darwin-init): a fail-closed gate that checks entropy admission and runtime capabilities, generates first-boot host keys in the guest, and only then execs sshd."
+    },
+    {
+      "name": "ssh-capability-probe",
+      "paths": ["/usr/libexec/blauos-ssh-capability-probe"],
+      "role": "runtime-verification",
+      "provenance": {
+        "source": "runtime/probes/ssh_capability_probe.c (workspace)",
+        "revision": "workspace",
+        "builder": "scripts/build/ssh_capabilities.py",
+        "evidence": "docs/ssh-login.md"
+      },
+      "justification": "Verifies account lookup, permanent credential dropping, PTY I/O, resource-limit sandbox, descriptor passing and the sshd chroot inside the guest before SSH is admitted; compilation alone is not accepted as evidence."
+    },
+    {
+      "name": "acceptance-probes",
+      "paths": ["/bin/blauos_guest_probe", "/bin/blauos_runtime_probe", "/usr/libexec/blauos-bootstrap-probe", "/usr/libexec/blauos-shutdown-probe", "/usr/lib/libblauos-loader-fixture.dylib"],
+      "role": "acceptance-instrumentation",
+      "provenance": {
+        "source": "vm/guest_probe.c; runtime/probes/runtime_probe.c, bootstrap_probe.c, shutdown_probe.c, loader_fixture.c (workspace)",
+        "revision": "workspace",
+        "builder": "vm/CMakeLists.txt via vm/smoke-image.nix; scripts/vm/assemble.py required-artifact check",
+        "evidence": "runtime/service-subset.json"
+      },
+      "justification": "Every current acceptance image ships these probes because boot, loader, bootstrap and shutdown claims require in-guest evidence. A future production profile may drop them only after a replacement attestation path exists; removing them today would silently downgrade acceptance to compilation evidence."
+    },
+    {
+      "name": "file-commands",
+      "paths": ["/bin/ls", "/bin/cp", "/bin/mv", "/bin/rm", "/bin/mkdir", "/bin/rmdir", "/bin/ln", "/bin/chmod", "/usr/bin/touch", "/usr/bin/stat", "/bin/df", "/usr/bin/du"],
+      "role": "operator-toolkit",
+      "provenance": {
+        "source": "apple-file_cmds 272.250.1 with apple-libutil 73 and PureDarwin libc FTS support; vm/commands/file patches",
+        "revision": "1ef2ec6f0f57762a907001ad6ff4e967db79e1a6",
+        "builder": "scripts/vm/build_file_commands.py",
+        "evidence": "vm/commands/file/README.md; evidence/virtualization/command-tools/checkpoint.json"
+      },
+      "justification": "Minimum file management for an operator over SSH; ACL, extended-attribute, color and secure-delete options are deliberately excluded at build time rather than stubbed."
+    },
+    {
+      "name": "admin-commands",
+      "paths": ["/usr/bin/id", "/usr/bin/whoami", "/usr/bin/groups", "/usr/bin/env", "/bin/date", "/bin/ps"],
+      "role": "operator-toolkit",
+      "provenance": {
+        "source": "apple-shell-cmds 216.60.1 and puredarwin-vm-next src/Userspace/ps; vm/commands/admin patches",
+        "revision": "3675cf36782e8339492447b881daf7f82f419859",
+        "builder": "scripts/vm/build_admin_commands.py",
+        "evidence": "vm/commands/admin/README.md"
+      },
+      "justification": "Identity, environment, clock and process inspection against the guest's own account database; needed to verify privilege separation actually happened in a session."
+    },
+    {
+      "name": "text-commands",
+      "paths": ["/bin/cat", "/usr/bin/head", "/usr/bin/tail", "/usr/bin/wc", "/usr/bin/cut", "/usr/bin/tr", "/usr/bin/uniq", "/usr/bin/tee", "/usr/bin/printenv", "/bin/pwd", "/usr/bin/basename", "/usr/bin/dirname", "/usr/bin/mktemp", "/bin/hostname", "/usr/bin/comm", "/usr/bin/paste", "/usr/bin/rev", "/usr/bin/fold", "/usr/bin/expand", "/usr/bin/unexpand", "/usr/bin/grep", "/usr/bin/sed"],
+      "role": "operator-toolkit",
+      "provenance": {
+        "source": "puredarwin-vm-next shell/text sources and apple-text-commands 199 for grep/sed; vm/commands/text patches",
+        "revision": "592aaf8a50aa5810ee8183df20f0ba48bb23aa7e",
+        "builder": "scripts/vm/build_text_commands.py",
+        "evidence": "vm/commands/text/README.md"
+      },
+      "justification": "Log inspection and stream processing for a headless operator; compressed-input grep options are excluded because no source-built compression libraries ship."
+    }
+  ],
+  "excluded": [
+    {"name": "launchd test fixtures (/etc/blauos-tests/org.blauos.test.*.plist, launchd-test.sh)", "reason": "Acceptance fixtures loaded on demand by the test harness; they are not services of the server surface and a release profile must not auto-start them."},
+    {"name": "OpenSSH client (/usr/bin/ssh)", "reason": "Built by scripts/build/openssh.py for host-side testing but not required by scripts/vm/assemble.py; the server initiates no outbound SSH."},
+    {"name": "Password authentication, PAM, root login, agent/TCP/X11 forwarding", "reason": "Disabled in the staged sshd_config (scripts/vm/assemble.py); key-only Ed25519 for one named account is the entire authentication surface."},
+    {"name": "Seatbelt sandbox profiles, AMFI, arbitrary XPC compatibility, xpc_create_from_plist", "reason": "Not implemented by the independent runtime; runtime/service-subset.json lists them as excluded, and sshd uses upstream's resource-limit sandbox instead."},
+    {"name": "GUI login sessions, window server, interpreters, debuggers, JIT", "reason": "Headless server profile; no such components are built. Matches the PCC dynamic-code removal principle where it applies."},
+    {"name": "Development entropy fallback loader profile", "reason": "docs/audits/ssh-entropy.md: a loader built without -DXNU_LOADER_REQUIRE_EFI_RNG=ON is development_only and must never start SSH or create host keys."},
+    {"name": "Embedded or shared SSH host keys", "reason": "Host keys are generated inside each guest on first boot after entropy admission; images must not embed shared private keys."},
+    {"name": "Editor, sort, package manager, zsh", "reason": "Not built today (docs/commands.md); additions require the same pinned-source, provenance and guest-acceptance path before entering this allowlist."}
+  ],
+  "verification": {
+    "date": "2026-10-11",
+    "virtual_ssh_acceptance": "evidence/virtualization/ssh-login/checkpoint.json (two boots, 20 baseline + 11 SSH capability checks each)",
+    "launchd_subset": "runtime/service-subset.json (verified in fresh-source XNU virtual guest, GitHub run 38074322304)",
+    "gate_2_physical_m1": "NOT_RUN",
+    "gate_4_issue_59": "OPEN",
+    "physical_acceptance": false
+  }
+}

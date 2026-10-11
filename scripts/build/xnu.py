@@ -131,9 +131,17 @@ def main() -> int:
                         help="Build the explicit generic EFI virtio framebuffer profile with its three extra kexts")
     parser.add_argument("--make-setting", action="append", default=[], metavar="NAME=VALUE",
                         help="Reviewed PLATFORM=MacOSX or plain WARNFLAGS_STD diagnostics only")
+    parser.add_argument("--build-id", metavar="64-HEX",
+                        help="Inject the operator-computed BlauOS physical checkpoint build identity "
+                        "(native T8103 PureDarwin profile only); the marker is absent without it")
     args = parser.parse_args()
     if args.jobs < 1:
         raise ValueError("--jobs must be positive")
+    if args.build_id is not None:
+        if not args.puredarwin or args.machine != "T8103":
+            raise ValueError("--build-id applies only to the PureDarwin native T8103 profile")
+        if not re.fullmatch(r"[0-9a-f]{64}", args.build_id):
+            raise ValueError("--build-id must be 64 lowercase hexadecimal characters")
     if args.puredarwin and args.darwin_version is not None:
         raise ValueError("--darwin-version is not consumed by the PureDarwin CMake profile")
     apple_darwin_version = None if args.puredarwin else (args.darwin_version or "25.5.0")
@@ -231,6 +239,7 @@ def main() -> int:
               "source_master_version": master_version, "make_settings": make_settings,
               "build_wrapper_inputs": BUILD_WRAPPER_INPUTS,
               "source_amendments": amendments, "commands": [],
+              "blauos_physical_build_id": args.build_id,
               "tool_environment": {name: environment[name] for name in sorted(environment)}}
     if args.puredarwin:
         command = ["cmake", "-S", str(source), "-B", str(build), "-G", "Unix Makefiles",
@@ -242,6 +251,8 @@ def main() -> int:
                    "-DPUREDARWIN_ENABLE_KERNEL=ON", "-DPUREDARWIN_ENABLE_LIBRARIES=ON",
                    "-DPUREDARWIN_ENABLE_TOOLS=ON", "-DPUREDARWIN_ENABLE_USERSPACE=OFF",
                    "-DPUREDARWIN_ENABLE_PROJECTS=OFF"]
+        if args.build_id is not None:
+            command.append(f"-DPUREDARWIN_BLAUOS_BUILD_ID={args.build_id}")
         if args.with_kexts:
             # Current macOS Clang otherwise imports ___chkstk_darwin in
             # corecrypto. The target kernel does not export that host helper.
@@ -293,6 +304,7 @@ def main() -> int:
               "manifest_sha256": hashlib.sha256(args.manifest.read_bytes()).hexdigest(),
               "machine": args.machine, "sdk": str(sdk), "artifacts": artifacts,
               "qemu_psci_hvc_profile": args.qemu_psci_hvc,
+              "blauos_physical_build_id": args.build_id,
               "recipe": recipe, "recipe_sha256": canonical_digest(recipe),
               "build_wrapper_sha256": BUILD_WRAPPER_INPUTS[0]["sha256"],
               "boot_validated": False}

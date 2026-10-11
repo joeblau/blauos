@@ -1,0 +1,1 @@
+sftp> get /var/home/joeblau/.blauos-sftp-fixture "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/command-tools/workflow-v1/smoke/boot2/download.bin"

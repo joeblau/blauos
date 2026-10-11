@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "built": true,
+  "artifacts": [
+    {
+      "path": "/usr/libexec/blauos-ssh-start",
+      "sha256": "649b5685890745c160036b357327cf88f18c06d044c3ed2062223df263eab968",
+      "source": "blauos",
+      "source_files": [
+        {
+          "path": "vm/ssh_start.c",
+          "sha256": "87c2b90aa9875a91e7005ff4f16a83fbbc4e7131cb929cdf1cdd1ef50ee406d9"
+        },
+        {
+          "path": "scripts/vm/build_ssh_start.py",
+          "sha256": "f875ca4ba3b9269950463784eee446fe68a52ed14815bdf2ff07a29cd68f9e5c"
+        },
+        {
+          "path": "scripts/vm/build_userspace.py",
+          "sha256": "5c33913a9241282c0c67775d076f021d25f4153cf7ebcbd400835aebc7eb1b2f"
+        },
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        }
+      ],
+      "revision": "workspace-sha256:805fe2a5ab1bf4585febf8cc9d1ac948e93d4daf13852bc6594ddac3f81bd194",
+      "workspace_revision": "34379bc90db594c8ad64d2d62f18de778b8137e7",
+      "source_path": "vm/ssh_start.c",
+      "source_file_sha256": "87c2b90aa9875a91e7005ff4f16a83fbbc4e7131cb929cdf1cdd1ef50ee406d9",
+      "linked_dylibs": [
+        "/usr/lib/libSystem.B.dylib"
+      ]
+    },
+    {
+      "path": "/usr/libexec/blauos-ssh-session-probe",
+      "sha256": "8bf569cc0bfcb755a2b92d330677264fd4745fcc53a85957c20c9ae4b4dc6949",
+      "source": "blauos",
+      "source_files": [
+        {
+          "path": "vm/ssh_session_probe.c",
+          "sha256": "c5a0158e0094a0bb6cba2d9ca5180b426eb55e21b092f7198fc2d0e453dad012"
+        },
+        {
+          "path": "scripts/vm/build_ssh_start.py",
+          "sha256": "f875ca4ba3b9269950463784eee446fe68a52ed14815bdf2ff07a29cd68f9e5c"
+        },
+        {
+          "path": "scripts/vm/build_userspace.py",
+          "sha256": "5c33913a9241282c0c67775d076f021d25f4153cf7ebcbd400835aebc7eb1b2f"
+        },
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        }
+      ],
+      "revision": "workspace-sha256:c8426c6f6081e24861945471fe4613a84e709b36ef700f6bc44d00b824f1c336",
+      "workspace_revision": "34379bc90db594c8ad64d2d62f18de778b8137e7",
+      "source_path": "vm/ssh_session_probe.c",
+      "source_file_sha256": "c5a0158e0094a0bb6cba2d9ca5180b426eb55e21b092f7198fc2d0e453dad012",
+      "linked_dylibs": [
+        "/usr/lib/libSystem.B.dylib"
+      ]
+    }
+  ],
+  "stock_runtime_used": false,
+  "guest_execution_verified": false
+}

@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-11",
+  "issues": [
+    "https://github.com/joeblau/blauos/issues/101",
+    "https://github.com/joeblau/blauos/issues/102"
+  ],
+  "subject": "VirtualBuddy console completion: guest console input and host-requested orderly shutdown",
+  "components": {
+    "input_device_inventory": "input-device-inventory.json",
+    "power_button_event_identification": "power-button-event.json",
+    "probe_build": "probe-build.json",
+    "kernel_build": "kernel-build-result.json"
+  },
+  "new_sources": {
+    "vm/patches/xnu-loader-virtualbuddy-console-input.patch": "b9ad924471ea20a3f56422113bbcc362c1b9ae704addf2fa7031bda21756b9ae",
+    "vm/patches/puredarwin-virtualbuddy-console-input.patch": "21ae8d48cd3c7644d593dd4cb08c5abb5cdc762bc3952c1d486dc03be52e0296",
+    "vm/patches/xnu-loader-virtualbuddy-power-button.patch": "1cbb278ce718db6afffae8b977a1b7c68ed12639432b1a77fd823624abfc598f",
+    "vm/patches/puredarwin-virtualbuddy-power-button.patch": "c5a0bd85d316ec23b080761f5740186e1e7a41d370ec30b452f02888695fac8e",
+    "vm/virtualbuddy_console_probe.swift": "03b46e0ac3a8d7520042fbbc166b5667fa97597470cd7b1ee28167b796f1d1bc",
+    "scripts/vm/console_input.py": "5267d452bca106dba8f397a0ce3a0c44e1650c17e4bfda9456c87eff03665492",
+    "vm/org.blauos.consoleshell.plist": "ce43b82e8e411600f3d36b685359d8591738cd31af17d5d9941e04ed14a2f398"
+  },
+  "build_evidence": {
+    "kernel": "kernel-build-result.json: kernel and all kexts (including PDArmPlatformExpert with the power-button handler) compile with the six-patch series; status kernel-built-not-boot-validated",
+    "probe": "probe-build.json: swiftc compile plus ad-hoc virtualization-entitled signature on this host",
+    "loader": "NOT rebuilt: BOOTAA64.EFI requires the pinned ARM64 Linux Nix builder; patches verified to stack on the pinned loader source by tests/test_virtualbuddy_input.py"
+  },
+  "test_coverage": {
+    "tests/test_virtualbuddy_input.py": "6e34f2c9b91ee81b609d20643e3ae3d5af9fd998e563fa6a8318c2d7db8360e9",
+    "tests/test_virtualbuddy_shutdown.py": "cde3e8112bbd6a32d18233af564d6d3ba609d158190ea1c50894dd8d8cac53fa",
+    "result": "19 new tests pass; full suites (tests, runtime/tests, platform/apple-m1/handoff/tests) pass"
+  },
+  "live_evidence": {
+    "status": "not captured",
+    "remaining": [
+      "rebuild BOOTAA64.EFI on the pinned Linux Nix builder with the two loader patches",
+      "assemble a test image including org.blauos.consoleshell.plist",
+      "run virtualbuddy_console_probe with console_input.py: capture a typed command, line editing, Ctrl-C and EOF in the source shell",
+      "run with --request-stop-after: capture public guestDidStop after requestStop without host termination"
+    ],
+    "reason": "live runs require the rebuilt loader/image; no live evidence is fabricated here"
+  },
+  "acceptance_preserved": "The 20-check probe (vm/virtualbuddy_probe.swift), the accepted image inputs, the stock no-serial configuration and the QEMU baseline are untouched; the kernel accepts the stock four-word console property unchanged",
+  "physical_gate_passed": false,
+  "note": "These are VM results on the generic EFI platform. They do not establish physical Apple Silicon console input or shutdown (Gate 2 is not run)."
+}

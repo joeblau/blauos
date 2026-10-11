@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "status": "symbol-name-availability-pass",
+  "kernel_receipt": "evidence/native/kernel/puredarwin-t8103-native-final/result.json",
+  "driver_receipt": "evidence/native/platform-cpu-startup/result.json",
+  "driver_receipt_sha256": "153a9753f6e8e9368909ed736bb69fdbbfc0a0eca67544f6064c21679e020acc",
+  "driver_sha256": "b04137942319f32569422669f7bea651eca73bea810720d83aa2be7862634c0d",
+  "nm_sha256": "b9d1a530b3597cc889a1ad12a0fe97e2e7da0b5049dd1d3b37b3c2b1e9391faa",
+  "comparison_algorithm": "set(nm -ju platform_bundle) minus set(kernel.nm.txt symbol names); compare exact symbol names",
+  "undefined_imports": 468,
+  "missing_imports": [],
+  "note": "Name availability only; export policy, authentication fixups, ABI compatibility and collection linkage are separate requirements."
+}

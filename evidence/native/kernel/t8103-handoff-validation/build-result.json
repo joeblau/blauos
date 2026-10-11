@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "cmake",
+    "--build",
+    "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/t8103-handoff-validation",
+    "--target",
+    "xnu",
+    "--parallel",
+    "3"
+  ],
+  "cwd": "/Users/joeblau/Developer/joeblau/src/blauos",
+  "exit_code": 0,
+  "raw_log": "/Users/joeblau/Developer/joeblau/src/blauos/.blauos/build/native/kernel/t8103-handoff-validation/logs/build.log",
+  "raw_log_bytes": 3416383,
+  "raw_log_sha256": "525af405d2bd63510554c158705bbc9597e03bafbf646b7eb22a42508f2a3a4f",
+  "errors": []
+}

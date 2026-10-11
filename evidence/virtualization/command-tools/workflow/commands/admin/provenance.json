@@ -1,0 +1,356 @@
+{
+  "schema_version": 1,
+  "built": true,
+  "artifacts": [
+    {
+      "path": "/usr/bin/id",
+      "sha256": "03c9c2c5fa3473d17a7feb85edacb22d38292f5885b2fb1a262b8fa697797519",
+      "source": "apple-shell-cmds",
+      "revision": "3675cf36782e8339492447b881daf7f82f419859",
+      "source_path": "id/id.c",
+      "source_file_sha256": "a746b1bcf6cffba69102bf3496cb11681e6721a4c1275054a534109d4f827814",
+      "source_inputs": [
+        {
+          "source": "apple-shell-cmds",
+          "revision": "3675cf36782e8339492447b881daf7f82f419859",
+          "path": "id/id.c",
+          "sha256": "a746b1bcf6cffba69102bf3496cb11681e6721a4c1275054a534109d4f827814"
+        }
+      ],
+      "build_amendments": [
+        {
+          "path": "scripts/vm/build_admin_commands.py",
+          "sha256": "c7cc86f29b8fbcf99748dd3fa94fc84dcc29753755f381b4c0ad1809c32eb1af"
+        },
+        {
+          "path": "scripts/vm/build_userspace.py",
+          "sha256": "5c33913a9241282c0c67775d076f021d25f4153cf7ebcbd400835aebc7eb1b2f"
+        },
+        {
+          "path": "scripts/blauos.py",
+          "sha256": "fc159232fb6b6fed403680b9e8764cac1704f60bc47a90a798e9a0639476cdff"
+        },
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        },
+        {
+          "path": "vm/commands/admin/getgrouplist_2.c",
+          "sha256": "8a759cd973af63b78ba8a4dd8e8ed505c89a3f55b523402e2d8e0b72b807562a"
+        }
+      ],
+      "linked_dylibs": [
+        "/usr/lib/libSystem.B.dylib"
+      ]
+    },
+    {
+      "path": "/usr/bin/env",
+      "sha256": "aa03f90c58d45f15915605717fb6d185c98ee1d28a4e3b1083ee2ebd004fc33b",
+      "source": "apple-shell-cmds",
+      "revision": "3675cf36782e8339492447b881daf7f82f419859",
+      "source_path": "env/env.c",
+      "source_file_sha256": "823ba5bed7a60343098e630ba94df52546ecc9966b0e0f9b1efbe85a850892b6",
+      "source_inputs": [
+        {
+          "source": "apple-shell-cmds",
+          "revision": "3675cf36782e8339492447b881daf7f82f419859",
+          "path": "env/env.c",
+          "sha256": "823ba5bed7a60343098e630ba94df52546ecc9966b0e0f9b1efbe85a850892b6"
+        },
+        {
+          "source": "apple-shell-cmds",
+          "revision": "3675cf36782e8339492447b881daf7f82f419859",
+          "path": "env/envopts.c",
+          "sha256": "0a153dd72d6d35124591bee0e0c75089a2e2f38788dced1cfef1ee5a6630eca0"
+        },
+        {
+          "source": "apple-shell-cmds",
+          "revision": "3675cf36782e8339492447b881daf7f82f419859",
+          "path": "env/envopts.h",
+          "sha256": "abca7fec4d3772cb012b8cfedd48a554e8a0dbc719a75181b6ed1f0b4e9382c2"
+        }
+      ],
+      "build_amendments": [
+        {
+          "path": "scripts/vm/build_admin_commands.py",
+          "sha256": "c7cc86f29b8fbcf99748dd3fa94fc84dcc29753755f381b4c0ad1809c32eb1af"
+        },
+        {
+          "path": "scripts/vm/build_userspace.py",
+          "sha256": "5c33913a9241282c0c67775d076f021d25f4153cf7ebcbd400835aebc7eb1b2f"
+        },
+        {
+          "path": "scripts/blauos.py",
+          "sha256": "fc159232fb6b6fed403680b9e8764cac1704f60bc47a90a798e9a0639476cdff"
+        },
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        }
+      ],
+      "linked_dylibs": [
+        "/usr/lib/libSystem.B.dylib"
+      ]
+    },
+    {
+      "path": "/bin/date",
+      "sha256": "62de9d7e6b814766a577ac9100e7d250369e9ef255bb88fabce67fb19999d92c",
+      "source": "apple-shell-cmds",
+      "revision": "3675cf36782e8339492447b881daf7f82f419859",
+      "source_path": "date/date.c",
+      "source_file_sha256": "925d2a7c7ce8a051c8336abe6e1b4e43300701c8c37206bf47bf41d6f9650316",
+      "source_inputs": [
+        {
+          "source": "apple-shell-cmds",
+          "revision": "3675cf36782e8339492447b881daf7f82f419859",
+          "path": "date/date.c",
+          "sha256": "6b92a1a3b3827a6281914850ca63e1a38c586285e1bd23937c620450593d0144"
+        },
+        {
+          "source": "apple-shell-cmds",
+          "revision": "3675cf36782e8339492447b881daf7f82f419859",
+          "path": "date/vary.c",
+          "sha256": "5204a5e2d1dc394dfd1bdb7805741af744717606ef50b80bad3c5a09c8371cb9"
+        },
+        {
+          "source": "apple-shell-cmds",
+          "revision": "3675cf36782e8339492447b881daf7f82f419859",
+          "path": "date/netdate.c",
+          "sha256": "fc47ddefd9c8627216d9d3e0fff56345b0e9674815758c94503c5893ec3db2d6"
+        },
+        {
+          "source": "apple-shell-cmds",
+          "revision": "3675cf36782e8339492447b881daf7f82f419859",
+          "path": "date/extern.h",
+          "sha256": "43164b72d2849404d36b6eb27996f5236b68a8210de6fac1307d680a4f5333da"
+        },
+        {
+          "source": "apple-shell-cmds",
+          "revision": "3675cf36782e8339492447b881daf7f82f419859",
+          "path": "date/vary.h",
+          "sha256": "08ee2672eb7aa33dff16ef46b624b3dbd507438a6e1a2dee69869bcb610c4e05"
+        },
+        {
+          "source": "puredarwin-vm-next",
+          "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+          "path": "src/Libraries/libSystem/libc/gen/get_compat.h",
+          "sha256": "b2127c6e290e96bc19a87740c6b8fa43b9cf8585f49aac07b401712b41538929"
+        }
+      ],
+      "build_amendments": [
+        {
+          "path": "scripts/vm/build_admin_commands.py",
+          "sha256": "c7cc86f29b8fbcf99748dd3fa94fc84dcc29753755f381b4c0ad1809c32eb1af"
+        },
+        {
+          "path": "scripts/vm/build_userspace.py",
+          "sha256": "5c33913a9241282c0c67775d076f021d25f4153cf7ebcbd400835aebc7eb1b2f"
+        },
+        {
+          "path": "scripts/blauos.py",
+          "sha256": "fc159232fb6b6fed403680b9e8764cac1704f60bc47a90a798e9a0639476cdff"
+        },
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        },
+        {
+          "path": "vm/commands/admin/date-optional-utmpx.patch",
+          "sha256": "2274f1869ff3bca14278d498a8bcc41a556d61b6c5c3b7b00095e5d9f0ee8938"
+        },
+        {
+          "path": "vm/commands/admin/optional_utmpx.c",
+          "sha256": "91d6ce49b88372e49220c9d93e7b8ef4bab51503b3954c3bbc606d4cd109220a"
+        }
+      ],
+      "linked_dylibs": [
+        "/usr/lib/libSystem.B.dylib"
+      ],
+      "upstream_source_file_sha256": "6b92a1a3b3827a6281914850ca63e1a38c586285e1bd23937c620450593d0144",
+      "optional_runtime_services": [
+        "pututxline legacy clock-change accounting"
+      ],
+      "additional_sources": [
+        {
+          "source": "puredarwin-vm-next",
+          "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290"
+        }
+      ]
+    },
+    {
+      "path": "/bin/ps",
+      "sha256": "1eaad620049766c6996bd7ecc52418e318ad72b4ddc262d24e139f56cab76c1e",
+      "source": "puredarwin-vm-next",
+      "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+      "source_path": "src/Userspace/ps/ps.c",
+      "source_file_sha256": "d1955ee0741743d050b30fb27517a287fea41229750e6c0badf185db5ee61dde",
+      "source_inputs": [
+        {
+          "source": "puredarwin-vm-next",
+          "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+          "path": "src/Userspace/ps/ps.c",
+          "sha256": "d1955ee0741743d050b30fb27517a287fea41229750e6c0badf185db5ee61dde"
+        },
+        {
+          "source": "puredarwin-vm-next",
+          "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+          "path": "src/Userspace/ps/fmt.c",
+          "sha256": "ea41470d63d9e4d67baedd4f33fa175571636bcdf41b32f7fa1f17dccbc7b705"
+        },
+        {
+          "source": "puredarwin-vm-next",
+          "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+          "path": "src/Userspace/ps/keyword.c",
+          "sha256": "83e91c6bf10e9c040d026822e9585635af5370041c19d0c563fd411f53806a77"
+        },
+        {
+          "source": "puredarwin-vm-next",
+          "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+          "path": "src/Userspace/ps/nlist.c",
+          "sha256": "57b106ae485b2dd181fc07ead8dcfeb6f4b755733a84fba40440732bc868a11b"
+        },
+        {
+          "source": "puredarwin-vm-next",
+          "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+          "path": "src/Userspace/ps/print.c",
+          "sha256": "8c6b97b2e87209a656d972ec0999f82b9d5497cdf6c6850780f93ada449d6376"
+        },
+        {
+          "source": "puredarwin-vm-next",
+          "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+          "path": "src/Userspace/ps/tasks.c",
+          "sha256": "702b860c82af4ebc90f402ac4737d1c930b1a19c515957bb0738ccd04d5e55f3"
+        },
+        {
+          "source": "puredarwin-vm-next",
+          "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+          "path": "src/Userspace/ps/ps.h",
+          "sha256": "d5e643b28cbd1183b1e79f32d7ad6ee600fba8c59683ded9482c10be3f06602c"
+        },
+        {
+          "source": "puredarwin-vm-next",
+          "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+          "path": "src/Userspace/ps/extern.h",
+          "sha256": "6941a8d245fec7acd4bc30f2acd81f1a04ac24b09ca26414b32173fa94d7d08b"
+        },
+        {
+          "source": "puredarwin-vm-next",
+          "revision": "1bbaeb2ee6aa41e6f792a0b1e2943cc295b3b290",
+          "path": "src/Libraries/libSystem/libc/gen/get_compat.h",
+          "sha256": "b2127c6e290e96bc19a87740c6b8fa43b9cf8585f49aac07b401712b41538929"
+        }
+      ],
+      "build_amendments": [
+        {
+          "path": "scripts/vm/build_admin_commands.py",
+          "sha256": "c7cc86f29b8fbcf99748dd3fa94fc84dcc29753755f381b4c0ad1809c32eb1af"
+        },
+        {
+          "path": "scripts/vm/build_userspace.py",
+          "sha256": "5c33913a9241282c0c67775d076f021d25f4153cf7ebcbd400835aebc7eb1b2f"
+        },
+        {
+          "path": "scripts/blauos.py",
+          "sha256": "fc159232fb6b6fed403680b9e8764cac1704f60bc47a90a798e9a0639476cdff"
+        },
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        }
+      ],
+      "linked_dylibs": [
+        "/usr/lib/libSystem.B.dylib"
+      ]
+    },
+    {
+      "path": "/usr/bin/whoami",
+      "sha256": "03c9c2c5fa3473d17a7feb85edacb22d38292f5885b2fb1a262b8fa697797519",
+      "source": "apple-shell-cmds",
+      "revision": "3675cf36782e8339492447b881daf7f82f419859",
+      "source_path": "id/id.c",
+      "source_file_sha256": "a746b1bcf6cffba69102bf3496cb11681e6721a4c1275054a534109d4f827814",
+      "source_inputs": [
+        {
+          "source": "apple-shell-cmds",
+          "revision": "3675cf36782e8339492447b881daf7f82f419859",
+          "path": "id/id.c",
+          "sha256": "a746b1bcf6cffba69102bf3496cb11681e6721a4c1275054a534109d4f827814"
+        }
+      ],
+      "build_amendments": [
+        {
+          "path": "scripts/vm/build_admin_commands.py",
+          "sha256": "c7cc86f29b8fbcf99748dd3fa94fc84dcc29753755f381b4c0ad1809c32eb1af"
+        },
+        {
+          "path": "scripts/vm/build_userspace.py",
+          "sha256": "5c33913a9241282c0c67775d076f021d25f4153cf7ebcbd400835aebc7eb1b2f"
+        },
+        {
+          "path": "scripts/blauos.py",
+          "sha256": "fc159232fb6b6fed403680b9e8764cac1704f60bc47a90a798e9a0639476cdff"
+        },
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        },
+        {
+          "path": "vm/commands/admin/getgrouplist_2.c",
+          "sha256": "8a759cd973af63b78ba8a4dd8e8ed505c89a3f55b523402e2d8e0b72b807562a"
+        }
+      ],
+      "linked_dylibs": [
+        "/usr/lib/libSystem.B.dylib"
+      ],
+      "executable_name_behavior": "whoami"
+    },
+    {
+      "path": "/usr/bin/groups",
+      "sha256": "03c9c2c5fa3473d17a7feb85edacb22d38292f5885b2fb1a262b8fa697797519",
+      "source": "apple-shell-cmds",
+      "revision": "3675cf36782e8339492447b881daf7f82f419859",
+      "source_path": "id/id.c",
+      "source_file_sha256": "a746b1bcf6cffba69102bf3496cb11681e6721a4c1275054a534109d4f827814",
+      "source_inputs": [
+        {
+          "source": "apple-shell-cmds",
+          "revision": "3675cf36782e8339492447b881daf7f82f419859",
+          "path": "id/id.c",
+          "sha256": "a746b1bcf6cffba69102bf3496cb11681e6721a4c1275054a534109d4f827814"
+        }
+      ],
+      "build_amendments": [
+        {
+          "path": "scripts/vm/build_admin_commands.py",
+          "sha256": "c7cc86f29b8fbcf99748dd3fa94fc84dcc29753755f381b4c0ad1809c32eb1af"
+        },
+        {
+          "path": "scripts/vm/build_userspace.py",
+          "sha256": "5c33913a9241282c0c67775d076f021d25f4153cf7ebcbd400835aebc7eb1b2f"
+        },
+        {
+          "path": "scripts/blauos.py",
+          "sha256": "fc159232fb6b6fed403680b9e8764cac1704f60bc47a90a798e9a0639476cdff"
+        },
+        {
+          "path": "runtime/compat/sdk27_compile.h",
+          "sha256": "224b9cc402d33a61edb99321a473a9f4d095462984073e9d16e2ddcb33a32c85"
+        },
+        {
+          "path": "vm/commands/admin/getgrouplist_2.c",
+          "sha256": "8a759cd973af63b78ba8a4dd8e8ed505c89a3f55b523402e2d8e0b72b807562a"
+        }
+      ],
+      "linked_dylibs": [
+        "/usr/lib/libSystem.B.dylib"
+      ],
+      "executable_name_behavior": "groups"
+    }
+  ],
+  "runtime_link_inputs": {
+    "usr/lib/libSystem.B.dylib": "c89ccf4efa50bf4be0cf741ec91a7e44b842adbdd129be6577ee10b311161bed",
+    "usr/lib/system/libdyld.dylib": "7dc352822a56c035e262b709d7bd562ee448ce82d886cec22c76696d40a6f1ac"
+  },
+  "stock_runtime_used": false,
+  "guest_execution_verified": false
+}

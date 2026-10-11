@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "openssh",
+  "summary": "Authenticated SSH and SFTP for the server image, cross-built from pinned OpenSSH portable 10.6p1 with the internal crypto profile and the two tracked Darwin/cross-configure patches.",
+  "license": {
+    "spdx": null,
+    "notes": "sources.lock.json records 'BSD and ISC; see upstream LICENCE and component notices'. The BSD variant is per-file in the upstream LICENCE; component notices govern until a per-file review lands.",
+    "determined_from": "sources.lock.json#sources[name=openssh-portable].license"
+  },
+  "sources": [
+    {
+      "kind": "git",
+      "lock_name": "openssh-portable",
+      "url": "https://github.com/openssh/openssh-portable.git",
+      "revision": "a8c72b842423f0774f542d3c2197247c3dd28d74",
+      "tree": "737f0e3b51d20a708aab7799f6042cc3051e96ac",
+      "tag": "V_10_6_P1"
+    }
+  ],
+  "depends": ["runtime"],
+  "builder": {
+    "script": "scripts/build/openssh.py",
+    "command": [
+      "python3", "scripts/build/openssh.py",
+      "--runtime-root", ".blauos/build/runtime",
+      "--output", ".blauos/build/openssh"
+    ],
+    "patches": [
+      "vm/patches/openssh-blauos-cross-rlimit.patch",
+      "vm/patches/openssh-darwin-source-runtime.patch"
+    ]
+  },
+  "outputs": [
+    "usr/sbin/sshd",
+    "usr/libexec/sshd-auth",
+    "usr/libexec/sshd-session",
+    "usr/libexec/sftp-server",
+    "usr/bin/ssh-keygen",
+    "usr/bin/ssh"
+  ],
+  "isolation": "Source must be pristine and match the locked revision. -Z -nostdlib removes default target library searches; load-command checks permit only the source-built libSystem.B.dylib and libdyld.dylib provider. Target programs are never executed on the build host. See docs/openssh-build.md.",
+  "rebuild": {
+    "clean_rebuild_verified": false,
+    "note": "Pins are validated by scripts/build/packages.py. Guest verification (encrypted session, unauthorized-key refusal, reboot persistence) stays false in build receipts until runtime probes pass; a clean-environment rebuild comparison is remaining work."
+  }
+}

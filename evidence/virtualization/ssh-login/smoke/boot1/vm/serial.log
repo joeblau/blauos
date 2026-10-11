@@ -1,0 +1,627 @@
+Virtio console TX prepared common=0x100040000 notify=0x100044004 queue=0x75F70000
+
+boot-args.txt: using "-v debug=0x218 serial=3 keepsyms=1 no_interrupt_masked_debug=1 gopconsole=1"
+
+EFI config table: 8 entries copied to 0x75F69400
+
+EFI_SYSTEM_TABLE CRC32 recomputed: 0x34DCD8E
+
+EFI tables copied to 0x75F69000 (st) / 0x75F69200 (rt)
+
+DT: found ext4 boot UUID 61C4D2A8-8653-5261-B171-ABA17D683B0D at GPT LBA 133120
+
+DT: ext4 root found on boot disk
+
+[EBS] BLAUOS_BOOT_ENTROPY source=efi_rng admission=cryptographic
+DT: empty static TrustCache at 0x72000000
+
+TSC: initial=0xC3E2D0 estimated frequency=24003650 Hz
+
+DT: config-table loop (8 entries)
+
+DT: config-table done
+
+DT: flattening into 8192-byte buffer
+
+DT: built 4968 bytes
+MCFG: PCI base=0x40000000 bus=0-255
+
+boot_probe_video: current mode not linear and no linear mode found, continuing headless
+
+sizeof(boot_args) = 0x1000
+
+boot_args low phys = 0x75F68000
+
+device_tree low phys = 0x75F6A000
+
+memory_map ptr  = 0xAD374000
+
+memory_map phys = 0xAD374000
+
+boot_probe_video: current mode not linear and no linear mode found, continuing headless
+
+arm64 boot_args @ 0x75F6C000
+
+  Revision: 2  Version: 2
+
+  virtBase: 0xFFFFFFF004000000  physBase: 0x72000000
+
+  memSize: 0x3E000000  topOfKernelData: 0x75F88000
+
+  deviceTreeP: 0x75F6A000  deviceTreeLength: 0x1368
+
+  CommandLine: -v debug=0x218 serial=3 keepsyms=1 no_interrupt_masked_debug=1 gopconsole=1
+
+[D] before exit_boot_services
+
+boot_args phys = 0x75F6C000
+
+handoff entry_vmaddr=0xFFFFFFF00736D498 host_entry=0x7536D498 phys_entry=0x7536D498
+
+handoff phys_real=0x72004000 vm_base=0xFFFFFFF004004000
+
+handoff physBase=0x72000000 topOfKernelData=0x75F88000
+
+stack_top = 0xAD373FF0
+
+entry     = 0x7536D498
+
+VirtualBuddy: leaving EFI boot services for independently built XNU
+
+[EBS] attempt 0 (irqs enabled)
+[EBS] ExitBootServices returned SUCCESS
+[EBS] SVAM va_base    0x3200000
+[EBS] SVAM va_cursor  0x3311000
+[EBS] SVAM new_kend   0x3400000
+[EBS] SVAM ksize      0x3300000
+[EBS] calling SetVirtualAddressMap
+[EBS] SetVirtualAddressMap returned
+[EBS] exit_boot_services returned
+[EBS] mmap src    0xAD374000
+[EBS] mmap dst    0x75F78000
+[EBS] mmap bytes  0x6F0
+[EBS] mmap dsz    0x30
+[EBS] mmap in     0x25
+[EBS] mmap out    0xC
+[EBS] boot_args   0x75F68000
+[EBS] entry       0x7536D498
+[EBS] stack_top   0xAD373FF0
+[EBS] actual ARM machineType  0x56424C41
+[EBS] actual ARM console queue  0x75F70000
+[EBS] entry first instruction  0x140006F0
+[EBS] jumping to kernel
+JKELABCDEFGHDarwin Kernel Version 20.5.0: Sat Oct 10 17:04:13 PDT 2026; joeblau:xnu-build/DEVELOPMENT_ARM64_VIRT
+pmap_startup() init/release time: 705 microsec
+pmap_startup() delayed init/release of 0 pages
+vm_page_bootstrap: 59170 free pages, 4318 wired pages, (up to 0 of which are delayed free)
+"vm_compressor_mode" is 4
+zone_init: submap[0] 0xfffffff076000000:0xfffffff20f990000 (6553M)
+zone_init: submap[1] 0xfffffff20f9a0000:0xfffffff542cc0000 (13107M)
+zone_init: submap[2] 0xfffffff542cd0000:0xfffffff875ff0000 (13107M)
+zone_init: metadata  0xfffffffbb419c000:0xfffffffbb61a4000 (32800K)
+zone_init: metabits  0xfffffffbb61a4000:0xfffffffbb6718000 (5584K)
+zone leak detection disabled
+oslog_init completed, 16 chunks, 8 io pages
+standard timeslicing quantum is 10000 us
+standard background quantum is 2500 us
+WQ[wql_init]: init linktable with max:262144 elements (8388608 bytes)
+WQ[wqp_init]: init prepost table with max:262144 elements (8388608 bytes)
+mig_table_max_displ = 53 mach_kobj_count = 369
+debug_log_init: Error!! gPanicBase is still not initialized
+debug_log_init: Error!! gPanicBase is still not initialized
+kdp_core zlib memory 0x8000
+Serial requested, consistent debug disabled or debug boot arg not present, configuring debugging over serial
+[    0.602429]: Telemetry: Sampling all tasks once per 1 second
+
+[    0.602441]: Scheduler: Default of clutch
+
+[    0.602442]: Setting scheduler priority decay band limit 18
+
+[    0.604629]: ATM subsystem is initialized
+
+[    0.604638]: BANK subsystem is initialized
+
+[    0.604646]: IPC_PTHREAD_PRIORITY subsystem is initialized
+
+[    0.605424]: Registered coredump handler for kernel
+
+[    0.606064]: Initializing serial KDP
+
+iBoot version: 
+WARNING: did not find UUID in Primary KC!
+corecrypto start
+corecrypto register ret=0
+BLAUOS_KERNEL_ENTROPY provider=yarrow-fixed-v1 boot_source_efi_rng=1
+corecrypto loaded
+IONVRAM::getNVRAMSize:854 - NVRAM size is 8192 bytes
+1 external trust cache modules available.
+external trust cache module 0 with 0 entries
+keepsyms boot arg specified; keeping linkedit segment for symbols.
+No POST boot-arg set.
+PDArmGIC: up (GICD_CTLR=0x53 GICR_WAKER=0x0 timer PPI 27 Group1 enabled)
+Copyright (c) 1982, 1986, 1989, 1991, 1993
+	The Regents of the University of California. All rights reserved.
+
+MAC Framework successfully initialized
+PD: desiredvnodes=1024 sane_size=0x3a05c000 mem_size=0x3e000000
+using 1188 buffer headers and 1188 cluster IO buffer headers
+mcache: 1 CPU(s), 128 bytes CPU cache line size
+mbinit: done [64 MB total pool size, (42/21) split]
+dlil_init: Waiting for all the create dlil kernel threads to get scheduled at least once.
+IOG flags 0x3 (0x51)
+PureDarwin PDArmPCI: probe provider=pci
+PureDarwin PDArmPCI: probe result=0xfffffff542b16340 score=90000
+PureDarwin PDArmPCI: start provider=pci
+PureDarwin PDArmPCI: configure
+pci (build 16:29:08 Oct 10 2026), flags 0x20c3008
+[ PCI configuration begin ]
+dlil_init: All the created dlil kernel threads have been scheduled at least once. Proceeding.
+pdcmode_aes_cbc_init
+ifnet_attach: All kernel threads created for interface lo0 have been scheduled at least once. Proceeding.
+[ PCI configuration end, bridges 1, devices 9 ]
+IOVirtIONet: probe vendor=0x1af4 device=0x1041
+IOVirtIOTransport: vendor cap #1 at off=0x40 type=1 bar=0 regoff=0x0
+IOVirtIOTransport: vendor cap #2 at off=0x50 type=3 bar=0 regoff=0x1000
+IOVirtIOTransport: vendor cap #3 at off=0x60 type=2 bar=0 regoff=0x4000
+IOVirtIOTransport: vendor cap #4 at off=0x74 type=4 bar=0 regoff=0x8000
+IOMediaBSDClient: devsw major=18
+IOVirtIOTransport: vendor cap #1 at off=0x40 type=1 bar=0 regoff=0x0
+IOVirtIOTransport: vendor cap #2 at off=0x50 type=3 bar=0 regoff=0x1000
+IOVirtIOTransport: vendor cap #3 at off=0x60 type=2 bar=0 regoff=0x4000
+IOVirtIOTransport: vendor cap #4 at off=0x74 type=4 bar=0 regoff=0x8000
+IOVirtIOTransport: vendor cap #1 at off=0x40 type=1 bar=0 regoff=0x0
+IOVirtIOTransport: vendor cap #2 at off=0x50 type=3 bar=0 regoff=0x1000
+IOVirtIOTransport: vendor cap #3 at off=0x60 type=2 bar=0 regoff=0x4000
+IOVirtIOTransport: vendor cap #4 at off=0x74 type=4 bar=0 regoff=0x8000
+rooting via boot-uuid from /chosen: 61C4D2A8-8653-5261-B171-ABA17D683B0D
+Waiting on <dict ID="0"><key>IOProviderClass</key><string ID="1">IOResources</string><key>IOResourceMatch</key><string ID="2">boot-uuid-media</string></dict>
+IOVirtIONet: negotiated device MTU 1500 (guest MTU 1500)
+IOVirtIONet: MAC 02:42:b1:a0:05:02
+IOVirtIOBlock: 2232320 blocks of 512 bytes (1090 MB), flush
+IOFDiskPartitionScheme: scan found 1 partition(s)
+IOMediaBSDClient: start media=VirtIO Block Device Media whole=1 size=1142947840 block=512
+IOMediaBSDClient: published /dev/disk0 and /dev/rdisk0
+IOMediaBSDClient: media=VirtIO Block Device Media -> disk0 major=18 minor=0
+IOMediaBSDClient: start media=EFI System Partition whole=0 size=67108864 block=512
+IOMediaBSDClient: published /dev/disk0s1 and /dev/rdisk0s1
+IOMediaBSDClient: media=EFI System Partition -> disk0s1 major=18 minor=1
+IOMediaBSDClient: start media=Darwin ext4 Root whole=0 size=1073741824 block=512
+IOMediaBSDClient: published /dev/disk0s2 and /dev/rdisk0s2
+IOMediaBSDClient: media=Darwin ext4 Root -> disk0s2 major=18 minor=2
+Got boot device = IOService:/PDArmPlatformExpert/pci/PDArmPCI/pci1af4,1042@6/IOVirtIOBlock/virtio-blk0@0/IOBlockStorageDriver/VirtIO Block Device Media/IOGUIDPartitionScheme/Darwin ext4 Root@2
+BSD root: disk0s2, major 18, minor 2
+Maximum number of VM swap files: 100
+VM Swap Subsystem is ON
+No POST boot-arg set.
+load_init_program: attempting to load /usr/appleinternal/sbin/launchd.development
+load_init_program: attempting to load /sbin/launchd
+dyld: setting comm page to 0x800000000
+
+com.apple.launchd                1        com.apple.launchd                                                1         *** launchd[1] has started up. ***
+
+com.apple.launchd                1        com.apple.launchd                                                1         *** Verbose boot, will log to /dev/console. ***
+
+com.apple.launchd                1        com.apple.launchd                                                1         *** Shutdown logging is enabled. ***
+
+1970-01-01 00:00:00.-14 launchctl[2:195] CoreFoundation: failed to dynamically link symbol _CFSocketStreamCreatePair
+
+1970-01-01 00:00:00.-09 launchctl[2:195] CoreFoundation: failed to dynamically link symbol _CFErrorCreateWithStreamError
+
+1970-01-01 00:00:00.-08 launchctl[2:195] CoreFoundation: failed to dynamically link symbol _CFStreamErrorFromCFError
+
+PureDarwin: os_assumes failure (code 0x2)
+
+PureDarwin: os_assumes failure with context (code 0x0)
+
+PureDarwin: os_assumes failure with context (code 0x0)
+
+BLAUOS_GUEST_KERNEL Darwin Kernel Version 20.5.0: Sat Oct 10 17:04:13 PDT 2026; joeblau:xnu-build/DEVELOPMENT_ARM64_VIRT
+
+BLAUOS_SSH_ACCOUNT name=joeblau uid=1000 gid=1000 home=/var/home/joeblau shell=/bin/sh
+
+BLAUOS_SSH_CAPABILITY account_lookup pass errno=0
+
+BLAUOS_SSH_CAPABILITY credentials_permissions pass errno=0
+
+BLAUOS_SHELL_EXECUTED
+
+BLAUOS_SSH_CAPABILITY permanent_credentials pass errno=0
+
+BLAUOS_GUEST_TEST shell=pass
+
+BLAUOS_RUNTIME allocation=pass
+
+BLAUOS_RUNTIME locale_conversions=pass
+
+BLAUOS_PTY_OUTPUT_BEGIN
+
+IFS= read -r blauos_pty_input; test "$blauos_pty_input" = 'guest-input-4c711b' && printf '%s%s\n' 'BLAUOS_PTY_' 'SHELL_PASS'; exit $?
+
+
+guest-input-4c711b
+
+
+BLAUOS_PTY_CONTROLLING_TERMINAL_PASS
+
+
+$ BLAUOS_PTY_SHELL_PASS
+
+
+
+
+BLAUOS_PTY_OUTPUT_END
+
+BLAUOS_RUNTIME file_io=pass
+
+BLAUOS_RUNTIME syscall=pass
+
+BLAUOS_RUNTIME pthread=pass
+
+BLAUOS_SSH_CAPABILITY pty_shell pass errno=0
+
+BLAUOS_SSH_CAPABILITY sandbox_select pass errno=0
+
+BLAUOS_SSH_CAPABILITY descriptor_passing pass errno=0
+
+BLAUOS_SSH_CAPABILITY sshd_chroot pass errno=0
+
+BLAUOS_SSH_CAPABILITY entropy_admission pass errno=0
+
+BLAUOS_SSH_CAPABILITY getentropy_api pass errno=0
+
+BLAUOS_SSH_CAPABILITY urandom_device_api pass errno=0
+
+BLAUOS_SSH_ENTROPY_QUALITY byte_variation_is_not_an_entropy_estimate
+
+BLAUOS_SSH_CAPABILITY runtime_prerequisites pass errno=0
+
+BLAUOS_RUNTIME concurrent_once=pass
+
+BLAUOS_RUNTIME blocks_lifetime=pass
+
+BLAUOS_SSH_HOST_KEY created
+
+BLAUOS_SSH_HOST_PUBLIC_KEY ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG7KQCISoCJHSsDKhVXnP1WglBIvGhZym3asN/kwgIeG
+
+BLAUOS_SSH_HOST_FINGERPRINT SHA256:YhGQRLFmcgP5rLQuUox1YY02epsA3XJqx10a2wBoRXo
+
+BLAUOS_SSH_START exec_sshd
+
+BLAUOS_RUNTIME mach_timer=pass
+
+BLAUOS_RUNTIME atfork_handlers=pass
+
+BLAUOS_RUNTIME process_exit=pass
+
+/etc/ssh/sshd_config line 11: Unsupported option UsePAM
+
+
+Server listening on 0.0.0.0 port 22.
+
+
+BLAUOS_RUNTIME dynamic_loader=pass
+
+BLAUOS_RUNTIME image=/bin/blauos_runtime_probe
+
+BLAUOS_RUNTIME image=/usr/lib/libobjc.A.dylib
+
+BLAUOS_RUNTIME image=/usr/lib/libSystem.B.dylib
+
+BLAUOS_RUNTIME image=/usr/lib/system/libdyld.dylib
+
+BLAUOS_RUNTIME image=/usr/lib/libc++abi.dylib
+
+BLAUOS_RUNTIME required_images=pass shared_cache=absent
+
+BLAUOS_RUNTIME result=pass
+
+BLAUOS_GUEST_TEST runtime=pass
+
+PureDarwin: os_assumes failure with context (code 0x0)
+
+Could not get location of job overrides database: ppid/bootstrap: 20/0x803
+
+PureDarwin: os_assumes failure with context (code 0x0)
+
+Could not obtain manager name: ppid/bootstrap: 20/0x803
+
+PureDarwin bootstrap found 1 jobs
+
+PureDarwin launchctl: submit_job_pass count=1
+
+PureDarwin launchctl: submit job[0]=org.blauos.test.bootstrap type=1
+
+BLAUOS_LAUNCHD_DIAGNOSTIC pid=22 reply_sent=1 intentional_exit=17
+
+BLAUOS_LAUNCHD job_launch=pass bootstrap_registration=pass ipc_roundtrip=pass
+
+BLAUOS_LAUNCHD_DIAGNOSTIC pid=25 reply_sent=1 intentional_exit=17
+
+BLAUOS_LAUNCHD supervision=pass first_pid=22 restarted_pid=25
+
+BLAUOS_LAUNCHD child_reaping=pass reaped_pid=22
+
+PureDarwin: os_assumes failure with context (code 0x0)
+
+Could not get location of job overrides database: ppid/bootstrap: 20/0x803
+
+PureDarwin: os_assumes failure with context (code 0x0)
+
+Could not obtain manager name: ppid/bootstrap: 20/0x803
+
+BLAUOS_LAUNCHD job_unload=pass
+
+PureDarwin: os_assumes failure with context (code 0x0)
+
+BLAUOS_LAUNCHD missing_job_error=pass
+
+PureDarwin: os_assumes failure with context (code 0x0)
+
+PureDarwin: os_assumes failure with context (code 0x0)
+
+PureDarwin: os_assumes failure with context (code 0x0)
+
+PureDarwin: os_assumes failure with context (code 0x0)
+
+BLAUOS_LAUNCHD failed_executable_error=pass behavior=reported
+
+BLAUOS_LAUNCHD result=service_subset_pass system_shutdown=unverified
+
+PureDarwin: os_assumes failure with context (code 0x0)
+
+PureDarwin: os_assumes failure with context (code 0x0)
+
+PureDarwin: os_assumes failure with context (code 0x0)
+
+PureDarwin: os_assumes failure with context (code 0x0)
+
+BLAUOS_GUEST_TEST launchd_services=pass
+
+PureDarwin network: configuring en0 addr=192.168.64.202 mask=255.255.255.0 router=192.168.64.1 dns=192.168.64.1
+
+PureDarwin network: lo0 inet 127.0.0.1 netmask 255.0.0.0 broadcast 127.255.255.255
+
+ifnet_attach: Waiting for all kernel threads created for interface en0 to get scheduled at least once.
+ifnet_attach: All kernel threads created for interface en0 have been scheduled at least once. Proceeding.
+PureDarwin network: en0 registered with BSD flags=0xffff8822
+
+IOVirtIONet: enable interface=0xfffffff542b39870
+PureDarwin network: en0 inet 192.168.64.202 netmask 255.255.255.0 broadcast 192.168.64.255
+
+PureDarwin network: default route via 192.168.64.1
+
+PureDarwin network: resolver nameserver 192.168.64.1
+
+BLAUOS_SMOKE 0aef5cbc63b124267af2e78e32c06eb8c20abdc2bda117a2b1203e857c3c431c guest_to_host
+
+BLAUOS_SMOKE 0aef5cbc63b124267af2e78e32c06eb8c20abdc2bda117a2b1203e857c3c431c clock
+
+BLAUOS_SMOKE 0aef5cbc63b124267af2e78e32c06eb8c20abdc2bda117a2b1203e857c3c431c kernel
+
+BLAUOS_SMOKE 0aef5cbc63b124267af2e78e32c06eb8c20abdc2bda117a2b1203e857c3c431c launchd
+
+BLAUOS_SMOKE 0aef5cbc63b124267af2e78e32c06eb8c20abdc2bda117a2b1203e857c3c431c shell
+
+BLAUOS_SMOKE 0aef5cbc63b124267af2e78e32c06eb8c20abdc2bda117a2b1203e857c3c431c runtime
+
+BLAUOS_SMOKE 0aef5cbc63b124267af2e78e32c06eb8c20abdc2bda117a2b1203e857c3c431c concurrent_once
+
+BLAUOS_SMOKE 0aef5cbc63b124267af2e78e32c06eb8c20abdc2bda117a2b1203e857c3c431c blocks_lifetime
+
+BLAUOS_SMOKE 0aef5cbc63b124267af2e78e32c06eb8c20abdc2bda117a2b1203e857c3c431c locale_conversions
+
+BLAUOS_SMOKE 0aef5cbc63b124267af2e78e32c06eb8c20abdc2bda117a2b1203e857c3c431c mach_timer
+
+BLAUOS_SMOKE 0aef5cbc63b124267af2e78e32c06eb8c20abdc2bda117a2b1203e857c3c431c atfork_handlers
+
+BLAUOS_SMOKE 0aef5cbc63b124267af2e78e32c06eb8c20abdc2bda117a2b1203e857c3c431c dynamic_loader
+
+BLAUOS_SMOKE 0aef5cbc63b124267af2e78e32c06eb8c20abdc2bda117a2b1203e857c3c431c launchd_services
+
+BLAUOS_SMOKE 0aef5cbc63b124267af2e78e32c06eb8c20abdc2bda117a2b1203e857c3c431c dns
+
+PureDarwin: os_assumes failure with context (code 0x0)
+
+Could not get location of job overrides database: ppid/bootstrap: 5/0x803
+
+PureDarwin: os_assumes failure with context (code 0x0)
+
+Could not obtain manager name: ppid/bootstrap: 5/0x803
+
+PureDarwin bootstrap found 1 jobs
+
+PureDarwin launchctl: submit_job_pass count=1
+
+PureDarwin launchctl: submit job[0]=org.blauos.test.shutdown type=1
+
+BLAUOS_SMOKE 0aef5cbc63b124267af2e78e32c06eb8c20abdc2bda117a2b1203e857c3c431c network_service
+
+BLAUOS_SMOKE 0aef5cbc63b124267af2e78e32c06eb8c20abdc2bda117a2b1203e857c3c431c shutdown_job_started
+
+BLAUOS_SMOKE 0aef5cbc63b124267af2e78e32c06eb8c20abdc2bda117a2b1203e857c3c431c host_to_guest
+
+rexec line 11: Unsupported option UsePAM
+
+
+Connection from 192.168.64.1 port 58576 on 192.168.64.202 port 22
+
+
+Accepted key ED25519 SHA256:nYm2LratbA4fGKkg+FqwpYyCF6d4xmA/jFG0Kv6Bvgk found at /var/home/joeblau/.ssh/authorized_keys:2
+
+
+Postponed publickey for joeblau from 192.168.64.1 port 58576 ssh2 [preauth]
+
+
+Accepted key ED25519 SHA256:nYm2LratbA4fGKkg+FqwpYyCF6d4xmA/jFG0Kv6Bvgk found at /var/home/joeblau/.ssh/authorized_keys:2
+
+
+Accepted publickey for joeblau from 192.168.64.1 port 58576 ssh2: ED25519 SHA256:nYm2LratbA4fGKkg+FqwpYyCF6d4xmA/jFG0Kv6Bvgk
+
+
+User child is on pid 42
+
+
+Starting session: command for joeblau from 192.168.64.1 port 58576 id 0
+
+
+Received disconnect from 192.168.64.1 port 58576:11: disconnected by user
+
+
+Disconnected from user joeblau 192.168.64.1 port 58576
+
+
+rexec line 11: Unsupported option UsePAM
+
+
+Connection from 192.168.64.1 port 58584 on 192.168.64.202 port 22
+
+
+Accepted key ED25519 SHA256:nYm2LratbA4fGKkg+FqwpYyCF6d4xmA/jFG0Kv6Bvgk found at /var/home/joeblau/.ssh/authorized_keys:2
+
+
+Postponed publickey for joeblau from 192.168.64.1 port 58584 ssh2 [preauth]
+
+
+Accepted key ED25519 SHA256:nYm2LratbA4fGKkg+FqwpYyCF6d4xmA/jFG0Kv6Bvgk found at /var/home/joeblau/.ssh/authorized_keys:2
+
+
+Accepted publickey for joeblau from 192.168.64.1 port 58584 ssh2: ED25519 SHA256:nYm2LratbA4fGKkg+FqwpYyCF6d4xmA/jFG0Kv6Bvgk
+
+
+User child is on pid 46
+
+
+lastlog_openseek: Couldn't stat /var/log/lastlog: No such file or directory
+
+
+utmpx_write_direct: not implemented!
+
+
+utmpx_perform_login: utmp_write_direct() failed
+
+
+Starting session: command on ttys000 for joeblau from 192.168.64.1 port 58584 id 0
+
+
+utmpx_write_direct: not implemented!
+
+
+Received disconnect from 192.168.64.1 port 58584:11: disconnected by user
+
+
+Disconnected from user joeblau 192.168.64.1 port 58584
+
+
+rexec line 11: Unsupported option UsePAM
+
+
+Connection from 192.168.64.1 port 58585 on 192.168.64.202 port 22
+
+
+Failed publickey for joeblau from 192.168.64.1 port 58585 ssh2: ED25519 SHA256:7wgkVJ2dVHniQ7lUEVbDinOLtv/tmT4J6YtYRm+570E
+
+
+Connection closed by authenticating user joeblau 192.168.64.1 port 58585 [preauth]
+
+
+srclimit_penalise: ipv4: new 192.168.64.1/32 deferred penalty of 5.000 seconds for penalty: failed authentication
+
+
+rexec line 11: Unsupported option UsePAM
+
+
+Connection from 192.168.64.1 port 58586 on 192.168.64.202 port 22
+
+
+User root from 192.168.64.1 not allowed because not listed in AllowUsers
+
+
+Connection closed by invalid user root 192.168.64.1 port 58586 [preauth]
+
+
+rexec line 11: Unsupported option UsePAM
+
+
+Connection from 192.168.64.1 port 58587 on 192.168.64.202 port 22
+
+
+Accepted key ED25519 SHA256:nYm2LratbA4fGKkg+FqwpYyCF6d4xmA/jFG0Kv6Bvgk found at /var/home/joeblau/.ssh/authorized_keys:2
+
+
+Postponed publickey for joeblau from 192.168.64.1 port 58587 ssh2 [preauth]
+
+
+Accepted key ED25519 SHA256:nYm2LratbA4fGKkg+FqwpYyCF6d4xmA/jFG0Kv6Bvgk found at /var/home/joeblau/.ssh/authorized_keys:2
+
+
+Accepted publickey for joeblau from 192.168.64.1 port 58587 ssh2: ED25519 SHA256:nYm2LratbA4fGKkg+FqwpYyCF6d4xmA/jFG0Kv6Bvgk
+
+
+User child is on pid 54
+
+
+Starting session: subsystem 'sftp' for joeblau from 192.168.64.1 port 58587 id 0
+
+
+PureDarwin: os_assumes failure with context (code 0x0)
+
+Received disconnect from 192.168.64.1 port 58587:11: disconnected by user
+
+
+Disconnected from user joeblau 192.168.64.1 port 58587
+
+
+BLAUOS_SMOKE 0aef5cbc63b124267af2e78e32c06eb8c20abdc2bda117a2b1203e857c3c431c shutdown_requested
+
+com.apple.launchd                1        com.apple.launchd                                                1         System: Userspace shutdown begun at: Sun Oct 11 01:17:39 2026
+
+com.apple.launchd                1        com.apple.launchd.peruser.1000                                   56        Stopping job...
+
+com.apple.launchd                1        com.apple.launchd.peruser.1000                                   56        Sent job SIGKILL.
+
+com.apple.launchd                1        org.blauos.test.shutdown                                         38        Stopping job...
+
+com.apple.launchd                1        org.blauos.sshd                                                  4         Stopping job...
+
+com.apple.launchd                1        org.blauos.smoke                                                 5         Stopping job...
+
+com.apple.launchd                1        com.apple.mDNSResponder                                          6         Stopping job...
+
+com.apple.launchd                1        com.apple.launchctl.System                                       2         Stopping job...
+
+Received signal 15; terminating.
+
+
+BLAUOS_SMOKE 0aef5cbc63b124267af2e78e32c06eb8c20abdc2bda117a2b1203e857c3c431c shutdown_child_reaped
+
+BLAUOS_SMOKE 0aef5cbc63b124267af2e78e32c06eb8c20abdc2bda117a2b1203e857c3c431c shutdown_job_exit
+
+com.apple.launchd                1        com.apple.launchd.peruser.1000                                   0         Job was last to exit during shutdown of: System.
+
+com.apple.launchd                1        com.apple.launchd                                                1         System: Userspace shutdown finished at: Sun Oct 11 01:17:39 2026
+
+com.apple.launchd                1        com.apple.launchd                                                1         System: Userspace shutdown took approximately 0 seconds.
+
+com.apple.launchd                1        com.apple.launchd                                                1         System: About to call: reboot(RB_HALT).
+
+Kext loading now disabled.
+Kext unloading now disabled.
+Kext autounloading now disabled.
+syncing disks... Killing all processes 
+
+vfs_unmountall(nonsystem) start
+unmount(1) /dev
+unmount(1) /dev skipped
+unmount(1) / skipped
+vfs_unmountall(nonsystem) end
+IOServicePH::systemHalt took 0 ms
+Killing all processes 
+
+continuing
+vfs_unmountall(system) start
+unmount(0) /dev
+unmount(0) /
+done
+IOVirtIONet: disable interface=0xfffffff542b39870
+CPU halted
+PDArmPlatformExpert: QEMU PSCI HVC SYSTEM_OFF

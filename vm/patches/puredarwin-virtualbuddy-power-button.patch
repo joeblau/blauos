@@ -1,0 +1,156 @@
+diff --git a/src/Kernel/Extensions/PDArmPlatformExpert/CMakeLists.txt b/src/Kernel/Extensions/PDArmPlatformExpert/CMakeLists.txt
+index 69be8204..54a6e3b2 100644
+--- a/src/Kernel/Extensions/PDArmPlatformExpert/CMakeLists.txt
++++ b/src/Kernel/Extensions/PDArmPlatformExpert/CMakeLists.txt
+@@ -16,3 +16,9 @@ option(PUREDARWIN_QEMU_PSCI_HVC "QEMU virt virtualization=false PSCI HVC profile
+ if(PUREDARWIN_QEMU_PSCI_HVC)
+     target_compile_definitions(PDArmPlatformExpert PRIVATE PUREDARWIN_QEMU_PSCI_HVC=1)
+ endif()
++
++# VirtualBuddy generic-EFI PL061 power button routes host stop to PID 1.
++option(PUREDARWIN_VIRTUALBUDDY "Build the experimental generic EFI VM console" OFF)
++if(PUREDARWIN_VIRTUALBUDDY)
++    target_compile_definitions(PDArmPlatformExpert PRIVATE BLAUOS_VIRTUALBUDDY=1)
++endif()
+diff --git a/src/Kernel/Extensions/PDArmPlatformExpert/PDArmPlatformExpert.cpp b/src/Kernel/Extensions/PDArmPlatformExpert/PDArmPlatformExpert.cpp
+index bb2c67ac..b171ef98 100644
+--- a/src/Kernel/Extensions/PDArmPlatformExpert/PDArmPlatformExpert.cpp
++++ b/src/Kernel/Extensions/PDArmPlatformExpert/PDArmPlatformExpert.cpp
+@@ -2,6 +2,14 @@
+ #include <IOKit/IODeviceTreeSupport.h>
+ #include <IOKit/IOKitKeys.h>
+ #include <IOKit/IOLib.h>
++#if defined(BLAUOS_VIRTUALBUDDY) && defined(__arm64__)
++#include <IOKit/IOTimerEventSource.h>
++#include <IOKit/IOWorkLoop.h>
++#include <IOKit/IOMemoryDescriptor.h>
++#include <libkern/c++/OSData.h>
++#include <sys/proc.h>
++#include <sys/signal.h>
++#endif
+ #include "PDArmCPU.h"
+ #include "PDArmGIC.h"
+ #include "PDAppleAIC.h"
+@@ -18,6 +26,13 @@ private:
+ #if defined(PUREDARWIN_QEMU_PSCI_HVC) && defined(__arm64__)
+ 	bool fQemuVirtPSCI;
+ #endif
++#if defined(BLAUOS_VIRTUALBUDDY) && defined(__arm64__)
++	volatile uint8_t *fPowerGpio;
++	IOMemoryMap *fPowerGpioMap;
++	IOTimerEventSource *fPowerTimer;
++	uint32_t fPowerPinMask;
++	bool fPowerShutdownSent;
++#endif
+ 
+ public:
+ 	IOService *probe(IOService *provider, SInt32 *score) APPLE_KEXT_OVERRIDE;
+@@ -37,6 +52,10 @@ protected:
+ 	virtual const char *platformModelName(void);
+ 	void publishBcm2835EMMC(void);
+ 	void publishBcm283xFramebuffer(void);
++#if defined(BLAUOS_VIRTUALBUDDY) && defined(__arm64__)
++	void publishVirtualBuddyPowerButton(void);
++	static void powerButtonTick(OSObject *owner, IOTimerEventSource *timer);
++#endif
+ };
+ 
+ static bool pd_platform_is_bcm283x(void);
+@@ -80,6 +99,10 @@ PDArmPlatformExpert::start(IOService *provider)
+ 
+ 	publishBcm283xFramebuffer();
+ 
++#if defined(BLAUOS_VIRTUALBUDDY) && defined(__arm64__)
++	publishVirtualBuddyPowerButton();
++#endif
++
+ 	return true;
+ }
+ 
+@@ -125,6 +148,86 @@ PDArmPlatformExpert::haltRestart(unsigned int type)
+ }
+ #endif
+ 
++#if defined(BLAUOS_VIRTUALBUDDY) && defined(__arm64__)
++/*
++ * VirtualBuddy 2.1 / public requestStop asserts pin 6 of the firmware's
++ * PL061 GPIO (ACPI ARMH0061 at 0x20060000, SPI 37); _E06 then performs
++ * Notify(PWRB, 0x80) on the PNP0C0C power button. This kernel has no ACPI
++ * interpreter, so the loader publishes the validated device as the
++ * "blauos,power-button" device-tree property and this bounded 100 ms poll
++ * converts a press into SIGTERM to PID 1. That is the same orderly route
++ * the guest smoke test already validates: launchd tears down children,
++ * unmounts, and reaches PSCI SYSTEM_OFF through haltRestart.
++ */
++#define PL061_DIR	0x400
++#define PL061_IS	0x404
++#define PL061_IBE	0x408
++#define PL061_IEV	0x40C
++#define PL061_RIS	0x414
++#define PL061_IC	0x41C
++
++void
++PDArmPlatformExpert::publishVirtualBuddyPowerButton(void)
++{
++	IORegistryEntry *root = IORegistryEntry::fromPath("/", gIODTPlane);
++	if (root == NULL) return;
++	OSData *data = OSDynamicCast(OSData, root->getProperty("blauos,power-button"));
++	if (data == NULL || data->getLength() != 3*sizeof(uint64_t)) {
++		root->release();
++		return;
++	}
++	uint64_t base = ((const uint64_t *)data->getBytesNoCopy())[0];
++	uint64_t irq = ((const uint64_t *)data->getBytesNoCopy())[1];
++	uint64_t pin = ((const uint64_t *)data->getBytesNoCopy())[2];
++	root->release();
++	if (!base || (base & 0xfff) || irq < 32 || irq >= 1020 || pin >= 8) {
++		IOLog("PDArmPlatformExpert: rejecting malformed blauos,power-button\n");
++		return;
++	}
++	IOMemoryDescriptor *memory = IOMemoryDescriptor::withPhysicalAddress(base, 0x1000, kIODirectionNone);
++	if (memory == NULL) return;
++	fPowerGpioMap = memory->map(kIODirectionNone);
++	memory->release();
++	if (fPowerGpioMap == NULL) return;
++	fPowerGpio = (volatile uint8_t *)fPowerGpioMap->getVirtualAddress();
++	fPowerPinMask = 1u << pin;
++	*(volatile uint32_t *)(fPowerGpio + PL061_DIR) &= ~fPowerPinMask;
++	*(volatile uint32_t *)(fPowerGpio + PL061_IS) &= ~fPowerPinMask;
++	*(volatile uint32_t *)(fPowerGpio + PL061_IBE) &= ~fPowerPinMask;
++	*(volatile uint32_t *)(fPowerGpio + PL061_IEV) |= fPowerPinMask;
++	*(volatile uint32_t *)(fPowerGpio + PL061_IC) = fPowerPinMask;
++	fPowerShutdownSent = false;
++	IOWorkLoop *workloop = getWorkLoop();
++	if (workloop == NULL) return;
++	fPowerTimer = IOTimerEventSource::timerEventSource(this,
++	    (IOTimerEventSource::Action)&PDArmPlatformExpert::powerButtonTick);
++	if (fPowerTimer == NULL || workloop->addEventSource(fPowerTimer) != kIOReturnSuccess) {
++		OSSafeReleaseNULL(fPowerTimer);
++		return;
++	}
++	fPowerTimer->setTimeoutMS(100);
++	IOLog("PDArmPlatformExpert: VirtualBuddy power button PL061 0x%llx irq %llu pin %llu\n",
++	    (unsigned long long)base, (unsigned long long)irq, (unsigned long long)pin);
++}
++
++void
++PDArmPlatformExpert::powerButtonTick(OSObject *owner, IOTimerEventSource *)
++{
++	PDArmPlatformExpert *self = (PDArmPlatformExpert *)owner;
++	if (self->fPowerGpio == NULL || self->fPowerTimer == NULL) return;
++	self->fPowerTimer->setTimeoutMS(100);
++	if (!(*(volatile uint32_t *)(self->fPowerGpio + PL061_RIS) & self->fPowerPinMask)) return;
++	*(volatile uint32_t *)(self->fPowerGpio + PL061_IC) = self->fPowerPinMask;
++	if (self->fPowerShutdownSent) {
++		IOLog("PDArmPlatformExpert: ignoring repeated power button press\n");
++		return;
++	}
++	self->fPowerShutdownSent = true;
++	IOLog("PDArmPlatformExpert: host requested stop; sending SIGTERM to PID 1\n");
++	proc_signal(1, SIGTERM);
++}
++#endif
++
+ /*
+  * The Pi's device tree describes no display: the VideoCore firmware allocates
+  * the framebuffer and the loader passes its geometry in boot_args, which is

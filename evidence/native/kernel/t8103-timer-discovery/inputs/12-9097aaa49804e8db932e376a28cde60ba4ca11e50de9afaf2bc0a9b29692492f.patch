@@ -1,0 +1,67 @@
+diff --git a/src/Kernel/xnu/osfmk/arm64/sleh.c b/src/Kernel/xnu/osfmk/arm64/sleh.c
+index 0b785778..a53a5d0e 100644
+--- a/src/Kernel/xnu/osfmk/arm64/sleh.c
++++ b/src/Kernel/xnu/osfmk/arm64/sleh.c
+@@ -1891,6 +1891,23 @@ sleh_fiq(arm_saved_state_t *state)
+ 
+ 		cpu_data_t *cdp = getCpuDatap();
+ 
++		if (type == DBG_INTR_TYPE_UNKNOWN) {
++			/*
++			 * The source is neither a fast IPI, a PMI, nor a pending
++			 * architectural timer.  It cannot be masked at an unknown
++			 * source, so keep servicing it through the timer path, but
++			 * account for it explicitly: report the first few and then
++			 * stay silent so a misrouted source cannot log at FIQ rate.
++			 */
++			static unsigned int unknown_fiq_reports;
++
++			if (unknown_fiq_reports < 16) {
++				unknown_fiq_reports++;
++				kprintf("sleh_fiq: unknown FIQ source (report %u of 16); servicing as timer\n",
++				    unknown_fiq_reports);
++			}
++		}
++
+ 		cdp->cpu_decrementer = -1; /* Large */
+ 
+ 		/*
+diff --git a/src/Kernel/xnu/pexpert/arm/pe_identify_machine.c b/src/Kernel/xnu/pexpert/arm/pe_identify_machine.c
+index cd271b8f..9c94c0f2 100644
+--- a/src/Kernel/xnu/pexpert/arm/pe_identify_machine.c
++++ b/src/Kernel/xnu/pexpert/arm/pe_identify_machine.c
+@@ -678,13 +678,31 @@ pe_arm_map_interrupt_controller(void)
+ 
+ 	if (SecureDTFindEntry("device_type", "timer", &entryP) == kSuccess) {
+ 		kprintf("pe_arm_map_interrupt_controller: found timer\n");
+-		SecureDTGetProperty(entryP, "reg", (void const **)&reg_prop, &prop_size);
+-		gTimerBase = ml_io_map(soc_phys + *reg_prop, *(reg_prop + 1));
+-		kprintf("pe_arm_map_interrupt_controller: gTimerBase: 0x%lx\n", (unsigned long)gTimerBase);
++		if ((SecureDTGetProperty(entryP, "reg", (void const **)&reg_prop, &prop_size) == kSuccess)
++		    && (prop_size >= 2 * sizeof(*reg_prop))
++		    && (reg_prop[1] != 0)
++		    && (soc_phys + reg_prop[0] >= soc_phys)) {
++			gTimerBase = ml_io_map(soc_phys + reg_prop[0], reg_prop[1]);
++		} else {
++			kprintf("pe_arm_map_interrupt_controller: timer reg property missing or malformed; not mapped\n");
++		}
++		if (gTimerBase != 0) {
++			kprintf("pe_arm_map_interrupt_controller: gTimerBase: 0x%lx\n", (unsigned long)gTimerBase);
++		}
+ 	}
+ 	if (gTimerBase == 0) {
++#if defined(__arm64__)
++		/*
++		 * ARM64 timer setup programs the architectural virtual timer
++		 * (CNTV_TVAL_EL0/CNTV_CTL_EL0) and never dereferences gTimerBase;
++		 * an absent or malformed MMIO timer node must not fail interrupt
++		 * initialization.  Fall back to the architectural timer.
++		 */
++		kprintf("pe_arm_map_interrupt_controller: no usable timer node; using the architectural timer.\n");
++#else
+ 		kprintf("pe_arm_map_interrupt_controller: failed to find the timer.\n");
+ 		return 0;
++#endif
+ 	}
+ 
+ 	return 1;
